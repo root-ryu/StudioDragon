@@ -70,7 +70,7 @@ header h1 {
     padding-bottom: 30px;
 }
 
-header h1 a img{
+header h1 a img {
     width: 200px;
 }
 
@@ -82,29 +82,45 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 70px;
+    padding: 0 70px;
+    /* padding-left: 70px; */
 }
 
-nav ul {
+
+nav ul.gnb {
     width: 950px;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-nav ul li {
+nav ul.gnb>li {
+    /* flex: 1; */
+    height: 100%;
     font-size: 22px;
     font-weight: 300;
     text-align: center;
     color: var(--Wcolor);
+    background: #ccc;
+    min-width: 80px;
 }
 
+nav ul.gnb>li>a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul.gnb>li>ul.sub {}
+
 nav .right {
-    width: 270px;
+    width: 200px;
     height: 34px;
     display: flex;
     align-items: center;
-    padding-right: 70px;
+    /* padding-right: 70px; */
     gap: 20px;
     overflow: hidden;
 }
@@ -124,27 +140,15 @@ nav .right .lang a {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-nav .right .lang a .en {
-    background: var(--Wcolor);
-    width: 78px;
+    width: 50%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 18px;
     font-weight: 700;
     border-radius: 17px;
-    position: absolute;
-    left: 0;
+    color: var(--Wcolor);
 }
 
-nav .right .lang a .kr {
-    width: 45px;
-    color: var(--Wcolor);
-    font-size: 18px;
-    font-weight: 700;
-    position: absolute;
-    right: 0;
+nav .right .lang a.active {
+    background: var(--Wcolor);
+    color: var(--Bcolor);
 }
