@@ -74,7 +74,3 @@
     --font-440-body-M-12: 400 12px/130% "Assistant-Regular", sans-serif; /* 보조 본문, 카드 설명 */
     --font-440-body-caption-10: 400 10px/130% "Assistant-Regular", sans-serif; /* 정보 (날짜, 제작진정보 등) */  
 }
-
-.h2 {
-    font: var(--font-1920-headline-56);
-}
