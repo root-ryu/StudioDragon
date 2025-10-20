@@ -39,7 +39,7 @@
     /* 1920 */
     --font-1920-gnb-default: 400 22px/130% "Assistant-Regular", sans-serif;
     --font-1920-gnb-selected: 700 30px/130% "Assistant-Bold", sans-serif;
-    --font-1920-footer-hotline: 600 34px/100% "Assistant-Semibold", sans-serif; /* 푸터 핫라인 */
+    --font-1920-footer-gnb: 600 34px/100% "Assistant-Semibold", sans-serif; /* 푸터 핫라인 */
     --font-1920-footer-btn: 400 20px/100% "Assistant-Regular", sans-serif; /* 푸터 사이트맵 버튼 */
     --font-1920-footer-info: 400 20px/100% "Assistant-Regular", sans-serif; /* 푸터 회사정보 */
     --font-1920-headline-56: 700 56px/130% "Assistant-Bold", sans-serif; /* 주요 섹션 헤드라인 - h2 태그 */
@@ -55,12 +55,12 @@
     /* 1024 */
     --font-1024-gnb: 700 30px/130%  "Assistant-Bold", sans-serif;
     --font-1024_440-lnb: 400 20px/130%  "Assistant-Regular", sans-serif;
-    --font-1024-footer-hotline: 600 40px/100%  "Assistant-Semibold", sans-serif; /* 푸터 핫라인 */
+    --font-1024-footer-gnb: 600 40px/100%  "Assistant-Semibold", sans-serif; /* 푸터 핫라인 */
     --font-1024-footer-info: 300 16px/130%  "Assistant-light", sans-serif; /* 푸터 회사정보 */
     --font-1024-headline-40: 700 40px/130% "Assistant-Bold", sans-serif; /* 주요 섹션 헤드라인 - h2 태그 */
     /* 440 */
     --font-440-gnb: 700 30px/130%  "Assistant-Bold", sans-serif;
-    --font-440-footer-hotline: 600 16px/100%  "Assistant-Semibold", sans-serif; /* 푸터 핫라인 */
+    --font-440-footer-gnb: 600 16px/100%  "Assistant-Semibold", sans-serif; /* 푸터 핫라인 */
     --font-440-footer-btn: 400 18px/1  "Assistant-Regular", sans-serif; /* 푸터 사이트맵 버튼 */
     --font-440-footer-info: 400 10px/100%  "Assistant-Regular", sans-serif; /* 푸터 회사정보 */
     --font-440-headline-30: 700 30px/130% "Assistant-Bold", sans-serif; /* 주요 섹션 헤드라인 - h2 태그 */
