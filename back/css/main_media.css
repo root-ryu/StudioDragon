@@ -1,5 +1,47 @@
 @charset "UTF-8";
 
 @media screen and (max-width:1450px) {
-    
+    header {
+        width: 1450px;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50 80px;
+    }
+
+    header h1 a img {
+        width: 166px;
+    }
+
+    header nav {
+        border: 0;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 16px;
+    }
+
+    header nav ul.gnb {
+        display: none;
+    }
+
+    header nav .right {
+        width: auto;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    header nav .right .lang {
+        height: 34px;
+    }
+
+    header nav .right .ham {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

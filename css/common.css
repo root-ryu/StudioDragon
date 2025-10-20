@@ -13,7 +13,7 @@
     --Bcolor: #0D031C;
     --Bcolor-700: #4A4259;
     --Bcolor-200: #C7C5CD;
-    --WF:#FFFFFF;
+    --WF: #FFFFFF;
     --subBlue2: #394199;
     --subBlue1: #1A26AD;
     --subRed2: #AA3229;
@@ -30,47 +30,292 @@
     --my-shadow: 0px 0px 24px rgba(2, 8, 20, 0.4);
 
     /* border-radius */
-    --WT-round-1: 32px; /* 1920 , 1024  */
-    --WT-round-2: 12px; /* 1920 , 1024 */
-    --WTP-round-3: 8px; /* 1920, 1024, 440 */
-    --P-round-1: 24px; /* 440 */
+    --WT-round-1: 32px;
+    /* 1920 , 1024  */
+    --WT-round-2: 12px;
+    /* 1920 , 1024 */
+    --WTP-round-3: 8px;
+    /* 1920, 1024, 440 */
+    --P-round-1: 24px;
+    /* 440 */
 
     /* 폰트 */
     /* 1920 */
     --font-1920-gnb-default: 400 22px/130% "Assistant-Regular", sans-serif;
     --font-1920-gnb-selected: 700 30px/130% "Assistant-Bold", sans-serif;
-    --font-1920-footer-gnb: 600 34px/100% "Assistant-Semibold", sans-serif; /* 푸터 핫라인 */
-    --font-1920-footer-btn: 400 20px/100% "Assistant-Regular", sans-serif; /* 푸터 사이트맵 버튼 */
-    --font-1920-footer-info: 400 20px/100% "Assistant-Regular", sans-serif; /* 푸터 회사정보 */
-    --font-1920-headline-56: 700 56px/130% "Assistant-Bold", sans-serif; /* 주요 섹션 헤드라인 - h2 태그 */
-    --font-1920-title-B-40: 700 40px/130% "Assistant-Bold", sans-serif; /* 하위 섹션 타이틀 */
-    --font-1920-title-L-40: 400 40px/130% "Assistant-Regular", sans-serif; /* 하위 섹션 타이틀 */
-    --font-1920-title-B-26: 700 26px/130% "Assistant-Bold", sans-serif; /* 하위 섹션 타이틀 */
+    --font-1920-footer-gnb: 600 34px/100% "Assistant-Semibold", sans-serif;
+    /* 푸터 핫라인 */
+    --font-1920-footer-btn: 400 20px/100% "Assistant-Regular", sans-serif;
+    /* 푸터 사이트맵 버튼 */
+    --font-1920-footer-info: 400 20px/100% "Assistant-Regular", sans-serif;
+    /* 푸터 회사정보 */
+    --font-1920-headline-56: 700 56px/130% "Assistant-Bold", sans-serif;
+    /* 주요 섹션 헤드라인 - h2 태그 */
+    --font-1920-title-B-40: 700 40px/130% "Assistant-Bold", sans-serif;
+    /* 하위 섹션 타이틀 */
+    --font-1920-title-L-40: 400 40px/130% "Assistant-Regular", sans-serif;
+    /* 하위 섹션 타이틀 */
+    --font-1920-title-B-26: 700 26px/130% "Assistant-Bold", sans-serif;
+    /* 하위 섹션 타이틀 */
     --font-1920_1024-button-L: 400 26px/100% "Assistant-Regular", sans-serif;
     --font-1920_1024-button-S: 400 18px/100% "Assistant-Regular", sans-serif;
-    --font-1920_1024-body-B-20: 700 20px/1 "Assistant-Bold", sans-serif; /* 일반 본문, 소개문 */
-    --font-1920_1024-body-L-20: 300 20px/130% "Assistant-Rggular", sans-serif; /* 일반 본문, 소개문 */
-    --font-1920_1024-body-M-16: 300 20px/130% "Assistant-light", sans-serif; /* 보조 본문, 카드 설명 */
-    --font-1920_1024-body-caption-14: 300 14px/130% "Assistant-light", sans-serif; /* 정보 (날짜, 제작진정보 등) */
+    --font-1920_1024-body-B-20: 700 20px/1 "Assistant-Bold", sans-serif;
+    /* 일반 본문, 소개문 */
+    --font-1920_1024-body-L-20: 300 20px/130% "Assistant-Rggular", sans-serif;
+    /* 일반 본문, 소개문 */
+    --font-1920_1024-body-M-16: 300 20px/130% "Assistant-light", sans-serif;
+    /* 보조 본문, 카드 설명 */
+    --font-1920_1024-body-caption-14: 300 14px/130% "Assistant-light", sans-serif;
+    /* 정보 (날짜, 제작진정보 등) */
     /* 1024 */
-    --font-1024-gnb: 700 30px/130%  "Assistant-Bold", sans-serif;
-    --font-1024_440-lnb: 400 20px/130%  "Assistant-Regular", sans-serif;
-    --font-1024-footer-gnb: 600 40px/100%  "Assistant-Semibold", sans-serif; /* 푸터 핫라인 */
-    --font-1024-footer-info: 300 16px/130%  "Assistant-light", sans-serif; /* 푸터 회사정보 */
-    --font-1024-headline-40: 700 40px/130% "Assistant-Bold", sans-serif; /* 주요 섹션 헤드라인 - h2 태그 */
+    --font-1024-gnb: 700 30px/130% "Assistant-Bold", sans-serif;
+    --font-1024_440-lnb: 400 20px/130% "Assistant-Regular", sans-serif;
+    --font-1024-footer-gnb: 600 40px/100% "Assistant-Semibold", sans-serif;
+    /* 푸터 핫라인 */
+    --font-1024-footer-info: 300 16px/130% "Assistant-light", sans-serif;
+    /* 푸터 회사정보 */
+    --font-1024-headline-40: 700 40px/130% "Assistant-Bold", sans-serif;
+    /* 주요 섹션 헤드라인 - h2 태그 */
     /* 440 */
-    --font-440-gnb: 700 30px/130%  "Assistant-Bold", sans-serif;
-    --font-440-footer-gnb: 600 16px/100%  "Assistant-Semibold", sans-serif; /* 푸터 핫라인 */
-    --font-440-footer-btn: 400 18px/1  "Assistant-Regular", sans-serif; /* 푸터 사이트맵 버튼 */
-    --font-440-footer-info: 400 10px/100%  "Assistant-Regular", sans-serif; /* 푸터 회사정보 */
-    --font-440-headline-30: 700 30px/130% "Assistant-Bold", sans-serif; /* 주요 섹션 헤드라인 - h2 태그 */
-    --font-440-title-B-20: 600 20px/130% "Assistant-Semibold", sans-serif; /* 하위 섹션 타이틀 */
-    --font-440-title-L-20: 400 20px/130% "Assistant-Regular", sans-serif; /* 하위 섹션 타이틀 */
-    --font-440-title-B-16: 700 16px/130% "Assistant-bold", sans-serif; /* 카드/콘텐츠 타이틀 */
-    --font-440-title-L-16: 300 16px/130% "Assistant-light", sans-serif; /* 카드/콘텐츠 타이틀 */
+    --font-440-gnb: 700 30px/130% "Assistant-Bold", sans-serif;
+    --font-440-footer-gnb: 600 16px/100% "Assistant-Semibold", sans-serif;
+    /* 푸터 핫라인 */
+    --font-440-footer-btn: 400 18px/1 "Assistant-Regular", sans-serif;
+    /* 푸터 사이트맵 버튼 */
+    --font-440-footer-info: 400 10px/100% "Assistant-Regular", sans-serif;
+    /* 푸터 회사정보 */
+    --font-440-headline-30: 700 30px/130% "Assistant-Bold", sans-serif;
+    /* 주요 섹션 헤드라인 - h2 태그 */
+    --font-440-title-B-20: 600 20px/130% "Assistant-Semibold", sans-serif;
+    /* 하위 섹션 타이틀 */
+    --font-440-title-L-20: 400 20px/130% "Assistant-Regular", sans-serif;
+    /* 하위 섹션 타이틀 */
+    --font-440-title-B-16: 700 16px/130% "Assistant-bold", sans-serif;
+    /* 카드/콘텐츠 타이틀 */
+    --font-440-title-L-16: 300 16px/130% "Assistant-light", sans-serif;
+    /* 카드/콘텐츠 타이틀 */
     --font-440-button: 400 10px/100% "Assistant-Regular", sans-serif;
-    --font-440-body-B-18: 700 20px/1 "Assistant-Bold", sans-serif; /* 일반 본문, 소개문 */
-    --font-440-body-L-18: 400 20px/1 "Assistant-Regular", sans-serif; /* 일반 본문, 소개문 */
-    --font-440-body-M-12: 400 12px/130% "Assistant-Regular", sans-serif; /* 보조 본문, 카드 설명 */
-    --font-440-body-caption-10: 400 10px/130% "Assistant-Regular", sans-serif; /* 정보 (날짜, 제작진정보 등) */  
+    --font-440-body-B-18: 700 20px/1 "Assistant-Bold", sans-serif;
+    /* 일반 본문, 소개문 */
+    --font-440-body-L-18: 400 20px/1 "Assistant-Regular", sans-serif;
+    /* 일반 본문, 소개문 */
+    --font-440-body-M-12: 400 12px/130% "Assistant-Regular", sans-serif;
+    /* 보조 본문, 카드 설명 */
+    --font-440-body-caption-10: 400 10px/130% "Assistant-Regular", sans-serif;
+    /* 정보 (날짜, 제작진정보 등) */
+}
+
+
+body {
+    font-family: "Assistant", sans-serif;
+}
+
+.inner {
+    width: 1520px;
+    margin-inline: auto;
+}
+
+header {
+    width: 100%;
+    height: 374px;
+    background: url(../back/img/header_background.png) no-repeat center top/cover;
+    padding-top: 86px;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    backdrop-filter: blur(15px);
+}
+
+header .inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header h1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+header h1 a img {
+    width: 200px;
+}
+
+header nav {
+    width: 1408px;
+    height: 100px;
+    border: 1px solid #4a4259;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 70px;
+    /* padding-left: 70px; */
+}
+
+
+header nav ul.gnb {
+    width: 950px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 65px;
+}
+
+header nav ul.gnb>li {
+    /* flex: 1; */
+    height: 100%;
+    font-size: 22px;
+    font-weight: 300;
+    text-align: center;
+    color: var(--Wcolor);
+    min-width: 80px;
+    position: relative;
+
+}
+
+header nav ul.gnb>li>a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    /* background: #ccc; */
+    /* width: 200px; */
+}
+
+header nav ul.gnb>li.on>a,
+header nav ul.gnb>li:hover>a {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--MainColor);
+}
+
+header nav ul.gnb>li>ul.sub {
+    font-size: 20px;
+    backdrop-filter: blur(15px);
+    padding: 40px 30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #4F485A;
+    border-top: 0;
+    border-radius: 0 0 32px 32px;
+    background: rgba(13, 3, 28, 0.80);
+    display: none;
+}
+
+header nav ul.gnb>li:hover>ul.sub {
+    display: block;
+}
+
+header nav ul.gnb>li:nth-child(1)>ul.sub {
+    width: 236px;
+    height: 386px;
+}
+
+header nav ul.gnb>li:nth-child(2)>ul.sub {
+    width: 248px;
+    height: 162px;
+}
+
+header nav ul.gnb>li:nth-child(3)>ul.sub {
+    width: 135px;
+    height: 162px;
+}
+
+header nav ul.gnb>li:nth-child(4)>ul.sub {
+    width: 166px;
+    height: 162px;
+}
+
+header nav ul.gnb>li:nth-child(5)>ul.sub {
+    width: 288px;
+    height: 330px;
+}
+
+header nav ul.gnb>li>ul.sub li {
+    padding-bottom: 30px;
+}
+
+header nav ul.gnb>li>ul.sub li:hover,
+header nav ul.gnb>li>ul.sub li.on {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--MainColor);
+}
+
+header nav .right {
+    width: 200px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    /* padding-right: 70px; */
+    gap: 20px;
+    overflow: hidden;
+}
+
+header nav .right .lang {
+    width: 144px;
+    height: 100%;
+    border: 1px solid var(--Wcolor);
+    border-radius: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+header nav .right .lang a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 17px;
+    color: var(--Wcolor);
+}
+
+header nav .right .lang a.active {
+    background: var(--Wcolor);
+    color: var(--Bcolor);
+}
+
+header nav .right .ham {
+    width: 34px;
+    aspect-ratio: 1 / 1;
+    border: 1.5px solid var(--Wcolor);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    background: transparent;
+    display: none;
+}
+
+header nav .right .ham ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 5px;
+    gap: 6px;
+    list-style: none;
+    width: auto;
+    height: auto;
+}
+
+header nav .right .ham ul li {
+    width: 22px;
+    height: 2px;
+    background: var(--Wcolor);
+    border-radius: 2px;
+    transform-origin: center;
 }
