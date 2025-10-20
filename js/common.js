@@ -22,16 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
         debounceDelay: 50, // 창크기 바꿀 때 0.05초 기다렸다가 계산 (너무 자주 안하게)
         throttleDelay: 99, // 스크롤할 때 0.099초 마다 한 번씩 체크 (성능 좋게)
     });
+    
+    /* 푸터 버튼 on */
+    const familySiteBtn = document.querySelector('.family_site_btn');
+    const familySite = document.querySelector('.footer_family_site');
 
-
-
-
-
+    familySiteBtn.addEventListener('click', () => {
+        familySite.classList.toggle('on');
+    });
 })
-/* 푸터 버튼 on */
-const familySiteBtn = document.querySelector('.family_site_btn');
-const familySite = document.querySelector('.footer_family_site');
-
-familySiteBtn.addEventListener('click', () => {
-    familySite.classList.toggle('on');
-});
