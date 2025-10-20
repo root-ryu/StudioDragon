@@ -167,7 +167,7 @@ section * {
   font-weight: 400;
   position: relative;
 }
-.btn {
+.running-contest .btn {
   border-radius: 32px;
   border-style: solid;
   border-color: var(--b, #0d031c);
@@ -182,7 +182,7 @@ section * {
   position: relative;
   overflow: hidden;
 }
-.btn em {
+.running-contest .btn em {
   color: var(--b, #0d031c);
   text-align: center;
   font-family: "Assistant-Regular", sans-serif;
@@ -250,7 +250,7 @@ section * {
   font: 300 30px/1 "Assistant-light", sans-serif;;
   text-transform: uppercase;
 }
-.video-content-box-1920 {
+.contest-winner .video-content-box-1920 {
   padding: 0px 200px;
   display: flex;
   flex-direction: row;
@@ -263,7 +263,7 @@ section * {
   position: relative;
   overflow: hidden;
 }
-.blur-1 {
+.contest-winner .blur-1 {
   background: radial-gradient(
     closest-side,
     rgba(63, 41, 99, 1) 0%,
@@ -273,11 +273,11 @@ section * {
   flex-shrink: 0;
   width: 725.88px;
   height: 725.88px;
-  position: relative;
+  position: absolute;
   left: -109.5px;
   bottom: 51.56px;
 }
-.blur-2 {
+.contest-winner .blur-2 {
   background: radial-gradient(
     closest-side,
     rgba(63, 41, 99, 1) 0%,
@@ -287,11 +287,11 @@ section * {
   flex-shrink: 0;
   width: 893.87px;
   height: 893.87px;
-  position: relative;
+  position: absolute;
   right: -144.49px;
   top: 0px;
 }
-.video {
+.contest-winner .video {
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.8) 0%,
@@ -312,7 +312,7 @@ section * {
   overflow: hidden;
   aspect-ratio: 513/912;
 }
-.info-overlay {
+.contest-winner .info-overlay {
   padding: 32px;
   display: flex;
   flex-direction: row;
@@ -322,7 +322,7 @@ section * {
   flex: 1;
   position: relative;
 }
-.progress-section {
+.contest-winner .progress-section {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -331,7 +331,7 @@ section * {
   flex: 1;
   position: relative;
 }
-.progress-bar-wrap {
+.contest-winner .progress-bar-wrap {
   display: flex;
   flex-direction: row;
   gap: 14px;
@@ -341,7 +341,7 @@ section * {
   flex-shrink: 0;
   position: relative;
 }
-.icon-pause {
+.contest-winner .icon-pause {
   padding: 0px 2px 0px 2px;
   display: flex;
   flex-direction: row;
@@ -353,21 +353,21 @@ section * {
   height: 22px;
   position: relative;
 }
-.rectangle-50 {
+.contest-winner .rectangle-50 {
   background: rgba(240, 240, 240, 0.8);
   border-radius: 1px;
   align-self: stretch;
   flex: 1;
   position: relative;
 }
-.rectangle-51 {
+.contest-winner .rectangle-51 {
   background: rgba(240, 240, 240, 0.8);
   border-radius: 1px;
   align-self: stretch;
   flex: 1;
   position: relative;
 }
-.progress-bar {
+.contest-winner .progress-bar {
   background: rgba(240, 240, 240, 0.3);
   border-radius: 19px;
   display: flex;
@@ -380,7 +380,7 @@ section * {
   position: relative;
   overflow: hidden;
 }
-.bar {
+.contest-winner .bar {
   background: rgba(240, 240, 240, 0.6);
   border-radius: 19px;
   flex: 1;
@@ -388,7 +388,7 @@ section * {
   position: relative;
   overflow: hidden;
 }
-._00-20 {
+.contest-winner ._00-20 {
   color: rgba(255, 255, 255, 0.8);
   text-align: right;
   font-family: var(--1920-l-26-font-family, "Assistant-Light", sans-serif);
@@ -398,7 +398,7 @@ section * {
   position: relative;
   align-self: stretch;
 }
-.award-info {
+.contest-winner .award-info {
   display: flex;
   flex-direction: column;
   gap: 43px;
@@ -409,7 +409,7 @@ section * {
   height: 912px;
   position: relative;
 }
-.gold-award {
+.contest-winner .gold-award {
   color: var(--w, #f5f5f5);
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
@@ -421,7 +421,7 @@ section * {
   transform-origin: 0 0;
   transform: rotate(0deg) scale(1, 1);
 }
-.txtbox {
+.contest-winner .txtbox {
   display: flex;
   flex-direction: column;
   gap: 13px;
@@ -431,7 +431,7 @@ section * {
   flex-shrink: 0;
   position: relative;
 }
-.title2 {
+.contest-winner .title2 {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -441,7 +441,7 @@ section * {
   width: 270px;
   position: relative;
 }
-.title-typo-of-sorry {
+.contest-winner .title-typo-of-sorry {
   color: var(--w, #f5f5f5);
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
@@ -450,7 +450,7 @@ section * {
   font-weight: 300;
   position: relative;
 }
-.nickname-rainyroom {
+.contest-winner .nickname-rainyroom {
   color: var(--w, #f5f5f5);
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
@@ -460,7 +460,7 @@ section * {
   position: relative;
   align-self: stretch;
 }
-.acceptance-comment-i-wanted-to-express-how-a-single-word-or-even-a-typo-can-hold-deep-emotions-regret-forgiveness-and-pain-the-drama-the-glory-inspired-me-to-explore-the-power-of-unspoken-apologies-winning-the-gold-award-feels-surreal-and-i-m-grateful-to-everyone-who-connected-with-my-work-this-moment-reminds-me-that-even-small-mistakes-can-lead-to-meaningful-stories {
+.contest-winner .acceptance-comment-i-wanted-to-express-how-a-single-word-or-even-a-typo-can-hold-deep-emotions-regret-forgiveness-and-pain-the-drama-the-glory-inspired-me-to-explore-the-power-of-unspoken-apologies-winning-the-gold-award-feels-surreal-and-i-m-grateful-to-everyone-who-connected-with-my-work-this-moment-reminds-me-that-even-small-mistakes-can-lead-to-meaningful-stories {
   color: #acacac;
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
@@ -470,7 +470,7 @@ section * {
   position: relative;
   align-self: stretch;
 }
-.gold {
+.contest-winner .gold {
   flex-shrink: 0;
   width: 119.79px;
   height: 141.05px;
@@ -480,7 +480,7 @@ section * {
   object-fit: cover;
   aspect-ratio: 119.79/141.05;
 }
-.silver-award {
+.contest-winner .silver-award {
   color: var(--w, #f5f5f5);
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
@@ -492,7 +492,7 @@ section * {
   transform-origin: 0 0;
   transform: rotate(0deg) scale(1, 1);
 }
-.title-the-fire-inside {
+.contest-winner .title-the-fire-inside {
   color: var(--w, #f5f5f5);
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
@@ -501,7 +501,7 @@ section * {
   font-weight: 300;
   position: relative;
 }
-.acceptance-comment-i-truly-enjoyed-watching-the-glory-and-many-of-its-scenes-stayed-with-me-long-after-i-created-this-video-inspired-by-the-unspoken-emotions-behind-every-message-sent-or-left-unsent-it-s-an-incredible-honor-to-receive-this-award-and-i-m-thankful-for-the-chance-to-share-my-interpretation-this-experience-motivates-me-to-keep-creating-stories-that-connect-with-others {
+.contest-winner .acceptance-comment-i-truly-enjoyed-watching-the-glory-and-many-of-its-scenes-stayed-with-me-long-after-i-created-this-video-inspired-by-the-unspoken-emotions-behind-every-message-sent-or-left-unsent-it-s-an-incredible-honor-to-receive-this-award-and-i-m-thankful-for-the-chance-to-share-my-interpretation-this-experience-motivates-me-to-keep-creating-stories-that-connect-with-others {
   color: #acacac;
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
@@ -511,7 +511,7 @@ section * {
   position: relative;
   align-self: stretch;
 }
-.silver {
+.contest-winner .silver {
   flex-shrink: 0;
   width: 119.79px;
   height: 141.05px;
@@ -521,7 +521,7 @@ section * {
   object-fit: cover;
   aspect-ratio: 119.79/141.05;
 }
-.popular-choice {
+.contest-winner .popular-choice {
   color: var(--w, #f5f5f5);
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
@@ -533,7 +533,7 @@ section * {
   transform-origin: 0 0;
   transform: rotate(0deg) scale(1, 1);
 }
-.title-read-receipt-unsent {
+.contest-winner .title-read-receipt-unsent {
   color: var(--w, #f5f5f5);
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
@@ -542,7 +542,7 @@ section * {
   font-weight: 300;
   position: relative;
 }
-.nickname-mintlatte {
+.contest-winner .nickname-mintlatte {
   color: var(--w, #f5f5f5);
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
@@ -552,7 +552,7 @@ section * {
   position: relative;
   align-self: stretch;
 }
-.acceptance-comment-my-goal-was-to-win-the-gold-award-but-receiving-the-popular-choice-still-feels-deeply-rewarding-this-project-took-a-lot-of-effort-and-late-nights-so-being-recognized-by-viewers-means-a-lot-to-me-it-s-heartwarming-to-know-that-people-connected-with-my-work-i-ll-remember-this-encouragement-and-keep-challenging-myself-to-do-even-better {
+.contest-winner .acceptance-comment-my-goal-was-to-win-the-gold-award-but-receiving-the-popular-choice-still-feels-deeply-rewarding-this-project-took-a-lot-of-effort-and-late-nights-so-being-recognized-by-viewers-means-a-lot-to-me-it-s-heartwarming-to-know-that-people-connected-with-my-work-i-ll-remember-this-encouragement-and-keep-challenging-myself-to-do-even-better {
   color: #acacac;
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
@@ -562,7 +562,7 @@ section * {
   position: relative;
   align-self: stretch;
 }
-.silver2 {
+.contest-winner .silver2 {
   flex-shrink: 0;
   width: 119.79px;
   height: 169.79px;
