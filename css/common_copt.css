@@ -110,6 +110,10 @@ body {
     font-family: "Assistant", sans-serif;
 }
 
+body.dark {
+    background: var(--Bcolor);
+}
+
 .inner {
     width: 1520px;
     margin-inline: auto;
@@ -353,6 +357,7 @@ header nav .right .ham ul li {
 main {
     height: 5000px;
 }
+
 /* footer */
 .footer {
     width: 100%;

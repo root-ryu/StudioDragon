@@ -1,8 +1,10 @@
 @charset "UTF-8";
+
 :root {
     --W: #F5F5F5;
     --B: #0D031C;
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -21,8 +23,7 @@ a {
     color: inherit;
 }
 
-ul,
-li {
+ul {
     list-style: none;
 }
 
