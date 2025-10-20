@@ -1,0 +1,558 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    /* 스무스하게 위로 올리기 */
+}
+
+:root {
+    --Wcolor: #F5F5F5;
+    --Bcolor: #0D031C;
+    --Bcolor-700: #4A4259;
+    --Bcolor-200: #C7C5CD;
+    --WF: #FFFFFF;
+    --subBlue2: #394199;
+    --subBlue1: #1A26AD;
+    --subRed2: #AA3229;
+    --subRed2-200: #F5D6D0;
+    --subRed2-900: #BD4033;
+    --subRed1: #B22318;
+    --MainColor: #BFA473;
+    --MainColor-400: #E5DAC6;
+    --MainColor-1400: #483D28;
+    --Gcolor: #A6A6A6;
+    --Gcolor-300: #E4E4E4;
+    --Gcolor-200: #EDEDED;
+
+    --my-shadow: 0px 0px 24px rgba(2, 8, 20, 0.4);
+
+    /* border-radius */
+    --WT-round-1: 32px;
+    /* 1920 , 1024  */
+    --WT-round-2: 12px;
+    /* 1920 , 1024 */
+    --WTP-round-3: 8px;
+    /* 1920, 1024, 440 */
+    --P-round-1: 24px;
+    /* 440 */
+
+    /* 폰트 */
+    /* 1920 */
+    --font-1920-gnb-default: 400 22px/130% "Assistant-Regular", sans-serif;
+    --font-1920-gnb-selected: 700 30px/130% "Assistant-Bold", sans-serif;
+    --font-1920-footer-gnb: 600 34px/100% "Assistant-Semibold", sans-serif;
+    /* 푸터 핫라인 */
+    --font-1920-footer-btn: 400 20px/100% "Assistant-Regular", sans-serif;
+    /* 푸터 사이트맵 버튼 */
+    --font-1920-footer-info: 400 20px/100% "Assistant-Regular", sans-serif;
+    /* 푸터 회사정보 */
+    --font-1920-headline-56: 700 56px/130% "Assistant-Bold", sans-serif;
+    /* 주요 섹션 헤드라인 - h2 태그 */
+    --font-1920-title-B-40: 700 40px/130% "Assistant-Bold", sans-serif;
+    /* 하위 섹션 타이틀 */
+    --font-1920-title-L-40: 400 40px/130% "Assistant-Regular", sans-serif;
+    /* 하위 섹션 타이틀 */
+    --font-1920-title-B-26: 700 26px/130% "Assistant-Bold", sans-serif;
+    /* 하위 섹션 타이틀 */
+    --font-1920_1024-button-L: 400 26px/100% "Assistant-Regular", sans-serif;
+    --font-1920_1024-button-S: 400 18px/100% "Assistant-Regular", sans-serif;
+    --font-1920_1024-body-B-20: 700 20px/1 "Assistant-Bold", sans-serif;
+    /* 일반 본문, 소개문 */
+    --font-1920_1024-body-L-20: 300 20px/130% "Assistant-Rggular", sans-serif;
+    /* 일반 본문, 소개문 */
+    --font-1920_1024-body-M-16: 300 20px/130% "Assistant-light", sans-serif;
+    /* 보조 본문, 카드 설명 */
+    --font-1920_1024-body-caption-14: 300 14px/130% "Assistant-light", sans-serif;
+    /* 정보 (날짜, 제작진정보 등) */
+    /* 1024 */
+    --font-1024-gnb: 700 30px/130% "Assistant-Bold", sans-serif;
+    --font-1024_440-lnb: 400 20px/130% "Assistant-Regular", sans-serif;
+    --font-1024-footer-gnb: 600 40px/100% "Assistant-Semibold", sans-serif;
+    /* 푸터 핫라인 */
+    --font-1024-footer-info: 300 16px/130% "Assistant-light", sans-serif;
+    /* 푸터 회사정보 */
+    --font-1024-headline-40: 700 40px/130% "Assistant-Bold", sans-serif;
+    /* 주요 섹션 헤드라인 - h2 태그 */
+    /* 440 */
+    --font-440-gnb: 700 30px/130% "Assistant-Bold", sans-serif;
+    --font-440-footer-gnb: 600 16px/100% "Assistant-Semibold", sans-serif;
+    /* 푸터 핫라인 */
+    --font-440-footer-btn: 400 18px/1 "Assistant-Regular", sans-serif;
+    /* 푸터 사이트맵 버튼 */
+    --font-440-footer-info: 400 10px/100% "Assistant-Regular", sans-serif;
+    /* 푸터 회사정보 */
+    --font-440-headline-30: 700 30px/130% "Assistant-Bold", sans-serif;
+    /* 주요 섹션 헤드라인 - h2 태그 */
+    --font-440-title-B-20: 600 20px/130% "Assistant-Semibold", sans-serif;
+    /* 하위 섹션 타이틀 */
+    --font-440-title-L-20: 400 20px/130% "Assistant-Regular", sans-serif;
+    /* 하위 섹션 타이틀 */
+    --font-440-title-B-16: 700 16px/130% "Assistant-bold", sans-serif;
+    /* 카드/콘텐츠 타이틀 */
+    --font-440-title-L-16: 300 16px/130% "Assistant-light", sans-serif;
+    /* 카드/콘텐츠 타이틀 */
+    --font-440-button: 400 10px/100% "Assistant-Regular", sans-serif;
+    --font-440-body-B-18: 700 20px/1 "Assistant-Bold", sans-serif;
+    /* 일반 본문, 소개문 */
+    --font-440-body-L-18: 400 20px/1 "Assistant-Regular", sans-serif;
+    /* 일반 본문, 소개문 */
+    --font-440-body-M-12: 400 12px/130% "Assistant-Regular", sans-serif;
+    /* 보조 본문, 카드 설명 */
+    --font-440-body-caption-10: 400 10px/130% "Assistant-Regular", sans-serif;
+    /* 정보 (날짜, 제작진정보 등) */
+}
+
+
+body {
+    font-family: "Assistant", sans-serif;
+}
+
+.inner {
+    width: 1520px;
+    margin-inline: auto;
+}
+
+header {
+    width: 100%;
+    /* height: 374px; */
+    /* background: url(../back/img/header_background.svg) no-repeat center top/cover; */
+    padding-top: 86px;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    position: relative;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: top 1.2s;
+    /*    background: pink;
+    border-radius: 0 0 300px 300px; */
+}
+
+header.off {
+    top: -100%;
+}
+
+.header_bg {
+    position: fixed;
+    width: 100%;
+    height: 374px;
+    left: 0;
+    top: 0;
+    background: #0D031C;
+    /* filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.04)); */
+    border-radius: 0 0 50% 50%;
+    transition: height .6s, border-radius .6s, top 1.2s .6s, background-color 1.2s .6s;
+}
+
+header.off .header_bg {
+    height: 100vh;
+    border-radius: 0;
+    background: var(--Wcolor);
+    top: -100%;
+}
+
+header .inner {
+    width: 1408px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header h1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+header h1 a img {
+    width: 200px;
+}
+
+header nav {
+    width: 100%;
+    height: 100px;
+    border: 1px solid #4a4259;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 70px;
+    backdrop-filter: blur(15px);
+    /* padding-left: 70px; */
+}
+
+
+header nav ul.gnb {
+    width: 950px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 65px;
+}
+
+header nav ul.gnb>li {
+    /* flex: 1; */
+    height: 100%;
+    font-size: 22px;
+    font-weight: 300;
+    text-align: center;
+    color: var(--Wcolor);
+    min-width: 80px;
+    position: relative;
+
+}
+
+header nav ul.gnb>li>a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    /* background: #ccc; */
+    /* width: 200px; */
+}
+
+header nav ul.gnb>li.on>a,
+header nav ul.gnb>li:hover>a {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--MainColor);
+}
+
+header nav ul.gnb>li>ul.sub {
+    font-size: 20px;
+    backdrop-filter: blur(15px);
+    padding: 40px 30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #4F485A;
+    border-top: 0;
+    border-radius: 0 0 32px 32px;
+    background: rgba(13, 3, 28, 0.80);
+    display: none;
+}
+
+header nav ul.gnb>li:hover>ul.sub {
+    display: block;
+}
+
+header nav ul.gnb>li:nth-child(1)>ul.sub {
+    width: 236px;
+    height: 386px;
+}
+
+header nav ul.gnb>li:nth-child(2)>ul.sub {
+    width: 248px;
+    height: 162px;
+}
+
+header nav ul.gnb>li:nth-child(3)>ul.sub {
+    width: 135px;
+    height: 162px;
+}
+
+header nav ul.gnb>li:nth-child(4)>ul.sub {
+    width: 166px;
+    height: 162px;
+}
+
+header nav ul.gnb>li:nth-child(5)>ul.sub {
+    width: 288px;
+    height: 330px;
+}
+
+header nav ul.gnb>li>ul.sub li {
+    padding-bottom: 30px;
+}
+
+header nav ul.gnb>li>ul.sub li:hover,
+header nav ul.gnb>li>ul.sub li.on {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--MainColor);
+}
+
+header nav .right {
+    width: 200px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    /* padding-right: 70px; */
+    gap: 20px;
+    overflow: hidden;
+}
+
+header nav .right .lang {
+    width: 144px;
+    height: 100%;
+    border: 1px solid var(--Wcolor);
+    border-radius: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+header nav .right .lang a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 17px;
+    color: var(--Wcolor);
+}
+
+header nav .right .lang a.active {
+    background: var(--Wcolor);
+    color: var(--Bcolor);
+}
+
+header nav .right .ham {
+    width: 34px;
+    aspect-ratio: 1 / 1;
+    border: 1.5px solid var(--Wcolor);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    background: transparent;
+    display: none;
+}
+
+header nav .right .ham ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 5px;
+    gap: 6px;
+    list-style: none;
+    width: auto;
+    height: auto;
+}
+
+header nav .right .ham ul li {
+    width: 22px;
+    height: 2px;
+    background: var(--Wcolor);
+    border-radius: 2px;
+    transform-origin: center;
+}
+
+main {
+    height: 5000px;
+}
+/* footer */
+.footer {
+    width: 100%;
+    background-color: var(--Bcolor);
+    border-top: 1px solid rgba(79, 72, 90, 0.8);
+    padding: 152px 0 80px;
+}
+
+.footer .footer_inner {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 200px;
+}
+
+/* Footer Top */
+.footer .footer_top {
+    margin-bottom: 71px;
+}
+
+.footer .footer_top .footer_menu {
+    width: 100%;
+}
+
+.footer .footer_top .footer_menu .footer_gnb {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap {
+    width: 100%;
+    max-width: 1520px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_gnb_list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_link {
+    font: var(--font-1920-footer-hotline);
+    color: var(--Wcolor);
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 1.3;
+    transition: opacity 0.3s ease;
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_link.home {
+    font: var(--font-1920-footer-btn);
+    text-transform: none;
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_link:hover {
+    opacity: 0.7;
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site {
+    position: relative;
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_btn {
+    width: 210px;
+    height: 60px;
+    border: 1px solid var(--Wcolor);
+    border-radius: 30px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 21px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_btn:hover {
+    background-color: var(--Wcolor);
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_btn:hover span {
+    color: var(--Bcolor);
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_btn span {
+    font: var(--font-1920-footer-btn);
+    color: var(--Wcolor);
+    line-height: normal;
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_btn .family_site_arrow {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+/* Family Site List (드롭업) */
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_list {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    width: 210px;
+    list-style: none;
+    background-color: var(--Wcolor);
+    border-radius: 10px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site.on .family_site_list {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site.on .family_site_arrow {
+    transform: rotate(180deg);
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_list .family_site_link {
+    display: block;
+    padding: 12px 21px;
+    font: var(--font-1920-footer-btn);
+    color: var(--Bcolor);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_list .family_site_link:hover {
+    background-color: rgba(13, 3, 28, 0.1);
+}
+
+/* Footer Bottom */
+.footer .footer_bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+}
+
+.footer .footer_bottom .footer_brand {
+    display: flex;
+    align-items: center;
+    gap: 52px;
+}
+
+.footer .footer_bottom .footer_brand .footer_logo {
+    width: 347px;
+}
+
+.footer .footer_bottom .footer_brand .footer_logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.footer .footer_bottom .footer_brand .footer_sns {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer .footer_bottom .footer_brand .footer_sns .sns_link {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: var(--Wcolor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.footer .footer_bottom .footer_brand .footer_sns .sns_link:hover {
+    transform: scale(1.1);
+}
+
+.footer .footer_bottom .footer_brand .footer_sns .sns_link img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer .footer_bottom .footer_info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer .footer_bottom .footer_info .footer_info_text {
+    font: var(--font-1920-footer-info);
+    color: var(--Wcolor);
+    line-height: normal;
+    white-space: pre-wrap;
+}
