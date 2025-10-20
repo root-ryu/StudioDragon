@@ -6,6 +6,7 @@ section * {
 }
 /* running-contest */
 .running-contest  {
+  margin-top: 374px;
   padding: 100px 80px 140px 80px;
   display: flex;
   flex-direction: column;
@@ -250,7 +251,7 @@ section * {
   font: 300 30px/1 "Assistant-light", sans-serif;;
   text-transform: uppercase;
 }
-.contest-winner .video-content-box-1920 {
+.contest-winner .video-content-box {
   padding: 0px 200px;
   display: flex;
   flex-direction: row;
@@ -409,8 +410,8 @@ section * {
   height: 912px;
   position: relative;
 }
-.contest-winner .gold-award {
-  color: var(--w, #f5f5f5);
+.contest-winner .award {
+  color: var(--Wcolor);
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
   font-size: 82px;
@@ -431,7 +432,7 @@ section * {
   flex-shrink: 0;
   position: relative;
 }
-.contest-winner .title2 {
+.contest-winner ul.subtitle {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -441,17 +442,8 @@ section * {
   width: 270px;
   position: relative;
 }
-.contest-winner .title-typo-of-sorry {
-  color: var(--w, #f5f5f5);
-  text-align: left;
-  font-family: "Assistant-Light", sans-serif;
-  font-size: 30px;
-  line-height: 130%;
-  font-weight: 300;
-  position: relative;
-}
-.contest-winner .nickname-rainyroom {
-  color: var(--w, #f5f5f5);
+.contest-winner ul.subtitle li p {
+  color: var(--Wcolor);
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
   font-size: 30px;
@@ -460,7 +452,7 @@ section * {
   position: relative;
   align-self: stretch;
 }
-.contest-winner .acceptance-comment-i-wanted-to-express-how-a-single-word-or-even-a-typo-can-hold-deep-emotions-regret-forgiveness-and-pain-the-drama-the-glory-inspired-me-to-explore-the-power-of-unspoken-apologies-winning-the-gold-award-feels-surreal-and-i-m-grateful-to-everyone-who-connected-with-my-work-this-moment-reminds-me-that-even-small-mistakes-can-lead-to-meaningful-stories {
+.contest-winner ul.subtitle li em {
   color: #acacac;
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
@@ -480,36 +472,14 @@ section * {
   object-fit: cover;
   aspect-ratio: 119.79/141.05;
 }
-.contest-winner .silver-award {
-  color: var(--w, #f5f5f5);
-  text-align: left;
-  font-family: "Assistant-Light", sans-serif;
-  font-size: 82px;
-  line-height: 130%;
-  font-weight: 300;
-  position: relative;
-  align-self: stretch;
-  transform-origin: 0 0;
-  transform: rotate(0deg) scale(1, 1);
-}
 .contest-winner .title-the-fire-inside {
-  color: var(--w, #f5f5f5);
+  color: var(--Wcolor);
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
   font-size: 30px;
   line-height: 130%;
   font-weight: 300;
   position: relative;
-}
-.contest-winner .acceptance-comment-i-truly-enjoyed-watching-the-glory-and-many-of-its-scenes-stayed-with-me-long-after-i-created-this-video-inspired-by-the-unspoken-emotions-behind-every-message-sent-or-left-unsent-it-s-an-incredible-honor-to-receive-this-award-and-i-m-thankful-for-the-chance-to-share-my-interpretation-this-experience-motivates-me-to-keep-creating-stories-that-connect-with-others {
-  color: #acacac;
-  text-align: left;
-  font-family: "Assistant-Light", sans-serif;
-  font-size: 30px;
-  line-height: 130%;
-  font-weight: 300;
-  position: relative;
-  align-self: stretch;
 }
 .contest-winner .silver {
   flex-shrink: 0;
@@ -521,46 +491,14 @@ section * {
   object-fit: cover;
   aspect-ratio: 119.79/141.05;
 }
-.contest-winner .popular-choice {
-  color: var(--w, #f5f5f5);
-  text-align: left;
-  font-family: "Assistant-Light", sans-serif;
-  font-size: 82px;
-  line-height: 130%;
-  font-weight: 300;
-  position: relative;
-  align-self: stretch;
-  transform-origin: 0 0;
-  transform: rotate(0deg) scale(1, 1);
-}
 .contest-winner .title-read-receipt-unsent {
-  color: var(--w, #f5f5f5);
+  color: var(--Wcolor);
   text-align: left;
   font-family: "Assistant-Light", sans-serif;
   font-size: 30px;
   line-height: 130%;
   font-weight: 300;
   position: relative;
-}
-.contest-winner .nickname-mintlatte {
-  color: var(--w, #f5f5f5);
-  text-align: left;
-  font-family: "Assistant-Light", sans-serif;
-  font-size: 30px;
-  line-height: 130%;
-  font-weight: 300;
-  position: relative;
-  align-self: stretch;
-}
-.contest-winner .acceptance-comment-my-goal-was-to-win-the-gold-award-but-receiving-the-popular-choice-still-feels-deeply-rewarding-this-project-took-a-lot-of-effort-and-late-nights-so-being-recognized-by-viewers-means-a-lot-to-me-it-s-heartwarming-to-know-that-people-connected-with-my-work-i-ll-remember-this-encouragement-and-keep-challenging-myself-to-do-even-better {
-  color: #acacac;
-  text-align: left;
-  font-family: "Assistant-Light", sans-serif;
-  font-size: 30px;
-  line-height: 130%;
-  font-weight: 300;
-  position: relative;
-  align-self: stretch;
 }
 .contest-winner .silver2 {
   flex-shrink: 0;
