@@ -1,0 +1,221 @@
+@charset "UTF-8";
+
+/* CSS Variables - Root Design Tokens */
+:root {
+    /* Colors */
+    --color-background: #0D031C;
+    --color-white: #F5F5F5;
+    --color-main: #BFA473;
+    --color-gray: #2B2B2B;
+    --color-border: #4A4259;
+    --color-text-light: rgba(255, 255, 255, 0.7);
+
+    /* Gradients */
+    --gradient-purple: linear-gradient(180deg, rgba(136, 63, 254, 0.58) 0%, rgba(13, 3, 28, 0.58) 100%);
+    --gradient-visual: linear-gradient(-2.89901e-12deg, rgba(0, 0, 0, 0) 89.633%, rgba(13, 3, 28, 0.5) 94.816%, #0D031C 100%), linear-gradient(rgba(0, 0, 0, 0) 66.854%, #0D031C 100%);
+    --gradient-header: linear-gradient(to bottom, #0D031C, rgba(13, 3, 28, 0.6) 50%, rgba(13, 3, 28, 0));
+
+    /* Typography - Font Family */
+    --font-family: 'Assistant', sans-serif;
+
+    /* Typography - Font Sizes & Weights */
+    --font-el-40: 200 40px/1 var(--font-family);
+    --font-r-80: 400 80px/1 var(--font-family);
+    --font-r-56: 400 56px/1.3 var(--font-family);
+    --font-b-56: 700 56px/1.3 var(--font-family);
+    --font-sb-34: 600 34px/1.3 var(--font-family);
+    --font-sb-26: 600 26px/1 var(--font-family);
+    --font-sb-24: 600 24px/1 var(--font-family);
+    --font-r-30: 400 30px/1.3 var(--font-family);
+    --font-b-30: 700 30px/1.3 var(--font-family);
+    --font-r-22: 400 22px/1.3 var(--font-family);
+    --font-r-20: 400 20px/1.3 var(--font-family);
+    --font-l-20: 400 20px/1.5 var(--font-family);
+    --font-r-18: 400 18px/1 var(--font-family);
+    --font-r-16: 400 16px/1.8 var(--font-family);
+
+    /* Character Fonts */
+    --font-zeyada: 'Zeyada', sans-serif;
+    --font-viner: 'Viner Hand ITC', sans-serif;
+    --font-tai: 'Tai Heritage Pro', serif;
+
+    /* Spacing */
+    --spacing-inner: 200px;
+
+    /* Border Radius */
+    --radius-large: 100px;
+    --radius-medium: 32px;
+    --radius-small: 10px;
+    --radius-pill: 30px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-background);
+    width: 100%;
+    height: 100%;
+    color: var(--color-white);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.wrap {
+    width: 100%;
+    overflow: hidden;
+    /* 슬라이드 등 넘침 요소 관리 */
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* header */
+header {
+    height: 374px;
+    /* position: fixed; */
+    background: var(--color-background);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .contents {
+    display: flex;
+    width: 1520px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+header .logo {
+    width: 200px;
+    height: 73px;
+}
+
+header nav {
+    display: flex;
+    width: 1408px;
+    height: 100px;
+    padding: 30px 70px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 100px;
+    border: 1px solid var(--B-700, #4A4259);
+    background: rgba(13, 3, 28, 0.50);
+    backdrop-filter: blur(10px);
+}
+
+header nav .gnb {
+    display: flex;
+    width: 950px;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+header .button {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+header .button .language {
+    display: flex;
+    padding-right: 26px;
+    align-items: center;
+    gap: 17px;
+    border-radius: 32px;
+    border: 1px solid var(--W, #F5F5F5);
+}
+
+header .button .language .on {
+    width: 79px;
+    height: 34px;
+    padding: 7px 0 9px 0;
+    border-radius: 100px;
+    background: var(--W, #F5F5F5);
+    color: var(--color-background);
+}
+
+header .button .language button {
+    color: var(--color-white);
+}
+
+header .button .mypage {
+    width: 36px;
+    height: 34px;
+}
+
+/* //.main_visual */
+.main_visual {
+    width: 100%;
+    height: 844px;
+    background: url('../asset/bg_main_visual.png') no-repeat center/cover;
+    position: relative;
+}
+
+.main_visual .con_area {
+    width: 100%;
+    position: absolute;
+    padding: 0 200px;
+    margin-top: 59px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 392px;
+}
+
+.main_visual .con_area .no_1 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.main_visual .txt_area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 42px;
+    align-self: stretch;
+}
+
+.main_visual .txt_area .tit {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.main_visual .txt_area .tit .N_series {
+    font-family: var(--font-family);
+}
+
+.main_visual .txt_area .tit .title {
+    display: flex;
+    gap: 24px;
+}
+
+.main_visual .txt_area .tit .title .bookmark {
+    width: 35px;
+    height: 45px;
+}
+
+/* //.footer */
