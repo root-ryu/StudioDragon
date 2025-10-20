@@ -1,0 +1,574 @@
+@charset "utf-8";
+
+section,
+section * {
+  box-sizing: border-box;
+}
+/* running-contest */
+.running-contest  {
+  padding: 100px 80px 140px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.running-contest .title {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.running-contest h2 {
+  color: var(--b, #0d031c);
+  text-align: left;
+  font: var(--font-1920-headline-56);
+  text-transform: uppercase;
+  position: relative;
+}
+.running-contest .con {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 772px;
+  position: relative;
+  overflow: hidden;
+  background: url(../../moon/asset/bg-runningContest.jpg) center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.running-contest .info {
+  background: rgba(245, 245, 245, 0.6);
+  border-radius: 32px;
+  padding: 42px 32px 42px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  backdrop-filter: blur(2.5px);
+}
+.running-contest .deadline {
+  padding: 4px 0px 4px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.running-contest h4 {
+  color: #626262;
+  text-align: left;
+  font-family: "Assistant-Regular", sans-serif;
+  font-size: 20px;
+  line-height: 130%;
+  font-weight: 400;
+  position: relative;
+}
+.running-contest .datecounter {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.running-contest .countBox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.running-contest .numBox {
+  background: #111111;
+  border-radius: 8px;
+  padding: 4px 13px 14px 13px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.running-contest .countNum {
+  color: #f3f3f3;
+  text-align: left;
+  font-family: "Assistant-Bold", sans-serif;
+  font-size: 72px;
+  line-height: 100%;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+  position: relative;
+}
+.running-contest .deadline p {
+  color: var(--b, #0d031c);
+  text-align: center;
+  font-family: "Assistant-SemiBold", sans-serif;
+  font-size: 18px;
+  line-height: 100%;
+  font-weight: 600;
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+}
+.running-contest article {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.running-contest .textbox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.running-contest .subtitle {
+  color: var(--b, #0d031c);
+  text-align: left;
+  font-family: "Assistant-Bold", sans-serif;
+  font-size: 26px;
+  line-height: 130%;
+  font-weight: 700;
+  position: relative;
+}
+.running-contest .article p {
+  color: var(--b, #0d031c);
+  text-align: left;
+  font-family: "Assistant-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 130%;
+  font-weight: 400;
+  position: relative;
+}
+.btn {
+  border-radius: 32px;
+  border-style: solid;
+  border-color: var(--b, #0d031c);
+  border-width: 1px;
+  padding: 6px 32px 6px 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.btn em {
+  color: var(--b, #0d031c);
+  text-align: center;
+  font-family: "Assistant-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 100%;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+
+
+/* contest-winner */
+.contest-winner {
+  background: var(--Bcolor);
+  padding: 200px 0;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* gap: 0px; */
+  /* align-items: flex-start; */
+  /* justify-content: flex-start; */
+  /* align-self: stretch; */
+  /* flex-shrink: 0; */
+  overflow: hidden;
+}
+.contest-winner .top {
+  padding: 0 200px;
+  display: flex;
+  justify-content: center;
+  /* flex-direction: row; */
+  gap: 115px;
+  /* align-items: center; */
+  /* flex-shrink: 0; */
+  width: 100vw;
+  /* height: 100%; */
+  position: relative;
+}
+
+.contest-winner .decoImg {
+  flex-shrink: 0;
+  width: 201.34px;
+  height: 228.7px;
+  position: absolute;
+  top: 0;
+  left: 200px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+  aspect-ratio: 201.34/228.7;
+}
+.contest-winner .title {
+  gap: 16px;
+  width: 828px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+.contest-winner .title h2 {
+  color: var(--Wcolor);
+  text-align: center;
+  font: var(--font-1920-headline-56);
+  text-transform: uppercase;
+}
+.contest-winner .title p {
+  color: var(--Wcolor);
+  text-align: center;
+  font: 300 30px/1 "Assistant-light", sans-serif;;
+  text-transform: uppercase;
+}
+.video-content-box-1920 {
+  padding: 0px 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 320px;
+  justify-content: space-between;
+  flex-shrink: 0;
+  width: 100%;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+}
+.blur-1 {
+  background: radial-gradient(
+    closest-side,
+    rgba(63, 41, 99, 1) 0%,
+    rgba(13, 3, 28, 0) 100%
+  );
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 725.88px;
+  height: 725.88px;
+  position: relative;
+  left: -109.5px;
+  bottom: 51.56px;
+}
+.blur-2 {
+  background: radial-gradient(
+    closest-side,
+    rgba(63, 41, 99, 1) 0%,
+    rgba(13, 3, 28, 0) 100%
+  );
+  border-radius: 50%;
+  flex-shrink: 0;
+  width: 893.87px;
+  height: 893.87px;
+  position: relative;
+  right: -144.49px;
+  top: 0px;
+}
+.video {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 17.788460850715637%,
+    rgba(0, 0, 0, 0) 83.8942289352417%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 513px;
+  height: 912px;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 513/912;
+}
+.info-overlay {
+  padding: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.progress-bar-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.icon-pause {
+  padding: 0px 2px 0px 2px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  position: relative;
+}
+.rectangle-50 {
+  background: rgba(240, 240, 240, 0.8);
+  border-radius: 1px;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.rectangle-51 {
+  background: rgba(240, 240, 240, 0.8);
+  border-radius: 1px;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+}
+.progress-bar {
+  background: rgba(240, 240, 240, 0.3);
+  border-radius: 19px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  height: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.bar {
+  background: rgba(240, 240, 240, 0.6);
+  border-radius: 19px;
+  flex: 1;
+  width: 156px;
+  position: relative;
+  overflow: hidden;
+}
+._00-20 {
+  color: rgba(255, 255, 255, 0.8);
+  text-align: right;
+  font-family: var(--1920-l-26-font-family, "Assistant-Light", sans-serif);
+  font-size: var(--1920-l-26-font-size, 26px);
+  line-height: var(--1920-l-26-line-height, 100%);
+  font-weight: var(--1920-l-26-font-weight, 300);
+  position: relative;
+  align-self: stretch;
+}
+.award-info {
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 687px;
+  height: 912px;
+  position: relative;
+}
+.gold-award {
+  color: var(--w, #f5f5f5);
+  text-align: left;
+  font-family: "Assistant-Light", sans-serif;
+  font-size: 82px;
+  line-height: 130%;
+  font-weight: 300;
+  position: relative;
+  align-self: stretch;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.txtbox {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.title2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 270px;
+  position: relative;
+}
+.title-typo-of-sorry {
+  color: var(--w, #f5f5f5);
+  text-align: left;
+  font-family: "Assistant-Light", sans-serif;
+  font-size: 30px;
+  line-height: 130%;
+  font-weight: 300;
+  position: relative;
+}
+.nickname-rainyroom {
+  color: var(--w, #f5f5f5);
+  text-align: left;
+  font-family: "Assistant-Light", sans-serif;
+  font-size: 30px;
+  line-height: 130%;
+  font-weight: 300;
+  position: relative;
+  align-self: stretch;
+}
+.acceptance-comment-i-wanted-to-express-how-a-single-word-or-even-a-typo-can-hold-deep-emotions-regret-forgiveness-and-pain-the-drama-the-glory-inspired-me-to-explore-the-power-of-unspoken-apologies-winning-the-gold-award-feels-surreal-and-i-m-grateful-to-everyone-who-connected-with-my-work-this-moment-reminds-me-that-even-small-mistakes-can-lead-to-meaningful-stories {
+  color: #acacac;
+  text-align: left;
+  font-family: "Assistant-Light", sans-serif;
+  font-size: 30px;
+  line-height: 130%;
+  font-weight: 300;
+  position: relative;
+  align-self: stretch;
+}
+.gold {
+  flex-shrink: 0;
+  width: 119.79px;
+  height: 141.05px;
+  position: absolute;
+  left: 1497.77px;
+  top: 54px;
+  object-fit: cover;
+  aspect-ratio: 119.79/141.05;
+}
+.silver-award {
+  color: var(--w, #f5f5f5);
+  text-align: left;
+  font-family: "Assistant-Light", sans-serif;
+  font-size: 82px;
+  line-height: 130%;
+  font-weight: 300;
+  position: relative;
+  align-self: stretch;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.title-the-fire-inside {
+  color: var(--w, #f5f5f5);
+  text-align: left;
+  font-family: "Assistant-Light", sans-serif;
+  font-size: 30px;
+  line-height: 130%;
+  font-weight: 300;
+  position: relative;
+}
+.acceptance-comment-i-truly-enjoyed-watching-the-glory-and-many-of-its-scenes-stayed-with-me-long-after-i-created-this-video-inspired-by-the-unspoken-emotions-behind-every-message-sent-or-left-unsent-it-s-an-incredible-honor-to-receive-this-award-and-i-m-thankful-for-the-chance-to-share-my-interpretation-this-experience-motivates-me-to-keep-creating-stories-that-connect-with-others {
+  color: #acacac;
+  text-align: left;
+  font-family: "Assistant-Light", sans-serif;
+  font-size: 30px;
+  line-height: 130%;
+  font-weight: 300;
+  position: relative;
+  align-self: stretch;
+}
+.silver {
+  flex-shrink: 0;
+  width: 119.79px;
+  height: 141.05px;
+  position: absolute;
+  left: 1497.77px;
+  top: 54px;
+  object-fit: cover;
+  aspect-ratio: 119.79/141.05;
+}
+.popular-choice {
+  color: var(--w, #f5f5f5);
+  text-align: left;
+  font-family: "Assistant-Light", sans-serif;
+  font-size: 82px;
+  line-height: 130%;
+  font-weight: 300;
+  position: relative;
+  align-self: stretch;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.title-read-receipt-unsent {
+  color: var(--w, #f5f5f5);
+  text-align: left;
+  font-family: "Assistant-Light", sans-serif;
+  font-size: 30px;
+  line-height: 130%;
+  font-weight: 300;
+  position: relative;
+}
+.nickname-mintlatte {
+  color: var(--w, #f5f5f5);
+  text-align: left;
+  font-family: "Assistant-Light", sans-serif;
+  font-size: 30px;
+  line-height: 130%;
+  font-weight: 300;
+  position: relative;
+  align-self: stretch;
+}
+.acceptance-comment-my-goal-was-to-win-the-gold-award-but-receiving-the-popular-choice-still-feels-deeply-rewarding-this-project-took-a-lot-of-effort-and-late-nights-so-being-recognized-by-viewers-means-a-lot-to-me-it-s-heartwarming-to-know-that-people-connected-with-my-work-i-ll-remember-this-encouragement-and-keep-challenging-myself-to-do-even-better {
+  color: #acacac;
+  text-align: left;
+  font-family: "Assistant-Light", sans-serif;
+  font-size: 30px;
+  line-height: 130%;
+  font-weight: 300;
+  position: relative;
+  align-self: stretch;
+}
+.silver2 {
+  flex-shrink: 0;
+  width: 119.79px;
+  height: 169.79px;
+  position: absolute;
+  left: 1601.22px;
+  top: 54px;
+  object-fit: cover;
+  aspect-ratio: 119.79/169.79;
+}
