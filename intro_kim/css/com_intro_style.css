@@ -1,0 +1,2049 @@
+.comp-intro-web-1920,
+.comp-intro-web-1920 * {
+    box-sizing: border-box;
+}
+
+.comp-intro-web-1920 {
+    background: var(--w, #f5f5f5);
+    height: 7154px;
+    position: relative;
+    overflow: hidden;
+}
+
+section.intro_rolling {}
+
+section.intro_rolling .inner {
+    width: 1520px;
+    height: 645px;
+    position: absolute;
+    left: -95px;
+    top: 517px;
+
+}
+
+.frame-2608980 {
+    width: 1520px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.sec_bg {
+    width: 1920px;
+    height: 2000px;
+    background: var(--w);
+    border-radius: 0 120px 120px 0;
+}
+
+
+.frame-1000001323 {
+    /* width: 100%;
+    height: 454px; */
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    top: 0px;
+    display: flex;
+    gap: 70px;
+    opacity: .2;
+    transition: 30s;
+    transform: translateX(1920px);
+}
+
+.drama_img {
+    width: 454px;
+    height: 454px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.drama_img img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    object-fit: cover;
+}
+
+.roll_drama_imgs {}
+
+.frame-2608983 {
+    border-radius: 900px;
+    opacity: 0.2;
+    width: 343.54px;
+    height: 343.54px;
+    position: absolute;
+    left: 55.66px;
+    top: 55.66px;
+    overflow: hidden;
+}
+
+._4691820221226170053-1 {
+    width: 360.15px;
+    height: 515.89px;
+    position: absolute;
+    left: 4px;
+    top: -58.24px;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+    object-fit: cover;
+    aspect-ratio: 360.15/515.89;
+}
+
+.frame-1000001315 {
+    border-radius: 900px;
+    opacity: 0.2;
+    width: 343.54px;
+    height: 343.54px;
+    position: absolute;
+    left: 469.6px;
+    top: 55.66px;
+    overflow: hidden;
+}
+
+._4691820221226170053-2 {
+    width: 365.02px;
+    height: 522.87px;
+    position: absolute;
+    left: -11.6px;
+    top: -63.87px;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+    object-fit: cover;
+    aspect-ratio: 365.02/522.87;
+}
+
+.frame-1000001316 {
+    border-radius: 900px;
+    opacity: 0.2;
+    width: 343.54px;
+    height: 343.54px;
+    position: absolute;
+    left: 883.6px;
+    top: 55.66px;
+    overflow: hidden;
+}
+
+._4691820221226170053-22 {
+    width: 457.89px;
+    height: 655.9px;
+    position: absolute;
+    left: -57.6px;
+    top: -35.58px;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+    object-fit: cover;
+    aspect-ratio: 457.89/655.9;
+}
+
+.frame-1000001318 {
+    border-radius: 900px;
+    opacity: 0.2;
+    width: 343.54px;
+    height: 343.54px;
+    position: absolute;
+    left: 1711.6px;
+    top: 55.66px;
+    overflow: hidden;
+}
+
+._4691820221226170053-23 {
+    width: 383.26px;
+    height: 549px;
+    position: absolute;
+    left: -4.03px;
+    top: -63.65px;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+    object-fit: cover;
+    aspect-ratio: 383.26/549;
+}
+
+.frame-1000001317 {
+    border-radius: 900px;
+    opacity: 0.2;
+    width: 343.54px;
+    height: 343.54px;
+    position: absolute;
+    left: 1297.6px;
+    top: 55.66px;
+    overflow: hidden;
+}
+
+._4691820221226170053-3 {
+    width: 359.48px;
+    height: 514.93px;
+    position: absolute;
+    left: -3.99px;
+    top: -75.44px;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+    object-fit: cover;
+    aspect-ratio: 359.48/514.93;
+}
+
+.ci_info {
+    max-width: 1920px;
+    width: 1920px;
+    padding: 30px 0 50px 0;
+    background: #E5E5E5;
+}
+
+.group-141 {
+    position: absolute;
+    inset: 0;
+}
+
+.rectangle-8 {
+    background: var(--subr2-900, #bd4033);
+    width: 680px;
+    height: 78px;
+    position: absolute;
+    left: 712px;
+    top: 361px;
+}
+
+.rectangle-12 {
+    background: var(--subr2-900, #bd4033);
+    width: 540px;
+    height: 78px;
+    position: absolute;
+    left: 782px;
+    top: 455px;
+}
+
+.universal-emotions-original-stories {
+    color: var(--w, #f5f5f5);
+    text-align: center;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 70px;
+    line-height: 100%;
+    font-weight: 700;
+    position: absolute;
+    left: calc(50% - 329.5px);
+    top: 351px;
+
+}
+
+.universal-emotions-original-stories .top-txt {
+    /* margin-top: 20px; */
+    padding: 10px;
+    background: var(--subr2-main-1000);
+}
+
+.universal-emotions-original-stories .second-txt {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background: var(--subr2-main-1000);
+}
+
+
+
+.we-discover-and-create-our-own-unique-stories-that-the-world-can-relate-to-and-enjoy-as-one {
+    color: var(--b, #0d031c);
+    text-align: center;
+    font-family: "Pretendard-Light", sans-serif;
+    font-size: 30px;
+    line-height: 130%;
+    font-weight: 300;
+    position: absolute;
+    left: calc(50% - 338.5px);
+    top: 567px;
+}
+
+.frame-1000001525 {
+    max-width: 100%;
+    width: 1920px;
+    height: 1118px;
+    position: absolute;
+    left: 0px;
+    top: 2582px;
+    background: #E5E5E5;
+    z-index: 1;
+}
+
+.rectangle-6 {
+    background: #e5e5e5;
+    width: 1920px;
+    height: 1118px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.frame-2608955 {
+    width: 1520px;
+    height: 687px;
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    top: 372px;
+}
+
+.frame-2608909 {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: calc(50% - 276.5px);
+    top: 0px;
+}
+
+.coperate-identity {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 56px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.frame-2608915 {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    justify-content: flex-start;
+    height: 344px;
+    position: absolute;
+    left: calc(50% - 755px);
+    top: 137px;
+}
+
+.frame-2608979 {
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 746px;
+    height: 344px;
+    position: relative;
+}
+
+.frame-2608910 {
+    background: #ffffff;
+    border-radius: 32px;
+    padding: 94px 164px 54px 164px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.frame-2608976 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.div {
+    flex-shrink: 0;
+    width: 354px;
+    height: 116px;
+    position: relative;
+    overflow: visible;
+}
+
+.frame-2608912 {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.logo-type {
+    color: #000000;
+    text-align: left;
+    font-family: "Pretendard-Regular", sans-serif;
+    font-size: 14px;
+    line-height: 130%;
+    font-weight: 400;
+    position: relative;
+}
+
+.frame-2608911 {
+    background: #ffffff;
+    border-radius: 32px;
+    padding: 40px 153px 0px 153px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    width: 738px;
+    position: relative;
+    overflow: hidden;
+}
+
+.frame-2608975 {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    height: 162px;
+    position: relative;
+}
+
+.studio-dragon-symbol-1-2 {
+    flex-shrink: 0;
+    width: 286px;
+    height: 103.62px;
+    position: relative;
+    object-fit: cover;
+    aspect-ratio: 286/103.62;
+}
+
+.frame-26089122 {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.symbol-type {
+    color: #000000;
+    text-align: center;
+    font-family: "Pretendard-Regular", sans-serif;
+    font-size: 14px;
+    line-height: 130%;
+    font-weight: 400;
+    position: relative;
+}
+
+.dragon-universal-symbol-of-imagination-and-creativity {
+    color: #000000;
+    text-align: center;
+    font-family: "-", sans-serif;
+    font-size: 14px;
+    line-height: 130%;
+    font-weight: 400;
+    position: absolute;
+    left: 192.5px;
+    top: 288px;
+}
+
+.dragon-universal-symbol-of-imagination-and-creativity-span {
+    font-family: "Pretendard-Bold", sans-serif;
+    font-weight: 700;
+}
+
+.dragon-universal-symbol-of-imagination-and-creativity-span2 {
+    font-family: "Pretendard-Regular", sans-serif;
+}
+
+.frame-2608913 {
+    background: var(--subb2-main-1000, #394199);
+    border-radius: 12px;
+    width: 337px;
+    height: 82px;
+    position: absolute;
+    left: calc(50% - 167px);
+    top: 559px;
+    overflow: hidden;
+}
+
+.frame-2608914 {
+    width: 222px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    translate: -50% -50%;
+    top: 50%;
+}
+
+.ci-files-and-guidelines {
+    color: var(--w, #f5f5f5);
+    text-align: center;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: -0.023em;
+    font-weight: 700;
+    position: absolute;
+    left: 47px;
+    top: 26px;
+}
+
+.frame-26089142 {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 270px;
+    top: 29px;
+    aspect-ratio: 1;
+}
+
+.download {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0px;
+    top: -3px;
+    overflow: visible;
+    aspect-ratio: 1;
+}
+
+.frame-1000001524 {
+    width: 1920px;
+    height: 1487px;
+    position: absolute;
+    left: 0px;
+    top: 1355px;
+}
+
+.rectangle-5 {
+    border-radius: 0px;
+    width: 1920px;
+    height: 986px;
+    position: absolute;
+    left: 0px;
+    top: 501px;
+    overflow: visible;
+}
+
+.frame-2608934 {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 1520px;
+    position: absolute;
+    left: 200px;
+    top: 0px;
+}
+
+.korea-s-leading-scripted-tv-studio {
+    color: var(--b, #0d031c);
+    text-align: center;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 56px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.frame-2608935 {
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 1520px;
+    height: 1112px;
+    position: relative;
+}
+
+.frame-2608922 {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    height: 360px;
+    position: relative;
+}
+
+.frame-2608918 {
+    background: var(--wf, #ffffff);
+    border-radius: 120px 0px 0px 0px;
+    padding: 0px 0px 72px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    width: 380px;
+    height: 360px;
+    position: relative;
+    overflow: hidden;
+}
+
+.union {
+    flex-shrink: 0;
+    width: 90px;
+    height: 97px;
+    position: relative;
+    overflow: visible;
+}
+
+.frame-2608919 {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 300px;
+    position: relative;
+}
+
+._4-127 {
+    color: var(--subr2-900, #bd4033);
+    text-align: center;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 56px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    align-self: stretch;
+}
+
+.hrs-od-drama {
+    color: var(--b, #0d031c);
+    text-align: center;
+    font-family: "Pretendard-Light", sans-serif;
+    font-size: 26px;
+    line-height: 100%;
+    font-weight: 300;
+    position: relative;
+    align-self: stretch;
+}
+
+.frame-26089192 {
+    background: var(--maincolor-400, #e5dac6);
+    border-radius: 0px 0px 0px 120px;
+    padding: 0px 0px 72px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    width: 380px;
+    height: 360px;
+    position: relative;
+    overflow: hidden;
+}
+
+.frame-1000001343 {
+    flex-shrink: 0;
+    width: 100px;
+    height: 97px;
+    position: relative;
+    overflow: visible;
+}
+
+.frame-26089193 {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+._263 {
+    color: var(--maincolor-1400, #483d28);
+    text-align: center;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 56px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    align-self: stretch;
+}
+
+.creators {
+    color: var(--b, #0d031c);
+    text-align: center;
+    font-family: "Pretendard-Light", sans-serif;
+    font-size: 26px;
+    line-height: 100%;
+    font-weight: 300;
+    position: relative;
+    align-self: stretch;
+}
+
+.frame-2608920 {
+    background: var(--wf, #ffffff);
+    border-radius: 120px 0px 0px 0px;
+    padding: 0px 0px 56px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    width: 380px;
+    height: 360px;
+    position: relative;
+    overflow: hidden;
+}
+
+.union2 {
+    flex-shrink: 0;
+    width: 100px;
+    height: 108px;
+    position: relative;
+    overflow: visible;
+}
+
+.frame-26089194 {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    height: 114px;
+    position: relative;
+}
+
+._17 {
+    color: var(--subr2-900, #bd4033);
+    text-align: center;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 56px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    align-self: stretch;
+}
+
+.yrs-of-knowhow {
+    color: var(--b, #0d031c);
+    text-align: center;
+    font-family: "Pretendard-Light", sans-serif;
+    font-size: 26px;
+    line-height: 100%;
+    font-weight: 300;
+    position: relative;
+    align-self: stretch;
+}
+
+.frame-2608921 {
+    background: var(--maincolor-400, #e5dac6);
+    border-radius: 0px 0px 0px 120px;
+    padding: 0px 0px 72px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    width: 380px;
+    height: 360px;
+    position: relative;
+    overflow: hidden;
+}
+
+.frame-1000001344 {
+    flex-shrink: 0;
+    width: 100px;
+    height: 97px;
+    position: relative;
+    overflow: visible;
+}
+
+._200 {
+    color: var(--maincolor-1400, #483d28);
+    text-align: center;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 56px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    width: 342px;
+}
+
+.sales-markets {
+    color: var(--b, #0d031c);
+    text-align: center;
+    font-family: "Pretendard-Light", sans-serif;
+    font-size: 26px;
+    line-height: 100%;
+    font-weight: 300;
+    position: relative;
+    align-self: stretch;
+}
+
+.frame-2608933 {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1520px;
+    height: 579px;
+    position: relative;
+}
+
+.studio-dragon-a-subsidiary-of-global-ip-powerhouse-cj-enm-is-a-leading-k-drama-studio-in-south-korea-and-a-group-of-premium-storytellers-who-captivate-the-world-with-their-limitless-narratives {
+    color: #6d110a;
+    text-align: center;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 40px;
+    line-height: 130%;
+    font-weight: 700;
+    position: relative;
+    align-self: stretch;
+}
+
+.frame-2608980 {
+    display: flex;
+    gap: 64px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.studio-dragon-owns-266-global-premium-i-ps-totaling-4-127-episodes-with-eight-drama-production-subsidiaries-and-affiliates-and-a-team-of-263-creators-including-korea-s-a-list-writers-directors-and-producers-studio-dragon-currently-plans-over-140-dramas-and-produces-approximately-25-works-annually-distributing-them-globally {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Pretendard-Regular", sans-serif;
+    font-size: 20px;
+    line-height: 130%;
+    font-weight: 400;
+    position: relative;
+    width: 100%;
+}
+
+.led-by-sweet-home-1-2-3-the-first-asian-drama-to-rank-in-the-netflix-global-top-10-numerous-other-works-have-also-ranked-including-the-glory-1-2-queen-of-tears-iduna-gyeongseong-creature-the-sound-of-the-sword-speed-the-uncanny-counter-1-2-ilta-scandal-shroop-little-women-the-return-of-superman-1-2-crash-landing-on-you-and-it-s-okay-to-not-be-okay-they-have-also-been-invited-to-and-nominated-for-various-international-events-including-the-cannes-film-festival-and-the-international-emmy-awards-and-are-spreading-the-joy-of-k-drama-around-the-world {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Pretendard-Regular", sans-serif;
+    font-size: 20px;
+    line-height: 130%;
+    font-weight: 400;
+    position: relative;
+    width: 100%;
+}
+
+.furthermore-through-the-establishment-of-the-los-angeles-international-office-2019-and-studio-dragon-japan-2022-the-company-is-expanding-its-business-globally-starting-with-its-first-order-for-the-apple-tv-series-the-big-door-prize-with-skydance-media-the-company-is-also-working-on-various-global-projects-with-leading-partners-worldwide-including-designers-produced-with-creator-ep-soo-hu-uis-ucp-and-ink-factory-and-co-producing-and-planning-numerous-remakes-of-studio-dragon-ip-including-crash-landing-on-you-and-vincenzo-the-company-is-making-strides-toward-becoming-a-major-global-studio {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Pretendard-Regular", sans-serif;
+    font-size: 20px;
+    line-height: 130%;
+    font-weight: 400;
+    position: relative;
+    width: 100%;
+}
+
+.frame-2608958 {
+    background: var(--w, #f5f5f5);
+    width: 1920px;
+    height: 1037px;
+    position: absolute;
+    left: 0px;
+    top: 3700px;
+}
+
+.frame-26089582 {
+    background: var(--w, #f5f5f5);
+    width: 1920px;
+    height: 1037px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+}
+
+.frame-1000001313 {
+    width: 1790px;
+    height: 645px;
+    position: absolute;
+    left: 65px;
+    top: 196px;
+}
+
+.company-history {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 56px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    left: calc(50% - 261px);
+    top: 0px;
+}
+
+.frame-1000001312 {
+    width: 1855px;
+    height: 480px;
+    position: absolute;
+    left: 0px;
+    top: 123px;
+}
+
+.frame-2608941 {
+    width: 1855px;
+    height: 459px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.group-136 {
+    height: auto;
+    position: absolute;
+    left: 152px;
+    top: 122px;
+    overflow: visible;
+}
+
+.frame-1000001309 {
+    display: flex;
+    flex-direction: row;
+    gap: 90px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 1527px;
+    position: absolute;
+    left: 141px;
+    top: 109px;
+}
+
+.frame-1000001305 {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 368px;
+    position: relative;
+}
+
+.ellipse-11 {
+    background: var(--subr2-200, #f5d6d0);
+    border-radius: 50%;
+    border-style: solid;
+    border-color: var(--subr2-900, #bd4033);
+    border-width: 3px;
+    flex-shrink: 0;
+    width: 23px;
+    height: 23px;
+    position: relative;
+}
+
+.frame-2608938 {
+    display: flex;
+    flex-direction: column;
+    gap: 39px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 352px;
+    position: relative;
+}
+
+.june {
+    color: var(--subr2-900, #bd4033);
+    text-align: left;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 30px;
+    line-height: 150%;
+    letter-spacing: -0.023em;
+    font-weight: 700;
+    position: relative;
+}
+
+.frame-1000001302 {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.frame-2608937 {
+    background: var(--g-200, #ededed);
+    border-radius: 12px;
+    flex-shrink: 0;
+    width: 353px;
+    height: 178px;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-291 {
+    width: 353px;
+    height: 199px;
+    position: absolute;
+    left: -1px;
+    top: -9px;
+    object-fit: cover;
+    aspect-ratio: 353/199;
+}
+
+.marry-my-husband-japanese-version-ranks-1-on-amazon-prime-video-in-japan {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Pretendard-Regular", sans-serif;
+    font-size: 16px;
+    line-height: 130%;
+    font-weight: 400;
+    position: relative;
+    width: 303px;
+}
+
+.frame-10000013122 {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 353px;
+    position: relative;
+}
+
+.frame-26089382 {
+    display: flex;
+    flex-direction: column;
+    gap: 39px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 352px;
+    height: 305px;
+    position: relative;
+}
+
+.may {
+    color: var(--subr2-900, #bd4033);
+    text-align: left;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 30px;
+    line-height: 150%;
+    letter-spacing: -0.023em;
+    font-weight: 700;
+    position: relative;
+}
+
+.image-292 {
+    width: 354px;
+    height: 236px;
+    position: absolute;
+    left: -1px;
+    top: -37px;
+    object-fit: cover;
+    aspect-ratio: 3/2;
+}
+
+.jeongnyeon-wins-best-art-award-and-best-actress-award-at-the-baeksang-arts-awards {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Pretendard-Regular", sans-serif;
+    font-size: 16px;
+    line-height: 130%;
+    font-weight: 400;
+    position: relative;
+    width: 353px;
+}
+
+.frame-1000001311 {
+    display: flex;
+    flex-direction: row;
+    gap: 166px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.frame-1000001307 {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 267px;
+    position: relative;
+}
+
+.ellipse-13 {
+    background: var(--subr2-200, #f5d6d0);
+    border-radius: 50%;
+    border-style: solid;
+    border-color: var(--subr2-900, #bd4033);
+    border-width: 3px;
+    flex-shrink: 0;
+    width: 23px;
+    height: 23px;
+    position: relative;
+}
+
+.frame-1000001303 {
+    padding: 10px 0px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 288px;
+    position: relative;
+}
+
+.march {
+    color: var(--subr2-900, #bd4033);
+    text-align: left;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 30px;
+    line-height: 150%;
+    letter-spacing: -0.023em;
+    font-weight: 700;
+    position: relative;
+}
+
+.selected-as-an-excellent-publicly-disclosure-company-on-the-kosdaq-market-in-2024 {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Pretendard-Regular", sans-serif;
+    font-size: 16px;
+    line-height: 130%;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+    height: 55px;
+}
+
+.frame-1000001308 {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 303px;
+    position: relative;
+}
+
+.ellipse-15 {
+    background: var(--subr2-200, #f5d6d0);
+    border-radius: 50%;
+    border-style: solid;
+    border-color: var(--subr2-900, #bd4033);
+    border-width: 3px;
+    flex-shrink: 0;
+    width: 23px;
+    height: 23px;
+    position: relative;
+}
+
+.frame-1000001304 {
+    padding: 10px 0px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.december {
+    color: var(--subr2-900, #bd4033);
+    text-align: left;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 30px;
+    line-height: 150%;
+    letter-spacing: -0.023em;
+    font-weight: 700;
+    position: relative;
+}
+
+.queen-of-tears-and-a-bad-luck-day-won-best-direction-and-best-original-production-by-a-streamer-at-the-asian-academy-creative-awards-aaca {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Pretendard-Regular", sans-serif;
+    font-size: 16px;
+    line-height: 130%;
+    font-weight: 400;
+    position: relative;
+    width: 303px;
+    height: 115px;
+}
+
+.frame-1000001310 {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 14px;
+    height: 28px;
+    position: absolute;
+    left: 1601px;
+    top: 106px;
+}
+
+.vector {
+    opacity: 0.8;
+    width: 19px;
+    height: 38px;
+    position: absolute;
+    left: 1634px;
+    top: 41px;
+    overflow: visible;
+}
+
+._2025 {
+    color: var(--maincolor-400, #e5dac6);
+    text-align: left;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 56px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    left: 140px;
+    top: 24px;
+}
+
+._2024 {
+    color: var(--maincolor-400, #e5dac6);
+    text-align: left;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 56px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    left: 1473px;
+    top: 24px;
+}
+
+.rectangle-13 {
+    background: var(--g-300, #e4e4e4);
+    width: 1520px;
+    height: 4px;
+    position: absolute;
+    left: 200px;
+    top: 924px;
+}
+
+.rectangle-14 {
+    background: var(--g-main-1000, #a6a6a6);
+    width: 174px;
+    height: 4px;
+    position: absolute;
+    left: 200px;
+    top: 924px;
+}
+
+.about {
+    color: var(--w, #f5f5f5);
+    text-align: center;
+    font-family: "Assistant-Bold", sans-serif;
+    font-size: 60px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    top: 289px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.frame-1000001326 {
+    background: #ffffff;
+    padding: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 1920px;
+    position: absolute;
+    left: 0px;
+    top: 4737px;
+    overflow: hidden;
+}
+
+.frame-1000001324 {
+    align-self: stretch;
+    flex-shrink: 0;
+    height: 73px;
+    position: relative;
+}
+
+.vision-mission {
+    color: #0d031c;
+    text-align: left;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 56px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    top: 0px;
+}
+
+.frame-1000001345 {
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+    border-radius: 32px;
+    flex-shrink: 0;
+    width: 1520px;
+    height: 529px;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-321 {
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    width: 1541px;
+    height: 938px;
+    position: absolute;
+    left: 1531px;
+    top: -303px;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(-1, 1);
+    object-fit: cover;
+    aspect-ratio: 1541/938;
+}
+
+.frame-1000001522 {
+    background: var(--subb2-main-1000, #394199);
+    border-radius: 0px 0px 12px 12px;
+    padding: 10px 20px 20px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: flex-end;
+    justify-content: center;
+    width: 139px;
+    height: 90px;
+    position: absolute;
+    left: 98px;
+    top: 0px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.vision {
+    color: #ffffff;
+    text-align: left;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 26px;
+    line-height: 100%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.frame-1000001347 {
+    width: 451px;
+    height: 245px;
+    position: absolute;
+    left: 100px;
+    top: 199px;
+}
+
+.connecting-the-world-through-stories {
+    color: #ffffff;
+    text-align: left;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 40px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    left: 0px;
+    top: 40px;
+}
+
+.we-connect-the-world-through-the-boundless-power-of-stories-building-emotional-bridges-that-transcend-language-and-culture {
+    color: #ffffff;
+    text-align: left;
+    font-family: "Pretendard-Regular", sans-serif;
+    font-size: 20px;
+    line-height: 130%;
+    font-weight: 400;
+    position: absolute;
+    left: 0px;
+    top: 167px;
+    width: 409px;
+}
+
+.frame-1000001346 {
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    border-radius: 32px;
+    flex-shrink: 0;
+    width: 1520px;
+    height: 529px;
+    position: relative;
+    overflow: hidden;
+}
+
+.frame-10000015222 {
+    background: var(--subb2-main-1000, #394199);
+    border-radius: 0px 0px 12px 12px;
+    padding: 10px 20px 20px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: flex-end;
+    justify-content: center;
+    height: 90px;
+    position: absolute;
+    left: 98px;
+    top: 0px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.mission {
+    color: #ffffff;
+    text-align: left;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 26px;
+    line-height: 100%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.frame-1000001348 {
+    width: 409px;
+    height: 258px;
+    position: absolute;
+    left: 1011px;
+    top: 184px;
+}
+
+.empowering-creative-freedom {
+    color: #ffffff;
+    text-align: right;
+    font-family: "Pretendard-Bold", sans-serif;
+    font-size: 40px;
+    line-height: 130%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    left: 19px;
+    top: 46px;
+}
+
+.with-limitless-imagination-and-creative-excellence-we-lead-the-global-k-drama-universe-and-shape-the-future-of-storytelling {
+    color: #ffffff;
+    text-align: right;
+    font-family: "Pretendard-Regular", sans-serif;
+    font-size: 20px;
+    line-height: 130%;
+    font-weight: 400;
+    position: absolute;
+    left: 0px;
+    top: 180px;
+    width: 409px;
+}
+
+.footer {
+    background: var(--w, #f5f5f5);
+    border-style: solid;
+    border-color: rgba(79, 72, 90, 0.3);
+    border-width: 1px 0px 0px 0px;
+    width: 1920px;
+    height: 786px;
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    bottom: 0px;
+    overflow: hidden;
+}
+
+.foorer {
+    display: flex;
+    flex-direction: column;
+    gap: 105px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 1520px;
+    position: absolute;
+    left: 201px;
+    top: 152px;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.home {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: var(--1920-body-l-20-font-family,
+            "Assistant-Regular",
+            sans-serif);
+    font-size: var(--1920-body-l-20-font-size, 20px);
+    line-height: var(--1920-body-l-20-line-height, 130%);
+    font-weight: var(--1920-body-l-20-font-weight, 400);
+    position: relative;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.f-gnb {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.hotline {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Assistant-SemiBold", sans-serif;
+    font-size: 34px;
+    line-height: 100%;
+    font-weight: 600;
+    position: relative;
+}
+
+.recruitment {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Assistant-SemiBold", sans-serif;
+    font-size: 34px;
+    line-height: 100%;
+    font-weight: 600;
+    position: relative;
+}
+
+.contact-us {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Assistant-SemiBold", sans-serif;
+    font-size: 34px;
+    line-height: 100%;
+    font-weight: 600;
+    position: relative;
+}
+
+.sitemap {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Assistant-SemiBold", sans-serif;
+    font-size: 34px;
+    line-height: 100%;
+    font-weight: 600;
+    position: relative;
+}
+
+.famil-site {
+    border-radius: 30px;
+    border-style: solid;
+    border-color: var(--b, #0d031c);
+    border-width: 1px;
+    flex-shrink: 0;
+    width: 210px;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.infamil-site {
+    padding: 0px 10px 0px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 168px;
+    position: absolute;
+    left: 50%;
+    translate: -50% -50%;
+    top: 50%;
+}
+
+.famil-site2 {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Assistant-Regular", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    position: relative;
+}
+
+.chevron-up {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    overflow: visible;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 1110px;
+    position: relative;
+}
+
+.img {
+    display: flex;
+    flex-direction: row;
+    gap: 61px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 327px;
+    position: relative;
+}
+
+.logo-1 {
+    align-self: stretch;
+    flex-shrink: 0;
+    height: 123px;
+    position: relative;
+    object-fit: cover;
+    aspect-ratio: 327/123;
+}
+
+.sns {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.sns-1 {
+    background: var(--b, #0d031c);
+    border-radius: 25px;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+
+.sns-default {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    translate: -50% -50%;
+    top: 50%;
+    aspect-ratio: 1;
+}
+
+.jt-facebook {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0%;
+    left: 0%;
+    bottom: 0%;
+    top: 0%;
+    overflow: visible;
+}
+
+.sns-2 {
+    background: var(--b, #0d031c);
+    border-radius: 25px;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+
+.sns-default2 {
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    left: 50%;
+    translate: -50% -50%;
+    top: 50%;
+    aspect-ratio: 1;
+}
+
+.jt-youtube {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0%;
+    left: 0%;
+    bottom: 0%;
+    top: 0%;
+    overflow: hidden;
+}
+
+.group {
+    height: auto;
+    position: absolute;
+    left: 1.17px;
+    top: 4.96px;
+    overflow: visible;
+}
+
+.sns-3 {
+    background: var(--b, #0d031c);
+    border-radius: 25px;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+
+.instagram {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    translate: -50% -50%;
+    top: 50%;
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+
+.group2 {
+    width: 99.94%;
+    height: 99.98%;
+    position: absolute;
+    right: 0.06%;
+    left: 0%;
+    bottom: 0.02%;
+    top: 0%;
+    overflow: visible;
+}
+
+.end {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.ceo-jang-kyung-ik {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Assistant-Regular", sans-serif;
+    font-size: 20px;
+    line-height: 100%;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+}
+
+.studio-dregon-corporation-17-f-1-75-maebongsan-ro-mapo-gu-seoul-republic-of-korea-business-registration-number-747-81-00388 {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Assistant-Regular", sans-serif;
+    font-size: 20px;
+    line-height: 100%;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+}
+
+.studio-dragon-all-rights-reserved {
+    color: var(--b, #0d031c);
+    text-align: left;
+    font-family: "Assistant-Regular", sans-serif;
+    font-size: 20px;
+    line-height: 100%;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+}
+
+.header {
+    padding: 50px 200px 50px 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 1920px;
+    height: 374px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.background {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 1920px;
+    height: 374px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+}
+
+.frame-1000001542 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 1520px;
+    position: relative;
+}
+
+.studio-dragon-symbol-1-22 {
+    flex-shrink: 0;
+    width: 200px;
+    height: 73px;
+    position: relative;
+    object-fit: cover;
+    aspect-ratio: 200/73;
+}
+
+.frame-2608706 {
+    background: rgba(13, 3, 28, 0.5);
+    border-radius: 100px;
+    border-style: solid;
+    border-color: var(--b-700, #4a4259);
+    border-width: 1px;
+    padding: 30px 70px 30px 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    width: 1408px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.nav2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    width: 950px;
+    position: relative;
+}
+
+.about2 {
+    color: var(--w, #f5f5f5);
+    text-align: center;
+    font-family: var(--1920-gnb-font-family, "Assistant-Regular", sans-serif);
+    font-size: var(--1920-gnb-font-size, 22px);
+    line-height: var(--1920-gnb-line-height, 130%);
+    font-weight: var(--1920-gnb-font-weight, 400);
+    position: relative;
+}
+
+.works {
+    color: var(--w, #f5f5f5);
+    text-align: center;
+    font-family: var(--1920-gnb-font-family, "Assistant-Regular", sans-serif);
+    font-size: var(--1920-gnb-font-size, 22px);
+    line-height: var(--1920-gnb-line-height, 130%);
+    font-weight: var(--1920-gnb-font-weight, 400);
+    position: relative;
+}
+
+.newsroom {
+    color: var(--w, #f5f5f5);
+    text-align: center;
+    font-family: var(--1920-gnb-font-family, "Assistant-Regular", sans-serif);
+    font-size: var(--1920-gnb-font-size, 22px);
+    line-height: var(--1920-gnb-line-height, 130%);
+    font-weight: var(--1920-gnb-font-weight, 400);
+    position: relative;
+}
+
+.ir {
+    color: var(--w, #f5f5f5);
+    text-align: center;
+    font-family: var(--1920-gnb-font-family, "Assistant-Regular", sans-serif);
+    font-size: var(--1920-gnb-font-size, 22px);
+    line-height: var(--1920-gnb-line-height, 130%);
+    font-weight: var(--1920-gnb-font-weight, 400);
+    position: relative;
+}
+
+.sustainability {
+    color: var(--w, #f5f5f5);
+    text-align: center;
+    font-family: var(--1920-gnb-font-family, "Assistant-Regular", sans-serif);
+    font-size: var(--1920-gnb-font-size, 22px);
+    line-height: var(--1920-gnb-line-height, 130%);
+    font-weight: var(--1920-gnb-font-weight, 400);
+    position: relative;
+}
+
+.right {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    width: 200px;
+    position: relative;
+}
+
+.lang {
+    border-radius: 32px;
+    border-style: solid;
+    border-color: var(--w, #f5f5f5);
+    border-width: 1px;
+    flex-shrink: 0;
+    width: 144px;
+    height: 34px;
+    position: relative;
+    overflow: hidden;
+}
+
+.kr {
+    color: var(--w, #f5f5f5);
+    text-align: center;
+    font-family: "Assistant-Bold", sans-serif;
+    font-size: 18px;
+    line-height: 100%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    left: calc(50% - -24px);
+    top: calc(50% - 10px);
+}
+
+.on {
+    background: var(--w, #f5f5f5);
+    border-radius: 100px;
+    width: 79px;
+    height: 34px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+}
+
+.en {
+    color: var(--b, #0d031c);
+    text-align: center;
+    font-family: "Assistant-Bold", sans-serif;
+    font-size: 18px;
+    line-height: 100%;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    top: calc(50% - 10px);
+}
+
+.user {
+    border-radius: 32px;
+    flex-shrink: 0;
+    width: 36px;
+    height: 34px;
+    position: relative;
+    overflow: visible;
+}
