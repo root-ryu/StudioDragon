@@ -1,14 +1,24 @@
 @charset "UTF-8";
 
-@media screen and (max-width:1450px) {
+@media screen and (max-width:1407px) {
     header {
-        width: 1450px;
         height: auto;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 50 80px;
+        padding: 50px 80px;
+    }
+
+    header .inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header h1 {
+        width: auto;
+        padding: 0;
     }
 
     header h1 a img {
@@ -17,10 +27,10 @@
 
     header nav {
         border: 0;
-        width: auto;
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
+        width: auto;
+        /*         align-items: center;
+        justify-content: flex-end; */
         gap: 16px;
     }
 

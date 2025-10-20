@@ -1,5 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+    const header = document.querySelector('header');
+    let lastScrollY = window.scrollY; // 직전 스크롤 위치 저장
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY) {
+            // 아래로 스크롤 → 헤더 숨김
+            header.classList.add('off')
+        } else {
+            // 위로 스크롤 → 헤더 보임
+            header.classList.remove('off')
+        }
+        lastScrollY = currentScrollY;
+    });
     AOS.init({
         disable: false, // aos를 끄지 않는 것 -> 애니메이션 작동하게 두기
         startEvent: 'DOMContentLoaded', // html이 다 불러와 지면 바로 aos 시작하라는 뜻
@@ -14,5 +26,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    
+
 })
