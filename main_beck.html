@@ -10,17 +10,21 @@
     <title>studiodragon</title>
     <link rel="shortcut icon" href="back/img/favicon.ico" type="image/x-icon">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="back/css/reset.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/main_media.css">
     <link rel="stylesheet" href="back/css/MainBeck_style.css">
-    <link rel="stylesheet" href="back/css/main_media.css">
+    <link rel="stylesheet" href="back/css/MainBack_media.css">
     <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script scr="back/js/MainBack.js"></script>
+    <script src="./js/common.js"></script>
 </head>
 
 <body>
     <div class="wrap">
-        <header>
+        <header class="">
+            <div class="header_bg">
+            </div>
             <div class="inner">
                 <h1><a href="#" class="logo"><img src="back/img/logo_w.png" alt="StudioDragonLogo"></a></h1>
                 <nav>
@@ -28,8 +32,8 @@
                         <li class=""><a href="#">ABOUT</a>
                             <ul class="sub">
                                 <li><a href="#">About Us</a></li>
-                                <li><a href="#">Busines Ethics</a></li>
-                                <li><a href="#">PartnerShips</a></li>
+                                <li><a href="#">Business Ethics</a></li>
+                                <li><a href="#">Partnerships</a></li>
                                 <li><a href="#">History</a></li>
                                 <li><a href="#">CEO Message</a></li>
                                 <li><a href="#">Contact & Location</a></li>
@@ -62,21 +66,161 @@
                                 <li><a href="#">Sustainability Report</a></li>
                             </ul>
                         </li>
-                    </ul>
+                    </ul><!-- //.gnb -->
                     <div class="right">
                         <div class="lang">
-                            <a href="#">EN</a>
-                            <a href="#">KR</a>
-                        </div>
+                            <a href="#" class="en ">EN</a>
+                            <a href="#" class="kr ">KR</a>
+                        </div><!-- //.lang -->
                         <div class="user">
                             <a href="#"><img src="back/img/user.png" alt="user"></a>
+                        </div><!-- //.user -->
+                        <div class="ham">
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
                         </div>
-                    </div>
+                    </div><!-- //.right -->
                 </nav>
-            </div>
+            </div><!-- //.inner -->
         </header>
 
-    </div>
+
+        <main>
+            <section class="circlebody">
+                <div id="circle">
+                    <article class="face1">
+                        <div class="poster"><img src="./back/img/img01.webp" alt="The Glory"></div>
+                    </article>
+                    <article class="face2">
+                        <div class="poster"><img src="./back/img/img02.webp" alt="Queen of Tears"></div>
+                    </article>
+                    <article class="face3">
+                        <div class="poster"><img src="./back/img/img03.webp" alt="Celebrity"></div>
+                    </article>
+                    <article class="face4">
+                        <div class="poster"><img src="./back/img/img04.webp" alt="Sweet Home"></div>
+                    </article>
+                    <article class="face5">
+                        <div class="poster"><img src="./back/img/img05.webp" alt="Guardian"></div>
+                    </article>
+                    <article class="face6">
+                        <div class="poster"><img src="./back/img/img06.webp" alt="Bon Appétit, Your Majesty"></div>
+                    </article>
+                    <article class="face7">
+                        <div class="poster"><img src="./back/img/img07.webp" alt="Genie, Make a Wish"></div>
+                    </article>
+                    <article class="face8">
+                        <div class="poster"><img src="./back/img/img08.webp" alt="Jeongnyeon: The Star Is Born"></div>
+                    </article>
+                </div>
+            </section><!-- //.wrap -->
+
+            <section class="comingsoon">
+                <div class="inner">
+                    <div class="top">
+                        <h2>COMING SOON</h2>
+                        <button type="button">MORE</button>
+                    </div>
+                    <div class="CScontents1">
+                        <img src="./back/img/CS_img.png" alt="Taepung Corporation" data-aos="fade-up" data-aos-delay="500" data-aos-mirror="true">
+                        <div class="txt">
+                            <h3 data-aos="fade-left" data-aos-delay="1000" data-aos-mirror="true">Typhoon Corporation</h3>
+                            <p data-aos="fade-left" data-aos-delay="1500" data-aos-mirror="true">TVN & TVING<br>10/11 Saturday</p>
+                        </div>
+                    </div>
+                    <div class="CScontents2">
+                        <img src="./back/img/CS_img2.png" alt="Genie, Make a Wish" data-aos="fade-up" data-aos-delay="500" data-aos-mirror="true">
+                        <div class="txt">
+                            <h3 data-aos="fade-left" data-aos-delay="1000" data-aos-mirror="true">Genie, Make a Wish</h3>
+                            <p data-aos="fade-left" data-aos-delay="1500" data-aos-mirror="true">Netflix<br>10/03 Friday</p>
+                        </div>
+                    </div>
+                    <div class="CScontents3">
+                        <img src="./back/img/CS_img3.png" alt="pro bono" data-aos="fade-up" data-aos-delay="500" data-aos-mirror="true">
+                        <div class="txt">
+                            <h3 data-aos="fade-left" data-aos-delay="1000" data-aos-mirror="true">pro bono</h3>
+                            <p data-aos="fade-left" data-aos-delay="1500" data-aos-mirror="true">TVING <br> 2025~2026</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+        </main>
+
+       <footer class="ver_white">
+            <div class="footer_inner">
+                <!-- Top Area -->
+                <div class="footer_top">
+                    <div class="footer_menu">
+                        <div class="footer_gnb">
+                            <a href="#" class="footer_gnb_link home">Home</a>
+                            <div class="footer_gnb_wrap">
+                                <ul class="footer_gnb_list">
+                                    <li><a href="#" class="footer_gnb_link">Hotline</a></li>
+                                    <li><a href="#" class="footer_gnb_link">Recruitment</a></li>
+                                    <li><a href="#" class="footer_gnb_link">Contact Us</a></li>
+                                    <li><a href="#" class="footer_gnb_link">Sitemap</a></li>
+                                </ul><!-- //.footer_gnb_list -->
+
+                                <div class="footer_family_site">
+                                    <ul class="family_site_list">
+                                        <li><a href="#" class="family_site_link">CJ ENM</a></li>
+                                        <li><a href="#" class="family_site_link">CJ GROUP</a></li>
+                                        <li class="family_site_btn_wrap">
+                                            <button type="button" class="family_site_btn">
+                                                <span>Family Site</span>
+                                                <img src="asset/up.svg"
+                                                    alt="arrow" class="family_site_arrow">
+                                            </button>
+                                        </li>
+                                    </ul><!-- //.family_site_list -->
+                                </div><!-- //.footer_family_site -->
+                            </div><!-- //.footer_gnb_wrap -->
+                        </div><!-- //.footer_gnb -->
+                    </div><!-- //.footer_menu -->
+                </div><!-- //.footer_top -->
+
+                <!-- Bottom Area -->
+                <div class="footer_bottom">
+                    <div class="footer_brand">
+                        <div class="footer_logo">
+                            
+                        </div><!-- //.footer_logo -->
+
+                        <div class="footer_sns">
+                            <a href="#" class="sns_link" aria-label="Facebook">
+                                <img src="asset/facebook.svg"
+                                    alt="Facebook">
+                            </a>
+                            <a href="#" class="sns_link" aria-label="YouTube">
+                                <img src="asset/youtube.svg"
+                                    alt="YouTube">
+                            </a>
+                            <a href="#" class="sns_link" aria-label="Instagram">
+                                <img src="asset/Instagram.svg"
+                                    alt="Instagram">
+                            </a>
+                        </div><!-- //.footer_sns -->
+                    </div><!-- //.footer_brand -->
+
+                    <div class="footer_info">
+                        <p class="footer_info_text">CEO : Jang Kyung-ik</p>
+                        <p class="footer_info_text">Studio Dregon Corporation, 17F1, 75, Maebongsan-ro, Mapo-gu, Seoul, Republic of Korea | Business registration number : 747-81-00388</p>
+                        <p class="footer_info_text">© STUDIO DRAGON.All Rights Reserved.</p>
+                    </div><!-- //.footer_info -->
+                </div><!-- //.footer_bottom -->
+            </div><!-- //.footer_inner -->
+        </footer><!-- //.footer -->
+    </div><!-- //.wrap -->
 </body>
 
 </html>

@@ -1,0 +1,387 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Assistant:wght@700&family=Tai+Heritage+Pro&family=Viner+Hand+ITC&family=Zeyada&display=swap);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--Bcolor);
+    width: 100%;
+    height: 100%;
+    color: var(--Wcolor);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.wrap {
+    width: 100%;
+    overflow: hidden;
+    /* 슬라이드 등 넘침 요소 관리 */
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+/* //.main_visual */
+.main_visual {
+    margin-top: 374px;
+    width: 100%;
+    height: 844px;
+    background: url('../asset/bg_main_visual.png') no-repeat center/cover;
+    position: relative;
+}
+
+.main_visual .con_area {
+    width: 100%;
+    position: absolute;
+    padding: 0 200px;
+    margin-top: 59px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 392px;
+}
+
+.main_visual .con_area .no_1 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.main_visual .txt_area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 42px;
+    align-self: stretch;
+}
+
+.main_visual .txt_area .tit {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.main_visual .txt_area .tit .N_series {
+    font: var(--font-1920-title-L-40);
+}
+
+.main_visual .txt_area .tit .title {
+    display: flex;
+    gap: 24px;
+}
+
+.main_visual .txt_area .tit .title .bookmark {
+    width: 35px;
+    height: 45px;
+}
+
+.main_visual .txt_area .tit .title .the_glory {
+    font-family: 'Assistant';
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+}
+
+.main_visual .txt_area .txt_box {
+    width: 100%;
+    max-width: 1520px;
+    height: 179px;
+    display: flex;
+    padding: 28px 176px 31px 32px;
+    align-items: center;
+    gap: 50px;
+    background: linear-gradient(180deg, rgba(136, 63, 254, 0.58) 0%, rgba(13, 3, 28, 0.58) 100%);
+    backdrop-filter: blur(2px);
+}
+
+.main_visual .txt_area .txt_box .box1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.main_visual .txt_area .txt_box .box1 .explain {
+    width: 679px;
+}
+
+.main_visual .txt_area .txt_box .box2 {
+    display: flex;
+    padding-left: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    border-left: 0.5px solid rgba(255, 255, 255, 0.50);
+}
+
+.main_visual .txt_area .txt_box .box2 div {
+    display: flex;
+}
+
+.main_visual .txt_area .txt_box .box2 .written {
+    gap: 20px;
+}
+
+.main_visual .txt_area .txt_box .box2 .directed {
+    gap: 11px;
+}
+
+.main_visual .txt_area .txt_box .box2 .starring {
+    gap: 15px;
+}
+
+/* //.character */
+.character {
+    width: 100%;
+    max-width: 1520px;
+    height: 100vh;
+    min-height: 1080px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 150px;
+    padding: 20px;
+}
+
+.character h2 {
+    font-family: 'Assistant', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 56px);
+    line-height: 1.3;
+    color: white;
+    text-transform: uppercase;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.character .contents {
+    position: absolute;
+    left: 2%;
+    top: 15%;
+    width: 96%;
+    height: 70%;
+    max-width: 1452px;
+}
+
+/* Arrow Images */
+.character .contents .arrow {
+    position: absolute;
+    object-fit: contain;
+    display: block;
+}
+
+.character .contents .arrow.arrow-1 {
+    width: 4.4%;
+    aspect-ratio: 64/42;
+    left: 11.4%;
+    top: 23.4%;
+}
+
+.character .contents .arrow.arrow-2 {
+    width: 0.55%;
+    aspect-ratio: 8/150;
+    left: 21.5%;
+    top: 39.85%;
+    min-width: 4px;
+}
+
+.character .contents .arrow.arrow-3 {
+    width: 3.65%;
+    aspect-ratio: 1/1;
+    left: 28.9%;
+    top: 27.5%;
+}
+
+.character .contents .arrow.arrow-4 {
+    width: 17.2%;
+    aspect-ratio: 250/29;
+    left: 31.4%;
+    top: 15.8%;
+}
+
+.character .contents .arrow.arrow-5 {
+    width: 1.86%;
+    aspect-ratio: 27/76;
+    left: 57.4%;
+    top: 41.7%;
+    min-width: 4px;
+}
+
+.character .contents .arrow.arrow-6 {
+    width: 24.8%;
+    aspect-ratio: 360/331;
+    left: 59.8%;
+    top: 37.6%;
+}
+
+.character .contents .arrow.arrow-7 {
+    width: 5.17%;
+    aspect-ratio: 75/45;
+    left: 64%;
+    top: 27.6%;
+}
+
+.character .contents .arrow.arrow-8 {
+    width: 21.4%;
+    aspect-ratio: 310/40;
+    left: 64.2%;
+    top: 16.8%;
+}
+
+/* Human Styles */
+.character .contents .human {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 11%;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    font-size: 30px;
+}
+
+.character .contents .human:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.character .contents .human:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 4px;
+}
+
+.character .contents .human .human-img {
+    width: 100%;
+    aspect-ratio: 160/219;
+    position: relative;
+    overflow: hidden;
+    /* border-radius: 8px; */
+}
+
+.character .contents .human .human-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.character .contents .human .human-name {
+    font-size: clamp(16px, 2vw, 30px);
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1;
+    width: 100%;
+}
+
+/* Human Positions */
+.character .contents .human.human-yeo {
+    left: 0;
+    top: 28.3%;
+}
+
+.character .contents .human.human-dong {
+    left: 17.1%;
+    top: 0;
+}
+
+.character .contents .human.human-hyeon {
+    left: 15.4%;
+    top: 63.7%;
+    width: 12.7%;
+}
+
+.character .contents .human.human-do {
+    left: 32.6%;
+    top: 36%;
+}
+
+.character .contents .human.human-yeon {
+    left: 52%;
+    top: 3.1%;
+}
+
+.character .contents .human.human-jae {
+    left: 52.7%;
+    top: 54.8%;
+}
+
+.character .contents .human.human-hye {
+    left: 71.2%;
+    top: 30.7%;
+}
+
+.character .contents .human.human-myeong {
+    left: 89%;
+    top: 8.7%;
+}
+
+.character .contents .human.human-sa {
+    left: 89%;
+    top: 63.8%;
+}
+
+/* Human Name Colors and Fonts */
+.character .contents .human .human-name.name-yeo {
+    font-family: 'Tai Heritage Pro', serif;
+    color: #f6e3bf;
+}
+
+.character .contents .human .human-name.name-dong {
+    font-family: 'Tai Heritage Pro', serif;
+    color: #ffe2cf;
+}
+
+.character .contents .human .human-name.name-hyeon {
+    font-family: 'Tai Heritage Pro', serif;
+    color: #f6e3bf;
+}
+
+.character .contents .human .human-name.name-do {
+    font-family: 'Zeyada', cursive;
+    color: #f6e3bf;
+}
+
+.character .contents .human .human-name.name-yeon {
+    font-family: 'Viner Hand ITC', cursive;
+    color: #ffe6b7;
+}
+
+.character .contents .human .human-name.name-jae {
+    font-family: 'Viner Hand ITC', cursive;
+    color: #ffc0b1;
+}
+
+.character .contents .human .human-name.name-hye {
+    font-family: 'Zeyada', cursive;
+    color: #afdaff;
+}
+
+.character .contents .human .human-name.name-myeong {
+    font-family: 'Zeyada', cursive;
+    color: #f8ffb4;
+}
+
+.character .contents .human .human-name.name-sa {
+    font-family: 'Viner Hand ITC', cursive;
+    color: #ffd8f9;
+}
+
+/* footer */

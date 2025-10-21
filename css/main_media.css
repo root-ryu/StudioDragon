@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+@media screen and (max-width:1407px) {
+    header {
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px 80px;
+    }
+
+    .header_bg {
+        height: 250px;
+    }
+
+    header .inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header h1 {
+        width: auto;
+        padding: 0;
+    }
+
+    header h1 a img {
+        width: 166px;
+    }
+
+    header nav {
+        border: 0;
+        display: flex;
+        width: auto;
+        /*         align-items: center;
+        justify-content: flex-end; */
+        gap: 16px;
+    }
+
+    header nav {
+        width: 606px;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+        padding: 30px 70px;
+        background: yellow;
+    }
+
+    header nav ul.gnb {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #4a4259;
+    }
+
+    header nav ul.gnb>li {
+        width: 470px;
+        height: 40px;
+        height: auto;
+        display: flex;
+        background: #ccc;
+    }
+
+    header nav ul.gnb>li a {
+        width: 100%;
+        padding-bottom: 10px;
+        background: #ccc;
+    }
+
+    header nav ul.gnb>li>ul.sub {
+        width: 100%;
+        border: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        backdrop-filter: none;
+    }
+
+    header nav .right {
+        width: auto;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    header nav .right .lang {
+        height: 34px;
+    }
+
+    header nav .right .ham {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+@media screen and (max-width:570px) {
+    header {
+        padding: 30px 35px;
+    }
+
+    header nav .right .lang,
+    header nav .right .user {
+        display: none;
+    }
+
+    .header_bg {
+        height: 200px;
+    }
+
+}
