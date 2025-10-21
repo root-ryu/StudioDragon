@@ -95,3 +95,17 @@ h3.tit {
     width: 1520px;
     max-width: 100%;
 }
+
+.info-g .icon_info ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.info-g.icon_info ul li.box_w {
+    background: var(--WF);
+}
+
+.info-g .icon_info ul li.box_b {
+    background: var(--Bcolor-200);
+}
