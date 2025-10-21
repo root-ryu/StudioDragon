@@ -142,14 +142,14 @@ header {
     height: 40vh;
     left: 0;
     top: 0;
-    background: red;
+    background: var(--Bcolor);
     border-radius: 0 0 50% 50%;
     transition: height .6s, border-radius .6s, top .6s .3s, background-color .4s .4s;
     /* z-index: -1; */
 }
 
 .off .header_bg {
-    height: 100vh;
+    height: 50vh;
     border-radius: 0;
     background: var(--Wcolor);
     top: -100%;
@@ -350,10 +350,15 @@ header nav .right .ham ul li {
     background: var(--Wcolor);
     border-radius: 2px;
     transform-origin: left center;
+    position: relative;
+    transition: transform .6s;
 }
 
 header nav.mobile .right .ham ul li:nth-child(1) {
     transform: rotate(45deg);
+    position: absolute;
+    right: 18%; top: 3%;
+
 }
 
 header nav.mobile .right .ham ul li:nth-child(2) {
@@ -362,6 +367,8 @@ header nav.mobile .right .ham ul li:nth-child(2) {
 
 header nav.mobile .right .ham ul li:nth-child(3) {
     transform: rotate(-45deg);
+    position: absolute;
+    right: 18%; top: 4.2%;
 }
 
 main {
