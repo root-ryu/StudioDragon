@@ -148,7 +148,7 @@ header.off {
 }
 
 header.off .header_bg {
-    height: 50vh;
+    height: 30vh;
     border-radius: 0;
     background: var(--Wcolor);
     top: -100%;
@@ -178,6 +178,7 @@ header nav {
     width: 100%;
     height: 100px;
     border: 1px solid #4a4259;
+    background: var(--Bcolor);
     border-radius: 50px;
     display: flex;
     justify-content: space-between;
@@ -185,6 +186,7 @@ header nav {
     padding: 0 70px;
     backdrop-filter: blur(15px);
     /* padding-left: 70px; */
+    
 }
 
 header nav ul.gnb {
