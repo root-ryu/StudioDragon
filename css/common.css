@@ -132,23 +132,24 @@ header {
     border-radius: 0 0 300px 300px; */
 }
 
-header.off {
+.off header {
     top: -100%;
 }
 
 .header_bg {
     position: fixed;
     width: 100%;
-    height: 374px;
+    height: 40vh;
     left: 0;
     top: 0;
     background: var(--Bcolor);
     border-radius: 0 0 50% 50%;
     transition: height .6s, border-radius .6s, top .6s .3s, background-color .4s .4s;
+    /* z-index: -1; */
 }
 
-header.off .header_bg {
-    height: 30vh;
+.off .header_bg {
+    height: 50vh;
     border-radius: 0;
     background: var(--Wcolor);
     top: -100%;
@@ -170,6 +171,7 @@ header h1 {
     padding-bottom: 30px;
     z-index: 9;
 }
+
 header h1 a img {
     width: 200px;
 }
@@ -347,11 +349,31 @@ header nav .right .ham ul li {
     height: 2px;
     background: var(--Wcolor);
     border-radius: 2px;
-    transform-origin: center;
+    transform-origin: left center;
+    position: relative;
+    transition: transform .6s;
 }
-/* main {
-    height: 5000px;
-} */
+
+header nav.mobile .right .ham ul li:nth-child(1) {
+    transform: rotate(45deg);
+    position: absolute;
+    right: 18%; top: 3%;
+
+}
+
+header nav.mobile .right .ham ul li:nth-child(2) {
+    display: none;
+}
+
+header nav.mobile .right .ham ul li:nth-child(3) {
+    transform: rotate(-45deg);
+    position: absolute;
+    right: 18%; top: 4.2%;
+}
+
+main {
+    position: relative;
+}
 
 /* footer */
 footer {
@@ -580,10 +602,12 @@ footer .footer_bottom .footer_brand .footer_sns .sns_link img {
     height: 30px;
     object-fit: center;
 }
+
 footer .footer_bottom .footer_brand .footer_sns .sns_link img:nth-child(2) {
     width: 28px;
     height: 29px;
 }
+
 footer .footer_bottom .footer_info {
     width: 100%;
     display: flex;
