@@ -39,7 +39,25 @@
     }
 
     header nav ul.gnb {
-        display: none;
+        width: 606px;
+        height: 100vh;
+        background: var(--Bcolor);
+        display: flex;
+        flex-direction: column;
+    }
+
+    header nav ul.gnb>li {
+        width: 470px;
+        border-bottom: 1px solid #4a4259;
+    }
+
+    header nav ul.gnb>li>ul.sub {
+        padding: 40px 30px;
+        position: absolute;
+        left: 50%;
+        border: 0;
+        display: flex;
+        flex-direction: column;
     }
 
     header nav .right {
