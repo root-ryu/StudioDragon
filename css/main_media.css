@@ -10,6 +10,10 @@
         padding: 50px 80px;
     }
 
+    .header_bg {
+        height: 250px;
+    }
+
     header .inner {
         flex-direction: row;
         justify-content: space-between;
@@ -61,8 +65,14 @@
     header {
         padding: 30px 35px;
     }
-    header nav .right .lang, header nav .right .user{
+
+    header nav .right .lang,
+    header nav .right .user {
         display: none;
+    }
+
+    .header_bg {
+        height: 200px;
     }
 
 }

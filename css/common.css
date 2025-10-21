@@ -143,13 +143,12 @@ header.off {
     left: 0;
     top: 0;
     background: var(--Bcolor);
-    /* filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.04)); */
     border-radius: 0 0 50% 50%;
-    transition: height .6s, border-radius .6s, top 1.2s .6s, background-color 1.2s .6s;
+    transition: height .6s, border-radius .6s, top .6s .3s, background-color .4s .4s;
 }
 
 header.off .header_bg {
-    height: 100vh;
+    height: 50vh;
     border-radius: 0;
     background: var(--Wcolor);
     top: -100%;
@@ -294,7 +293,7 @@ header nav .right {
 header nav .right .lang {
     width: 144px;
     height: 100%;
-    border: 1px solid var(--Wcolor);
+    border: 1.5px solid var(--Wcolor);
     border-radius: 17px;
     display: flex;
     justify-content: center;
