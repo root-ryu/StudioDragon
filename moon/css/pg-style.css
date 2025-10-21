@@ -4,8 +4,9 @@ section,
 section * {
   box-sizing: border-box;
 }
+
 /* running-contest */
-.running-contest  {
+.running-contest {
   margin-top: 374px;
   padding: 100px 80px 140px 80px;
   display: flex;
@@ -17,6 +18,7 @@ section * {
   flex-shrink: 0;
   position: relative;
 }
+
 .running-contest .title {
   display: flex;
   flex-direction: row;
@@ -26,6 +28,7 @@ section * {
   flex-shrink: 0;
   position: relative;
 }
+
 .running-contest h2 {
   color: var(--b, #0d031c);
   text-align: left;
@@ -33,6 +36,7 @@ section * {
   text-transform: uppercase;
   position: relative;
 }
+
 .running-contest .con {
   display: flex;
   flex-direction: column;
@@ -48,6 +52,7 @@ section * {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .running-contest .info {
   background: rgba(245, 245, 245, 0.6);
   border-radius: 32px;
@@ -61,6 +66,7 @@ section * {
   position: relative;
   backdrop-filter: blur(2.5px);
 }
+
 .running-contest .deadline {
   padding: 4px 0px 4px 0px;
   display: flex;
@@ -71,6 +77,7 @@ section * {
   flex-shrink: 0;
   position: relative;
 }
+
 .running-contest h4 {
   color: #626262;
   text-align: left;
@@ -80,16 +87,8 @@ section * {
   font-weight: 400;
   position: relative;
 }
-.running-contest .datecounter {
-  display: flex;
-  flex-direction: row;
-  gap: 18px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-.running-contest .countBox {
+
+.running-contest .counter {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -98,28 +97,50 @@ section * {
   flex-shrink: 0;
   position: relative;
 }
-.running-contest .numBox {
+
+.running-contest .countBoxes {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.running-contest .countBox {
   background: #111111;
   border-radius: 8px;
   padding: 4px 13px 14px 13px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
 }
+
 .running-contest .countNum {
   color: #f3f3f3;
-  text-align: left;
+  text-align: center;
   font-family: "Assistant-Bold", sans-serif;
   font-size: 72px;
   line-height: 100%;
   letter-spacing: -0.01em;
   font-weight: 700;
+}
+
+.running-contest .txtbox {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
   position: relative;
 }
+
 .running-contest .deadline p {
   color: var(--b, #0d031c);
   text-align: center;
@@ -131,6 +152,7 @@ section * {
   position: relative;
   align-self: stretch;
 }
+
 .running-contest article {
   display: flex;
   flex-direction: column;
@@ -141,6 +163,7 @@ section * {
   flex-shrink: 0;
   position: relative;
 }
+
 .running-contest .textbox {
   display: flex;
   flex-direction: column;
@@ -150,6 +173,7 @@ section * {
   flex-shrink: 0;
   position: relative;
 }
+
 .running-contest .subtitle {
   color: var(--b, #0d031c);
   text-align: left;
@@ -159,7 +183,10 @@ section * {
   font-weight: 700;
   position: relative;
 }
-.running-contest .article p {
+
+.running-contest .article ul {}
+
+.running-contest .article li {
   color: var(--b, #0d031c);
   text-align: left;
   font-family: "Assistant-Regular", sans-serif;
@@ -168,6 +195,7 @@ section * {
   font-weight: 400;
   position: relative;
 }
+
 .running-contest .btn {
   border-radius: 32px;
   border-style: solid;
@@ -183,6 +211,7 @@ section * {
   position: relative;
   overflow: hidden;
 }
+
 .running-contest .btn em {
   color: var(--b, #0d031c);
   text-align: center;
@@ -208,6 +237,7 @@ section * {
   /* flex-shrink: 0; */
   overflow: hidden;
 }
+
 .contest-winner .top {
   padding: 0 200px;
   display: flex;
@@ -222,35 +252,39 @@ section * {
 }
 
 .contest-winner .decoImg {
-  flex-shrink: 0;
   width: 201.34px;
   height: 228.7px;
   position: absolute;
   top: 0;
   left: 200px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  object-fit: cover;
-  aspect-ratio: 201.34/228.7;
+  background: url(../../moon/asset/goldcup.png) center/cover;
 }
+
 .contest-winner .title {
   gap: 16px;
   width: 828px;
   display: flex;
   flex-direction: column;
-  z-index: 10;
 }
+
 .contest-winner .title h2 {
   color: var(--Wcolor);
   text-align: center;
   font: var(--font-1920-headline-56);
   text-transform: uppercase;
 }
+
 .contest-winner .title p {
   color: var(--Wcolor);
   text-align: center;
-  font: 300 30px/1 "Assistant-light", sans-serif;;
+  font: 300 30px/1 "Assistant-light", sans-serif;
+  ;
   text-transform: uppercase;
 }
+.contest-winner .wrap {
+  
+}
+
 .contest-winner .video-content-box {
   padding: 0px 200px;
   display: flex;
@@ -264,12 +298,11 @@ section * {
   position: relative;
   overflow: hidden;
 }
+
 .contest-winner .blur-1 {
-  background: radial-gradient(
-    closest-side,
-    rgba(63, 41, 99, 1) 0%,
-    rgba(13, 3, 28, 0) 100%
-  );
+  background: radial-gradient(closest-side,
+      rgba(63, 41, 99, 1) 0%,
+      rgba(13, 3, 28, 0) 100%);
   border-radius: 50%;
   flex-shrink: 0;
   width: 725.88px;
@@ -278,12 +311,11 @@ section * {
   left: -109.5px;
   bottom: 51.56px;
 }
+
 .contest-winner .blur-2 {
-  background: radial-gradient(
-    closest-side,
-    rgba(63, 41, 99, 1) 0%,
-    rgba(13, 3, 28, 0) 100%
-  );
+  background: radial-gradient(closest-side,
+      rgba(63, 41, 99, 1) 0%,
+      rgba(13, 3, 28, 0) 100%);
   border-radius: 50%;
   flex-shrink: 0;
   width: 893.87px;
@@ -292,14 +324,25 @@ section * {
   right: -144.49px;
   top: 0px;
 }
-.contest-winner .video {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0) 17.788460850715637%,
-    rgba(0, 0, 0, 0) 83.8942289352417%,
-    rgba(0, 0, 0, 0.9) 100%
-  );
+
+.contest-winner iframe {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border-radius: 20px;
+  position: relative; 
+  overflow: hidden;
+  max-width: 513px;
+  max-height: 912px;
+  aspect-ratio: 513/912;
+}
+
+/* .contest-winner .video {
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0) 17.788460850715637%,
+      rgba(0, 0, 0, 0) 83.8942289352417%,
+      rgba(0, 0, 0, 0.9) 100%);
   border-radius: 20px;
   display: flex;
   flex-direction: row;
@@ -312,7 +355,8 @@ section * {
   position: relative;
   overflow: hidden;
   aspect-ratio: 513/912;
-}
+} */
+
 .contest-winner .info-overlay {
   padding: 32px;
   display: flex;
@@ -323,6 +367,7 @@ section * {
   flex: 1;
   position: relative;
 }
+
 .contest-winner .progress-section {
   display: flex;
   flex-direction: column;
@@ -332,6 +377,7 @@ section * {
   flex: 1;
   position: relative;
 }
+
 .contest-winner .progress-bar-wrap {
   display: flex;
   flex-direction: row;
@@ -342,6 +388,7 @@ section * {
   flex-shrink: 0;
   position: relative;
 }
+
 .contest-winner .icon-pause {
   padding: 0px 2px 0px 2px;
   display: flex;
@@ -354,6 +401,7 @@ section * {
   height: 22px;
   position: relative;
 }
+
 .contest-winner .rectangle-50 {
   background: rgba(240, 240, 240, 0.8);
   border-radius: 1px;
@@ -361,6 +409,7 @@ section * {
   flex: 1;
   position: relative;
 }
+
 .contest-winner .rectangle-51 {
   background: rgba(240, 240, 240, 0.8);
   border-radius: 1px;
@@ -368,6 +417,7 @@ section * {
   flex: 1;
   position: relative;
 }
+
 .contest-winner .progress-bar {
   background: rgba(240, 240, 240, 0.3);
   border-radius: 19px;
@@ -381,6 +431,7 @@ section * {
   position: relative;
   overflow: hidden;
 }
+
 .contest-winner .bar {
   background: rgba(240, 240, 240, 0.6);
   border-radius: 19px;
@@ -389,6 +440,7 @@ section * {
   position: relative;
   overflow: hidden;
 }
+
 .contest-winner ._00-20 {
   color: rgba(255, 255, 255, 0.8);
   text-align: right;
@@ -399,6 +451,7 @@ section * {
   position: relative;
   align-self: stretch;
 }
+
 .contest-winner .award-info {
   display: flex;
   flex-direction: column;
@@ -410,6 +463,7 @@ section * {
   height: 912px;
   position: relative;
 }
+
 .contest-winner .award {
   color: var(--Wcolor);
   text-align: left;
@@ -422,6 +476,7 @@ section * {
   transform-origin: 0 0;
   transform: rotate(0deg) scale(1, 1);
 }
+
 .contest-winner .txtbox {
   display: flex;
   flex-direction: column;
@@ -432,6 +487,7 @@ section * {
   flex-shrink: 0;
   position: relative;
 }
+
 .contest-winner ul.subtitle {
   display: flex;
   flex-direction: column;
@@ -442,6 +498,7 @@ section * {
   width: 270px;
   position: relative;
 }
+
 .contest-winner ul.subtitle li p {
   color: var(--Wcolor);
   text-align: left;
@@ -452,6 +509,7 @@ section * {
   position: relative;
   align-self: stretch;
 }
+
 .contest-winner ul.subtitle li em {
   color: #acacac;
   text-align: left;
@@ -462,6 +520,7 @@ section * {
   position: relative;
   align-self: stretch;
 }
+
 .contest-winner .gold {
   flex-shrink: 0;
   width: 119.79px;
@@ -472,6 +531,7 @@ section * {
   object-fit: cover;
   aspect-ratio: 119.79/141.05;
 }
+
 .contest-winner .title-the-fire-inside {
   color: var(--Wcolor);
   text-align: left;
@@ -481,6 +541,7 @@ section * {
   font-weight: 300;
   position: relative;
 }
+
 .contest-winner .silver {
   flex-shrink: 0;
   width: 119.79px;
@@ -491,6 +552,7 @@ section * {
   object-fit: cover;
   aspect-ratio: 119.79/141.05;
 }
+
 .contest-winner .title-read-receipt-unsent {
   color: var(--Wcolor);
   text-align: left;
@@ -500,6 +562,7 @@ section * {
   font-weight: 300;
   position: relative;
 }
+
 .contest-winner .silver2 {
   flex-shrink: 0;
   width: 119.79px;
