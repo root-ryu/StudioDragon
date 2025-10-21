@@ -350,9 +350,7 @@ header nav .right .ham ul li {
     border-radius: 2px;
     transform-origin: center;
 }
-main {
-    height: 5000px;
-}
+
 /* footer */
 footer {
     width: 100%;
