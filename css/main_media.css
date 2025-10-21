@@ -38,26 +38,49 @@
         gap: 16px;
     }
 
-    header nav ul.gnb {
+    header nav {
         width: 606px;
         height: 100vh;
-        background: var(--Bcolor);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+        padding: 30px 70px;
+        background: yellow;
+    }
+
+    header nav ul.gnb {
+        width: 100%;
         display: flex;
         flex-direction: column;
+        position: absolute;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #4a4259;
     }
 
     header nav ul.gnb>li {
         width: 470px;
-        border-bottom: 1px solid #4a4259;
+        height: 40px;
+        height: auto;
+        display: flex;
+        background: #ccc;
+    }
+
+    header nav ul.gnb>li a {
+        width: 100%;
+        padding-bottom: 10px;
+        background: #ccc;
     }
 
     header nav ul.gnb>li>ul.sub {
-        padding: 40px 30px;
-        position: absolute;
-        left: 50%;
+        width: 100%;
         border: 0;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        backdrop-filter: none;
     }
 
     header nav .right {
