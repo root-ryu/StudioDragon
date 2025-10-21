@@ -12,6 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         lastScrollY = currentScrollY;
     });
+
+    const enBtn = document.querySelector('header nav .right .lang .en');
+    const krBtn = document.querySelector('header nav .right .lang .kr');
+
+    enBtn.addEventListener('click', () => {
+        enBtn.classList.add('active');
+        krBtn.classList.remove('active');
+    });
+
+    krBtn.addEventListener('click', () => {
+        krBtn.classList.add('active');
+        enBtn.classList.remove('active');
+    });
+
     AOS.init({
         disable: false, // aos를 끄지 않는 것 -> 애니메이션 작동하게 두기
         startEvent: 'DOMContentLoaded', // html이 다 불러와 지면 바로 aos 시작하라는 뜻
@@ -22,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         debounceDelay: 50, // 창크기 바꿀 때 0.05초 기다렸다가 계산 (너무 자주 안하게)
         throttleDelay: 99, // 스크롤할 때 0.099초 마다 한 번씩 체크 (성능 좋게)
     });
-    
+
     /* 푸터 버튼 on */
     const familySiteBtn = document.querySelector('.family_site_btn');
     const familySite = document.querySelector('.footer_family_site');
