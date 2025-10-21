@@ -1,0 +1,165 @@
+@charset "utf-8";
+/* 기본 초기화 */
+* {
+  box-sizing: border-box;
+}
+/* 1800px 이하일 때 */
+@media (max-width: 1800px) {
+  .poster-section1 {
+    margin: 0 100px;
+  }
+  .tit_eng,
+  .on-alr {
+    margin-left: 120px;
+  }
+  .button-group {
+    margin-left: 130px;
+  }
+  .Filter {
+    margin-right: 120px;
+  }
+}
+
+/* 1400px 이하일 때 */
+@media (max-width: 1400px) {
+  .poster-section1 {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin: 0 50px;
+  }
+
+  .poster-section1 div img {
+    width: 230px;
+    height: 330px;
+  }
+
+  .tit_eng,
+  .on-alr {
+    margin-left: 80px;
+    font-size: 42px;
+  }
+
+  .button-group {
+    margin-left: 80px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .Filter {
+    margin-right: 80px;
+  }
+}
+
+/* 1024px 이하 (태블릿 가로/세로) */
+@media (max-width: 1024px) {
+  .sw_img {
+    gap: 50px;
+  }
+
+  .sw_img img {
+    max-width: 300px;
+  }
+
+  .poster-section1 {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin: 0 40px;
+  }
+
+  .poster-section1 div img {
+    width: 220px;
+    height: 310px;
+  }
+
+  .button-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .Filter {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .tit_eng,
+  .on-alr {
+    text-align: center;
+    margin-left: 0;
+  }
+}
+
+/* 768px 이하 (모바일) */
+@media (max-width: 768px) {
+  .sw_img {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .sw_img img {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .poster-section1 {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    gap: 40px;
+  }
+
+  .poster-section1 div img {
+    width: 80%;
+    height: auto;
+  }
+
+  .tit_eng,
+  .on-alr {
+    font-size: 36px;
+    text-align: center;
+    margin: 80px 0 40px;
+  }
+
+  .button-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto 40px;
+  }
+
+  .all,
+  .alr,
+  .fin,
+  .Filter {
+    font-size: 18px;
+    padding: 6px 20px;
+  }
+
+  .poster-section1-titel {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+/* 480px 이하 (작은 모바일) */
+@media (max-width: 480px) {
+  .tit_eng,
+  .on-alr {
+    font-size: 28px;
+  }
+
+  .sw_img img {
+    width: 90%;
+  }
+
+  .poster-section1 div img {
+    width: 90%;
+  }
+
+  .poster-section1-titel {
+    font-size: 14px;
+  }
+}

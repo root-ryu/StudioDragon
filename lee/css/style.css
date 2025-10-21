@@ -4,6 +4,7 @@
 /*    padding: 0 0 130; */
 }
 
+
 .tit_eng {
 font-size: 56px;
 /* font-family: ""; */
@@ -19,6 +20,7 @@ margin-top: 180px;
   flex-wrap: wrap;        /* 화면이 작아지면 줄 바꿈 */
   gap: 95px;              /* 이미지 간격 */
   justify-content: center; /* 가운데 정렬 */
+
 }
 
 .sw_img img {
@@ -27,6 +29,14 @@ margin-top: 180px;
   min-width: 300px;  /* 최소 가로 크기 */
   height: auto;
   border-radius: 18px;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  border-radius: 16px;
+  cursor:pointer;
+}
+
+.sw_img img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
 }
 
 .signature-works p{
@@ -34,6 +44,7 @@ margin-top: 180px;
   text-align: center; 
   color:#ffffff;
 /*   margin-bottom: 40px;   /* 제목과 이미지 사이 여백 */
+cursor:pointer;
 }
 
 .on-alr{
@@ -182,3 +193,20 @@ margin-bottom: 40px;
    margin-top: 10px; /* 위쪽 간격 */
 /*   text-align: center;  */
 }
+
+/* -------------------------------
+   포스터 3D 인터랙티브 효과 망한거 복구해
+---------------------------------*/
+/* 
+.poster-box1 {
+  width: 269px;
+  height: 380px;
+  border-radius: 5px;
+  filter: brightness(0.9);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.poster-box1:hover img {
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+} */
