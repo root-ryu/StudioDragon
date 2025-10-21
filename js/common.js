@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('header');
+    const header = document.querySelector('.wrap');
     let lastScrollY = window.scrollY; // 직전 스크롤 위치 저장
     window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
         krBtn.classList.add('active');
         enBtn.classList.remove('active');
     });
+
+    const ham = document.querySelector('.ham');
+    ham.addEventListener('click', () => {
+        document.querySelector('nav').classList.toggle('mobile');
+    })
 
     AOS.init({
         disable: false, // aos를 끄지 않는 것 -> 애니메이션 작동하게 두기

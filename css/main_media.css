@@ -1,86 +1,13 @@
 @charset "UTF-8";
+@media screen and (max-width:1519px) {
+    .inner {
+        width: 95%;
+    }
+}
 
 @media screen and (max-width:1407px) {
-    header {
-        height: auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 50px 80px;
-    }
-
-    .header_bg {
-        height: 250px;
-    }
-
     header .inner {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    header h1 {
-        width: auto;
-        padding: 0;
-    }
-
-    header h1 a img {
-        width: 166px;
-    }
-
-    header nav {
-        border: 0;
-        display: flex;
-        width: auto;
-        /*         align-items: center;
-        justify-content: flex-end; */
-        gap: 16px;
-    }
-
-    header nav {
-        width: 606px;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 0;
-        padding: 30px 70px;
-        background: yellow;
-    }
-
-    header nav ul.gnb {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        padding-bottom: 30px;
-        border-bottom: 1px solid #4a4259;
-    }
-
-    header nav ul.gnb>li {
-        width: 470px;
-        height: 40px;
-        height: auto;
-        display: flex;
-        background: #ccc;
-    }
-
-    header nav ul.gnb>li a {
-        width: 100%;
-        padding-bottom: 10px;
-        background: #ccc;
-    }
-
-    header nav ul.gnb>li>ul.sub {
-        width: 100%;
-        border: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: none;
-        backdrop-filter: none;
+        width: 95%;
     }
 
     header nav .right {
@@ -101,6 +28,130 @@
     }
 }
 
+@media screen and (max-width:1023px) {
+    header {
+        padding-top: 0;
+        height: 213px;
+        /*     height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px 80px; */
+    }
+
+    .header_bg {
+        display: none;
+        height: 250px;
+    }
+
+    header .inner {
+        width: 860px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header h1 {
+        width: auto;
+        padding: 0;
+    }
+
+    header h1 a img {
+        width: 166px;
+    }
+
+
+
+    header nav {
+        gap: 16px;
+        width: auto;
+        border: 0;
+        position: static;
+        padding: 30px 70px;
+    }
+
+    header nav.mobile {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 50%;
+        height: 100vh;
+        z-index: 11;
+        flex-direction: column;
+    }
+
+    header nav ul.gnb {
+        display: none;
+    }
+
+    header nav.mobile ul.gnb {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-bottom: 1px solid #4a4259;
+        order: 2;
+    }
+
+
+
+    header nav.mobile ul.gnb>li {
+        width: 100%;
+        height: auto;
+        /* background: #ccc; */
+    }
+
+    header nav.mobile ul.gnb>li a {
+        width: 100%;
+        height: 40px;
+        padding-bottom: 10px;
+    }
+
+    header nav ul.gnb>li.on>a,
+    header nav ul.gnb>li:hover>a {
+        font-size: 24px;
+        font-weight: 500;
+        color: var(--MainColor);
+    }
+
+    header nav.mobile ul.gnb>li>ul.sub {
+        width: 100%;
+        position: static;
+        padding: 0;
+        transform: translateX(0);
+        border-radius: 0;
+        border: 0;
+        display: block;
+    }
+
+    header nav.mobile ul.gnb>li:nth-child(1)>ul.sub,
+    header nav.mobile ul.gnb>li:nth-child(2)>ul.sub,
+    header nav.mobile ul.gnb>li:nth-child(3)>ul.sub,
+    header nav.mobile ul.gnb>li:nth-child(4)>ul.sub,
+    header nav.mobile ul.gnb>li:nth-child(5)>ul.sub {
+        width: 100%;
+        height: auto;
+        line-height: 1.5;
+    }
+
+
+    header nav.mobile ul.gnb>li>ul.sub li {
+        padding-bottom: 0;
+    }
+
+    header nav ul.gnb>li>ul.sub li:hover,
+    header nav ul.gnb>li>ul.sub li.on {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--MainColor);
+    }
+
+    header nav .right {
+        order: 1;
+    }
+}
 
 @media screen and (max-width:570px) {
     header {
