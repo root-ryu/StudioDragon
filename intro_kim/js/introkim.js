@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var histotySwiper = new Swiper(".history .swiper", {
         slidesPerView: "auto",
         centeredSlides: true,
-        spaceBetween: 80,
+        spaceBetween: 90,
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
