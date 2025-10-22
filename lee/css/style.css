@@ -13,7 +13,7 @@ body {
   justify-content: center; 
   background-color: #ffffff; 
   padding-top: 474px;
-/*    padding: 0 0 130; 
+  padding: 0 0 130; 
 } */
 
 
@@ -25,7 +25,7 @@ body {
 }
 
 :root {
-  --color-black: hsla(0, 0%, 12%, 100%);
+  --color-black:#0D031C;
   --color-white: hsla(0, 0%, 100%, 100%);
   --color-purple: hsla(278, 100%, 75%, 100%);
 }
@@ -222,6 +222,8 @@ main {
   margin: 0;
   right: 80px;
 }
+ 
+
 
 
 .sw_img {
@@ -247,12 +249,13 @@ main {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
 }
 
+
+
 .signature-works p {
   font-size: 24px;
   text-align: center;
   color: #ffffff;
-  margin-bottom: 40px;
-  /* 제목과 이미지 사이 여백 */
+  margin-bottom: 40px; /* 제목과 이미지 사이 여백 */
 }
 
 section h2 {
@@ -274,11 +277,14 @@ section h2 {
   margin-left: 210px;
 }
 
+
+
+
+
 .button-group {
   display: flex;
   flex-wrap: nowrap;
-  gap: 20px;
-  /* 버튼 간 간격 */
+  gap: 20px; /* 버튼 간 간격 */
   margin-left: 210px;
   margin-bottom: 40px;
 }
@@ -304,29 +310,26 @@ section h2 {
 
 
 .Filter {
-  margin-left: auto;
-  /* 오른쪽 끝 배치 */
-  margin-right: 200px;
-  /* 오른쪽 끝에서 안쪽간격 */
-  padding: 8px 30px;
-  /* 위아래 8px, 좌우 40px */
+  margin-left: auto; /* 오른쪽 끝 배치 */
+  margin-right: 200px; /* 오른쪽 끝에서 안쪽간격 */
+  padding: 8px 30px; /* 위아래 8px, 좌우 40px */
   font-size: 24px;
-  font-weight: 700;
-  /* 폰트굵기 */
-  color: #000000;
+  font-weight: 700; /* 폰트굵기 */
+  color: #ffffff;
   background: linear-gradient(150deg, #ffffff, #ffffff);
   border-radius: 18px;
-  cursor: pointer;
-  /* 마우스 올려놨을 때 손가락버튼바낌 */
+  cursor: pointer; /* 마우스 올려놨을 때 손가락버튼바낌 */
   transition: all 0.5s ease;
   text-align: center;
   border: 1px solid #ccc;
+  background: transparent; /* 배경 투명 */
 }
+
 
 .Filter:hover {
   transform: translateY(-4px);
   box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5), -6px -6px 12px rgba(255, 255, 255, 0.15);
-  background: linear-gradient(145deg, #c5a87f, #a88555);
+  background: linear-gradient(145deg, #c5a87f76, #a8855588);
 }
 
 
@@ -334,38 +337,39 @@ ul.poster-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  row-gap: 50px;
-  /* 5개 박스 사이 자동 간격 */
-  margin: 0 200px;
-  /* 양쪽 200px 여백 */
+  row-gap: 50px; /* 5개 박스 사이 자동 간격 */
+  margin: 0 200px; /* 양쪽 200px 여백 */
   /* 한 줄로 유지 */
 }
 
+
+
 ul.poster-list li {
   width: 268px;
+  margin-bottom: 50px;
 }
 
 .poster-title {
+  display: block;
   color: #948484;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 25px;
-  margin-top: 23px;
-  /* 위쪽 간격 */
-  text-align: center;
+  margin-top: 20px; /* 위쪽 간격 */
+  /*   text-align: center; */
+  line-height: 1.5;
 }
 
 .poster-list img {
   width: 268px;
   height: 366px;
   border-radius: 5px;
-  filter: brightness(0.9);
-  /* 이미지어둡게 조절 */
+  filter: brightness(0.9); /* 이미지어둡게 조절 */
   cursor: pointer;
 }
 
-
-
 /* Pagination + Search Container */
+
+
 .pagination-search {
   display: flex;
   flex-direction: column;
@@ -429,6 +433,8 @@ ul.poster-list li {
   background-color: #5a54e7;
 }
 
+
+
 /* Page Numbers */
 .page-numbers {
   display: flex;
@@ -465,12 +471,21 @@ ul.poster-list li {
 }
 
 
+
+
+
+section h2 {
+  margin-top: 200px; /* 기존 200px → 50px으로 줄임 */
+  margin-bottom: 30px; /* 섹션 내 제목과 콘텐츠 간격 */
+}
+
 .last-section {
   width: 100%;
-  height: 150vh;
+  height: 150vh; /* outo; */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 100px; /* on-air와의 간격 */
 }
 
 .last-section img {
@@ -486,6 +501,9 @@ ul.poster-list li {
   text-align: center;
   margin-top: 35px;
 }
+
+
+
 
 /* -------------------------------
    포스터 3D 인터랙티브 효과 망한거 복구해
