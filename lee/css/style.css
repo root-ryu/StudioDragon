@@ -384,6 +384,108 @@ main {
 }
 
 
+/* Pagination + Search Container */
+.pagination-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin: 80px 0;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Search Box */
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+
+.search-box input {
+  width: 300px;
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 1px solid #eee;
+  font-size: 16px;
+  outline: none;
+  background-color: #f7f7f7;
+  color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.search-box input::placeholder {
+  color: #aaa;
+  transition: color 0.3s ease-in-out;
+}
+
+.search-box input:focus {
+  border-color: #6c63ff;
+  background-color: #fff;
+}
+
+.search-box input:focus::placeholder {
+  color: #6c63ff;
+}
+
+.search-box button {
+  padding: 12px 18px;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-box button:hover {
+  background-color: #5a54e7;
+}
+
+/* Page Numbers */
+.page-numbers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.page-numbers .page {
+  color: #333;
+  padding: 12px 18px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.page-numbers .page:hover {
+  background-color: #6c63ff;
+  color: white;
+}
+
+.page-numbers .page.active {
+  background-color: #6c63ff;
+  color: white;
+  border-color: #6c63ff;
+}
+
+.page-numbers .dots {
+  color: #aaa;
+  font-size: 16px;
+}
+
+
+
+
 /* -------------------------------
    포스터 3D 인터랙티브 효과 망한거 복구해
 ---------------------------------*/
