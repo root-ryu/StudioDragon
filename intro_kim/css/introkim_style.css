@@ -33,6 +33,7 @@ section {
     align-items: center;
     justify-content: center;
     position: relative;
+    background: #ccc;
 }
 
 .main_cach .swiper {
