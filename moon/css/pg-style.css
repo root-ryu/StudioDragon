@@ -1,13 +1,258 @@
 @charset "utf-8";
 
-section,
-section * {
+section, section * {
   box-sizing: border-box;
 }
 
-/* running-contest */
-.running-contest {
+/* 히어로 텍스트 */
+.hero {
   margin-top: 374px;
+  padding: 239px 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.hero li {
+  text-align: left;
+  font-family: "Pretendard", sans-serif;
+  font-size: 100px;
+  line-height: 110%;
+  font-weight: 800;
+  -webkit-text-stroke: 1px #883ffe;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(#883ffe, #883ffe), linear-gradient(#ffffff, #ffffff);
+  background-size: 100% 0%, 100% 100%;
+  background-position: 0 100%, 0 0;
+  background-repeat: no-repeat;
+  transition: background-size 700ms ease;
+  transition-delay: 400ms;
+}
+
+.hero li.filled {
+  background-size: 100% 100%, 100% 100%;
+}
+
+.hero .imgbox {
+  position: absolute;
+  right: 200px;
+  bottom: 300px;
+}
+.smiling-emoji {
+  background: url("../asset/smiling.png") center/cover;
+  width: 280px;
+  aspect-ratio: 1;
+  animation: floating forwards infinite 3s;
+}
+
+@keyframes floating {
+	0% { transform: translateY(0px); }
+	50% { transform: translateY(-40px); }
+	100% { transform: translateY(0px); }
+}
+
+
+/* 공모전 수상자 */
+.contest-winner {
+  background: var(--Bcolor);
+  padding: 200px 0;
+  overflow: hidden;
+}
+
+.contest-winner .top {
+  padding: 0 200px;
+  display: flex;
+  justify-content: center;
+  gap: 115px;
+  width: 100vw;
+  position: relative;
+}
+
+.contest-winner .decoImg {
+  width: 201.34px;
+  height: 228.7px;
+  position: absolute;
+  top: 0;
+  left: 200px;
+  background: url(../../moon/asset/goldcup.png) center/cover;
+}
+
+.contest-winner .title {
+  gap: 16px;
+  width: 43.1250vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.contest-winner .title h2 {
+  color: var(--Wcolor);
+  text-align: center;
+  font: var(--font-1920-headline-56);
+  text-transform: uppercase;
+}
+
+.contest-winner .title p {
+  color: var(--Wcolor);
+  text-align: center;
+  font: 300 30px/1 "Assistant", sans-serif;
+  text-transform: uppercase;
+}
+
+.contest-winner .winner-wrap {
+  padding: 84px 0;
+}
+
+.contest-winner .video-content {
+  padding: 0px 200px;
+  height: 1080px;
+}
+.contest-winner .video-wrap{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 0;
+}
+.contest-winner .video-wrap iframe {
+  border-radius: 20px;
+  width: 513px;
+  height: 912px;
+  aspect-ratio: 9/16;
+}
+
+.contest-winner .award-info {
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
+  width: 687px;
+  height: 912px;
+  position: relative;
+  z-index: 0;
+}
+
+.contest-winner .award {
+  color: var(--Wcolor);
+  text-align: left;
+  font: 300 82px/130% "Assistant", sans-serif;
+  position: relative;
+  align-self: stretch;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+
+.contest-winner .txtbox {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  position: relative;
+}
+
+.contest-winner ul.subtitle {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 687px;
+  position: relative;
+}
+
+.contest-winner ul.subtitle li p {
+  color: var(--Wcolor);
+  text-align: left;
+  font: 300 30px/130% "Assistant", sans-serif;
+  position: relative;
+  align-self: stretch;
+}
+
+.contest-winner ul.subtitle li em {
+  color: #acacac;
+  text-align: left;
+  font: 300 30px/130% "Assistant", sans-serif;
+  position: relative;
+  align-self: stretch;
+}
+
+.contest-winner .gold {
+  background: url(../../moon/asset/gold.png) center/cover;
+  flex-shrink: 0;
+  width: 119.79px;
+  height: 141.05px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  aspect-ratio: 119.79/141.05;
+}
+
+.contest-winner .silver {
+  background: url(../../moon/asset/silver.png) center/cover;
+  width: 119.79px;
+  height: 141.05px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  aspect-ratio: 119.79/141.05;
+}
+
+.contest-winner .popular {
+  background: url(../../moon/asset/popular.png) center/cover;
+  width: 119.79px;
+  height: 169.79px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  aspect-ratio: 119.79/169.79;
+}
+
+.contest-winner .video-wrap .circles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+}
+
+.contest-winner .video-wrap .circles .blur-1 {
+  background: radial-gradient(closest-side,
+      rgba(63, 41, 99, 1) 0%,
+      rgba(13, 3, 28, 0) 100%);
+  border-radius: 50%;
+  width: 725.88px;
+  height: 725.88px;
+  position: absolute;
+  left: -109.5px;
+  bottom: 51.56px;
+}
+
+.contest-winner .video-wrap .circles .blur-2 {
+  background: radial-gradient(closest-side,
+      rgba(63, 41, 99, 1) 0%,
+      rgba(13, 3, 28, 0) 100%);
+  border-radius: 50%;
+  width: 893.87px;
+  height: 893.87px;
+  position: absolute;
+  right: -144.49px;
+  top: 0px;
+}
+
+/* 진행중인 공모전 */
+.running-contest {
   padding: 100px 80px 140px 80px;
   display: flex;
   flex-direction: column;
@@ -81,7 +326,7 @@ section * {
 .running-contest h4 {
   color: #626262;
   text-align: left;
-  font-family: "Assistant-Regular", sans-serif;
+  font-family: "Assistant", sans-serif;
   font-size: 20px;
   line-height: 130%;
   font-weight: 400;
@@ -118,14 +363,14 @@ section * {
   overflow: hidden;
   color: #f3f3f3;
   text-align: center;
-  font: 700 72px/1 "Assistant-Bold", sans-serif;
+  font: 700 72px/1 "Assistant", sans-serif;
   letter-spacing: -0.01em;
 }
 
 .running-contest .countbox p {
   color: var(--Bcolor);
   text-align: center;
-  font: 600 18px/1 "Assistant-SemiBold", sans-serif;
+  font: 600 18px/1 "Assistant", sans-serif;
   margin-top: 4px;
   text-transform: uppercase;
 }
@@ -154,7 +399,7 @@ section * {
 .running-contest article .subtitle {
   color: var(--Bcolor);
   text-align: left;
-  font-family: "Assistant-Bold", sans-serif;
+  font-family: "Assistant", sans-serif;
   font-size: 26px;
   line-height: 130%;
   font-weight: 700;
@@ -166,7 +411,7 @@ section * {
 .running-contest article li {
   color: var(--Bcolor);
   text-align: left;
-  font-family: "Assistant-Regular", sans-serif;
+  font-family: "Assistant", sans-serif;
   font-size: 16px;
   line-height: 130%;
   font-weight: 400;
@@ -181,7 +426,7 @@ section * {
   padding: 6px 32px;
   color: var(--Bcolor);
   text-align: center;
-  font: 400 14px/1 "Assistant-Regular", sans-serif;
+  font: 400 14px/1 "Assistant", sans-serif;
   text-transform: uppercase;
   transition: all 0.4s ease;
   position: relative;
@@ -209,207 +454,3 @@ section * {
   width: 100%;
 }
 
-/* contest-winner */
-.contest-winner {
-  background: var(--Bcolor);
-  padding: 200px 0;
-  overflow: hidden;
-}
-
-.contest-winner .top {
-  padding: 0 200px;
-  display: flex;
-  justify-content: center;
-  gap: 115px;
-  width: 100vw;
-  position: relative;
-}
-
-.contest-winner .decoImg {
-  width: 201.34px;
-  height: 228.7px;
-  position: absolute;
-  top: 0;
-  left: 200px;
-  background: url(../../moon/asset/goldcup.png) center/cover;
-}
-
-.contest-winner .title {
-  gap: 16px;
-  width: 43.1250vw;
-  display: flex;
-  flex-direction: column;
-}
-
-.contest-winner .title h2 {
-  color: var(--Wcolor);
-  text-align: center;
-  font: var(--font-1920-headline-56);
-  text-transform: uppercase;
-}
-
-.contest-winner .title p {
-  color: var(--Wcolor);
-  text-align: center;
-  font: 300 30px/1 "Assistant-light", sans-serif;
-  text-transform: uppercase;
-}
-
-.contest-winner .winner-wrap {
-  padding: 84px 0;
-}
-
-.contest-winner .video-content-box {
-  padding: 0px 200px;
-  height: 1080px;
-}
-.contest-winner .video-wrap{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 0;
-}
-
-.contest-winner .video-wrap iframe {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-  width: 513px;
-  height: 912px;
-  aspect-ratio: 9/16;
-  z-index: 0;
-}
-
-.contest-winner .award-info {
-  display: flex;
-  flex-direction: column;
-  gap: 43px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  width: 687px;
-  height: 912px;
-  position: relative;
-  z-index: 0;
-}
-
-.contest-winner .award {
-  color: var(--Wcolor);
-  text-align: left;
-  font: 300 82px/130% "Assistant-Light", sans-serif;
-  position: relative;
-  align-self: stretch;
-  transform-origin: 0 0;
-  transform: rotate(0deg) scale(1, 1);
-}
-
-.contest-winner .txtbox {
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  position: relative;
-}
-
-.contest-winner ul.subtitle {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 687px;
-  position: relative;
-}
-
-.contest-winner ul.subtitle li p {
-  color: var(--Wcolor);
-  text-align: left;
-  font: 300 30px/130% "Assistant-Light", sans-serif;
-  position: relative;
-  align-self: stretch;
-}
-
-.contest-winner ul.subtitle li em {
-  color: #acacac;
-  text-align: left;
-  font: 300 30px/130% "Assistant-Light", sans-serif;
-  position: relative;
-  align-self: stretch;
-}
-
-.contest-winner .gold {
-  flex-shrink: 0;
-  width: 119.79px;
-  height: 141.05px;
-  position: absolute;
-  left: 1497.77px;
-  top: 54px;
-  object-fit: cover;
-  aspect-ratio: 119.79/141.05;
-}
-
-.contest-winner .silver {
-  flex-shrink: 0;
-  width: 119.79px;
-  height: 141.05px;
-  position: absolute;
-  left: 1497.77px;
-  top: 54px;
-  object-fit: cover;
-  aspect-ratio: 119.79/141.05;
-}
-
-.contest-winner .popular {
-  flex-shrink: 0;
-  width: 119.79px;
-  height: 169.79px;
-  position: absolute;
-  left: 1601.22px;
-  top: 54px;
-  object-fit: cover;
-  aspect-ratio: 119.79/169.79;
-}
-
-.contest-winner .video-wrap .circles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-}
-
-.contest-winner .video-wrap .circles .blur-1 {
-  background: radial-gradient(closest-side,
-      rgba(63, 41, 99, 1) 0%,
-      rgba(13, 3, 28, 0) 100%);
-  border-radius: 50%;
-  width: 725.88px;
-  height: 725.88px;
-  position: absolute;
-  left: -109.5px;
-  bottom: 51.56px;
-}
-
-.contest-winner .video-wrap .circles .blur-2 {
-  background: radial-gradient(closest-side,
-      rgba(63, 41, 99, 1) 0%,
-      rgba(13, 3, 28, 0) 100%);
-  border-radius: 50%;
-  width: 893.87px;
-  height: 893.87px;
-  position: absolute;
-  right: -144.49px;
-  top: 0px;
-}
