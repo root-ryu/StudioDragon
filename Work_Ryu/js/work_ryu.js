@@ -66,7 +66,7 @@ window.addEventListener('DOMContentLoaded', function() {
         slider.scrollLeft += e.deltaY * 1.5;
     });
 });
-// Behind Video Section - Stack Rotation 
+// 비하인드 비디오 섹션 스택
 window.addEventListener('DOMContentLoaded', function() {
     gsap.registerPlugin(ScrollTrigger);
     
@@ -126,7 +126,7 @@ window.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    // Elements
+//드래그 이미지
 const frame = document.querySelector('.images_frame');
 const images = document.querySelectorAll('.img_item');
 const modal = document.querySelector('.image_modal');
