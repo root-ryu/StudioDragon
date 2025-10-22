@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const main_cachSwiper = new Swiper(".main_cach .swiper", {
         slidesPerView: 'auto',
-        spaceBetween: 30,
+        spaceBetween: 64,
         autoplay: {
             delay: 2500,
             disableOnInteraction: false,
