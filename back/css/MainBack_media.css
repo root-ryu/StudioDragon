@@ -9,6 +9,7 @@
 }
 
 @media screen and (max-width:1023px) {
+    /* Coming Soon 섹션 */
     .comingsoon .inner {
         width: 865px;
     }
@@ -38,6 +39,103 @@
         bottom: 24px;
     }
 
+    /* ON-AIR 섹션 반응형 */
+    .onair {
+        height: auto;
+        padding: 80px 0 100px;
+    }
+
+    .onair .inner {
+        width: 100%;
+        max-width: 1023px;
+        padding: 0 80px;
+        box-sizing: border-box;
+    }
+
+    .onair .inner .top {
+        width: auto;
+        padding-bottom: 50px;
+        gap: 30px;
+    }
+
+    .onair .inner .top h2 {
+        font-size: 40px;
+    }
+
+    .onair .ONcon {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0;
+        height: auto;
+    }
+
+    /* 왼쪽 이미지 (ONcontents01) */
+    .onair .ONcon > div:first-child img {
+        width: 400px;
+        height: 450px;
+        opacity: 0.5;
+        transform: scale(0.9) translateX(-40%);
+    }
+
+    /* 가운데 활성 이미지 (ONcontents02) */
+    .onair .ONcon > div.active {
+        z-index: 10;
+    }
+
+    .onair .ONcon > div.active img {
+        width: 450px;
+        height: 600px;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* 오른쪽 이미지 (ONcontents03) */
+    .onair .ONcon > div:last-child img {
+        width: 400px;
+        height: 450px;
+        opacity: 0.5;
+        transform: scale(0.9) translateX(40%);
+    }
+
+    /* 텍스트 박스 - 가운데만 표시 */
+    .onair .ONcon > div .ONtxtbox {
+        width: 100%;
+        max-width: 493px;
+        gap: 32px;
+    }
+
+    .onair .ONcon > div.active .ONtxtbox {
+        opacity: 1;
+        visibility: visible;
+        max-height: 400px;
+    }
+
+    .onair .ONcon > div .ONtxtbox h3 {
+        font-size: 36px;
+    }
+
+    .onair .ONcon > div .ONtxtbox ul {
+        gap: 17px;
+    }
+
+    .onair .ONcon > div .ONtxtbox ul .bar {
+        width: 150px;
+    }
+
+    .onair .ONcon > div .ONtxtbox ul > li > p {
+        font-size: 30px;
+    }
+
+    .onair .ONcon > div .ONtxtbox button {
+        padding: 23px 68px;
+        font-size: 26px;
+        gap: 10px;
+    }
+
+    .onair .ONcon > div .ONtxtbox button img {
+        width: 24px;
+        height: 24px;
+    }
 }
 
 @media screen and (max-width:860px) {}
