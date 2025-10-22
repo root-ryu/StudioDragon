@@ -24,18 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
     var histotySwiper = new Swiper(".history .swiper", {
         slidesPerView: "auto",
         centeredSlides: true,
-        spaceBetween: 90,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-    });
-
-    var historybarSwiper = new Swiper(".history .cont_hori_swipe .scroll_bar", {
         scrollbar: {
             el: ".swiper-scrollbar",
             hide: true,
         },
     });
+
+
 
 })
