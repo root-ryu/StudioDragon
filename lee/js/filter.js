@@ -64,7 +64,7 @@ ScrollSmoother.create({
 
 
 // GSAP 초기화
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
   gsap.registerPlugin(ScrollTrigger);
 
   // Zoom Container 애니메이션
@@ -121,11 +121,12 @@ window.addEventListener('DOMContentLoaded', function() {
       );
   }
 
+
   // Opacity Reveal 애니메이션
   const opacityRevealElement = document.querySelector(".opacity_reveal");
   const textRevealSection = document.querySelector(".text_reveal_section");
 
-  if (opacityRevealElement && textRevealSection) {
+  /* if (opacityRevealElement && textRevealSection) {
     const splitLetters = new SplitText(opacityRevealElement, { type: "chars" });
     gsap.set(splitLetters.chars, { opacity: "0.2", y: 0 });
 
@@ -151,5 +152,15 @@ window.addEventListener('DOMContentLoaded', function() {
         scale: 1.2,
         duration: 50
       });
-  }
+  } */
+
+
+  let lastSswiper = new Swiper(".last-section .swiper", {
+    slidesPerView: 3,
+    spaceBetween: 95,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+  });
 });

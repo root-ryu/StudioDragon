@@ -4,11 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./lee/css/style.css">
-  <link rel="stylesheet" href="./lee/css//media.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/main_media.css">
+  <link rel="stylesheet" href="./lee/css/style.css">
+  <link rel="stylesheet" href="./lee/css//media.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!-- GSAP Core -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
@@ -16,8 +19,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <!-- SplitText 플러그인 -->
-  <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
-
+  <!-- <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script> -->
+  <script src="js/common.js"></script>
   <script src="./lee/js/filter.js" defer></script>
   <title>list of work</title>
 </head>
@@ -133,13 +136,11 @@
           <img src="/lee/img/comingsoon/Head Over Heels2.jpg" alt="" />
         </div>
       </div>
-
-      <div class="text_reveal_section">
-        <p class="opacity_reveal">If you're lucky, Studio Dragon will come into your story,
-          steal your heart, and change the world.</p>
-      </div>
     </section>
-
+    <section class="text_reveal_section">
+      <p class="opacity_reveal">If you're lucky, Studio Dragon will come into your story,
+        steal your heart, and change the world.</p>
+    </section>
 
 
     <!--     <div class="signature-works">
@@ -161,128 +162,188 @@
     </div> -->
 
 
+    <section class="onAir-section">
+      <h2 class="on-alr">ON - AIR</h2>
 
-    <div class="on-alr">ON - AIR</div>
-
-    <div class="button-group">
-      <div class="all">ALL</div>
-      <div class="alr">AIR</div>
-      <div class="fin">FIN</div>
-      <div class="Filter">ROMANCE</div>
-    </div>
-
-    <div class="poster-section1">
-      <div class="poster-box1">
-        <img src="./lee/img/Historical Drama/Our Blooming Youth.webp" alt="Poster 1">
-        <div class="poster-section1-titel">Our Blooming Youth</div>
-      </div>
-      <div class="poster-box2">
-        <img src="./lee/img/Love take two.webp" alt="Poster 2">
-        <div class="poster-section1-titel">Love take two</div>
-      </div>
-      <div class="poster-box3">
-        <img src="./lee/img/My Dearest Nemesis.webp" alt="Poster 3">
-        <div class="poster-section1-titel">My Dearest Nemesis</div>
-      </div>
-      <div class="poster-box4">
-        <img src="./lee/img/ourBlues.jpg" alt="Poster 4">
-        <div class="poster-section1-titel">our Blues</div>
-      </div>
-      <div class="poster-box5">
-        <img src="./lee/img/Twenty Five Twenty One2.webp" alt="Poster 5">
-        <div class="poster-section1-titel">Twenty Five Twenty One</div>
-      </div>
-    </div>
-
-    <div class="poster-section1">
-      <div class="poster-box1">
-        <img src="./lee/img/Genie, Make A Wish.webp" alt="Poster 1">
-        <div class="poster-section1-titel">Genie, Make A Wish</div>
-      </div>
-      <div class="poster-box2">
-        <img src="./lee/img/Typhoon Family2.webp" alt="Poster 2">
-        <div class="poster-section1-titel">Typhoon Family</div>
-      </div>
-      <div class="poster-box3">
-        <img src="./lee/img/Historical Drama/The Queen Who Crowns.webp" alt="Poster 3">
-        <div class="poster-section1-titel">The Queen Who Crowns</div>
-      </div>
-      <div class="poster-box4">
-        <img src="./lee/img/Our Unwritten Seoul.webp" alt="Poster 4">
-        <div class="poster-section1-titel">Our Unwritten Seoul</div>
-      </div>
-      <div class="poster-box5">
-        <img src="./lee/img/Under The Queen's Umbrella.webp" alt="Poster 5">
-        <div class="poster-section1-titel">Under The Queen's <br> Umbrella</div>
-      </div>
-    </div>
-
-    <div class="poster-section1">
-      <div class="poster-box1">
-        <img src="./lee/img/Historical Drama/Poong, the Joseon Psychiatrist.webp" alt="Poster 1">
-        <div class="poster-section1-titel">Poong, the Joseon <br> Psychiatrist</div>
-      </div>
-      <div class="poster-box2">
-        <img src="./lee/img/shin's2.webp" alt="Poster 2">
-        <div class="poster-section1-titel">shin's project</div>
-      </div>
-      <div class="poster-box3">
-        <img src="./lee/img/Historical Drama/Dear Hongrang.webp" alt="Poster 3">
-        <div class="poster-section1-titel">Dear Hongrang</div>
-      </div>
-      <div class="poster-box4">
-        <img src="./lee/img/Historical Drama/Bon Appétit, Your Majesty3.webp" alt="Poster 4">
-        <div class="poster-section1-titel">Bon Appétit, Your Majesty</div>
-      </div>
-      <div class="poster-box5">
-        <img src="./lee/img/Second Shot at Love.webp" alt="Poster 5">
-        <div class="poster-section1-titel">Second Shot at Love</div>
-      </div>
-    </div>
-
-
-    <div class="poster-section1">
-      <div class="poster-box1">
-        <img src="./lee/img/Castaway Diva4.webp" alt="Poster 1">
-        <div class="poster-section1-titel">Castaway Diva</div>
-      </div>
-      <div class="poster-box2">
-        <img src="./lee/img/Head Over Heels5.webp" alt="Poster 2">
-        <div class="poster-section1-titel">Head Over Heels</div>
-      </div>
-      <div class="poster-box3">
-        <img src="./lee/img/Historical Drama/Captivating the King2.webp" alt="Poster 3">
-        <div class="poster-section1-titel">Captivating the King</div>
-      </div>
-      <div class="poster-box4">
-        <img src="./lee/img/Study Group3.webp" alt="Poster 4">
-        <div class="poster-section1-titel">Study Group</div>
-      </div>
-      <div class="poster-box5">
-        <img src="./lee/img/love your enemy3.webp" alt="Poster 5">
-        <div class="poster-section1-titel">love your enemy</div>
-      </div>
-    </div>
-
-
-    <div class="pagination-search">
-      <div class="search-box">
-        <input type="text" placeholder="Search for a drama title..." />
-        <button type="button">Search</button>
+      <div class="button-group">
+        <button class="all">ALL</button>
+        <button class="alr">AIR</button>
+        <button class="fin">FIN</button>
+        <select class="Filter">
+          <option value="romance">ROMANCE</option>
+          <option value="romance2">ROMANCE2</option>
+          <option value="romance3">ROMANCE3</option>
+        </select>
       </div>
 
-      <div class="page-numbers">
-        <a href="#" class="page active">1</a>
-        <a href="#" class="page">2</a>
-        <a href="#" class="page">3</a>
-        <a href="#" class="page">4</a>
-        <a href="#" class="page">5</a>
-        <span class="dots">...</span>
-        <a href="#" class="page">Next ›</a>
+      <ul class="poster-list">
+        <li>
+          <a href="#">
+            <img src="./lee/img/Historical Drama/Our Blooming Youth.webp" alt="Poster 1">
+            <span class="poster-title">Our Blooming Youth</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Love take two.webp" alt="Poster 2">
+            <span class="poster-title">Love take two</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/My Dearest Nemesis.webp" alt="Poster 3">
+            <span class="poster-title">My Dearest Nemesis</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/ourBlues.jpg" alt="Poster 4">
+            <span class="poster-title">our Blues</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Twenty Five Twenty One2.webp" alt="Poster 5">
+            <span class="poster-title">Twenty Five Twenty One</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Genie, Make A Wish.webp" alt="Poster 6">
+            <span class="poster-title">Genie, Make A Wish</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Typhoon Family2.webp" alt="Poster 7">
+            <span class="poster-title">Typhoon Family</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Historical Drama/The Queen Who Crowns.webp" alt="Poster 8">
+            <span class="poster-title">The Queen Who Crowns</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Our Unwritten Seoul.webp" alt="Poster 9">
+            <span class="poster-title">Our Unwritten Seoul</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Under The Queen's Umbrella.webp" alt="Poster 10">
+            <span class="poster-title">Under The Queen's <br> Umbrella</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Historical Drama/Poong, the Joseon Psychiatrist.webp" alt="Poster 11">
+            <span class="poster-title">Poong, the Joseon <br> Psychiatrist</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/shin's2.webp" alt="Poster 12">
+            <span class="poster-title">shin's project</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Historical Drama/Dear Hongrang.webp" alt="Poster 13">
+            <span class="poster-title">Dear Hongrang</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Historical Drama/Bon Appétit, Your Majesty3.webp" alt="Poster 14">
+            <span class="poster-title">Bon Appétit, Your Majesty</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Second Shot at Love.webp" alt="Poster 15">
+            <span class="poster-title">Second Shot at Love</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Castaway Diva4.webp" alt="Poster 16">
+            <span class="poster-title">Castaway Diva</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Head Over Heels5.webp" alt="Poster 17">
+            <span class="poster-title">Head Over Heels</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Historical Drama/Captivating the King2.webp" alt="Poster 18">
+            <span class="poster-title">Captivating the King</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/Study Group3.webp" alt="Poster 19">
+            <span class="poster-title">Study Group</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="./lee/img/love your enemy3.webp" alt="Poster 20">
+            <span class="poster-title">love your enemy</span>
+          </a>
+        </li>
+      </ul>
+
+
+
+      <div class="pagination-search">
+        <div class="search-box">
+          <input type="text" placeholder="Search for a drama title..." />
+          <button type="button">Search</button>
+        </div>
+
+        <div class="page-numbers">
+          <a href="#" class="page active">1</a>
+          <a href="#" class="page">2</a>
+          <a href="#" class="page">3</a>
+          <a href="#" class="page">4</a>
+          <a href="#" class="page">5</a>
+          <span class="dots">...</span>
+          <a href="#" class="page">Next ›</a>
+        </div>
       </div>
-    </div>
+    </section>
 
-
+    <section class="last-section">
+      <h2>A NEW STORY BEGINS</h2>
+      <div class="slide inner">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><a href="#"><img src="./lee/img/Queen of Tears.webp" alt=""><span>Queen of
+                  Tears</span></a></div>
+            <div class="swiper-slide"><a href="#"><img src="./lee/img/Queen of Tears.webp" alt=""><span>Queen of
+                  Tears</span></a></div>
+            <div class="swiper-slide"><a href="#"><img src="./lee/img/Queen of Tears.webp" alt=""><span>Queen of
+                  Tears</span></a></div>
+            <div class="swiper-slide"><a href="#"><img src="./lee/img/Queen of Tears.webp" alt=""><span>Queen of
+                  Tears</span></a></div>
+            <div class="swiper-slide"><a href="#"><img src="./lee/img/Queen of Tears.webp" alt=""><span>Queen of
+                  Tears</span></a></div>
+            <div class="swiper-slide"><a href="#"><img src="./lee/img/Queen of Tears.webp" alt=""><span>Queen of
+                  Tears</span></a></div>
+            <div class="swiper-slide"><a href="#"><img src="./lee/img/Queen of Tears.webp" alt=""><span>Queen of
+                  Tears</span></a></div>
+            <div class="swiper-slide"><a href="#"><img src="./lee/img/Queen of Tears.webp" alt=""><span>Queen of
+                  Tears</span></a></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
       <div class="footer_inner">
