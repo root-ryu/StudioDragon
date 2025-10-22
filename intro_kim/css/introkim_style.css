@@ -227,6 +227,13 @@ h3.tit {
     background: #E5E5E5;
 }
 
+.ci .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .ci .bar {
     position: relative;
     top: 0;
@@ -246,11 +253,11 @@ h3.tit {
     flex: 1;
     width: 100%;
     justify-content: space-between;
-    height: 344px;
     gap: 40px;
 }
 
 .ci .cont .logo {
+    padding: 0 40px 0 40px;
     background: var(--WF);
     border-radius: 32px;
     width: 100%;
@@ -258,6 +265,7 @@ h3.tit {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 344px;
 }
 
 .ci .cont .logo img {
@@ -273,6 +281,7 @@ h3.tit {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 344px;
 }
 
 .ci .cont .symbol img {
@@ -287,6 +296,29 @@ h3.tit {
 
 .ci .cont .symbol em b {
     font-weight: 700;
+}
+
+.ci button {
+    width: 334px;
+    height: 82px;
+    background: var(--subBlue2);
+    border: 0;
+    color: var(--WF);
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 70px;
+    transition: .5s;
+}
+
+.ci button i {
+    width: 20px;
+    margin-left: 14px;
+}
+
+.ci button:hover {
+    background: var(--subBlue1);
 }
 
 /* .history */
