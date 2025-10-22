@@ -382,95 +382,98 @@ h3.tit {
     gap: 40px;
 }
 
-.v_and_m .cont div {
+.v_and_m .cont>div {
+    position: relative;
     width: 100%;
     height: 520px;
-}
-
-.v_and_m .cont .vision {
-    background-image: url(../assets/vision.jpg);
-    background-repeat: no-repeat;
+    border-radius: 32px;
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center;
+    overflow: hidden;
     color: var(--WF);
-    border-radius: 32px;
 }
 
-.v_and_m .cont .vision::after {
-    content: 'vision';
-    width: 140px;
-    height: 90px;
-    background: var(--subBlue2);
-    color: var(--WF);
-    font-size: 26px;
-    font-weight: 700;
+.v_and_m .vision {
+    background-image: url("../assets/vision.jpg");
 }
 
-
-.v_and_m .cont .vision .txt {
-    width: 1360px;
-    position: relative;
-    top: -437px;
+.v_and_m .vision::after {
+    content: "VISION";
+    position: absolute;
+    top: 0x;
     left: 80px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.v_and_m .cont .vision .txt p {
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 130%;
-    margin-bottom: 20px;
-}
-
-.v_and_m .cont .vision .txt em {
-    font-size: 20px;
-    line-height: 130%;
-    width: 408px;
-}
-
-
-.v_and_m .cont .mission {
-    background-image: url(../assets/mission.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: var(--WF);
-    border-radius: 32px;
-}
-
-.v_and_m .cont .mission::after {
-    content: 'mission';
     width: 140px;
-    height: 90px;
-    background: var(--subBlue2);
+    height: 60px;
     color: var(--WF);
-    font-size: 26px;
-    font-weight: 700;
-}
-
-.v_and_m .cont .mission .txt {
-    width: 1360px;
-    position: relative;
-    top: -450px;
-    left: 0px;
     display: flex;
+    align-items: flex-end;
     justify-content: center;
-    flex-direction: column;
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 20px;
+    border-radius: 0 0 8px 8px;
+    background: rgb(57, 65, 153, .7);
+    backdrop-filter: blur(10px);
 }
 
-.v_and_m .cont .mission .txt p {
+.v_and_m .mission {
+    background-image: url("../assets/mission.png");
+}
+
+.v_and_m .mission::after {
+    content: "MISSION";
+    position: absolute;
+    top: 0px;
+    left: 80px;
+    width: 140px;
+    height: 60px;
+    color: var(--WF);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 20px;
+    border-radius: 0 0 8px 8px;
+    background: rgb(57, 65, 153, .7);
+    backdrop-filter: blur(10px);
+}
+
+.v_and_m .txt {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.v_and_m .vision .txt {
+    left: 80px;
+    text-align: left;
+}
+
+.v_and_m .mission .txt {
+    right: 80px;
+    text-align: right;
+}
+
+.v_and_m .txt p {
     font-size: 40px;
     font-weight: 700;
     line-height: 130%;
-    text-align: right;
-    margin-bottom: 20px;
 }
 
-.v_and_m .cont .mission .txt em {
-    font-size: 20px;
+.v_and_m .txt em {
+    font-size: 16px;
     line-height: 130%;
-    width: 408px;
-    text-align: right;
-    float: right;
+    opacity: .9;
+}
+
+.v_and_m .cont>div::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.1));
 }
