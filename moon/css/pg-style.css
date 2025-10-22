@@ -204,6 +204,7 @@ section * {
   background-color: var(--Bcolor);
   color: var(--Wcolor);
 }
+
 .running-contest a.btn:hover::before {
   width: 100%;
 }
@@ -212,13 +213,6 @@ section * {
 .contest-winner {
   background: var(--Bcolor);
   padding: 200px 0;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* gap: 0px; */
-  /* align-items: flex-start; */
-  /* justify-content: flex-start; */
-  /* align-self: stretch; */
-  /* flex-shrink: 0; */
   overflow: hidden;
 }
 
@@ -226,12 +220,8 @@ section * {
   padding: 0 200px;
   display: flex;
   justify-content: center;
-  /* flex-direction: row; */
   gap: 115px;
-  /* align-items: center; */
-  /* flex-shrink: 0; */
   width: 100vw;
-  /* height: 100%; */
   position: relative;
 }
 
@@ -262,7 +252,6 @@ section * {
   color: var(--Wcolor);
   text-align: center;
   font: 300 30px/1 "Assistant-light", sans-serif;
-  ;
   text-transform: uppercase;
 }
 
@@ -272,179 +261,32 @@ section * {
 
 .contest-winner .video-content-box {
   padding: 0px 200px;
+  height: 1080px;
+}
+.contest-winner .video-wrap{
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
   justify-content: space-between;
-  flex-shrink: 0;
-  width: 100%;
-  height: 1080px;
-  position: relative;
-  z-index: 0;
-}
-
-.contest-winner .circles {
-  position: absolute;
+  gap: 20px;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-}
-
-.contest-winner .blur-1 {
-  background: radial-gradient(closest-side,
-      rgba(63, 41, 99, 1) 0%,
-      rgba(13, 3, 28, 0) 100%);
-  border-radius: 50%;
-  width: 725.88px;
-  height: 725.88px;
-  position: absolute;
-  left: -109.5px;
-  bottom: 51.56px;
-}
-
-.contest-winner .blur-2 {
-  background: radial-gradient(closest-side,
-      rgba(63, 41, 99, 1) 0%,
-      rgba(13, 3, 28, 0) 100%);
-  border-radius: 50%;
-  width: 893.87px;
-  height: 893.87px;
-  position: absolute;
-  right: -144.49px;
-  top: 0px;
-}
-
-.contest-winner iframe {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  border-radius: 20px;
   position: relative;
-  overflow: hidden;
-  width: 513px;
-  height: 912px;
-  aspect-ratio: 513/912;
   z-index: 0;
 }
 
-/* .contest-winner .video {
-  background: linear-gradient(180deg,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0) 17.788460850715637%,
-      rgba(0, 0, 0, 0) 83.8942289352417%,
-      rgba(0, 0, 0, 0.9) 100%);
-  border-radius: 20px;
+.contest-winner .video-wrap iframe {
   display: flex;
   flex-direction: row;
   gap: 10px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
   width: 513px;
   height: 912px;
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 513/912;
-} */
-
-/* .contest-winner .info-overlay {
-  padding: 32px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
-  align-self: stretch;
-  flex: 1;
-  position: relative;
+  aspect-ratio: 9/16;
+  z-index: 0;
 }
-
-.contest-winner .progress-section {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex: 1;
-  position: relative;
-}
-
-.contest-winner .progress-bar-wrap {
-  display: flex;
-  flex-direction: row;
-  gap: 14px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.contest-winner .icon-pause {
-  padding: 0px 2px 0px 2px;
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  width: 22px;
-  height: 22px;
-  position: relative;
-}
-
-.contest-winner .rectangle-50 {
-  background: rgba(240, 240, 240, 0.8);
-  border-radius: 1px;
-  align-self: stretch;
-  flex: 1;
-  position: relative;
-}
-
-.contest-winner .rectangle-51 {
-  background: rgba(240, 240, 240, 0.8);
-  border-radius: 1px;
-  align-self: stretch;
-  flex: 1;
-  position: relative;
-}
-
-.contest-winner .progress-bar {
-  background: rgba(240, 240, 240, 0.3);
-  border-radius: 19px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex: 1;
-  height: 6px;
-  position: relative;
-  overflow: hidden;
-}
-
-.contest-winner .bar {
-  background: rgba(240, 240, 240, 0.6);
-  border-radius: 19px;
-  flex: 1;
-  width: 156px;
-  position: relative;
-  overflow: hidden;
-}
-
-.contest-winner ._00-20 {
-  color: rgba(255, 255, 255, 0.8);
-  text-align: right;
-  font-family: var(--1920-l-26-font-family, "Assistant-Light", sans-serif);
-  font-size: var(--1920-l-26-font-size, 26px);
-  line-height: var(--1920-l-26-line-height, 100%);
-  font-weight: var(--1920-l-26-font-weight, 300);
-  position: relative;
-  align-self: stretch;
-} */
 
 .contest-winner .award-info {
   display: flex;
@@ -476,7 +318,6 @@ section * {
   align-items: flex-start;
   justify-content: flex-start;
   align-self: stretch;
-  flex-shrink: 0;
   position: relative;
 }
 
@@ -486,7 +327,6 @@ section * {
   gap: 8px;
   align-items: flex-start;
   justify-content: flex-start;
-  flex-shrink: 0;
   width: 687px;
   position: relative;
 }
@@ -529,7 +369,7 @@ section * {
   aspect-ratio: 119.79/141.05;
 }
 
-.contest-winner .silver2 {
+.contest-winner .popular {
   flex-shrink: 0;
   width: 119.79px;
   height: 169.79px;
@@ -538,4 +378,38 @@ section * {
   top: 54px;
   object-fit: cover;
   aspect-ratio: 119.79/169.79;
+}
+
+.contest-winner .video-wrap .circles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+}
+
+.contest-winner .video-wrap .circles .blur-1 {
+  background: radial-gradient(closest-side,
+      rgba(63, 41, 99, 1) 0%,
+      rgba(13, 3, 28, 0) 100%);
+  border-radius: 50%;
+  width: 725.88px;
+  height: 725.88px;
+  position: absolute;
+  left: -109.5px;
+  bottom: 51.56px;
+}
+
+.contest-winner .video-wrap .circles .blur-2 {
+  background: radial-gradient(closest-side,
+      rgba(63, 41, 99, 1) 0%,
+      rgba(13, 3, 28, 0) 100%);
+  border-radius: 50%;
+  width: 893.87px;
+  height: 893.87px;
+  position: absolute;
+  right: -144.49px;
+  top: 0px;
 }
