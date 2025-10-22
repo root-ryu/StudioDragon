@@ -391,7 +391,7 @@ h3.tit {
 
 .history .cont_hori_swipe ul li.y_group>ul>li svg {
     position: absolute;
-    left: 50%;
+    left: 10px;
     top: calc(var(--tline) - 11.5px);
     /* 23px 아이콘의 반(=11.5px)만큼 위로 */
     transform: translateX(-50%);
