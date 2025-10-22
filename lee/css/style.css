@@ -48,7 +48,6 @@ main {
   line-height: clamp(4.688rem, 3.349vw + 3.821rem, 6.5rem);
   margin: pxToRem(100) 0;
   text-align: center;
-
   opacity: 0.1;
   position: absolute;
   left: 50%;
@@ -169,6 +168,7 @@ main {
     width: 100%;
   }
 }
+
 
 .container {
 }
