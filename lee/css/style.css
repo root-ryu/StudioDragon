@@ -18,9 +18,12 @@ body {
 /*    padding: 0 0 130; 
 } */
 
-/* 
+
+
+
+
 @function pxToRem($pixel) {
-  @return ($pixel / 16) * 1rem;
+  @return $pixel / 16 + rem;
 }
 
 :root {
@@ -30,7 +33,7 @@ body {
 }
 
 body {
-  background-color: #0D031C;
+  background-color: var(--color-black);
   color: var(--color-white);
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
@@ -45,6 +48,7 @@ main {
   line-height: clamp(4.688rem, 3.349vw + 3.821rem, 6.5rem);
   margin: pxToRem(100) 0;
   text-align: center;
+
   opacity: 0.1;
   position: absolute;
   left: 50%;
@@ -52,8 +56,6 @@ main {
   top: 50%;
   transform: translate3d(-50%, -50%, -2000px);
   white-space: nowrap;
-  font-size: 300px;
-   line-height: 1.2;
 }
 
 .zoom-container {
@@ -62,7 +64,6 @@ main {
   position: relative;
   perspective: 100svh;
   width: 100vw;
-  margin-top: 350px;
 }
 
 .zoom-item {
@@ -166,17 +167,18 @@ main {
 
   img {
     width: 100%;
-    transition: transform 0.3s ease;
   }
 }
 
 .container {
 }
 
- */
 
 
-/* .tit_eng {
+
+
+
+ .tit_eng {
   color: var(--maincolor-main-1000, #bfa473);
   text-align: left;
   font-family: var(--1920-56-font-family, "Assistant-Bold", sans-serif);
@@ -190,26 +192,19 @@ main {
   align-items: center;
   justify-content: center; 
   margin: 0;
-  right: 80px;
-} */
-
-
-
-
+  right: 80px;}
 
 
 .sw_img {
   display: flex;
-  flex-wrap: wrap;        /* 화면이 작아지면 줄 바꿈 */
-  gap: 95px;              /* 이미지 간격 */
-  justify-content: center; /* 가운데 정렬 */
-
-}
+  flex-wrap: wrap;      
+  gap: 95px;          
+  justify-content: center; } 
 
 .sw_img img {
-  width: 100%;       /* 부모 컨테이너 대비 비율 */
-  max-width: 400px;  /* 최대 가로 크기 */
-  min-width: 300px;  /* 최소 가로 크기 */
+  width: 100%;       
+  max-width: 400px; 
+  min-width: 300px; 
   height: auto;
   border-radius: 18px;
   transition: transform 0.6s ease, box-shadow 0.6s ease;
@@ -226,9 +221,8 @@ main {
   font-size: 24px; 
   text-align: center; 
   color:#ffffff;
-/*   margin-bottom: 40px;   /* 제목과 이미지 사이 여백 */
-cursor:pointer;
-}
+  margin-bottom: 40px;   /* 제목과 이미지 사이 여백 */
+} 
 
 .on-alr{
   color: var(--maincolor-main-1000, #bfa473);
@@ -244,8 +238,8 @@ cursor:pointer;
   align-items: center;
   justify-content: flex-start;
   margin: 0;
-  margin-top: 200px; /* 온에어 위에간격 */
-  margin-bottom: 40px; /* 온에어 아래간격 */
+  margin-top: 200px; 
+  margin-bottom: 40px; 
   margin-left: 210px;
 }
 
