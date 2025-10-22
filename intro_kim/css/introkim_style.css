@@ -359,9 +359,21 @@ h3.tit {
     background-image: url(../assets/vision.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     color: var(--WF);
     border-radius: 32px;
 }
+
+.v_and_m .cont .vision::after {
+    content: 'vision';
+    width: 140px;
+    height: 90px;
+    background: var(--subBlue2);
+    color: var(--WF);
+    font-size: 26px;
+    font-weight: 700;
+}
+
 
 .v_and_m .cont .vision .txt {
     width: 1360px;
@@ -386,12 +398,23 @@ h3.tit {
     width: 408px;
 }
 
+
 .v_and_m .cont .mission {
     background-image: url(../assets/mission.png);
     background-repeat: no-repeat;
     background-size: cover;
     color: var(--WF);
     border-radius: 32px;
+}
+
+.v_and_m .cont .mission::after {
+    content: 'mission';
+    width: 140px;
+    height: 90px;
+    background: var(--subBlue2);
+    color: var(--WF);
+    font-size: 26px;
+    font-weight: 700;
 }
 
 .v_and_m .cont .mission .txt {
@@ -411,7 +434,6 @@ h3.tit {
     text-align: right;
     margin-bottom: 20px;
 }
-
 
 .v_and_m .cont .mission .txt em {
     font-size: 20px;
