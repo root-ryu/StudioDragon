@@ -398,6 +398,7 @@ h3.tit {
     z-index: 2;
     /* 라인보다 위 */
     display: block;
+    position: absolute;
 }
 
 
@@ -409,6 +410,20 @@ h3.tit {
     margin-bottom: 24px;
     text-align: left;
     /* 시안처럼 연도는 왼쪽 정렬이 자연스럽다면 */
+    position: absolute;
+    left: 50%;
+    top: calc(var(--tline) - 11.5px);
+    /* svg 중심선 기준 */
+    transform: translate(-50%, calc(-100% - 10px));
+    /* 자기 높이만큼 위 + 여백 10px */
+    margin: 0;
+    /* 기존 margin 제거 */
+    text-align: center;
+    z-index: 3;
+    /* svg/라인보다 위 */
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--MainColor-400);
 }
 
 
