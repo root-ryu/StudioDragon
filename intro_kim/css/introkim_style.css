@@ -338,6 +338,10 @@ h3.tit {
 
 /* .v_and_m */
 
+.v_and_m {
+    background: var(--WF);
+}
+
 .v_and_m .cont {
     display: flex;
     flex-direction: column;
