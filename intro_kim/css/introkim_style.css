@@ -451,7 +451,13 @@ h3.tit {
 
 .v_and_m .vision {
     background-image: url("../assets/vision.jpg");
+    transition: .8s;
 }
+
+.v_and_m .vision:hover {
+    transform: scale(2);
+}
+
 
 .v_and_m .vision::after {
     content: "VISION";
@@ -474,6 +480,11 @@ h3.tit {
 
 .v_and_m .mission {
     background-image: url("../assets/mission.png");
+    transition: .8s;
+}
+
+.v_and_m .mission:hover {
+    transform: scale(2);
 }
 
 .v_and_m .mission::after {
