@@ -393,7 +393,6 @@ h3.tit {
     margin-bottom: 24px;
 }
 
-/* 6) 연도(years)는 svg 위가 아닌 시작 지점에서 자연스럽게 */
 .history .cont_hori_swipe ul li h5.years {
     text-align: center;
     margin-bottom: 24px;
