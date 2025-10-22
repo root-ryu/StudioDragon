@@ -267,7 +267,7 @@ h3.tit {
     padding: 0 40px 0 40px;
     background: var(--WF);
     border-radius: 32px;
-    width: 100%;
+    width: 738px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -283,7 +283,7 @@ h3.tit {
 .ci .cont .symbol {
     background: var(--WF);
     border-radius: 32px;
-    width: 100%;
+    width: 738px;
     display: flex;
     flex-direction: column;
     justify-content: center;
