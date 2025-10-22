@@ -152,7 +152,7 @@ function counter(targetDateString, daysEl, hoursEl, minutesEl, secondsEl) {
 
   timer = setInterval(count, 1000);
   count(); // Call count immediately to avoid initial delay
-}
+};
 
 const countElements = document.querySelectorAll('.running-contest .counter .countbox span');
 if (countElements.length === 4) {
@@ -160,4 +160,76 @@ if (countElements.length === 4) {
   /* 날짜 변경이 필요하면 위에 날짜를 변경 */
 }
 
+/* 갤러리_popular img 스와이퍼
+   사용법(간단):
+   - 슬라이더 컨테이너에 `.popular_img_slide` 클래스를 유지하세요.
+   - 페이지에 여러 스와이퍼가 있을 경우 pagination 엘리먼트 선택자를 슬라이더 내부로 제한하세요.
+   - 옵션 수정 시 아래 주석을 참고해 값을 변경하세요.
+*/
+(function(){
+  // 슬라이더 컨테이너를 검색합니다. 없으면 종료합니다.
+  var container = document.querySelector('.popular_img_slide');
+  if(!container) return; // 슬라이더가 없으면 초기화 중단
 
+  // 슬라이더 내부에 있는 pagination 요소만 사용하도록 범위를 좁힙니다.
+  var pagination = container.parentElement.querySelector('.swiper-pagination');
+
+  // Swiper 인스턴스 생성
+  var popularImgSwiper = new Swiper(container, {
+  // 시각 효과: coverflow (회전, 깊이감을 줌)
+  effect: 'coverflow',
+  loop: true,           // 무한 루프
+  grabCursor: true,     // 커서가 잡는 모양
+  centeredSlides: true, // 가운데 슬라이드 중심
+  slidesPerView: 1,     // 기본 한 장
+  coverflowEffect: {
+    rotate: 40,   // 회전 각도
+    stretch: 0,   // 늘림
+    depth: 500,   // 깊이
+    modifier: 0.6,  // 효과 강도
+    slideShadows: true
+  },
+  autoplay: {
+    delay: 2500, //2.5초 = 2500
+    disableOnInteraction: false,
+  },
+  // pagination을 명확히 지정 (없으면 생략)
+  pagination: pagination ? { el: pagination, clickable: true } : undefined,
+  // 반응형 브레이크포인트
+  breakpoints: {
+    320: { slidesPerView: 1.5 },
+    580: { slidesPerView: 2 },
+    1200: { slidesPerView: 3 },
+    1400: { slidesPerView: 3 }
+  }
+  });
+
+  // 콘솔에 상태 로그 (디버깅용). 배포 시 주석 처리 가능
+  console.log('popularImgSwiper 초기화 됨', popularImgSwiper);
+})();
+
+// 갤러리_new img swiper
+(function(){
+  // 슬라이더 컨테이너를 검색합니다. 없으면 종료합니다.
+  var container = document.querySelector('.new_img_slide');
+  if(!container) return; // 슬라이더가 없으면 초기화 중단
+
+  // 슬라이더 내부에 있는 pagination 요소만 사용하도록 범위를 좁힙니다.
+  var pagination = container.parentElement.querySelector('.swiper-pagination');
+
+  // Swiper 인스턴스 생성
+  var newImgSwiper = new Swiper(container, {
+  effect: 'slide',
+  loop: true,           // 무한 루프
+  grabCursor: true,     // 커서가 잡는 모양
+  autoplay: {
+    delay: 2500, //2.5초 = 2500
+    disableOnInteraction: false,
+  },
+  // pagination을 명확히 지정 (없으면 생략)
+  pagination: pagination ? { el: pagination, clickable: true } : undefined,
+  });
+
+  // 콘솔에 상태 로그 (디버깅용). 배포 시 주석 처리 가능
+  console.log('newImgSwiper 초기화 됨', newImgSwiper);
+})();
