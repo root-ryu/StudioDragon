@@ -369,7 +369,7 @@ ul.poster-list li {
 
 .poster-list img {
   width: 268px;
-  height: 366px;
+  height: 390px;
   border-radius: 5px;
   filter: brightness(0.9); /* 이미지어둡게 조절 */
   cursor: pointer;
