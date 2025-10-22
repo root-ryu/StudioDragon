@@ -455,7 +455,7 @@ h3.tit {
 }
 
 .v_and_m .vision:hover {
-    transform: scale(2);
+    transform: scale(1.2);
 }
 
 
@@ -484,7 +484,7 @@ h3.tit {
 }
 
 .v_and_m .mission:hover {
-    transform: scale(2);
+    transform: scale(1.2);
 }
 
 .v_and_m .mission::after {
