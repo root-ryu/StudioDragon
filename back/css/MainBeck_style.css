@@ -2,10 +2,11 @@
 
 body {
     background: var(--Bcolor);
+    transition: background-color 0.6s ease;
 }
-main {
-    height: 10000px;
-}
+/* main {
+    height: 10500px;
+} */
 .circlebody {
     position: relative;
     width: 100%;
@@ -233,51 +234,1114 @@ main {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.onair .ONcon .ONcontents01 .img,
-.onair .ONcon .ONcontents03 .img {
-    width: 600px;
-}
-
-.onair .ONcon .ONcontents01 .ONtxtbox,
-.onair .ONcon .ONcontents03 .ONtxtbox{
-    display: none;
-}
-.onair .ONcon .ONcontents02 {
-    height: 884px;
+/* 공통 콘텐츠 스타일 */
+.onair .ONcon > div {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-.onair .ONcon .ONcontents02 .img {
-    width: 600px;
-    border-radius: 50px;
-}
-.onair .ONcon .ONcontents02 .ONtxtbox {
-    width: 493px;
-    height: 194px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    gap: 40px;
     align-items: center;
+    position: relative;
 }
-.onair .ONcon .ONcontents02 .ONtxtbox h3 {
+
+/* 모든 콘텐츠의 이미지 기본 스타일 */
+.onair .ONcon > div img {
+    width: 600px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 50px;
+    background: var(--Wcolor);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.7;
+    transform: scale(0.95);
+}
+
+/* 모든 콘텐츠의 텍스트박스 기본 스타일 (비활성) */
+.onair .ONcon > div .ONtxtbox {
+    width: 493px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(-20px);
+}
+
+/* 가운데 활성 콘텐츠 (active 클래스) */
+.onair .ONcon > div.active img {
+    height: 650px;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.onair .ONcon > div.active .ONtxtbox {
+    opacity: 1;
+    visibility: visible;
+    max-height: 300px;
+    transform: translateY(0);
+}
+
+/* 제목과 OTT 영역 */
+.onair .ONcon > div .ONtxtbox h3 {
     font-size: 40px;
+    font-weight: 700;
     color: var(--Wcolor);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 8px;
 }
-.onair .ONcon .ONcontents02 .ONtxtbox ul {
+
+/* OTT 플랫폼 영역 */
+.onair .ONcon > div .ONtxtbox ul {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 17px;
 }
-.onair .ONcon .ONcontents02 .ONtxtbox ul .bar {
+.onair .ONcon > div .ONtxtbox ul .bar {
     height: 1px;    
     width: 191px;
     background: var(--Wcolor);
 }
-.onair .ONcon .ONcontents02 .ONtxtbox ul>li>P {
+.onair .ONcon > div .ONtxtbox ul > li > p {
     font-size: 30px;
+    font-weight: 300;
     color: var(--Wcolor);
+    text-transform: uppercase;
+}
+
+/* READ MORE 버튼 */
+.onair .ONcon > div .ONtxtbox button {
+    padding: 23px 68px;
+    background: transparent;
+    border: 1px solid var(--Wcolor);
+    border-radius: 40px;
+    color: var(--Wcolor);
+    font-size: 26px;
+    font-weight: 400;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+.onair .ONcon > div .ONtxtbox button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+.onair .ONcon > div .ONtxtbox button img {
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+/* BIG TITLE 섹션 */
+.GigTit {
+    width: 100%;
+    margin-top: 200px;
+    padding-top: 200px;
+    padding-bottom: 100px;
+    position: relative;
+    transition: color 0.6s ease;
+}
+
+.GigTit .BGtit {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.GigTit .BGtit h3 {
+    font-size: 300px;
+    font-weight: 700;
+    color: var(--Wcolor);
+    text-transform: uppercase;
+    line-height: 1;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.GigTit .BGtit h3:nth-child(1) {
+    text-align: left;
+}
+
+.GigTit .BGtit h3:nth-child(2) {
+    text-align: center;
+}
+
+.GigTit .BGtit h3:nth-child(3) {
+    text-align: right;
+    margin-bottom: 40px;
+}
+
+.GigTit .BGtit span {
+    font-size: 60px;
+    font-weight: 300;
+    color: var(--Wcolor);
+    line-height: 1.3;
+    display: block;
+    margin-top: 20px;
+}
+
+/* BEYOND DRAMA */
+.BeyondDrama {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.BeyondDrama .inner .top {
+    width: 500px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.BeyondDrama .inner .top h2 {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--Bcolor);
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+.BeyondDrama .inner .top button {
+    width: 111px;
+    height: 34px;
+    background: transparent;
+    border: 1px solid var(--Bcolor);
+    border-radius: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.BeyondDrama .inner .top button span {
+    color: var(--Bcolor);
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+/* 콘텐츠 전체 컨테이너 */
+.BeyondDrama .BDcontents {
+    width: 100%;
+    position: relative;
+    height: 1300px; /* 전체 높이 고정 */
+}
+
+/* 상단 3개 카드 */
+.BeyondDrama .BDconTop {
+    display: flex;
+    gap: 26px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* 하단 3개 카드 */
+.BeyondDrama .BDconBottom {
+    display: flex;
+    gap: 26px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    align-items: flex-end;
+}
+
+/* 카드 공통 스타일 */
+.BeyondDrama .BDconTop > div,
+.BeyondDrama .BDconBottom > div {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #f5f5f5;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.BeyondDrama .BDconTop > div:hover,
+.BeyondDrama .BDconBottom > div:hover {
+    transform: translateY(-10px);
+}
+
+/* 상단 카드들 개별 높이 */
+.BeyondDrama .BDsection01 {
+    height: 708px;
+}
+
+.BeyondDrama .BDsection02 {
+    height: 436px;
+}
+
+.BeyondDrama .BDsection03 {
+    height: 652px;
+}
+
+/* 하단 카드들 개별 높이 */
+.BeyondDrama .BDsection08 {
+    height: 511px;
+}
+
+.BeyondDrama .BDsection09 {
+    height: 386px;
+}
+
+.BeyondDrama .BDsection10 {
+    height: 567px;
+}
+
+/* 이미지 스타일 */
+.BeyondDrama .BDconTop > div img,
+.BeyondDrama .BDconBottom > div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* BDsection03 이미지 확대 (인물 포커스) */
+.BeyondDrama .BDsection03 img {
+    transform: scale(1.5);
+    object-position: center top;
+}
+
+/* VIEWER'S PLAYGROUND */
+.ViewersPlayground {
+    width: 100%;
+    padding-top: 200px;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.ViewersPlayground .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.ViewersPlayground .inner .top {
+    width: 586px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0;
+}
+
+.ViewersPlayground .inner .top h2 {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--Bcolor);
+    text-transform: uppercase;
+    line-height: 1.3;
+    text-align: left;
+}
+
+.ViewersPlayground .inner .top button {
+    display: none;
+}
+
+/* 콘텐츠 컨테이너 */
+.ViewersPlayground .VPcontents {
+    width: 100%;
+    max-width: 1493px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    margin: 0 auto;
+}
+
+/* 섹션 1 - 왼쪽 이미지, 오른쪽 텍스트 */
+.ViewersPlayground .VPcon01 {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.ViewersPlayground .VPcon01 img {
+    width: 997px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 0 200px 200px 0;
+    background: #5E6EFF;
+    flex-shrink: 0;
+    opacity: 0.5;
+    filter: saturate(1);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.ViewersPlayground .VPcon01:hover img {
+    opacity: 1;
+    filter: saturate(1.2);
+}
+
+.ViewersPlayground .VPcon01 .VPcon_txt {
+    width: 446px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    flex-shrink: 0;
+}
+
+/* 섹션 2 - 왼쪽 텍스트, 오른쪽 이미지 */
+.ViewersPlayground .VPcon02 {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.ViewersPlayground .VPcon02 .VPcon_txt {
+    width: 346px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    text-align: right;
+    align-items: flex-end;
+    order: 1;
+    flex-shrink: 0;
+}
+
+.ViewersPlayground .VPcon02 img {
+    width: 1001px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 200px 0 0 200px;
+    background: #F7A946;
+    order: 2;
+    flex-shrink: 0;
+    opacity: 0.5;
+    filter: saturate(1);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.ViewersPlayground .VPcon02:hover img {
+    opacity: 1;
+    filter: saturate(1.2);
+}
+
+/* 섹션 3 - 왼쪽 이미지, 오른쪽 텍스트 */
+.ViewersPlayground .VPcon03 {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.ViewersPlayground .VPcon03 img {
+    width: 996px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 0 200px 200px 0;
+    background: #FFFFFF;
+    flex-shrink: 0;
+    opacity: 0.5;
+    filter: saturate(1);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.ViewersPlayground .VPcon03:hover img {
+    opacity: 1;
+    filter: saturate(1.2);
+}
+
+.ViewersPlayground .VPcon03 .VPcon_txt {
+    width: 398px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    flex-shrink: 0;
+}
+
+/* 타이틀 영역 */
+.ViewersPlayground .VPcon_tit {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.ViewersPlayground .VPcon_tit h3 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #222222;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0;
+}
+
+.ViewersPlayground .VPcon_tit span {
+    font-size: 30px;
+    font-weight: 300;
+    color: var(--Bcolor);
+    line-height: 1;
+    margin-top: 5px;
+}
+
+/* 본문 텍스트 */
+.ViewersPlayground .VPcon_txt p {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--Bcolor);
+    line-height: 1;
+    margin: 0;
+}
+
+/* 섹션 2의 텍스트 정렬 */
+.ViewersPlayground .VPcon02 .VPcon_tit h3,
+.ViewersPlayground .VPcon02 .VPcon_tit span {
+    text-align: right;
+    width: 100%;
+}
+
+.ViewersPlayground .VPcon02 .VPcon_txt p {
+    text-align: right;
+}
+
+/* EVENT */
+.event {
+    width: 100%;
+    padding-top: 200px;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.event .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.event .inner .top {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 0;
+}
+
+.event .inner .top h2 {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--Bcolor);
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+/* 콘텐츠 컨테이너 */
+.event .Econtents {
+    width: 100%;
+    height: 765px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+
+/* 모든 원 공통 스타일 */
+.event .Econ01,
+.event .Econ02,
+.event .Econ03 {
+    width: 489px;
+    height: 489px;
+    border-radius: 50%;
+    background: var(--Bcolor);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    opacity: 0.7;
+    filter: saturate(1);
+    animation: float 6s ease-in-out infinite;
+}
+
+/* 둥둥 떠다니는 애니메이션 */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* 각 원마다 다른 타이밍으로 떠다니기 */
+.event .Econ01 {
+    animation: float 6s ease-in-out infinite;
+}
+
+.event .Econ02 {
+    animation: float 7s ease-in-out infinite 0.5s;
+}
+
+.event .Econ03 {
+    animation: float 6.5s ease-in-out infinite 1s;
+}
+
+/* 호버 시 선택된 원 확대 */
+.event .Econ01:hover,
+.event .Econ03:hover {
+    width: 630px;
+    height: 630px;
+    opacity: 1;
+    filter: saturate(1.3);
+    z-index: 10;
+    transform: translateY(80px);
+    animation: none;
+}
+
+.event .Econ02:hover {
+    width: 630px;
+    height: 630px;
+    opacity: 1;
+    filter: saturate(1.3);
+    z-index: 10;
+    transform: translateY(-150px);
+    animation: none;
+}
+
+/* 호버 시 다른 원들 더 어둡게 */
+.event .Econtents:has(.Econ01:hover) .Econ02,
+.event .Econtents:has(.Econ01:hover) .Econ03,
+.event .Econtents:has(.Econ02:hover) .Econ01,
+.event .Econtents:has(.Econ02:hover) .Econ03,
+.event .Econtents:has(.Econ03:hover) .Econ01,
+.event .Econtents:has(.Econ03:hover) .Econ02 {
+    opacity: 0.7;
+    filter: saturate(0.8);
+}
+
+/* 왼쪽 원 (Econ01) */
+.event .Econ01 img {
+    position: absolute;
+    width: 150%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    left: -25%;
+    transition: opacity 0.5s ease;
+}
+
+.event .Econ01:hover img {
+    opacity: 0.9;
+}
+
+.event .Econ01 h3 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+.event .Econ01:hover h3 {
+    font-size: 40px;
+}
+
+/* 중앙 원 (Econ02) */
+.event .Econ02 img {
+    position: absolute;
+    width: 160%;
+    height: 106%;
+    object-fit: cover;
+    opacity: 0.9;
+    left: -29%;
+    top: -3%;
+    transition: opacity 0.5s ease;
+}
+
+.event .Econ02 h3 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+.event .Econ02:hover h3 {
+    font-size: 40px;
+}
+
+/* 오른쪽 원 (Econ03) */
+.event .Econ03 img {
+    position: absolute;
+    width: 150%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    left: -25%;
+    transition: opacity 0.5s ease;
+}
+
+.event .Econ03:hover img {
+    opacity: 0.9;
+}
+
+.event .Econ03 h3 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+.event .Econ03:hover h3 {
+    font-size: 40px;
+}
+
+/* 정보 카드 스타일 */
+.event .event-info-card {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(to top, rgba(13, 3, 28, 0.95) 0%, rgba(13, 3, 28, 0.85) 50%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 40px 30px;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 3;
+    border-radius: 0 0 50% 50%;
+}
+
+/* 호버 시 정보 카드 슬라이드업 */
+.event .Econ01:hover .event-info-card,
+.event .Econ02:hover .event-info-card,
+.event .Econ03:hover .event-info-card {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* 호버 시 제목 위로 이동 */
+.event .Econ01:hover h3,
+.event .Econ02:hover h3,
+.event .Econ03:hover h3 {
+    transform: translateY(-200px);
+}
+
+/* 카드 내용 */
+.event .card-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.2s;
+}
+
+.event .Econ01:hover .card-content,
+.event .Econ02:hover .card-content,
+.event .Econ03:hover .card-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 날짜 */
+.event .event-date {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1;
+    margin: 0;
+}
+
+/* 장소 */
+.event .event-location {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1;
+    margin: 0;
+}
+
+/* 설명 */
+.event .event-desc {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    line-height: 1.4;
+    margin: 8px 0;
+    max-width: 80%;
+}
+
+/* 버튼 */
+.event .event-btn {
+    margin-top: 10px;
+    padding: 12px 30px;
+    background: #FFFFFF;
+    color: var(--Bcolor);
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.event .event-btn:hover {
+    background: var(--Wcolor);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* LATEST NEWS */
+.LatestNews {
+    width: 100%;
+    padding: 100px 0 200px;
+    position: relative;
+}
+
+.LatestNews .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.LatestNews .inner .top h3 {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--Bcolor);
+    text-transform: uppercase;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* 뉴스 컨테이너 */
+.LatestNews .LNcontents {
+    width: 1521px;
+    background: var(--Bcolor);
+    border-radius: 0 50px 50px 50px;
+    padding: 40px 60px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+    height: 856px;
+}
+
+/* 개별 뉴스 아이템 */
+.LatestNews .LNcon01,
+.LatestNews .LNcon02,
+.LatestNews .LNcon03 {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    width: calc(100% - 120px);
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+/* 활성화된 뉴스 */
+.LatestNews .LNcon01.active,
+.LatestNews .LNcon02.active,
+.LatestNews .LNcon03.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 상단 텍스트 영역 (타이틀 + 서브텍스트 한 줄) */
+.LatestNews .LNcon01 > div:first-child,
+.LatestNews .LNcon02 > div:first-child,
+.LatestNews .LNcon03 > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 56px;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.LatestNews .LNcon01.active > div:first-child,
+.LatestNews .LNcon02.active > div:first-child,
+.LatestNews .LNcon03.active > div:first-child {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 0s;
+}
+
+/* 타이틀 */
+.LatestNews .LNcon_tit {
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--Wcolor);
+    text-transform: uppercase;
+    line-height: 1.3;
+    margin: 0;
+    flex: 1;
+    text-align: center;
+    order: 2;
+}
+
+/* 서브 텍스트 (출처와 날짜) */
+.LatestNews .LNcon_subtxt {
+    display: contents;
+}
+
+.LatestNews .LNcon_subtxt span:first-child {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--Wcolor);
+    text-transform: uppercase;
+    line-height: 1;
+    flex-shrink: 0;
+    order: 1;
+}
+
+.LatestNews .LNcon_subtxt span:last-child {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--Wcolor);
+    text-transform: uppercase;
+    line-height: 1;
+    flex-shrink: 0;
+    order: 3;
+}
+
+/* 이미지 */
+.LatestNews .LNcon01 img,
+.LatestNews .LNcon02 img,
+.LatestNews .LNcon03 img {
+    width: 1195px;
+    height: 636px;
+    object-fit: cover;
+    align-self: center;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.LatestNews .LNcon01.active img,
+.LatestNews .LNcon02.active img,
+.LatestNews .LNcon03.active img {
+    transform: translateY(0);
+    opacity: 0.5;
+    transition-delay: 0.3s;
+}
+
+/* 이미지 호버 */
+.LatestNews .LNcon01.active img:hover,
+.LatestNews .LNcon02.active img:hover,
+.LatestNews .LNcon03.active img:hover {
+    opacity: 1;
+}
+
+/* 네비게이션 인디케이터 (선택사항) */
+.LatestNews .news-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.LatestNews .news-indicator {
+    width: 40px;
+    height: 4px;
+    background: rgba(245, 245, 245, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.LatestNews .news-indicator.active {
+    background: var(--Wcolor);
+}
+
+/* 그라데이션 오버레이와 텍스트 박스 */
+.BeyondDrama .BDconTop > div > div[class$="_txt"],
+.BeyondDrama .BDconBottom > div > div[class$="_txt"] {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 361px;
+    background: linear-gradient(to bottom, rgba(245, 245, 245, 0) 0%, #f5f5f5 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* 호버 시 그라데이션과 텍스트 표시 */
+.BeyondDrama .BDconTop > div:hover > div[class$="_txt"],
+.BeyondDrama .BDconBottom > div:hover > div[class$="_txt"] {
+    opacity: 1;
+}
+
+/* 개별 텍스트 박스 위치 조정 */
+.BeyondDrama .BDsection01_txt {
+    bottom: 0;
+}
+
+.BeyondDrama .BDsection02_txt {
+    bottom: 0;
+}
+
+.BeyondDrama .BDsection03_txt {
+    bottom: 0;
+}
+
+.BeyondDrama .BDsection08_txt {
+    bottom: 0;
+}
+
+.BeyondDrama .BDsection09_txt {
+    bottom: 0;
+}
+
+.BeyondDrama .BDsection10_txt {
+    bottom: 0;
+}
+
+/* 텍스트 스타일 */
+.BeyondDrama .BDconTop h3,
+.BeyondDrama .BDconBottom h3 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--Bcolor);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.BeyondDrama .BDconTop span,
+.BeyondDrama .BDconBottom span {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--Bcolor);
+    line-height: 1;
+}
+
+/* 중앙 버튼 영역 */
+.BeyondDrama .BDconMiddle {
+    position: absolute;
+    width: 480px;
+    height: 380px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    z-index: 10;
+}
+
+/* 버튼 공통 스타일 */
+.BeyondDrama .BDconMiddle > div {
+    background: var(--Bcolor);
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+}
+
+.BeyondDrama .BDconMiddle > div:hover {
+    background: rgba(13, 3, 28, 0.8);
+    transform: scale(1.05);
+}
+
+.BeyondDrama .BDconMiddle h3 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #f5f5f5;
+    text-align: center;
+    line-height: 1;
+    margin: 0;
+}
+
+/* 개별 버튼 위치 및 크기 */
+.BeyondDrama .BDsection04 {
+    width: 380px;
+    height: 92px;
+    background: rgba(13, 3, 28, 0.5);
+    top: 9px;
+    left: 47px;
+    transform: rotate(-5deg);
+}
+
+.BeyondDrama .BDsection05 {
+    width: 380px;
+    height: 92px;
+    top: 118px;
+    left: 54px;
+}
+
+.BeyondDrama .BDsection06 {
+    width: 380px;
+    height: 92px;
+    background: rgba(13, 3, 28, 0.5);
+    top: 188px;
+    left: 47px;
+    transform: rotate(5deg);
+}
+
+.BeyondDrama .BDsection07 {
+    width: 480px;
+    height: 92px;
+    top: 287px;
+    left: 0;
 }
