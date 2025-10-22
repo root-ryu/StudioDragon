@@ -340,15 +340,62 @@ h3.tit {
     flex: 1;
 }
 
-.history .cont_hori_swipe ul li {
-    width: 354px;
-    margin-right: 90px;
+.history .cont_hori_swipe ul li.y_group>ul {
+    display: flex;
+    gap: 90px;
+    align-items: flex-start;
+    position: relative;
+
 }
+
+
+.history .cont_hori_swipe ul>li.y_group>ul>li {
+    width: 354px;
+    position: relative;
+    padding-top: 40px;
+    /* svg와 라인이 들어갈 공간 확보 */
+}
+
+/* 4) svg를 기준으로 3px 라인을 li 내부에서 오른쪽으로 그리기 */
+.history .cont_hori_swipe ul li.y_group>ul>li::after {
+    content: "";
+    position: absolute;
+    top: 53px;
+    /* svg의 vertical center값에 맞춰 조절 */
+    left: 50%;
+    transform: translateX(0);
+    width: calc(100% + 90px);
+    /* gap만큼 라인 연장 */
+    height: 3px;
+    background: #BD4033;
+    z-index: 1;
+}
+
+.history .cont_hori_swipe ul li.y_group>ul>li:last-child::after {
+    display: none;
+}
+
+
+.history .cont_hori_swipe ul li.y_group>ul>li svg {
+    display: block;
+    margin: 0 auto;
+    /* svg를 수평 중심으로 */
+    position: relative;
+    z-index: 2;
+    /* 라인보다 위 */
+}
+
 
 .history .cont_hori_swipe ul li h5.years {
     font-size: 56px;
     font-weight: 700;
     color: var(--MainColor-400);
+    margin-bottom: 24px;
+}
+
+/* 6) 연도(years)는 svg 위가 아닌 시작 지점에서 자연스럽게 */
+.history .cont_hori_swipe ul li h5.years {
+    text-align: center;
     margin-bottom: 24px;
 }
 
@@ -374,6 +421,7 @@ h3.tit {
     color: var(--Bcolor);
     line-height: 130%;
 }
+
 
 /* .v_and_m */
 

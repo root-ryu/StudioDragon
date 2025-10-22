@@ -31,4 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
+    var historybarSwiper = new Swiper(".history .cont_hori_swipe .scroll_bar", {
+        scrollbar: {
+            el: ".swiper-scrollbar",
+            hide: true,
+        },
+    });
+
 })
