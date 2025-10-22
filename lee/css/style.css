@@ -50,7 +50,7 @@ main {
 
 .text_reveal_section {
   min-height: 100vh;
-  background-color: #000;
+  background-color: #ffffff; /* lf you're  */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,6 +84,7 @@ main {
   top: 50%;
   transform: translate3d(-50%, -50%, -2000px);
   white-space: nowrap;
+  line-height: 1.5;
 }
 
 .zoom_container {
@@ -225,7 +226,6 @@ main {
  
 
 
-
 .sw_img {
   display: flex;
   flex-wrap: wrap;
@@ -323,6 +323,14 @@ section h2 {
   text-align: center;
   border: 1px solid #ccc;
   background: transparent; /* 배경 투명 */
+  appearance: none; /* 브라우저 기본 화살표 제거 */
+}
+
+.Filter::after{ right: 50px; }
+
+.Filter option {
+  color: #ffffff; /* 옵션 텍스트 색 */
+  background: rgb(0, 0, 0); /* 옵션 배경 */
 }
 
 
@@ -470,23 +478,20 @@ ul.poster-list li {
   font-size: 16px;
 }
 
-
-
-
-
 section h2 {
-  margin-top: 200px; /* 기존 200px → 50px으로 줄임 */
+  margin-top: 150px; /* 기존 200px → 50px으로 줄임 */
   margin-bottom: 30px; /* 섹션 내 제목과 콘텐츠 간격 */
 }
 
+
 .last-section {
   width: 100%;
-  height: 150vh; /* outo; */
+  height: 120vh; /* outo; 150vh 온에어랑 큰포스터 둘의 간격*/
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 100px; /* on-air와의 간격 */
-}
+  margin-bottom: 60px; /* on-air와의 간격 */
+} 
 
 .last-section img {
   width: 100%;
