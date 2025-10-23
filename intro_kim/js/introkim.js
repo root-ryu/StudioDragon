@@ -107,6 +107,67 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     })();
 
+    // ====== 숫자 카운트 (icon_info 범위, 재진입 시 재실행) ======
+    (function initIconInfoCounters() {
+        const targets = document.querySelectorAll(".icon_info [data-count-to]");
+        if (!targets.length) return;
+
+        const nf = new Intl.NumberFormat(); // 1,000 단위 포맷
+
+        targets.forEach((el) => {
+            const end = parseInt(el.getAttribute("data-count-to"), 10);
+            if (isNaN(end)) return;
+
+            const prefix = el.getAttribute("data-prefix") || "";
+            const suffix = el.getAttribute("data-suffix") || "";
+            const duration = parseFloat(el.getAttribute("data-duration")) || 1.2;
+            const ease = el.getAttribute("data-ease") || "power2.out";
+
+            // 내부 상태
+            let obj = { val: 0 };
+            let tween = null;
+
+            // 초기화 함수
+            function reset() {
+                if (tween) tween.kill();
+                obj.val = 0;
+                el.textContent = `${prefix}0${suffix}`;
+            }
+
+            // 재생 함수(항상 0부터 다시)
+            function play() {
+                if (tween) tween.kill();
+                obj.val = 0;
+                el.textContent = `${prefix}0${suffix}`;
+
+                tween = gsap.to(obj, {
+                    val: end,
+                    duration,
+                    ease,
+                    onUpdate() {
+                        el.textContent = `${prefix}${nf.format(Math.floor(obj.val))}${suffix}`;
+                    },
+                    onComplete() {
+                        el.textContent = `${prefix}${nf.format(end)}${suffix}`;
+                    },
+                });
+            }
+
+            // 최초 상태 세팅
+            reset();
+
+            ScrollTrigger.create({
+                trigger: el,         // 각 숫자 요소 단위로 트리거
+                start: "top 70%",
+                end: "bottom 30%",
+                onEnter: play,       // 아래→위로 들어옴
+                onEnterBack: play,   // 위→아래로 다시 들어옴
+                onLeave: reset,      // 아래로 지나가며 벗어남
+                onLeaveBack: reset,  // 위로 벗어남
+            });
+        });
+    })();
+
     // Vision / Mission Fade Up
     gsap.utils.toArray(".v_and_m .cont article").forEach((item, i) => {
         gsap.fromTo(item,
@@ -145,6 +206,49 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("load", () => {
         ScrollTrigger.refresh();
         setTimeout(() => ScrollTrigger.refresh(), 500); // Lenis/레아이웃 안정화 후 한 번 더
+    });
+
+    gsap.utils.toArray(".v_and_m .cont article").forEach((item, i) => {
+
+        const txtEl = item.querySelector(".txt");
+
+        // 초기 상태 함수
+        function setInit() {
+            gsap.set(item, { y: 60, opacity: 0 });
+            gsap.set(txtEl, { y: 20, opacity: 0 });
+        }
+
+        // ★ 페이지 로드시 초기화
+        setInit();
+
+        ScrollTrigger.create({
+            trigger: ".v_and_m",
+            start: "top 70%",
+            end: "bottom 30%",
+            onEnter: () => {
+                // article fade-up
+                gsap.to(item, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1.1,
+                    ease: "power3.out",
+                    delay: i * 0.15
+                });
+
+                // inner txt fade-up
+                gsap.to(txtEl, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power2.out",
+                    delay: 0.3 + i * 0.15
+                });
+            },
+            onLeaveBack: () => {
+                // ★ 섹션 벗어나면 다시 초기 상태로 리셋
+                setInit();
+            }
+        });
     });
 });
 
