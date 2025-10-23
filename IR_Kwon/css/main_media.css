@@ -1,20 +1,31 @@
 /* ============================================
-   반응형 미디어 쿼리
-   브레이크포인트: 1920px (기본) / 1024px / 440px
+   반응형 미디어 쿼리 - Studio Dragon IR Page
+   ============================================
+   
+   브레이크포인트:
+   - 기본: 1920px (Desktop)
+   - 1024px: Tablet
+   - 440px: Mobile
+   
+   디자인 토큰 (Figma 기준):
+   - 1024px: 여백 80px | 컨텐츠 864px | Radius 32/12/8px
+   - 440px: 여백 30px | 컨텐츠 380px | Radius 24/8px
+   
    ============================================ */
 
 /* ============================================
-   1024px 이하 - 태블릿
+   TABLET - 1024px 이하
+   컨텐츠 너비: 864px (여백 80px)
    ============================================ */
 @media (max-width: 1024px) {
   
-  /* Main 공통 */
+  /* ========== Global Section Styles ========== */
   main {
     padding-top: 300px;
   }
 
   main section {
-    padding: 80px 40px;
+    padding: 80px; /* 양쪽 여백 80px, 가운데 864px */
   }
 
   main section:first-of-type {
@@ -25,28 +36,38 @@
     padding-bottom: 0;
   }
 
+  main section .title {
+    max-width: 100%;
+    gap: 16px;
+  }
+
   main section .title h2 {
-    font-size: 40px;
+    font: var(--font-1024-headline-40); /* 40px/130% */
   }
 
   main section .title .sub {
     font-size: 18px;
+    line-height: 1.3;
   }
 
-  /* Value Drivers */
+  /* ========== Value Drivers ========== */
   .value_drivers .container {
     grid-template-columns: 1fr;
     gap: 60px;
+    max-width: 100%;
   }
 
   .value_drivers .container .figure {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
+    aspect-ratio: 800/650;
   }
 
   .value_drivers .container .area {
     width: 100%;
+    align-items: flex-start;
+    gap: 30px;
   }
 
   .value_drivers .container .area .item {
@@ -55,24 +76,16 @@
     gap: 20px !important;
   }
 
-  .value_drivers .container .area .item.active {
-    gap: 20px !important;
-  }
-
   .value_drivers .container .area .item .card {
     width: 100%;
+    min-height: 130px;
+    border-radius: 12px;
   }
 
-  .value_drivers .container .area .item .card_before {
-    width: 100% !important;
-  }
-
-  .value_drivers .container .area .item.active .card_before {
-    width: 100% !important;
-  }
-
+  .value_drivers .container .area .item .card_before,
+  .value_drivers .container .area .item.active .card_before,
   .value_drivers .container .area .item .card_after {
-    width: 100%;
+    width: 100% !important;
   }
 
   .value_drivers .container .area .item .arrow {
@@ -80,68 +93,72 @@
     align-self: center;
     width: auto;
     height: 20px;
-  }
-
-  /* Execution */
-  /* Execution - Tablet */
-  .execution {
-    padding: 80px 40px;
-  }
-
-  .execution > .title {
-    margin-bottom: 40px;
-  }
-
-  .execution > .title h2 {
     font-size: 40px;
   }
 
-  .execution > .title .sub {
+  .value_drivers .container .area .item .arrow.active {
+    transform: rotate(90deg) scale(1);
+  }
+
+  .value_drivers .container .area .description {
+    margin-top: 16px;
+    gap: 14px;
+  }
+
+  .value_drivers .container .area .description p {
     font-size: 18px;
+    line-height: 1.3;
+  }
+
+  /* ========== Execution ========== */
+  .execution {
+    min-height: auto;
   }
 
   .execution .wrapper {
     grid-template-columns: 1fr;
     gap: 40px;
+    min-height: auto;
   }
 
   .execution .cards_area {
-    gap: 40px;
-    padding: 0;
+    height: auto;
     min-height: auto;
     order: 2;
   }
 
   .execution .cards_wrap {
-    height: auto;
-    gap: 40px;
-    overflow: visible;
+    gap: 30px;
   }
 
   .execution .sticky_area {
     position: relative;
-    top: 0;
     order: 1;
   }
 
   .execution .image_container {
     height: 400px;
+    border-radius: 24px;
   }
 
   .execution .card {
     padding: 30px 24px;
-    min-height: auto;
+    height: auto;
+    border-radius: 24px;
   }
 
   .execution .card_title {
-    font-size: 28px;
+    font: var(--font-1024-headline-40); /* 40px -> 적절한 크기로 조정 */
+    font-size: 28px; /* 커스텀 크기 */
+    line-height: 1.2;
   }
 
   .execution .card_desc {
-    font-size: 16px;
+    font: var(--font-1920_1024-body-M-16); /* 16px/130% */
+    line-height: 1.3;
   }
 
-  /* Proof */
+  /* ========== Proof ========== */
   .proof {
     margin-top: 100px !important;
   }
@@ -149,36 +166,74 @@
   .proof .container {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+    max-width: 100%;
   }
 
   .proof .container .card {
     height: 380px;
+    border-radius: 24px;
   }
 
-  .proof .container .card_front .figure,
-  .proof .container .card_back {
-    height: 260px;
+  .proof .container .card_1 .figure,
+  .proof .container .card_2 .figure,
+  .proof .container .card_3 .figure,
+  .proof .container .card_4 .figure,
+  .proof .container .card_5 .figure,
+  .proof .container .card_6 .figure {
+    height: 240px;
+    border-radius: 24px;
   }
 
   .proof .container .card_front .content {
-    padding: 16px 24px 20px 24px;
+    padding: 16px 24px 20px;
+    gap: 12px;
+  }
+
+  .proof .container .card .content .stat {
+    font-size: 18px;
+  }
+
+  .proof .container .card .content .source {
+    font-size: 12px;
+  }
+
+  .proof .container .card .content .label {
+    font-size: 13px;
+    padding: 6px 10px;
+    min-width: 60px;
   }
 
   .proof .container .card_back {
     padding: 30px 24px;
+    border-radius: 24px;
   }
 
   .proof .container .card_back h3 {
     font-size: 26px;
+    line-height: 1.2;
   }
 
   .proof .container .card_back p {
     font-size: 14px;
+    line-height: 1.4;
   }
 
-  /* Monetization Bridge */
+  .proof .container .card_back .highlight {
+    padding: 10px 12px;
+    font-size: 13px;
+    border-radius: 12px;
+  }
+
+  .proof .container .card_6 .content .desc {
+    font-size: 18px;
+  }
+
+  /* ========== Monetization Bridge ========== */
   .monetization_bridge .container {
+    flex-wrap: wrap;
     gap: 30px;
+    max-width: 100%;
+    justify-content: space-around;
   }
 
   .monetization_bridge .container .bar .bar_wrapper {
@@ -192,65 +247,111 @@
 
   .monetization_bridge .container .bar .percent {
     font-size: 18px;
+    line-height: 1.3;
   }
 
   .monetization_bridge .container .bar .label {
     font-size: 22px;
+    line-height: 1.3;
   }
 
   .monetization_bridge .note {
     padding: 20px 0;
+    max-width: 100%;
   }
 
   .monetization_bridge .note .text {
     font-size: 12px;
+    line-height: 1.4;
   }
 
-  /* Moat Repeatability */
+  /* ========== Moat Repeatability ========== */
   .moat_repeatability .container {
     grid-template-columns: 1fr;
     gap: 20px;
+    max-width: 100%;
   }
 
   .moat_repeatability .container .card {
     padding: 20px 24px;
+    gap: 16px;
+    border-radius: 24px;
   }
 
   .moat_repeatability .container .card .icon {
     font-size: 48px;
     width: 70px;
     height: 70px;
+    border-radius: 16px;
   }
 
   .moat_repeatability .container .card .content .card_title {
     font-size: 26px;
+    line-height: 1.2;
   }
 
   .moat_repeatability .container .card .content .card_desc {
     font-size: 15px;
+    line-height: 1.3;
   }
 
-  /* Forward Triggers */
+  /* ========== Forward Triggers ========== */
+  .forward_triggers .container {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .forward_triggers .container .table {
+    min-width: 800px;
+  }
+
   .forward_triggers .container .table .header,
   .forward_triggers .container .table .body .row {
-    gap: 40px;
-    flex-wrap: wrap;
+    gap: 30px;
   }
 
-  .forward_triggers .container .table .header .cell,
-  .forward_triggers .container .table .body .row .cell {
-    width: auto !important;
-    flex: 1;
-    min-width: 150px;
+  .forward_triggers .container .table .header .cell:nth-child(1),
+  .forward_triggers .container .table .body .row .cell.area {
+    width: 240px;
+    font-size: 26px;
   }
 
+  .forward_triggers .container .table .header .cell:nth-child(2),
+  .forward_triggers .container .table .body .row .cell.severity {
+    width: 60px;
+  }
+
+  .forward_triggers .container .table .header .cell:nth-child(3),
   .forward_triggers .container .table .body .row .cell.mitigation {
-    flex-basis: 100%;
+    width: 400px;
+    font-size: 18px;
   }
 
-  /* Risks Mitigation */
+  .forward_triggers .container .table .header .cell:nth-child(4),
+  .forward_triggers .container .table .body .row .cell.status {
+    width: 100px;
+    font-size: 15px;
+  }
+
+  .forward_triggers .container .table .header .cell {
+    font-size: 18px;
+  }
+
+  .forward_triggers .container .table .body .row {
+    height: auto;
+    min-height: 60px;
+  }
+
+  /* ========== Risks Mitigation ========== */
+  .risks_mitigation .container {
+    max-width: 100%;
+    gap: 9px;
+  }
+
   .risks_mitigation .container .card {
     padding: 20px 24px;
+    gap: 10px;
+    border-radius: 24px;
   }
 
   .risks_mitigation .container .card .header .risk_name .icon {
@@ -259,41 +360,48 @@
 
   .risks_mitigation .container .card .header .risk_name .text {
     font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .risks_mitigation .container .card .header .level {
+    font-size: 13px;
   }
 
   .risks_mitigation .container .card .description .text {
     font-size: 15px;
+    line-height: 1.3;
   }
 
-  /* CTA Buttons */
+  /* ========== CTA Buttons ========== */
   .cta_buttons {
     flex-direction: column !important;
     gap: 30px;
-    padding: 80px 40px !important;
   }
 
   .cta_buttons .cta_btn {
     height: 80px;
+    border-radius: 12px;
   }
 
   .cta_buttons .cta_btn span {
-    font-size: 26px;
+    font: var(--font-1920_1024-button-L); /* 26px/100% */
   }
 }
 
 
 /* ============================================
-   440px 이하 - 모바일
+   MOBILE - 440px 이하
+   컨텐츠 너비: 380px (여백 30px)
    ============================================ */
 @media (max-width: 440px) {
   
-  /* Main 공통 */
+  /* ========== Global Section Styles ========== */
   main {
     padding-top: 200px;
   }
 
   main section {
-    padding: 60px 20px;
+    padding: 60px 30px; /* 양쪽 여백 30px, 가운데 380px */
   }
 
   main section:first-of-type {
@@ -306,19 +414,31 @@
 
   main section .title {
     gap: 12px;
+    max-width: 100%;
   }
 
   main section .title h2 {
-    font-size: 32px;
+    font: var(--font-440-headline-30); /* 30px/130% */
   }
 
   main section .title .sub {
     font-size: 16px;
+    line-height: 1.3;
   }
 
-  /* Value Drivers */
+  /* ========== Value Drivers ========== */
   .value_drivers .container {
     gap: 40px;
+    max-width: 100%;
+  }
+
+  .value_drivers .container .figure {
+    aspect-ratio: 1/1;
+    max-width: 100%;
+  }
+
+  .value_drivers .container .area {
+    gap: 24px;
   }
 
   .value_drivers .container .area .item {
@@ -331,75 +451,93 @@
 
   .value_drivers .container .area .item .card {
     padding: 16px 20px;
-    min-height: 120px;
+    min-height: 110px;
+    border-radius: 8px;
   }
 
   .value_drivers .container .area .item .card .label {
-    font-size: 12px;
+    font: var(--font-1920_1024-body-caption-14); /* 14px/130% */
   }
 
   .value_drivers .container .area .item .card .text {
-    font-size: 18px;
+    font-size: 16px; /* 모바일: 축소 */
+    line-height: 1.3;
+  }
+
+  .value_drivers .container .area .item .arrow {
+    font-size: 32px;
   }
 
   .value_drivers .container .area .description {
     gap: 12px;
+    margin-top: 12px;
   }
 
   .value_drivers .container .area .description p {
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.4;
   }
 
-  /* Execution */
-  /* Execution - Mobile */
+  /* ========== Execution ========== */
   .execution {
-    padding: 60px 20px;
+    padding: 60px 30px; /* 양쪽 여백 30px */
+    min-height: auto;
   }
 
   .execution > .title {
     margin-bottom: 30px;
+    max-width: 100%;
   }
 
   .execution > .title h2 {
-    font-size: 32px;
+    font-size: 30px;
+    line-height: 1.3;
   }
 
   .execution > .title .sub {
     font-size: 16px;
+    line-height: 1.3;
   }
 
   .execution .wrapper {
     gap: 30px;
+    min-height: auto;
   }
 
   .execution .image_container {
     height: 300px;
+    border-radius: 24px;
   }
 
   .execution .cards_area {
-    gap: 30px;
+    height: auto;
+    gap: 24px;
   }
 
   .execution .cards_wrap {
     height: auto;
-    gap: 30px;
-    overflow: visible;
+    gap: 24px;
   }
 
   .execution .card {
     padding: 24px 20px;
-    border-radius: 24px;
+    border-radius: 20px;
+    height: auto;
   }
 
   .execution .card_title {
-    font-size: 24px;
+    font: var(--font-440-title-B-20); /* 20px/130% */
+    font-size: 22px; /* 약간 조정 */
+    line-height: 1.2;
   }
 
   .execution .card_desc {
-    font-size: 15px;
+    font: var(--font-440-body-M-12); /* 12px/130% */
+    font-size: 14px; /* 가독성 위해 조정 */
+    line-height: 1.4;
   }
 
-  /* Proof */
+  /* ========== Proof ========== */
   .proof {
     margin-top: 80px !important;
   }
@@ -407,74 +545,103 @@
   .proof .container {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .proof .container .card {
-    height: 360px;
-    border-radius: 24px;
     max-width: 100%;
   }
 
-  .proof .container .card_front .figure {
-    height: 240px;
-    border-radius: 24px;
+  .proof .container .card {
+    height: 350px;
+    border-radius: 20px;
+    max-width: 100%;
+  }
+
+  .proof .container .card_1 .figure,
+  .proof .container .card_2 .figure,
+  .proof .container .card_3 .figure,
+  .proof .container .card_4 .figure,
+  .proof .container .card_5 .figure {
+    height: 220px;
+    border-radius: 20px;
+  }
+
+  .proof .container .card_6 {
+    height: 300px;
+  }
+
+  .proof .container .card_6 .figure {
+    height: 220px;
+    border-radius: 20px;
   }
 
   .proof .container .card_front .content {
-    padding: 0 20px 16px 20px;
-    gap: 12px;
+    padding: 12px 20px 16px 20px;
+    gap: 10px;
   }
 
   .proof .container .card .content .stat {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.3;
   }
 
   .proof .container .card .content .source {
-    font-size: 11px;
+    font-size: 10px;
+    line-height: 1.3;
   }
 
   .proof .container .card .content .label {
-    font-size: 12px;
-    padding: 5px 10px;
-    height: 24px;
+    font: var(--font-440-body-caption-10); /* 10px/130% */
+    font-size: 11px;
+    padding: 5px 9px;
+    height: 22px;
+    min-width: 50px;
   }
 
   .proof .container .card_back {
-    border-radius: 24px;
+    border-radius: 20px;
     padding: 24px 20px;
   }
 
+  .proof .container .card_back .back_content {
+    gap: 16px;
+  }
+
   .proof .container .card_back h3 {
-    font-size: 22px;
+    font: var(--font-440-title-B-20); /* 20px/130% */
+    line-height: 1.2;
   }
 
   .proof .container .card_back p {
-    font-size: 13px;
+    font: var(--font-440-body-M-12); /* 12px/130% */
+    line-height: 1.4;
   }
 
   .proof .container .card_back .highlight {
     padding: 8px 12px;
-    font-size: 12px;
+    font: var(--font-440-body-caption-10); /* 10px/130% */
+    font-size: 11px;
+    border-radius: 8px;
   }
 
   .proof .container .card_6 .content {
-    padding: 10px 12px;
+    padding: 12px 20px;
   }
 
   .proof .container .card_6 .content .desc {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.3;
   }
 
-  /* Monetization Bridge */
+  /* ========== Monetization Bridge ========== */
   .monetization_bridge .container {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    max-width: 100%;
   }
 
   .monetization_bridge .container .bar {
     flex: 0 0 auto;
-    width: 60px;
+    width: auto;
+    min-width: 60px;
   }
 
   .monetization_bridge .container .bar .bar_wrapper {
@@ -482,29 +649,34 @@
   }
 
   .monetization_bridge .container .bar .chart_container {
-    height: 200px;
-    width: 28px;
+    height: 180px;
+    width: 24px;
   }
 
   .monetization_bridge .container .bar .percent {
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.3;
   }
 
   .monetization_bridge .container .bar .label {
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 1.3;
   }
 
   .monetization_bridge .note {
     padding: 16px 0;
+    max-width: 100%;
   }
 
   .monetization_bridge .note .text {
-    font-size: 11px;
+    font: var(--font-440-body-caption-10); /* 10px/100% */
+    line-height: 1.4;
   }
 
-  /* Moat Repeatability */
+  /* ========== Moat Repeatability ========== */
   .moat_repeatability .container {
     gap: 16px;
+    max-width: 100%;
   }
 
   .moat_repeatability .container .card {
@@ -512,23 +684,32 @@
     align-items: flex-start;
     padding: 20px;
     gap: 16px;
+    border-radius: 20px;
   }
 
   .moat_repeatability .container .card .icon {
-    font-size: 40px;
-    width: 60px;
-    height: 60px;
+    font-size: 36px;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+  }
+
+  .moat_repeatability .container .card .content {
+    gap: 4px;
   }
 
   .moat_repeatability .container .card .content .card_title {
-    font-size: 22px;
+    font: var(--font-440-title-B-20); /* 20px/130% */
+    line-height: 1.2;
   }
 
   .moat_repeatability .container .card .content .card_desc {
-    font-size: 14px;
+    font: var(--font-440-body-M-12); /* 12px/130% */
+    font-size: 13px; /* 가독성 위해 조정 */
+    line-height: 1.4;
   }
 
-  /* Forward Triggers */
+  /* ========== Forward Triggers ========== */
   .forward_triggers .container .table .header {
     display: none;
   }
@@ -563,7 +744,7 @@
     font-size: 14px;
   }
 
-  /* Risks Mitigation */
+  /* ========== Risks Mitigation ========== */
   .risks_mitigation .container {
     gap: 8px;
   }
@@ -595,9 +776,9 @@
     font-size: 14px;
   }
 
-  /* CTA Buttons */
+  /* ========== CTA Buttons ========== */
   .cta_buttons {
-    padding: 60px 20px !important;
+    padding: 60px 30px !important; /* 양쪽 여백 30px */
     gap: 20px;
   }
 
@@ -607,6 +788,9 @@
   }
 
   .cta_buttons .cta_btn span {
-    font-size: 22px;
+    font: var(--font-440-title-B-20); /* 20px/130% */
+    font-size: 22px; /* 약간 조정 */
+    line-height: 1;
   }
 }
+
