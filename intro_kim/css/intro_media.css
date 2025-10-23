@@ -1,13 +1,20 @@
 @charset "utf-8";
 
 @media screen and (max-width:1024px) {
+
+    header,
+    footer {
+        display: none;
+    }
+
     .inner {
-        width: 862px;
+        width: 90%;
         max-width: 100%;
     }
 
     section {
-        padding: 100px 0;
+        padding: 0;
+        /* padding: 100px 0; */
     }
 
     .main_cach {
@@ -35,12 +42,13 @@
 
     h3.tit {
         font-size: 40px;
-        width: 862px;
+
+        width: 95%;
         margin-bottom: 50px;
     }
 
     .info-g .inner {
-        width: 862px;
+        width: 95%;
         max-width: 100%;
     }
 

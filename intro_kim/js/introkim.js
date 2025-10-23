@@ -1,24 +1,5 @@
-// ====== Lenis 스무스 스크롤 ======
-let lenis;
-try {
-    lenis = new Lenis({
-        duration: 0.8,
-        easing: (t) => t, // 선형
-        smooth: true,
-        smoothTouch: true,
-    });
 
-    function raf(t) {
-        lenis.raf(t);
-        ScrollTrigger.update();
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-} catch (e) {
-    console.warn("[main.js] Lenis 초기화 실패 (옵션):", e);
-}
 
-gsap.registerPlugin(ScrollTrigger);
 /* ============================
    main.js (icon_info counters)
    Requires:
@@ -36,20 +17,42 @@ gsap.registerPlugin(ScrollTrigger);
 const COUNT_MODE = "once"; // "once" | "repeat"
 
 // ====== 안전 장치: 의존성 확인 ======
-(function ensureDeps() {
-    if (!window.gsap) {
-        console.error("[main.js] GSAP이 로드되지 않았습니다. gsap.min.js를 main.js보다 먼저 불러오세요.");
-    }
-    if (!window.ScrollTrigger) {
-        console.error("[main.js] ScrollTrigger가 로드되지 않았습니다. ScrollTrigger.min.js를 main.js보다 먼저 불러오세요.");
-    }
-    if (!window.Lenis) {
-        console.error("[main.js] Lenis가 로드되지 않았습니다. bundled/lenis.min.js를 main.js보다 먼저 불러오세요.");
-    }
-})();
+/*     (function ensureDeps() {
+        if (!window.gsap) {
+            console.error("[main.js] GSAP이 로드되지 않았습니다. gsap.min.js를 main.js보다 먼저 불러오세요.");
+        }
+        if (!window.ScrollTrigger) {
+            console.error("[main.js] ScrollTrigger가 로드되지 않았습니다. ScrollTrigger.min.js를 main.js보다 먼저 불러오세요.");
+        }
+        if (!window.Lenis) {
+            console.error("[main.js] Lenis가 로드되지 않았습니다. bundled/lenis.min.js를 main.js보다 먼저 불러오세요.");
+        }
+    })(); */
 
 // ====== 초기화 ======
 document.addEventListener("DOMContentLoaded", () => {
+
+    // ====== Lenis 스무스 스크롤 ======
+    let lenis;
+    try {
+        lenis = new Lenis({
+            duration: 0.8,
+            easing: (t) => t,
+            smooth: true,
+            smoothTouch: true,
+        });
+
+        function raf(t) {
+            lenis.raf(t);
+            ScrollTrigger.update();
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+    } catch (e) {
+        console.warn("[main.js] Lenis 초기화 실패 (옵션):", e);
+    }
+
+
     // GSAP 플러그인 등록
     if (window.gsap && window.ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
@@ -57,8 +60,15 @@ document.addEventListener("DOMContentLoaded", () => {
         // 의존성이 없으면 이후 로직 중단
         return;
     }
+    if (!window.gsap || !window.ScrollTrigger) {
+        console.error("GSAP/ScrollTrigger가 로드되지 않았습니다.");
+        return;
+    }
 
 
+    lenis.on('scroll', () => {
+        ScrollTrigger.update();
+    });
     // ====== 숫자 카운트 (icon_info 범위) ======
     (function initIconInfoCounters() {
         const targets = document.querySelectorAll(".icon_info [data-count-to]");
@@ -251,14 +261,49 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+    const main_cachSwiper = new Swiper(".main_cach .swiper", {
+        slidesPerView: "auto",
+        spaceBetween: 64,
+        loop: true,                   // 무한 반복
+        allowTouchMove: false // 마우스 드래그 필요하면 true
+    });
+
+    // History Swiper (구조 유지: 외부 스크롤바 사용)
+    const historySwiper = new Swiper(".history .cont_hori_swipe.swiper", {
+        slidesPerView: "auto",
+        centeredSlides: false,
+
+        // freeMode는 한 번만!
+        freeMode: { enabled: true, sticky: false },
+
+        // 인터랙션
+        simulateTouch: true,
+        grabCursor: true,
+        resistanceRatio: 0.3,
+
+        // 좌/우 여백
+        slidesOffsetBefore: 0,
+        slidesOffsetAfter: 500,
+
+        // ✅ 외부(섹션 바깥) 스크롤바 정확히 지정
+        scrollbar: {
+            el: ".history > .scroll_bar.swiper-scrollbar",
+            draggable: true,
+            dragSize: "auto",
+            hide: false,
+            snapOnRelease: false,
+        },
+    });
+
+    // 이미지 로딩 후 레이아웃 재계산(선택)
+    window.addEventListener("load", () => {
+        if (historySwiper && historySwiper.update) {
+            historySwiper.update();
+        }
+    });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    if (!window.gsap || !window.ScrollTrigger) {
-        console.error("GSAP/ScrollTrigger가 로드되지 않았습니다.");
-        return;
-    }
-});
+
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     const header = document.querySelector('header');
@@ -275,46 +320,10 @@ document.addEventListener("DOMContentLoaded", () => {
 //         lastScrollY = currentScrollY;
 //     });
 
-const main_cachSwiper = new Swiper(".main_cach .swiper", {
-    slidesPerView: "auto",
-    spaceBetween: 64,
-    loop: true,                   // 무한 반복
-    allowTouchMove: false // 마우스 드래그 필요하면 true
-});
 
-// History Swiper (구조 유지: 외부 스크롤바 사용)
-const historySwiper = new Swiper(".history .cont_hori_swipe.swiper", {
-    slidesPerView: "auto",
-    centeredSlides: false,
-
-    // freeMode는 한 번만!
-    freeMode: { enabled: true, sticky: false },
-
-    // 인터랙션
-    simulateTouch: true,
-    grabCursor: true,
-    resistanceRatio: 0.3,
-
-    // 좌/우 여백
-    slidesOffsetBefore: 0,
-    slidesOffsetAfter: 500,
-
-    // ✅ 외부(섹션 바깥) 스크롤바 정확히 지정
-    scrollbar: {
-        el: ".history > .scroll_bar.swiper-scrollbar",
-        draggable: true,
-        dragSize: "auto",
-        hide: false,
-        snapOnRelease: false,
-    },
-});
 
 // ★ 중복/충돌을 일으키던 이전 인스턴스는 제거하세요.
 // var histotySwiper = new Swiper(".history .swiper", { ... })  ← 삭제
 
-// 이미지 로딩 후 레이아웃 재계산(선택)
-window.addEventListener("load", () => {
-    if (historySwiper && historySwiper.update) {
-        historySwiper.update();
-    }
-});
+
+
