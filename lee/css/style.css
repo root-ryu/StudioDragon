@@ -105,6 +105,9 @@ main {
   perspective: 100svh;
   width: 100%;
 }
+.zoom_item img{
+  border-radius: 18px;
+}
 
 .zoom_item {
   position: absolute;
