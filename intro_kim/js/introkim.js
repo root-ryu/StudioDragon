@@ -1,3 +1,23 @@
+// ====== Lenis 스무스 스크롤 ======
+let lenis;
+try {
+    lenis = new Lenis({
+        duration: 0.8,
+        easing: (t) => t, // 선형
+        smooth: true,
+        smoothTouch: true,
+    });
+
+    function raf(t) {
+        lenis.raf(t);
+        ScrollTrigger.update();
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+} catch (e) {
+    console.warn("[main.js] Lenis 초기화 실패 (옵션):", e);
+}
+
 gsap.registerPlugin(ScrollTrigger);
 /* ============================
    main.js (icon_info counters)
