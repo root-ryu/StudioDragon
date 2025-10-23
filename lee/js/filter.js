@@ -164,3 +164,16 @@ window.addEventListener('DOMContentLoaded', function () {
     },
   });
 });
+
+window.addEventListener('scroll', function () {
+  const sections = document.querySelectorAll('.section');
+  const windowHeight = window.innerHeight;
+
+  sections.forEach((section) => {
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop < windowHeight * 0.75) {
+      section.classList.add('visible'); // 75% 위치에 도달하면 visible 클래스 추가
+    }
+  });
+});
