@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let lenis;
     try {
         lenis = new Lenis({
-            duration: 0.8,
-            easing: (t) => t,
+            duration: 0,
+            ease: "power1.in",
             smooth: true,
             smoothTouch: true,
         });
@@ -282,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resistanceRatio: 0.3,
 
         // 좌/우 여백
-        slidesOffsetBefore: 0,
+        slidesOffsetBefore: 110,
         slidesOffsetAfter: 500,
 
         // ✅ 외부(섹션 바깥) 스크롤바 정확히 지정

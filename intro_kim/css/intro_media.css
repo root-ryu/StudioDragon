@@ -57,10 +57,22 @@
     }
 
     .info-g .icon_info ul {
-        display: flex;
-        flex-direction: column;
-        flex: 2;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
         width: 100%;
+    }
+
+    .info-g .icon_info ul li {
+        width: 100%;
+    }
+
+    .info-g .icon_info ul li:nth-child(3) {
+        background: var(--MainColor-400);
+    }
+
+    .info-g .icon_info ul li:nth-child(4) {
+        background: var(--WF);
     }
 
     .info-g .icon_info ul li.box_w {
