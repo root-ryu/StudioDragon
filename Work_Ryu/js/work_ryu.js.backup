@@ -371,8 +371,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-}); // END: 비하인드 비디오 섹션 DOMContentLoaded
-
 // ============ COMMUNITY CHAT EVENT SECTION ============
 window.addEventListener('DOMContentLoaded', function() {
 
@@ -635,8 +633,8 @@ function generateComments(count, maxReplies = 20, useRecentTime = false) {
         // useRecentTime이 true면 최근 시간만 생성
         timestamps.push(useRecentTime ? random.recentTimestamp() : random.timestamp());
     }
-    // 최신순 정렬 (큰 값 = 최근, 내림차순)
-    timestamps.sort((a, b) => b - a);
+    // 최신순 정렬 (작은 값 = 최근)
+    timestamps.sort((a, b) => a - b);
     
     for (let i = 0; i < count; i++) {
         const isMale = random.boolean();
@@ -695,27 +693,13 @@ function generateComments(count, maxReplies = 20, useRecentTime = false) {
         if (replyCount > 0) {
             const repliesContainer = newComment.querySelector('.replies_container');
             const replyInputWrapper = repliesContainer.querySelector('.reply_input_wrapper');
-            const btn = newComment.querySelector('.btn_replies');
-            const commentBtn = newComment.querySelector('.btn_comment');
             
-            const replyElements = [];
             for (let j = 0; j < replyCount; j++) {
                 const replyText = random.item(DATA.replyTexts);
                 const replyTimestamp = timestamp - random.number(1, 3600) * 1000; // 댓글보다 이전 시간
-                const replyElement = createReplyElement(replyText, replyTimestamp, false);
+                const replyElement = createReplyElement(replyText, replyTimestamp);
                 repliesContainer.insertBefore(replyElement, replyInputWrapper);
-                replyElements.push(replyElement);
             }
-            
-            // 답글에 fade-in 애니메이션 적용
-            setTimeout(() => {
-                replyElements.forEach(el => el.classList.add('fade-in'));
-            }, 50);
-            
-            // 답글 개수 표시 및 버튼 상태 업데이트
-            btn.textContent = `${replyCount} Comments`;
-            btn.classList.remove('hidden');
-            commentBtn.classList.add('hidden');
         }
     }
 }
@@ -742,29 +726,11 @@ function attachCommentListeners(commentElement) {
     commentElement.addEventListener('click', handleReplyClick);
     
     const replyInput = commentElement.querySelector('.reply_input');
-    const replySendBtn = commentElement.querySelector('.btn_reply_send');
-    
-    if (replyInput && replySendBtn) {
-        // Enter 키로 답글 전송
+    if (replyInput) {
         replyInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && replyInput.value.trim()) {
-                e.preventDefault();
                 const repliesContainer = commentElement.querySelector('.replies_container');
                 const btn = commentElement.querySelector('.btn_replies');
-                console.log('Enter key reply:', replyInput.value.trim());
-                addUserReply(repliesContainer, replyInput.value.trim(), btn);
-                replyInput.value = '';
-            }
-        });
-        
-        // 버튼 클릭으로 답글 전송
-        replySendBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            if (replyInput.value.trim()) {
-                const repliesContainer = commentElement.querySelector('.replies_container');
-                const btn = commentElement.querySelector('.btn_replies');
-                console.log('Button click reply:', replyInput.value.trim());
                 addUserReply(repliesContainer, replyInput.value.trim(), btn);
                 replyInput.value = '';
             }
@@ -856,12 +822,6 @@ function addNewComment() {
     
     elements.chatInput.value = '';
     updateAllUserTimestamps();
-    
-    // 스크롤을 최상단으로 부드럽게 이동
-    elements.chatScrollArea.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
 }
 
 elements.sendButton.addEventListener('click', addNewComment);
@@ -901,20 +861,10 @@ function handleReplyClick(e) {
     }
 }
 
-function createReplyElement(text, timestamp, isUserReply = false) {
-    let name, bgColor;
-    
-    if (isUserReply) {
-        // 사용자 답글인 경우
-        name = state.currentUser.username;
-        bgColor = state.currentUser.bgColor;
-    } else {
-        // 랜덤 답글인 경우
-        const isMale = random.boolean();
-        name = random.item(isMale ? DATA.maleNames : DATA.femaleNames);
-        bgColor = random.item(ASSETS.profileBg);
-    }
-    
+function createReplyElement(text, timestamp) {
+    const isMale = random.boolean();
+    const name = random.item(isMale ? DATA.maleNames : DATA.femaleNames);
+    const bgColor = random.item(ASSETS.profileBg);
     const timeDiff = getTimeDifference(timestamp);
     
     const replyDiv = document.createElement('div');
@@ -949,51 +899,25 @@ function createReplyElement(text, timestamp, isUserReply = false) {
 }
 
 function addUserReply(repliesContainer, replyText, btn) {
-    if (!repliesContainer) {
-        console.error('repliesContainer not found');
-        return;
-    }
-    
     initializeUser();
     const timestamp = Date.now();
-    const newReply = createReplyElement(replyText, timestamp, true); // 사용자 답글임을 표시
+    const newReply = createReplyElement(replyText, timestamp);
     const replyInputWrapper = repliesContainer.querySelector('.reply_input_wrapper');
-    
-    if (!replyInputWrapper) {
-        console.error('replyInputWrapper not found');
-        return;
-    }
     
     repliesContainer.insertBefore(newReply, replyInputWrapper);
     repliesContainer.classList.add('show');
     setTimeout(() => newReply.classList.add('fade-in'), 10);
     
-    // btn이 없을 경우 생성
-    const commentItem = repliesContainer.closest('.comment_item');
-    if (!btn) {
-        btn = commentItem.querySelector('.btn_replies');
-    }
-    
-    if (btn) {
-        const currentCount = parseInt(btn.textContent.match(/\d+/)?.[0]) || 0;
-        btn.textContent = `${currentCount + 1} Comments`;
-        btn.classList.remove('hidden');
-    } else {
-        // btn_replies가 없는 경우 생성
-        const commentActions = commentItem.querySelector('.comment_actions');
-        btn = document.createElement('button');
-        btn.className = 'btn_replies';
-        btn.textContent = '1 Comments';
-        commentActions.appendChild(btn);
-    }
+    const currentCount = parseInt(btn.textContent) || 0;
+    btn.textContent = `${currentCount + 1} Comments`;
+    btn.classList.remove('hidden');
     
     // Comment 버튼 숨기기
+    const commentItem = repliesContainer.closest('.comment_item');
     const commentBtn = commentItem.querySelector('.btn_comment');
     if (commentBtn) {
         commentBtn.classList.add('hidden');
     }
-    
-    console.log('Reply added successfully');
 }
 
 // ============ MORE COMMENTS FUNCTIONALITY ============
@@ -1019,58 +943,8 @@ elements.moreButton.addEventListener('click', function() {
 
 // ============ INITIALIZE ============
 
-console.log('Initializing comments...');
-
-// 기존 HTML 댓글에 이벤트 리스너 추가 및 답글 생성
-document.querySelectorAll('.comment_item').forEach((comment, index) => {
+document.querySelectorAll('.comment_item').forEach(comment => {
     attachCommentListeners(comment);
-    
-    // 답글 버튼이 있는 경우 답글 자동 생성
-    const repliesBtn = comment.querySelector('.btn_replies');
-    const commentBtn = comment.querySelector('.btn_comment');
-    const repliesContainer = comment.querySelector('.replies_container');
-    
-    if (repliesBtn && !repliesBtn.classList.contains('hidden') && repliesContainer) {
-        // 답글 개수 추출 (예: "63 Comments" -> 63)
-        const replyCountText = repliesBtn.textContent.match(/\d+/);
-        if (replyCountText) {
-            const replyCount = parseInt(replyCountText[0]);
-            const replyInputWrapper = repliesContainer.querySelector('.reply_input_wrapper');
-            
-            if (!replyInputWrapper) {
-                console.error(`Reply input wrapper not found for comment ${index + 1}`);
-                return;
-            }
-            
-            const commentTimestamp = parseInt(comment.getAttribute('data-timestamp')) || Date.now() - random.number(1, 86400) * 1000;
-            
-            console.log(`Loading ${replyCount} replies for comment ${index + 1}`);
-            
-            // 실제 답글 요소들 생성
-            const replyElements = [];
-            for (let i = 0; i < replyCount; i++) {
-                const replyText = random.item(DATA.replyTexts);
-                const replyTimestamp = commentTimestamp - random.number(1, 3600) * 1000;
-                const replyElement = createReplyElement(replyText, replyTimestamp, false);
-                repliesContainer.insertBefore(replyElement, replyInputWrapper);
-                replyElements.push(replyElement);
-            }
-            
-            // 모든 답글에 fade-in 애니메이션 적용
-            setTimeout(() => {
-                replyElements.forEach(el => el.classList.add('fade-in'));
-            }, 50);
-            
-            // Comment 버튼 숨기기
-            if (commentBtn) {
-                commentBtn.classList.add('hidden');
-            }
-            
-            console.log(`Loaded ${replyCount} replies for comment ${index + 1}`);
-        }
-    }
 });
-
-console.log('Comments initialized');
 
 }); // END: COMMUNITY CHAT EVENT SECTION DOMContentLoaded
