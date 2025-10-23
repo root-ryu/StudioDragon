@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
-@media screen and (max-width:1519x) {}
+@media screen and (max-width:1519px) {
+    .inner {
+        width: 95%;
+    }
+}
 
 @media screen and (max-width:1320px) {
     .comingsoon .inner img {
@@ -9,11 +13,12 @@
 }
 
 @media screen and (max-width:1023px) {
-    /* Coming Soon 섹션 */
-    .comingsoon .inner {
+
+    .inner {
         width: 865px;
     }
-    
+
+    /* Coming Soon 섹션 */
     .comingsoon .inner .top {
         width: 398px;
     }
@@ -42,20 +47,15 @@
     /* ON-AIR 섹션 반응형 */
     .onair {
         height: auto;
-        padding: 80px 0 100px;
     }
 
     .onair .inner {
-        width: 100%;
-        max-width: 1023px;
-        padding: 0 80px;
-        box-sizing: border-box;
+        width: 90%;
     }
 
     .onair .inner .top {
-        width: auto;
+        width: 267px;
         padding-bottom: 50px;
-        gap: 30px;
     }
 
     .onair .inner .top h2 {
@@ -70,7 +70,7 @@
     }
 
     /* 왼쪽 이미지 (ONcontents01) */
-    .onair .ONcon > div:first-child img {
+    .onair .ONcon>div:first-child img {
         width: 400px;
         height: 450px;
         opacity: 0.5;
@@ -78,11 +78,11 @@
     }
 
     /* 가운데 활성 이미지 (ONcontents02) */
-    .onair .ONcon > div.active {
+    .onair .ONcon>div.active {
         z-index: 10;
     }
 
-    .onair .ONcon > div.active img {
+    .onair .ONcon>div.active img {
         width: 450px;
         height: 600px;
         opacity: 1;
@@ -90,7 +90,7 @@
     }
 
     /* 오른쪽 이미지 (ONcontents03) */
-    .onair .ONcon > div:last-child img {
+    .onair .ONcon>div:last-child img {
         width: 400px;
         height: 450px;
         opacity: 0.5;
@@ -98,52 +98,571 @@
     }
 
     /* 텍스트 박스 - 가운데만 표시 */
-    .onair .ONcon > div .ONtxtbox {
+    .onair .ONcon>div .ONtxtbox {
         width: 100%;
         max-width: 493px;
         gap: 32px;
     }
 
-    .onair .ONcon > div.active .ONtxtbox {
+    .onair .ONcon>div.active .ONtxtbox {
         opacity: 1;
         visibility: visible;
         max-height: 400px;
     }
 
-    .onair .ONcon > div .ONtxtbox h3 {
+    .onair .ONcon>div .ONtxtbox h3 {
         font-size: 36px;
     }
 
-    .onair .ONcon > div .ONtxtbox ul {
+    .onair .ONcon>div .ONtxtbox ul {
         gap: 17px;
     }
 
-    .onair .ONcon > div .ONtxtbox ul .bar {
+    .onair .ONcon>div .ONtxtbox ul .bar {
         width: 150px;
     }
 
-    .onair .ONcon > div .ONtxtbox ul > li > p {
+    .onair .ONcon>div .ONtxtbox ul>li>p {
         font-size: 30px;
     }
 
-    .onair .ONcon > div .ONtxtbox button {
+    .onair .ONcon>div .ONtxtbox button {
         padding: 23px 68px;
         font-size: 26px;
         gap: 10px;
     }
 
-    .onair .ONcon > div .ONtxtbox button img {
+    .onair .ONcon>div .ONtxtbox button img {
         width: 24px;
         height: 24px;
     }
+
+    /* GigTit 섹션 */
+    .GigTit h3 {
+        font-size: 160px;
+    }
+
+    .GigTit span {
+        font-size: 40px;
+    }
+
+    /* Beyond Drama 섹션 */
+    .BeyondDrama {
+        width: auto;
+    }
+
+    .BeyondDrama .inner {
+        width: 90%
+    }
+
+    .BeyondDrama .inner .top .h2 {
+        font-size: 40px;
+    }
+
+    .BeyondDrama .inner .BDcontents .BDconTop {
+        width: 865px;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+    }
+
+    .BeyondDrama .inner .BDcontents .BDconTop .BDsection01,
+    .BeyondDrama .inner .BDcontents .BDconTop .BDsection02,
+    .BeyondDrama .inner .BDcontents .BDconTop .BDsection03,
+     .BeyondDrama .inner .BDcontents .BDconBottom .BDsection09,
+     .BeyondDrama .inner .BDcontents .BDconBottom .BDsection10
+     {
+        height: 320px;
+    }
+    .BeyondDrama .inner .BDcontents .BDconTop .BDsection01_txt h3,
+    .BeyondDrama .inner .BDcontents .BDconTop .BDsection02_txt h3,
+    .BeyondDrama .inner .BDcontents .BDconTop .BDsection03_txt h3,
+    .BeyondDrama .inner .BDcontents .BDconBottom .BDsection08 h3,
+    .BeyondDrama .inner .BDcontents .BDconBottom .BDsection09 h3,
+    .BeyondDrama .inner .BDcontents .BDconBottom .BDsection10 h3 {
+        font-size: 20px;
+    }
+    .BeyondDrama .inner .BDcontents .BDconMiddle {
+        position: relative;
+        left: 250px;
+    } 
+
+    /* BDconBottom 반응형 */
+    .BeyondDrama .inner .BDcontents .BDconBottom {
+        width: 865px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 17px;
+    }
+
+    .BeyondDrama .inner .BDcontents .BDconBottom .BDsection08 {
+        width: 268px;
+        height: 331px;
+    }
+
+    .BeyondDrama .inner .BDcontents .BDconBottom .BDsection08 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .BeyondDrama .inner .BDcontents .BDconBottom .BDsection09 {
+        width: 580px;
+        height: 331px;
+    }
+
+    .BeyondDrama .inner .BDcontents .BDconBottom .BDsection09 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* BDsection10은 section_bottom에서 제거 (디자인에 없음) */
+    .BeyondDrama .inner .BDcontents .BDconBottom .BDsection10 {
+        width: 358px;
+        height: 353px;
+    }
+
+    /* ViewersPlayground 섹션 반응형 */
+    .ViewersPlayground .inner {
+        width: 864px;
+    }
+
+    .ViewersPlayground .inner .top {
+        width: 864px;
+        padding-bottom: 50px;
+    }
+
+    .ViewersPlayground .inner .top h2 {
+        font-size: 40px;
+        text-align: left;
+    }
+
+    .ViewersPlayground .inner .VPcontents {
+        display: flex;
+        flex-direction: column;
+        gap: 44px;
+        width: 864px;
+    }
+
+    /* VPcon01 - 이미지 왼쪽 */
+    .ViewersPlayground .inner .VPcontents .VPcon01 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon01 img {
+        width: 50vw;
+        height: 400px;
+        border-radius: 0 100px 100px 0;
+        object-fit: cover;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon01 .VPcon_txt {
+        width: 412px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon01 .VPcon_tit {
+        width: 336px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon01 .VPcon_tit h3 {
+        font-size: 30px;
+        margin-bottom: 1px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon01 .VPcon_tit span {
+        font-size: 26px;
+        font-weight: 300;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon01 p {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    /* VPcon02 - 텍스트 왼쪽, 이미지 오른쪽 */
+    .ViewersPlayground .inner .VPcontents .VPcon02 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon02 img {
+        width: 50vw;
+        height: 400px;
+        border-radius: 100px 0 0 100px;
+        object-fit: cover;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon02 .VPcon_txt {
+        width: 338px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+        text-align: left;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon02 .VPcon_tit {
+        width: 338px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon02 .VPcon_tit h3 {
+        font-size: 30px;
+        margin-bottom: 1px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon02 .VPcon_tit span {
+        font-size: 26px;
+        font-weight: 300;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon02 p {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    /* VPcon03 - 이미지 왼쪽 */
+    .ViewersPlayground .inner .VPcontents .VPcon03 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon03 img {
+        width: 50vw;
+        height: 400px;
+        border-radius: 0 100px 100px 0;
+        object-fit: cover;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon03 .VPcon_txt {
+        width: 373px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon03 .VPcon_tit {
+        width: 390px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon03 .VPcon_tit h3 {
+        font-size: 30px;
+        margin-bottom: 1px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon03 .VPcon_tit span {
+        font-size: 26px;
+        font-weight: 300;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon03 p {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    /* Event 섹션 반응형 */
+    .event {
+        padding-top: 150px;
+        padding-bottom: 80px;
+    }
+
+    .event .inner {
+        width: 864px;
+        gap: 40px;
+    }
+
+    .event .inner .top h2 {
+        font-size: 40px;
+    }
+
+    .event .Econtents {
+        height: 600px;
+        gap: 8px;
+    }
+
+    .event .Econ01,
+    .event .Econ02,
+    .event .Econ03 {
+        width: 380px;
+        height: 380px;
+    }
+
+    .event .Econ01:hover,
+    .event .Econ03:hover {
+        width: 480px;
+        height: 480px;
+        transform: translateY(60px);
+    }
+
+    .event .Econ02:hover {
+        width: 480px;
+        height: 480px;
+        transform: translateY(-120px);
+    }
+
+    .event .Econ01 h3,
+    .event .Econ02 h3,
+    .event .Econ03 h3 {
+        font-size: 24px;
+    }
+
+    .event .Econ01:hover h3,
+    .event .Econ02:hover h3,
+    .event .Econ03:hover h3 {
+        font-size: 30px;
+    }
+
+    .event .event-info-card {
+        padding: 30px 25px;
+    }
+
+    .event .event-date,
+    .event .event-location {
+        font-size: 16px;
+    }
+
+    .event .event-desc {
+        font-size: 14px;
+    }
+
+    .event .event-btn {
+        padding: 10px 24px;
+        font-size: 14px;
+    }
+
+    /* LatestNews 섹션 반응형 */
+    .LatestNews {
+        padding-top: 150px;
+        padding-bottom: 100px;
+    }
+
+    .LatestNews .inner {
+        width: 864px;
+        gap: 40px;
+    }
+
+   /*  .LatestNews .inner .top {
+        padding-bottom: 50px;
+    }
+ */
+    .LatestNews .inner .top h3 {
+        font-size: 40px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .LatestNews .inner .LNcontents {
+        width: 864px;
+        height: 645px;
+        background: var(--Bcolor);
+        border-radius: 0 50px 50px 50px;
+        padding: 40px 60px 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+        box-sizing: border-box;
+    }
+
+    /* 활성 뉴스만 표시 */
+    .LatestNews .inner .LNcontents .LNcon01,
+    .LatestNews .inner .LNcontents .LNcon02,
+    .LatestNews .inner .LNcontents .LNcon03 {
+        display: none;
+        width: 100%;
+        max-width: 778px;
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon01.active,
+    .LatestNews .inner .LNcontents .LNcon02.active,
+    .LatestNews .inner .LNcontents .LNcon03.active {
+        display: flex;
+    }
+
+    /* 텍스트 컨테이너 */
+    .LatestNews .inner .LNcontents .LNcon01 > div,
+    .LatestNews .inner .LNcontents .LNcon02 > div,
+    .LatestNews .inner .LNcontents .LNcon03 > div {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+    /* 서브텍스트 (출처, 날짜) */
+    .LatestNews .inner .LNcontents .LNcon_subtxt {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        font-size: 20px;
+        font-weight: 300;
+        color: var(--Wcolor);
+        text-transform: uppercase;
+    }
+
+    /* 뉴스 제목 */
+    .LatestNews .inner .LNcontents .LNcon_tit {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--Wcolor);
+        line-height: 1.3;
+        text-transform: uppercase;
+    }
+
+    /* 이미지 */
+    .LatestNews .inner .LNcontents .LNcon01 img,
+    .LatestNews .inner .LNcontents .LNcon02 img,
+    .LatestNews .inner .LNcontents .LNcon03 img {
+        width: 100%;
+        max-width: 778px;
+        height: 414px;
+        object-fit: cover;
+    }
+
+    /* 인디케이터 */
+    .LatestNews .inner .LNcontents .news-indicators {
+        display: flex;
+        gap: 10px;
+        margin-top: 0;
+    }
+
+    .LatestNews .inner .LNcontents .news-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(245, 245, 245, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .LatestNews .inner .LNcontents .news-indicator.active {
+        background: var(--Wcolor);
+        width: 30px;
+        border-radius: 6px;
+    }
+
 }
 
-@media screen and (max-width:860px) {}
+@media screen and (max-width:860px) {
+    /* LatestNews 섹션 860px */
+    .LatestNews {
+        padding-top: 120px;
+        padding-bottom: 80px;
+    }
+
+    .LatestNews .inner {
+        width: 90%;
+        max-width: 700px;
+    }
+
+    .LatestNews .inner .top h3 {
+        font-size: 36px;
+    }
+
+    .LatestNews .inner .LNcontents {
+        width: 100%;
+        max-width: 600px;
+        padding: 35px 50px 50px;
+        gap: 50px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon01 > div,
+    .LatestNews .inner .LNcontents .LNcon02 > div,
+    .LatestNews .inner .LNcontents .LNcon03 > div {
+        gap: 18px;
+        max-width: 500px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon_subtxt {
+        font-size: 18px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon_tit {
+        font-size: 22px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon01 img,
+    .LatestNews .inner .LNcontents .LNcon02 img,
+    .LatestNews .inner .LNcontents .LNcon03 img {
+        max-width: 500px;
+        height: 266px;
+    }
+
+    /* Event 섹션 */
+    .event {
+        padding-top: 120px;
+        padding-bottom: 70px;
+    }
+
+    .event .inner {
+        width: 90%;
+        max-width: 760px;
+    }
+
+    .event .inner .top h2 {
+        font-size: 36px;
+    }
+
+    .event .Econtents {
+        height: 550px;
+        gap: 6px;
+    }
+
+    .event .Econ01,
+    .event .Econ02,
+    .event .Econ03 {
+        width: 340px;
+        height: 340px;
+    }
+
+    .event .Econ01:hover,
+    .event .Econ03:hover {
+        width: 420px;
+        height: 420px;
+        transform: translateY(50px);
+    }
+
+    .event .Econ02:hover {
+        width: 420px;
+        height: 420px;
+        transform: translateY(-100px);
+    }
+
+    .event .Econ01 h3,
+    .event .Econ02 h3,
+    .event .Econ03 h3 {
+        font-size: 22px;
+    }
+
+    .event .Econ01:hover h3,
+    .event .Econ02:hover h3,
+    .event .Econ03:hover h3 {
+        font-size: 28px;
+    }
+}
 
 @media screen and (max-width:746px) {
     .comingsoon .inner {
         width: 90%;
     }
+
     .comingsoon .inner img {
         width: 90%;
         border-radius: 0 200px 0 0;
@@ -160,28 +679,228 @@
     .comingsoon .inner p {
         bottom: 24px;
     }
+
+    /* LatestNews 섹션 746px */
+    .LatestNews {
+        padding-top: 100px;
+        padding-bottom: 70px;
+    }
+
+    .LatestNews .inner {
+        width: 90%;
+        max-width: 600px;
+    }
+
+    .LatestNews .inner .top h3 {
+        font-size: 34px;
+    }
+
+    .LatestNews .inner .LNcontents {
+        width: 100%;
+        max-width: 500px;
+        padding: 32px 40px 40px;
+        gap: 40px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon01 > div,
+    .LatestNews .inner .LNcontents .LNcon02 > div,
+    .LatestNews .inner .LNcontents .LNcon03 > div {
+        gap: 16px;
+        max-width: 420px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon_subtxt {
+        font-size: 17px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon_tit {
+        font-size: 20px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon01 img,
+    .LatestNews .inner .LNcontents .LNcon02 img,
+    .LatestNews .inner .LNcontents .LNcon03 img {
+        max-width: 420px;
+        height: 223px;
+    }
+
+    /* Event 섹션 */
+    .event {
+        padding-top: 100px;
+        padding-bottom: 65px;
+    }
+
+    .event .inner {
+        width: 90%;
+        max-width: 650px;
+    }
+
+    .event .inner .top h2 {
+        font-size: 34px;
+    }
+
+    .event .Econtents {
+        height: 500px;
+        gap: 5px;
+    }
+
+    .event .Econ01,
+    .event .Econ02,
+    .event .Econ03 {
+        width: 300px;
+        height: 300px;
+    }
+
+    .event .Econ01:hover,
+    .event .Econ03:hover {
+        width: 380px;
+        height: 380px;
+        transform: translateY(40px);
+    }
+
+    .event .Econ02:hover {
+        width: 380px;
+        height: 380px;
+        transform: translateY(-80px);
+    }
+
+    .event .Econ01 h3,
+    .event .Econ02 h3,
+    .event .Econ03 h3 {
+        font-size: 20px;
+    }
+
+    .event .Econ01:hover h3,
+    .event .Econ02:hover h3,
+    .event .Econ03:hover h3 {
+        font-size: 26px;
+    }
+
 }
 
-@media screen and (max-width:570px) {}
+@media screen and (max-width:570px) {
+    /* LatestNews 섹션 570px */
+    .LatestNews {
+        padding-top: 90px;
+        padding-bottom: 60px;
+    }
+
+    .LatestNews .inner {
+        width: 95%;
+        max-width: 480px;
+    }
+
+    .LatestNews .inner .top h3 {
+        font-size: 32px;
+    }
+
+    .LatestNews .inner .LNcontents {
+        width: 100%;
+        max-width: 420px;
+        padding: 30px 35px 35px;
+        gap: 35px;
+        border-radius: 0 25px 25px 25px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon01 > div,
+    .LatestNews .inner .LNcontents .LNcon02 > div,
+    .LatestNews .inner .LNcontents .LNcon03 > div {
+        gap: 14px;
+        max-width: 350px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon_subtxt {
+        font-size: 16px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon_tit {
+        font-size: 18px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon01 img,
+    .LatestNews .inner .LNcontents .LNcon02 img,
+    .LatestNews .inner .LNcontents .LNcon03 img {
+        max-width: 350px;
+        height: 186px;
+    }
+
+    /* Event 섹션 */
+    .event {
+        padding-top: 90px;
+        padding-bottom: 60px;
+    }
+
+    .event .inner {
+        width: 100%;
+        max-width: 480px;
+        padding: 0 20px;
+    }
+
+    .event .inner .top h2 {
+        font-size: 32px;
+    }
+
+    .event .Econtents {
+        height: auto;
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    .event .Econ01,
+    .event .Econ02,
+    .event .Econ03 {
+        width: 280px;
+        height: 280px;
+        opacity: 0.9;
+    }
+
+    .event .Econ01:hover,
+    .event .Econ02:hover,
+    .event .Econ03:hover {
+        width: 300px;
+        height: 300px;
+        transform: none;
+    }
+
+    .event .Econ01 h3,
+    .event .Econ02 h3,
+    .event .Econ03 h3 {
+        font-size: 18px;
+    }
+
+    .event .Econ01:hover h3,
+    .event .Econ02:hover h3,
+    .event .Econ03:hover h3 {
+        font-size: 22px;
+    }
+}
 
 @media screen and (max-width:439px) {
+
+    /* Coming Soon 섹션 */
     .comingsoon .inner {
         width: 380px;
     }
+
     .comingsoon .inner .top {
         width: 226px;
+        padding-bottom: 20px;
     }
+
     .comingsoon .inner .top h2 {
         font-size: 30px;
     }
+
     .comingsoon .inner .top button {
         background: url(../img/arrow-up-right.png) center/cover;
         width: 26px;
         height: 26px;
     }
+
     .comingsoon .inner .top button span {
         display: none;
     }
+
     .comingsoon .inner img {
         width: 380px;
         height: 220px;
@@ -199,4 +918,425 @@
     .comingsoon .inner p {
         bottom: 24px;
     }
+
+    /* ON-AIR 섹션 모바일 반응형 - 피그마 디자인 기반 */
+    .onair {
+        height: auto;
+        padding: 60px 0 80px;
+    }
+
+    .onair .inner {
+        width: 100%;
+        max-width: 380px;
+        height: auto;
+        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .onair .inner .top {
+        width: 129px;
+        height: auto;
+        padding-bottom: 30px;
+    }
+
+    .onair .inner .top h2 {
+        font-size: 30px;
+    }
+
+    .onair .inner .top button {
+        background: url(../img/arrow-up-right.png) center/cover;
+        width: 26px;
+        height: 26px;
+        cursor: pointer;
+    }
+
+    .onair .inner .top button span {
+        display: none;
+    }
+
+    .onair .ONcon {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        height: auto;
+    }
+
+    /* 모바일에서는 활성 이미지만 표시 */
+    .onair .ONcon>div:not(.active) {
+        display: none;
+    }
+
+    .onair .ONcon>div.active {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .onair .ONcon>div.active img {
+        width: 380px;
+        height: 362px;
+
+    }
+
+    /* 텍스트 박스 모바일 - 피그마 디자인 기반 */
+    .onair .ONcon>div.active .ONtxtbox {
+        width: 245px;
+        height: 52px;
+        gap: 0;
+    }
+
+    .onair .ONcon>div.active .ONtxtbox h3 {
+        font-size: 20px;
+
+    }
+
+    .onair .ONcon>div.active .ONtxtbox ul {
+        flex-direction: row;
+    }
+
+    .onair .ONcon>div.active .ONtxtbox ul .bar {
+        width: 80px;
+        height: 1px;
+        background: var(--Wcolor);
+    }
+
+    .onair .ONcon>div.active .ONtxtbox ul>li>p {
+        font-size: 20px;
+    }
+
+    /* 버튼 숨김 - 모바일에서는 간소화 */
+    .onair .ONcon>div.active .ONtxtbox button {
+        display: none;
+    }
+
+
+
+
+    .GigTit h3 {
+        font-size: 66px;
+    }
+
+    .GigTit span {
+        font-size: 20px;
+    }
+
+    /* ViewersPlayground 섹션 모바일 반응형 */
+    .ViewersPlayground .inner {
+        width: 100%;
+        max-width: 440px;
+        padding: 0 30px;
+        box-sizing: border-box;
+    }
+
+    .ViewersPlayground .inner .top {
+        width: 100%;
+        padding-bottom: 30px;
+    }
+
+    .ViewersPlayground .inner .top h2 {
+        font-size: 30px;
+        text-align: left;
+    }
+
+    .ViewersPlayground .inner .VPcontents {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+        width: 100%;
+    }
+
+    /* VPcon01 - 이미지 왼쪽 둥근 모서리 */
+    .ViewersPlayground .inner .VPcontents .VPcon01 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon01 img {
+        width: 100%;
+        max-width: 410px;
+        height: 200px;
+        border-radius: 50px 0 0 50px;
+        object-fit: cover;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon01 .VPcon_txt {
+        width: 100%;
+        max-width: 369px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon01 .VPcon_tit {
+        width: 100%;
+        max-width: 213px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon01 .VPcon_tit h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 0;
+        line-height: 1.3;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon01 .VPcon_tit span {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.3;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon01 p {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+
+    /* VPcon02 - 이미지 오른쪽 둥근 모서리, 우측 정렬 */
+    .ViewersPlayground .inner .VPcontents .VPcon02 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 9px;
+        width: 100%;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon02 img {
+        width: 100%;
+        max-width: 415px;
+        height: 200px;
+        border-radius: 0 50px 50px 0;
+        object-fit: cover;
+        order: 0;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon02 .VPcon_txt {
+        width: 100%;
+        max-width: 374px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 16px;
+        text-align: right;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon02 .VPcon_tit {
+        width: 100%;
+        max-width: 202px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon02 .VPcon_tit h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 3px;
+        line-height: 1.3;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon02 .VPcon_tit span {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.3;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon02 p {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+
+    /* VPcon03 - 이미지 왼쪽 둥근 모서리 */
+    .ViewersPlayground .inner .VPcontents .VPcon03 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon03 img {
+        width: 100%;
+        max-width: 410px;
+        height: 200px;
+        border-radius: 50px 0 0 50px;
+        object-fit: cover;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon03 .VPcon_txt {
+        width: 100%;
+        max-width: 383px;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon03 .VPcon_tit {
+        width: 100%;
+        max-width: 212px;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon03 .VPcon_tit h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 0;
+        line-height: 1.3;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon03 .VPcon_tit span {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.3;
+    }
+
+    .ViewersPlayground .inner .VPcontents .VPcon03 p {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+
+    /* Event 섹션 모바일 반응형 */
+    .event {
+        padding-top: 80px;
+        padding-bottom: 60px;
+    }
+
+    .event .inner {
+        width: 100%;
+        max-width: 380px;
+        padding: 0 30px;
+        box-sizing: border-box;
+        gap: 30px;
+    }
+
+    .event .inner .top h2 {
+        font-size: 30px;
+    }
+
+    .event .Econtents {
+        height: auto;
+        flex-direction: column;
+        gap: 40px;
+        padding: 20px 0;
+    }
+
+    .event .Econ01,
+    .event .Econ02,
+    .event .Econ03 {
+        width: 320px;
+        height: 320px;
+        opacity: 1;
+        animation: none;
+    }
+
+    .event .Econ01:hover,
+    .event .Econ02:hover,
+    .event .Econ03:hover {
+        width: 340px;
+        height: 340px;
+        transform: none;
+    }
+
+    .event .Econ01 h3,
+    .event .Econ02 h3,
+    .event .Econ03 h3 {
+        font-size: 20px;
+    }
+
+    .event .Econ01:hover h3,
+    .event .Econ02:hover h3,
+    .event .Econ03:hover h3 {
+        font-size: 24px;
+    }
+
+    .event .event-info-card {
+        padding: 25px 20px;
+        height: 65%;
+    }
+
+    .event .event-date,
+    .event .event-location {
+        font-size: 12px;
+    }
+
+    .event .event-desc {
+        font-size: 11px;
+    }
+
+    .event .event-btn {
+        padding: 8px 20px;
+        font-size: 12px;
+    }
+
+    /* LatestNews 섹션 모바일 반응형 - Figma 디자인 기반 */
+    .LatestNews {
+        padding-top: 80px;
+        padding-bottom: 60px;
+    }
+
+    .LatestNews .inner {
+        width: 100%;
+        max-width: 380px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        gap: 20px;
+    }
+
+    .LatestNews .inner .top h3 {
+        font-size: 30px;
+        padding-bottom: 20px;
+    }
+
+    .LatestNews .inner .LNcontents {
+        width: 376px;
+        max-width: 376px;
+        padding: 40px 30px 30px;
+        gap: 30px;
+        border-radius: 0 18px 18px 18px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon01 > div,
+    .LatestNews .inner .LNcontents .LNcon02 > div,
+    .LatestNews .inner .LNcontents .LNcon03 > div {
+        gap: 10px;
+        max-width: 336px;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon_subtxt {
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon_tit {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+
+    .LatestNews .inner .LNcontents .LNcon01 img,
+    .LatestNews .inner .LNcontents .LNcon02 img,
+    .LatestNews .inner .LNcontents .LNcon03 img {
+        width: 336px;
+        max-width: 336px;
+        height: 178px;
+    }
+
+    .LatestNews .inner .LNcontents .news-indicators {
+        gap: 8px;
+        margin-top: 0;
+    }
+
+    .LatestNews .inner .LNcontents .news-indicator {
+        width: 10px;
+        height: 10px;
+    }
+
+    .LatestNews .inner .LNcontents .news-indicator.active {
+        width: 26px;
+        border-radius: 5px;
+    }
+
+
 }
