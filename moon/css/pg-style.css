@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-main{
+main {
   position: relative;
   width: 100%;
 }
@@ -23,7 +23,7 @@ main{
   background: linear-gradient(transparent 20%, #fff 40%);
 }
 
-.hero .inner{
+.hero .inner {
   display: flex;
   flex-direction: row;
 }
@@ -272,10 +272,11 @@ main{
 }
 
 .running-contest .title {
- margin-bottom: 42px;
+  margin-bottom: 42px;
 }
 
-.running-contest h2, .community h2 {
+.running-contest h2,
+.community h2 {
   color: var(--Bcolor);
 }
 
@@ -464,6 +465,11 @@ main{
   overflow: hidden;
 }
 
+.creativeGallery .inner {
+  background: #ccc;
+  position: relative;
+}
+
 .creativeGallery .titlebox {
   display: flex;
   flex-direction: column;
@@ -474,8 +480,7 @@ main{
 
 .creativeGallery .titlebox .title {}
 
-.creativeGallery .title h2 {
-}
+.creativeGallery .title h2 {}
 
 .creativeGallery .titlebox .category {
   display: flex;
@@ -524,6 +529,7 @@ main{
 /* 팬아트 카테고리 */
 .creativeGallery .fanarts {
   width: 100%;
+
 }
 
 .creativeGallery .fanarts .wrap {
@@ -531,6 +537,9 @@ main{
   display: flex;
   flex-direction: column;
   gap: 68px;
+  /* background: red; */
+  position: relative;
+  overflow-x: hidden;
 }
 
 
@@ -655,6 +664,7 @@ main{
 .fanarts .img_new .swiper-pagination {
   position: static;
 }
+
 /* 공통 페이지네이션 */
 .swiper-pagination-bullet {
   background: rgba(245, 245, 245, 0.4);
@@ -668,27 +678,30 @@ main{
 }
 
 /* 갤러리 비디오 카테고리 */
-.creativeGallery .fanvideos{
+.creativeGallery .fanvideos {
   width: 100%;
 }
 
-.creativeGallery .fanvideos .wrap{
-  width: 100%;
+.creativeGallery .fanvideos .wrap {
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   gap: 100px;
+  overflow: hidden;
 }
 
 .creativeGallery .fanvideos ul.swiper-wrapper {
-  display: flex;
-  flex-direction: row;
-  gap: 140px;
+  /*   display: flex;
+  flex-direction: row; */
+  /* gap: 140px; */
 }
 
 .creativeGallery .fanvideos ul.swiper-wrapper .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #000;
+  width: 376px;
 }
 
 .creativeGallery .fanvideos ul.swiper-wrapper .fan-video-wrap {
@@ -706,6 +719,7 @@ main{
   pointer-events: none;
   user-select: none;
 }
+
 .creativeGallery .fanvideos .video_new .swiper ul.swiper-wrapper {
   display: flex;
   flex-direction: row;
@@ -728,9 +742,11 @@ main{
   bottom: -30px;
   right: 0;
 }
+
 .fanvideos .video_new .swiper-pagination {
   position: static;
 }
+
 /* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide{
   width: auto;
 } */
@@ -761,7 +777,7 @@ main{
 } */
 
 /* 커뮤니티 섹션 */
-.community{
+.community {
   width: 100%;
   padding: 200px;
   display: flex;
@@ -769,12 +785,14 @@ main{
   gap: 10px;
   overflow: hidden;
 }
+
 /* 커뮤니티 상단 */
 .community .title {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .community .title .subtit {
   width: 100%;
   display: flex;
@@ -782,23 +800,27 @@ main{
   align-items: center;
   justify-content: space-between;
 }
+
 .community .title .subtit h4 {
   color: var(--b, #0d031c);
   text-align: left;
   font: var(--font-1920-title-L-40);
   text-transform: uppercase;
 }
+
 .community .title .subtit .right {
   display: flex;
   flex-direction: row;
   gap: 13px;
   align-items: center;
 }
+
 .community .title .subtit .right p {
   color: #bdbac1;
   font: var(--font-1920_1024-body-B-20);
-  
+
 }
+
 .community .title .subtit .right p.on {
   color: #4f485a;
 }
@@ -810,11 +832,13 @@ main{
   flex-direction: column;
   gap: 37px;
 }
+
 .community .articles .comm_gallery {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
+
 .community .articles .comm_gallery .swiper-wrapper {
   padding-right: 200px;
   display: flex;
@@ -822,6 +846,7 @@ main{
   gap: 18px;
   align-items: center;
 }
+
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide {
   display: flex;
   position: relative;
@@ -832,7 +857,8 @@ main{
   width: 1137px;
   height: 716px;
 }
-.community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap{}
+
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap {}
 
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide .info-overlay {
   width: 100%;
@@ -858,29 +884,30 @@ main{
   opacity: 1;
 }
 
-.community .articles .comm_gallery .info-overlay .num{
+.community .articles .comm_gallery .info-overlay .num {
   font: 300 72px/100% "Pretendard", sans-serif;
   position: relative;
   transform-origin: 0 0;
   transform: rotate(0deg) scale(1, 1);
 }
-.community .articles .comm_gallery .info-overlay .comm_subtit{
+
+.community .articles .comm_gallery .info-overlay .comm_subtit {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
-.community .articles .comm_gallery .info-overlay .comm_subtit em{
+
+.community .articles .comm_gallery .info-overlay .comm_subtit em {
   color: #938f98;
   font: 300 26px/100% "Assistant", sans-serif;
 }
-.community .articles .comm_gallery .info-overlay .comm_subtit span{
+
+.community .articles .comm_gallery .info-overlay .comm_subtit span {
   display: flex;
   flex-direction: row;
   gap: 12px;
 }
-.community .articles .comm_gallery .info-overlay .comm_subtit span h5{
 
-}
-.community .articles .comm_gallery .info-overlay .comm_subtit span p{
-  
-}
+.community .articles .comm_gallery .info-overlay .comm_subtit span h5 {}
+
+.community .articles .comm_gallery .info-overlay .comm_subtit span p {}
