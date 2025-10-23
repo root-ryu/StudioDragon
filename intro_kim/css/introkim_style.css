@@ -42,6 +42,7 @@ section {
 .main_cach .img_roll div {
     width: 344px;
     opacity: .6;
+    margin-right: 64px;
 }
 
 .main_cach .swiper-wrapper {

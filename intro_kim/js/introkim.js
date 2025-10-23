@@ -273,12 +273,13 @@ document.addEventListener("DOMContentLoaded", () => {
 //         }
 //         lastScrollY = currentScrollY;
 //     });
-//     const main_cachSwiper = new Swiper(".main_cach .swiper", {
-//         slidesPerView: "auto",
-//         spaceBetween: 64,
-//         loop: true,                   // 무한 반복
-//         allowTouchMove: false // 마우스 드래그 필요하면 true
-//     });
+
+const main_cachSwiper = new Swiper(".main_cach .swiper", {
+    slidesPerView: "auto",
+    spaceBetween: 64,
+    loop: true,                   // 무한 반복
+    allowTouchMove: false // 마우스 드래그 필요하면 true
+});
 
 
 var histotySwiper = new Swiper(".history .swiper", {
