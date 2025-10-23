@@ -26,8 +26,8 @@ section {
 .main_cach {
     box-sizing: content-box;
     width: 100%;
-    height: 100vh;
-    padding: 250px 0;
+    height: 50vh;
+    padding: 500px 0 250px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,12 +37,28 @@ section {
 
 .main_cach .swiper {
     width: 100%;
-    /* width: 1520px; */
 }
 
 .main_cach .img_roll div {
     width: 344px;
     opacity: .6;
+}
+
+.main_cach .swiper-wrapper {
+    display: flex;
+    animation: marquee 24s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+
+    /* 슬라이드 길이 절반만큼 이동 */
 }
 
 .main_cach .img_roll div img {
@@ -54,38 +70,45 @@ section {
 }
 
 .main_cach .txt {
-    display: contents;
-    flex-direction: column;
     position: absolute;
-    top: 200px;
-    left: 0;
-    z-index: 100;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, 30%);
+    /* 완전 중앙 */
+    display: flex;
+    flex-direction: column;
+    /* 세로 배치 */
+    align-items: center;
+    /* 가로 중앙 정렬 */
+    justify-content: center;
+    /* 세로 내부 정렬 */
+    text-align: center;
+    gap: 10px;
+    /* 요소 간 간격 */
+    z-index: 4;
+    width: 100%;
+    max-width: 800px;
+    color: var(--Wcolor);
+
 }
 
 .main_cach .txt p.head_copy {
     font-size: 70px;
-    color: var(--Wcolor);
     font-weight: 700;
-    text-align: center;
-    margin: 0 10px;
-    padding: 10px;
-}
-
-.main_cach .txt p.head_copy.first {
-    display: inline-block;
+    line-height: 130%;
     background: var(--subRed2-900);
-}
-
-.main_cach .txt p.head_copy.second {
+    padding: 0 10px;
     display: inline-block;
-    background: var(--subRed2-900);
+
 }
 
 .main_cach .txt em {
     font-size: 30px;
     font-weight: 400;
     text-align: center;
-    margin-top: 24px;
+    margin-top: 10px;
+    line-height: 130%;
+    color: var(--Bcolor);
 
 }
 
@@ -225,15 +248,22 @@ h3.tit {
 
 .ci {
     background: #E5E5E5;
+    padding: 0;
+    padding-bottom: 150px;
+}
+
+.ci .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .ci .bar {
     position: relative;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100px;
-    background-color: yellow;
+    background-color: var(--Wcolor);
     border-radius: 0 0 120px 120px;
 }
 
@@ -246,18 +276,19 @@ h3.tit {
     flex: 1;
     width: 100%;
     justify-content: space-between;
-    height: 344px;
     gap: 40px;
 }
 
 .ci .cont .logo {
+    padding: 0 40px 0 40px;
     background: var(--WF);
     border-radius: 32px;
-    width: 100%;
+    width: 738px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 344px;
 }
 
 .ci .cont .logo img {
@@ -265,16 +296,15 @@ h3.tit {
     margin-bottom: 20px;
 }
 
-.ci .cont .logo em {}
-
 .ci .cont .symbol {
     background: var(--WF);
     border-radius: 32px;
-    width: 100%;
+    width: 738px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 344px;
 }
 
 .ci .cont .symbol img {
@@ -291,49 +321,390 @@ h3.tit {
     font-weight: 700;
 }
 
-/* .history */
-
-.history .cont_hori_swipe {
-    position: sticky;
+.ci button {
+    width: 334px;
+    height: 82px;
+    background: var(--subBlue2);
+    border: 0;
+    color: var(--WF);
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 70px;
+    transition: .5s;
 }
 
+.ci button i {
+    width: 20px;
+    margin-left: 14px;
+}
+
+.ci button:hover {
+    background: var(--subBlue1);
+}
+
+/* .history */
+.history {
+    --sb-x: 24px;
+    /* 좌우 여백 */
+    --sb-h: 6px;
+    /* 트랙 높이 */
+    --sb-radius: 9999px;
+    --sb-track: #ECECEC;
+    /* 트랙(옅은 회색) */
+    --sb-thumb: #A8A8A8;
+    /* 손잡이(짙은 회색) */
+    --sb-thumb-hover: #8F8F8F;
+}
+
+/* 0) 기준선 y 위치는 컨테이너에서 전역으로 관리 */
+.history .cont_hori_swipe {
+    --tline: 110px;
+    /* 필요 시 이 값만 조절 */
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 100px;
+}
+
+/* 1) 전체 가로 길이만큼 1줄을 '한 번만' 그림 */
+.history .cont_hori_swipe .swiper-wrapper {
+    position: relative;
+    /* ::before 기준 */
+    display: inline-flex;
+    /* 콘텐츠 길이만큼 */
+    width: max-content;
+    /* 중요: 뷰포트 폭으로 수축 금지 */
+}
+
+.history .cont_hori_swipe .swiper-wrapper::before {
+    content: "";
+    position: absolute;
+    /* 폭을 확실히 주기: left + right 조합 (width 고정값 사용 금지) */
+    left: 110px;
+    /* 시작점 200px */
+    width: calc(100% + 500px);
+    padding-right: 500px;
+    right: -500px;
+    /* ← 핵심 */
+    top: var(--tline);
+    height: 3px;
+    background: #BD4033;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 2) 마지막 그룹 오른쪽으로 '화면 끝까지' 꼬리 라인 연장 */
+.history .cont_hori_swipe ul li.y_group:last-child::after {
+    content: "";
+    position: absolute;
+    top: var(--tline);
+    /* 타임라인 높이 그대로 */
+    left: 100%;
+    right: 500px;
+    /* 마지막 그룹의 오른쪽 끝에서 시작 */
+    height: 3px;
+    width: 100vw;
+    /* 뷰포트 끝까지 충분히 연장 */
+    background: #BD4033;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 그룹/아이템 내부에서 긋던 선은 비활성 (중복 제거) */
+.history .cont_hori_swipe ul li.y_group>ul::before,
+.history .cont_hori_swipe ul li.y_group>ul>li::after {
+    display: none;
+}
+
+
 .history .cont_hori_swipe ul {
+    position: absolute;
+    left: 110px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    /* ← 중요 */
     flex: 1;
 }
 
-.history .cont_hori_swipe ul li {
-    width: 354px;
+.history .cont_hori_swipe ul li.y_group {
+    width: max-content;
     margin-right: 90px;
+    position: relative;
 }
 
+.history .cont_hori_swipe ul li.y_group:first-child {
+    margin-left: 0;
+    /* ← 시작점 오프셋 */
+}
+
+.history .cont_hori_swipe ul li.y_group:last-child {
+    margin-right: 0;
+    /* ← 오른쪽 트레일링 여백 제거 */
+}
+
+
+.history .cont_hori_swipe ul li.y_group>ul {
+    display: flex;
+    gap: 90px;
+    position: relative;
+    /* 타임라인 높이(픽셀) — 필요시 이 값만 조절하면 라인/점/콘텐츠가 같이 내려감 */
+    --tline: 110px;
+}
+
+
+.history .cont_hori_swipe ul li.y_group>ul::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--tline);
+    height: 3px;
+    background: #BD4033;
+    z-index: 1;
+}
+
+
+/* 4) 본문은 선 아래로 내려오게 여백 유지 */
+.history .cont_hori_swipe ul>li.y_group>ul>li {
+    width: 354px;
+    position: relative;
+    padding-top: calc(var(--tline) + 24px);
+}
+
+/* 4) svg를 기준으로 3px 라인을 li 내부에서 오른쪽으로 그리기 */
+.history .cont_hori_swipe ul li.y_group>ul>li::after {
+    content: "";
+    position: absolute;
+    top: 53px;
+    /* svg의 vertical center값에 맞춰 조절 */
+    left: 50%;
+    transform: translateX(0);
+    width: calc(100% + 90px);
+    /* gap만큼 라인 연장 */
+    height: 3px;
+    background: #BD4033;
+    z-index: 1;
+}
+
+/* 마지막에 남아있는 이전 ::after 라인 제거(사용 안 함) */
+.history .cont_hori_swipe ul li.y_group>ul>li::after {
+    display: none;
+}
+
+
+
+/* 3) 원형 점(svg)과 연도는 선 위에 보이도록 유지 */
+.history .cont_hori_swipe ul li.y_group>ul>li svg {
+    position: absolute;
+    left: 10px;
+    top: calc(var(--tline) - 11.5px);
+    transform: translateX(-50%);
+    z-index: 2;
+    /* 선 위 */
+    display: block;
+}
+
+/* 타이포 살짝 정리 (필요시 유지/조절) */
 .history .cont_hori_swipe ul li h5.years {
+    position: absolute;
+    left: 58px;
+    top: calc(var(--tline) - 11.5px);
+    transform: translate(-50%, calc(-100% - 10px));
+    margin: 0;
+    z-index: 3;
+    /* svg보다도 위 */
     font-size: 56px;
     font-weight: 700;
     color: var(--MainColor-400);
-    margin-bottom: 24px;
 }
+
 
 .history .cont_hori_swipe ul li p {
     font-size: 30px;
     font-weight: 700;
     color: var(--subRed2-900);
-    margin: 10px 0 24px 0;
+    margin: 0 0 24px 0;
+    /* 라인 아래 간격 살짝 조절 */
 }
 
 
 .history .cont_hori_swipe ul li img {
     width: 354px;
     height: 178px;
-    overflow: hidden;
     object-fit: cover;
     border-radius: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    display: block;
+    border: 1px solid var(--Gcolor-300);
 }
 
 .history .cont_hori_swipe ul li em {
     font-size: 16px;
     color: var(--Bcolor);
     line-height: 130%;
+}
+
+/* Swiper 컨테이너는 overflow 관리를 위해 relative 추천 */
+.history .cont_hori_swipe {
+    position: relative;
+    overflow: hidden;
+}
+
+/* swiper_bar ui */
+.history .swiper-horizontal>.swiper-scrollbar,
+.history .swiper-scrollbar-horizontal {
+    left: var(--sb-x);
+    right: var(--sb-x);
+    width: 1520px;
+    /* 고정폭 금지 */
+    bottom: 0;
+    /* 필요시 조절 */
+    height: var(--sb-h);
+    margin: auto;
+}
+
+/* 트랙 스타일 */
+.history .swiper-scrollbar {
+    background: var(--Gcolor-300);
+    border-radius: 0;
+    opacity: 1 !important;
+    /* Swiper의 hide:true가 있어도 보이도록 */
+    position: relative;
+    overflow: hidden;
+
+
+}
+
+/* 손잡이(드래그 바) */
+.history .swiper-scrollbar-drag {
+    height: 100%;
+    min-width: 80px;
+    /* 손잡이 최소 길이(모바일 접근성용) */
+    background: var(--Gcolor);
+    border-radius: 0;
+}
+
+
+/* 호버/드래그 시 살짝 강조 */
+.history .swiper-scrollbar:hover .swiper-scrollbar-drag,
+.history .swiper-scrollbar-drag:active {
+    background: var(--subRed2-900);
+}
+
+/* 컨테이너와 간격 (필요 시) */
+.history .scroll_bar.swiper-scrollbar {
+    margin: auto;
+    /* 위 요소와 간격만 조절 */
+}
+
+
+
+/* .v_and_m */
+
+.v_and_m {
+    background: var(--WF);
+}
+
+.v_and_m .cont {
+    display: flex;
+    flex-direction: column;
+    flex-direction: 1;
+    align-content: space-between;
+    gap: 40px;
+}
+
+.v_and_m .cont article {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    border-radius: 32px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    color: var(--WF);
+    /* transition: .8s; */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.1));
+}
+
+.v_and_m .cont article:hover {
+    background-size: 120%;
+}
+
+.v_and_m .cont article::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/vision.jpg");
+    transition: .8s;
+}
+
+.v_and_m .cont article.mission::before {
+    background-image: url("../assets/mission.png");
+}
+
+.v_and_m .cont article:hover::before {
+    transform: scale(1.1);
+}
+
+.v_and_m .cont article::after {
+    position: absolute;
+    top: 0x;
+    left: 80px;
+    width: 140px;
+    height: 60px;
+    color: var(--WF);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 20px;
+    border-radius: 0 0 8px 8px;
+    background: rgb(57, 65, 153, .7);
+    backdrop-filter: blur(10px);
+}
+
+.v_and_m .vision::after {
+    content: "VISION";
+}
+
+
+
+.v_and_m .mission::after {
+    content: "MISSION";
+}
+
+.v_and_m .txt {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.v_and_m .vision .txt {
+    left: 80px;
+    text-align: left;
+}
+
+.v_and_m .mission .txt {
+    right: 80px;
+    text-align: right;
+}
+
+.v_and_m .txt p {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 130%;
+}
+
+.v_and_m .txt em {
+    font-size: 16px;
+    line-height: 130%;
+    opacity: .9;
 }
