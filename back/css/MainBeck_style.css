@@ -416,10 +416,9 @@ body {
 }
 
 .BeyondDrama .inner .top {
-    width: 500px;
+    width: 1024px;
     padding-bottom: 50px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -429,6 +428,7 @@ body {
     color: var(--Bcolor);
     text-transform: uppercase;
     line-height: 1.3;
+    padding-right: 30px;
 }
 
 .BeyondDrama .inner .top button {
@@ -700,8 +700,8 @@ body {
 }
 
 .BeyondDrama .BDconMiddle:hover .BDsection07 {
-    left: 50px;
-    width: 380px;
+    /* left 값 제거 - 원래 위치(left: 0) 유지 */
+    width: 480px;
 }
 
 /* 개별 섹션 호버 효과 - BDconMiddle 호버보다 나중에 선언하여 우선순위 확보 */
@@ -786,7 +786,7 @@ body {
 }
 
 .ViewersPlayground .VPcon01 img {
-    width: 997px;
+    width: 55vw;
     height: 500px;
     object-fit: cover;
     border-radius: 0 200px 200px 0;
@@ -831,7 +831,7 @@ body {
 }
 
 .ViewersPlayground .VPcon02 img {
-    width: 1001px;
+    width: 55vw;
     height: 500px;
     object-fit: cover;
     border-radius: 200px 0 0 200px;
@@ -857,7 +857,7 @@ body {
 }
 
 .ViewersPlayground .VPcon03 img {
-    width: 996px;
+    width: 55vw;
     height: 500px;
     object-fit: cover;
     border-radius: 0 200px 200px 0;
@@ -995,7 +995,7 @@ body {
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-15px);
+        transform: translateY(-30px);
     }
 }
 
