@@ -161,6 +161,27 @@ window.addEventListener('DOMContentLoaded', function () {
       });
   } */
 
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".text_reveal_section",
+      start: "top top",
+      end: "+=3000",
+      pin: true,
+      scrub: true,
+    }
+  }).to(".txt_area", {
+    backgroundSize: "100% 100%",
+    opacity: 1,
+    duration: 1,
+    ease: "none"
+  })
+    .to([".tit1", ".tit2", ".tit3"], {
+      backgroundSize: "100%",
+      duration: 1,
+      ease: "none",
+      stagger: 1.2   // ← 1.2초 간격으로 순차 재생
+    });
+
 
   let lastSswiper = new Swiper(".last-section .swiper", {
     slidesPerView: 3,

@@ -58,23 +58,41 @@ main {
   justify-content: center;
   align-items: center;
   color: #fff;
+  padding: 0;
 }
 
 .opacity_reveal {
   font-size: clamp(2rem, 5vw, 4.375rem);
   text-align: center;
-  width: 60%;
+  width: 80%;
   line-height: 1.5;
   color: rgba(240, 187, 119, 0.2);
+  background-size: 100% 0;
+  /* 처음에는 세로 100%, 가로 0% */
+  background-position: left top;
+  transition: none;
+  opacity: 0;
   /*   background: linear-gradient(to right,
       #fff,
       #000 no-repeat); */
+}
+
+.opacity_reveal p:nth-child(1) {
+  font-size: clamp(2rem, 6vw, 6.375rem);
+}
+
+.opacity_reveal p {
+  position: relative;
+  display: block;
+  background: linear-gradient(to top,
+      red,
+      green,
+      blue) no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
   background-size: 0%;
   transition: background-size cubic-bezier(0.1, 0.5, 0.5, 1) 0.5s;
 }
-
 
 
 
