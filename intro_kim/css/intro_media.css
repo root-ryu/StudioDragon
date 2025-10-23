@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+@media screen and (max-width:1024px) {
+    .inner {
+        width: 862px;
+        max-width: 100%;
+    }
+
+    .main_cach .img_roll div {
+        width: 250px;
+        margin-right: 40px;
+    }
+
+    .main_cach .img_roll div img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .main_cach .txt p.head_copy {
+        font-size: 60px;
+    }
+
+    .main_cach .txt em {
+        font-size: 20px;
+    }
+
+    .info-g .inner {
+        width: 862px;
+        max-width: 100%;
+    }
+
+    .info-g .icon_info {
+        margin-bottom: 100px;
+    }
+
+    .info-g .icon_info ul {
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+        width: 100%;
+    }
+
+    .info-g .icon_info ul li.box_w {
+        border-radius: 80px 0 0 0;
+    }
+
+    .info-g .icon_info ul li.box_b {
+        border-radius: 0 0 0 80px;
+    }
+
+    .info-g .icon_info ul li:first-child img {
+        padding: 8px 0;
+    }
+
+    .info-g .icon_info ul li:nth-child(2) img {
+        padding: 22px 0;
+    }
+
+    .info-g .icon_info ul li:nth-child(4) img {
+        padding: 12px 0;
+    }
+
+
+    .info-g .icon_info ul li.box_w img {
+        width: 70px;
+    }
+
+    .info-g .icon_info ul li.box_w .txt_w p {
+        font-size: 40px;
+    }
+
+    .info-g .icon_info ul li.box_w .txt_w em {
+        font-size: 20px;
+    }
+
+    .info-g .icon_info ul li.box_b img {
+        width: 70px;
+    }
+
+    .info-g .icon_info ul li.box_b .txt_b p {
+        font-size: 40px;
+    }
+
+
+    .info-g .icon_info ul li.box_b .txt_b em {
+        font-size: 20px;
+    }
+
+    .info-g .txt_info .sub_tit {
+        font-size: 30px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .info-g .txt_info .body_text ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        gap: 30px;
+    }
+
+    .info-g .txt_info .body_text ul li {
+        font-size: 20px;
+        line-height: 130%;
+        width: 862px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:440px) {
+
+    .main_cach .txt {
+        max-width: 382px;
+    }
+
+    .main_cach .txt p.head_copy {
+        font-size: 50px;
+    }
+
+    .main_cach .txt em {
+        font-size: 18px;
+    }
+}
