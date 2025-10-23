@@ -325,7 +325,7 @@ section h2 {
   margin-right: 200px; /* 오른쪽 끝에서 안쪽간격 */
   padding: 8px 30px; /* 위아래 8px, 좌우 40px */
   font-size: 24px;
-  font-weight: 700; /* 폰트굵기 */
+  font-weight: 500; /* 폰트굵기 */
   color: #ffffff;
   background: linear-gradient(150deg, #ffffff, #ffffff);
   border-radius: 18px;
@@ -372,7 +372,7 @@ ul.poster-list li {
   display: block;
   color: #948484;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 25px;
   margin-top: 20px; /* 위쪽 간격 */
   /*   text-align: center; */
   line-height: 1.5;
@@ -508,7 +508,7 @@ section h2 {
   width: 100%;
   border-radius: 18px;
   height: auto; /* 비율 유지 */
-  max-height: 800px; /* 최대 높이 제한 */
+  max-height: 650px; /* 최대 높이 제한 */
 }
 
 .last-section span {
@@ -541,3 +541,143 @@ section h2 {
   box-shadow: 0 15px 25px rgba(0,0,0,0.3);
 } */
 
+.eyes {
+  width: 108px;
+  height: 54px;
+  position: absolute;
+  top: 50%;
+  left: 85%;
+  margin-top: -77px;
+  margin-left: -54px;
+}
+.eye {
+  position: relative;
+  background: #FFF;
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin: 2px;
+  overflow: hidden;
+  animation: rotate 4s infinite;
+}
+
+.eye::before {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #1d0e28;
+  animation: eye 4s infinite;
+}
+
+.eye::before,
+.eye {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+
+@keyframes rotate {
+  
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  62.5% {
+    transform: rotate(-90deg);
+  }
+  87.5% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  62.5% {
+    transform: rotate(-90deg);
+  }
+  87.5% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes eye {
+  
+  0% {
+    top: 15px;
+    left: 15px;
+  }
+  12.5% {
+    top: 15px;
+    left: 5px;
+  }
+  25% {
+    top: 15px;
+    left: 15px;
+  }
+  37.5% {
+    top: 15px;
+    left: 25px;
+  }
+  50% {
+    top: 15px;
+    left: 15px;
+  }
+  62.5% {
+    top: 5px;
+    left: 15px;
+  }
+  87.5% {
+    top: 5px;
+    left: 15px;
+  }
+  100% {
+    top: 15px;
+    left: 15px;
+  }
+}
+@-webkit-keyframes eye {
+  0% {
+    top: 15px;
+    left: 15px;
+  }
+  12.5% {
+    top: 15px;
+    left: 5px;
+  }
+  25% {
+    top: 15px;
+    left: 15px;
+  }
+  37.5% {
+    top: 15px;
+    left: 25px;
+  }
+  50% {
+    top: 15px;
+    left: 15px;
+  }
+  62.5% {
+    top: 5px;
+    left: 15px;
+  }
+  87.5% {
+    top: 5px;
+    left: 15px;
+  }
+  100% {
+    top: 15px;
+    left: 15px;
+  }
+}
