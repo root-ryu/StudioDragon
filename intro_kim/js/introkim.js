@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function setInit() {
             gsap.set(item, { y: 60, opacity: 0 });
             gsap.set(txtEl, { y: 20, opacity: 0 });
-        }
+        };
 
         // ★ 페이지 로드시 초기화
         setInit();
@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("GSAP/ScrollTrigger가 로드되지 않았습니다.");
         return;
     }
-})
+});
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     const header = document.querySelector('header');
@@ -281,35 +281,39 @@ const main_cachSwiper = new Swiper(".main_cach .swiper", {
     allowTouchMove: false // 마우스 드래그 필요하면 true
 });
 
-
-var histotySwiper = new Swiper(".history .swiper", {
+// History Swiper (구조 유지: 외부 스크롤바 사용)
+const historySwiper = new Swiper(".history .cont_hori_swipe.swiper", {
     slidesPerView: "auto",
     centeredSlides: false,
-    freeMode: true,
-    resistanceRatio: 0.3,
-    scrollbar: {
-        el: ".swiper-scrollbar",
-        hide: true,
-    },
-    // 데스크톱에서도 마우스로 끌어서 스와이프
+
+    // freeMode는 한 번만!
+    freeMode: { enabled: true, sticky: false },
+
+    // 인터랙션
     simulateTouch: true,
     grabCursor: true,
-
-    // 부드러운 자유 스크롤
-    freeMode: { enabled: true, sticky: false },
     resistanceRatio: 0.3,
 
-    // 시작/끝 여백(마지막 +500px)
-    slidesOffsetBefore: 0,   // 타임라인 시작 y축 기준에 맞춰 조절
+    // 좌/우 여백
+    slidesOffsetBefore: 0,
     slidesOffsetAfter: 500,
 
-    // ✅ 스크롤바를 실제로 '드래그 가능'하게
+    // ✅ 외부(섹션 바깥) 스크롤바 정확히 지정
     scrollbar: {
-        el: ".swiper-scrollbar", // 동일한 엘리먼트 정확히 지정
-        draggable: true,            // ← 핵심
+        el: ".history > .scroll_bar.swiper-scrollbar",
+        draggable: true,
         dragSize: "auto",
-        hide: false,                // 숨김 없이 항상 보이도록(선호에 따라 true)
-        snapOnRelease: false        // 드래그 놓아도 강제 스냅 방지(자유 스크롤 느낌)
+        hide: false,
+        snapOnRelease: false,
     },
 });
 
+// ★ 중복/충돌을 일으키던 이전 인스턴스는 제거하세요.
+// var histotySwiper = new Swiper(".history .swiper", { ... })  ← 삭제
+
+// 이미지 로딩 후 레이아웃 재계산(선택)
+window.addEventListener("load", () => {
+    if (historySwiper && historySwiper.update) {
+        historySwiper.update();
+    }
+});
