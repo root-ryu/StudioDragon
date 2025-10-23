@@ -224,18 +224,38 @@ document.addEventListener('DOMContentLoaded', () => {
         const sectionTop = rect.top;
         const sectionHeight = rect.height;
         const windowHeight = window.innerHeight;
+        const windowWidth = window.innerWidth;
 
-        // 섹션이 화면에 50% 진입했을 때 계산
-        const triggerPoint = windowHeight - (sectionHeight * 0.5);
+        // 화면 너비에 따라 다른 트리거 포인트 설정
+        let triggerPoint;
+        if (windowWidth <= 440) {
+            // 440px 이하: GigTit 섹션의 80% 위치에서 시작
+            triggerPoint = sectionHeight * 0.2; // 섹션 상단에서 80% 내려간 지점
+        } else if (windowWidth < 779) {
+            // 779px 미만: GigTit 섹션의 80% 위치에서 시작
+            triggerPoint = sectionHeight * 0.2; // 섹션 상단에서 80% 내려간 지점
+        } else {
+            // 779px 이상: 기존 로직 (화면에 80% 진입)
+            triggerPoint = windowHeight - (sectionHeight * 0.8);
+        }
 
         // 섹션이 화면에 들어온 정도 계산 (0 ~ 1)
         let scrollProgress = 0;
 
-        if (sectionTop <= triggerPoint) {
-            // 섹션이 트리거 포인트를 지났을 때
-            const distancePassed = triggerPoint - sectionTop;
-            const transitionDistance = sectionHeight * 0.3; // 30% 구간에서 전환
-            scrollProgress = Math.min(distancePassed / transitionDistance, 1);
+        if (windowWidth < 779) {
+            // 779px 미만 (440px 포함): 섹션 상단이 트리거 포인트를 지나면 시작
+            if (sectionTop <= triggerPoint) {
+                const distancePassed = triggerPoint - sectionTop;
+                const transitionDistance = sectionHeight * 0.3; // 30% 구간에서 전환
+                scrollProgress = Math.min(distancePassed / transitionDistance, 1);
+            }
+        } else {
+            // 779px 이상: 기존 로직
+            if (sectionTop <= triggerPoint) {
+                const distancePassed = triggerPoint - sectionTop;
+                const transitionDistance = sectionHeight * 0.3; // 30% 구간에서 전환
+                scrollProgress = Math.min(distancePassed / transitionDistance, 1);
+            }
         }
 
         // 배경색 전환 (검은색 -> 흰색)
@@ -301,8 +321,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startNewsSlider() {
-        // 5초마다 자동 슬라이드
-        newsInterval = setInterval(nextNews, 5000);
+        // 모바일(439px 이하)에서는 전광판 애니메이션과 동기화
+        const isMobile = window.innerWidth <= 439;
+        const interval = isMobile ? 7200 : 5000; // 7.2초(전광판 90% 완료 시점) 또는 5초
+        
+        newsInterval = setInterval(nextNews, interval);
     }
 
     function stopNewsSlider() {
@@ -338,4 +361,83 @@ document.addEventListener('DOMContentLoaded', () => {
     if (newsItems.length > 0) {
         startNewsSlider();
     }
+
+    // 윈도우 리사이즈 이벤트 - 모바일/데스크톱 전환 시 타이밍 재조정
+    window.addEventListener('resize', () => {
+        if (newsItems.length > 0) {
+            stopNewsSlider();
+            startNewsSlider();
+        }
+    });
+
+    // 커스텀 마우스 커서 생성 및 관리
+    function initCustomCursor() {
+        // 커서 요소들 생성
+        const cursorDot = document.createElement('div');
+        const cursorCircle = document.createElement('div');
+        
+        cursorDot.className = 'cursor-dot';
+        cursorCircle.className = 'cursor-circle';
+        
+        document.body.appendChild(cursorDot);
+        document.body.appendChild(cursorCircle);
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+        let circleX = 0;
+        let circleY = 0;
+
+        // 마우스 움직임 추적
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // 부드러운 애니메이션을 위한 requestAnimationFrame
+        function updateCursor() {
+            // 커서 점 (빠른 반응)
+            cursorX += (mouseX - cursorX) * 0.9;
+            cursorY += (mouseY - cursorY) * 0.9;
+            
+            // 커서 원 (느린 반응)
+            circleX += (mouseX - circleX) * 0.15;
+            circleY += (mouseY - circleY) * 0.15;
+
+            cursorDot.style.transform = `translate(${cursorX - 4}px, ${cursorY - 4}px)`;
+            cursorCircle.style.transform = `translate(${circleX - 20}px, ${circleY - 20}px)`;
+
+            requestAnimationFrame(updateCursor);
+        }
+        updateCursor();
+
+        // ON-AIR 버튼에 특별한 효과 추가
+        const onairButtons = document.querySelectorAll('.onair .ONcon > div .ONtxtbox button');
+        
+        onairButtons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                cursorCircle.style.width = '80px';
+                cursorCircle.style.height = '80px';
+                cursorCircle.style.borderColor = 'rgba(245, 245, 245, 0.8)';
+                cursorCircle.style.borderWidth = '3px';
+            });
+
+            button.addEventListener('mouseleave', () => {
+                cursorCircle.style.width = '40px';
+                cursorCircle.style.height = '40px';
+                cursorCircle.style.borderColor = 'rgba(245, 245, 245, 0.5)';
+                cursorCircle.style.borderWidth = '2px';
+            });
+        });
+
+        // 모바일 기기에서는 커서 숨김
+        if (window.innerWidth <= 768 || 'ontouchstart' in window) {
+            cursorDot.style.display = 'none';
+            cursorCircle.style.display = 'none';
+        }
+    }
+
+    // 커스텀 커서 초기화
+    initCustomCursor();
 });
