@@ -372,7 +372,7 @@ ul.poster-list li {
   display: block;
   color: #948484;
   font-weight: 500;
-  font-size: 25px;
+  font-size: 24px;
   margin-top: 20px; /* 위쪽 간격 */
   /*   text-align: center; */
   line-height: 1.5;
@@ -507,6 +507,8 @@ section h2 {
 .last-section img {
   width: 100%;
   border-radius: 18px;
+  height: auto; /* 비율 유지 */
+  max-height: 800px; /* 최대 높이 제한 */
 }
 
 .last-section span {
@@ -538,3 +540,4 @@ section h2 {
 .poster-box1:hover img {
   box-shadow: 0 15px 25px rgba(0,0,0,0.3);
 } */
+
