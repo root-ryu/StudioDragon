@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="IR_Kwon/css/main_media.css">
     <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- GSAP 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="js/common.js"></script>
     <script src="IR_Kwon/js/main.js"></script>
 </head>
@@ -139,50 +142,48 @@
     </div><!-- //. container -->
   </section><!-- //. value_drivers -->
   <section class="execution">
-    <div class="inner">
-      <div class="title">
-        <h2 class="title">Execution</h2>
-        <p class="sub">Operational playbooks aligned to global releases.</p>
-      </div><!-- //. title -->
-      <div class="container">
-      <article class="card card_1">
-        <figure class="figure">
-          <img class="image" src="IR_Kwon/img/Execution_Pro.png" alt="Production" />
-        </figure><!-- //. figure -->
-        <div class="content">
-          <h3 class="card_title">Production</h3>
-          <p class="card_desc">High-quality sets, locations, OST → higher completion rate</p>
-        </div><!-- //. content -->
-      </article><!-- //. card_1 -->
-      <article class="card card_2">
-        <figure class="figure">
-          <img class="image" src="IR_Kwon/img/Execution_Dis.png" alt="Distribution" />
-        </figure><!-- //. figure -->
-        <div class="content">
-          <h3 class="card_title">Distribution</h3>
-          <p class="card_desc">Regional pacing + highlight drops → more Top-10 weeks</p>
-        </div><!-- //. content -->
-      </article><!-- //. card_2 -->
-      <article class="card card_3">
-        <figure class="figure">
-          <img class="image" src="IR_Kwon/img/Execution_Par.png" alt="Partners" />
-        </figure><!-- //. figure -->
-        <div class="content">
-          <h3 class="card_title">Partners</h3>
-          <p class="card_desc">OTT main features &amp; brand tie-ups</p>
-        </div><!-- //. content -->
-      </article><!-- //. card_3 -->
-      <article class="card card_4">
-        <figure class="figure">
-          <img class="image" src="IR_Kwon/img/Execution_Mar.png" alt="Marketing" />
-        </figure><!-- //. figure -->
-        <div class="content">
-          <h3 class="card_title">Marketing</h3>
-          <p class="card_desc">Key visual A/B + fan AMA → play-through lift</p>
-        </div><!-- //. content -->
-      </article><!-- //. card_4 -->
-    </div><!-- //. container -->
-    </div><!-- //. inner -->
+    <div class="title">
+      <h2 class="title">Execution</h2>
+      <p class="sub">Operational playbooks aligned to global releases.</p>
+    </div><!-- //. title -->
+    <div class="wrapper">
+      <div class="cards_area">
+        <div class="cards_wrap">
+          <article class="card card_1 active">
+            <div class="content">
+              <h3 class="card_title">Production</h3>
+              <p class="card_desc">High-quality sets, locations, OST → higher completion rate</p>
+            </div><!-- //. content -->
+          </article><!-- //. card_1 -->
+          <article class="card card_2">
+            <div class="content">
+              <h3 class="card_title">Distribution</h3>
+              <p class="card_desc">Regional pacing + highlight drops → more Top-10 weeks</p>
+            </div><!-- //. content -->
+          </article><!-- //. card_2 -->
+          <article class="card card_3">
+            <div class="content">
+              <h3 class="card_title">Partners</h3>
+              <p class="card_desc">OTT main features &amp; brand tie-ups</p>
+            </div><!-- //. content -->
+          </article><!-- //. card_3 -->
+          <article class="card card_4">
+            <div class="content">
+              <h3 class="card_title">Marketing</h3>
+              <p class="card_desc">Key visual A/B + fan AMA → play-through lift</p>
+            </div><!-- //. content -->
+          </article><!-- //. card_4 -->
+        </div><!-- //. cards_wrap -->
+      </div><!-- //. cards_area -->
+      <div class="sticky_area">
+        <div class="image_container">
+          <img class="execution_image active" src="IR_Kwon/img/Execution_Pro.png" alt="Production" />
+          <img class="execution_image" src="IR_Kwon/img/Execution_Dis.png" alt="Distribution" />
+          <img class="execution_image" src="IR_Kwon/img/Execution_Par.png" alt="Partners" />
+          <img class="execution_image" src="IR_Kwon/img/Execution_Mar.png" alt="Marketing" />
+        </div><!-- //. image_container -->
+      </div><!-- //. sticky_area -->
+    </div><!-- //. wrapper -->
   </section><!-- //. execution -->
     <section class="proof">
       <div class="title">
@@ -191,112 +192,204 @@
       </div><!-- //. title -->
       <div class="container">
         <article class="card card_1">
-          <figure class="figure">
-            <img class="image" src="IR_Kwon/img/Proof_Rating.png" alt="Ratings chart" />
-          </figure><!-- //. figure -->
-          <div class="content">
-            <div class="stat">Final 24.9%</div>
-            <div class="source">* Source/period</div>
-            <div class="label">Ratings</div>
-          </div><!-- //. content -->
+          <div class="card_inner">
+            <div class="card_front">
+              <figure class="figure">
+                <img class="image" src="IR_Kwon/img/Proof_Rating.png" alt="Ratings chart" />
+              </figure><!-- //. figure -->
+              <div class="content">
+                <div class="paragraph">
+                  <div class="stat">Final 24.9%</div>
+                  <div class="source">* Source/period</div>
+                </div><!-- //. paragraph -->
+                <div class="label">Ratings</div>
+              </div><!-- //. content -->
+            </div><!-- //. card_front -->
+            <div class="card_back">
+              <div class="back_content">
+                <h3>Ratings</h3>
+                <p><strong>Peak Performance:</strong> Final episode reached 24.9% viewership</p>
+                <p class="highlight">Consistent audience growth throughout the season, demonstrating strong narrative pull and viewer retention.</p>
+              </div><!-- //. back_content -->
+            </div><!-- //. card_back -->
+          </div><!-- //. card_inner -->
         </article><!-- //. card_1 -->
+        
         <article class="card card_2">
-          <figure class="figure">
-            <img class="image" src="IR_Kwon/img/Proof_Ott.png" alt="OTT ranking" />
-          </figure><!-- //. figure -->
-          <div class="content">
-            <div class="stat">Top 10 for 15 weeks<br />Peak #1</div>
-            <div class="source">* Source/period</div>
-            <div class="label">OTT</div>
-          </div><!-- //. content -->
+          <div class="card_inner">
+            <div class="card_front">
+              <figure class="figure">
+                <img class="image" src="IR_Kwon/img/Proof_Ott.png" alt="OTT ranking" />
+              </figure><!-- //. figure -->
+              <div class="content">
+                <div class="paragraph">
+                  <div class="stat">Top 10 for 15 weeks<br />Peak #1</div>
+                  <div class="source">* Source/period</div>
+                </div><!-- //. paragraph -->
+                <div class="label">OTT</div>
+              </div><!-- //. content -->
+            </div><!-- //. card_front -->
+            <div class="card_back">
+              <div class="back_content">
+                <h3>OTT</h3>
+                <p><strong>Top 10 for 15 weeks</strong> with peak #1 ranking</p>
+                <p class="highlight">Sustained performance across major streaming platforms, proving strong digital appeal and global reach.</p>
+              </div><!-- //. back_content -->
+            </div><!-- //. card_back -->
+          </div><!-- //. card_inner -->
         </article><!-- //. card_2 -->
+        
         <article class="card card_3">
-          <figure class="figure">
-            <img class="image" src="IR_Kwon/img/Proof_OverSeas.png" alt="Overseas map" />
-          </figure><!-- //. figure -->
-          <div class="content">
-            <div class="stat">Launched in 45 countries<br />Regional heatmap</div>
-            <div class="source">* Source/period</div>
-            <div class="label">Overseas</div>
-          </div><!-- //. content -->
+          <div class="card_inner">
+            <div class="card_front">
+              <figure class="figure">
+                <img class="image" src="IR_Kwon/img/Proof_OverSeas.png" alt="Overseas map" />
+              </figure><!-- //. figure -->
+              <div class="content">
+                <div class="paragraph">
+                  <div class="stat">Launched in 45 countries<br />Regional heatmap</div>
+                  <div class="source">* Source/period</div>
+                </div><!-- //. paragraph -->
+                <div class="label">Overseas</div>
+              </div><!-- //. content -->
+            </div><!-- //. card_front -->
+            <div class="card_back">
+              <div class="back_content">
+                <h3>Overseas</h3>
+                <p><strong>Launched in 45 countries</strong></p>
+                <p class="highlight">Wide international distribution with strong performance in key markets across Asia, Europe, and Americas.</p>
+              </div><!-- //. back_content -->
+            </div><!-- //. card_back -->
+          </div><!-- //. card_inner -->
         </article><!-- //. card_3 -->
+        
         <article class="card card_4">
-          <figure class="figure">
-            <img class="image" src="IR_Kwon/img/Proof_Media.png" alt="Media mentions" />
-          </figure><!-- //. figure -->
-          <div class="content">
-            <div class="stat">120 earned mentions<br />+80% search lift</div>
-            <div class="source">* Source/period</div>
-            <div class="label">Media</div>
-          </div><!-- //. content -->
+          <div class="card_inner">
+            <div class="card_front">
+              <figure class="figure">
+                <img class="image" src="IR_Kwon/img/Proof_Media.png" alt="Media mentions" />
+              </figure><!-- //. figure -->
+              <div class="content">
+                <div class="paragraph">
+                  <div class="stat">120 earned mentions<br />+80% search lift</div>
+                  <div class="source">* Source/period</div>
+                </div><!-- //. paragraph -->
+                <div class="label">Media</div>
+              </div><!-- //. content -->
+            </div><!-- //. card_front -->
+            <div class="card_back">
+              <div class="back_content">
+                <h3>Media</h3>
+                <p><strong>120 earned media mentions</strong> with +80% search lift</p>
+                <p class="highlight">Strong organic buzz and social media engagement, driving viewer discovery and word-of-mouth growth.</p>
+              </div><!-- //. back_content -->
+            </div><!-- //. card_back -->
+          </div><!-- //. card_inner -->
         </article><!-- //. card_4 -->
+        
         <article class="card card_5">
-          <figure class="figure">
-            <img class="image" src="IR_Kwon/img/Proof_Fandom.png" alt="Fandom stats" />
-          </figure><!-- //. figure -->
-          <div class="content">
-            <div class="stat">Higher completion<br />More UGC</div>
-            <div class="source">* Source/period</div>
-            <div class="label">Fandom</div>
-          </div><!-- //. content -->
+          <div class="card_inner">
+            <div class="card_front">
+              <figure class="figure">
+                <img class="image" src="IR_Kwon/img/Proof_Fandom.png" alt="Fandom stats" />
+              </figure><!-- //. figure -->
+              <div class="content">
+                <div class="paragraph">
+                  <div class="stat">Higher completion<br />More UGC</div>
+                  <div class="source">* Source/period</div>
+                </div><!-- //. paragraph -->
+                <div class="label">Fandom</div>
+              </div><!-- //. content -->
+            </div><!-- //. card_front -->
+            <div class="card_back">
+              <div class="back_content">
+                <h3>Fandom</h3>
+                <p><strong>Higher completion rates</strong> and increased user-generated content</p>
+                <p class="highlight">Active fan community driving engagement through fan art, discussions, and social sharing.</p>
+              </div><!-- //. back_content -->
+            </div><!-- //. card_back -->
+          </div><!-- //. card_inner -->
         </article><!-- //. card_5 -->
+        
         <article class="card card_6">
-          <figure class="figure">
-            <img class="image" src="IR_Kwon/img/Proof_Posters.png" alt="Stills and posters" />
-          </figure><!-- //. figure -->
-          <div class="content">
-            <div class="desc">(stills/posters)</div>
-          </div><!-- //. content -->
+          <div class="card_inner">
+            <div class="card_front">
+              <figure class="figure">
+                <img class="image" src="IR_Kwon/img/Proof_Posters.png" alt="Stills and posters" />
+              </figure><!-- //. figure -->
+              <div class="content">
+                <div class="desc">(stills/posters)</div>
+              </div><!-- //. content -->
+            </div><!-- //. card_front -->
+          </div><!-- //. card_inner -->
         </article><!-- //. card_6 -->
       </div><!-- //. container -->
     </section><!-- //. proof --> 
         <section class="monetization_bridge">
-      <div class="inner">
-        <div class="title">
-          <h2 class="title">Monetization Bridge</h2>
-          <p class="sub">Diversified revenue mix anchored by distribution and IP licensing.</p>
-        </div><!-- //. title -->
+      <div class="title">
+        <h2 class="title">Monetization Bridge</h2>
+        <p class="sub">Diversified revenue mix anchored by distribution and IP licensing.</p>
+      </div><!-- //. title -->
       <div class="container">
         <article class="bar bar_1">
-          <div class="label">Broadcast</div>
-          <div class="chart">
-            <div class="fill"></div>
-          </div><!-- //. chart -->
-          <div class="percent">56%</div>
+          <div class="bar_wrapper">
+            <div class="percent">56%</div>
+            <div class="chart_container">
+              <div class="chart">
+                <div class="fill"></div>
+              </div><!-- //. chart -->
+            </div><!-- //. chart_container -->
+            <div class="label">Broadcast</div>
+          </div><!-- //. bar_wrapper -->
         </article><!-- //. bar_1 -->
         <article class="bar bar_2">
-          <div class="label">OTT</div>
-          <div class="chart">
-            <div class="fill"></div>
-          </div><!-- //. chart -->
-          <div class="percent">64%</div>
+          <div class="bar_wrapper">
+            <div class="percent">64%</div>
+            <div class="chart_container">
+              <div class="chart">
+                <div class="fill"></div>
+              </div><!-- //. chart -->
+            </div><!-- //. chart_container -->
+            <div class="label">OTT</div>
+          </div><!-- //. bar_wrapper -->
         </article><!-- //. bar_2 -->
         <article class="bar bar_3">
-          <div class="label">Overseas</div>
-          <div class="chart">
-            <div class="fill"></div>
-          </div><!-- //. chart -->
-          <div class="percent">60%</div>
+          <div class="bar_wrapper">
+            <div class="percent">60%</div>
+            <div class="chart_container">
+              <div class="chart">
+                <div class="fill"></div>
+              </div><!-- //. chart -->
+            </div><!-- //. chart_container -->
+            <div class="label">Overseas</div>
+          </div><!-- //. bar_wrapper -->
         </article><!-- //. bar_3 -->
         <article class="bar bar_4">
-          <div class="label">Licensing</div>
-          <div class="chart">
-            <div class="fill"></div>
-          </div><!-- //. chart -->
-          <div class="percent">7%</div>
+          <div class="bar_wrapper">
+            <div class="percent">7%</div>
+            <div class="chart_container">
+              <div class="chart">
+                <div class="fill"></div>
+              </div><!-- //. chart -->
+            </div><!-- //. chart_container -->
+            <div class="label">Licensing</div>
+          </div><!-- //. bar_wrapper -->
         </article><!-- //. bar_4 -->
         <article class="bar bar_5">
-          <div class="label">PPL</div>
-          <div class="chart">
-            <div class="fill"></div>
-          </div><!-- //. chart -->
-          <div class="percent">6%</div>
+          <div class="bar_wrapper">
+            <div class="percent">6%</div>
+            <div class="chart_container">
+              <div class="chart">
+                <div class="fill"></div>
+              </div><!-- //. chart -->
+            </div><!-- //. chart_container -->
+            <div class="label">PPL</div>
+          </div><!-- //. bar_wrapper -->
         </article><!-- //. bar_5 -->
-        <div class="note">
-          <p class="text">Notes: Showing mix (%) rather than amounts. Specify basis/period.</p>
-        </div><!-- //. note -->
       </div><!-- //. container -->
-      </div><!-- //. inner -->
+      <div class="note">
+        <p class="text">Notes: Showing mix (%) rather than amounts. Specify basis/period.</p>
+      </div><!-- //. note -->
     </section><!-- //. monetization_bridge --> 
     <section class="moat_repeatability">
       <div class="title">
@@ -393,11 +486,11 @@
             <div class="level level_med">MED</div>
           </div><!-- //. header -->
           <div class="meter">
-            <div class="fill"></div>
+            <div class="fill fill_med"></div>
           </div><!-- //. meter -->
-          <div class="content">
+          <div class="description">
             <p class="text"><strong>Mitigation:</strong> Add schedule buffer, parallelize post, pre-approve alt sets/locations</p>
-          </div><!-- //. content -->
+          </div><!-- //. description -->
         </article><!-- //. card_1 -->
         <article class="card card_2">
           <div class="header">
@@ -408,11 +501,11 @@
             <div class="level level_high">HIGH</div>
           </div><!-- //. header -->
           <div class="meter">
-            <div class="fill"></div>
+            <div class="fill fill_high"></div>
           </div><!-- //. meter -->
-          <div class="content">
+          <div class="description">
             <p class="text"><strong>Mitigation:</strong> Hedge major currencies, diversify contract currency, shorten settlement cycle</p>
-          </div><!-- //. content -->
+          </div><!-- //. description -->
         </article><!-- //. card_2 -->
         <article class="card card_3">
           <div class="header">
@@ -423,11 +516,11 @@
             <div class="level level_low">LOW</div>
           </div><!-- //. header -->
           <div class="meter">
-            <div class="fill"></div>
+            <div class="fill fill_low"></div>
           </div><!-- //. meter -->
-          <div class="content">
+          <div class="description">
             <p class="text"><strong>Mitigation:</strong> Pre-review checklist, sensitive-content guardrails, alternate cut plan</p>
-          </div><!-- //. content -->
+          </div><!-- //. description -->
         </article><!-- //. card_3 -->
       </div><!-- //. container -->
     </section><!-- //. risks_mitigation -->
