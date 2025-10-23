@@ -63,6 +63,7 @@ article.main_visual {
 .main_visual_background .background_image {
     position: absolute;
     width: 100%;
+    height: 100%;
     max-width: none;
     object-fit: cover;
 }
@@ -181,7 +182,6 @@ article.main_visual {
     margin: 0 auto;
     padding: 0 32px;
     display: flex;
-    justify-content: space-between;
     box-sizing: border-box;
 }
 
@@ -224,6 +224,7 @@ article.main_visual {
 
 /* Text Box Right - Dual UL Structure */
 .text_box_right {
+    width: 583px;
     display: flex;
     gap: 20px;
     padding-left: 32px;
@@ -254,10 +255,6 @@ article.main_visual {
     font-size: 20px;
     line-height: 1.3;
     color: #FFFFFF;
-}
-
-.text_box_right .credit_names .credit_name_multi {
-    white-space: nowrap;
 }
 
 .text_box_right .credit_names .credit_name_multi p {
@@ -405,7 +402,7 @@ section.character .contents .human .human_img img {
 }
 
 section.character .contents .human .human_name {
-    font-size: clamp(16px, 2vw, 30px);
+    font-size: 30px;  /* 고정 크기 사용, 미디어쿼리에서 조정 */
     text-align: center;
     text-transform: uppercase;
     line-height: 1;
@@ -650,50 +647,52 @@ section .episode_scroll_container .episode_list .episode_card .episode_info .epi
 section.draggable_section {
     position: relative;
     width: 100%;
-    height: 100vh;
-    padding: 200px 0;
+    max-width: 1520px;
+    height: 800px;
+    margin: 200px auto;
     overflow: hidden;
     background: 
-        linear-gradient(180deg, 
-            rgba(13,3,28,1) 0%, 
-            rgba(18,4,39,1) 15%, 
-            transparent 30%, 
-            transparent 70%, 
-            rgba(18,4,39,1) 85%, 
-            rgba(13,3,28,1) 100%
-        ),
         radial-gradient(ellipse at 50% 50%, 
-            rgba(136,63,254,0.68) 0%, 
+            rgba(136,63,254,0.3) 0%, 
             transparent 70%
         ),
         #0D031C;
-    perspective: 1200px;
     box-sizing: border-box;
 }
 
-/* Draggable Frame */
-section.draggable_section .images_frame {
+/* Image Items - 개별 사진 */
+section.draggable_section .img_item {
     position: absolute;
-    width: 2116px;
-    height: 1464px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     cursor: grab;
-    transform-style: preserve-3d;
+    transition: filter 0.3s ease;
+    will-change: transform;
+    user-select: none;
+    opacity: 0;
 }
 
-section.draggable_section .images_frame.active {
+section.draggable_section .img_item:active {
     cursor: grabbing;
 }
 
-/* Image Items */
-section.draggable_section .img_item {
-    position: absolute;
-    cursor: pointer;
-    pointer-events: auto;
-    transform-style: preserve-3d;
-}
+/* 각 이미지별 고정 초기 위치 */
+section.draggable_section .img_item:nth-child(1) { left: 50px; top: 80px; }
+section.draggable_section .img_item:nth-child(2) { left: 320px; top: 30px; }
+section.draggable_section .img_item:nth-child(3) { left: 580px; top: 120px; }
+section.draggable_section .img_item:nth-child(4) { left: 850px; top: 60px; }
+section.draggable_section .img_item:nth-child(5) { left: 1100px; top: 150px; }
+section.draggable_section .img_item:nth-child(6) { left: 1320px; top: 40px; }
+
+section.draggable_section .img_item:nth-child(7) { left: 120px; top: 280px; }
+section.draggable_section .img_item:nth-child(8) { left: 400px; top: 350px; }
+section.draggable_section .img_item:nth-child(9) { left: 680px; top: 300px; }
+section.draggable_section .img_item:nth-child(10) { left: 950px; top: 380px; }
+section.draggable_section .img_item:nth-child(11) { left: 1200px; top: 320px; }
+section.draggable_section .img_item:nth-child(12) { left: 1350px; top: 420px; }
+
+section.draggable_section .img_item:nth-child(13) { left: 80px; top: 550px; }
+section.draggable_section .img_item:nth-child(14) { left: 350px; top: 600px; }
+section.draggable_section .img_item:nth-child(15) { left: 620px; top: 520px; }
+section.draggable_section .img_item:nth-child(16) { left: 900px; top: 580px; }
 
 section.draggable_section .img_item::after {
     content: '';
@@ -702,15 +701,14 @@ section.draggable_section .img_item::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, var(--hover-opacity, 0.3));
-    transition: opacity 0.3s ease, background 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
     pointer-events: none;
     z-index: 1;
 }
 
 section.draggable_section .img_item:hover::after {
     opacity: 0;
-    background: rgba(0, 0, 0, 0);
 }
 
 section.draggable_section .img_item img {
@@ -720,8 +718,6 @@ section.draggable_section .img_item img {
     object-fit: cover;
     filter: brightness(0.7);
     transition: filter 0.3s ease;
-    position: relative;
-    z-index: 0;
 }
 
 section.draggable_section .img_item:hover img {
@@ -730,25 +726,49 @@ section.draggable_section .img_item:hover img {
 
 section.draggable_section .img_item:hover {
     z-index: 100 !important;
+    transform: scale(1.05);
 }
 
-/* Size variants */
-section.draggable_section .img_item[data-size="340x227"],
-section.draggable_section .img_item[data-size="340x226"] {
-    width: 340px;
-    height: 227px;
+/* Size variants - 축소된 크기 */
+section.draggable_section .img_item[data-size="large"] {
+    width: 240px;
+    height: 160px;
 }
 
-section.draggable_section .img_item[data-size="280x187"] {
-    width: 280px;
-    height: 187px;
-}
-
-section.draggable_section .img_item[data-size="200x133"] {
+section.draggable_section .img_item[data-size="medium"] {
     width: 200px;
     height: 133px;
 }
+
+section.draggable_section .img_item[data-size="small"] {
+    width: 150px;
+    height: 100px;
+}
 /* section.draggable_section */
+
+/* ============ DRAGGABLE SECTION CUSTOM CURSOR ============ */
+.draggable-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    display: none;
+    transform: translate(-50px, -50px);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+section.draggable_section {
+    cursor: none;
+}
+
+section.draggable_section .img_item {
+    cursor: none;
+}
+
+section.draggable_section .img_item:active {
+    cursor: none;
+}
+/* ============================================ */
 
 /* Modal */
 .image_modal {

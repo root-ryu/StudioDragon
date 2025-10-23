@@ -126,250 +126,413 @@ window.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-//드래그 이미지
-const frame = document.querySelector('.images_frame');
-const images = document.querySelectorAll('.img_item');
-const modal = document.querySelector('.image_modal');
-const modalImg = modal.querySelector('.modal_content img');
-const closeBtn = modal.querySelector('.modal_close');
-
-// Drag state tracking
-let isDragging = false;
-let velocityX = 0;
-let velocityY = 0;
-let animationId = null;
-let lastX = 0;
-let lastY = 0;
-let lastTime = 0;
-
-// Calculate 3D sphere effect for images (convex - center pops out)
-function applySphereEffect() {
-    const effectWidth = 1520; // 1520px area for effect
-    const effectHeight = 1464;
-    const frameCenterX = effectWidth / 2;
-    const frameCenterY = effectHeight / 2;
     
-    images.forEach(imgItem => {
-        const imgElement = imgItem.querySelector('img');
+// ============================================================
+// 드래그 이미지 섹션 - Matter.js 물리 엔진
+// ============================================================
+const draggableSection = document.querySelector('.draggable_section');
+const draggableImages = document.querySelectorAll('.draggable_section .img_item');
+const imageModal = document.querySelector('.image_modal');
+const imageModalImg = imageModal.querySelector('.modal_content img');
+const imageModalClose = imageModal.querySelector('.modal_close');
+
+if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefined') {
+    
+    // ==================== 전역 변수 선언 (먼저!) ====================
+    let draggedItem = null;
+    
+    // ==================== 커스텀 커서 ====================
+    const customCursor = document.createElement('div');
+    customCursor.className = 'draggable-cursor';
+    customCursor.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110">
+            <defs>
+                <filter id="drag-shadow">
+                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+                </filter>
+            </defs>
+            <circle cx="55" cy="55" r="50" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="2" filter="url(#drag-shadow)"/>
+            <g transform="translate(55, 25)"><path d="M 0 0 L -4 6 L 4 6 Z" fill="white" opacity="0.95"/></g>
+            <g transform="translate(55, 85)"><path d="M 0 0 L -4 -6 L 4 -6 Z" fill="white" opacity="0.95"/></g>
+            <g transform="translate(25, 55)"><path d="M 0 0 L 6 -4 L 6 4 Z" fill="white" opacity="0.95"/></g>
+            <g transform="translate(85, 55)"><path d="M 0 0 L -6 -4 L -6 4 Z" fill="white" opacity="0.95"/></g>
+            <text x="55" y="50" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">MOVE</text>
+            <text x="55" y="64" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">CLICK</text>
+        </svg>
+    `;
+    document.body.appendChild(customCursor);
+    
+    let cursorMouseX = 0, cursorMouseY = 0, cursorFollowX = 0, cursorFollowY = 0;
+    let isInsideSection = false;
+    
+    function animateCursor() {
+        // 드래그 중일 때는 딜레이 없이 즉시 따라가기
+        // 평소에도 빠르게 따라가도록 easing 값 증가 (0.2 → 0.4)
+        const easing = draggedItem ? 1 : 0.4;
         
-        // Calculate position relative to 1520px center
-        const imgCenterX = imgItem.offsetLeft + imgItem.offsetWidth / 2;
-        const imgCenterY = imgItem.offsetTop + imgItem.offsetHeight / 2;
+        cursorFollowX += (cursorMouseX - cursorFollowX) * easing;
+        cursorFollowY += (cursorMouseY - cursorFollowY) * easing;
+        customCursor.style.left = `${cursorFollowX}px`;
+        customCursor.style.top = `${cursorFollowY}px`;
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+    
+    // mouseenter/mouseleave 대신 mousemove로 체크 (더 안정적)
+    draggableSection.addEventListener('mousemove', (e) => {
+        cursorMouseX = e.clientX;
+        cursorMouseY = e.clientY;
         
-        // Distance from center (normalized to 1520px width)
-        const distX = (imgCenterX - frameCenterX) / frameCenterX;
-        const distY = (imgCenterY - frameCenterY) / frameCenterY;
-        const distance = Math.sqrt(distX * distX + distY * distY);
+        // 섹션 안에 있으면 커서 표시
+        if (!isInsideSection) {
+            isInsideSection = true;
+            customCursor.style.display = 'block';
+            // opacity 즉시 적용 (깜빡임 방지)
+            customCursor.style.opacity = '1';
+        }
+    });
+    
+    draggableSection.addEventListener('mouseleave', (e) => {
+        isInsideSection = false;
+        customCursor.style.opacity = '0';
+        setTimeout(() => {
+            // 다시 들어온 게 아니라면 숨김
+            if (!isInsideSection) {
+                customCursor.style.display = 'none';
+            }
+        }, 300);
+    });
+    
+    // 전역 mousemove로 빠른 움직임 감지 (섹션 밖에서도)
+    document.addEventListener('mousemove', (e) => {
+        const rect = draggableSection.getBoundingClientRect();
+        const isInside = (
+            e.clientX >= rect.left &&
+            e.clientX <= rect.right &&
+            e.clientY >= rect.top &&
+            e.clientY <= rect.bottom
+        );
         
-        // Calculate Z-depth based on distance from center (CONVEX - positive for bulge)
-        const maxDepth = 60; // Reduced from 150 (less bulge)
-        const zDepth = (1 - distance) * maxDepth; // Center is max, edges are min
+        // 섹션 안에 있으면 커서 위치 업데이트
+        if (isInside) {
+            cursorMouseX = e.clientX;
+            cursorMouseY = e.clientY;
+            
+            if (!isInsideSection) {
+                isInsideSection = true;
+                customCursor.style.display = 'block';
+                customCursor.style.opacity = '1';
+            }
+        }
+    });
+    
+    // ==================== Fade In 애니메이션 ====================
+    draggableImages.forEach((img, i) => {
+        gsap.to(img, {
+            opacity: 1,
+            duration: 0.8,
+            delay: i * 0.08,
+            ease: "power2.out"
+        });
+    });
+    
+    // ==================== Matter.js 초기화 ====================
+    const { Engine, World, Bodies, Body, Events } = Matter;
+    
+    const sectionRect = draggableSection.getBoundingClientRect();
+    const engine = Engine.create();
+    engine.world.gravity.y = 0; // 중력 없음
+    
+    // 벽 생성
+    const wallThickness = 50;
+    const wallOptions = { 
+        isStatic: true, 
+        restitution: 0.5,  // 벽 반발력
+        friction: 0.1 
+    };
+    
+    const walls = [
+        Bodies.rectangle(sectionRect.width / 2, -wallThickness / 2, sectionRect.width, wallThickness, wallOptions), // 상단
+        Bodies.rectangle(sectionRect.width / 2, sectionRect.height + wallThickness / 2, sectionRect.width, wallThickness, wallOptions), // 하단
+        Bodies.rectangle(-wallThickness / 2, sectionRect.height / 2, wallThickness, sectionRect.height, wallOptions), // 좌측
+        Bodies.rectangle(sectionRect.width + wallThickness / 2, sectionRect.height / 2, wallThickness, sectionRect.height, wallOptions) // 우측
+    ];
+    
+    World.add(engine.world, walls);
+    
+    // 이미지 바디 생성
+    const imageBodies = [];
+    
+    draggableImages.forEach((imgElement) => {
+        // DOM 초기 위치 저장 (transform 없는 상태)
+        gsap.set(imgElement, { x: 0, y: 0, rotation: 0 });
         
-        // Calculate rotation for sphere curvature
-        const rotateY = distX * -5; // Reduced from -12 (less rotation)
-        const rotateX = distY * 5; // Reduced from 12
+        const rect = imgElement.getBoundingClientRect();
+        const x = rect.left - sectionRect.left + rect.width / 2;
+        const y = rect.top - sectionRect.top + rect.height / 2;
         
-        // Calculate scale (center appears slightly larger)
-        const scale = 1 + ((1 - distance) * 0.03); // Reduced from 0.08
+        const body = Bodies.rectangle(x, y, rect.width, rect.height, {
+            restitution: 0.4,      // 객체 간 반발력
+            friction: 0.2,         // 마찰력
+            frictionAir: 0.05,     // 공기 저항 (자연스럽게 멈춤)
+            density: 0.001,
+            frictionStatic: 0.5,   // 정적 마찰 추가
+            slop: 0.05             // 충돌 허용 오차 (떨림 방지)
+        });
         
-        // Apply transform to img element inside .img_item
-        imgElement.style.transform = `
-            translateZ(${zDepth}px) 
-            rotateY(${rotateY}deg) 
-            rotateX(${rotateX}deg) 
-            scale(${scale})
-        `;
+        World.add(engine.world, body);
+        
+        imageBodies.push({
+            element: imgElement,
+            body: body,
+            isDragging: false,
+            width: rect.width,
+            height: rect.height,
+            initialLeft: rect.left - sectionRect.left,
+            initialTop: rect.top - sectionRect.top
+        });
+    });
+    
+    // ==================== 드래그 처리 ====================
+    let dragStartTime = 0;
+    let dragStartPos = { x: 0, y: 0 };
+    let mouseOffset = { x: 0, y: 0 };
+    let lastMousePos = { x: 0, y: 0 };
+    let lastMoveTime = 0;
+    let velocityTracker = { x: 0, y: 0 };
+    
+    // 마우스 다운
+    draggableSection.addEventListener('mousedown', (e) => {
+        const rect = draggableSection.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        
+        // 클릭한 위치의 객체 찾기
+        for (let i = imageBodies.length - 1; i >= 0; i--) {
+            const item = imageBodies[i];
+            const elemRect = item.element.getBoundingClientRect();
+            const elemX = elemRect.left - rect.left;
+            const elemY = elemRect.top - rect.top;
+            
+            if (mouseX >= elemX && mouseX <= elemX + elemRect.width &&
+                mouseY >= elemY && mouseY <= elemY + elemRect.height) {
+                
+                draggedItem = item;
+                dragStartTime = Date.now();
+                dragStartPos = { x: mouseX, y: mouseY };
+                
+                // 마우스와 바디 중심의 오프셋
+                mouseOffset = {
+                    x: mouseX - item.body.position.x,
+                    y: mouseY - item.body.position.y
+                };
+                
+                item.isDragging = true;
+                
+                // 드래그 중에는 static으로 설정 (물리 영향 받지 않음)
+                Body.setStatic(item.body, true);
+                
+                gsap.set(item.element, { zIndex: 100 });
+                
+                e.preventDefault();
+                break;
+            }
+        }
+    });
+    
+    // 마우스 무브
+    draggableSection.addEventListener('mousemove', (e) => {
+        if (!draggedItem) return;
+        
+        const rect = draggableSection.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        const now = performance.now();
+        
+        // 실시간 속도 계산 (마지막 움직임 기준)
+        if (lastMoveTime > 0) {
+            const dt = now - lastMoveTime;
+            if (dt > 0) {
+                velocityTracker.x = (mouseX - lastMousePos.x) / dt * 16; // 60fps 기준
+                velocityTracker.y = (mouseY - lastMousePos.y) / dt * 16;
+            }
+        }
+        
+        lastMousePos = { x: mouseX, y: mouseY };
+        lastMoveTime = now;
+        
+        // 새 위치 계산
+        const newX = mouseX - mouseOffset.x;
+        const newY = mouseY - mouseOffset.y;
+        
+        // 경계 내로 제한
+        const clampedX = Math.max(
+            draggedItem.width / 2,
+            Math.min(sectionRect.width - draggedItem.width / 2, newX)
+        );
+        const clampedY = Math.max(
+            draggedItem.height / 2,
+            Math.min(sectionRect.height - draggedItem.height / 2, newY)
+        );
+        
+        // velocity를 0으로 설정하여 물리 영향 완전 차단
+        Body.setVelocity(draggedItem.body, { x: 0, y: 0 });
+        Body.setAngularVelocity(draggedItem.body, 0);
+        Body.setPosition(draggedItem.body, { x: clampedX, y: clampedY });
+        
+        e.preventDefault();
+    });
+    
+    // 마우스 업
+    function handleMouseUp(e) {
+        if (!draggedItem) return;
+        
+        const dragDuration = Date.now() - dragStartTime;
+        const rect = draggableSection.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        const dragDistance = Math.hypot(mouseX - dragStartPos.x, mouseY - dragStartPos.y);
+        
+        // 짧은 클릭 → 모달 오픈
+        if (dragDuration < 200 && dragDistance < 5) {
+            const imgSrc = draggedItem.element.querySelector('img').src;
+            imageModalImg.src = imgSrc;
+            imageModal.classList.add('active');
+            
+            // body 참조를 미리 저장
+            const releasedBody = draggedItem.body;
+            
+            // 완전 정지
+            Body.setVelocity(releasedBody, { x: 0, y: 0 });
+            Body.setAngularVelocity(releasedBody, 0);
+            
+            // static 해제는 약간의 딜레이 후 (충격파 방지)
+            setTimeout(() => {
+                Body.setStatic(releasedBody, false);
+            }, 50);
+        }
+        // 드래그 이동 → 관성 적용
+        else if (dragDistance > 10) {
+            // 실시간 추적된 속도 사용 (마지막 움직임 기준)
+            let finalVelocityX = velocityTracker.x;
+            let finalVelocityY = velocityTracker.y;
+            
+            // 최대 속도 제한
+            const maxVelocity = 5;
+            const currentSpeed = Math.hypot(finalVelocityX, finalVelocityY);
+            
+            if (currentSpeed > maxVelocity) {
+                const scale = maxVelocity / currentSpeed;
+                finalVelocityX *= scale;
+                finalVelocityY *= scale;
+            }
+            
+            // 아주 느린 속도는 0으로 (미세 떨림 방지)
+            if (Math.abs(finalVelocityX) < 0.1) finalVelocityX = 0;
+            if (Math.abs(finalVelocityY) < 0.1) finalVelocityY = 0;
+            
+            // body 참조를 미리 저장 (setTimeout 내에서 안전하게 사용)
+            const releasedBody = draggedItem.body;
+            
+            // static 해제
+            Body.setStatic(releasedBody, false);
+            
+            // 다음 프레임에 속도 적용 (충돌 해결 후)
+            setTimeout(() => {
+                Body.setVelocity(releasedBody, { 
+                    x: finalVelocityX, 
+                    y: finalVelocityY 
+                });
+                Body.setAngularVelocity(releasedBody, 0);
+            }, 16); // 1프레임 대기
+        }
+        // 제자리 → 정지
+        else {
+            Body.setStatic(draggedItem.body, false);
+            Body.setVelocity(draggedItem.body, { x: 0, y: 0 });
+            Body.setAngularVelocity(draggedItem.body, 0);
+        }
+        
+        const releasedElement = draggedItem.element;
+        draggedItem.isDragging = false;
+        draggedItem = null;
+        
+        // 속도 추적 초기화
+        velocityTracker = { x: 0, y: 0 };
+        lastMoveTime = 0;
+        
+        setTimeout(() => {
+            gsap.set(releasedElement, { zIndex: 'auto' });
+        }, 100);
+    }
+    
+    draggableSection.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('mouseup', handleMouseUp);
+    
+    // ==================== 물리 엔진 업데이트 ====================
+    let lastTime = performance.now();
+    
+    function updatePhysics() {
+        const now = performance.now();
+        const delta = Math.min(now - lastTime, 33); // 최대 33ms로 제한 (30fps 최저)
+        lastTime = now;
+        
+        // Matter.js 업데이트
+        Engine.update(engine, delta);
+        
+        // DOM 동기화 (reflow 최소화)
+        imageBodies.forEach(({ element, body, isDragging, initialLeft, initialTop, width, height }) => {
+            // Matter.js 바디 중심점에서 DOM의 left, top 위치 계산
+            const targetX = body.position.x - width / 2;
+            const targetY = body.position.y - height / 2;
+            
+            // 초기 위치 기준으로 translate 값 계산
+            const translateX = targetX - initialLeft;
+            const translateY = targetY - initialTop;
+            
+            // 드래그 중이 아닐 때만 미세한 떨림 필터링
+            if (!isDragging) {
+                const currentTransform = element.style.transform || '';
+                const currentMatch = currentTransform.match(/translate\(([^,]+)px,\s*([^)]+)px\)/);
+                
+                if (currentMatch) {
+                    const currentX = parseFloat(currentMatch[1]);
+                    const currentY = parseFloat(currentMatch[2]);
+                    
+                    const diffX = Math.abs(translateX - currentX);
+                    const diffY = Math.abs(translateY - currentY);
+                    
+                    // 변화가 미세하면 업데이트 스킵 (떨림 방지)
+                    if (diffX < 0.5 && diffY < 0.5) return;
+                }
+            }
+            
+            // transform 직접 설정 (드래그 중에도 항상 업데이트!)
+            element.style.transform = `translate(${translateX}px, ${translateY}px) rotate(0deg)`;
+        });
+        
+        requestAnimationFrame(updatePhysics);
+    }
+    
+    updatePhysics();
+    
+    // ==================== 모달 닫기 ====================
+    imageModalClose.addEventListener('click', () => {
+        imageModal.classList.remove('active');
+    });
+    
+    imageModal.addEventListener('click', (e) => {
+        if (e.target === imageModal) {
+            imageModal.classList.remove('active');
+        }
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+            imageModal.classList.remove('active');
+        }
     });
 }
-
-// Apply sphere effect on load
-applySphereEffect();
-
-// Individual image floating animation
-images.forEach((imgItem, index) => {
-    // Get the img element inside .img_item
-    const imgElement = imgItem.querySelector('img');
-    
-    // Random values for each image
-    const randomX = (Math.random() - 0.5) * 10; // -5 to 5
-    const randomY = (Math.random() - 0.5) * 10;
-    const randomRotation = (Math.random() - 0.5) * 2; // -1 to 1
-    const duration = 3 + Math.random() * 2; // 3-5 seconds
-    const delay = Math.random() * 2; // 0-2 seconds delay
-    
-    // Floating animation with GSAP on the img element (preserves sphere transform)
-    gsap.to(imgElement, {
-        x: randomX,
-        y: randomY,
-        rotation: randomRotation,
-        duration: duration,
-        delay: delay,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-        overwrite: false
-    });
-    
-    // Add hover event listeners to .img_item (entire area)
-    imgItem.addEventListener('mouseenter', function() {
-        this.style.setProperty('--hover-opacity', '0');
-        const img = this.querySelector('img');
-        if (img) img.style.filter = 'brightness(1)';
-    });
-    
-    imgItem.addEventListener('mouseleave', function() {
-        this.style.setProperty('--hover-opacity', '0.3');
-        const img = this.querySelector('img');
-        if (img) img.style.filter = 'brightness(0.7)';
-    });
-});
-
-// Draggable setup - dragClickables: false prevents images from being dragged
-const draggableInstance = Draggable.create(frame, {
-    type: "x,y",
-    edgeResistance: 0.65,
-    dragClickables: false, // Images won't be dragged
-    bounds: {
-        minX: -1000, // 좌측으로 1000px
-        maxX: 1000,  // 우측으로 1000px (대칭)
-        minY: -500,  // 상단으로 500px
-        maxY: 500    // 하단으로 500px (대칭)
-    },
-    onPress: function() {
-        // Stop animation when user grabs
-        if (animationId) {
-            cancelAnimationFrame(animationId);
-        }
-        velocityX = 0;
-        velocityY = 0;
-        lastX = this.x;
-        lastY = this.y;
-        lastTime = Date.now();
-    },
-    onDragStart: function() {
-        isDragging = true;
-        frame.classList.add('active');
-        lastX = this.x;
-        lastY = this.y;
-        lastTime = Date.now();
-    },
-    onDrag: function() {
-        isDragging = true;
-        // Calculate velocity manually
-        const currentTime = Date.now();
-        const deltaTime = currentTime - lastTime;
-        
-        if (deltaTime > 0) {
-            const deltaX = this.x - lastX;
-            const deltaY = this.y - lastY;
-            
-            velocityX = (deltaX / deltaTime) * 4; // Reduced from 8 (even slower)
-            velocityY = (deltaY / deltaTime) * 4;
-            
-            lastX = this.x;
-            lastY = this.y;
-            lastTime = currentTime;
-        }
-    },
-    onDragEnd: function() {
-        frame.classList.remove('active');
-        
-        // Start animation with current velocity
-        isDragging = false;
-        console.log('Drag ended with velocity:', velocityX, velocityY);
-        
-        // Start animation loop
-        if (Math.abs(velocityX) > 0.1 || Math.abs(velocityY) > 0.1) {
-            animate();
-        }
-    }
-})[0];
-
-// Animation loop for continuous drift (defined after draggableInstance)
-function animate() {
-    if (!isDragging && (Math.abs(velocityX) > 0.01 || Math.abs(velocityY) > 0.01)) {
-        // Get current position from Draggable instance
-        let currentX = draggableInstance.x;
-        let currentY = draggableInstance.y;
-        
-        // Apply velocity
-        currentX += velocityX;
-        currentY += velocityY;
-        
-        // Check boundaries and bounce
-        if (currentX < -1000) {
-            currentX = -1000;
-            velocityX *= -0.7;
-        } else if (currentX > 1000) {
-            currentX = 1000;
-            velocityX *= -0.7;
-        }
-        
-        if (currentY < -500) {
-            currentY = -500;
-            velocityY *= -0.7;
-        } else if (currentY > 500) {
-            currentY = 500;
-            velocityY *= -0.7;
-        }
-        
-        // Update position
-        gsap.set(frame, { x: currentX, y: currentY });
-        draggableInstance.update();
-        
-        // Continue animation
-        animationId = requestAnimationFrame(animate);
-    } else {
-        // Stop animation when velocity is too low
-        velocityX = 0;
-        velocityY = 0;
-    }
-}
-
-// Image click to modal - attach to .img_item (entire area)
-images.forEach(imgItem => {
-    imgItem.addEventListener('click', (e) => {
-        // Prevent click if dragging
-        if (isDragging) {
-            e.preventDefault();
-            e.stopPropagation();
-            return;
-        }
-        
-        e.stopPropagation();
-        const imgSrc = imgItem.querySelector('img').src;
-        modalImg.src = imgSrc;
-        modal.classList.add('active');
-        draggableInstance.disable(); // Pause drag when modal open
-    });
-    
-    // Prevent default drag behavior on images
-    imgItem.addEventListener('mousedown', (e) => {
-        e.stopPropagation();
-    });
-});
-
-// Close modal
-closeBtn.addEventListener('click', () => {
-    modal.classList.remove('active');
-    draggableInstance.enable(); // Resume drag
-});
-
-// Close on modal background click
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.classList.remove('active');
-        draggableInstance.enable();
-    }
-});
-
-// ESC key to close modal
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-        modal.classList.remove('active');
-        draggableInstance.enable();
-    }
-});
 
 }); // END: 비하인드 비디오 섹션 DOMContentLoaded
 
