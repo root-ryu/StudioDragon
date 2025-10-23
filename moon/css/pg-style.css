@@ -1,21 +1,31 @@
 @charset "utf-8";
 
-section,
-section * {
-  box-sizing: border-box;
+main{
+  position: relative;
+  width: 100%;
 }
+
+.title h2 {
+  color: var(--Wcolor);
+  text-align: center;
+  font: var(--font-1920-headline-56);
+  text-transform: uppercase;
+}
+
 
 /* 히어로 텍스트 */
 .hero {
-  margin-top: 374px;
-  padding: 239px 200px;
+  width: 100%;
+  max-width: 1920px;
+  margin-top: 200px;
+  padding: 239px 0;
+  position: relative;
+  background: linear-gradient(transparent 20%, #fff 40%);
+}
+
+.hero .inner{
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
 }
 
 .hero li {
@@ -76,11 +86,10 @@ section * {
 }
 
 .contest-winner .top {
-  padding: 0 200px;
   display: flex;
   justify-content: center;
   gap: 115px;
-  width: 100vw;
+  width: 100%;
   position: relative;
 }
 
@@ -89,7 +98,7 @@ section * {
   height: 228.7px;
   position: absolute;
   top: 0;
-  left: 200px;
+  left: 0px;
   background: url(../../moon/asset/goldcup.png) center/cover;
 }
 
@@ -100,12 +109,7 @@ section * {
   flex-direction: column;
 }
 
-.contest-winner .title h2 {
-  color: var(--Wcolor);
-  text-align: center;
-  font: var(--font-1920-headline-56);
-  text-transform: uppercase;
-}
+
 
 .contest-winner .title p {
   color: var(--Wcolor);
@@ -119,7 +123,6 @@ section * {
 }
 
 .contest-winner .video-content {
-  padding: 0px 200px;
   height: 1080px;
 }
 
@@ -266,32 +269,14 @@ section * {
 /* 진행중인 공모전 */
 .running-contest {
   padding: 100px 80px 140px 80px;
-  display: flex;
-  flex-direction: column;
-  gap: 42px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
 }
 
 .running-contest .title {
-  display: flex;
-  flex-direction: row;
-  gap: 18px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
+ margin-bottom: 42px;
 }
 
-.running-contest h2 {
+.running-contest h2, .community h2 {
   color: var(--Bcolor);
-  text-align: left;
-  font: var(--font-1920-headline-56);
-  text-transform: uppercase;
-  position: relative;
 }
 
 .running-contest .con {
@@ -470,7 +455,7 @@ section * {
 .creativeGallery {
   background: var(--Bcolor);
   width: 100%;
-  padding: 200px;
+  padding: 200px 0;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -489,12 +474,7 @@ section * {
 
 .creativeGallery .titlebox .title {}
 
-.creativeGallery .titlebox .title h2 {
-  color: var(--Wcolor);
-  text-align: center;
-  font: var(--font-1920-headline-56);
-  text-transform: uppercase;
-  position: relative;
+.creativeGallery .title h2 {
 }
 
 .creativeGallery .titlebox .category {
@@ -546,7 +526,7 @@ section * {
   width: 100%;
 }
 
-.creativeGallery .fanarts .inner {
+.creativeGallery .fanarts .wrap {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -692,7 +672,7 @@ section * {
   width: 100%;
 }
 
-.creativeGallery .fanvideos .inner{
+.creativeGallery .fanvideos .wrap{
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -751,7 +731,6 @@ section * {
 .fanvideos .video_new .swiper-pagination {
   position: static;
 }
-
 /* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide{
   width: auto;
 } */
@@ -780,3 +759,128 @@ section * {
 /* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide:hover .info-overlay {
   opacity: 1;
 } */
+
+/* 커뮤니티 섹션 */
+.community{
+  width: 100%;
+  padding: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+/* 커뮤니티 상단 */
+.community .title {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.community .title .subtit {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.community .title .subtit h4 {
+  color: var(--b, #0d031c);
+  text-align: left;
+  font: var(--font-1920-title-L-40);
+  text-transform: uppercase;
+}
+.community .title .subtit .right {
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  align-items: center;
+}
+.community .title .subtit .right p {
+  color: #bdbac1;
+  font: var(--font-1920_1024-body-B-20);
+  
+}
+.community .title .subtit .right p.on {
+  color: #4f485a;
+}
+
+/* 커뮤니티-아티클 */
+.community .articles {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 37px;
+}
+.community .articles .comm_gallery {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.community .articles .comm_gallery .swiper-wrapper {
+  padding-right: 200px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: center;
+}
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide {
+  display: flex;
+  position: relative;
+  border-radius: var(--WT-round-1);
+  overflow: hidden;
+  /* 이미지 링크는 추후 복사 */
+  background: url(../../moon/asset/comm-img_1.jpg) center/cover;
+  width: 1137px;
+  height: 716px;
+}
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap{}
+
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide .info-overlay {
+  width: 100%;
+  height: 100%;
+  padding: 40px 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* opacity: 0; */
+  transition: opacity 0.3s ease;
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0) 17.788460850715637%,
+      rgba(0, 0, 0, 0) 83.8942289352417%,
+      rgba(0, 0, 0, 0.8) 100%);
+  color: var(--Wcolor);
+}
+
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide:hover .info-overlay {
+  opacity: 1;
+}
+
+.community .articles .comm_gallery .info-overlay .num{
+  font: 300 72px/100% "Pretendard", sans-serif;
+  position: relative;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.community .articles .comm_gallery .info-overlay .comm_subtit{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.community .articles .comm_gallery .info-overlay .comm_subtit em{
+  color: #938f98;
+  font: 300 26px/100% "Assistant", sans-serif;
+}
+.community .articles .comm_gallery .info-overlay .comm_subtit span{
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+.community .articles .comm_gallery .info-overlay .comm_subtit span h5{
+
+}
+.community .articles .comm_gallery .info-overlay .comm_subtit span p{
+  
+}
