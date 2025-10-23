@@ -6,6 +6,15 @@
         max-width: 100%;
     }
 
+    section {
+        padding: 100px 0;
+    }
+
+    .main_cach {
+        height: 34vh;
+        padding: 400px 0 250px 0;
+    }
+
     .main_cach .img_roll div {
         width: 250px;
         margin-right: 40px;
@@ -22,6 +31,12 @@
 
     .main_cach .txt em {
         font-size: 20px;
+    }
+
+    h3.tit {
+        font-size: 40px;
+        width: 862px;
+        margin-bottom: 50px;
     }
 
     .info-g .inner {
@@ -106,6 +121,54 @@
         width: 862px;
         text-align: center;
     }
+
+    .ci .inner {
+        width: 862px;
+    }
+
+    .ci .bar {
+        border-radius: 0 0 80px 80px;
+    }
+
+    .ci .cont {
+        gap: 20px;
+    }
+
+    .ci .cont .logo,
+    .ci .cont .symbol {
+        padding: 20px 40px 0 40px;
+        border-radius: 32px;
+        width: 420px;
+        height: 202px;
+    }
+
+    .ci .cont .logo img {
+        width: 210px;
+        margin-bottom: 20px;
+    }
+
+    .ci .cont .symbol img {
+        width: 210px;
+        margin-bottom: 20px;
+    }
+
+    .ci .cont em {
+        font-size: 14px;
+    }
+
+    .ci .cont .symbol em:last-child {
+        width: 428px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .ci button {
+        width: 272px;
+        height: 64px;
+        font-size: 16px;
+        border-radius: 12px;
+    }
+
 }
 
 @media screen and (max-width:440px) {
