@@ -329,6 +329,18 @@ h3.tit {
 }
 
 /* .history */
+.history {
+    --sb-x: 24px;
+    /* 좌우 여백 */
+    --sb-h: 6px;
+    /* 트랙 높이 */
+    --sb-radius: 9999px;
+    --sb-track: #ECECEC;
+    /* 트랙(옅은 회색) */
+    --sb-thumb: #A8A8A8;
+    /* 손잡이(짙은 회색) */
+    --sb-thumb-hover: #8F8F8F;
+}
 
 /* 0) 기준선 y 위치는 컨테이너에서 전역으로 관리 */
 .history .cont_hori_swipe {
@@ -336,33 +348,52 @@ h3.tit {
     /* 필요 시 이 값만 조절 */
     position: relative;
     overflow: hidden;
+    margin-bottom: 100px;
 }
 
 /* 1) 전체 가로 길이만큼 1줄을 '한 번만' 그림 */
 .history .cont_hori_swipe .swiper-wrapper {
     position: relative;
     /* ::before 기준 */
+    display: inline-flex;
+    /* 콘텐츠 길이만큼 */
+    width: max-content;
+    /* 중요: 뷰포트 폭으로 수축 금지 */
 }
-
 
 .history .cont_hori_swipe .swiper-wrapper::before {
     content: "";
     position: absolute;
+    /* 폭을 확실히 주기: left + right 조합 (width 고정값 사용 금지) */
     left: 0;
+    /* 시작점 200px */
+    right: 0;
+    /* 끝을 내용 끝에 맞춤 */
     top: var(--tline);
-    width: 5000vh;
-    /* wrapper의 전체 콘텐츠 폭 */
     height: 3px;
     background: #BD4033;
     z-index: 1;
-    /* 점(svg)과 글자보다 뒤 */
+    pointer-events: none;
 }
 
-/* 2) 그룹/아이템 내부에서 그리던 선은 끔 */
-.history .cont_hori_swipe ul li.y_group>ul::before {
-    display: none;
+/* 2) 마지막 그룹 오른쪽으로 '화면 끝까지' 꼬리 라인 연장 */
+.history .cont_hori_swipe ul li.y_group:last-child::after {
+    content: "";
+    position: absolute;
+    top: var(--tline);
+    /* 타임라인 높이 그대로 */
+    left: 100%;
+    /* 마지막 그룹의 오른쪽 끝에서 시작 */
+    height: 3px;
+    width: 100vw;
+    /* 뷰포트 끝까지 충분히 연장 */
+    background: #BD4033;
+    z-index: 1;
+    pointer-events: none;
 }
 
+/* 그룹/아이템 내부에서 긋던 선은 비활성 (중복 제거) */
+.history .cont_hori_swipe ul li.y_group>ul::before,
 .history .cont_hori_swipe ul li.y_group>ul>li::after {
     display: none;
 }
@@ -370,14 +401,27 @@ h3.tit {
 
 .history .cont_hori_swipe ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    /* ← 중요 */
     flex: 1;
 }
 
 .history .cont_hori_swipe ul li.y_group {
     width: max-content;
     margin-right: 90px;
+    position: relative;
 }
+
+.history .cont_hori_swipe ul li.y_group:first-child {
+    margin-left: 0;
+    /* ← 시작점 오프셋 */
+}
+
+.history .cont_hori_swipe ul li.y_group:last-child {
+    margin-right: 0;
+    /* ← 오른쪽 트레일링 여백 제거 */
+}
+
 
 .history .cont_hori_swipe ul li.y_group>ul {
     display: flex;
@@ -459,7 +503,7 @@ h3.tit {
     font-size: 30px;
     font-weight: 700;
     color: var(--subRed2-900);
-    margin: 10px 0 16px 0;
+    margin: 0 0 24px 0;
     /* 라인 아래 간격 살짝 조절 */
 }
 
@@ -484,6 +528,54 @@ h3.tit {
     position: relative;
     overflow: hidden;
 }
+
+/* swiper_bar ui */
+.history .swiper-horizontal>.swiper-scrollbar,
+.history .swiper-scrollbar-horizontal {
+    left: var(--sb-x);
+    right: var(--sb-x);
+    width: 1520px;
+    /* 고정폭 금지 */
+    bottom: 0;
+    /* 필요시 조절 */
+    height: var(--sb-h);
+    margin: auto;
+}
+
+/* 트랙 스타일 */
+.history .swiper-scrollbar {
+    background: var(--Gcolor-300);
+    border-radius: 0;
+    opacity: 1 !important;
+    /* Swiper의 hide:true가 있어도 보이도록 */
+    position: relative;
+    overflow: hidden;
+
+
+}
+
+/* 손잡이(드래그 바) */
+.history .swiper-scrollbar-drag {
+    height: 100%;
+    min-width: 80px;
+    /* 손잡이 최소 길이(모바일 접근성용) */
+    background: var(--Gcolor);
+    border-radius: 0;
+}
+
+
+/* 호버/드래그 시 살짝 강조 */
+.history .swiper-scrollbar:hover .swiper-scrollbar-drag,
+.history .swiper-scrollbar-drag:active {
+    background: var(--MainColor-1400);
+}
+
+/* 컨테이너와 간격 (필요 시) */
+.history .scroll_bar.swiper-scrollbar {
+    margin: auto;
+    /* 위 요소와 간격만 조절 */
+}
+
 
 
 /* .v_and_m */
