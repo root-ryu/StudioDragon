@@ -573,7 +573,7 @@ h3.tit {
 /* 호버/드래그 시 살짝 강조 */
 .history .swiper-scrollbar:hover .swiper-scrollbar-drag,
 .history .swiper-scrollbar-drag:active {
-    background: var(--MainColor-1400);
+    background: var(--subRed2-900);
 }
 
 /* 컨테이너와 간격 (필요 시) */
