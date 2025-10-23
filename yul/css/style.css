@@ -67,7 +67,7 @@ main {
   width: 80%;
   line-height: 1.5;
   color: rgba(240, 187, 119, 0.2);
-  background-size: 100% 0;
+  background-size: 0 100%;
   /* 처음에는 세로 100%, 가로 0% */
   background-position: left top;
   transition: none;

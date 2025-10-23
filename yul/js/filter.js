@@ -169,14 +169,15 @@ window.addEventListener('DOMContentLoaded', function () {
       pin: true,
       scrub: true,
     }
-  }).to(".txt_area", {
+  });
+  tl.to(".txt_area", {
     backgroundSize: "100% 100%",
     opacity: 1,
     duration: 1,
     ease: "none"
   })
     .to([".tit1", ".tit2", ".tit3"], {
-      backgroundSize: "100%",
+      backgroundSize: "100% 100%",
       duration: 1,
       ease: "none",
       stagger: 1.2   // ← 1.2초 간격으로 순차 재생
