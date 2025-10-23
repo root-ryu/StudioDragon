@@ -26,8 +26,8 @@ section {
 .main_cach {
     box-sizing: content-box;
     width: 100%;
-    height: 100vh;
-    padding: 250px 0;
+    height: 50vh;
+    padding: 500px 0 250px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,12 +37,28 @@ section {
 
 .main_cach .swiper {
     width: 100%;
-    /* width: 1520px; */
 }
 
 .main_cach .img_roll div {
     width: 344px;
     opacity: .6;
+}
+
+.main_cach .swiper-wrapper {
+    display: flex;
+    animation: marquee 24s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+
+    /* 슬라이드 길이 절반만큼 이동 */
 }
 
 .main_cach .img_roll div img {
@@ -55,7 +71,7 @@ section {
 
 .main_cach .txt {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, 30%);
     /* 완전 중앙 */
