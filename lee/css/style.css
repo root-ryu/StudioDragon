@@ -62,7 +62,7 @@ main {
   text-align: center;
   width: 60%;
   line-height: 1.5;
-  color: rgba(253, 184, 95, 0.2);
+  color: rgba(240, 187, 119, 0.2);
   background: linear-gradient(to right,
       #fff,
       #000 no-repeat);
@@ -71,6 +71,17 @@ main {
   background-size: 0%;
   transition: background-size cubic-bezier(0.1, 0.5, 0.5, 1) 0.5s;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 .main_heading {
   font-size: clamp(3.125rem, 3.464vw + 2.229rem, 5rem);
@@ -495,6 +506,7 @@ section h2 {
 
 .last-section img {
   width: 100%;
+  border-radius: 18px;
 }
 
 .last-section span {
