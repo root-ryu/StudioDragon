@@ -389,6 +389,17 @@ ul.poster-list li {
   cursor: pointer;
 }
 
+
+.poster-list li img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.poster-list li:hover img {
+  transform: scale(1.05); /* 5% 확대 */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3); /* 그림자 추가 */
+  border-radius: 8px; /* 약간 둥글게 */
+}
+
 /* Pagination + Search Container */
 
 
