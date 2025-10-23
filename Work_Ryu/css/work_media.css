@@ -20,114 +20,201 @@
 @media (max-width: 1024px) {
     
     /* ============ MAIN VISUAL ============ */
+    /* 기본 구조 유지 - padding만 조정 */
     article.main_visual {
+        margin-top: 100px;
+        height: 550px;
         padding: 0 80px;
-        min-height: 600px;
     }
     
-    article.main_visual .main_visual_wrapper {
-        padding: 80px 0;
+    /* 백그라운드 이미지 비율 조정 */
+    .main_visual_background .background_image {
+        height: 100%;
+        object-position: center top;
     }
     
-    /* Drama Content Box */
-    article.main_visual .drama_content_box {
-        min-height: 160px;
-        padding: 20px 0;
+    /* 콘텐츠 영역 최대 너비 조정 */
+    .main_visual_wrapper {
+        max-width: 864px;  /* 1024px - 160px(80px*2) */
     }
     
-    article.main_visual .drama_text_wrapper {
-        flex-direction: column;
-        gap: 32px;
-        padding: 0 32px;
+    /* 콘텐츠 간격 축소 */
+    .main_visual_wrapper .contents {
+        gap: 191px;
     }
     
-    article.main_visual .text_box_left,
-    article.main_visual .text_box_right {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    article.main_visual .logo_area {
-        gap: 16px;
-        margin-bottom: 32px;
-    }
-    
-    article.main_visual .netflix_logo {
-        width: 120px;
-        height: auto;
-    }
-    
-    article.main_visual .global_badge {
-        font: var(--font-1024-footer-info);
-        padding: 4px 12px;
-    }
-    
-    article.main_visual .drama_title_area {
+    /* Logo Area - Figma 정확한 스펙 */
+    .logo_area {
         gap: 16px;
     }
     
-    article.main_visual .series_label {
-        font: var(--font-1024-footer-info);
-        margin-bottom: 8px;
+    .logo_area .netflix_logo {
+        width: 87px;
+        height: 24px;
     }
     
-    article.main_visual .drama_title {
-        font: var(--font-1024-headline-40);
-        margin-bottom: 24px;
+    .logo_area .global_badge {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 1.3;
+        text-transform: uppercase;
     }
     
-    article.main_visual .bookmark_button {
-        width: 44px;
-        height: 44px;
+    /* Contents Text */
+    .contents_text {
+        gap: 12px;
     }
     
-    article.main_visual .meta_info {
-        font-size: 14px;
-        margin-bottom: 16px;
+    /* Drama Title Area */
+    .drama_title_area {
+        gap: 12px;
     }
     
-    article.main_visual .description p {
+    .drama_title_area .title_text {
+        gap: 4px;
+    }
+    
+    .drama_title_area .title_text .series_label {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 200;
+        font-size: 24px;
+        line-height: 1;
+    }
+    
+    .drama_title_area .title_text .drama_title {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+    
+    .drama_title_area .bookmark_button {
+        width: 36px;
+        height: 36px;
+    }
+    
+    /* Drama Content Box - padding만 조정 */
+    .drama_content_box {
+        padding: 24px 0;
+    }
+    
+    .drama_content_box .drama_text_wrapper {
+        padding: 0 19px 0 32px;
+        gap: 19px;
+    }
+    
+    /* Text Box Left */
+    .text_box_left {
+        max-width: 381px;
+        gap: 8px;
+    }
+    
+    .text_box_left .meta_info {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 1.3;
+    }
+    
+    .text_box_left .description p {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
         font-size: 16px;
-        line-height: 1.6;
+        line-height: 1.3;
     }
     
-    article.main_visual .credit_labels,
-    article.main_visual .credit_names {
-        font-size: 14px;
+    /* Text Box Right */
+    .text_box_right {
+        width: 413px;
+        padding-left: 32px;
+        padding-right: 0;
+        border-left: 0.5px solid rgba(255, 255, 255, 0.5);
+        gap: 8px;
+    }
+    
+    .text_box_right .credit_labels,
+    .text_box_right .credit_names {
+        gap: 8px;
+    }
+    
+    .text_box_right .credit_labels .credit_label {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 1.3;
+    }
+    
+    .text_box_right .credit_names .credit_name {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 1.3;
+    }
+    
+    /* ", Jung Sung-il" 텍스트만 숨김 */
+    .text_box_right .credit_names .credit_name_multi p {
+        font-size: 0;
+    }
+    
+    .text_box_right .credit_names .credit_name_multi p::before {
+        content: "Song Hye-kyo, Lee Do-hyun, Lim Ji-yeon, Yeom Hye-ran, Park Sung-hoon";
+        font-size: 18px;
     }
     
     /* ============ CHARACTER SECTION ============ */
+    /* 1920px 레이아웃 구조 유지, 스케일만 조정 */
     section.character {
-        padding: 80px 80px 120px;
-        min-height: 700px;
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 700px;  /* 1920px: 1080px → 1024px: 700px */
+        margin-top: 180px;
+        margin-bottom: 180px;
+        padding: 0 80px;
     }
     
+    /* 제목 스타일 */
     section.character h2 {
-        font: var(--font-1024-headline-40);
-        margin-bottom: 60px;
+        font-size: 40px;  /* 1920px: 56px → 1024px: 40px */
+        left: 80px;
+        top: 0;
     }
     
+    /* 콘텐츠 영역 - 1920px 구조 유지 */
     section.character .contents {
-        max-width: 900px;
+        position: absolute;
+        left: 2%;
+        top: 15%;
+        width: 96%;
+        height: 70%;
+        max-width: 864px;  /* 1024px - 160px */
         margin: 0 auto;
+        right: 2%;
     }
     
-    section.character .human {
-        transform: scale(0.85);
+    /* 화살표 - 1920px 퍼센트 위치 그대로 유지 */
+    section.character .contents .arrow {
+        display: block;
     }
     
-    section.character .human_img {
-        width: 180px;
-        height: 180px;
+    /* 캐릭터 이미지 크기만 조정 */
+    section.character .contents .human .human_img {
+        width: 94px;   /* 1920px: 160px → 1024px: 94px */
+        height: 129px; /* 1920px: 219px → 1024px: 129px */
+        aspect-ratio: auto;
     }
     
-    section.character .human_name {
-        font-size: 18px;
-        margin-top: 12px;
+    section.character .contents .human .human_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
     
-    section.character .arrow {
-        transform: scale(0.7);
+    /* 캐릭터 이름 폰트 크기 */
+    section.character .contents .human .human_name {
+        font-size: 20px;  /* 1920px: 30px → 1024px: 20px */
     }
     
     /* ============ EPISODE SECTION ============ */
@@ -498,132 +585,223 @@
 @media (max-width: 440px) {
     
     /* ============ MAIN VISUAL ============ */
+    /* 기본 구조 유지 - padding만 조정 */
     article.main_visual {
+        margin-top: 80px;
+        height: 450px;
         padding: 0 30px;
-        min-height: 500px;
     }
     
-    article.main_visual .main_visual_wrapper {
-        padding: 60px 0;
+    /* 백그라운드 이미지 비율 조정 */
+    .main_visual_background .background_image {
+        height: 100%;
+        object-position: center top;
     }
     
-    /* Drama Content Box */
-    article.main_visual .drama_content_box {
-        min-height: 140px;
+    /* 콘텐츠 영역 최대 너비 조정 */
+    .main_visual_wrapper {
+        max-width: 380px;  /* 440px - 60px(30px*2) */
+    }
+    
+    /* 콘텐츠 간격 축소 */
+    .main_visual_wrapper .contents {
+        gap: 187px;
+    }
+    
+    /* Logo Area - Figma 정확한 스펙 */
+    .logo_area {
+        gap: 8px;
+    }
+    
+    .logo_area .netflix_logo {
+        width: 71px;
+        height: 20px;
+    }
+    
+    .logo_area .global_badge {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 1.3;
+        text-transform: uppercase;
+    }
+    
+    /* Contents Text */
+    .contents_text {
+        gap: 8px;
+    }
+    
+    /* Drama Title Area */
+    .drama_title_area {
+        gap: 12px;
+    }
+    
+    .drama_title_area .title_text {
+        gap: 4px;
+    }
+    
+    .drama_title_area .title_text .series_label {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 1.3;
+    }
+    
+    .drama_title_area .title_text .drama_title {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+    
+    .drama_title_area .bookmark_button {
+        width: 32px;
+        height: 32px;
+    }
+    
+    /* Drama Content Box - padding만 조정 */
+    .drama_content_box {
         padding: 16px 0;
     }
     
-    article.main_visual .drama_text_wrapper {
+    .drama_content_box .drama_text_wrapper {
+        padding: 0 16px 0 12px;
         flex-direction: column;
-        gap: 20px;
-        padding: 0 20px;
+        gap: 16px;
     }
     
-    article.main_visual .text_box_left,
-    article.main_visual .text_box_right {
-        width: 100%;
+    /* Text Box Left */
+    .text_box_left {
         max-width: 100%;
+        gap: 16px;
     }
     
-    article.main_visual .logo_area {
-        gap: 8px;
-        margin-bottom: 20px;
-        flex-direction: row;
-        align-items: center;
+    .text_box_left .meta_info {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.3;
     }
     
-    article.main_visual .netflix_logo {
-        width: 80px;
-    }
-    
-    article.main_visual .global_badge {
+    .text_box_left .description p {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
         font-size: 12px;
-        padding: 3px 10px;
+        line-height: 1.3;
+        max-width: 352px;
     }
     
-    article.main_visual .drama_title_area {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+    /* Text Box Right - border 제거 */
+    .text_box_right {
+        width: 352px;
+        padding-left: 0;
+        border-left: none;
+        gap: 8px;
     }
     
-    article.main_visual .series_label {
-        font-size: 14px;
-        margin-bottom: 4px;
+    .text_box_right .credit_labels,
+    .text_box_right .credit_names {
+        gap: 8px;
     }
     
-    article.main_visual .drama_title {
-        font: var(--font-440-headline-30);
-        margin-bottom: 12px;
+    .text_box_right .credit_labels .credit_label {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 1.3;
     }
     
-    article.main_visual .bookmark_button {
-        width: 36px;
-        height: 36px;
+    .text_box_right .credit_names .credit_name {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.3;
     }
     
-    article.main_visual .meta_info {
-        font-size: 11px;
-        margin-bottom: 12px;
-    }
-    
-    article.main_visual .description p {
-        font-size: 13px;
-        line-height: 1.6;
-    }
-    
-    article.main_visual .text_box_right {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    article.main_visual .credit_labels,
-    article.main_visual .credit_names {
-        font-size: 11px;
-    }
-    
-    article.main_visual .credit_label {
-        margin-bottom: 6px;
+    /* 440px에서는 Jung Sung-il 포함 */
+    .text_box_right .credit_names .credit_name_multi p::before {
+        content: "Song Hye-kyo, Lee Do-hyun, Lim Ji-yeon, Yeom Hye-ran, Park Sung-hoon, Jung Sung-il";
+        font-size: 12px;  /* 440px에서는 12px */
     }
     
     /* ============ CHARACTER SECTION ============ */
+    /* 1920px 레이아웃 구조 유지, 스케일만 조정 */
     section.character {
-        padding: 60px 30px 80px;
+        width: 100%;
+        max-width: none;
+        height: auto;
         min-height: 500px;
+        margin-top: 80px;
+        margin-bottom: 80px;
+        padding: 0 30px;
     }
     
+    /* 제목 스타일 */
     section.character h2 {
-        font: var(--font-440-headline-30);
-        margin-bottom: 40px;
+        font-family: 'Assistant', sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 1.3;
+        color: white;
+        text-transform: uppercase;
+        position: absolute;
+        left: 30px;
+        top: 0;
     }
     
+    /* 콘텐츠 영역 - 1920px absolute 구조 유지 */
     section.character .contents {
-        max-width: 100%;
+        position: absolute;
+        left: 2%;
+        top: 15%;
+        width: 96%;
+        height: 70%;
+        max-width: 380px;
+        margin: 0 auto;
+        right: 2%;
     }
     
-    section.character .human {
-        transform: scale(0.6);
-        margin: -30px;
+    /* 화살표 - 1920px 퍼센트 위치 그대로 유지 */
+    section.character .contents .arrow {
+        display: block;
     }
     
-    /* 모바일에서 화살표 숨김 */
-    section.character .arrow {
-        display: none !important;
+    /* 캐릭터 - 터치 최적화 추가 */
+    section.character .contents .human {
+        gap: 6px;
+        padding: 8px;
+        margin: -8px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
     }
     
-    section.character .human_img {
-        width: 120px;
-        height: 120px;
+    section.character .contents .human:active {
+        transform: scale(0.95);
+        opacity: 0.8;
     }
     
-    section.character .human_name {
-        font-size: 14px;
-        margin-top: 8px;
+    section.character .contents .human:hover {
+        transform: none;
+        opacity: 1;
     }
     
-    section.character .arrow {
-        display: none;
+    /* 캐릭터 이미지 크기만 조정 */
+    section.character .contents .human .human_img {
+        width: 56px;
+        height: 77px;
+        aspect-ratio: auto;
+    }
+    
+    section.character .contents .human .human_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* 캐릭터 이름 폰트 크기 */
+    section.character .contents .human .human_name {
+        font-size: 12px;  /* 1920px: 30px → 440px: 12px */
+        line-height: 1.2;
     }
     
     /* ============ EPISODE SECTION ============ */

@@ -20,6 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
     <script src="/js/common.js"></script>
     <script src="Work_Ryu/js/work_ryu.js"></script>
 </head>
@@ -143,8 +144,7 @@
                                                 <li class="credit_name">Kim Eun-sook</li>
                                                 <li class="credit_name">Ahn Gil-ho</li>
                                                 <li class="credit_name credit_name_multi">
-                                                    <p>Song Hye-kyo, Lee Do-hyun, Lim Ji-yeon, Yeom Hye-ran,</p>
-                                                    <p>Park Sung-hoon, Jung Sung-il</p>
+                                                    <p>Song Hye-kyo, Lee Do-hyun, Lim Ji-yeon, Yeom Hye-ran, Park Sung-hoon, Jung Sung-il</p>
                                                 </li>
                                             </ul><!-- .credit_names -->
                                         </div><!-- .text_box_right -->
@@ -450,92 +450,70 @@
                     </div><!-- .episode_scroll_container -->
                 </section><!-- //.episode -->
                 <section class="draggable_section">
-                    <!-- Draggable Frame -->
-                    <div class="images_frame">
-                        <!-- Row 1 -->
-                        <div class="img_item" style="left: 363px; top: 70px;" data-size="280x187">
-                            <img src="work_ryu/asset/images_img_dummy01.png" alt="">
-                        </div><!-- .img_item -->
+                    <!-- Floating Images (16 items) -->
+                    <div class="img_item" data-size="large">
+                        <img src="work_ryu/asset/images_img_dummy01.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 742px; top: 301px;" data-size="340x227">
-                            <img src="work_ryu/asset/images_img_dummy02.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="medium">
+                        <img src="work_ryu/asset/images_img_dummy02.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 1046px; top: 100px;" data-size="200x133">
-                            <img src="work_ryu/asset/images_img_dummy03.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="small">
+                        <img src="work_ryu/asset/images_img_dummy03.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 1329px; top: 364px;" data-size="200x133">
-                            <img src="work_ryu/asset/images_img_dummy04.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="medium">
+                        <img src="work_ryu/asset/images_img_dummy04.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 1421px; top: 0;" data-size="280x187">
-                            <img src="work_ryu/asset/images_img_dummy05.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="large">
+                        <img src="work_ryu/asset/images_img_dummy05.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 1666px; top: 263px;" data-size="280x187">
-                            <img src="work_ryu/asset/images_img_dummy06.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="small">
+                        <img src="work_ryu/asset/images_img_dummy06.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 1561px; top: 571px;" data-size="340x227">
-                            <img src="work_ryu/asset/images_img_dummy07.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="medium">
+                        <img src="work_ryu/asset/images_img_dummy07.png" alt="">
+                    </div>
 
-                        <!-- Row 2 -->
-                        <div class="img_item" style="left: 443px; top: 450px;" data-size="200x133">
-                            <img src="work_ryu/asset/images_img_dummy08.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="small">
+                        <img src="work_ryu/asset/images_img_dummy08.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 0; top: 571px;" data-size="280x187">
-                            <img src="work_ryu/asset/images_img_dummy09.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="large">
+                        <img src="work_ryu/asset/images_img_dummy09.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 752px; top: 641px;" data-size="200x133">
-                            <img src="work_ryu/asset/images_img_dummy10.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="medium">
+                        <img src="work_ryu/asset/images_img_dummy10.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 1112px; top: 611px;" data-size="280x187">
-                            <img src="work_ryu/asset/images_img_dummy11.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="small">
+                        <img src="work_ryu/asset/images_img_dummy11.png" alt="">
+                    </div>
 
-                        <!-- Row 3 -->
-                        <div class="img_item" style="left: 403px; top: 808px;" data-size="280x187">
-                            <img src="work_ryu/asset/images_img_dummy12.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="large">
+                        <img src="work_ryu/asset/images_img_dummy12.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 1356px; top: 874px;" data-size="280x187">
-                            <img src="work_ryu/asset/images_img_dummy13.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="medium">
+                        <img src="work_ryu/asset/images_img_dummy13.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 0; top: 929px;" data-size="200x133">
-                            <img src="work_ryu/asset/images_img_dummy14.png" alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="small">
+                        <img src="work_ryu/asset/images_img_dummy14.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 1736px; top: 929px;" data-size="280x187">
-                            <img src="work_ryu/asset/images_img_dummy15.png " alt="">
-                        </div><!-- .img_item -->
+                    <div class="img_item" data-size="large">
+                        <img src="work_ryu/asset/images_img_dummy15.png" alt="">
+                    </div>
 
-                        <div class="img_item" style="left: 806px; top: 928px;" data-size="340x227">
-                            <img src="work_ryu/asset/images_img_dummy16.png" alt="">
-                        </div><!-- .img_item -->
-
-                        <!-- Row 4 -->
-                        <div class="img_item" style="left: 503px; top: 1212px;" data-size="200x133">
-                            <img src="work_ryu/asset/images_img_dummy17.png" alt="">
-                        </div><!-- .img_item -->
-
-                        <div class="img_item" style="left: 1186px; top: 1238px;" data-size="340x226">
-                            <img src="work_ryu/asset/images_img_dummy18.png" alt="">
-                        </div><!-- .img_item -->
-
-                        <div class="img_item" style="left: 1731px; top: 1237px;" data-size="280x187">
-                            <img src="work_ryu/asset/images_img_dummy19.png" alt="">
-                        </div><!-- .img_item -->
-
-                        <div class="img_item" style="left: 40px; top: 1279px;" data-size="200x133">
-                            <img src="work_ryu/asset/images_img_dummy20.png" alt="">
-                        </div><!-- .img_item -->
-                    </div><!-- .images_frame -->
+                    <div class="img_item" data-size="medium">
+                        <img src="work_ryu/asset/images_img_dummy16.png" alt="">
+                    </div>
                 </section><!-- .draggable_section -->
 
                 <!-- Modal -->
