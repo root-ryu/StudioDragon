@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="스튜디오 드래곤 홈페이지 입니다">
@@ -16,20 +17,18 @@
     <link rel="stylesheet" href="IR_Kwon/css/main_media.css">
     <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- GSAP 라이브러리 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="js/common.js"></script>
     <script src="IR_Kwon/js/main.js"></script>
 </head>
+
 <body>
     <div class="wrap">
-              <div class="header_bg">
-        </div>
         <header class="">
+            <div class="header_bg">
+            </div>
             <div class="inner">
-                <h1><a href="#" class="logo"><img src="back/img/logo_w.png" alt="StudioDragonLogo"></a></h1>
-                <nav class="">
+                <h1><a href="#" class="logo"><img src="asset/logo_w.png" alt="StudioDragonLogo"></a></h1>
+                <nav>
                     <ul class="gnb">
                         <li class=""><a href="#">ABOUT</a>
                             <ul class="sub">
@@ -71,11 +70,11 @@
                     </ul><!-- //.gnb -->
                     <div class="right">
                         <div class="lang">
-                            <a href="#" class="en ">EN</a>
-                            <a href="#" class="kr ">KR</a>
+                            <a href="#">EN</a>
+                            <a href="#">KR</a>
                         </div><!-- //.lang -->
                         <div class="user">
-                            <a href="#"><img src="back/img/user.png" alt="user"></a>
+                            <a href="#"><img src="asset/user.png" alt="user"></a>
                         </div><!-- //.user -->
                         <div class="ham">
                             <ul>
@@ -132,197 +131,115 @@
             <p class="text">Parallel prod–post workflow</p>
           </div><!-- //. card_after -->
         </article><!-- //. item_3 -->
-        <aside class="description">
-          <p>Multi-platform launch windows reduce slot congestion and improve reach efficiency.</p>
-          <p>Parallelization shortens turnaround and mitigates schedule risk.</p>
-        </aside><!-- //. description -->
       </div><!-- //. area -->
+      <aside class="description">
+        <p>Multi-platform launch windows reduce slot congestion and improve reach efficiency.</p>
+        <p>Parallelization shortens turnaround and mitigates schedule risk.</p>
+      </aside><!-- //. description -->
     </div><!-- //. container -->
   </section><!-- //. value_drivers -->
-  <!-- execution_section -->
-  <section id="execution" class="execution">
-    <!-- 타이틀 (전체 너비) -->
-    <div class="title">
-      <h2 class="title">Execution</h2>
-      <p class="sub">Operational playbooks aligned to global releases.</p>
-    </div><!-- //. title -->
-
-    <!-- 그리드 영역: 텍스트 + 이미지 -->
-    <div class="wrapper">
-      <!-- 스크롤될 영역: 카드들 (왼쪽) -->
-      <div class="cards_area">
-        <div class="cards_wrap">
-          <article class="card" data-index="0">
-            <h3 class="card_title">Production</h3>
-            <p class="card_desc">High-quality sets, locations, OST → higher completion rate</p>
-          </article>
-          <article class="card" data-index="1">
-            <h3 class="card_title">Distribution</h3>
-            <p class="card_desc">Regional pacing + highlight drops → more Top-10 weeks</p>
-          </article>
-          <article class="card" data-index="2">
-            <h3 class="card_title">Partners</h3>
-            <p class="card_desc">OTT main features &amp; brand tie-ups</p>
-          </article>
-          <article class="card" data-index="3">
-            <h3 class="card_title">Marketing</h3>
-            <p class="card_desc">Key visual A/B + fan AMA → play-through lift</p>
-          </article>
-        </div><!-- //. cards_wrap -->
-      </div><!-- //. cards_area -->
-
-      <!-- 고정될 영역: 이미지 (오른쪽) -->
-      <div class="sticky_area">
-        <div class="image_container">
-          <img class="execution_image active" src="IR_Kwon/img/Execution_Pro.png" alt="Production" data-index="0" />
-          <img class="execution_image" src="IR_Kwon/img/Execution_Dis.png" alt="Distribution" data-index="1" />
-          <img class="execution_image" src="IR_Kwon/img/Execution_Par.png" alt="Partners" data-index="2" />
-          <img class="execution_image" src="IR_Kwon/img/Execution_Mar.png" alt="Marketing" data-index="3" />
-        </div><!-- //. image_container -->
-      </div><!-- //. sticky_area -->
-    </div><!-- //. wrapper -->
+  <section class="execution">
+    <div class="inner">
+      <div class="title">
+        <h2 class="title">Execution</h2>
+        <p class="sub">Operational playbooks aligned to global releases.</p>
+      </div><!-- //. title -->
+      <div class="container">
+      <article class="card card_1">
+        <figure class="figure">
+          <img class="image" src="IR_Kwon/img/Execution_Pro.png" alt="Production" />
+        </figure><!-- //. figure -->
+        <div class="content">
+          <h3 class="card_title">Production</h3>
+          <p class="card_desc">High-quality sets, locations, OST → higher completion rate</p>
+        </div><!-- //. content -->
+      </article><!-- //. card_1 -->
+      <article class="card card_2">
+        <figure class="figure">
+          <img class="image" src="IR_Kwon/img/Execution_Dis.png" alt="Distribution" />
+        </figure><!-- //. figure -->
+        <div class="content">
+          <h3 class="card_title">Distribution</h3>
+          <p class="card_desc">Regional pacing + highlight drops → more Top-10 weeks</p>
+        </div><!-- //. content -->
+      </article><!-- //. card_2 -->
+      <article class="card card_3">
+        <figure class="figure">
+          <img class="image" src="IR_Kwon/img/Execution_Par.png" alt="Partners" />
+        </figure><!-- //. figure -->
+        <div class="content">
+          <h3 class="card_title">Partners</h3>
+          <p class="card_desc">OTT main features &amp; brand tie-ups</p>
+        </div><!-- //. content -->
+      </article><!-- //. card_3 -->
+      <article class="card card_4">
+        <figure class="figure">
+          <img class="image" src="IR_Kwon/img/Execution_Mar.png" alt="Marketing" />
+        </figure><!-- //. figure -->
+        <div class="content">
+          <h3 class="card_title">Marketing</h3>
+          <p class="card_desc">Key visual A/B + fan AMA → play-through lift</p>
+        </div><!-- //. content -->
+      </article><!-- //. card_4 -->
+    </div><!-- //. container -->
+    </div><!-- //. inner -->
   </section><!-- //. execution -->
     <section class="proof">
       <div class="title">
-        <h2>Proof</h2>
+        <h2 class="title">Proof</h2>
         <p class="sub">Signals that evidence growth and monetization readiness.</p>
       </div><!-- //. title -->
       <div class="container">
         <article class="card card_1">
-          <div class="card_inner">
-            <div class="card_front">
-              <figure class="figure">
-                <img class="image" src="IR_Kwon/img/Proof_Rating.png" alt="Ratings chart" />
-              </figure><!-- //. figure -->
-              <div class="content">
-                <div class="paragraph">
-                  <div class="stat">Final 24.9%<br />&nbsp;</div>
-                  <div class="source">* Source/period : Nielsen Korea (Nat./Seoul), Live+Same Day,</div>
-                </div>
-                <div class="label">Ratings</div>
-              </div><!-- //. content -->
-            </div><!-- //. card_front -->
-            <div class="card_back">
-              <div class="back_content">
-                <h3>Ratings Detail</h3>
-                <p><strong>Peak / Final:</strong> 27.1% / 24.9% — stable from Ep1→Final</p>
-                <p><strong>Demo 20–49:</strong> 9.8% (Seoul 11.2%) → premium ad rate leverage</p>
-                <p><strong>Completion:</strong> 86% (Final ÷ Ep1 households) — low churn</p>
-                <p><strong>Timeslot share:</strong> #1 (52%), +14%p vs. next title</p>
-                <p><strong>Momentum:</strong> mid-season lift +1.9%p (Ep8 cliffhanger)</p>
-              </div>
-            </div><!-- //. card_back -->
-          </div><!-- //. card_inner -->
+          <figure class="figure">
+            <img class="image" src="IR_Kwon/img/Proof_Rating.png" alt="Ratings chart" />
+          </figure><!-- //. figure -->
+          <div class="content">
+            <div class="stat">Final 24.9%</div>
+            <div class="source">* Source/period</div>
+            <div class="label">Ratings</div>
+          </div><!-- //. content -->
         </article><!-- //. card_1 -->
-        
         <article class="card card_2">
-          <div class="card_inner">
-            <div class="card_front">
-              <figure class="figure">
-                <img class="image" src="IR_Kwon/img/Proof_Ott.png" alt="OTT ranking" />
-              </figure><!-- //. figure -->
-              <div class="content">
-                <div class="paragraph">
-                  <div class="stat">Top 10 for 15 weeks<br />Peak #1</div>
-                  <div class="source">* Source/period : FlixPatrol (Global/Regional Top-10)</div>
-                </div>
-                <div class="label">OTT</div>
-              </div><!-- //. content -->
-            </div><!-- //. card_front -->
-            <div class="card_back">
-              <div class="back_content">
-                <h3>OTT Performance</h3>
-                <p><strong>Top-10 weeks:</strong> 15 (peak #1) across key regions</p>
-                <p><strong>Hours viewed (est.):</strong> ↑ vs. genre cohort (p90 percentile)</p>
-                <p><strong>Title share:</strong> +X% within platform category during peak</p>
-                <p><strong>Decay curve:</strong> slow tail-off → strong long-tail value</p>
-                <p><strong>Cross-region sync:</strong> highlights & dubs aligned with launches</p>
-              </div>
-            </div><!-- //. card_back -->
-          </div><!-- //. card_inner -->
+          <figure class="figure">
+            <img class="image" src="IR_Kwon/img/Proof_Ott.png" alt="OTT ranking" />
+          </figure><!-- //. figure -->
+          <div class="content">
+            <div class="stat">Top 10 for 15 weeks<br />Peak #1</div>
+            <div class="source">* Source/period</div>
+            <div class="label">OTT</div>
+          </div><!-- //. content -->
         </article><!-- //. card_2 -->
-        
         <article class="card card_3">
-          <div class="card_inner">
-            <div class="card_front">
-              <figure class="figure">
-                <img class="image" src="IR_Kwon/img/Proof_OverSeas.png" alt="Overseas map" />
-              </figure><!-- //. figure -->
-              <div class="content">
-                <div class="paragraph">
-                  <div class="stat">Launched in 45 countries<br />Regional heatmap</div>
-                  <div class="source">* Source/period : Internal distribution log &amp; delivery</div>
-                </div>
-                <div class="label">Overseas</div>
-              </div><!-- //. content -->
-            </div><!-- //. card_front -->
-            <div class="card_back">
-              <div class="back_content">
-                <h3>Overseas Distribution</h3>
-                <p><strong>Launched in:</strong> 45 countries across key regions</p>
-                <p><strong>Regional coverage:</strong> Asia-Pacific, Americas, Europe, Middle East</p>
-                <p><strong>Localization:</strong> Multi-language subtitles and dubbing</p>
-                <p><strong>Distribution partners:</strong> Major OTT and broadcast networks</p>
-                <p><strong>Market penetration:</strong> Strong performance in primary markets</p>
-              </div>
-            </div><!-- //. card_back -->
-          </div><!-- //. card_inner -->
+          <figure class="figure">
+            <img class="image" src="IR_Kwon/img/Proof_OverSeas.png" alt="Overseas map" />
+          </figure><!-- //. figure -->
+          <div class="content">
+            <div class="stat">Launched in 45 countries<br />Regional heatmap</div>
+            <div class="source">* Source/period</div>
+            <div class="label">Overseas</div>
+          </div><!-- //. content -->
         </article><!-- //. card_3 -->
-        
         <article class="card card_4">
-          <div class="card_inner">
-            <div class="card_front">
-              <figure class="figure">
-                <img class="image" src="IR_Kwon/img/Proof_Media.png" alt="Media mentions" />
-              </figure><!-- //. figure -->
-              <div class="content">
-                <div class="paragraph">
-                  <div class="stat">120 earned mentions<br />+80% search lift</div>
-                  <div class="source">* Source/period : Meltwater (earned mentions), Google Trends</div>
-                </div>
-                <div class="label">Media</div>
-              </div><!-- //. content -->
-            </div><!-- //. card_front -->
-            <div class="card_back">
-              <div class="back_content">
-                <h3>Media Impact</h3>
-                <p><strong>Earned media:</strong> 120 articles incl. Tier-A outlets</p>
-                <p><strong>Search interest:</strong> +80% vs. pre-launch baseline</p>
-                <p><strong>Sentiment:</strong> Net positive (V/N) with low issue rate</p>
-                <p><strong>PR spikes:</strong> trailer drop / finale week / award shortlists</p>
-                <p><strong>Share of voice:</strong> +X%p vs. competing titles same window</p>
-              </div>
-            </div><!-- //. card_back -->
-          </div><!-- //. card_inner -->
+          <figure class="figure">
+            <img class="image" src="IR_Kwon/img/Proof_Media.png" alt="Media mentions" />
+          </figure><!-- //. figure -->
+          <div class="content">
+            <div class="stat">120 earned mentions<br />+80% search lift</div>
+            <div class="source">* Source/period</div>
+            <div class="label">Media</div>
+          </div><!-- //. content -->
         </article><!-- //. card_4 -->
-        
         <article class="card card_5">
-          <div class="card_inner">
-            <div class="card_front">
-              <figure class="figure">
-                <img class="image" src="IR_Kwon/img/Proof_Fandom.png" alt="Fandom stats" />
-              </figure><!-- //. figure -->
-              <div class="content">
-                <div class="paragraph">
-                  <div class="stat">Higher completion<br />More UGC</div>
-                  <div class="source">* Source/period : Platform analytics (episode completion)</div>
-                </div>
-                <div class="label">Fandom</div>
-              </div><!-- //. content -->
-            </div><!-- //. card_front -->
-            <div class="card_back">
-              <div class="back_content">
-                <h3>Fandom Engagement</h3>
-                <p><strong>Episode completion:</strong> +Δ%p vs. genre peers (Ep8/Final)</p>
-                <p><strong>3-week retention:</strong> 82% — sticky mid-season</p>
-                <p><strong>UGC volume:</strong> shorts/reels growth ↑ post-Ep8</p>
-                <p><strong>Community beats:</strong> AMA/live chat events lifted play-through</p>
-                <p><strong>Intl. mix:</strong> non-KR UGC share ↑ after multi-dub rollout</p>
-              </div>
-            </div><!-- //. card_back -->
-          </div><!-- //. card_inner -->
+          <figure class="figure">
+            <img class="image" src="IR_Kwon/img/Proof_Fandom.png" alt="Fandom stats" />
+          </figure><!-- //. figure -->
+          <div class="content">
+            <div class="stat">Higher completion<br />More UGC</div>
+            <div class="source">* Source/period</div>
+            <div class="label">Fandom</div>
+          </div><!-- //. content -->
         </article><!-- //. card_5 -->
-        
         <article class="card card_6">
           <figure class="figure">
             <img class="image" src="IR_Kwon/img/Proof_Posters.png" alt="Stills and posters" />
@@ -332,73 +249,54 @@
           </div><!-- //. content -->
         </article><!-- //. card_6 -->
       </div><!-- //. container -->
-    </section><!-- //. proof -->
-    <section class="monetization_bridge">
-      <div class="title">
-        <h2 class="title">Monetization Bridge</h2>
-        <p class="sub">Diversified revenue mix anchored by distribution and IP licensing.</p>
-      </div><!-- //. title -->
+    </section><!-- //. proof --> 
+        <section class="monetization_bridge">
+      <div class="inner">
+        <div class="title">
+          <h2 class="title">Monetization Bridge</h2>
+          <p class="sub">Diversified revenue mix anchored by distribution and IP licensing.</p>
+        </div><!-- //. title -->
       <div class="container">
         <article class="bar bar_1">
-          <div class="bar_wrapper">
-            <div class="percent">0%</div>
-            <div class="chart_container">
-              <div class="chart">
-                <div class="fill"></div>
-              </div><!-- //. chart -->
-            </div><!-- //. chart_container -->
-            <div class="label">Broadcast</div>
-          </div><!-- //. bar_wrapper -->
+          <div class="label">Broadcast</div>
+          <div class="chart">
+            <div class="fill"></div>
+          </div><!-- //. chart -->
+          <div class="percent">56%</div>
         </article><!-- //. bar_1 -->
         <article class="bar bar_2">
-          <div class="bar_wrapper">
-            <div class="percent">0%</div>
-            <div class="chart_container">
-              <div class="chart">
-                <div class="fill"></div>
-              </div><!-- //. chart -->
-            </div><!-- //. chart_container -->
-            <div class="label">OTT</div>
-          </div><!-- //. bar_wrapper -->
+          <div class="label">OTT</div>
+          <div class="chart">
+            <div class="fill"></div>
+          </div><!-- //. chart -->
+          <div class="percent">64%</div>
         </article><!-- //. bar_2 -->
         <article class="bar bar_3">
-          <div class="bar_wrapper">
-            <div class="percent">0%</div>
-            <div class="chart_container">
-              <div class="chart">
-                <div class="fill"></div>
-              </div><!-- //. chart -->
-            </div><!-- //. chart_container -->
-            <div class="label">Overseas</div>
-          </div><!-- //. bar_wrapper -->
+          <div class="label">Overseas</div>
+          <div class="chart">
+            <div class="fill"></div>
+          </div><!-- //. chart -->
+          <div class="percent">60%</div>
         </article><!-- //. bar_3 -->
         <article class="bar bar_4">
-          <div class="bar_wrapper">
-            <div class="percent">0%</div>
-            <div class="chart_container">
-              <div class="chart">
-                <div class="fill"></div>
-              </div><!-- //. chart -->
-            </div><!-- //. chart_container -->
-            <div class="label">Licensing</div>
-          </div><!-- //. bar_wrapper -->
+          <div class="label">Licensing</div>
+          <div class="chart">
+            <div class="fill"></div>
+          </div><!-- //. chart -->
+          <div class="percent">7%</div>
         </article><!-- //. bar_4 -->
         <article class="bar bar_5">
-          <div class="bar_wrapper">
-            <div class="percent">0%</div>
-            <div class="chart_container">
-              
-              <div class="chart">
-                <div class="fill"></div>
-              </div><!-- //. chart -->
-            </div><!-- //. chart_container -->
-            <div class="label">PPL</div>
-          </div><!-- //. bar_wrapper -->
+          <div class="label">PPL</div>
+          <div class="chart">
+            <div class="fill"></div>
+          </div><!-- //. chart -->
+          <div class="percent">6%</div>
         </article><!-- //. bar_5 -->
-      </div><!-- //. container -->
-      <div class="note">
+        <div class="note">
           <p class="text">Notes: Showing mix (%) rather than amounts. Specify basis/period.</p>
         </div><!-- //. note -->
+      </div><!-- //. container -->
+      </div><!-- //. inner -->
     </section><!-- //. monetization_bridge --> 
     <section class="moat_repeatability">
       <div class="title">
@@ -437,10 +335,11 @@
       </div><!-- //. container -->
     </section><!-- //. moat_repeatability -->
     <section class="forward_triggers">
-      <div class="title">
-        <h2 class="title">Forward Triggers</h2>
-        <p class="sub">Milestones that could unlock additional value.</p>
-      </div><!-- //. title -->
+      <div class="inner">
+        <div class="title">
+          <h2 class="title">Forward Triggers</h2>
+          <p class="sub">Milestones that could unlock additional value.</p>
+        </div><!-- //. title -->
       <div class="container">
         <div class="table">
           <div class="header">
@@ -477,10 +376,11 @@
           </div><!-- //. body -->
         </div><!-- //. table -->
       </div><!-- //. container -->
+      </div><!-- //. inner -->
     </section><!-- //. forward_triggers -->
     <section class="risks_mitigation">
       <div class="title">
-        <h2>Risks &amp; Mitigation</h2>
+        <h2 class="title">Risks &amp; Mitigation</h2>
         <p class="sub">Top-3 risks with mitigations. A mini impact meter justifies the level.</p>
       </div><!-- //. title -->
       <div class="container">
@@ -493,11 +393,11 @@
             <div class="level level_med">MED</div>
           </div><!-- //. header -->
           <div class="meter">
-            <div class="fill fill_med"></div>
+            <div class="fill"></div>
           </div><!-- //. meter -->
-          <div class="description">
+          <div class="content">
             <p class="text"><strong>Mitigation:</strong> Add schedule buffer, parallelize post, pre-approve alt sets/locations</p>
-          </div><!-- //. description -->
+          </div><!-- //. content -->
         </article><!-- //. card_1 -->
         <article class="card card_2">
           <div class="header">
@@ -508,11 +408,11 @@
             <div class="level level_high">HIGH</div>
           </div><!-- //. header -->
           <div class="meter">
-            <div class="fill fill_high"></div>
+            <div class="fill"></div>
           </div><!-- //. meter -->
-          <div class="description">
+          <div class="content">
             <p class="text"><strong>Mitigation:</strong> Hedge major currencies, diversify contract currency, shorten settlement cycle</p>
-          </div><!-- //. description -->
+          </div><!-- //. content -->
         </article><!-- //. card_2 -->
         <article class="card card_3">
           <div class="header">
@@ -523,27 +423,14 @@
             <div class="level level_low">LOW</div>
           </div><!-- //. header -->
           <div class="meter">
-            <div class="fill fill_low"></div>
+            <div class="fill"></div>
           </div><!-- //. meter -->
-          <div class="description">
+          <div class="content">
             <p class="text"><strong>Mitigation:</strong> Pre-review checklist, sensitive-content guardrails, alternate cut plan</p>
-          </div><!-- //. description -->
+          </div><!-- //. content -->
         </article><!-- //. card_3 -->
       </div><!-- //. container -->
     </section><!-- //. risks_mitigation -->
-
-    <!-- CTA Buttons Section -->
-    <section class="cta_buttons">
-      <a href="#" class="cta_btn">
-        <span>Investor Deck</span>
-      </a>
-      <a href="#" class="cta_btn">
-        <span>Data CSV</span>
-      </a>
-      <a href="#" class="cta_btn">
-        <span>Request a Meeting</span>
-      </a>
-    </section><!-- //. cta_buttons -->
   </main>
         <footer class="ver_dark ver_white">
             <div class="footer_inner">
@@ -560,55 +447,53 @@
                                     <li><a href="#" class="footer_gnb_link">Sitemap</a></li>
                                 </ul><!-- //.footer_gnb_list -->
 
-                                <div class="footer_family_site">
-                                    <ul class="family_site_list">
-                                        <li><a href="#" class="family_site_link">CJ ENM</a></li>
-                                        <li><a href="#" class="family_site_link">CJ GROUP</a></li>
-                                        <li class="family_site_btn_wrap">
-                                            <button type="button" class="family_site_btn">
-                                                <span>Family Site</span>
-                                                <img src="asset/up.svg"
-                                                    alt="arrow" class="family_site_arrow">
-                                            </button>
-                                        </li>
-                                    </ul><!-- //.family_site_list -->
-                                </div><!-- //.footer_family_site -->
-                            </div><!-- //.footer_gnb_wrap -->
-                        </div><!-- //.footer_gnb -->
-                    </div><!-- //.footer_menu -->
-                </div><!-- //.footer_top -->
+                <div class="footer_family_site">
+                  <ul class="family_site_list">
+                    <li><a href="#" class="family_site_link">CJ ENM</a></li>
+                    <li><a href="#" class="family_site_link">CJ GROUP</a></li>
+                    <li class="family_site_btn_wrap">
+                      <button type="button" class="family_site_btn">
+                        <span>Family Site</span>
+                        <img src="asset/up.svg" alt="arrow" class="family_site_arrow">
+                      </button>
+                    </li>
+                  </ul><!-- //.family_site_list -->
+                </div><!-- //.footer_family_site -->
+              </div><!-- //.footer_gnb_wrap -->
+            </div><!-- //.footer_gnb -->
+          </div><!-- //.footer_menu -->
+        </div><!-- //.footer_top -->
 
-                <!-- Bottom Area -->
-                <div class="footer_bottom">
-                    <div class="footer_brand">
-                        <div class="footer_logo">
-                            
-                        </div><!-- //.footer_logo -->
+        <!-- Bottom Area -->
+        <div class="footer_bottom">
+          <div class="footer_brand">
+            <div class="footer_logo">
 
-                        <div class="footer_sns">
-                            <a href="#" class="sns_link" aria-label="Facebook">
-                                <img src="asset/facebook.svg"
-                                    alt="Facebook">
-                            </a>
-                            <a href="#" class="sns_link" aria-label="YouTube">
-                                <img src="asset/youtube.svg"
-                                    alt="YouTube">
-                            </a>
-                            <a href="#" class="sns_link" aria-label="Instagram">
-                                <img src="asset/Instagram.svg"
-                                    alt="Instagram">
-                            </a>
-                        </div><!-- //.footer_sns -->
-                    </div><!-- //.footer_brand -->
+            </div><!-- //.footer_logo -->
 
-                    <div class="footer_info">
-                        <p class="footer_info_text">CEO : Jang Kyung-ik</p>
-                        <p class="footer_info_text">Studio Dregon Corporation, 17F1, 75, Maebongsan-ro, Mapo-gu, Seoul, Republic of Korea | Business registration number : 747-81-00388</p>
-                        <p class="footer_info_text">© STUDIO DRAGON.All Rights Reserved.</p>
-                    </div><!-- //.footer_info -->
-                </div><!-- //.footer_bottom -->
-            </div><!-- //.footer_inner -->
-        </footer><!-- //.footer -->
-    </div><!-- //.wrap -->
+            <div class="footer_sns">
+              <a href="#" class="sns_link" aria-label="Facebook">
+                <img src="asset/facebook.svg" alt="Facebook">
+              </a>
+              <a href="#" class="sns_link" aria-label="YouTube">
+                <img src="asset/youtube.svg" alt="YouTube">
+              </a>
+              <a href="#" class="sns_link" aria-label="Instagram">
+                <img src="asset/Instagram.svg" alt="Instagram">
+              </a>
+            </div><!-- //.footer_sns -->
+          </div><!-- //.footer_brand -->
+
+          <div class="footer_info">
+            <p class="footer_info_text">CEO : Jang Kyung-ik</p>
+            <p class="footer_info_text">Studio Dregon Corporation, 17F1, 75, Maebongsan-ro, Mapo-gu, Seoul, Republic of
+              Korea | Business registration number : 747-81-00388</p>
+            <p class="footer_info_text">© STUDIO DRAGON.All Rights Reserved.</p>
+          </div><!-- //.footer_info -->
+        </div><!-- //.footer_bottom -->
+      </div><!-- //.footer_inner -->
+    </footer><!-- //.footer -->
+  </div><!-- //.wrap -->
 </body>
+
 </html>

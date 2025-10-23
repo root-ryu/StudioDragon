@@ -78,7 +78,8 @@ article.main_visual {
 /* Main Wrapper */
 .main_visual_wrapper {
     position: relative;
-    width: 1520px;
+    width: 100%;
+    max-width: 1520px;
     z-index: 2;
 }
 
@@ -161,21 +162,27 @@ article.main_visual {
 /* Drama Content Box */
 .drama_content_box {
     width: 100%;
-    height: 179px;
+    height: auto;
+    min-height: 179px;
     background: linear-gradient(180deg, rgba(136, 63, 254, 0.58) 0%, rgba(13, 3, 28, 0.58) 100%);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-    overflow: hidden;
+    overflow: visible;
     position: relative;
+    padding: 28px 0;
 }
 
 .drama_content_box .drama_text_wrapper {
-    position: absolute;
-    left: 32px;
-    top: 28px;
-    width: 1312px;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 1520px;
+    margin: 0 auto;
+    padding: 0 32px;
     display: flex;
     justify-content: space-between;
+    box-sizing: border-box;
 }
 
 /* Text Box Left */
@@ -183,7 +190,8 @@ article.main_visual {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    width: 679px;
+    width: 100%;
+    max-width: 679px;
 }
 
 .text_box_left .meta_info {
@@ -209,7 +217,8 @@ article.main_visual {
     line-height: 1.3;
     color: #FFFFFF;
     margin: 0;
-    width: 679px;
+    width: 100%;
+    max-width: 679px;
     white-space: pre-wrap;
 }
 
@@ -254,6 +263,7 @@ article.main_visual {
 .text_box_right .credit_names .credit_name_multi p {
     margin: 0;
 }
+/* article.main_visual */
 
 /* character */
 section.character {
@@ -361,7 +371,7 @@ section.character .contents .human {
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    width: 11%;
+    width: auto;
     text-decoration: none;
     color: inherit;
     transition: transform 0.3s ease, opacity 0.3s ease;
@@ -493,6 +503,7 @@ section.character .contents .human .human_name.name_sa {
     font-family: 'Viner Hand ITC', cursive;
     color: #ffd8f9;
 }
+/* section.character */
 
 /* episode */
 section {
@@ -548,15 +559,12 @@ section .title_wrapper .more_btn:hover {
     background-color: var(--Wcolor);
     color: var(--Bcolor);
 }
-
-/* ?�피?�드 ?�크�?컨테?�너 */
 section .episode_scroll_container {
     overflow-x: auto;
     overflow-y: hidden;
     cursor: grab;
     user-select: none;
     -webkit-overflow-scrolling: touch;
-    /* ?�크롤바 ?�기�?*/
     scrollbar-width: none;
     /* Firefox */
     -ms-overflow-style: none;
@@ -578,10 +586,11 @@ section .episode_scroll_container .episode_list {
     padding-bottom: 20px;
 }
 
-/* ?�피?�드 카드 */
+
 section .episode_scroll_container .episode_list .episode_card {
-    min-width: 400px;
+    min-width: 320px;
     max-width: 400px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
@@ -635,8 +644,10 @@ section .episode_scroll_container .episode_list .episode_card .episode_info .epi
     margin: 0;
     letter-spacing: 0;
 }
+/* section.episode */
+
 /* Draggable Section */
-.draggable_section {
+section.draggable_section {
     position: relative;
     width: 100%;
     height: 100vh;
@@ -661,7 +672,7 @@ section .episode_scroll_container .episode_list .episode_card .episode_info .epi
 }
 
 /* Draggable Frame */
-.images_frame {
+section.draggable_section .images_frame {
     position: absolute;
     width: 2116px;
     height: 1464px;
@@ -672,19 +683,19 @@ section .episode_scroll_container .episode_list .episode_card .episode_info .epi
     transform-style: preserve-3d;
 }
 
-.images_frame.active {
+section.draggable_section .images_frame.active {
     cursor: grabbing;
 }
 
 /* Image Items */
-.img_item {
+section.draggable_section .img_item {
     position: absolute;
     cursor: pointer;
     pointer-events: auto;
     transform-style: preserve-3d;
 }
 
-.img_item::after {
+section.draggable_section .img_item::after {
     content: '';
     position: absolute;
     top: 0;
@@ -697,12 +708,12 @@ section .episode_scroll_container .episode_list .episode_card .episode_info .epi
     z-index: 1;
 }
 
-.img_item:hover::after {
+section.draggable_section .img_item:hover::after {
     opacity: 0;
     background: rgba(0, 0, 0, 0);
 }
 
-.img_item img {
+section.draggable_section .img_item img {
     display: block;
     width: 100%;
     height: 100%;
@@ -713,30 +724,31 @@ section .episode_scroll_container .episode_list .episode_card .episode_info .epi
     z-index: 0;
 }
 
-.img_item:hover img {
+section.draggable_section .img_item:hover img {
     filter: brightness(1);
 }
 
-.img_item:hover {
+section.draggable_section .img_item:hover {
     z-index: 100 !important;
 }
 
 /* Size variants */
-.img_item[data-size="340x227"],
-.img_item[data-size="340x226"] {
+section.draggable_section .img_item[data-size="340x227"],
+section.draggable_section .img_item[data-size="340x226"] {
     width: 340px;
     height: 227px;
 }
 
-.img_item[data-size="280x187"] {
+section.draggable_section .img_item[data-size="280x187"] {
     width: 280px;
     height: 187px;
 }
 
-.img_item[data-size="200x133"] {
+section.draggable_section .img_item[data-size="200x133"] {
     width: 200px;
     height: 133px;
 }
+/* section.draggable_section */
 
 /* Modal */
 .image_modal {
@@ -764,8 +776,10 @@ section .episode_scroll_container .episode_list .episode_card .episode_info .epi
 
 .modal_content {
     position: relative;
-    width: 600px;
-    height: 400px;
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    aspect-ratio: 3/2;
     transform: scale(0.8);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -790,8 +804,8 @@ section .episode_scroll_container .episode_list .episode_card .episode_info .epi
     background: none;
     border: none;
     color: #F5F5F5;
-    font-size: 36px;
-    font-weight: 300;
+    font-size: 20px;
+    font-weight: 200;
     cursor: pointer;
     line-height: 1;
     padding: 5px 10px;
@@ -804,6 +818,8 @@ section .episode_scroll_container .episode_list .episode_card .episode_info .epi
     transform: rotate(90deg) scale(1.1);
     color: #ffffff;
 }
+/* .image_modal */
+
 /* behind */
 /* Section */
 section.behind_video {
@@ -816,7 +832,8 @@ section.behind_video {
 
 /* Title Wrapper */
 section.behind_video .title_wrapper {
-    width: 1520px;
+    width: 100%;
+    max-width: 1520px;
     display: flex;
     align-items: center;
     gap: 30px;
@@ -854,7 +871,8 @@ section.behind_video .more_button:hover {
 
 /* Stack Container */
 section.behind_video .stack_container {
-    width: 1520px;
+    width: 100%;
+    max-width: 1520px;
     height: 750px;
     position: relative;
     overflow: hidden;
@@ -874,7 +892,8 @@ section.behind_video .video_item {
 
 /* 활성화 상태 - 중앙 1520px */
 section.behind_video .video_item.active {
-    width: 1520px;
+    width: 100%;
+    max-width: 1520px;
     height: 404px;
     opacity: 1;
     z-index: 3;
@@ -883,7 +902,8 @@ section.behind_video .video_item.active {
 /* 비활성화 상태 - 위/아래 1120px */
 section.behind_video .video_item.top,
 section.behind_video .video_item.bottom {
-    width: 1120px;
+    width: 100%;
+    max-width: 1120px;
     height: 297px;
     opacity: 0.7;
     z-index: 1;
@@ -947,7 +967,8 @@ section.behind_video .video_item.bottom .video_poster {
 
 /* Video Textbox */
 section.behind_video .video_item.active .video_textbox {
-    width: 801px;
+    width: 100%;
+    max-width: 801px;
     height: 404px;
     background: #2B2B2B;
     position: relative;
@@ -955,7 +976,8 @@ section.behind_video .video_item.active .video_textbox {
 }
 
 section.behind_video .video_item.top .video_textbox {
-    width: 565px;
+    width: 100%;
+    max-width: 565px;
     height: 297px;
     background: linear-gradient(180deg, rgba(13, 3, 28, 0.58) 0%, rgba(47, 10, 108, 0.58) 100%);
     position: relative;
@@ -963,7 +985,8 @@ section.behind_video .video_item.top .video_textbox {
 }
 
 section.behind_video .video_item.bottom .video_textbox {
-    width: 565px;
+    width: 100%;
+    max-width: 565px;
     height: 297px;
     background: linear-gradient(180deg, rgba(47, 10, 108, 0.58) 0%, rgba(13, 3, 28, 0.58) 100%);
     position: relative;
@@ -975,7 +998,8 @@ section.behind_video .video_text {
     position: absolute;
     left: 40px;
     top: 32px;
-    width: 732px;
+    width: calc(100% - 80px);
+    max-width: 732px;
 }
 
 section.behind_video .video_title_area {
@@ -1044,6 +1068,788 @@ section.behind_video .video_item.top .video_pagination,
 section.behind_video .video_item.bottom .video_pagination {
     opacity: 0;
     pointer-events: none;
+}
+/* section.behind_video */
+/* ============ CUSTOM CURSOR ============ */
+.custom-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    display: none;
+    transform: translate(-50px, -50px);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+/* ============ SECTION CONTAINER ============ */
+/* ============================================
+   CHAT EVENT SECTION
+   섹션 전체: 100% (1920px)
+   내부 콘텐츠: 양쪽 200px 여백 → 1520px
+   ============================================ */
+
+/* .inner 컨테이너의 width 제약 무시 */
+.inner:has(.chat_event_section) {
+    width: 100%;
+    max-width: none;
+}
+
+section.chat_event_section {
+    position: relative;
+    width: 1920px;
+    max-width: 100%;
+    height: 1222px;
+    margin: 200px auto 0;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--Bcolor);
+    border-top: 1px solid var(--Bcolor);
+    border-bottom: none;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* ============ BACKGROUND IMAGE ============ */
+section.chat_event_section .img_bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 1920px;
+    height: 1222px;
+    background: white;
+    filter: blur(2.5px);
+    z-index: 0;
+}
+
+section.chat_event_section .img_bg img {
+    position: absolute;
+    left: 50%;
+    top: -470px;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1920px;
+    height: 2769px;
+    object-fit: cover;
+    max-width: none;
+}
+
+/* ============ FIXED HEADER ============ */
+section.chat_event_section .header_fixed {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1920px;
+    padding: 50px 200px 40px;
+    background: linear-gradient(to bottom, #0d031c 0%, rgba(13, 3, 28, 0.6) 50%, rgba(13, 3, 28, 0) 100%);
+    z-index: 10;
+    box-sizing: border-box;
+}
+
+section.chat_event_section .header_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+section.chat_event_section .title_area {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+section.chat_event_section .title {
+    font-size: 56px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+section.chat_event_section .btn_more {
+    padding: 8px 32px;
+    border: 1px solid white;
+    border-radius: 32px;
+    background: transparent;
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+section.chat_event_section .btn_more:hover {
+    background: white;
+    color: #0d031c;
+}
+
+/* ============ FILTER AREA ============ */
+section.chat_event_section .filter_area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+section.chat_event_section .filter_btn {
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    font-weight: 200;
+    color: white;
+    cursor: pointer;
+    transition: font-weight 0.2s, opacity 0.2s;
+    line-height: normal;
+    opacity: 0.5;
+}
+
+section.chat_event_section .filter_btn.active {
+    font-weight: 700;
+    opacity: 1;
+}
+
+section.chat_event_section .filter_btn:hover {
+    opacity: 0.8;
+}
+
+section.chat_event_section .filter_separator {
+    width: 1px;
+    height: 30px;
+    background: white;
+    flex-shrink: 0;
+}
+
+/* ============ SCROLLABLE CHAT AREA ============ */
+section.chat_event_section .chat_scroll_area {
+    position: absolute;
+    left: 50%;
+    top: 146px;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1520px;
+    height: 718px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: linear-gradient(to bottom, rgba(13, 3, 28, 0) 0%, rgba(60, 14, 130, 0) 96.51%);
+    z-index: 5;
+    padding: 16px 0;
+    box-sizing: border-box;
+    cursor: none;
+}
+
+section.chat_event_section .chat_scroll_area:active {
+    cursor: none;
+}
+
+/* Custom Scrollbar */
+section.chat_event_section .chat_scroll_area::-webkit-scrollbar {
+    width: 8px;
+}
+
+section.chat_event_section .chat_scroll_area::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+section.chat_event_section .chat_scroll_area::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+section.chat_event_section .chat_scroll_area::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* ============ COMMENTS LIST ============ */
+section.chat_event_section .comments_list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+section.chat_event_section .comment_item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ============ PROFILE ============ */
+section.chat_event_section .profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+section.chat_event_section .profile_icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+section.chat_event_section .profile_icon .icon_bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+section.chat_event_section .profile_icon .icon_img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 44px;
+    object-fit: cover;
+}
+
+section.chat_event_section .profile_name {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+section.chat_event_section .profile_name .name {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+    cursor: pointer;
+}
+
+section.chat_event_section .profile_name .time {
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    line-height: 1;
+}
+
+/* ============ CONTENT ROW (채팅박스 + 하트) ============ */
+section.chat_event_section .content_row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding-left: 48px;
+}
+
+section.chat_event_section .chat_box {
+    display: inline-block;
+    max-width: 95%;
+    padding: 6px 16px 8px 18px;
+    background: #f5f5f5;
+    border-radius: 0 20px 20px 20px;
+    cursor: text;
+    user-select: text;
+}
+
+section.chat_event_section .chat_box p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #0d031c;
+    line-height: 1.8;
+    word-wrap: break-word;
+    display: inline;
+}
+
+/* ============ LIKE BOX ============ */
+section.chat_event_section .like_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+section.chat_event_section .like_box .heart_icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+section.chat_event_section .like_box .heart_icon:hover {
+    transform: scale(1.1);
+}
+
+section.chat_event_section .like_box .like_count {
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    line-height: 1;
+    margin-top: 2px;
+}/* ============ COMMENT ACTIONS ============ */
+section.chat_event_section .comment_actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-left: 64px;
+}
+
+section.chat_event_section .btn_comment,
+section.chat_event_section .btn_replies {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    line-height: 1.5;
+}
+
+section.chat_event_section .btn_comment {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+section.chat_event_section .btn_comment.hidden {
+    display: none;
+}
+
+section.chat_event_section .btn_comment:hover,
+section.chat_event_section .btn_replies:hover {
+    opacity: 0.8;
+}
+
+section.chat_event_section .btn_replies {
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+section.chat_event_section .btn_replies.active {
+    color: #9d7bff;
+}
+
+/* ============ REPLIES CONTAINER ============ */
+section.chat_event_section .replies_container {
+    margin-top: 20px;
+    padding-left: 64px;
+    display: none;
+}
+
+section.chat_event_section .replies_container.show {
+    display: block;
+}
+
+section.chat_event_section .reply_item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-left: 20px;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+section.chat_event_section .reply_item.fade-in {
+    animation: replyFadeIn 0.3s ease forwards;
+}
+
+@keyframes replyFadeIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+section.chat_event_section .reply_header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+section.chat_event_section .reply_profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+section.chat_event_section .reply_profile .profile_icon {
+    width: 40px;
+    height: 40px;
+}
+
+section.chat_event_section .reply_profile .icon_bg {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+section.chat_event_section .reply_profile .icon_img {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+section.chat_event_section .reply_profile .profile_name {
+    gap: 12px;
+}
+
+section.chat_event_section .reply_profile .name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+section.chat_event_section .reply_profile .time {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+section.chat_event_section .reply_content_row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding-left: 52px;
+}
+
+section.chat_event_section .reply_text {
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    line-height: 1.5;
+}
+
+section.chat_event_section .reply_like_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+section.chat_event_section .reply_like_box .heart_icon {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+section.chat_event_section .reply_like_box .heart_icon:hover {
+    transform: scale(1.1);
+}
+
+section.chat_event_section .reply_like_box .like_count {
+    font-size: 8px;
+    font-weight: 600;
+    color: white;
+}
+
+/* ============ REPLY INPUT ============ */
+section.chat_event_section .reply_input_wrapper {
+    padding-left: 20px;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+section.chat_event_section .reply_input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 16px;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+section.chat_event_section .reply_input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+section.chat_event_section .reply_input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+section.chat_event_section .btn_reply_send {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+section.chat_event_section .btn_reply_send:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============ MORE BUTTON ============ */
+section.chat_event_section .more_comments_wrapper {
+    display: flex;
+    justify-content: center;
+    padding: var(--gap-large) 0;
+}
+
+section.chat_event_section .btn_more_comments {
+    font-family: 'assistant', sans-serif;
+    padding: 12px 48px;
+    border: 1px solid white;
+    border-radius: 32px;
+    background: none;
+    font-size: 18px;
+    font-weight: 300;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+section.chat_event_section .btn_more_comments:hover {
+    background-color: var(--Wcolor);
+    color: var(--Bcolor);
+}
+
+section.chat_event_section .btn_more_comments:active {
+    transform: translateY(0);
+}
+
+/* ============ FIXED CHAT INPUT ============ */
+section.chat_event_section .chat_input_fixed {
+    position: absolute;
+    left: 50%;
+    bottom: 250px;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1520px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 0.5px solid rgba(13, 3, 28, 0.5);
+    z-index: 10;
+    box-sizing: border-box;
+}
+
+section.chat_event_section .input_wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+section.chat_event_section .input_text_area {
+    width: 100%;
+    margin-top: 20px;
+    padding: 0 32px;
+}
+
+section.chat_event_section .chat_input {
+    width: 100%;
+    height: auto;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 400;
+    color: #0d031c;
+    outline: none;
+}
+
+section.chat_event_section .chat_input::placeholder {
+    color: #666666;
+    text-transform: uppercase;
+}
+
+section.chat_event_section .input_controls {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: 12px;
+    padding: 0 32px;
+}
+
+section.chat_event_section .btn_emoji {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+}
+
+section.chat_event_section .btn_emoji:hover {
+    transform: scale(1.1);
+}
+
+section.chat_event_section .btn_emoji img {
+    width: 100%;
+    height: 100%;
+}
+
+section.chat_event_section .btn_send {
+    padding: 10px 32px;
+    border: 1px solid #0d031c;
+    background: #0d031c;
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+section.chat_event_section .btn_send:hover {
+    background: transparent;
+    color: #0d031c;
+}
+
+/* ============ GRADIENT SEPARATOR ============ */
+section.chat_event_section .gradient_separator {
+    position: absolute;
+    left: 0;
+    bottom: 250px;
+    width: 100%;
+    height: 0;
+    z-index: 3;
+}
+
+/* ============ EVENT SECTION ============ */
+section.chat_event_section .event_section {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1920px;
+    height: 350px;
+    background: linear-gradient(to bottom, rgba(60, 14, 130, 0) 0%, rgba(37, 8, 79, 0.37) 23.929%, var(--Bcolor) 47.857%);
+    overflow: hidden;
+    z-index: 4;
+    box-sizing: border-box;
+}
+
+section.chat_event_section .event_box {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    background: var(--Bcolor);
+    border-top: 1px solid #4f485a;
+    width: 100%;
+    max-width: 1920px;
+    height: 200px;
+    padding: 0 200px;
+    box-sizing: border-box;
+}
+
+section.chat_event_section .event_img {
+    width: 50%;
+    max-width: 742px;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+}
+
+section.chat_event_section .event_img img {
+    width: 100.06%;
+    height: 247.49%;
+    max-width: none;
+    object-fit: cover;
+    position: absolute;
+    top: -48.5%;
+    left: -0.03%;
+}
+
+section.chat_event_section .event_content {
+    flex: 1;
+    max-width: 778px;
+    height: 200px;
+    background: #220948;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+    padding-left: 32px;
+}
+
+section.chat_event_section .event_inner {
+    width: auto;
+    height: 149px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+section.chat_event_section .event_txt {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+section.chat_event_section .event_title {
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--Wcolor);
+    line-height: 100%;
+    font-family: 'Assistant', sans-serif;
+}
+
+section.chat_event_section .event_desc {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--Wcolor);
+    line-height: normal;
+    font-family: 'Assistant', sans-serif;
+}
+
+section.chat_event_section .btn_go {
+    padding: 8px 44px;
+    border: 1px solid var(--Wcolor);
+    border-radius: 32px;
+    background: transparent;
+    font: var(--font-1920_1024-button-S);
+    color: var(--Wcolor);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+section.chat_event_section .btn_go:hover {
+    background: var(--Wcolor);
+    color: var(--Bcolor);
+}
+
+/* ============ ANIMATIONS ============ */
+section.chat_event_section .comment_item.new-comment {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+section.chat_event_section .comment_item.new-comment.fade-in {
+    animation: fadeInSlide 0.4s ease forwards;
+}
+
+@keyframes fadeInSlide {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* footer */
