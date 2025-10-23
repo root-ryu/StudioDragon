@@ -626,6 +626,9 @@ h3.tit {
     color: var(--WF);
     /* transition: .8s; */
     background: linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.1));
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .v_and_m .cont article:hover {
@@ -640,6 +643,11 @@ h3.tit {
     height: 100%;
     background-image: url("../assets/vision.jpg");
     transition: .8s;
+}
+
+.v_and_m .cont article .txt {
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .v_and_m .cont article.mission::before {

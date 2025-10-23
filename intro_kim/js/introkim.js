@@ -107,6 +107,40 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     })();
 
+    // Vision / Mission Fade Up
+    gsap.utils.toArray(".v_and_m .cont article").forEach((item, i) => {
+        gsap.fromTo(item,
+            { y: 60, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 1.1,
+                ease: "power3.out",
+                delay: i * 0.15, // 순차 등장
+                scrollTrigger: {
+                    trigger: ".v_and_m",
+                    start: "top 50%", // 화면 70% 지점에서 애니메이션 시작
+                }
+            }
+        );
+
+        // 내부 텍스트도 살짝 딜레이 주며 등장
+        gsap.fromTo(item.querySelector(".txt"),
+            { y: 20, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power2.out",
+                delay: 0.3 + i * 0.15,
+                scrollTrigger: {
+                    trigger: ".v_and_m",
+                    start: "top 50%",
+                }
+            }
+        );
+    });
+
     // ====== ScrollTrigger 리프레시 ======
     window.addEventListener("load", () => {
         ScrollTrigger.refresh();
