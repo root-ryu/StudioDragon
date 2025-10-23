@@ -1,5 +1,11 @@
 @charset "utf-8";
 
+.mirror{
+  -webkit-box-reflect: below 0px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.5) 100%);
+  pointer-events: none;
+  user-select: none;
+}
+
 main {
   position: relative;
   width: 100%;
@@ -466,8 +472,8 @@ main {
 }
 
 .creativeGallery .inner {
-  background: #ccc;
   position: relative;
+  overflow: hidden;
 }
 
 .creativeGallery .titlebox {
@@ -538,15 +544,14 @@ main {
   flex-direction: column;
   gap: 68px;
   /* background: red; */
-  position: relative;
   overflow-x: hidden;
 }
 
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  gap: 60px;
+  gap: 60px; */
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper li.swiper-slide {
@@ -556,9 +561,10 @@ main {
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .fan-img-wrap {
+  width: 823px;
   display: flex;
   flex-direction: column;
-  position: relative;
+  /* position: relative; */
 }
 
 .creativeGallery .fanarts .img_popular ul.swiper-wrapper .fan-img {
@@ -566,14 +572,15 @@ main {
   border-radius: 20px;
   width: 823px;
   height: 523px;
-  overflow: hidden;
   aspect-ratio: 823/523;
-  -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
   pointer-events: none;
-  user-select: none;
+  user-select: none; */
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .swiper-slide .info-overlay {
+  border-radius: 20px;
+  overflow: hidden;
   width: 100%;
   height: 100%;
   padding: 27px 34px;
@@ -599,14 +606,14 @@ main {
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .subtitle {
   display: flex;
   flex-direction: column;
-  position: relative;
+  /* position: relative; */
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .subtitle li {
   color: var(--Wcolor);
   text-align: left;
   font: 300 24px/130% "Assistant", sans-serif;
-  position: relative;
+  /* position: relative; */
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .subtitle li b {
@@ -617,11 +624,6 @@ main {
   display: flex;
   flex-direction: row;
   gap: 12px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
   color: #ffffff;
   text-align: left;
   font-family: "Assistant-SemiBold", sans-serif;
@@ -630,11 +632,13 @@ main {
   font-weight: 600;
 }
 
+
 .creativeGallery .fanarts .img_new .swiper ul.swiper-wrapper {
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
+
 
 
 .creativeGallery .fanarts .img_new ul.swiper-wrapper .fan-img {
@@ -646,13 +650,14 @@ main {
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
-  height: 382.87px;
-  position: relative;
+  width: 602px;
+  height: 382px;
+  /* position: relative; */
   overflow: hidden;
-  aspect-ratio: 602/382.87;
-  -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  aspect-ratio: 602/382;
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
   pointer-events: none;
-  user-select: none;
+  user-select: none; */
 }
 
 .fanarts .img_popular .swiper-pagination {
@@ -667,7 +672,7 @@ main {
 
 /* 공통 페이지네이션 */
 .swiper-pagination-bullet {
-  background: rgba(245, 245, 245, 0.4);
+  background: rgba(245, 245, 245, 1);
   transition: all 0.5s ease 0s;
   border-radius: 8px;
 }
@@ -687,7 +692,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 100px;
-  overflow: hidden;
 }
 
 .creativeGallery .fanvideos ul.swiper-wrapper {
@@ -700,7 +704,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #000;
   width: 376px;
 }
 
@@ -710,14 +713,15 @@ main {
   position: relative;
 }
 
-.creativeGallery .fanvideos .video_popular ul.swiper-wrapper iframe {
+.creativeGallery .fanvideos .video_popular ul.swiper-wrapper figure {
   border-radius: 20px;
+  overflow: hidden;
   height: 669px;
   overflow: hidden;
   aspect-ratio: 376/669;
-  -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
   pointer-events: none;
-  user-select: none;
+  user-select: none; */
 }
 
 .creativeGallery .fanvideos .video_new .swiper ul.swiper-wrapper {
@@ -726,15 +730,15 @@ main {
   gap: 38px;
 }
 
-.creativeGallery .fanvideos .video_new ul.swiper-wrapper iframe {
+.creativeGallery .fanvideos .video_new ul.swiper-wrapper figure {
   border-radius: 20px;
   justify-content: flex-start;
   height: 617px;
   overflow: hidden;
   aspect-ratio: 347/617;
-  -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
   pointer-events: none;
-  user-select: none;
+  user-select: none; */
 }
 
 .fanvideos .video_popular .swiper-pagination {
@@ -826,6 +830,11 @@ main {
 }
 
 /* 커뮤니티-아티클 */
+.community .inner {
+  background: #ccc;
+  position: relative;
+}
+
 .community .articles {
   width: 100%;
   display: flex;
@@ -870,7 +879,7 @@ main {
   position: absolute;
   top: 0;
   left: 0;
-  /* opacity: 0; */
+  opacity: 0;
   transition: opacity 0.3s ease;
   background: linear-gradient(180deg,
       rgba(0, 0, 0, 0.8) 0%,
@@ -908,6 +917,25 @@ main {
   gap: 12px;
 }
 
-.community .articles .comm_gallery .info-overlay .comm_subtit span h5 {}
+.community .articles .comm_gallery .info-overlay .comm_subtit span h5 {
+  color: var(--w, #f5f5f5);
+  text-align: left;
+  font: 400 30px/100% "Assistant", sans-serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
-.community .articles .comm_gallery .info-overlay .comm_subtit span p {}
+.community .articles .comm_gallery .info-overlay .comm_subtit span p {
+  color: var(--maincolor-main-1000, #bfa473);
+  text-align: left;
+  font: 300 26px/100% "Assistant", sans-serif;
+}
+
+.creativeGallery .fanvideos .video_popular ul.swiper-wrapper figure,
+.creativeGallery .fanvideos .video_new ul.swiper-wrapper figure {
+  background: url(../../moon/asset/temp_img.webp) center/cover;
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  pointer-events: none;
+  user-select: none; */
+}
