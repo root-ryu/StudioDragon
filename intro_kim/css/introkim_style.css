@@ -365,10 +365,12 @@ h3.tit {
     content: "";
     position: absolute;
     /* 폭을 확실히 주기: left + right 조합 (width 고정값 사용 금지) */
-    left: 0;
+    left: 110px;
     /* 시작점 200px */
-    right: 0;
-    /* 끝을 내용 끝에 맞춤 */
+    width: calc(100% + 500px);
+    padding-right: 500px;
+    right: -500px;
+    /* ← 핵심 */
     top: var(--tline);
     height: 3px;
     background: #BD4033;
@@ -383,6 +385,7 @@ h3.tit {
     top: var(--tline);
     /* 타임라인 높이 그대로 */
     left: 100%;
+    right: 500px;
     /* 마지막 그룹의 오른쪽 끝에서 시작 */
     height: 3px;
     width: 100vw;
@@ -400,6 +403,8 @@ h3.tit {
 
 
 .history .cont_hori_swipe ul {
+    position: absolute;
+    left: 110px;
     display: flex;
     justify-content: flex-start;
     /* ← 중요 */
@@ -515,6 +520,7 @@ h3.tit {
     border-radius: 12px;
     margin-bottom: 12px;
     display: block;
+    border: 1px solid var(--Gcolor-300);
 }
 
 .history .cont_hori_swipe ul li em {
