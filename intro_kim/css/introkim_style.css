@@ -1,13 +1,16 @@
 @charset "UTF-8";
 
-/* * {
-    margin: 0 auto;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-} */
+* {
+    scroll-behavior: auto;
+}
 
 body {
     background-color: #F5F5F5;
+}
+
+.wrap {
+    width: 100%;
+    overflow-x: hidden;
 }
 
 section {
@@ -222,7 +225,7 @@ h3.tit {
     color: var(--Bcolor-700);
 }
 
-.info-g .icon_info ul li:nth-child(3) .icon_knowhow{
+.info-g .icon_info ul li:nth-child(3) .icon_knowhow {
     background-image: url(../assets/icon_knowhow.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -233,7 +236,7 @@ h3.tit {
     height: 120px;
 }
 
-.info-g .icon_info ul li:nth-child(4) .icon-sales{
+.info-g .icon_info ul li:nth-child(4) .icon-sales {
     background-image: url(../assets/icon_salesmarket.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -442,7 +445,7 @@ h3.tit {
 
 .history .cont_hori_swipe ul {
     position: absolute;
-    left: 110px;
+    /* left: 110px; */
     display: flex;
     justify-content: flex-start;
     /* ← 중요 */
@@ -587,7 +590,7 @@ h3.tit {
 /* 기존 광범위 규칙이 래퍼에 먹지 않도록 예외 처리 */
 .history .cont_hori_swipe ul:not(.swiper-wrapper) {
     position: absolute;
-    left: 110px;
+    /* left: 110px; */
     display: flex;
     justify-content: flex-start;
     flex: 1;
