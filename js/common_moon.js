@@ -48,14 +48,35 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // 헤더 포지션 전환: threshold(vh) 이하 => relative, 초과 => fixed
-    const applyHeaderFixedState = () => {
-        if (!headerEl) return;
-        const thresholdPx = Math.max(0, Math.round(window.innerHeight * (HEADER_FIX_THRESHOLD_VH / 100)));
+    // const applyHeaderFixedState = () => {
+    //     if (!headerEl) return;
+    //     const thresholdPx = Math.max(0, Math.round(window.innerHeight * (HEADER_FIX_THRESHOLD_VH / 100)));
+    //     const y = window.scrollY || window.pageYOffset || 0;
+    //     if (y > thresholdPx) {
+    //         headerEl.classList.add('is-fixed');
+    //     } else {
+    //         headerEl.classList.remove('is-fixed');
+    //     }
+    // };
+
+    // 로고 표시 최적화: 100vh 이내 + 헤더가 'off' 아닐 때만 보이기
+    //  - 스크롤 내릴 때(off) 로고가 위로 밀려 보이는 현상을 방지
+    //  - 100vh 초과 구간은 기존 CSS(.nav-scrolling)로 숨김 처리 유지
+    const applyLogoVisibility = () => {
+        if (!logoEl || !wrap) return;
+        const threshold = window.innerHeight; // 100vh
         const y = window.scrollY || window.pageYOffset || 0;
-        if (y > thresholdPx) {
-            headerEl.classList.add('is-fixed');
+        const isOff = wrap.classList.contains('off');
+
+        if (isOff) {
+            // 헤더 숨김 상태에선 로고도 숨김
+            logoEl.style.visibility = 'hidden';
+        } else if (y <= threshold) {
+            // 첫 화면(<=100vh)에서는 로고 노출
+            logoEl.style.visibility = 'visible';
         } else {
-            headerEl.classList.remove('is-fixed');
+            // 100vh 초과 구간은 CSS 상태클래스가 제어(display:none 등)
+            logoEl.style.visibility = '';
         }
     };
 
@@ -116,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         applyNavOffset();
         applyHeaderFixedState();
         applyNavOpacity();
+        applyLogoVisibility();
     });
 
     const enBtn = document.querySelector('header nav .right .lang .en');
@@ -140,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     applyNavOffset();
     applyHeaderFixedState();
     applyNavOpacity();
+    applyLogoVisibility();
 
     // 초기 1회 적용 (페이지 진입 시 위치 보정)
     applyNavOffset();
