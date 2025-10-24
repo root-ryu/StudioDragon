@@ -82,7 +82,14 @@ window.addEventListener('DOMContentLoaded', function () {
           pin: true,
           scrub: 1
         }
-      })
+      }).to(
+        ".main_visual",
+        {
+          opacity: 1,
+          ease: "power1.inOut"
+        },
+        0
+      )
       .to(
         ".zoom_item[data-layer='3']",
         {
@@ -164,3 +171,41 @@ window.addEventListener('DOMContentLoaded', function () {
     },
   });
 });
+
+window.addEventListener('scroll', function () {
+  const sections = document.querySelectorAll('.section');
+  const windowHeight = window.innerHeight;
+
+  sections.forEach((section) => {
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop < windowHeight * 0.75) {
+      section.classList.add('visible'); // 75% 위치에 도달하면 visible 클래스 추가
+    }
+  });
+});
+
+/* 마우스효과 */
+// script.js
+document.addEventListener('mousemove', function (e) {
+  const container = document.getElementById('star-container');
+  const star = document.createElement('div');
+  star.className = 'star';
+  container.appendChild(star);
+
+  // Set the initial position of the star
+  star.style.left = `${e.pageX}px`;
+  star.style.top = `${e.pageY}px`;
+
+  // Set the animation for the star
+  setTimeout(() => {
+    star.style.transform = 'translate(-50%, -50%) scale(2)'; // Moves and grows
+    star.style.opacity = '0'; // Fades out
+  }, 50);
+
+  // Remove the star after the animation
+  setTimeout(() => {
+    container.removeChild(star);
+  }, 600); // Should match the longest transition time
+});
+

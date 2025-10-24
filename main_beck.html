@@ -10,15 +10,19 @@
     <title>studiodragon</title>
     <link rel="shortcut icon" href="back/img/favicon.ico" type="image/x-icon">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/main_media.css">
     <link rel="stylesheet" href="back/css/MainBeck_style.css">
     <link rel="stylesheet" href="back/css/MainBack_media.css">
     <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="./js/common.js"></script>
-    <script src="./back/js/MainBack.js"></script>
+    <script src="./back/js/mainyul.js"></script>
 </head>
 
 <body>
@@ -69,7 +73,7 @@
                         </li>
                     </ul><!-- //.gnb -->
                     <div class="right">
-                        <div class="lang">
+                        <div class="lang active">
                             <a href="#" class="en ">EN</a>
                             <a href="#" class="kr ">KR</a>
                         </div><!-- //.lang -->
@@ -166,50 +170,98 @@
                         <button type="button"><span>MORE</span></button>
                     </div><!-- //.top -->
                 </div>
-                <div class="ONcon">
-                    <div class="ONcontents01">
-                        <img src="./back/img/ON_img02.png" alt="My Son Is Dead">
-                        <div class="ONtxtbox">
-                            <h3>My Son Is Dead</h3>
-                            <ul>
-                                <li class="bar"></li>
-                                <li>
-                                    <p>TVING</p>
-                                </li>
-                                <li class="bar"></li>
-                            </ul>
-                            <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
-                                    alt="arrow"></button>
-                        </div><!-- //.on_txtbox -->
-                    </div><!-- //.on_centents01 -->
-                    <div class="ONcontents02 active">
-                        <img src="./back/img/ON_img01.png" alt="Shin's Project">
-                        <div class="ONtxtbox">
-                            <h3>shin's project</h3>
-                            <ul>
-                                <li class="bar"></li>
-                                <li>
-                                    <p>TVING</p>
-                                </li>
-                                <li class="bar"></li>
-                            </ul>
-                            <button type="button">READ MORE <img src="back/img/arrow-up-right.png" alt="arrow"></button>
-                        </div><!-- //.on_txtbox -->
-                    </div>
-                    <div class="ONcontents03">
-                        <img src="./back/img/ON_img03.png" alt="The Killer: A Girl's Revenge">
-                        <div class="ONtxtbox">
-                            <h3>The Killer</h3>
-                            <ul>
-                                <li class="bar"></li>
-                                <li>
-                                    <p>NETFLIX</p>
-                                </li>
-                                <li class="bar"></li>
-                            </ul>
-                            <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
-                                    alt="arrow"></button>
-                        </div><!-- //.on_txtbox -->
+                <div class="on_slide_wrap swiper">
+                    <div class="ONcon swiper-wrapper">
+                        <div class="ONcontents01 swiper-slide">
+                            <img src="./back/img/ON_img02.png" alt="My Son Is Dead">
+                            <div class="ONtxtbox">
+                                <h3>My Son Is Dead</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>TVING</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div><!-- //.on_centents01 -->
+                        <div class="ONcontents02 swiper-slide">
+                            <img src="./back/img/ON_img01.png" alt="Shin's Project">
+                            <div class="ONtxtbox">
+                                <h3>shin's project</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>TVING</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div>
+                        <div class="ONcontents03 swiper-slide">
+                            <img src="./back/img/ON_img03.png" alt="The Killer: A Girl's Revenge">
+                            <div class="ONtxtbox">
+                                <h3>The Killer</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>NETFLIX</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div>
+                        <div class="ONcontents01 swiper-slide">
+                            <img src="./back/img/ON_img02.png" alt="My Son Is Dead">
+                            <div class="ONtxtbox">
+                                <h3>My Son Is Dead</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>TVING</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div><!-- //.on_centents01 -->
+                        <div class="ONcontents02 swiper-slide">
+                            <img src="./back/img/ON_img01.png" alt="Shin's Project">
+                            <div class="ONtxtbox">
+                                <h3>shin's project</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>TVING</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div>
+                        <div class="ONcontents03 swiper-slide">
+                            <img src="./back/img/ON_img03.png" alt="The Killer: A Girl's Revenge">
+                            <div class="ONtxtbox">
+                                <h3>The Killer</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>NETFLIX</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div>
                     </div>
                 </div>
             </section>
@@ -233,21 +285,21 @@
                     </div>
                     <div class="BDcontents">
                         <div class="BDconTop">
-                            <div class="BDsection01">
+                            <div class="BDsection01 gsap-flip">
                                 <img src="./back/img/BD_section01.jpg" alt="bibimbap">
                                 <div class="BDsection01_txt">
                                     <h3>a dish in a drama</h3>
                                     <span>a tyrant's chef</span>
                                 </div>
                             </div>
-                            <div class="BDsection02">
+                            <div class="BDsection02 gsap-flip">
                                 <img src="./back/img/BD_section02.png" alt="yumi">
                                 <div class="BDsection02_txt">
                                     <h3>Where is <br>the furniture from?</h3>
-                                    <span>Yumi’s Cells</span>
+                                    <span>Yumi's Cells</span>
                                 </div>
                             </div>
-                            <div class="BDsection03">
+                            <div class="BDsection03 gsap-flip">
                                 <img src="./back/img/BD_section03.png" alt="yumi">
                                 <div class="BDsection03_txt">
                                     <h3>Dongeun, you have good skin <br>while taking revenge?</h3>
@@ -270,21 +322,21 @@
                             </div>
                         </div>
                         <div class="BDconBottom">
-                            <div class="BDsection08">
+                            <div class="BDsection08 gsap-flip-bottom">
                                 <img src="./back/img/BD_section08.jpg" alt="bibimbap">
                                 <div class="BDsection08_txt">
                                     <h3>a dish in a drama</h3>
                                     <span>a tyrant's chef</span>
                                 </div>
                             </div>
-                            <div class="BDsection09">
+                            <div class="BDsection09 gsap-flip-bottom">
                                 <img src="./back/img/BD_section09.png" alt="yumi">
                                 <div class="BDsection09_txt">
                                     <h3>Where is <br>the furniture from?</h3>
-                                    <span>Yumi’s Cells</span>
+                                    <span>Yumi's Cells</span>
                                 </div>
                             </div>
-                            <div class="BDsection10">
+                            <div class="BDsection10 gsap-flip-bottom">
                                 <img src="./back/img/BD_section10.png" alt="yumi">
                                 <div class="BDsection10_txt">
                                     <h3>Dongeun, you have good skin <br>while taking revenge?</h3>
@@ -302,7 +354,7 @@
                         <h2>VIEWER'S PLAYGROUND</h2>
                     </div>
                     <div class="VPcontents">
-                        <div class="VPcon01" data-aos="fade-right" data-aos-mirror="true">
+                        <div class="VPcon01 gsap-fade-up-right">
                             <img src="./back/img/VP_img01.png" alt="Scenario Competition">
                             <div class="VPcon_txt">
                                 <div class="VPcon_tit">
@@ -312,22 +364,22 @@
                                 <p>Present your new story. <br> It could be the one to be brought to life on screen.</p>
                             </div>
                         </div><!-- //.VPcon01 -->
-                        <div class="VPcon02" data-aos="fade-left" data-aos-mirror="true">
+                        <div class="VPcon02 gsap-fade-up-left">
                             <img src="./back/img/VP_img02.png" alt="Virtual Casting Vote">
                             <div class="VPcon_txt">
                                 <div class="VPcon_tit">
                                     <h3>Virtual Casting Vote</h3>
                                     <span>Pick your ideal cast</span>
                                 </div>
-                                <p>Pick a virtual casting combination <br>by changing the drama’s main character.</p>
+                                <p>Pick a virtual casting combination <br>by changing the drama's main character.</p>
                             </div>
                         </div><!-- //.VPcon02 -->
-                        <div class="VPcon03" data-aos="fade-right" data-aos-mirror="true">
+                        <div class="VPcon03 gsap-fade-up-right">
                             <img src="./back/img/VP_img03.png" alt="Scenario Competition">
                             <div class="VPcon_txt">
                                 <div class="VPcon_tit">
                                     <h3>Make New Poster</h3>
-                                    <span>Show off your ideas to the <br> fullest</span>
+                                    <span>Show off your ideas to the fullest</span>
                                 </div>
                                 <p>Show off your ideas and talents to the fullest, <br> and create a new drama poster.
                                 </p>
