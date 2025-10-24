@@ -953,7 +953,7 @@
 
     /* Coming Soon 섹션 */
     .comingsoon .inner {
-        width: 380px;
+        width: 90%;
     }
 
     .comingsoon .inner .top {
@@ -1091,11 +1091,12 @@
 
 
 
-    .GigTit h3 {
+
+    .GigTit .BGtit h3 {
         font-size: 66px;
     }
 
-    .GigTit span {
+    .GigTit .BGtit span {
         font-size: 20px;
     }
 
@@ -1141,13 +1142,13 @@
 
     .BeyondDrama .inner .BDcontents .BDconTop .BDsection01 img,
     .BeyondDrama .inner .BDcontents .BDconTop .BDsection02 img,
-    .BeyondDrama .inner .BDcontents .BDconTop .BDsection03 img{
+    .BeyondDrama .inner .BDcontents .BDconTop .BDsection03 img {
         width: 380px;
         height: 150px;
     }
 
     /* .BDconMiddle 반응형 */
-    .BeyondDrama .inner .BDcontents .BDconMiddle  {
+    .BeyondDrama .inner .BDcontents .BDconMiddle {
         position: relative;
         width: 380px;
         height: 150px;
@@ -1162,6 +1163,7 @@
         width: 260px;
         height: 50px;
     }
+
     .BeyondDrama .inner .BDcontents .BDconMiddle h3 {
         font-size: 20px;
     }
@@ -1208,7 +1210,7 @@
         height: 150px;
     }
 
-    
+
 
 
 
