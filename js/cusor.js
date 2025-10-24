@@ -4,8 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let w, h;
     function resize() {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
+        /*    w = canvas.width = window.innerWidth;
+           h = canvas.height = window.innerHeight; */
+        const ratio = window.devicePixelRatio || 1;
+        canvas.width = window.innerWidth * ratio;
+        canvas.height = window.innerHeight * ratio;
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0); // ✅ 기존 스케일 초기화
+        ctx.scale(ratio, ratio); // ✅ 스케일 재적용
+        w = window.innerWidth;
+        h = window.innerHeight;
     }
     window.addEventListener("resize", resize);
     resize();
@@ -77,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         while (trail.length && now - trail[0].time > life) trail.shift();
 
         if (trail.length >= 4) {
+            ctx.save();
             colors.forEach((rgb, ci) => {
                 ctx.beginPath();
                 let first = true;
@@ -109,10 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         ctx.shadowBlur = 25;
                         ctx.shadowColor = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},1)`;
                         ctx.strokeStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${fade})`;
+
                     }
                 }
                 ctx.stroke();
             });
+            ctx.restore();
         }
 
         updateTrail();
