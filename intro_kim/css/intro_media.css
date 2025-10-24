@@ -216,6 +216,8 @@
         border-radius: 12px;
     }
 
+    .history { --page-pad: 80px; }
+
     .history .inner h3.tit {
         margin-top: 100px;
     }
@@ -229,6 +231,13 @@
     margin-right: 90px;
     position: relative;
 }
+
+.history>.scroll_bar.swiper-scrollbar {
+    width: calc(100vw - (var(--page-pad) * 2));
+    margin-bottom: 100px;
+}
+
+
 
 }
 
@@ -245,4 +254,11 @@
     .main_cach .txt em {
         font-size: 18px;
     }
+
+    .history { --page-pad: 24px; }
+
+    .history>.scroll_bar.swiper-scrollbar {
+    width: calc(100vw - (var(--page-pad) * 2));
+    margin-bottom: 80px;
+}
 }

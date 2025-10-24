@@ -381,6 +381,9 @@ h3.tit {
     --sb-thumb: #A8A8A8;
     /* 손잡이(짙은 회색) */
     --sb-thumb-hover: #8F8F8F;
+    /* 1920px에서 inner=1520px → 좌우 200px.
+     하지만 최소 여백을 110px 보장(데스크탑) */
+    --page-pad: clamp(110px, calc((100vw - 1520px) / 2), 2000px);
 }
 
 /* 0) 기준선 y 위치는 컨테이너에서 전역으로 관리 */
@@ -406,7 +409,7 @@ h3.tit {
     content: "";
     position: absolute;
     /* 폭을 확실히 주기: left + right 조합 (width 고정값 사용 금지) */
-    left: 110px;
+    left: 0;
     /* 시작점 200px */
     width: calc(100% + 500px);
     padding-right: 500px;
@@ -415,7 +418,7 @@ h3.tit {
     top: var(--tline);
     height: 3px;
     background: #BD4033;
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
 }
 
@@ -501,7 +504,7 @@ h3.tit {
 .history .cont_hori_swipe ul li.y_group>ul>li::after {
     content: "";
     position: absolute;
-    top: 53px;
+    top: 54px;
     /* svg의 vertical center값에 맞춰 조절 */
     left: 50%;
     transform: translateX(0);
@@ -590,7 +593,6 @@ h3.tit {
 /* 기존 광범위 규칙이 래퍼에 먹지 않도록 예외 처리 */
 .history .cont_hori_swipe ul:not(.swiper-wrapper) {
     position: absolute;
-    /* left: 110px; */
     display: flex;
     justify-content: flex-start;
     flex: 1;
@@ -599,19 +601,18 @@ h3.tit {
 /* 외부 스크롤바(섹션 하단 바깥) 스타일 */
 .history>.scroll_bar.swiper-scrollbar {
     height: var(--sb-h, 6px);
-    margin: 12px var(--sb-x, 24px) 0;
+    /* margin: 12px var(--sb-x, 24px) 0; */
     background: var(--Gcolor-300, #ECECEC);
     border-radius: 0;
     opacity: 1 !important;
     /* Swiper의 hide:true가 있어도 보이도록 */
     position: relative;
     overflow: hidden;
-    /* 반응형 권장: 고정폭 대신 자동폭 + 최대폭 */
-    width: auto;
-    max-width: 1520px;
-    margin-left: var(--sb-x, 24px);
-    margin-right: var(--sb-x, 24px);
-
+    /* 폭 = 화면폭 - 좌우 패딩*2, 마진 = 좌우 패딩 */
+  width: calc(100vw - (var(--page-pad) * 2));
+    margin: 12px var(--page-pad) 0;
+    /* 필요하다면 상한선(=inner max)도 함께 쓰고 싶다면 아래 한 줄로 대체 가능
+     width: min(1520px, calc(100vw - (var(--page-pad) * 2))); */
 }
 
 .history>.scroll_bar.swiper-scrollbar .swiper-scrollbar-drag {
