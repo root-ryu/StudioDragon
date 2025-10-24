@@ -15,15 +15,15 @@ body {
 .circlebody {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 800px;
     perspective: 1000px;
-    margin-top: 250px;
+    margin-top: 70px;
     overflow: hidden;
 }
 
 .circlebody #circle {
     width: min(600px, 90vw);
-    height: 800px;
+    height: auto;
     position: absolute;
     inset: 0;
     margin: auto;
@@ -32,7 +32,6 @@ body {
     margin-left: -300px;
     margin-top: -400px; */
     aspect-ratio: 3 / 4;
-    height: auto;
     transform-style: preserve-3d;
     transition: transform 1s ease-in-out;
     will-change: transform;

@@ -1,16 +1,21 @@
 /* episode */
-// Episode 섹션 드래그 스크롤
+// Episode 섹션 드래그 스크롤 및 반응형 네비게이션
 window.addEventListener('DOMContentLoaded', function() {
     const slider = document.querySelector('.episode_scroll_container');
     
     if (!slider) return;
     
+    // 반응형 체크 함수
+    function isMobile() {
+        return window.innerWidth < 1024;
+    }
+    
     let isDown = false;
     let startX;
     let scrollLeft;
 
-    // 기본 스크롤 동작을 auto로 설정
-    slider.style.scrollBehavior = 'auto';
+    // 기본 스크롤 동작
+    // slider.style.scrollBehavior는 CSS에서 제어
 
     // 이미지 드래그 방지
     const images = slider.querySelectorAll('img');
@@ -23,6 +28,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 
     slider.addEventListener('mousedown', function(e) {
+        // 모든 화면에서 드래그 활성화
         isDown = true;
         slider.classList.add('grabbing');
         startX = e.pageX;
@@ -43,15 +49,15 @@ window.addEventListener('DOMContentLoaded', function() {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX;
-        const walk = (x - startX) * 1.5;
+        const walk = (x - startX) * 2; // 부드러운 드래그
         slider.scrollLeft = scrollLeft - walk;
     });
 
     // 휠 이벤트로 좌우 스크롤
     slider.addEventListener('wheel', function(e) {
         const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
-        const isAtEnd = slider.scrollLeft >= maxScrollLeft - 10;
-        const isAtStart = slider.scrollLeft <= 10;
+        const isAtEnd = slider.scrollLeft >= maxScrollLeft - 1;
+        const isAtStart = slider.scrollLeft <= 1;
         
         // 끝에 도달했고 오른쪽으로 스크롤하려는 경우
         if (isAtEnd && e.deltaY > 0) {
@@ -62,23 +68,131 @@ window.addEventListener('DOMContentLoaded', function() {
         if (isAtStart && e.deltaY < 0) {
             return; // 페이지 스크롤로 넘어감
         }
+        
+        // 횡스크롤 가능할 때만 preventDefault
         e.preventDefault();
-        slider.scrollLeft += e.deltaY * 1.5;
+        
+        // 부드러운 횡스크롤
+        slider.scrollLeft += e.deltaY;
     });
+    
+    // ===== 반응형 네비게이션 =====
+    const indicator = document.getElementById('episodeIndicator');
+    const dots = indicator ? indicator.querySelectorAll('.swipe_dot') : [];
+    const prevBtn = document.getElementById('episodePrev');
+    const nextBtn = document.getElementById('episodeNext');
+    
+    // 화살표 클릭 - 카드 여러 개 이동
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', function() {
+            const currentWidth = window.innerWidth;
+            const cardWidth = currentWidth >= 1024 ? 266 : 152;
+            const gap = currentWidth >= 1024 ? 28 : 12;
+            const cardsToMove = currentWidth >= 1024 ? 2 : 1;
+            const scrollAmount = (cardWidth + gap) * cardsToMove;
+            
+            console.log('Prev 클릭 - 화면너비:', currentWidth, '카드수:', cardsToMove, '스크롤양:', scrollAmount);
+            slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+        
+        nextBtn.addEventListener('click', function() {
+            const currentWidth = window.innerWidth;
+            const cardWidth = currentWidth >= 1024 ? 266 : 152;
+            const gap = currentWidth >= 1024 ? 28 : 12;
+            const cardsToMove = currentWidth >= 1024 ? 2 : 1;
+            const scrollAmount = (cardWidth + gap) * cardsToMove;
+            
+            console.log('Next 클릭 - 화면너비:', currentWidth, '카드수:', cardsToMove, '스크롤양:', scrollAmount);
+            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+        
+        // 화살표 활성화/비활성화
+        function updateArrowState() {
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+            
+            if (slider.scrollLeft <= 10) {
+                prevBtn.classList.add('disabled');
+            } else {
+                prevBtn.classList.remove('disabled');
+            }
+            
+            if (slider.scrollLeft >= maxScroll - 10) {
+                nextBtn.classList.add('disabled');
+            } else {
+                nextBtn.classList.remove('disabled');
+            }
+        }
+        
+        slider.addEventListener('scroll', updateArrowState);
+        updateArrowState(); // 초기 상태
+    }
+    
+    // 스와이프 인디케이터 - 1024px/440px 공통
+    if (dots.length > 0) {
+        // 스크롤 시 활성 dot 업데이트
+        slider.addEventListener('scroll', function() {
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+            const scrollPercent = (slider.scrollLeft / maxScroll) * 100;
+            
+            // 5개 dot 기준으로 활성화
+            const activeIndex = Math.min(
+                Math.floor(scrollPercent / 20),
+                dots.length - 1
+            );
+            
+            dots.forEach(function(dot, index) {
+                if (index === activeIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        });
+        
+        // dot 클릭 시 해당 위치로 스크롤
+        dots.forEach(function(dot, index) {
+            dot.addEventListener('click', function() {
+                const maxScroll = slider.scrollWidth - slider.clientWidth;
+                const targetScroll = (maxScroll / (dots.length - 1)) * index;
+                
+                slider.scrollTo({
+                    left: targetScroll,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    }
 });
+
 // 비하인드 비디오 섹션 스택
 window.addEventListener('DOMContentLoaded', function() {
-    gsap.registerPlugin(ScrollTrigger);
-    
     const section = document.querySelector('.behind_video');
+    const wrapper = document.querySelector('.behind_video_wrapper');
     const videoItems = document.querySelectorAll('.video_item');
     
     if (!section || videoItems.length === 0) return;
     
     let currentIndex = 0;
     
+    // 반응형 체크
+    function isMobile() {
+        return window.innerWidth <= 440;
+    }
+    
+    function isTablet() {
+        return window.innerWidth > 440 && window.innerWidth <= 1024;
+    }
+    
     // 초기 스택 설정
     function setStack(activeIndex) {
+        // 440px 이하에서는 스택 비활성화
+        if (isMobile()) {
+            videoItems.forEach((item) => {
+                item.classList.remove('active', 'top', 'bottom');
+            });
+            return;
+        }
+        
         videoItems.forEach((item, index) => {
             // 모든 클래스 제거
             item.classList.remove('active', 'top', 'bottom');
@@ -99,49 +213,95 @@ window.addEventListener('DOMContentLoaded', function() {
     // 초기 설정
     setStack(0);
     
-    // ScrollTrigger - 3개 전환 후 자연스럽게 해제
-    ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: "+=1500",
-        pin: true,
-        scrub: 1,
-        onUpdate: (self) => {
-            const progress = self.progress;
+    // 스크롤 이벤트 핸들러
+    let ticking = false;
+    let scrollHandler = null;
+    
+    // 스크롤 이벤트 함수
+    function handleScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const rect = wrapper.getBoundingClientRect();
+                
+                // wrapper가 화면에 있고, 섹션이 sticky 상태일 때
+                if (rect.top <= 0 && rect.bottom > window.innerHeight) {
+                    // wrapper 내부에서 스크롤 진행도 계산
+                    const scrolledInWrapper = Math.abs(rect.top);
+                    const totalScrollableHeight = rect.height - window.innerHeight;
+                    const progress = scrolledInWrapper / totalScrollableHeight;
+                    
+                    // 3단계 구분
+                    let targetIndex;
+                    if (progress < 0.33) {
+                        targetIndex = 0;
+                    } else if (progress < 0.66) {
+                        targetIndex = 1;
+                    } else {
+                        targetIndex = 2;
+                    }
+                    
+                    // 인덱스 변경 시에만 스택 재배치
+                    if (targetIndex !== currentIndex) {
+                        currentIndex = targetIndex;
+                        setStack(targetIndex);
+                    }
+                }
+                
+                ticking = false;
+            });
             
-            // 3단계 구분
-            let targetIndex;
-            if (progress < 0.33) {
-                targetIndex = 0;
-            } else if (progress < 0.66) {
-                targetIndex = 1;
-            } else {
-                targetIndex = 2;
+            ticking = true;
+        }
+    }
+    
+    // 스크롤 이벤트 등록/해제 함수
+    function setupScrollEvent() {
+        // 1024px 초과에서만 스크롤 이벤트 활성화
+        if (window.innerWidth > 1024 && wrapper) {
+            if (!scrollHandler) {
+                scrollHandler = handleScroll;
+                window.addEventListener('scroll', scrollHandler);
             }
-            
-            // 인덱스 변경 시에만 스택 재배치
-            if (targetIndex !== currentIndex) {
-                currentIndex = targetIndex;
-                setStack(targetIndex);
+        } else {
+            // 1024px 이하에서는 스크롤 이벤트 제거
+            if (scrollHandler) {
+                window.removeEventListener('scroll', scrollHandler);
+                scrollHandler = null;
             }
         }
-    });
+    }
     
+    // 초기 스크롤 이벤트 설정
+    setupScrollEvent();
+    
+    // 리사이즈 시 스크롤 이벤트 재설정 + 스택 재설정
+    window.addEventListener('resize', function() {
+        setupScrollEvent();
+        setStack(currentIndex);
+    });
+}); // END: Behind Video Section DOMContentLoaded
+
 // ============================================================
 // 드래그 이미지 섹션 - Matter.js 물리 엔진
 // ============================================================
+window.addEventListener('DOMContentLoaded', function() {
 const draggableSection = document.querySelector('.draggable_section');
 const draggableImages = document.querySelectorAll('.draggable_section .img_item');
 const imageModal = document.querySelector('.image_modal');
-const imageModalImg = imageModal.querySelector('.modal_content img');
-const imageModalClose = imageModal.querySelector('.modal_close');
+const imageModalImg = imageModal ? imageModal.querySelector('.modal_content img') : null;
+const imageModalClose = imageModal ? imageModal.querySelector('.modal_close') : null;
 
 if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefined') {
+    
+    // ==================== 반응형 체크 ====================
+    function isMobileDrag() {
+        return window.innerWidth <= 1024;
+    }
     
     // ==================== 전역 변수 선언 (먼저!) ====================
     let draggedItem = null;
     
-    // ==================== 커스텀 커서 ====================
+    // ==================== 커스텀 커서 (데스크탑만) ====================
     const customCursor = document.createElement('div');
     customCursor.className = 'draggable-cursor';
     customCursor.innerHTML = `
@@ -160,14 +320,18 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
             <text x="55" y="64" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">CLICK</text>
         </svg>
     `;
-    document.body.appendChild(customCursor);
+    
+    // 데스크탑에서만 커서 추가
+    if (!isMobileDrag()) {
+        document.body.appendChild(customCursor);
+    }
     
     let cursorMouseX = 0, cursorMouseY = 0, cursorFollowX = 0, cursorFollowY = 0;
     let isInsideSection = false;
     
     function animateCursor() {
-        // 드래그 중일 때는 딜레이 없이 즉시 따라가기
-        // 평소에도 빠르게 따라가도록 easing 값 증가 (0.2 → 0.4)
+        if (isMobileDrag()) return; // 모바일에서는 커서 애니메이션 중단
+        
         const easing = draggedItem ? 1 : 0.4;
         
         cursorFollowX += (cursorMouseX - cursorFollowX) * easing;
@@ -176,45 +340,14 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
         customCursor.style.top = `${cursorFollowY}px`;
         requestAnimationFrame(animateCursor);
     }
-    animateCursor();
     
-    // mouseenter/mouseleave 대신 mousemove로 체크 (더 안정적)
-    draggableSection.addEventListener('mousemove', (e) => {
-        cursorMouseX = e.clientX;
-        cursorMouseY = e.clientY;
-        
-        // 섹션 안에 있으면 커서 표시
-        if (!isInsideSection) {
-            isInsideSection = true;
-            customCursor.style.display = 'block';
-            // opacity 즉시 적용 (깜빡임 방지)
-            customCursor.style.opacity = '1';
-        }
-    });
+    if (!isMobileDrag()) {
+        animateCursor();
+    }
     
-    draggableSection.addEventListener('mouseleave', (e) => {
-        isInsideSection = false;
-        customCursor.style.opacity = '0';
-        setTimeout(() => {
-            // 다시 들어온 게 아니라면 숨김
-            if (!isInsideSection) {
-                customCursor.style.display = 'none';
-            }
-        }, 300);
-    });
-    
-    // 전역 mousemove로 빠른 움직임 감지 (섹션 밖에서도)
-    document.addEventListener('mousemove', (e) => {
-        const rect = draggableSection.getBoundingClientRect();
-        const isInside = (
-            e.clientX >= rect.left &&
-            e.clientX <= rect.right &&
-            e.clientY >= rect.top &&
-            e.clientY <= rect.bottom
-        );
-        
-        // 섹션 안에 있으면 커서 위치 업데이트
-        if (isInside) {
+    // 데스크탑 - 커서 이벤트
+    if (!isMobileDrag()) {
+        draggableSection.addEventListener('mousemove', (e) => {
             cursorMouseX = e.clientX;
             cursorMouseY = e.clientY;
             
@@ -223,8 +356,88 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
                 customCursor.style.display = 'block';
                 customCursor.style.opacity = '1';
             }
-        }
-    });
+        });
+        
+        draggableSection.addEventListener('mouseleave', (e) => {
+            isInsideSection = false;
+            customCursor.style.opacity = '0';
+            setTimeout(() => {
+                if (!isInsideSection) {
+                    customCursor.style.display = 'none';
+                }
+            }, 300);
+        });
+        
+        // 전역 마우스 이동 감지 (실제 콘텐츠 가시성 기반)
+        document.addEventListener('mousemove', (e) => {
+            // ===== 근본 해결: Behind Video 가시성 체크 =====
+            const behindVideoSection = document.querySelector('.behind_video');
+            if (behindVideoSection) {
+                const behindRect = behindVideoSection.getBoundingClientRect();
+                // Behind Video가 화면 상단 절반 이상 보이면 커서 숨김
+                const isBehindVisible = behindRect.top < window.innerHeight * 0.5;
+                
+                if (isBehindVisible) {
+                    if (isInsideSection) {
+                        isInsideSection = false;
+                        customCursor.style.opacity = '0';
+                        setTimeout(() => {
+                            if (!isInsideSection) {
+                                customCursor.style.display = 'none';
+                            }
+                        }, 300);
+                    }
+                    return; // Behind Video가 보이면 커서 로직 중단
+                }
+            }
+            
+            // ===== 기존 로직: Draggable 영역 감지 =====
+            const rect = draggableSection.getBoundingClientRect();
+            const isInside = (
+                e.clientX >= rect.left &&
+                e.clientX <= rect.right &&
+                e.clientY >= rect.top &&
+                e.clientY <= rect.bottom
+            );
+            
+            if (isInside) {
+                cursorMouseX = e.clientX;
+                cursorMouseY = e.clientY;
+                
+                if (!isInsideSection) {
+                    isInsideSection = true;
+                    customCursor.style.display = 'block';
+                    customCursor.style.opacity = '1';
+                }
+            } else {
+                // 섹션 밖에 있을 때 커서 숨김
+                if (isInsideSection) {
+                    isInsideSection = false;
+                    customCursor.style.opacity = '0';
+                    setTimeout(() => {
+                        if (!isInsideSection) {
+                            customCursor.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            }
+        });
+    }
+    
+    // ==================== 1920px: ScrollTrigger 핀 고정 (데스크탑만) ====================
+    if (!isMobileDrag()) {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        ScrollTrigger.create({
+            trigger: draggableSection,
+            start: "top top",
+            end: "+=200%",
+            pin: true,
+            pinSpacing: true, // true로 변경: 물리적으로 다음 섹션을 밀어냄
+            anticipatePin: 1,
+            markers: false
+        });
+    }
     
     // ==================== Fade In 애니메이션 ====================
     draggableImages.forEach((img, i) => {
@@ -236,8 +449,9 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
         });
     });
     
-    // ==================== Matter.js 초기화 ====================
-    const { Engine, World, Bodies, Body, Events } = Matter;
+    // ==================== Matter.js 초기화 (1920px만) ====================
+    if (!isMobileDrag()) {
+        const { Engine, World, Bodies, Body, Events } = Matter;
     
     const sectionRect = draggableSection.getBoundingClientRect();
     const engine = Engine.create();
@@ -272,11 +486,11 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
         const y = rect.top - sectionRect.top + rect.height / 2;
         
         const body = Bodies.rectangle(x, y, rect.width, rect.height, {
-            restitution: 0.4,      // 객체 간 반발력
-            friction: 0.2,         // 마찰력
-            frictionAir: 0.05,     // 공기 저항 (자연스럽게 멈춤)
+            restitution: 0.5,      // 객체 간 반발력 (0.4 → 0.5 증가)
+            friction: 0.15,        // 마찰력 (0.2 → 0.15 감소, 더 미끄럽게)
+            frictionAir: 0.03,     // 공기 저항 (0.05 → 0.03 감소, 더 오래 움직임)
             density: 0.001,
-            frictionStatic: 0.5,   // 정적 마찰 추가
+            frictionStatic: 0.4,   // 정적 마찰 (0.5 → 0.4 감소)
             slop: 0.05             // 충돌 허용 오차 (떨림 방지)
         });
         
@@ -301,8 +515,11 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
     let lastMoveTime = 0;
     let velocityTracker = { x: 0, y: 0 };
     
-    // 마우스 다운
+    // 마우스 다운 (데스크탑만)
     draggableSection.addEventListener('mousedown', (e) => {
+        // 1024px 이하에서는 드래그 비활성화
+        if (isMobileDrag()) return;
+        
         const rect = draggableSection.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
@@ -340,9 +557,9 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
         }
     });
     
-    // 마우스 무브
+    // 마우스 무브 (데스크탑만)
     draggableSection.addEventListener('mousemove', (e) => {
-        if (!draggedItem) return;
+        if (!draggedItem || isMobileDrag()) return;
         
         const rect = draggableSection.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
@@ -516,6 +733,21 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
     
     updatePhysics();
     
+    } // END: if (!isMobileDrag()) - Matter.js 초기화 블록
+    
+    // ==================== 이미지 클릭 모달 (모든 화면) ====================
+    // 1024/440에서는 클릭만 활성화
+    if (isMobileDrag()) {
+        draggableImages.forEach((imgElement) => {
+            imgElement.addEventListener('click', (e) => {
+                const imgSrc = imgElement.querySelector('img').src;
+                imageModalImg.src = imgSrc;
+                imageModal.classList.add('active');
+                e.preventDefault();
+            });
+        });
+    }
+    
     // ==================== 모달 닫기 ====================
     imageModalClose.addEventListener('click', () => {
         imageModal.classList.remove('active');
@@ -532,9 +764,9 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
             imageModal.classList.remove('active');
         }
     });
-}
+} // END: if draggableSection
 
-}); // END: 비하인드 비디오 섹션 DOMContentLoaded
+}); // END: Draggable Section DOMContentLoaded
 
 // ============ COMMUNITY CHAT EVENT SECTION ============
 window.addEventListener('DOMContentLoaded', function() {

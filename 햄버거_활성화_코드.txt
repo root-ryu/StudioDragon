@@ -1,0 +1,135 @@
+========================================
+364px 이후 햄버거 활성화 코드 정리
+========================================
+
+■ HTML 구조
+----------------------------------------
+<!-- 햄버거 메뉴 독립 배치 (header 밖에 위치) -->
+<div class="ham">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+
+■ CSS 스타일
+----------------------------------------
+/* 햄버거 메뉴 - 독립 배치 */
+.ham {
+    width: 60px;
+    height: 60px;
+    border: 1.5px solid var(--Wcolor);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    background: var(--Bcolor);
+    backdrop-filter: blur(15px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s;
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    z-index: 1000;
+}
+
+/* 364px 이상 스크롤 업 시 햄버거 메뉴 표시 */
+.ham.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ham ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 5px;
+    gap: 6px;
+    list-style: none;
+    width: auto;
+    height: auto;
+}
+
+.ham ul li {
+    width: 22px;
+    height: 2px;
+    background: var(--Wcolor);
+    border-radius: 2px;
+    transform-origin: left center;
+    position: relative;
+    transition: transform .6s;
+}
+
+/* 햄버거 X 모양 전환 (클릭 시) */
+nav.mobile ~ .ham ul li:nth-child(1) {
+    transform: rotate(45deg);
+    position: absolute;
+    right: 18%; 
+    top: 3%;
+}
+
+nav.mobile ~ .ham ul li:nth-child(2) {
+    display: none;
+}
+
+nav.mobile ~ .ham ul li:nth-child(3) {
+    transform: rotate(-45deg);
+    position: absolute;
+    right: 18%; 
+    top: 4.2%;
+}
+
+
+■ JavaScript 로직
+----------------------------------------
+// 364px 이상 영역에서만 작동하는 햄버거 로직
+const hamburger = document.querySelector('.ham');
+let lastScrollY = 0;
+
+lenis.on('scroll', ({ scroll }) => {
+    const currentScrollY = scroll;
+    
+    if (currentScrollY >= 364) {
+        // 364px 이상 → 햄버거만 표시
+        lenis.stop(); // Lenis 비활성화 (일반 스크롤)
+        
+        // 헤더는 완전히 숨김
+        header.classList.add('off');
+        headerElement.style.display = 'none';
+        
+        // 햄버거는 스크롤 방향에 따라 표시/숨김
+        if (currentScrollY > lastScrollY) {
+            // 아래로 스크롤 → 햄버거 숨김
+            hamburger.classList.remove('show');
+        } else {
+            // 위로 스크롤 → 햄버거 표시
+            hamburger.classList.add('show');
+        }
+    }
+    
+    lastScrollY = currentScrollY;
+});
+
+
+■ 동작 원리
+----------------------------------------
+1. 스크롤 위치가 364px 이상이 되면 기존 GNB 헤더는 완전히 숨김 (display: none)
+2. Lenis 스무스 스크롤 비활성화 (lenis.stop())
+3. 스크롤 방향 감지:
+   - 아래로 스크롤: hamburger.classList.remove('show') → 햄버거 숨김
+   - 위로 스크롤: hamburger.classList.add('show') → 햄버거 표시
+4. CSS transition으로 부드럽게 페이드 인/아웃
+   - opacity: 0 → 1 (0.4초)
+   - visibility: hidden → visible (0.4초)
+
+
+■ 주요 포인트
+----------------------------------------
+- 햄버거는 position: fixed로 화면 우측 상단에 고정
+- z-index: 1000으로 최상위 레이어
+- header와 완전히 독립적으로 배치 (header 밖에 위치)
+- CSS transition으로 자연스러운 애니메이션 처리
+- 364px 미만에서는 표시 안 됨 (opacity: 0, visibility: hidden)
