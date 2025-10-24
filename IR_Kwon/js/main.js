@@ -120,10 +120,23 @@ document.addEventListener('DOMContentLoaded', function() {
       images: images.length
     });
 
-    // 상수
-    const CARD_HEIGHT = 200;
-    const CENTER_OFFSET = 200;
+    // 미디어 쿼리 체크 (1024px 이하에서는 스크롤 애니메이션 비활성화)
+    function isDesktop() {
+      return window.innerWidth > 1024;
+    }
+
+    // 카드 높이 동적으로 계산 (반응형 대응)
+    function getCardHeight() {
+      return cards[0].offsetHeight || 200;
+    }
+
+    // 초기 상수 계산
+    let CARD_HEIGHT = getCardHeight();
+    let CENTER_OFFSET = CARD_HEIGHT;
     const totalCards = cards.length;
+
+    console.log('✅ 계산된 카드 높이:', CARD_HEIGHT);
+    console.log('✅ 데스크탑 모드:', isDesktop());
 
     // 이미지 전환 함수
     function changeImage(index) {
@@ -142,24 +155,107 @@ document.addEventListener('DOMContentLoaded', function() {
     // 초기 상태
     changeImage(0);
     activateCard(0);
-    gsap.set(cardsWrap, { y: CENTER_OFFSET });
     
-    // ScrollTrigger 설정
-    ScrollTrigger.create({
-      trigger: executionSection,
-      start: "top top",
-      end: `+=${(totalCards - 1) * 1000}`,
-      pin: true,
-      pinSpacing: true,
-      scrub: 1,
-      onUpdate: (self) => {
-        const currentIndex = Math.round(self.progress * (totalCards - 1));
-        const offset = CENTER_OFFSET - (currentIndex * CARD_HEIGHT);
+    let scrollTriggerInstance = null;
+
+    // 태블릿/모바일 클릭 이벤트 핸들러
+    function setupClickHandlers() {
+      cards.forEach((card, index) => {
+        // 키보드 접근성을 위한 tabindex 설정
+        if (!isDesktop()) {
+          card.setAttribute('tabindex', '0');
+          card.setAttribute('role', 'button');
+          card.setAttribute('aria-label', `카드 ${index + 1} 선택`);
+        } else {
+          card.removeAttribute('tabindex');
+          card.removeAttribute('role');
+          card.removeAttribute('aria-label');
+        }
         
-        gsap.set(cardsWrap, { y: offset });
-        changeImage(currentIndex);
-        activateCard(currentIndex);
+        // 클릭 이벤트
+        card.addEventListener('click', () => {
+          if (!isDesktop()) {
+            // 이미 활성화된 카드는 클릭해도 아무 동작 안함
+            if (card.classList.contains('active')) {
+              console.log(`⚠️ 카드 ${index}는 이미 활성화됨`);
+              return;
+            }
+            console.log(`🖱️ 카드 ${index} 클릭됨 (모바일/태블릿)`);
+            changeImage(index);
+            activateCard(index);
+          }
+        });
+        
+        // 키보드 이벤트 (Enter, Space)
+        card.addEventListener('keydown', (e) => {
+          if (!isDesktop() && (e.key === 'Enter' || e.key === ' ')) {
+            e.preventDefault();
+            if (card.classList.contains('active')) return;
+            console.log(`⌨️ 카드 ${index} 키보드로 선택됨`);
+            changeImage(index);
+            activateCard(index);
+          }
+        });
+      });
+      console.log('✅ 카드 클릭 핸들러 설정 완료 (키보드 접근성 포함)');
+    }
+
+    // ScrollTrigger 생성 함수
+    function createScrollTrigger() {
+      if (!isDesktop()) {
+        console.log('⚠️ 태블릿/모바일 모드 - 스크롤 애니메이션 비활성화');
+        gsap.set(cardsWrap, { clearProps: 'y' }); // y 속성 제거
+        return;
       }
+
+      gsap.set(cardsWrap, { y: CENTER_OFFSET });
+      
+      scrollTriggerInstance = ScrollTrigger.create({
+        trigger: executionSection,
+        start: "top top",
+        end: `+=${(totalCards - 1) * 1000}`,
+        pin: true,
+        pinSpacing: true,
+        scrub: 1,
+        onUpdate: (self) => {
+          const currentIndex = Math.round(self.progress * (totalCards - 1));
+          const offset = CENTER_OFFSET - (currentIndex * CARD_HEIGHT);
+          
+          gsap.set(cardsWrap, { y: offset });
+          changeImage(currentIndex);
+          activateCard(currentIndex);
+        }
+      });
+      
+      console.log('✅ ScrollTrigger 생성됨');
+    }
+
+    // 초기 실행
+    setupClickHandlers(); // 클릭 핸들러 설정
+    createScrollTrigger();
+
+    // 리사이즈 이벤트 처리 (반응형 대응)
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        CARD_HEIGHT = getCardHeight();
+        CENTER_OFFSET = CARD_HEIGHT;
+        console.log('✅ 리사이즈 후 카드 높이:', CARD_HEIGHT);
+        console.log('✅ 데스크탑 모드:', isDesktop());
+        
+        // 기존 ScrollTrigger 제거
+        if (scrollTriggerInstance) {
+          scrollTriggerInstance.kill();
+          scrollTriggerInstance = null;
+        }
+        
+        // 새로운 ScrollTrigger 생성 (데스크탑인 경우에만)
+        createScrollTrigger();
+        
+        // 카드 접근성 속성 재설정
+        setupClickHandlers();
+      }, 200);
     });
 
     console.log('✅ Execution 섹션 초기화 완료');
@@ -332,5 +428,82 @@ document.addEventListener('DOMContentLoaded', function() {
     animate: (card) => card.classList.add('fade-in'),
     reset: (card) => card.classList.remove('fade-in')
   });
-
+  
+  // ============================================================
+  // Proof 섹션 - 반응형 카드 플립
+  // ============================================================
+  const proofSection = document.querySelector('.proof');
+  
+  if (proofSection) {
+    const proofCards = proofSection.querySelectorAll('.card:not(.card_6)');
+    let currentFlippedCard = null;
+    
+    console.log('Proof 섹션 카드:', proofCards.length);
+    
+    function isTabletOrMobile() {
+      return window.innerWidth <= 1024;
+    }
+    
+    function flipCard(card) {
+      // 다른 카드가 플립되어 있으면 원래대로
+      if (currentFlippedCard && currentFlippedCard !== card) {
+        currentFlippedCard.classList.remove('flipped');
+      }
+      
+      // 현재 카드 플립 (토글)
+      card.classList.toggle('flipped');
+      currentFlippedCard = card.classList.contains('flipped') ? card : null;
+      
+      // 한번 클릭한 카드는 'clicked' 클래스 추가 (터치 인디케이터 숨김용)
+      if (!card.classList.contains('clicked')) {
+        card.classList.add('clicked');
+        console.log('✅ 카드 클릭됨 - 터치 인디케이터 제거');
+      }
+    }
+    
+    function resetAllCards() {
+      proofCards.forEach(card => {
+        card.classList.remove('flipped');
+      });
+      currentFlippedCard = null;
+      // clicked 클래스는 유지 (터치 인디케이터는 계속 숨김)
+    }
+    
+    // 클릭 이벤트 핸들러
+    function handleCardClick(e) {
+      if (isTabletOrMobile()) {
+        e.preventDefault();
+        flipCard(this);
+      }
+    }
+    
+    // 각 카드에 클릭 이벤트 추가
+    proofCards.forEach(card => {
+      card.addEventListener('click', handleCardClick);
+      
+      // 키보드 접근성
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', '카드 플립');
+      
+      card.addEventListener('keydown', function(e) {
+        if (isTabletOrMobile() && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          flipCard(this);
+        }
+      });
+    });
+    
+    // 리사이즈 시 플립 상태 리셋 (데스크탑으로 전환 시)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!isTabletOrMobile()) {
+          resetAllCards();
+        }
+      }, 250);
+    });
+  }
+  
 });
