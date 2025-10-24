@@ -20,195 +20,492 @@
 @media (max-width: 1024px) {
     
     /* ============ MAIN VISUAL ============ */
+    /* 기본 구조 유지 - padding만 조정 */
     article.main_visual {
+        margin-top: 100px;
+        height: 550px;
         padding: 0 80px;
-        min-height: 600px;
     }
     
-    article.main_visual .main_visual_wrapper {
-        padding: 80px 0;
+    /* 백그라운드 이미지 비율 조정 */
+    .main_visual_background .background_image {
+        height: 100%;
+        object-position: center top;
     }
     
-    /* Drama Content Box */
-    article.main_visual .drama_content_box {
-        min-height: 160px;
-        padding: 20px 0;
+    /* 콘텐츠 영역 최대 너비 조정 */
+    .main_visual_wrapper {
+        max-width: 864px;  /* 1024px - 160px(80px*2) */
     }
     
-    article.main_visual .drama_text_wrapper {
-        flex-direction: column;
-        gap: 32px;
-        padding: 0 32px;
+    /* 콘텐츠 간격 축소 */
+    .main_visual_wrapper .contents {
+        gap: 191px;
     }
     
-    article.main_visual .text_box_left,
-    article.main_visual .text_box_right {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    article.main_visual .logo_area {
-        gap: 16px;
-        margin-bottom: 32px;
-    }
-    
-    article.main_visual .netflix_logo {
-        width: 120px;
-        height: auto;
-    }
-    
-    article.main_visual .global_badge {
-        font: var(--font-1024-footer-info);
-        padding: 4px 12px;
-    }
-    
-    article.main_visual .drama_title_area {
+    /* Logo Area - Figma 정확한 스펙 */
+    .logo_area {
         gap: 16px;
     }
     
-    article.main_visual .series_label {
-        font: var(--font-1024-footer-info);
-        margin-bottom: 8px;
+    .logo_area .netflix_logo {
+        width: 87px;
+        height: 24px;
     }
     
-    article.main_visual .drama_title {
-        font: var(--font-1024-headline-40);
-        margin-bottom: 24px;
+    .logo_area .global_badge {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 1.3;
+        text-transform: uppercase;
     }
     
-    article.main_visual .bookmark_button {
-        width: 44px;
-        height: 44px;
+    /* Contents Text */
+    .contents_text {
+        gap: 12px;
     }
     
-    article.main_visual .meta_info {
-        font-size: 14px;
-        margin-bottom: 16px;
+    /* Drama Title Area */
+    .drama_title_area {
+        gap: 12px;
     }
     
-    article.main_visual .description p {
+    .drama_title_area .title_text {
+        gap: 4px;
+    }
+    
+    .drama_title_area .title_text .series_label {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 200;
+        font-size: 24px;
+        line-height: 1;
+    }
+    
+    .drama_title_area .title_text .drama_title {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+    
+    .drama_title_area .bookmark_button {
+        width: 36px;
+        height: 36px;
+    }
+    
+    /* Drama Content Box - padding만 조정 */
+    .drama_content_box {
+        padding: 24px 0;
+    }
+    
+    .drama_content_box .drama_text_wrapper {
+        padding: 0 19px 0 32px;
+        gap: 19px;
+    }
+    
+    /* Text Box Left */
+    .text_box_left {
+        max-width: 381px;
+        gap: 8px;
+    }
+    
+    .text_box_left .meta_info {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 1.3;
+    }
+    
+    .text_box_left .description p {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
         font-size: 16px;
-        line-height: 1.6;
+        line-height: 1.3;
     }
     
-    article.main_visual .credit_labels,
-    article.main_visual .credit_names {
-        font-size: 14px;
+    /* Text Box Right */
+    .text_box_right {
+        width: 413px;
+        padding-left: 32px;
+        padding-right: 0;
+        border-left: 0.5px solid rgba(255, 255, 255, 0.5);
+        gap: 8px;
+    }
+    
+    .text_box_right .credit_labels,
+    .text_box_right .credit_names {
+        gap: 8px;
+    }
+    
+    .text_box_right .credit_labels .credit_label {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 1.3;
+    }
+    
+    .text_box_right .credit_names .credit_name {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 1.3;
+    }
+    
+    /* ", Jung Sung-il" 텍스트만 숨김 */
+    .text_box_right .credit_names .credit_name_multi p {
+        font-size: 0;
+    }
+    
+    .text_box_right .credit_names .credit_name_multi p::before {
+        content: "Song Hye-kyo, Lee Do-hyun, Lim Ji-yeon, Yeom Hye-ran, Park Sung-hoon";
+        font-size: 18px;
     }
     
     /* ============ CHARACTER SECTION ============ */
+    /* 1920px 레이아웃 구조 유지, 스케일만 조정 */
     section.character {
-        padding: 80px 80px 120px;
-        min-height: 700px;
+        width: 100%;
+        max-width: none;
+        height: auto;
+        max-height: none;
+        margin-top: 180px;
+        margin-bottom: 180px;
+        padding: 0 80px;
     }
     
+    /* 제목 스타일 */
     section.character h2 {
-        font: var(--font-1024-headline-40);
-        margin-bottom: 60px;
+        position: relative;
+        display: block;
+        font-size: 40px;
+        left: 0;
+        top: 0;
     }
     
+    /* 콘텐츠 영역 - 1920px 구조 유지 */
     section.character .contents {
-        max-width: 900px;
+        position: relative;
+        width: 100%;
+        height: 490px;
+        max-width: 864px;
         margin: 0 auto;
     }
     
-    section.character .human {
-        transform: scale(0.85);
+    /* 화살표 - 1920px 퍼센트 위치 그대로 유지 */
+    section.character .contents .arrow {
+        display: block;
     }
     
-    section.character .human_img {
-        width: 180px;
-        height: 180px;
+    /* 1024px에서 2번, 3번 화살표 위치 조정 */
+    section.character .contents .arrow.arrow-1{
+        left: 10.5%;  /* 1920px: 11.7% → 1024px: 15% (우측으로 3.3% 이동) */
+        top: 25%;
+    }
+    section.character .contents .arrow.arrow-2 {
+        left: 22%;  /* 1920px: 21.5% → 1024px: 25% (우측으로 3.5% 이동) */
     }
     
-    section.character .human_name {
-        font-size: 18px;
-        margin-top: 12px;
+    section.character .contents .arrow.arrow-3 {
+        left: 31%;  /* 1920px: 28.9% → 1024px: 32% (우측으로 3.1% 이동) */
+    }
+    section.character .contents .arrow.arrow-6{
+        top: 40%;
     }
     
-    section.character .arrow {
-        transform: scale(0.7);
+    /* 캐릭터 이미지 크기만 조정 */
+    section.character .contents .human .human_img {
+        width: 94px;   /* 1920px: 160px → 1024px: 94px */
+        height: 129px; /* 1920px: 219px → 1024px: 129px */
+        aspect-ratio: auto;
+    }
+    
+    section.character .contents .human .human_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* 캐릭터 이름 폰트 크기 */
+    section.character .contents .human .human_name {
+        font-size: 20px;  /* 1920px: 30px → 1024px: 20px */
+    }
+    
+    /* 1024px 캐릭터별 위치 조정 - 개별 선택자 */
+    section.character .contents .human.human_yeo {
+        left: 0;
+        top: 32.3%;
+    }
+    
+    section.character .contents .human.human_dong {
+        left: 16.1%;
+        top: 2%;
+    }
+    
+    section.character .contents .human.human_hyeon {
+        left: 15.4%;
+        top: 65.7%;
+    }
+    
+    section.character .contents .human.human_do {
+        left: 32.6%;
+        top: 38%;
+    }
+    
+    section.character .contents .human.human_yeon {
+        left: 52%;
+        top: 5.1%;
+    }
+    
+    section.character .contents .human.human_jae {
+        left: 52.7%;
+        top: 56.8%;
+    }
+    
+    section.character .contents .human.human_hye {
+        left: 71.2%;
+        top: 32.7%;
+    }
+    
+    section.character .contents .human.human_myeong {
+        left: 89%;
+        top: 10.7%;
+    }
+    
+    section.character .contents .human.human_sa {
+        left: 89%;
+        top: 65.8%;
     }
     
     /* ============ EPISODE SECTION ============ */
     section.episode {
-        padding: 80px 80px;
+        padding: 0 80px;
+        margin-top: 180px;
+        margin-bottom: 180px;
+        position: relative;
     }
     
-    section.episode h2 {
-        font: var(--font-1024-headline-40);
+    section.episode .title_wrapper {
         margin-bottom: 40px;
+    }
+    
+    section.episode .title_wrapper .title {
+        font-size: 40px;
+    }
+    
+    section.episode .title_wrapper .more_btn {
+        font-size: 16px;
+        padding: 6px 24px;
+    }
+    
+    /* 스크롤 컨테이너 */
+    section.episode .episode_scroll_container {
+        position: relative;
     }
     
     section.episode .episode_scroll_container .episode_list {
-        gap: 32px;
+        gap: 28px;
     }
     
-    section.episode .episode_card {
-        min-width: 300px;
-        max-width: 360px;
+    /* 드래그 스크롤 유지 (1024px도 활성화) */
+    section.episode .episode_scroll_container {
+        cursor: grab;
     }
     
-    section.episode .episode_thumbnail {
-        height: 200px;
+    /* 네비게이션 영역: 화살표 + 인디케이터 */
+    section.episode .episode_navigation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 40px;
     }
     
-    section.episode .episode_content {
-        padding: 16px;
+    /* 화살표 버튼 */
+    section.episode .nav_arrow {
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
     }
     
-    section.episode .episode_number {
-        font-size: 36px;
-        margin-bottom: 12px;
+    section.episode .nav_arrow:hover {
+        border-color: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.05);
     }
     
-    section.episode .episode_title {
-        font-size: 18px;
-        margin-bottom: 10px;
+    section.episode .nav_arrow span {
+        width: 10px;
+        height: 10px;
+        border-top: 2px solid rgba(255, 255, 255, 0.8);
+        border-right: 2px solid rgba(255, 255, 255, 0.8);
+        transition: border-color 0.3s ease;
     }
     
-    section.episode .episode_description {
-        font-size: 14px;
-        line-height: 1.6;
+    section.episode .nav_arrow:hover span {
+        border-color: white;
+    }
+    
+    section.episode .nav_arrow.prev span {
+        transform: rotate(-135deg);
+    }
+    
+    section.episode .nav_arrow.next span {
+        transform: rotate(45deg);
+    }
+    
+    section.episode .nav_arrow.disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+    
+    /* 인디케이터 */
+    section.episode .swipe_indicator {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    section.episode .swipe_dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    section.episode .swipe_dot:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
+    
+    section.episode .swipe_dot.active {
+        background: white;
+        width: 24px;
+        border-radius: 4px;
+    }
+    
+    /* 카드 스타일 - 3개 보이게 */
+    section.episode .episode_scroll_container .episode_list .episode_card {
+        min-width: 266px !important;
+        max-width: 266px !important;
+        width: 266px !important;
+        flex-shrink: 0;
+    }
+    
+    section.episode .episode_scroll_container .episode_list .episode_card .episode_image {
+        height: 223px !important; /* 비율 유지: 266 / 312 * 261 */
+    }
+    
+    section.episode .episode_scroll_container .episode_list .episode_card .episode_info {
+        padding: 12px !important;
+        gap: 6px !important;
+    }
+    
+    section.episode .episode_scroll_container .episode_list .episode_card .episode_info .episode_title {
+        font-size: 22px !important;
+        margin: 0 0 6px 0 !important;
+    }
+    
+    section.episode .episode_scroll_container .episode_list .episode_card .episode_info .episode_desc {
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+        height: 90px !important;
     }
     
     /* ============ DRAGGABLE SECTION ============ */
+    /* 1024px 이하: ScrollTrigger pin 해제 */
     section.draggable_section {
-        padding: 80px 0;
-        perspective: 800px;
+        position: static !important;
+        height: auto !important;
+        padding: 0 80px;
+        margin-top: 180px;
+        margin-bottom: 180px;
+    }
+    
+    /* pinSpacer 높이 제거 (콘텐츠는 유지) */
+    .pin-spacer {
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
     
     section.draggable_section h2 {
-        font: var(--font-1024-headline-40);
+        font-size: 40px;
         margin-bottom: 40px;
-        padding: 0 80px;
     }
     
+    /* 드래그 비활성화 - 호버만 활성화 */
     section.draggable_section .images_frame {
-        width: 1400px;
-        height: 1000px;
-        transform: translate(-50%, -50%) scale(0.7);
+        cursor: default;
+        user-select: none;
     }
     
-    /* 이미지 아이템 크기 조정 */
-    section.draggable_section .img_item[data-size="340x227"],
-    section.draggable_section .img_item[data-size="340x226"] {
-        width: 240px;
-        height: 160px;
+    section.draggable_section .img_item {
+        cursor: pointer;
+        transition: transform 0.3s ease, z-index 0.3s ease;
     }
     
-    section.draggable_section .img_item[data-size="280x187"] {
-        width: 200px;
-        height: 133px;
+    section.draggable_section .img_item:hover {
+        transform: scale(1.05);
+        z-index: 1000 !important;
     }
     
-    section.draggable_section .img_item[data-size="200x133"] {
-        width: 140px;
-        height: 93px;
+    /* 섹션 크기 축소 - 1024px */
+    section.draggable_section {
+        height: 600px !important;
+        max-width: 1140px !important;
+        margin-top: 100px !important;
+        margin-bottom: 100px !important;
+    }
+    
+    /* 이미지 위치 간격 축소 - 1024px (75% 비율) */
+    section.draggable_section .img_item:nth-child(1) { left: 40px !important; top: 60px !important; }
+    section.draggable_section .img_item:nth-child(2) { left: 240px !important; top: 25px !important; }
+    section.draggable_section .img_item:nth-child(3) { left: 435px !important; top: 90px !important; }
+    section.draggable_section .img_item:nth-child(4) { left: 640px !important; top: 45px !important; }
+    section.draggable_section .img_item:nth-child(5) { left: 825px !important; top: 110px !important; }
+    section.draggable_section .img_item:nth-child(6) { left: 990px !important; top: 30px !important; }
+    
+    section.draggable_section .img_item:nth-child(7) { left: 90px !important; top: 210px !important; }
+    section.draggable_section .img_item:nth-child(8) { left: 300px !important; top: 260px !important; }
+    section.draggable_section .img_item:nth-child(9) { left: 510px !important; top: 225px !important; }
+    section.draggable_section .img_item:nth-child(10) { left: 710px !important; top: 285px !important; }
+    section.draggable_section .img_item:nth-child(11) { left: 900px !important; top: 240px !important; }
+    section.draggable_section .img_item:nth-child(12) { left: 1010px !important; top: 315px !important; }
+    
+    section.draggable_section .img_item:nth-child(13) { left: 60px !important; top: 410px !important; }
+    section.draggable_section .img_item:nth-child(14) { left: 260px !important; top: 450px !important; }
+    section.draggable_section .img_item:nth-child(15) { left: 465px !important; top: 390px !important; }
+    section.draggable_section .img_item:nth-child(16) { left: 675px !important; top: 435px !important; }
+    
+    /* 이미지 크기 축소 - 1024px */
+    section.draggable_section .img_item[data-size="large"] {
+        width: 180px !important;
+        height: 120px !important;
+    }
+    
+    section.draggable_section .img_item[data-size="medium"] {
+        width: 150px !important;
+        height: 100px !important;
+    }
+    
+    section.draggable_section .img_item[data-size="small"] {
+        width: 110px !important;
+        height: 73px !important;
     }
     
     section.draggable_section .episode_scroll_container {
-        padding: 0 80px;
+        padding: 0;
         gap: 24px;
     }
     
@@ -240,12 +537,21 @@
     }
     
     /* ============ BEHIND VIDEO SECTION ============ */
+    /* 1024px 이하: sticky 해제 */
+    .behind_video_wrapper {
+        height: auto !important;
+    }
+    
     section.behind_video {
-        padding: 80px 80px;
+        position: static !important;
+        height: auto !important;
+        padding: 0 80px;
+        margin-top: 180px;
+        margin-bottom: 180px;
     }
     
     section.behind_video h2 {
-        font: var(--font-1024-headline-40);
+        font-size: 40px;
         margin-bottom: 40px;
     }
     
@@ -253,7 +559,7 @@
         height: 500px;
     }
     
-    /* 활성 아이템 - 세로 배치 */
+    /* 활성 아이템 - 세로 배치 유지 */
     section.behind_video .video_item.active {
         flex-direction: column;
         height: auto;
@@ -284,15 +590,14 @@
     }
     
     section.behind_video .video_description {
-        font-size: 13px;
-        line-height: 1.5;
+        font-size: 14px;
+        line-height: 1.6;
     }
     
     /* ============ CHAT EVENT SECTION ============ */
     section.chat_event_section {
         width: 100%;
-        margin: 150px 0 0;
-        min-height: 1000px;
+        margin: 180px 0 0;
     }
     
     section.chat_event_section .img_bg {
@@ -498,286 +803,558 @@
 @media (max-width: 440px) {
     
     /* ============ MAIN VISUAL ============ */
+    /* 기본 구조 유지 - padding만 조정 */
     article.main_visual {
+        margin-top: 80px;
+        height: 450px;
         padding: 0 30px;
-        min-height: 500px;
     }
     
-    article.main_visual .main_visual_wrapper {
-        padding: 60px 0;
+    /* 백그라운드 이미지 비율 조정 */
+    .main_visual_background .background_image {
+        height: 100%;
+        object-position: center top;
     }
     
-    /* Drama Content Box */
-    article.main_visual .drama_content_box {
-        min-height: 140px;
+    /* 콘텐츠 영역 최대 너비 조정 */
+    .main_visual_wrapper {
+        max-width: 380px;  /* 440px - 60px(30px*2) */
+    }
+    
+    /* 콘텐츠 간격 축소 */
+    .main_visual_wrapper .contents {
+        gap: 187px;
+    }
+    
+    /* Logo Area - Figma 정확한 스펙 */
+    .logo_area {
+        gap: 8px;
+    }
+    
+    .logo_area .netflix_logo {
+        width: 71px;
+        height: 20px;
+    }
+    
+    .logo_area .global_badge {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 1.3;
+        text-transform: uppercase;
+    }
+    
+    /* Contents Text */
+    .contents_text {
+        gap: 8px;
+    }
+    
+    /* Drama Title Area */
+    .drama_title_area {
+        gap: 12px;
+    }
+    
+    .drama_title_area .title_text {
+        gap: 4px;
+    }
+    
+    .drama_title_area .title_text .series_label {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 1.3;
+    }
+    
+    .drama_title_area .title_text .drama_title {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+    
+    .drama_title_area .bookmark_button {
+        width: 32px;
+        height: 32px;
+    }
+    
+    /* Drama Content Box - padding만 조정 */
+    .drama_content_box {
         padding: 16px 0;
     }
     
-    article.main_visual .drama_text_wrapper {
+    .drama_content_box .drama_text_wrapper {
+        padding: 0 16px 0 12px;
         flex-direction: column;
-        gap: 20px;
-        padding: 0 20px;
+        gap: 16px;
     }
     
-    article.main_visual .text_box_left,
-    article.main_visual .text_box_right {
-        width: 100%;
+    /* Text Box Left */
+    .text_box_left {
         max-width: 100%;
+        gap: 16px;
     }
     
-    article.main_visual .logo_area {
-        gap: 8px;
-        margin-bottom: 20px;
-        flex-direction: row;
-        align-items: center;
+    .text_box_left .meta_info {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.3;
     }
     
-    article.main_visual .netflix_logo {
-        width: 80px;
-    }
-    
-    article.main_visual .global_badge {
+    .text_box_left .description p {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
         font-size: 12px;
-        padding: 3px 10px;
+        line-height: 1.3;
+        max-width: 352px;
     }
     
-    article.main_visual .drama_title_area {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+    /* Text Box Right - border 제거 */
+    .text_box_right {
+        width: 352px;
+        padding-left: 0;
+        border-left: none;
+        gap: 8px;
     }
     
-    article.main_visual .series_label {
-        font-size: 14px;
-        margin-bottom: 4px;
+    .text_box_right .credit_labels,
+    .text_box_right .credit_names {
+        gap: 8px;
     }
     
-    article.main_visual .drama_title {
-        font: var(--font-440-headline-30);
-        margin-bottom: 12px;
+    .text_box_right .credit_labels .credit_label {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 1.3;
     }
     
-    article.main_visual .bookmark_button {
-        width: 36px;
-        height: 36px;
+    .text_box_right .credit_names .credit_name {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.3;
     }
     
-    article.main_visual .meta_info {
-        font-size: 11px;
-        margin-bottom: 12px;
-    }
-    
-    article.main_visual .description p {
-        font-size: 13px;
-        line-height: 1.6;
-    }
-    
-    article.main_visual .text_box_right {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    article.main_visual .credit_labels,
-    article.main_visual .credit_names {
-        font-size: 11px;
-    }
-    
-    article.main_visual .credit_label {
-        margin-bottom: 6px;
+    /* 440px에서는 Jung Sung-il 포함 */
+    .text_box_right .credit_names .credit_name_multi p::before {
+        content: "Song Hye-kyo, Lee Do-hyun, Lim Ji-yeon, Yeom Hye-ran, Park Sung-hoon, Jung Sung-il";
+        font-size: 12px;  /* 440px에서는 12px */
     }
     
     /* ============ CHARACTER SECTION ============ */
+    /* 1920px 레이아웃 구조 유지, 스케일만 조정 */
     section.character {
-        padding: 60px 30px 80px;
-        min-height: 500px;
+        width: 100%;
+        /* min-width: 380px; */
+        height: auto;
+        margin-top: 60px;
+        margin-bottom: 80px;
+        padding: 0 30px;
     }
     
+    /* 제목 스타일 */
     section.character h2 {
-        font: var(--font-440-headline-30);
-        margin-bottom: 40px;
+        position: relative;
+        display: block;
+        font-family: 'Assistant', sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 1.3;
+        color: white;
+        text-transform: uppercase;
+        left: 0;
+        top: 0;
+        margin-bottom: 30px;
     }
     
+    /* 콘텐츠 영역 - relative 구조로 변경 */
     section.character .contents {
-        max-width: 100%;
+        position: relative;
+        width: 100%;
+        height: 310px;
+        max-width: 340px;
+        margin: 0 auto;
     }
     
-    section.character .human {
-        transform: scale(0.6);
-        margin: -30px;
-    }
-    
-    /* 모바일에서 화살표 숨김 */
-    section.character .arrow {
-        display: none !important;
-    }
-    
-    section.character .human_img {
-        width: 120px;
-        height: 120px;
-    }
-    
-    section.character .human_name {
-        font-size: 14px;
-        margin-top: 8px;
-    }
-    
-    section.character .arrow {
+    /* 화살표 - 440px에서는 숨김 */
+    section.character .contents .arrow {
         display: none;
+    }
+    
+    /* 캐릭터 - 터치 최적화 추가 */
+    section.character .contents .human {
+        gap: 6px;
+        padding: 8px;
+        margin: -8px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    
+    section.character .contents .human:active {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+    
+    section.character .contents .human:hover {
+        transform: none;
+        opacity: 1;
+    }
+    
+    /* 캐릭터 이미지 크기만 조정 */
+    section.character .contents .human .human_img {
+        width: 56px;
+        height: 77px;
+        aspect-ratio: auto;
+    }
+    
+    section.character .contents .human .human_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* 캐릭터 이름 폰트 크기 */
+    section.character .contents .human .human_name {
+        font-size: 12px;  /* 1920px: 30px → 440px: 12px */
+        line-height: 1.2;
+    }
+    
+    /* 440px 캐릭터별 위치 조정 - 좌측으로 이동 */
+    section.character .contents .human.human_yeo {
+        left: -3%;
+        top: 35%;
+    }
+    
+    section.character .contents .human.human_dong {
+        left: 13.4%;
+        top: 5%;
+    }
+    
+    section.character .contents .human.human_hyeon {
+        left: 12.6%;
+        top: 68%;
+    }
+    
+    section.character .contents .human.human_do {
+        left: 29.7%;
+        top: 39%;
+    }
+    
+    section.character .contents .human.human_yeon {
+        left: 49%;
+        top: 8%;
+    }
+    
+    section.character .contents .human.human_jae {
+        left: 49.8%;
+        top: 64%;
+    }
+    
+    section.character .contents .human.human_hye {
+        left: 68.1%;
+        top: 37%;
+    }
+    
+    section.character .contents .human.human_myeong {
+        left: 86%;
+        top: 11%;
+    }
+    
+    section.character .contents .human.human_sa {
+        left: 86%;
+        top: 65%;
     }
     
     /* ============ EPISODE SECTION ============ */
     section.episode {
-        padding: 60px 30px;
+        padding: 0 30px;
+        margin-top: 80px;
+        margin-bottom: 80px;
     }
     
-    section.episode h2 {
-        font: var(--font-440-headline-30);
-        margin-bottom: 32px;
+    section.episode .title_wrapper {
+        margin-bottom: 30px;
     }
     
-    /* 스크롤 컨테이너 - 다음 카드 힌트 */
+    section.episode .title_wrapper .title {
+        font-size: 30px;
+    }
+    
+    section.episode .title_wrapper .more_btn {
+        font-size: 12px;
+        padding: 4px 18px;
+    }
+    
+    /* 스크롤 컨테이너 */
     section.episode .episode_scroll_container {
-        padding-right: 60px;
+        position: relative;
     }
     
     section.episode .episode_scroll_container .episode_list {
+        gap: 12px;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* 네비게이션 영역 - 440px */
+    section.episode .episode_navigation {
         gap: 20px;
+        margin-top: 20px;
     }
     
-    section.episode .episode_card {
-        min-width: 280px;
-        max-width: 320px;
+    /* 화살표 - 440px 축소 */
+    section.episode .nav_arrow {
+        width: 32px;
+        height: 32px;
     }
     
-    /* 마지막 카드 여백 */
-    section.episode .episode_card:last-child {
-        margin-right: 30px;
+    section.episode .nav_arrow span {
+        width: 8px;
+        height: 8px;
+        border-width: 1.5px;
     }
     
-    section.episode .episode_thumbnail {
+    /* 인디케이터 - 440px 최적화 */
+    section.episode .swipe_indicator {
+        gap: 6px;
+    }
+    
+    section.episode .swipe_dot {
+        width: 6px;
+        height: 6px;
+    }
+    
+    section.episode .swipe_dot.active {
+        width: 18px;
+        border-radius: 3px;
+    }
+    
+    /* 카드 스타일 - 2.5개 보이게 */
+    section.episode .episode_scroll_container .episode_list .episode_card {
+        min-width: 152px !important;
+        max-width: 152px !important;
+        width: 152px !important;
+        flex-shrink: 0;
+    }
+    
+    section.episode .episode_scroll_container .episode_list .episode_card .episode_image {
+        height: 127px !important; /* 비율 유지: 152 / 312 * 261 */
+    }
+    
+    section.episode .episode_scroll_container .episode_list .episode_card .episode_info {
+        padding: 6px !important;
+        gap: 3px !important;
+    }
+    
+    section.episode .episode_scroll_container .episode_list .episode_card .episode_info .episode_title {
+        font-size: 12px !important;
+        margin: 0 0 3px 0 !important;
+    }
+    
+    section.episode .episode_scroll_container .episode_list .episode_card .episode_info .episode_desc {
+        font-size: 9px !important;
+        line-height: 1.25 !important;
+        height: 45px !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+    }
+    
+    /* ============ DRAGGABLE SECTION ============ */
+    /* 440px 이하: ScrollTrigger pin 해제 */
+    section.draggable_section {
+        position: static !important;
+        height: auto !important;
+        padding: 0 30px;
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+    
+    /* pinSpacer 높이 제거 (콘텐츠는 유지) */
+    .pin-spacer {
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    section.draggable_section h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    
+    /* 모바일 - 호버 비활성화, 롱프레스(1초) 후 드래그 또는 터치만 */
+    section.draggable_section .images_frame {
+        cursor: default;
+        user-select: none;
+    }
+    
+    section.draggable_section .img_item {
+        cursor: grab;
+        transition: transform 0.2s ease;
+    }
+    
+    section.draggable_section .img_item:active {
+        cursor: grabbing;
+    }
+    
+    section.draggable_section .img_item:hover {
+        transform: none;
+    }
+    
+    /* 섹션 크기 축소 - 440px */
+    section.draggable_section {
+        height: 400px !important;
+        max-width: 100% !important;
+        margin-top: 60px !important;
+        margin-bottom: 60px !important;
+        padding: 0 20px !important;
+    }
+    
+    /* 이미지 위치 간격 축소 - 440px (50% 비율, 세로 2줄) */
+    section.draggable_section .img_item:nth-child(1) { left: 20px !important; top: 40px !important; }
+    section.draggable_section .img_item:nth-child(2) { left: 160px !important; top: 15px !important; }
+    section.draggable_section .img_item:nth-child(3) { left: 290px !important; top: 60px !important; }
+    section.draggable_section .img_item:nth-child(4) { left: 25px !important; top: 140px !important; }
+    section.draggable_section .img_item:nth-child(5) { left: 180px !important; top: 110px !important; }
+    section.draggable_section .img_item:nth-child(6) { left: 310px !important; top: 150px !important; }
+    
+    section.draggable_section .img_item:nth-child(7) { left: 50px !important; top: 230px !important; }
+    section.draggable_section .img_item:nth-child(8) { left: 200px !important; top: 210px !important; }
+    section.draggable_section .img_item:nth-child(9) { left: 340px !important; top: 250px !important; }
+    section.draggable_section .img_item:nth-child(10) { left: 30px !important; top: 320px !important; }
+    section.draggable_section .img_item:nth-child(11) { left: 170px !important; top: 300px !important; }
+    section.draggable_section .img_item:nth-child(12) { left: 300px !important; top: 340px !important; }
+    
+    section.draggable_section .img_item:nth-child(13) { left: 40px !important; top: 410px !important; }
+    section.draggable_section .img_item:nth-child(14) { left: 180px !important; top: 390px !important; }
+    section.draggable_section .img_item:nth-child(15) { left: 310px !important; top: 420px !important; }
+    section.draggable_section .img_item:nth-child(16) { left: 450px !important; top: 400px !important; }
+    
+    /* 이미지 크기 축소 - 440px */
+    section.draggable_section .img_item[data-size="large"] {
+        width: 120px !important;
+        height: 80px !important;
+    }
+    
+    section.draggable_section .img_item[data-size="medium"] {
+        width: 100px !important;
+        height: 67px !important;
+    }
+    
+    section.draggable_section .img_item[data-size="small"] {
+        width: 70px !important;
+        height: 47px !important;
+    }
+    
+    section.draggable_section .episode_scroll_container {
+        padding: 0;
+        gap: 16px;
+    }
+    
+    section.draggable_section .episode_card {
+        min-width: 240px;
+        height: 360px;
+    }
+    
+    section.draggable_section .episode_card_image {
         height: 180px;
     }
     
-    section.episode .episode_content {
+    section.draggable_section .episode_card_content {
         padding: 14px;
     }
     
-    section.episode .episode_number {
+    section.draggable_section .episode_card_number {
         font-size: 28px;
-        margin-bottom: 10px;
     }
     
-    section.episode .episode_title {
-        font-size: 16px;
-        margin-bottom: 8px;
+    section.draggable_section .episode_card_title {
+        font-size: 14px;
+        margin-top: 6px;
     }
     
-    section.episode .episode_description {
+    section.draggable_section .episode_card_description {
         font-size: 12px;
         line-height: 1.5;
     }
     
-    section.episode .episode_thumbnail {
-        height: 150px;
-    }
-    
-    /* ============ DRAGGABLE SECTION ============ */
-    section.draggable_section {
-        padding: 60px 0;
-        perspective: 600px;
-        min-height: 400px;
-    }
-    
-    section.draggable_section h2 {
-        font: var(--font-440-headline-30);
-        margin-bottom: 32px;
-        padding: 0 30px;
-    }
-    
-    section.draggable_section .images_frame {
-        width: 800px;
-        height: 600px;
-        transform: translate(-50%, -50%) scale(0.5);
-    }
-    
-    /* 이미지 아이템 크기 조정 - 모바일 */
-    section.draggable_section .img_item[data-size="340x227"],
-    section.draggable_section .img_item[data-size="340x226"] {
-        width: 170px;
-        height: 113px;
-    }
-    
-    section.draggable_section .img_item[data-size="280x187"] {
-        width: 140px;
-        height: 93px;
-    }
-    
-    section.draggable_section .img_item[data-size="200x133"] {
-        width: 100px;
-        height: 67px;
-    }
-    
     /* ============ BEHIND VIDEO SECTION ============ */
+    /* 440px 이하: sticky 해제 */
+    .behind_video_wrapper {
+        height: auto !important;
+    }
+    
     section.behind_video {
-        padding: 60px 30px;
+        position: static !important;
+        height: auto !important;
+        padding: 0 30px;
+        margin-top: 80px;
+        margin-bottom: 80px;
     }
     
     section.behind_video h2 {
-        font: var(--font-440-headline-30);
-        margin-bottom: 32px;
+        font-size: 30px;
+        margin-bottom: 30px;
     }
     
+    /* 모바일 - 세로 나열 방식 */
     section.behind_video .stack_container {
-        height: 400px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
     }
     
-    /* 활성 아이템 - 세로 배치 */
-    section.behind_video .video_item.active {
+    /* 모든 아이템 표시 - 스택 제거 */
+    section.behind_video .video_item {
+        position: static;
+        transform: none;
+        opacity: 1;
+        display: flex;
         flex-direction: column;
         width: 100%;
         max-width: 100%;
-        height: auto;
+        cursor: default;
     }
     
-    section.behind_video .video_item.active .video_thumbnail {
+    section.behind_video .video_item.active,
+    section.behind_video .video_item.top,
+    section.behind_video .video_item.bottom {
+        display: flex;
+        position: static;
+        transform: none;
+    }
+    
+    section.behind_video .video_thumbnail {
         width: 100%;
         height: 200px;
     }
     
-    section.behind_video .video_item.active .video_textbox {
+    section.behind_video .video_textbox {
         width: 100%;
         height: auto;
         min-height: 140px;
         padding: 20px;
-    }
-    
-    /* 비활성 아이템 숨김 */
-    section.behind_video .video_item.top,
-    section.behind_video .video_item.bottom {
-        display: none;
+        background: rgba(0, 0, 0, 0.9);
     }
     
     section.behind_video .video_title {
-        font-size: 16px;
+        font-size: 18px;
         margin-bottom: 10px;
     }
     
     section.behind_video .video_description {
-        font-size: 11px;
-        line-height: 1.4;
-    }
-    
-    section.behind_video .video_pagination {
-        font-size: 14px;
+        font-size: 12px;
+        line-height: 1.6;
     }
     
     /* ============ CHAT EVENT SECTION ============ */
     section.chat_event_section {
         width: 100%;
         height: auto;
-        min-height: 700px;
-        margin: 100px 0 0;
+        margin: 80px 0 0;
     }
     
     section.chat_event_section .header_fixed {

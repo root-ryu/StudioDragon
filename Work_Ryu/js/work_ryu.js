@@ -1,16 +1,21 @@
 /* episode */
-// Episode 섹션 드래그 스크롤
+// Episode 섹션 드래그 스크롤 및 반응형 네비게이션
 window.addEventListener('DOMContentLoaded', function() {
     const slider = document.querySelector('.episode_scroll_container');
     
     if (!slider) return;
     
+    // 반응형 체크 함수
+    function isMobile() {
+        return window.innerWidth < 1024;
+    }
+    
     let isDown = false;
     let startX;
     let scrollLeft;
 
-    // 기본 스크롤 동작을 auto로 설정
-    slider.style.scrollBehavior = 'auto';
+    // 기본 스크롤 동작
+    // slider.style.scrollBehavior는 CSS에서 제어
 
     // 이미지 드래그 방지
     const images = slider.querySelectorAll('img');
@@ -23,6 +28,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 
     slider.addEventListener('mousedown', function(e) {
+        // 모든 화면에서 드래그 활성화
         isDown = true;
         slider.classList.add('grabbing');
         startX = e.pageX;
@@ -43,15 +49,15 @@ window.addEventListener('DOMContentLoaded', function() {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX;
-        const walk = (x - startX) * 1.5;
+        const walk = (x - startX) * 2; // 부드러운 드래그
         slider.scrollLeft = scrollLeft - walk;
     });
 
     // 휠 이벤트로 좌우 스크롤
     slider.addEventListener('wheel', function(e) {
         const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
-        const isAtEnd = slider.scrollLeft >= maxScrollLeft - 10;
-        const isAtStart = slider.scrollLeft <= 10;
+        const isAtEnd = slider.scrollLeft >= maxScrollLeft - 1;
+        const isAtStart = slider.scrollLeft <= 1;
         
         // 끝에 도달했고 오른쪽으로 스크롤하려는 경우
         if (isAtEnd && e.deltaY > 0) {
@@ -62,23 +68,131 @@ window.addEventListener('DOMContentLoaded', function() {
         if (isAtStart && e.deltaY < 0) {
             return; // 페이지 스크롤로 넘어감
         }
+        
+        // 횡스크롤 가능할 때만 preventDefault
         e.preventDefault();
-        slider.scrollLeft += e.deltaY * 1.5;
+        
+        // 부드러운 횡스크롤
+        slider.scrollLeft += e.deltaY;
     });
+    
+    // ===== 반응형 네비게이션 =====
+    const indicator = document.getElementById('episodeIndicator');
+    const dots = indicator ? indicator.querySelectorAll('.swipe_dot') : [];
+    const prevBtn = document.getElementById('episodePrev');
+    const nextBtn = document.getElementById('episodeNext');
+    
+    // 화살표 클릭 - 카드 여러 개 이동
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', function() {
+            const currentWidth = window.innerWidth;
+            const cardWidth = currentWidth >= 1024 ? 266 : 152;
+            const gap = currentWidth >= 1024 ? 28 : 12;
+            const cardsToMove = currentWidth >= 1024 ? 2 : 1;
+            const scrollAmount = (cardWidth + gap) * cardsToMove;
+            
+            console.log('Prev 클릭 - 화면너비:', currentWidth, '카드수:', cardsToMove, '스크롤양:', scrollAmount);
+            slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+        
+        nextBtn.addEventListener('click', function() {
+            const currentWidth = window.innerWidth;
+            const cardWidth = currentWidth >= 1024 ? 266 : 152;
+            const gap = currentWidth >= 1024 ? 28 : 12;
+            const cardsToMove = currentWidth >= 1024 ? 2 : 1;
+            const scrollAmount = (cardWidth + gap) * cardsToMove;
+            
+            console.log('Next 클릭 - 화면너비:', currentWidth, '카드수:', cardsToMove, '스크롤양:', scrollAmount);
+            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+        
+        // 화살표 활성화/비활성화
+        function updateArrowState() {
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+            
+            if (slider.scrollLeft <= 10) {
+                prevBtn.classList.add('disabled');
+            } else {
+                prevBtn.classList.remove('disabled');
+            }
+            
+            if (slider.scrollLeft >= maxScroll - 10) {
+                nextBtn.classList.add('disabled');
+            } else {
+                nextBtn.classList.remove('disabled');
+            }
+        }
+        
+        slider.addEventListener('scroll', updateArrowState);
+        updateArrowState(); // 초기 상태
+    }
+    
+    // 스와이프 인디케이터 - 1024px/440px 공통
+    if (dots.length > 0) {
+        // 스크롤 시 활성 dot 업데이트
+        slider.addEventListener('scroll', function() {
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+            const scrollPercent = (slider.scrollLeft / maxScroll) * 100;
+            
+            // 5개 dot 기준으로 활성화
+            const activeIndex = Math.min(
+                Math.floor(scrollPercent / 20),
+                dots.length - 1
+            );
+            
+            dots.forEach(function(dot, index) {
+                if (index === activeIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        });
+        
+        // dot 클릭 시 해당 위치로 스크롤
+        dots.forEach(function(dot, index) {
+            dot.addEventListener('click', function() {
+                const maxScroll = slider.scrollWidth - slider.clientWidth;
+                const targetScroll = (maxScroll / (dots.length - 1)) * index;
+                
+                slider.scrollTo({
+                    left: targetScroll,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    }
 });
+
 // 비하인드 비디오 섹션 스택
 window.addEventListener('DOMContentLoaded', function() {
-    gsap.registerPlugin(ScrollTrigger);
-    
     const section = document.querySelector('.behind_video');
+    const wrapper = document.querySelector('.behind_video_wrapper');
     const videoItems = document.querySelectorAll('.video_item');
     
     if (!section || videoItems.length === 0) return;
     
     let currentIndex = 0;
     
+    // 반응형 체크
+    function isMobile() {
+        return window.innerWidth <= 440;
+    }
+    
+    function isTablet() {
+        return window.innerWidth > 440 && window.innerWidth <= 1024;
+    }
+    
     // 초기 스택 설정
     function setStack(activeIndex) {
+        // 440px 이하에서는 스택 비활성화
+        if (isMobile()) {
+            videoItems.forEach((item) => {
+                item.classList.remove('active', 'top', 'bottom');
+            });
+            return;
+        }
+        
         videoItems.forEach((item, index) => {
             // 모든 클래스 제거
             item.classList.remove('active', 'top', 'bottom');
@@ -99,279 +213,560 @@ window.addEventListener('DOMContentLoaded', function() {
     // 초기 설정
     setStack(0);
     
-    // ScrollTrigger - 3개 전환 후 자연스럽게 해제
-    ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: "+=1500",
-        pin: true,
-        scrub: 1,
-        onUpdate: (self) => {
-            const progress = self.progress;
+    // 스크롤 이벤트 핸들러
+    let ticking = false;
+    let scrollHandler = null;
+    
+    // 스크롤 이벤트 함수
+    function handleScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const rect = wrapper.getBoundingClientRect();
+                
+                // wrapper가 화면에 있고, 섹션이 sticky 상태일 때
+                if (rect.top <= 0 && rect.bottom > window.innerHeight) {
+                    // wrapper 내부에서 스크롤 진행도 계산
+                    const scrolledInWrapper = Math.abs(rect.top);
+                    const totalScrollableHeight = rect.height - window.innerHeight;
+                    const progress = scrolledInWrapper / totalScrollableHeight;
+                    
+                    // 3단계 구분
+                    let targetIndex;
+                    if (progress < 0.33) {
+                        targetIndex = 0;
+                    } else if (progress < 0.66) {
+                        targetIndex = 1;
+                    } else {
+                        targetIndex = 2;
+                    }
+                    
+                    // 인덱스 변경 시에만 스택 재배치
+                    if (targetIndex !== currentIndex) {
+                        currentIndex = targetIndex;
+                        setStack(targetIndex);
+                    }
+                }
+                
+                ticking = false;
+            });
             
-            // 3단계 구분
-            let targetIndex;
-            if (progress < 0.33) {
-                targetIndex = 0;
-            } else if (progress < 0.66) {
-                targetIndex = 1;
+            ticking = true;
+        }
+    }
+    
+    // 스크롤 이벤트 등록/해제 함수
+    function setupScrollEvent() {
+        // 1024px 초과에서만 스크롤 이벤트 활성화
+        if (window.innerWidth > 1024 && wrapper) {
+            if (!scrollHandler) {
+                scrollHandler = handleScroll;
+                window.addEventListener('scroll', scrollHandler);
+            }
+        } else {
+            // 1024px 이하에서는 스크롤 이벤트 제거
+            if (scrollHandler) {
+                window.removeEventListener('scroll', scrollHandler);
+                scrollHandler = null;
+            }
+        }
+    }
+    
+    // 초기 스크롤 이벤트 설정
+    setupScrollEvent();
+    
+    // 리사이즈 시 스크롤 이벤트 재설정 + 스택 재설정
+    window.addEventListener('resize', function() {
+        setupScrollEvent();
+        setStack(currentIndex);
+    });
+}); // END: Behind Video Section DOMContentLoaded
+
+// ============================================================
+// 드래그 이미지 섹션 - Matter.js 물리 엔진
+// ============================================================
+window.addEventListener('DOMContentLoaded', function() {
+const draggableSection = document.querySelector('.draggable_section');
+const draggableImages = document.querySelectorAll('.draggable_section .img_item');
+const imageModal = document.querySelector('.image_modal');
+const imageModalImg = imageModal ? imageModal.querySelector('.modal_content img') : null;
+const imageModalClose = imageModal ? imageModal.querySelector('.modal_close') : null;
+
+if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefined') {
+    
+    // ==================== 반응형 체크 ====================
+    function isMobileDrag() {
+        return window.innerWidth <= 1024;
+    }
+    
+    // ==================== 전역 변수 선언 (먼저!) ====================
+    let draggedItem = null;
+    
+    // ==================== 커스텀 커서 (데스크탑만) ====================
+    const customCursor = document.createElement('div');
+    customCursor.className = 'draggable-cursor';
+    customCursor.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110">
+            <defs>
+                <filter id="drag-shadow">
+                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+                </filter>
+            </defs>
+            <circle cx="55" cy="55" r="50" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="2" filter="url(#drag-shadow)"/>
+            <g transform="translate(55, 25)"><path d="M 0 0 L -4 6 L 4 6 Z" fill="white" opacity="0.95"/></g>
+            <g transform="translate(55, 85)"><path d="M 0 0 L -4 -6 L 4 -6 Z" fill="white" opacity="0.95"/></g>
+            <g transform="translate(25, 55)"><path d="M 0 0 L 6 -4 L 6 4 Z" fill="white" opacity="0.95"/></g>
+            <g transform="translate(85, 55)"><path d="M 0 0 L -6 -4 L -6 4 Z" fill="white" opacity="0.95"/></g>
+            <text x="55" y="50" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">MOVE</text>
+            <text x="55" y="64" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">CLICK</text>
+        </svg>
+    `;
+    
+    // 데스크탑에서만 커서 추가
+    if (!isMobileDrag()) {
+        document.body.appendChild(customCursor);
+    }
+    
+    let cursorMouseX = 0, cursorMouseY = 0, cursorFollowX = 0, cursorFollowY = 0;
+    let isInsideSection = false;
+    
+    function animateCursor() {
+        if (isMobileDrag()) return; // 모바일에서는 커서 애니메이션 중단
+        
+        const easing = draggedItem ? 1 : 0.4;
+        
+        cursorFollowX += (cursorMouseX - cursorFollowX) * easing;
+        cursorFollowY += (cursorMouseY - cursorFollowY) * easing;
+        customCursor.style.left = `${cursorFollowX}px`;
+        customCursor.style.top = `${cursorFollowY}px`;
+        requestAnimationFrame(animateCursor);
+    }
+    
+    if (!isMobileDrag()) {
+        animateCursor();
+    }
+    
+    // 데스크탑 - 커서 이벤트
+    if (!isMobileDrag()) {
+        draggableSection.addEventListener('mousemove', (e) => {
+            cursorMouseX = e.clientX;
+            cursorMouseY = e.clientY;
+            
+            if (!isInsideSection) {
+                isInsideSection = true;
+                customCursor.style.display = 'block';
+                customCursor.style.opacity = '1';
+            }
+        });
+        
+        draggableSection.addEventListener('mouseleave', (e) => {
+            isInsideSection = false;
+            customCursor.style.opacity = '0';
+            setTimeout(() => {
+                if (!isInsideSection) {
+                    customCursor.style.display = 'none';
+                }
+            }, 300);
+        });
+        
+        // 전역 마우스 이동 감지 (실제 콘텐츠 가시성 기반)
+        document.addEventListener('mousemove', (e) => {
+            // ===== 근본 해결: Behind Video 가시성 체크 =====
+            const behindVideoSection = document.querySelector('.behind_video');
+            if (behindVideoSection) {
+                const behindRect = behindVideoSection.getBoundingClientRect();
+                // Behind Video가 화면 상단 절반 이상 보이면 커서 숨김
+                const isBehindVisible = behindRect.top < window.innerHeight * 0.5;
+                
+                if (isBehindVisible) {
+                    if (isInsideSection) {
+                        isInsideSection = false;
+                        customCursor.style.opacity = '0';
+                        setTimeout(() => {
+                            if (!isInsideSection) {
+                                customCursor.style.display = 'none';
+                            }
+                        }, 300);
+                    }
+                    return; // Behind Video가 보이면 커서 로직 중단
+                }
+            }
+            
+            // ===== 기존 로직: Draggable 영역 감지 =====
+            const rect = draggableSection.getBoundingClientRect();
+            const isInside = (
+                e.clientX >= rect.left &&
+                e.clientX <= rect.right &&
+                e.clientY >= rect.top &&
+                e.clientY <= rect.bottom
+            );
+            
+            if (isInside) {
+                cursorMouseX = e.clientX;
+                cursorMouseY = e.clientY;
+                
+                if (!isInsideSection) {
+                    isInsideSection = true;
+                    customCursor.style.display = 'block';
+                    customCursor.style.opacity = '1';
+                }
             } else {
-                targetIndex = 2;
+                // 섹션 밖에 있을 때 커서 숨김
+                if (isInsideSection) {
+                    isInsideSection = false;
+                    customCursor.style.opacity = '0';
+                    setTimeout(() => {
+                        if (!isInsideSection) {
+                            customCursor.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            }
+        });
+    }
+    
+    // ==================== 1920px: ScrollTrigger 핀 고정 (데스크탑만) ====================
+    if (!isMobileDrag()) {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        ScrollTrigger.create({
+            trigger: draggableSection,
+            start: "top top",
+            end: "+=200%",
+            pin: true,
+            pinSpacing: true, // true로 변경: 물리적으로 다음 섹션을 밀어냄
+            anticipatePin: 1,
+            markers: false
+        });
+    }
+    
+    // ==================== Fade In 애니메이션 ====================
+    draggableImages.forEach((img, i) => {
+        gsap.to(img, {
+            opacity: 1,
+            duration: 0.8,
+            delay: i * 0.08,
+            ease: "power2.out"
+        });
+    });
+    
+    // ==================== Matter.js 초기화 (1920px만) ====================
+    if (!isMobileDrag()) {
+        const { Engine, World, Bodies, Body, Events } = Matter;
+    
+    const sectionRect = draggableSection.getBoundingClientRect();
+    const engine = Engine.create();
+    engine.world.gravity.y = 0; // 중력 없음
+    
+    // 벽 생성
+    const wallThickness = 50;
+    const wallOptions = { 
+        isStatic: true, 
+        restitution: 0.5,  // 벽 반발력
+        friction: 0.1 
+    };
+    
+    const walls = [
+        Bodies.rectangle(sectionRect.width / 2, -wallThickness / 2, sectionRect.width, wallThickness, wallOptions), // 상단
+        Bodies.rectangle(sectionRect.width / 2, sectionRect.height + wallThickness / 2, sectionRect.width, wallThickness, wallOptions), // 하단
+        Bodies.rectangle(-wallThickness / 2, sectionRect.height / 2, wallThickness, sectionRect.height, wallOptions), // 좌측
+        Bodies.rectangle(sectionRect.width + wallThickness / 2, sectionRect.height / 2, wallThickness, sectionRect.height, wallOptions) // 우측
+    ];
+    
+    World.add(engine.world, walls);
+    
+    // 이미지 바디 생성
+    const imageBodies = [];
+    
+    draggableImages.forEach((imgElement) => {
+        // DOM 초기 위치 저장 (transform 없는 상태)
+        gsap.set(imgElement, { x: 0, y: 0, rotation: 0 });
+        
+        const rect = imgElement.getBoundingClientRect();
+        const x = rect.left - sectionRect.left + rect.width / 2;
+        const y = rect.top - sectionRect.top + rect.height / 2;
+        
+        const body = Bodies.rectangle(x, y, rect.width, rect.height, {
+            restitution: 0.5,      // 객체 간 반발력 (0.4 → 0.5 증가)
+            friction: 0.15,        // 마찰력 (0.2 → 0.15 감소, 더 미끄럽게)
+            frictionAir: 0.03,     // 공기 저항 (0.05 → 0.03 감소, 더 오래 움직임)
+            density: 0.001,
+            frictionStatic: 0.4,   // 정적 마찰 (0.5 → 0.4 감소)
+            slop: 0.05             // 충돌 허용 오차 (떨림 방지)
+        });
+        
+        World.add(engine.world, body);
+        
+        imageBodies.push({
+            element: imgElement,
+            body: body,
+            isDragging: false,
+            width: rect.width,
+            height: rect.height,
+            initialLeft: rect.left - sectionRect.left,
+            initialTop: rect.top - sectionRect.top
+        });
+    });
+    
+    // ==================== 드래그 처리 ====================
+    let dragStartTime = 0;
+    let dragStartPos = { x: 0, y: 0 };
+    let mouseOffset = { x: 0, y: 0 };
+    let lastMousePos = { x: 0, y: 0 };
+    let lastMoveTime = 0;
+    let velocityTracker = { x: 0, y: 0 };
+    
+    // 마우스 다운 (데스크탑만)
+    draggableSection.addEventListener('mousedown', (e) => {
+        // 1024px 이하에서는 드래그 비활성화
+        if (isMobileDrag()) return;
+        
+        const rect = draggableSection.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        
+        // 클릭한 위치의 객체 찾기
+        for (let i = imageBodies.length - 1; i >= 0; i--) {
+            const item = imageBodies[i];
+            const elemRect = item.element.getBoundingClientRect();
+            const elemX = elemRect.left - rect.left;
+            const elemY = elemRect.top - rect.top;
+            
+            if (mouseX >= elemX && mouseX <= elemX + elemRect.width &&
+                mouseY >= elemY && mouseY <= elemY + elemRect.height) {
+                
+                draggedItem = item;
+                dragStartTime = Date.now();
+                dragStartPos = { x: mouseX, y: mouseY };
+                
+                // 마우스와 바디 중심의 오프셋
+                mouseOffset = {
+                    x: mouseX - item.body.position.x,
+                    y: mouseY - item.body.position.y
+                };
+                
+                item.isDragging = true;
+                
+                // 드래그 중에는 static으로 설정 (물리 영향 받지 않음)
+                Body.setStatic(item.body, true);
+                
+                gsap.set(item.element, { zIndex: 100 });
+                
+                e.preventDefault();
+                break;
+            }
+        }
+    });
+    
+    // 마우스 무브 (데스크탑만)
+    draggableSection.addEventListener('mousemove', (e) => {
+        if (!draggedItem || isMobileDrag()) return;
+        
+        const rect = draggableSection.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        const now = performance.now();
+        
+        // 실시간 속도 계산 (마지막 움직임 기준)
+        if (lastMoveTime > 0) {
+            const dt = now - lastMoveTime;
+            if (dt > 0) {
+                velocityTracker.x = (mouseX - lastMousePos.x) / dt * 16; // 60fps 기준
+                velocityTracker.y = (mouseY - lastMousePos.y) / dt * 16;
+            }
+        }
+        
+        lastMousePos = { x: mouseX, y: mouseY };
+        lastMoveTime = now;
+        
+        // 새 위치 계산
+        const newX = mouseX - mouseOffset.x;
+        const newY = mouseY - mouseOffset.y;
+        
+        // 경계 내로 제한
+        const clampedX = Math.max(
+            draggedItem.width / 2,
+            Math.min(sectionRect.width - draggedItem.width / 2, newX)
+        );
+        const clampedY = Math.max(
+            draggedItem.height / 2,
+            Math.min(sectionRect.height - draggedItem.height / 2, newY)
+        );
+        
+        // velocity를 0으로 설정하여 물리 영향 완전 차단
+        Body.setVelocity(draggedItem.body, { x: 0, y: 0 });
+        Body.setAngularVelocity(draggedItem.body, 0);
+        Body.setPosition(draggedItem.body, { x: clampedX, y: clampedY });
+        
+        e.preventDefault();
+    });
+    
+    // 마우스 업
+    function handleMouseUp(e) {
+        if (!draggedItem) return;
+        
+        const dragDuration = Date.now() - dragStartTime;
+        const rect = draggableSection.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        const dragDistance = Math.hypot(mouseX - dragStartPos.x, mouseY - dragStartPos.y);
+        
+        // 짧은 클릭 → 모달 오픈
+        if (dragDuration < 200 && dragDistance < 5) {
+            const imgSrc = draggedItem.element.querySelector('img').src;
+            imageModalImg.src = imgSrc;
+            imageModal.classList.add('active');
+            
+            // body 참조를 미리 저장
+            const releasedBody = draggedItem.body;
+            
+            // 완전 정지
+            Body.setVelocity(releasedBody, { x: 0, y: 0 });
+            Body.setAngularVelocity(releasedBody, 0);
+            
+            // static 해제는 약간의 딜레이 후 (충격파 방지)
+            setTimeout(() => {
+                Body.setStatic(releasedBody, false);
+            }, 50);
+        }
+        // 드래그 이동 → 관성 적용
+        else if (dragDistance > 10) {
+            // 실시간 추적된 속도 사용 (마지막 움직임 기준)
+            let finalVelocityX = velocityTracker.x;
+            let finalVelocityY = velocityTracker.y;
+            
+            // 최대 속도 제한
+            const maxVelocity = 5;
+            const currentSpeed = Math.hypot(finalVelocityX, finalVelocityY);
+            
+            if (currentSpeed > maxVelocity) {
+                const scale = maxVelocity / currentSpeed;
+                finalVelocityX *= scale;
+                finalVelocityY *= scale;
             }
             
-            // 인덱스 변경 시에만 스택 재배치
-            if (targetIndex !== currentIndex) {
-                currentIndex = targetIndex;
-                setStack(targetIndex);
+            // 아주 느린 속도는 0으로 (미세 떨림 방지)
+            if (Math.abs(finalVelocityX) < 0.1) finalVelocityX = 0;
+            if (Math.abs(finalVelocityY) < 0.1) finalVelocityY = 0;
+            
+            // body 참조를 미리 저장 (setTimeout 내에서 안전하게 사용)
+            const releasedBody = draggedItem.body;
+            
+            // static 해제
+            Body.setStatic(releasedBody, false);
+            
+            // 다음 프레임에 속도 적용 (충돌 해결 후)
+            setTimeout(() => {
+                Body.setVelocity(releasedBody, { 
+                    x: finalVelocityX, 
+                    y: finalVelocityY 
+                });
+                Body.setAngularVelocity(releasedBody, 0);
+            }, 16); // 1프레임 대기
+        }
+        // 제자리 → 정지
+        else {
+            Body.setStatic(draggedItem.body, false);
+            Body.setVelocity(draggedItem.body, { x: 0, y: 0 });
+            Body.setAngularVelocity(draggedItem.body, 0);
+        }
+        
+        const releasedElement = draggedItem.element;
+        draggedItem.isDragging = false;
+        draggedItem = null;
+        
+        // 속도 추적 초기화
+        velocityTracker = { x: 0, y: 0 };
+        lastMoveTime = 0;
+        
+        setTimeout(() => {
+            gsap.set(releasedElement, { zIndex: 'auto' });
+        }, 100);
+    }
+    
+    draggableSection.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('mouseup', handleMouseUp);
+    
+    // ==================== 물리 엔진 업데이트 ====================
+    let lastTime = performance.now();
+    
+    function updatePhysics() {
+        const now = performance.now();
+        const delta = Math.min(now - lastTime, 33); // 최대 33ms로 제한 (30fps 최저)
+        lastTime = now;
+        
+        // Matter.js 업데이트
+        Engine.update(engine, delta);
+        
+        // DOM 동기화 (reflow 최소화)
+        imageBodies.forEach(({ element, body, isDragging, initialLeft, initialTop, width, height }) => {
+            // Matter.js 바디 중심점에서 DOM의 left, top 위치 계산
+            const targetX = body.position.x - width / 2;
+            const targetY = body.position.y - height / 2;
+            
+            // 초기 위치 기준으로 translate 값 계산
+            const translateX = targetX - initialLeft;
+            const translateY = targetY - initialTop;
+            
+            // 드래그 중이 아닐 때만 미세한 떨림 필터링
+            if (!isDragging) {
+                const currentTransform = element.style.transform || '';
+                const currentMatch = currentTransform.match(/translate\(([^,]+)px,\s*([^)]+)px\)/);
+                
+                if (currentMatch) {
+                    const currentX = parseFloat(currentMatch[1]);
+                    const currentY = parseFloat(currentMatch[2]);
+                    
+                    const diffX = Math.abs(translateX - currentX);
+                    const diffY = Math.abs(translateY - currentY);
+                    
+                    // 변화가 미세하면 업데이트 스킵 (떨림 방지)
+                    if (diffX < 0.5 && diffY < 0.5) return;
+                }
             }
-        }
-    });
-//드래그 이미지
-const frame = document.querySelector('.images_frame');
-const images = document.querySelectorAll('.img_item');
-const modal = document.querySelector('.image_modal');
-const modalImg = modal.querySelector('.modal_content img');
-const closeBtn = modal.querySelector('.modal_close');
-
-// Drag state tracking
-let isDragging = false;
-let velocityX = 0;
-let velocityY = 0;
-let animationId = null;
-let lastX = 0;
-let lastY = 0;
-let lastTime = 0;
-
-// Calculate 3D sphere effect for images (convex - center pops out)
-function applySphereEffect() {
-    const effectWidth = 1520; // 1520px area for effect
-    const effectHeight = 1464;
-    const frameCenterX = effectWidth / 2;
-    const frameCenterY = effectHeight / 2;
-    
-    images.forEach(imgItem => {
-        const imgElement = imgItem.querySelector('img');
-        
-        // Calculate position relative to 1520px center
-        const imgCenterX = imgItem.offsetLeft + imgItem.offsetWidth / 2;
-        const imgCenterY = imgItem.offsetTop + imgItem.offsetHeight / 2;
-        
-        // Distance from center (normalized to 1520px width)
-        const distX = (imgCenterX - frameCenterX) / frameCenterX;
-        const distY = (imgCenterY - frameCenterY) / frameCenterY;
-        const distance = Math.sqrt(distX * distX + distY * distY);
-        
-        // Calculate Z-depth based on distance from center (CONVEX - positive for bulge)
-        const maxDepth = 60; // Reduced from 150 (less bulge)
-        const zDepth = (1 - distance) * maxDepth; // Center is max, edges are min
-        
-        // Calculate rotation for sphere curvature
-        const rotateY = distX * -5; // Reduced from -12 (less rotation)
-        const rotateX = distY * 5; // Reduced from 12
-        
-        // Calculate scale (center appears slightly larger)
-        const scale = 1 + ((1 - distance) * 0.03); // Reduced from 0.08
-        
-        // Apply transform to img element inside .img_item
-        imgElement.style.transform = `
-            translateZ(${zDepth}px) 
-            rotateY(${rotateY}deg) 
-            rotateX(${rotateX}deg) 
-            scale(${scale})
-        `;
-    });
-}
-
-// Apply sphere effect on load
-applySphereEffect();
-
-// Individual image floating animation
-images.forEach((imgItem, index) => {
-    // Get the img element inside .img_item
-    const imgElement = imgItem.querySelector('img');
-    
-    // Random values for each image
-    const randomX = (Math.random() - 0.5) * 10; // -5 to 5
-    const randomY = (Math.random() - 0.5) * 10;
-    const randomRotation = (Math.random() - 0.5) * 2; // -1 to 1
-    const duration = 3 + Math.random() * 2; // 3-5 seconds
-    const delay = Math.random() * 2; // 0-2 seconds delay
-    
-    // Floating animation with GSAP on the img element (preserves sphere transform)
-    gsap.to(imgElement, {
-        x: randomX,
-        y: randomY,
-        rotation: randomRotation,
-        duration: duration,
-        delay: delay,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-        overwrite: false
-    });
-    
-    // Add hover event listeners to .img_item (entire area)
-    imgItem.addEventListener('mouseenter', function() {
-        this.style.setProperty('--hover-opacity', '0');
-        const img = this.querySelector('img');
-        if (img) img.style.filter = 'brightness(1)';
-    });
-    
-    imgItem.addEventListener('mouseleave', function() {
-        this.style.setProperty('--hover-opacity', '0.3');
-        const img = this.querySelector('img');
-        if (img) img.style.filter = 'brightness(0.7)';
-    });
-});
-
-// Draggable setup - dragClickables: false prevents images from being dragged
-const draggableInstance = Draggable.create(frame, {
-    type: "x,y",
-    edgeResistance: 0.65,
-    dragClickables: false, // Images won't be dragged
-    bounds: {
-        minX: -1000, // 좌측으로 1000px
-        maxX: 1000,  // 우측으로 1000px (대칭)
-        minY: -500,  // 상단으로 500px
-        maxY: 500    // 하단으로 500px (대칭)
-    },
-    onPress: function() {
-        // Stop animation when user grabs
-        if (animationId) {
-            cancelAnimationFrame(animationId);
-        }
-        velocityX = 0;
-        velocityY = 0;
-        lastX = this.x;
-        lastY = this.y;
-        lastTime = Date.now();
-    },
-    onDragStart: function() {
-        isDragging = true;
-        frame.classList.add('active');
-        lastX = this.x;
-        lastY = this.y;
-        lastTime = Date.now();
-    },
-    onDrag: function() {
-        isDragging = true;
-        // Calculate velocity manually
-        const currentTime = Date.now();
-        const deltaTime = currentTime - lastTime;
-        
-        if (deltaTime > 0) {
-            const deltaX = this.x - lastX;
-            const deltaY = this.y - lastY;
             
-            velocityX = (deltaX / deltaTime) * 4; // Reduced from 8 (even slower)
-            velocityY = (deltaY / deltaTime) * 4;
-            
-            lastX = this.x;
-            lastY = this.y;
-            lastTime = currentTime;
-        }
-    },
-    onDragEnd: function() {
-        frame.classList.remove('active');
+            // transform 직접 설정 (드래그 중에도 항상 업데이트!)
+            element.style.transform = `translate(${translateX}px, ${translateY}px) rotate(0deg)`;
+        });
         
-        // Start animation with current velocity
-        isDragging = false;
-        console.log('Drag ended with velocity:', velocityX, velocityY);
-        
-        // Start animation loop
-        if (Math.abs(velocityX) > 0.1 || Math.abs(velocityY) > 0.1) {
-            animate();
-        }
+        requestAnimationFrame(updatePhysics);
     }
-})[0];
-
-// Animation loop for continuous drift (defined after draggableInstance)
-function animate() {
-    if (!isDragging && (Math.abs(velocityX) > 0.01 || Math.abs(velocityY) > 0.01)) {
-        // Get current position from Draggable instance
-        let currentX = draggableInstance.x;
-        let currentY = draggableInstance.y;
-        
-        // Apply velocity
-        currentX += velocityX;
-        currentY += velocityY;
-        
-        // Check boundaries and bounce
-        if (currentX < -1000) {
-            currentX = -1000;
-            velocityX *= -0.7;
-        } else if (currentX > 1000) {
-            currentX = 1000;
-            velocityX *= -0.7;
-        }
-        
-        if (currentY < -500) {
-            currentY = -500;
-            velocityY *= -0.7;
-        } else if (currentY > 500) {
-            currentY = 500;
-            velocityY *= -0.7;
-        }
-        
-        // Update position
-        gsap.set(frame, { x: currentX, y: currentY });
-        draggableInstance.update();
-        
-        // Continue animation
-        animationId = requestAnimationFrame(animate);
-    } else {
-        // Stop animation when velocity is too low
-        velocityX = 0;
-        velocityY = 0;
+    
+    updatePhysics();
+    
+    } // END: if (!isMobileDrag()) - Matter.js 초기화 블록
+    
+    // ==================== 이미지 클릭 모달 (모든 화면) ====================
+    // 1024/440에서는 클릭만 활성화
+    if (isMobileDrag()) {
+        draggableImages.forEach((imgElement) => {
+            imgElement.addEventListener('click', (e) => {
+                const imgSrc = imgElement.querySelector('img').src;
+                imageModalImg.src = imgSrc;
+                imageModal.classList.add('active');
+                e.preventDefault();
+            });
+        });
     }
-}
-
-// Image click to modal - attach to .img_item (entire area)
-images.forEach(imgItem => {
-    imgItem.addEventListener('click', (e) => {
-        // Prevent click if dragging
-        if (isDragging) {
-            e.preventDefault();
-            e.stopPropagation();
-            return;
-        }
-        
-        e.stopPropagation();
-        const imgSrc = imgItem.querySelector('img').src;
-        modalImg.src = imgSrc;
-        modal.classList.add('active');
-        draggableInstance.disable(); // Pause drag when modal open
+    
+    // ==================== 모달 닫기 ====================
+    imageModalClose.addEventListener('click', () => {
+        imageModal.classList.remove('active');
     });
     
-    // Prevent default drag behavior on images
-    imgItem.addEventListener('mousedown', (e) => {
-        e.stopPropagation();
+    imageModal.addEventListener('click', (e) => {
+        if (e.target === imageModal) {
+            imageModal.classList.remove('active');
+        }
     });
-});
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+            imageModal.classList.remove('active');
+        }
+    });
+} // END: if draggableSection
 
-// Close modal
-closeBtn.addEventListener('click', () => {
-    modal.classList.remove('active');
-    draggableInstance.enable(); // Resume drag
-});
-
-// Close on modal background click
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.classList.remove('active');
-        draggableInstance.enable();
-    }
-});
-
-// ESC key to close modal
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-        modal.classList.remove('active');
-        draggableInstance.enable();
-    }
-});
-
-}); // END: 비하인드 비디오 섹션 DOMContentLoaded
+}); // END: Draggable Section DOMContentLoaded
 
 // ============ COMMUNITY CHAT EVENT SECTION ============
 window.addEventListener('DOMContentLoaded', function() {

@@ -1,8 +1,33 @@
 @charset "utf-8";
 
-main{
+.mirror{
+  -webkit-box-reflect: below 0px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.5) 100%);
+  pointer-events: none;
+  user-select: none;
+}
+
+main {
   position: relative;
   width: 100%;
+}
+
+/* ASAP 스크롤 애니메이션 기본 설정 */
+[data-asap] {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: var(--asap-duration, 600ms);
+  transition-timing-function: var(--asap-easing, ease);
+  transition-delay: var(--asap-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-asap].asap-fade-up {
+  transform: translate3d(0, 40px, 0);
+}
+
+[data-asap].asap-animate {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .title h2 {
@@ -16,16 +41,15 @@ main{
 /* 히어로 텍스트 */
 .hero {
   width: 100%;
-  max-width: 1920px;
-  margin-top: 200px;
+  margin-top: 180px;
   padding: 239px 0;
-  position: relative;
   background: linear-gradient(transparent 20%, #fff 40%);
 }
 
-.hero .inner{
+.hero .inner {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 .hero li {
@@ -52,18 +76,31 @@ main{
 
 .hero .imgbox {
   position: absolute;
-  right: 200px;
-  bottom: 300px;
+  right: 0px;
+  bottom: 0px;
 }
 
 .smiling-emoji {
   background: url("../asset/smiling.png") center/cover;
   width: 280px;
   aspect-ratio: 1;
-  animation: floating forwards infinite 3s;
+  animation: floating-40 forwards infinite 3s;
 }
 
-@keyframes floating {
+@keyframes floating-20 {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes floating-40 {
   0% {
     transform: translateY(0px);
   }
@@ -100,6 +137,7 @@ main{
   top: 0;
   left: 0px;
   background: url(../../moon/asset/goldcup.png) center/cover;
+  animation: floating-20 forwards infinite 5s;
 }
 
 .contest-winner .title {
@@ -268,14 +306,17 @@ main{
 
 /* 진행중인 공모전 */
 .running-contest {
+  width: 100%;
+  color: #fff;
   padding: 100px 80px 140px 80px;
 }
 
 .running-contest .title {
- margin-bottom: 42px;
+  margin-bottom: 42px;
 }
 
-.running-contest h2, .community h2 {
+.running-contest h2,
+.community h2 {
   color: var(--Bcolor);
 }
 
@@ -464,6 +505,11 @@ main{
   overflow: hidden;
 }
 
+.creativeGallery .inner {
+  position: relative;
+  overflow: hidden;
+}
+
 .creativeGallery .titlebox {
   display: flex;
   flex-direction: column;
@@ -474,8 +520,7 @@ main{
 
 .creativeGallery .titlebox .title {}
 
-.creativeGallery .title h2 {
-}
+.creativeGallery .title h2 {}
 
 .creativeGallery .titlebox .category {
   display: flex;
@@ -524,6 +569,7 @@ main{
 /* 팬아트 카테고리 */
 .creativeGallery .fanarts {
   width: 100%;
+
 }
 
 .creativeGallery .fanarts .wrap {
@@ -531,13 +577,15 @@ main{
   display: flex;
   flex-direction: column;
   gap: 68px;
+  /* background: red; */
+  overflow-x: hidden;
 }
 
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  gap: 60px;
+  gap: 60px; */
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper li.swiper-slide {
@@ -547,9 +595,10 @@ main{
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .fan-img-wrap {
+  width: 823px;
   display: flex;
   flex-direction: column;
-  position: relative;
+  /* position: relative; */
 }
 
 .creativeGallery .fanarts .img_popular ul.swiper-wrapper .fan-img {
@@ -557,14 +606,15 @@ main{
   border-radius: 20px;
   width: 823px;
   height: 523px;
-  overflow: hidden;
   aspect-ratio: 823/523;
-  -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
   pointer-events: none;
-  user-select: none;
+  user-select: none; */
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .swiper-slide .info-overlay {
+  border-radius: 20px;
+  overflow: hidden;
   width: 100%;
   height: 100%;
   padding: 27px 34px;
@@ -590,14 +640,14 @@ main{
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .subtitle {
   display: flex;
   flex-direction: column;
-  position: relative;
+  /* position: relative; */
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .subtitle li {
   color: var(--Wcolor);
   text-align: left;
   font: 300 24px/130% "Assistant", sans-serif;
-  position: relative;
+  /* position: relative; */
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .subtitle li b {
@@ -608,11 +658,6 @@ main{
   display: flex;
   flex-direction: row;
   gap: 12px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
   color: #ffffff;
   text-align: left;
   font-family: "Assistant-SemiBold", sans-serif;
@@ -621,11 +666,13 @@ main{
   font-weight: 600;
 }
 
+
 .creativeGallery .fanarts .img_new .swiper ul.swiper-wrapper {
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
+
 
 
 .creativeGallery .fanarts .img_new ul.swiper-wrapper .fan-img {
@@ -637,13 +684,14 @@ main{
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
-  height: 382.87px;
-  position: relative;
+  width: 602px;
+  height: 382px;
+  /* position: relative; */
   overflow: hidden;
-  aspect-ratio: 602/382.87;
-  -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  aspect-ratio: 602/382;
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
   pointer-events: none;
-  user-select: none;
+  user-select: none; */
 }
 
 .fanarts .img_popular .swiper-pagination {
@@ -655,9 +703,10 @@ main{
 .fanarts .img_new .swiper-pagination {
   position: static;
 }
+
 /* 공통 페이지네이션 */
 .swiper-pagination-bullet {
-  background: rgba(245, 245, 245, 0.4);
+  background: rgba(245, 245, 245, 1);
   transition: all 0.5s ease 0s;
   border-radius: 8px;
 }
@@ -668,27 +717,28 @@ main{
 }
 
 /* 갤러리 비디오 카테고리 */
-.creativeGallery .fanvideos{
+.creativeGallery .fanvideos {
   width: 100%;
 }
 
-.creativeGallery .fanvideos .wrap{
-  width: 100%;
+.creativeGallery .fanvideos .wrap {
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   gap: 100px;
 }
 
 .creativeGallery .fanvideos ul.swiper-wrapper {
-  display: flex;
-  flex-direction: row;
-  gap: 140px;
+  /*   display: flex;
+  flex-direction: row; */
+  /* gap: 140px; */
 }
 
 .creativeGallery .fanvideos ul.swiper-wrapper .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 376px;
 }
 
 .creativeGallery .fanvideos ul.swiper-wrapper .fan-video-wrap {
@@ -697,30 +747,32 @@ main{
   position: relative;
 }
 
-.creativeGallery .fanvideos .video_popular ul.swiper-wrapper iframe {
+.creativeGallery .fanvideos .video_popular ul.swiper-wrapper figure {
   border-radius: 20px;
+  overflow: hidden;
   height: 669px;
   overflow: hidden;
   aspect-ratio: 376/669;
-  -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
   pointer-events: none;
-  user-select: none;
+  user-select: none; */
 }
+
 .creativeGallery .fanvideos .video_new .swiper ul.swiper-wrapper {
   display: flex;
   flex-direction: row;
   gap: 38px;
 }
 
-.creativeGallery .fanvideos .video_new ul.swiper-wrapper iframe {
+.creativeGallery .fanvideos .video_new ul.swiper-wrapper figure {
   border-radius: 20px;
   justify-content: flex-start;
   height: 617px;
   overflow: hidden;
   aspect-ratio: 347/617;
-  -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
   pointer-events: none;
-  user-select: none;
+  user-select: none; */
 }
 
 .fanvideos .video_popular .swiper-pagination {
@@ -728,9 +780,21 @@ main{
   bottom: -30px;
   right: 0;
 }
+
 .fanvideos .video_new .swiper-pagination {
   position: static;
 }
+
+/* 비디오 대체 이미지 - 추후 수정 */
+
+.creativeGallery .fanvideos .video_popular ul.swiper-wrapper figure,
+.creativeGallery .fanvideos .video_new ul.swiper-wrapper figure {
+  background: url(../../moon/asset/temp_img.webp) center/cover;
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  pointer-events: none;
+  user-select: none; */
+}
+
 /* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide{
   width: auto;
 } */
@@ -761,44 +825,60 @@ main{
 } */
 
 /* 커뮤니티 섹션 */
-.community{
+.community {
   width: 100%;
+  color: #fff;
   padding: 200px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   overflow: hidden;
 }
+.community .inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 48px;
+}
+
 /* 커뮤니티 상단 */
 .community .title {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
+
 .community .title .subtit {
-  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
+
 .community .title .subtit h4 {
   color: var(--b, #0d031c);
-  text-align: left;
+  text-align: center;
   font: var(--font-1920-title-L-40);
   text-transform: uppercase;
 }
+
 .community .title .subtit .right {
   display: flex;
   flex-direction: row;
   gap: 13px;
   align-items: center;
 }
+
 .community .title .subtit .right p {
   color: #bdbac1;
   font: var(--font-1920_1024-body-B-20);
-  
+
 }
+
 .community .title .subtit .right p.on {
   color: #4f485a;
 }
@@ -810,11 +890,15 @@ main{
   flex-direction: column;
   gap: 37px;
 }
+
+/* 커뮤니티 갤러리 */
 .community .articles .comm_gallery {
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow: visible;
 }
+
 .community .articles .comm_gallery .swiper-wrapper {
   padding-right: 200px;
   display: flex;
@@ -822,6 +906,7 @@ main{
   gap: 18px;
   align-items: center;
 }
+
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide {
   display: flex;
   position: relative;
@@ -832,7 +917,37 @@ main{
   width: 1137px;
   height: 716px;
 }
-.community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap{}
+
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative; /* info-overlay 기준 */
+}
+
+/* 커뮤니티 갤러리: 슬라이드별 개별 이미지 지정 (nth-child)
+   - 아래 background-image의 경로만 각 슬라이드에 맞게 바꿔서 사용하세요.
+   - 필요 슬라이드 수가 늘어나면 동일한 패턴으로 nth-child(n)을 추가하면 됩니다. */
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(1) {
+  /* 1번 카드 이미지 경로 */
+  background-image: url(../../moon/asset/comm-img_1.jpg);
+}
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(2) {
+  /* 2번 카드 이미지 경로 */
+  background-image: url(../../moon/asset/comm-img_2.jpg);
+}
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(3) {
+  /* 3번 카드 이미지 경로 */
+  background-image: url(../../moon/asset/comm-img_3.jpg);
+}
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(4) {
+  /* 4번 카드 이미지 경로 */
+  background-image: url(../../moon/asset/comm-img_4.jpg);
+}
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(5) {
+  /* 5번 카드 이미지 경로 */
+  background-image: url(../../moon/asset/comm-img_5.jpg);
+}
 
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide .info-overlay {
   width: 100%;
@@ -844,7 +959,7 @@ main{
   position: absolute;
   top: 0;
   left: 0;
-  /* opacity: 0; */
+  opacity: 0;
   transition: opacity 0.3s ease;
   background: linear-gradient(180deg,
       rgba(0, 0, 0, 0.8) 0%,
@@ -858,29 +973,93 @@ main{
   opacity: 1;
 }
 
-.community .articles .comm_gallery .info-overlay .num{
+.community .articles .comm_gallery .info-overlay .num {
   font: 300 72px/100% "Pretendard", sans-serif;
   position: relative;
   transform-origin: 0 0;
   transform: rotate(0deg) scale(1, 1);
 }
-.community .articles .comm_gallery .info-overlay .comm_subtit{
+
+.community .articles .comm_gallery .info-overlay .comm_subtit {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
-.community .articles .comm_gallery .info-overlay .comm_subtit em{
+
+.community .articles .comm_gallery .info-overlay .comm_subtit em {
   color: #938f98;
   font: 300 26px/100% "Assistant", sans-serif;
 }
-.community .articles .comm_gallery .info-overlay .comm_subtit span{
+
+.community .articles .comm_gallery .info-overlay .comm_subtit span {
   display: flex;
   flex-direction: row;
   gap: 12px;
 }
-.community .articles .comm_gallery .info-overlay .comm_subtit span h5{
 
+.community .articles .comm_gallery .info-overlay .comm_subtit span h5 {
+  color: var(--w, #f5f5f5);
+  text-align: left;
+  font: 400 30px/100% "Assistant", sans-serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
-.community .articles .comm_gallery .info-overlay .comm_subtit span p{
-  
+
+.community .articles .comm_gallery .info-overlay .comm_subtit span p {
+  color: var(--MainColor);
+  text-align: left;
+  font: 300 26px/100% "Assistant", sans-serif;
+}
+
+/* 커뮤니티 갤러리 하단 리스트 */
+.community ul.article_list{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.community ul.article_list li{
+  width: 100%;
+}
+
+.community ul.article_list li a{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+.community ul.article_list li .num{
+  text-align: left;
+  font: 700 26px/100% "Assistant", sans-serif;
+}
+.community ul.article_list li .comm_subtit {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  align-items: center;
+}
+.community ul.article_list li .comm_subtit em{
+   color: #bdbac1;
+  text-align: left;
+  font: 300 26px/100% "Assistant", sans-serif;
+}
+.community ul.article_list li .comm_subtit span {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+.community ul.article_list li .comm_subtit span h5 {
+  color: var(--Bcolor);
+  text-align: left;
+  font: 400 26px/100% "Assistant", sans-serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.community ul.article_list li .comm_subtit span p {
+  color: var(--MainColor);
+  text-align: left;
+  font: 300 26px/100% "Assistant", sans-serif;
 }

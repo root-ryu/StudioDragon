@@ -25,7 +25,7 @@ ul {
 
 .wrap {
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */ /* sticky 작동을 위해 주석 처리 */
 }
 
 button {
@@ -63,6 +63,7 @@ article.main_visual {
 .main_visual_background .background_image {
     position: absolute;
     width: 100%;
+    height: 100%;
     max-width: none;
     object-fit: cover;
 }
@@ -181,7 +182,6 @@ article.main_visual {
     margin: 0 auto;
     padding: 0 32px;
     display: flex;
-    justify-content: space-between;
     box-sizing: border-box;
 }
 
@@ -224,6 +224,7 @@ article.main_visual {
 
 /* Text Box Right - Dual UL Structure */
 .text_box_right {
+    width: 583px;
     display: flex;
     gap: 20px;
     padding-left: 32px;
@@ -256,10 +257,6 @@ article.main_visual {
     color: #FFFFFF;
 }
 
-.text_box_right .credit_names .credit_name_multi {
-    white-space: nowrap;
-}
-
 .text_box_right .credit_names .credit_name_multi p {
     margin: 0;
 }
@@ -269,13 +266,10 @@ article.main_visual {
 section.character {
     width: 100%;
     max-width: 1520px;
-    height: 100vh;
-    min-height: 1080px;
-    position: relative;
+    height: auto;
     margin: 0 auto;
     margin-top: 150px;
     margin-bottom: 200px;
-    padding: 20px;
 }
 
 section.character h2 {
@@ -285,18 +279,14 @@ section.character h2 {
     line-height: 1.3;
     color: white;
     text-transform: uppercase;
-    position: absolute;
-    left: 20px;
-    top: 20px;
+    margin-bottom: 50px;
 }
 
 section.character .contents {
-    position: absolute;
-    left: 2%;
-    top: 15%;
-    width: 96%;
-    height: 70%;
-    max-width: 1452px;
+    position: relative;
+    width: 100%;
+    height: 710px;
+    /* max-width: 1452px; */
 }
 
 /* Arrow Images */
@@ -309,14 +299,14 @@ section.character .contents .arrow {
 section.character .contents .arrow.arrow-1 {
     width: 4.4%;
     aspect-ratio: 64/42;
-    left: 11.4%;
+    left: 11.8%;
     top: 23.4%;
 }
 
 section.character .contents .arrow.arrow-2 {
     width: 0.55%;
     aspect-ratio: 8/150;
-    left: 21.5%;
+    left: 21.9%;
     top: 39.85%;
     min-width: 4px;
 }
@@ -324,21 +314,21 @@ section.character .contents .arrow.arrow-2 {
 section.character .contents .arrow.arrow-3 {
     width: 3.65%;
     aspect-ratio: 1/1;
-    left: 28.9%;
+    left: 29.3%;
     top: 27.5%;
 }
 
 section.character .contents .arrow.arrow-4 {
     width: 17.2%;
     aspect-ratio: 250/29;
-    left: 31.4%;
+    left: 31.8%;
     top: 15.8%;
 }
 
 section.character .contents .arrow.arrow-5 {
     width: 1.86%;
     aspect-ratio: 27/76;
-    left: 57.4%;
+    left: 57.8%;
     top: 41.7%;
     min-width: 4px;
 }
@@ -346,21 +336,21 @@ section.character .contents .arrow.arrow-5 {
 section.character .contents .arrow.arrow-6 {
     width: 24.8%;
     aspect-ratio: 360/331;
-    left: 59.8%;
+    left: 60.2%;
     top: 37.6%;
 }
 
 section.character .contents .arrow.arrow-7 {
     width: 5.17%;
     aspect-ratio: 75/45;
-    left: 64%;
+    left: 64.4%;
     top: 27.6%;
 }
 
 section.character .contents .arrow.arrow-8 {
     width: 21.4%;
     aspect-ratio: 310/40;
-    left: 64.2%;
+    left: 64.6%;
     top: 16.8%;
 }
 
@@ -389,10 +379,12 @@ section.character .contents .human:focus {
 }
 
 section.character .contents .human .human_img {
-    width: 100%;
+    width: 160px;  /* 100% → 고정 크기로 변경 */
+    height: 219px;
     aspect-ratio: 160/219;
     position: relative;
     overflow: hidden;
+    flex-shrink: 0;  /* 축소 방지 */
     /* border-radius: 8px; */
 }
 
@@ -405,7 +397,7 @@ section.character .contents .human .human_img img {
 }
 
 section.character .contents .human .human_name {
-    font-size: clamp(16px, 2vw, 30px);
+    font-size: 30px;  /* 고정 크기 사용, 미디어쿼리에서 조정 */
     text-align: center;
     text-transform: uppercase;
     line-height: 1;
@@ -414,47 +406,47 @@ section.character .contents .human .human_name {
 
 /* Human Positions */
 section.character .contents .human.human_yeo {
-    left: 0;
+    left: 0.4%;
     top: 28.3%;
 }
 
 section.character .contents .human.human_dong {
-    left: 17.1%;
+    left: 17.5%;
     top: 0;
 }
 
 section.character .contents .human.human_hyeon {
-    left: 15.4%;
+    left: 15.8%;
     top: 63.7%;
 }
 
 section.character .contents .human.human_do {
-    left: 32.6%;
+    left: 33%;
     top: 36%;
 }
 
 section.character .contents .human.human_yeon {
-    left: 52%;
+    left: 52.4%;
     top: 3.1%;
 }
 
 section.character .contents .human.human_jae {
-    left: 52.7%;
+    left: 53.1%;
     top: 54.8%;
 }
 
 section.character .contents .human.human_hye {
-    left: 71.2%;
+    left: 71.6%;
     top: 30.7%;
 }
 
 section.character .contents .human.human_myeong {
-    left: 89%;
+    left: 89.4%;
     top: 8.7%;
 }
 
 section.character .contents .human.human_sa {
-    left: 89%;
+    left: 89.4%;
     top: 63.8%;
 }
 
@@ -519,6 +511,7 @@ section.episode {
 section.draggable_section {
     margin-top: 200px;
     margin-bottom: 200px;
+    /* padding-top: 50px; */
 }
 
 section .title_wrapper {
@@ -560,6 +553,7 @@ section .title_wrapper .more_btn:hover {
     color: var(--Bcolor);
 }
 section .episode_scroll_container {
+    position: relative; /* 화살표 absolute 기준점 */
     overflow-x: auto;
     overflow-y: hidden;
     cursor: grab;
@@ -569,6 +563,7 @@ section .episode_scroll_container {
     /* Firefox */
     -ms-overflow-style: none;
     /* IE and Edge */
+    scroll-behavior: auto; /* smooth 제거 - 부드러운 스크롤 */
 }
 
 section .episode_scroll_container::-webkit-scrollbar {
@@ -588,23 +583,44 @@ section .episode_scroll_container .episode_list {
 
 
 section .episode_scroll_container .episode_list .episode_card {
-    min-width: 320px;
-    max-width: 400px;
-    width: 100%;
+    min-width: 312px;
+    max-width: 312px;
+    width: 312px;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    position: relative;
 }
 
 section .episode_scroll_container .episode_list .episode_card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    z-index: 10;
 }
 
 section .episode_scroll_container .episode_list .episode_card .episode_image {
     width: 100%;
-    height: 267px;
+    height: 261px; /* 비율 유지: 312 / 320 * 267 */
     overflow: hidden;
     border-radius: 0;
+    position: relative;
+}
+
+section .episode_scroll_container .episode_list .episode_card .episode_image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.3) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+section .episode_scroll_container .episode_list .episode_card:hover .episode_image::after {
+    opacity: 1;
 }
 
 section .episode_scroll_container .episode_list .episode_card .episode_image img {
@@ -613,6 +629,11 @@ section .episode_scroll_container .episode_list .episode_card .episode_image img
     object-fit: cover;
     object-position: center;
     display: block;
+    transition: transform 0.4s ease;
+}
+
+section .episode_scroll_container .episode_list .episode_card:hover .episode_image img {
+    transform: scale(1.05);
 }
 
 section .episode_scroll_container .episode_list .episode_card .episode_info {
@@ -650,50 +671,52 @@ section .episode_scroll_container .episode_list .episode_card .episode_info .epi
 section.draggable_section {
     position: relative;
     width: 100%;
+    max-width: 1520px;
     height: 100vh;
-    padding: 200px 0;
+    margin: 200px auto;
     overflow: hidden;
     background: 
-        linear-gradient(180deg, 
-            rgba(13,3,28,1) 0%, 
-            rgba(18,4,39,1) 15%, 
-            transparent 30%, 
-            transparent 70%, 
-            rgba(18,4,39,1) 85%, 
-            rgba(13,3,28,1) 100%
-        ),
         radial-gradient(ellipse at 50% 50%, 
-            rgba(136,63,254,0.68) 0%, 
+            rgba(136,63,254,0.3) 0%, 
             transparent 70%
         ),
         #0D031C;
-    perspective: 1200px;
     box-sizing: border-box;
 }
 
-/* Draggable Frame */
-section.draggable_section .images_frame {
+/* Image Items - 개별 사진 */
+section.draggable_section .img_item {
     position: absolute;
-    width: 2116px;
-    height: 1464px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     cursor: grab;
-    transform-style: preserve-3d;
+    transition: filter 0.3s ease;
+    will-change: transform;
+    user-select: none;
+    opacity: 0;
 }
 
-section.draggable_section .images_frame.active {
+section.draggable_section .img_item:active {
     cursor: grabbing;
 }
 
-/* Image Items */
-section.draggable_section .img_item {
-    position: absolute;
-    cursor: pointer;
-    pointer-events: auto;
-    transform-style: preserve-3d;
-}
+/* 각 이미지별 고정 초기 위치 */
+section.draggable_section .img_item:nth-child(1) { left: 50px; top: 80px; }
+section.draggable_section .img_item:nth-child(2) { left: 320px; top: 30px; }
+section.draggable_section .img_item:nth-child(3) { left: 580px; top: 120px; }
+section.draggable_section .img_item:nth-child(4) { left: 850px; top: 60px; }
+section.draggable_section .img_item:nth-child(5) { left: 1100px; top: 150px; }
+section.draggable_section .img_item:nth-child(6) { left: 1320px; top: 40px; }
+
+section.draggable_section .img_item:nth-child(7) { left: 120px; top: 280px; }
+section.draggable_section .img_item:nth-child(8) { left: 400px; top: 350px; }
+section.draggable_section .img_item:nth-child(9) { left: 680px; top: 300px; }
+section.draggable_section .img_item:nth-child(10) { left: 950px; top: 380px; }
+section.draggable_section .img_item:nth-child(11) { left: 1200px; top: 320px; }
+section.draggable_section .img_item:nth-child(12) { left: 1350px; top: 420px; }
+
+section.draggable_section .img_item:nth-child(13) { left: 80px; top: 550px; }
+section.draggable_section .img_item:nth-child(14) { left: 350px; top: 600px; }
+section.draggable_section .img_item:nth-child(15) { left: 620px; top: 520px; }
+section.draggable_section .img_item:nth-child(16) { left: 900px; top: 580px; }
 
 section.draggable_section .img_item::after {
     content: '';
@@ -702,15 +725,14 @@ section.draggable_section .img_item::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, var(--hover-opacity, 0.3));
-    transition: opacity 0.3s ease, background 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
     pointer-events: none;
     z-index: 1;
 }
 
 section.draggable_section .img_item:hover::after {
     opacity: 0;
-    background: rgba(0, 0, 0, 0);
 }
 
 section.draggable_section .img_item img {
@@ -720,8 +742,6 @@ section.draggable_section .img_item img {
     object-fit: cover;
     filter: brightness(0.7);
     transition: filter 0.3s ease;
-    position: relative;
-    z-index: 0;
 }
 
 section.draggable_section .img_item:hover img {
@@ -730,25 +750,87 @@ section.draggable_section .img_item:hover img {
 
 section.draggable_section .img_item:hover {
     z-index: 100 !important;
+    transform: scale(1.05);
 }
 
-/* Size variants */
-section.draggable_section .img_item[data-size="340x227"],
-section.draggable_section .img_item[data-size="340x226"] {
-    width: 340px;
-    height: 227px;
+/* Size variants - 축소된 크기 */
+section.draggable_section .img_item[data-size="large"] {
+    width: 240px;
+    height: 160px;
 }
 
-section.draggable_section .img_item[data-size="280x187"] {
-    width: 280px;
-    height: 187px;
-}
-
-section.draggable_section .img_item[data-size="200x133"] {
+section.draggable_section .img_item[data-size="medium"] {
     width: 200px;
     height: 133px;
 }
+
+section.draggable_section .img_item[data-size="small"] {
+    width: 150px;
+    height: 100px;
+}
 /* section.draggable_section */
+
+/* ============ DRAGGABLE SECTION CUSTOM CURSOR ============ */
+.draggable-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    display: none;
+    transform: translate(-50px, -50px);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+section.draggable_section {
+    cursor: none;
+}
+
+section.draggable_section .img_item {
+    cursor: none;
+}
+
+section.draggable_section .img_item:active {
+    cursor: none;
+}
+/* ============================================ */
+
+/* ============ CURSOR RESTORATION (섹션별 분리) ============ */
+/* Behind Video 섹션 커서 복원 */
+section.behind_video,
+section.behind_video * {
+    cursor: auto !important;
+}
+
+section.behind_video button,
+section.behind_video a {
+    cursor: pointer !important;
+}
+
+/* Chat Event 섹션 커서 복원 */
+section.chat_event_section,
+section.chat_event_section * {
+    cursor: auto !important;
+}
+
+section.chat_event_section button,
+section.chat_event_section a {
+    cursor: pointer !important;
+}
+
+section.chat_event_section input[type="text"],
+section.chat_event_section textarea {
+    cursor: text !important;
+}
+
+/* Modal 커서 복원 */
+.image_modal {
+    cursor: auto !important;
+}
+
+.modal_close {
+    cursor: pointer !important;
+}
+/* ========================================================== */
 
 /* Modal */
 .image_modal {
@@ -821,13 +903,22 @@ section.draggable_section .img_item[data-size="200x133"] {
 /* .image_modal */
 
 /* behind */
+/* Wrapper for sticky control */
+.behind_video_wrapper {
+    height: 400vh; /* 스크롤 4배 길이 = Behind Video가 오래 고정됨 */
+}
+
 /* Section */
 section.behind_video {
+    position: sticky;
+    top: 0;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: var(--Bcolor);
+    z-index: 10;
 }
 
 /* Title Wrapper */
@@ -1098,7 +1189,7 @@ section.chat_event_section {
     position: relative;
     width: 1920px;
     max-width: 100%;
-    height: 1222px;
+    height: 1122px;
     margin: 200px auto 0;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid var(--Bcolor);
@@ -1230,7 +1321,7 @@ section.chat_event_section .chat_scroll_area {
     transform: translateX(-50%);
     width: 100%;
     max-width: 1520px;
-    height: 718px;
+    height: 618px;
     overflow-y: auto;
     overflow-x: hidden;
     background: linear-gradient(to bottom, rgba(13, 3, 28, 0) 0%, rgba(60, 14, 130, 0) 96.51%);

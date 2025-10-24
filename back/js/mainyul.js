@@ -110,6 +110,17 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScrollY = currentScrollY;
     });
 
+    /*     AOS.init({
+            disable: false,
+            startEvent: 'DOMContentLoaded',
+            initClassName: 'aos-init',
+            animatedClassName: 'aos-animate',
+            useClassNames: false,
+            disableMutationObserver: false,
+            debounceDelay: 50,
+            throttleDelay: 99,
+        }); */
+
     // ON-AIR 섹션 회전 기능
     let onswiper = new Swiper(".on_slide_wrap", {
         loop: true,
@@ -280,174 +291,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // GSAP 애니메이션 초기화
     initGSAPAnimations();
-
-    // Coming Soon 섹션 자동 교체 기능 초기화
-    initComingSoonSlider();
-
-
 });
-
-// Coming Soon 섹션 자동 교체 함수
-function initComingSoonSlider() {
-    const csContents = document.querySelectorAll('.comingsoon .CScontents1, .comingsoon .CScontents2, .comingsoon .CScontents3');
-    let currentIndex = 0;
-    let csInterval;
-
-    if (csContents.length === 0) return;
-
-    // 초기 설정: 첫 번째만 보이고 나머지는 숨김
-    csContents.forEach((content, index) => {
-        if (index === 0) {
-            content.style.display = 'flex';
-            content.style.opacity = '1';
-        } else {
-            content.style.display = 'none';
-            content.style.opacity = '0';
-        }
-    });
-
-    function showNextContent() {
-        const currentContent = csContents[currentIndex];
-        const nextIndex = (currentIndex + 1) % csContents.length;
-        const nextContent = csContents[nextIndex];
-
-        // 현재 콘텐츠 페이드아웃
-        gsap.to(currentContent, {
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.out",
-            onComplete: () => {
-                currentContent.style.display = 'none';
-                
-                // 다음 콘텐츠 표시 및 애니메이션 리셋
-                nextContent.style.display = 'flex';
-                
-                // 애니메이션 요소들 초기 상태로 설정
-                const img = nextContent.querySelector('.gsap-fade-right');
-                const h3 = nextContent.querySelector('.txt h3');
-                const p = nextContent.querySelector('.txt p');
-                
-                gsap.set([img, h3, p], { opacity: 0 });
-                gsap.set(img, { x: -50 });
-                gsap.set([h3, p], { x: 50 });
-                
-                // 다음 콘텐츠 페이드인 및 순차 애니메이션
-                gsap.to(nextContent, {
-                    opacity: 1,
-                    duration: 0.3,
-                    ease: "power2.out",
-                    onComplete: () => {
-                        // 이미지 애니메이션
-                        gsap.to(img, {
-                            x: 0,
-                            opacity: 1,
-                            duration: 1.2,
-                            ease: "power2.out"
-                        });
-                        
-                        // h3 애니메이션 (0.8초 후)
-                        gsap.to(h3, {
-                            x: 0,
-                            opacity: 1,
-                            duration: 1.2,
-                            ease: "power2.out",
-                            delay: 0.8
-                        });
-                        
-                        // p 애니메이션 (1.6초 후)
-                        gsap.to(p, {
-                            x: 0,
-                            opacity: 1,
-                            duration: 1.2,
-                            ease: "power2.out",
-                            delay: 1.6
-                        });
-                    }
-                });
-            }
-        });
-
-        currentIndex = nextIndex;
-    }
-
-    // 5초마다 자동 교체
-    function startCSSlider() {
-        csInterval = setInterval(showNextContent, 5000);
-    }
-
-    function stopCSSlider() {
-        if (csInterval) {
-            clearInterval(csInterval);
-        }
-    }
-
-    // 마우스 호버 시 슬라이더 일시정지/재개
-    const comingSoonSection = document.querySelector('.comingsoon');
-    if (comingSoonSection) {
-        comingSoonSection.addEventListener('mouseenter', stopCSSlider);
-        comingSoonSection.addEventListener('mouseleave', startCSSlider);
-    }
-
-    // 자동 슬라이더 시작
-    startCSSlider();
-}
 
 // GSAP 애니메이션 함수
 function initGSAPAnimations() {
+    // GSAP ScrollTrigger 등록
     gsap.registerPlugin(ScrollTrigger);
-
-    // CScontents 애니메이션 초기 설정 (모든 CScontents에 적용)
-    gsap.set('.CScontents1 .gsap-fade-right, .CScontents2 .gsap-fade-right, .CScontents3 .gsap-fade-right', {
-        x: -50,
-        opacity: 0
-    });
-
-    gsap.set('.CScontents1 .gsap-fade-left, .CScontents2 .gsap-fade-left, .CScontents3 .gsap-fade-left', {
-        x: 50,
-        opacity: 0
-    });
-
-    // CScontents1 초기 애니메이션 (페이지 로드 시에만)
-    gsap.to('.CScontents1 .gsap-fade-right', {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: '.CScontents1',
-            start: 'top 70%',
-            end: 'bottom 30%',
-            toggleActions: 'play none none reverse'
-        }
-    });
-
-    gsap.to('.CScontents1 .txt h3', {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        delay: 0.8,
-        scrollTrigger: {
-            trigger: '.CScontents1',
-            start: 'top 70%',
-            end: 'bottom 30%',
-            toggleActions: 'play none none reverse'
-        }
-    });
-
-    gsap.to('.CScontents1 .txt p', {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        delay: 1.6,
-        scrollTrigger: {
-            trigger: '.CScontents1',
-            start: 'top 70%',
-            end: 'bottom 30%',
-            toggleActions: 'play none none reverse'
-        }
-    });
 
     // BeyondDrama 섹션의 아래에서 위로 올라오는 애니메이션
     gsap.set('.gsap-flip', {
