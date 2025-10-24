@@ -8,17 +8,15 @@
   <meta name="author" content="Luna">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="back/img/favicon.ico" type="image/x-icon">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/main_media.css">
   <link rel="stylesheet" href="./moon/css/pg-style.css">
   <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
   <script src="./js/common.js"></script>
-  <script defer src="./moon/js/playground.js"></script>
+  <script defer src="./moon/js/pg.js"></script>
   <title>Viewer’s Playground Page</title>
 </head>
 
@@ -72,7 +70,7 @@
           </ul><!-- //.gnb -->
           <div class="right">
             <div class="lang">
-              <a href="#" class="en ">EN</a>
+              <a href="#" class="en active">EN</a>
               <a href="#" class="kr ">KR</a>
             </div><!-- //.lang -->
             <div class="user">
@@ -95,16 +93,16 @@
       <!-- 히어로 텍스트 -->
       <section class="hero">
         <div class="inner">
-          <ul data-aos="fade-up" data-aos-duration="400" data-aos-easing="ease-in-out" data-aos-mirror="true"
-            data-aos-delay="300" data-aos-once="false" data-aos-anchor-placement="top-center">
+          <ul data-asap="fade-up" data-asap-duration="400" data-asap-easing="ease-in-out" data-asap-mirror="true"
+            data-asap-delay="300" data-asap-once="false" data-asap-anchor-placement="top-center">
             <li>Create,</li>
             <li>Share,</li>
             <li>Vote,</li>
             <li>Play with K-drama</li>
           </ul>
-          <div class="imgbox" data-aos="fade-up" data-aos-duration="400" data-aos-delay="600"
-            data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false"
-            data-aos-anchor-placement="top-center">
+          <div class="imgbox" data-asap="fade-up" data-asap-duration="400" data-asap-delay="600"
+            data-asap-easing="ease-in-out" data-asap-mirror="true" data-asap-once="false"
+            data-asap-anchor-placement="top-center">
             <div class="smiling-emoji"></div>
           </div>
         </div><!-- .inner -->
@@ -253,9 +251,9 @@
             <h2>Running Contest</h2>
           </div>
           <div class="con">
-            <div class="info" data-aos="fade-up" data-aos-duration="400"
-              data-aos-easing="cubic-bezier(0.32,-0.01, 0.07, 1.15)" data-aos-mirror="true" data-aos-once="false"
-              data-aos-anchor-placement="top-center">
+            <div class="info" data-asap="fade-up" data-asap-duration="400"
+              data-asap-easing="cubic-bezier(0.32,-0.01, 0.07, 1.15)" data-asap-mirror="true" data-asap-once="false"
+              data-asap-anchor-placement="top-center">
               <div class="deadline">
                 <h4>
                   Deadline: 2025-11-10 23:59 UTC
@@ -734,7 +732,7 @@
             <div class="swiper comm_gallery">
               <ul class="swiper-wrapper">
                 <li class="swiper-slide">
-                  <a class="comm-img-wrap">
+                  <a href="#" class="comm-img-wrap">
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">1</b>
@@ -749,7 +747,7 @@
                   </a>
                 </li><!-- swiper-slide -->
                 <li class="swiper-slide">
-                  <a class="comm-img-wrap">
+                  <a href="#" class="comm-img-wrap">
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">2</b>
@@ -764,7 +762,7 @@
                   </a>
                 </li><!-- swiper-slide -->
                 <li class="swiper-slide">
-                  <a class="comm-img-wrap">
+                  <a href="#" class="comm-img-wrap">
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">3</b>
@@ -779,7 +777,7 @@
                   </a>
                 </li><!-- swiper-slide -->
                 <li class="swiper-slide">
-                  <a class="comm-img-wrap">
+                  <a href="#" class="comm-img-wrap">
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">4</b>
@@ -794,7 +792,7 @@
                   </a>
                 </li><!-- swiper-slide -->
                 <li class="swiper-slide">
-                  <a class="comm-img-wrap">
+                  <a href="#" class="comm-img-wrap">
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">5</b>
@@ -809,73 +807,73 @@
                   </a>
                 </li><!-- swiper-slide -->
               </ul><!-- .swiper-wrapper -->
-              </article><!-- .swiper .comm_gallery -->
-              <!-- 리스트 구역 -->
-              <ul class="article_list">
-                <li>
-                  <a href="#">
-                    <b class="num">6</b>
-                    <div class="comm_subtit">
-                      <em>Easter Eggs</em>
-                      <span>
-                        <h5>This feels like foreshadowing. What do you think?</h5>
-                        <p>254</p>
-                      </span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <b class="num">7</b>
-                    <div class="comm_subtit">
-                      <em>Deep Dive</em>
-                      <span>
-                        <h5>Wow, so that&#039;s what it meant? I&#039;m shocked.</h5>
-                        <p>254</p>
-                      </span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <b class="num">8</b>
-                    <div class="comm_subtit">
-                      <em>Deep Dive</em>
-                      <span>
-                        <h5>I&#039;ve been reading up on the history of the Joseon Dynasty, and it&#039;s interesting.
-                        </h5>
-                        <p>254</p>
-                      </span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <b class="num">9</b>
-                    <div class="comm_subtit">
-                      <em>Q&amp;A · Knowledge Share</em>
-                      <span>
-                        <h5>I&#039;ll share my favorite Korean dramas with you, guys.</h5>
-                        <p>254</p>
-                      </span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <b class="num">10</b>
-                    <div class="comm_subtit">
-                      <em>Culture &amp; Locations</em>
-                      <span>
-                        <h5>I went to Korea and visited the filming locations of the drama.</h5>
-                        <p>254</p>
-                      </span>
-                    </div>
-                  </a>
-                </li>
-              </ul><!-- article_list -->
-            </div><!-- .articles -->
-          </div><!-- ./inner -->
+            </div><!-- .swiper comm_gallery -->
+            <!-- 리스트 구역 -->
+            <ul class="article_list">
+              <li>
+                <a href="#">
+                  <b class="num">6</b>
+                  <div class="comm_subtit">
+                    <em>Easter Eggs</em>
+                    <span>
+                      <h5>This feels like foreshadowing. What do you think?</h5>
+                      <p>254</p>
+                    </span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <b class="num">7</b>
+                  <div class="comm_subtit">
+                    <em>Deep Dive</em>
+                    <span>
+                      <h5>Wow, so that&#039;s what it meant? I&#039;m shocked.</h5>
+                      <p>254</p>
+                    </span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <b class="num">8</b>
+                  <div class="comm_subtit">
+                    <em>Deep Dive</em>
+                    <span>
+                      <h5>I&#039;ve been reading up on the history of the Joseon Dynasty, and it&#039;s interesting.
+                      </h5>
+                      <p>254</p>
+                    </span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <b class="num">9</b>
+                  <div class="comm_subtit">
+                    <em>Q&amp;A · Knowledge Share</em>
+                    <span>
+                      <h5>I&#039;ll share my favorite Korean dramas with you, guys.</h5>
+                      <p>254</p>
+                    </span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <b class="num">10</b>
+                  <div class="comm_subtit">
+                    <em>Culture &amp; Locations</em>
+                    <span>
+                      <h5>I went to Korea and visited the filming locations of the drama.</h5>
+                      <p>254</p>
+                    </span>
+                  </div>
+                </a>
+              </li>
+            </ul><!-- article_list -->
+          </div><!-- .articles -->
+        </div><!-- ./inner -->
       </section><!-- .community -->
 
     </main>

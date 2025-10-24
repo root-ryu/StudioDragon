@@ -1,13 +1,110 @@
-AOS.init({
-  disable: false, // aos 끄지 않기 -> 애니메이션 작동하게 두기
-  startEvent: 'DOMContentLoaded', // html이 다 불러와지면 바로 aos 시작
-  initClassName: 'aos-init', // AOS가 준비 됐다는 표시 클래스 (자동 붙음)
-  animatedClassName: 'aos-animate', // 애니메이션이 실행될때 붙는 클래스 이름
-  useClassNames: false, // HTML에 data-aos값 그대로 클래스 안붙이기 적용
-  disableMutationObserver: false, // 새로생긴 요소도 자동감지해서 애니메이션 적용
-  debounceDelay: 50, // 창크기 바꿀때 0.05초 기다렸다가 계산 (너무 자주 안하게)
-  throttleDelay: 99, // 스크롤할때 0.099초마다 한번씩 체크 (성능 좋게)
+const ASAP = (() => {
+  const defaults = {
+    once: true, // true -> 최초 1회만 실행. init 옵션이나 data-asap-once로 요소별 조정 가능.
+    offset: 0, // px 단위 전역 오프셋. 양수로 늘리면 화면에 보이기 전에 더 빨리 실행됩니다.
+    anchorPlacement: 'top-bottom', // 트리거 기준 위치 기본값. 필요하면 data-asap-anchor-placement로 변경.
+  };
 
+  let items = [];
+  let ticking = false;
+
+  function init(options = {}) {
+    const config = { ...defaults, ...options };
+    const targets = document.querySelectorAll('[data-asap]');
+    if (!targets.length) return;
+
+    items = Array.from(targets).map(element => prepare(element, config));
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  }
+
+  function prepare(element, globalConfig) {
+    const effect = element.dataset.asap || 'fade-up';
+  // data-asap-duration, data-asap-delay 등은 HTML 속성으로 바로 조정할 수 있습니다.
+  const duration = parseInt(element.dataset.asapDuration, 10) || parseInt(globalConfig.duration, 10) || 400;
+    const delay = parseInt(element.dataset.asapDelay, 10) || parseInt(globalConfig.delay, 10) || 0;
+    const easing = element.dataset.asapEasing || globalConfig.easing || 'ease';
+    const once = element.dataset.asapOnce !== undefined ? element.dataset.asapOnce === 'true' : globalConfig.once;
+    const mirror = element.dataset.asapMirror === 'true';
+    const offset = parseInt(element.dataset.asapOffset, 10) || globalConfig.offset || 0;
+    const anchorPlacement = element.dataset.asapAnchorPlacement || globalConfig.anchorPlacement;
+
+    element.style.setProperty('--asap-duration', `${duration}ms`);
+    element.style.setProperty('--asap-delay', `${delay}ms`);
+    element.style.setProperty('--asap-easing', easing);
+  // asap-init 클래스로 초기 상태를 고정하고 asap-animate가 붙으면 전환됩니다.
+    element.classList.add('asap-init', `asap-${effect}`);
+
+    return {
+      element,
+      once,
+      mirror,
+      offset,
+      anchorPlacement,
+      animated: false,
+    };
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+
+  function computeTrigger(anchorPlacement, viewportHeight, offset) {
+    const shift = offset || 0;
+    switch (anchorPlacement) {
+      case 'top-center':
+        return viewportHeight * 0.5 - shift;
+      case 'center-center':
+        return viewportHeight * 0.5 - shift;
+      case 'bottom-bottom':
+        return viewportHeight - shift;
+      case 'top-bottom':
+      default:
+        return viewportHeight - shift;
+    }
+  }
+
+  function update() {
+    ticking = false;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    items.forEach(item => {
+      const { element, once, mirror, offset, anchorPlacement } = item;
+      const rect = element.getBoundingClientRect();
+      const triggerPoint = computeTrigger(anchorPlacement, viewportHeight, offset);
+      const inView = rect.top <= triggerPoint && rect.bottom >= 0;
+
+      if (inView) {
+        if (!item.animated) {
+          item.animated = true;
+          element.classList.add('asap-animate');
+        }
+      } else if (!once || mirror) {
+        if (item.animated) {
+          item.animated = false;
+          element.classList.remove('asap-animate');
+        }
+      }
+    });
+  }
+
+  return {
+    init,
+    refresh: update,
+  };
+})();
+
+// 전역에서 다시 초기화할 수 있도록 export
+window.ASAP = ASAP;
+
+ASAP.init({
+  once: false, // true면 최초 1회만 실행, 재진입 때도 재생하려면 false로 두세요.
+  offset: 0, // 애니메이션이 조금 더 일찍 시작되길 원하면 양수(px)를 입력하세요.
 });
 
 
@@ -249,5 +346,37 @@ if (countElements.length === 4) {
 
   // 콘솔에 상태 로그 (디버깅용). 배포 시 주석 처리 가능
   console.log('newVideoSwiper 초기화 됨', newVideoSwiper);
+})();
+
+// 커뮤니티 섹션 갤러리 스와이퍼 (좌측 정렬, 수동 슬라이드, 루프/페이지네이션 없음)
+(function () {
+  const container = document.querySelector('.comm_gallery');
+  if (!container) return;
+
+  // 한국어 설정 가이드
+  // - slidesPerView: 'auto' 로 두면 CSS에서 정의한 슬라이드 너비가 그대로 적용됩니다.
+  //   (슬라이드 너비는 pg-style.css의 .community .comm_gallery .swiper-slide에서 조정)
+  // - spaceBetween: 카드 사이 간격(px)
+  // - loop, pagination, autoplay는 사용하지 않습니다. (요청사항)
+  // - 사용자가 드래그하여 좌우로 넘기게 하려면 allowTouchMove: true 유지
+
+  const commGallerySwiper = new Swiper(container, {
+    slidesPerView: 'auto',
+    spaceBetween: 18,
+    loop: false,
+    centeredSlides: false,
+    allowTouchMove: true,
+    grabCursor: true,
+    // 방향키 내비 필요하면 아래 주석 해제 후 HTML에 버튼 추가해서 사용
+    // navigation: { nextEl: '.comm-next', prevEl: '.comm-prev' },
+    // 반응형: 필요 시 카드 간격만 소폭 조정 예시
+    breakpoints: {
+      320: { spaceBetween: 12 },
+      768: { spaceBetween: 16 },
+      1200: { spaceBetween: 18 }
+    }
+  });
+
+  console.log('commGallerySwiper 초기화 됨', commGallerySwiper);
 })();
 

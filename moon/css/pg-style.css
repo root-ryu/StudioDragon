@@ -11,6 +11,25 @@ main {
   width: 100%;
 }
 
+/* ASAP 스크롤 애니메이션 기본 설정 */
+[data-asap] {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: var(--asap-duration, 600ms);
+  transition-timing-function: var(--asap-easing, ease);
+  transition-delay: var(--asap-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-asap].asap-fade-up {
+  transform: translate3d(0, 40px, 0);
+}
+
+[data-asap].asap-animate {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
 .title h2 {
   color: var(--Wcolor);
   text-align: center;
@@ -22,16 +41,15 @@ main {
 /* 히어로 텍스트 */
 .hero {
   width: 100%;
-  max-width: 1920px;
-  margin-top: 200px;
+  /* margin-top: 200px; */
   padding: 239px 0;
-  position: relative;
   background: linear-gradient(transparent 20%, #fff 40%);
 }
 
 .hero .inner {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 .hero li {
@@ -58,18 +76,31 @@ main {
 
 .hero .imgbox {
   position: absolute;
-  right: 200px;
-  bottom: 300px;
+  right: 0px;
+  bottom: 0px;
 }
 
 .smiling-emoji {
   background: url("../asset/smiling.png") center/cover;
   width: 280px;
   aspect-ratio: 1;
-  animation: floating forwards infinite 3s;
+  animation: floating-40 forwards infinite 3s;
 }
 
-@keyframes floating {
+@keyframes floating-20 {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes floating-40 {
   0% {
     transform: translateY(0px);
   }
@@ -106,6 +137,7 @@ main {
   top: 0;
   left: 0px;
   background: url(../../moon/asset/goldcup.png) center/cover;
+  animation: floating-20 forwards infinite 5s;
 }
 
 .contest-winner .title {
@@ -274,6 +306,8 @@ main {
 
 /* 진행중인 공모전 */
 .running-contest {
+  width: 100%;
+  color: #fff;
   padding: 100px 80px 140px 80px;
 }
 
@@ -751,6 +785,16 @@ main {
   position: static;
 }
 
+/* 비디오 대체 이미지 - 추후 수정 */
+
+.creativeGallery .fanvideos .video_popular ul.swiper-wrapper figure,
+.creativeGallery .fanvideos .video_new ul.swiper-wrapper figure {
+  background: url(../../moon/asset/temp_img.webp) center/cover;
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  pointer-events: none;
+  user-select: none; */
+}
+
 /* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide{
   width: auto;
 } */
@@ -783,11 +827,19 @@ main {
 /* 커뮤니티 섹션 */
 .community {
   width: 100%;
+  color: #fff;
   padding: 200px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   overflow: hidden;
+}
+.community .inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 48px;
 }
 
 /* 커뮤니티 상단 */
@@ -795,19 +847,21 @@ main {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .community .title .subtit {
-  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .community .title .subtit h4 {
   color: var(--b, #0d031c);
-  text-align: left;
+  text-align: center;
   font: var(--font-1920-title-L-40);
   text-transform: uppercase;
 }
@@ -830,11 +884,6 @@ main {
 }
 
 /* 커뮤니티-아티클 */
-.community .inner {
-  background: #ccc;
-  position: relative;
-}
-
 .community .articles {
   width: 100%;
   display: flex;
@@ -842,10 +891,12 @@ main {
   gap: 37px;
 }
 
+/* 커뮤니티 갤러리 */
 .community .articles .comm_gallery {
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow: visible;
 }
 
 .community .articles .comm_gallery .swiper-wrapper {
@@ -867,7 +918,36 @@ main {
   height: 716px;
 }
 
-.community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap {}
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative; /* info-overlay 기준 */
+}
+
+/* 커뮤니티 갤러리: 슬라이드별 개별 이미지 지정 (nth-child)
+   - 아래 background-image의 경로만 각 슬라이드에 맞게 바꿔서 사용하세요.
+   - 필요 슬라이드 수가 늘어나면 동일한 패턴으로 nth-child(n)을 추가하면 됩니다. */
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(1) {
+  /* 1번 카드 이미지 경로 */
+  background-image: url(../../moon/asset/comm-img_1.jpg);
+}
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(2) {
+  /* 2번 카드 이미지 경로 */
+  background-image: url(../../moon/asset/comm-img_2.jpg);
+}
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(3) {
+  /* 3번 카드 이미지 경로 */
+  background-image: url(../../moon/asset/comm-img_3.jpg);
+}
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(4) {
+  /* 4번 카드 이미지 경로 */
+  background-image: url(../../moon/asset/comm-img_4.jpg);
+}
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(5) {
+  /* 5번 카드 이미지 경로 */
+  background-image: url(../../moon/asset/comm-img_5.jpg);
+}
 
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide .info-overlay {
   width: 100%;
@@ -927,15 +1007,59 @@ main {
 }
 
 .community .articles .comm_gallery .info-overlay .comm_subtit span p {
-  color: var(--maincolor-main-1000, #bfa473);
+  color: var(--MainColor);
   text-align: left;
   font: 300 26px/100% "Assistant", sans-serif;
 }
 
-.creativeGallery .fanvideos .video_popular ul.swiper-wrapper figure,
-.creativeGallery .fanvideos .video_new ul.swiper-wrapper figure {
-  background: url(../../moon/asset/temp_img.webp) center/cover;
-  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
-  pointer-events: none;
-  user-select: none; */
+/* 커뮤니티 갤러리 하단 리스트 */
+.community ul.article_list{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.community ul.article_list li{
+  width: 100%;
+}
+
+.community ul.article_list li a{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+.community ul.article_list li .num{
+  text-align: left;
+  font: 700 26px/100% "Assistant", sans-serif;
+}
+.community ul.article_list li .comm_subtit {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  align-items: center;
+}
+.community ul.article_list li .comm_subtit em{
+   color: #bdbac1;
+  text-align: left;
+  font: 300 26px/100% "Assistant", sans-serif;
+}
+.community ul.article_list li .comm_subtit span {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+.community ul.article_list li .comm_subtit span h5 {
+  color: var(--Bcolor);
+  text-align: left;
+  font: 400 26px/100% "Assistant", sans-serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.community ul.article_list li .comm_subtit span p {
+  color: var(--MainColor);
+  text-align: left;
+  font: 300 26px/100% "Assistant", sans-serif;
 }
