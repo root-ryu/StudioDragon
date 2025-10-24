@@ -113,6 +113,7 @@ body {
 .inner {
     width: 1520px;
     margin-inline: auto;
+    height: 5000px;
 }
 
 header {
@@ -139,7 +140,7 @@ header {
 .header_bg {
     position: fixed;
     width: 100%;
-    height: 40vh;
+    height: 364px;
     left: 0;
     top: 0;
     background: var(--Bcolor);
@@ -321,19 +322,33 @@ header nav .right .lang a.active {
     color: var(--Bcolor);
 }
 
-header nav .right .ham {
-    width: 34px;
-    aspect-ratio: 1 / 1;
+/* 햄버거 메뉴 - 독립 배치 */
+.ham {
+    width: 60px;
+    height: 60px;
     border: 1.5px solid var(--Wcolor);
     border-radius: 50%;
     display: grid;
     place-items: center;
     cursor: pointer;
-    background: transparent;
-    display: none;
+    background: var(--Bcolor);
+    backdrop-filter: blur(15px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s;
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    z-index: 1000;
 }
 
-header nav .right .ham ul {
+/* 364px 이상 스크롤 업 시 햄버거 메뉴 표시 */
+.ham.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ham ul {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -344,7 +359,7 @@ header nav .right .ham ul {
     height: auto;
 }
 
-header nav .right .ham ul li {
+.ham ul li {
     width: 22px;
     height: 2px;
     background: var(--Wcolor);
@@ -354,25 +369,27 @@ header nav .right .ham ul li {
     transition: transform .6s;
 }
 
-header nav.mobile .right .ham ul li:nth-child(1) {
+nav.mobile ~ .ham ul li:nth-child(1) {
     transform: rotate(45deg);
     position: absolute;
-    right: 18%; top: 3%;
-
+    right: 18%; 
+    top: 3%;
 }
 
-header nav.mobile .right .ham ul li:nth-child(2) {
+nav.mobile ~ .ham ul li:nth-child(2) {
     display: none;
 }
 
-header nav.mobile .right .ham ul li:nth-child(3) {
+nav.mobile ~ .ham ul li:nth-child(3) {
     transform: rotate(-45deg);
     position: absolute;
-    right: 18%; top: 4.2%;
+    right: 18%; 
+    top: 4.2%;
 }
 
 main {
     position: relative;
+    height: 5000px;
 }
 
 /* footer */
