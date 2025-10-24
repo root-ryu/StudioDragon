@@ -261,12 +261,29 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
     const main_cachSwiper = new Swiper(".main_cach .swiper", {
         slidesPerView: "auto",
         spaceBetween: 64,
         loop: true,                   // 무한 반복
         allowTouchMove: false // 마우스 드래그 필요하면 true
     });
+
+    // =========================
+    // ★★★ 여기부터 추가된 부분 ★★★
+    // History Swiper offset 값을 반응형으로 계산
+    function getHistoryOffsets() {
+        const w = window.innerWidth;
+        if (w <= 440) {
+            return { before: 20, after: 120 };   // 모바일 소형
+        } else if (w <= 1024) {
+            return { before: 50, after: 250 };   // 태블릿
+        } else {
+            return { before: 110, after: 500 };  // PC 기본
+        }
+    }
+    let __historyOffset = getHistoryOffsets();
+    // =========================
 
     // History Swiper (구조 유지: 외부 스크롤바 사용)
     const historySwiper = new Swiper(".history .cont_hori_swipe.swiper", {
@@ -281,10 +298,10 @@ document.addEventListener("DOMContentLoaded", () => {
         grabCursor: true,
         resistanceRatio: 0.3,
 
-        // 좌/우 여백
-        slidesOffsetBefore: 110,
-        slidesOffsetAfter: 500,
-
+        // 좌/우 여백 (반응형 적용)
+        slidesOffsetBefore: __historyOffset.before,
+        slidesOffsetAfter: __historyOffset.after,
+        
         // ✅ 외부(섹션 바깥) 스크롤바 정확히 지정
         scrollbar: {
             el: ".history > .scroll_bar.swiper-scrollbar",
@@ -295,13 +312,18 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
-    // 이미지 로딩 후 레이아웃 재계산(선택)
-    window.addEventListener("load", () => {
-        if (historySwiper && historySwiper.update) {
-            historySwiper.update();
-        }
+    // =========================
+    // ★★★ 추가: 리사이즈 시 offset만 갱신 ★★★
+    window.addEventListener("resize", () => {
+        __historyOffset = getHistoryOffsets();
+        historySwiper.params.slidesOffsetBefore = __historyOffset.before;
+        historySwiper.params.slidesOffsetAfter  = __historyOffset.after;
+        historySwiper.update();
     });
+    // =========================
+
 });
+
 
 
 

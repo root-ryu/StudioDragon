@@ -42,10 +42,10 @@
 
     h3.tit {
         font-size: 40px;
-
-        width: 95%;
+        width: 100%;
         margin-bottom: 50px;
     }
+
 
     .info-g .inner {
         width: 95%;
@@ -61,14 +61,41 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 0;
         width: 100%;
+        height: 100%;
     }
 
     .info-g .icon_info ul li {
         width: 100%;
+        height: 288px;
     }
 
     .info-g .icon_info ul li:nth-child(3) {
         background: var(--MainColor-400);
+    }
+
+    .info-g .icon_info ul li:nth-child(3) .icon_knowhow{
+        background-image: url(../assets/icon_knowhow2.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 80px;
+    }
+
+
+    .info-g .icon_info ul li:nth-child(3) .txt_w p{
+        color: var(--MainColor-1400);
+    }
+
+    .info-g .icon_info ul li:nth-child(4) .txt_b p{
+        color: var(--subRed2-900);
+    }
+
+    .info-g .icon_info ul li:nth-child(4) .icon-sales{
+        background-image: url(../assets/icon_salesmarket2.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 80px;
     }
 
     .info-g .icon_info ul li:nth-child(4) {
@@ -188,6 +215,20 @@
         font-size: 16px;
         border-radius: 12px;
     }
+
+    .history .inner h3.tit {
+        margin-top: 100px;
+    }
+
+    .history .cont_hori_swipe {
+    margin-bottom: 62px;
+}
+
+.history .cont_hori_swipe ul li.y_group{
+    width: max-content;
+    margin-right: 90px;
+    position: relative;
+}
 
 }
 
