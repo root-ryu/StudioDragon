@@ -108,6 +108,7 @@
 
 body {
     font-family: "Assistant", sans-serif;
+    min-height: 5000px;
 }
 .wrap{
     width: 100%;
@@ -116,7 +117,6 @@ body {
 .inner {
     width: 1520px;
     margin-inline: auto;
-    height: 5000px;
 }
 
 header {
@@ -392,7 +392,6 @@ nav.mobile ~ .ham ul li:nth-child(3) {
 
 main {
     position: relative;
-    height: 5000px;
 }
 
 /* footer */

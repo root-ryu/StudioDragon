@@ -1,22 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ==================== GSAP 플러그인 ====================
-    gsap.registerPlugin(ScrollTrigger);
-
-    // ==================== Lenis ====================
-    const lenis = new Lenis({
-        duration: 0.8,
-        easing: (t) => t, // 선형 (빠른 반응)
-        smooth: true,
-        smoothTouch: true, // 모바일 터치 스크롤 부드럽게
-    });
-
-    function raf(t) {
-        lenis.raf(t);
-        ScrollTrigger.update();
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    
     const header = document.querySelector('.wrap');
     const headerElement = document.querySelector('header');
     const hamburger = document.querySelector('.ham');
@@ -90,11 +72,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     familySiteBtn.addEventListener('click', () => {
         familySite.classList.toggle('on');
-    });
-
-    window.addEventListener("resize", () => ScrollTrigger.refresh());
-    window.addEventListener("load", () => {
-        ScrollTrigger.refresh();
-        setTimeout(() => ScrollTrigger.refresh(), 500); // ✅ Lenis 초기화 후 0.5초 뒤 다시
     });
 })
