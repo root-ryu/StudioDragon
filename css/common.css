@@ -109,7 +109,10 @@
 body {
     font-family: "Assistant", sans-serif;
 }
-
+.wrap{
+    width: 100%;
+    overflow-x: hidden;
+}
 .inner {
     width: 1520px;
     margin-inline: auto;
