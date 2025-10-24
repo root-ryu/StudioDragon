@@ -21,8 +21,6 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-    <script src="/js/common.js"></script>
-    <script src="Work_Ryu/js/work_ryu.js"></script>
 </head>
 
 <body>
@@ -448,71 +446,91 @@
                             </div><!-- .episode_card -->
                         </div><!-- .episode_list -->
                     </div><!-- .episode_scroll_container -->
+                    
+                    <!-- 네비게이션 영역: 화살표 + 인디케이터 + 화살표 -->
+                    <div class="episode_navigation">
+                        <button class="nav_arrow prev" id="episodePrev" aria-label="Previous">
+                            <span></span>
+                        </button>
+                        
+                        <div class="swipe_indicator" id="episodeIndicator">
+                            <span class="swipe_dot active"></span>
+                            <span class="swipe_dot"></span>
+                            <span class="swipe_dot"></span>
+                            <span class="swipe_dot"></span>
+                            <span class="swipe_dot"></span>
+                        </div>
+                        
+                        <button class="nav_arrow next" id="episodeNext" aria-label="Next">
+                            <span></span>
+                        </button>
+                    </div>
                 </section><!-- //.episode -->
+                
                 <section class="draggable_section">
                     <!-- Floating Images (16 items) -->
                     <div class="img_item" data-size="large">
-                        <img src="work_ryu/asset/images_img_dummy01.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy01.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="medium">
-                        <img src="work_ryu/asset/images_img_dummy02.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy02.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="small">
-                        <img src="work_ryu/asset/images_img_dummy03.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy03.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="medium">
-                        <img src="work_ryu/asset/images_img_dummy04.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy04.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="large">
-                        <img src="work_ryu/asset/images_img_dummy05.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy05.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="small">
-                        <img src="work_ryu/asset/images_img_dummy06.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy06.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="medium">
-                        <img src="work_ryu/asset/images_img_dummy07.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy07.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="small">
-                        <img src="work_ryu/asset/images_img_dummy08.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy08.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="large">
-                        <img src="work_ryu/asset/images_img_dummy09.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy09.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="medium">
-                        <img src="work_ryu/asset/images_img_dummy10.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy10.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="small">
-                        <img src="work_ryu/asset/images_img_dummy11.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy11.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="large">
-                        <img src="work_ryu/asset/images_img_dummy12.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy12.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="medium">
-                        <img src="work_ryu/asset/images_img_dummy13.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy13.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="small">
-                        <img src="work_ryu/asset/images_img_dummy14.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy14.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="large">
-                        <img src="work_ryu/asset/images_img_dummy15.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy15.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="medium">
-                        <img src="work_ryu/asset/images_img_dummy16.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy16.png" alt="">
                     </div>
                 </section><!-- .draggable_section -->
 
@@ -523,12 +541,15 @@
                         <button class="modal_close">✕</button>
                     </div>
                 </div><!-- .image_modal -->
-                <section class="behind_video">
-                    <!-- Title Area -->
-                    <div class="title_wrapper">
-                        <h2 class="section_title">Behind Video</h2>
-                        <button class="more_button">MORE</button>
-                    </div><!-- .title_wrapper -->
+                
+                <!-- Behind Video Wrapper (sticky 고정 길이 제어) -->
+                <div class="behind_video_wrapper">
+                    <section class="behind_video">
+                        <!-- Title Area -->
+                        <div class="title_wrapper">
+                            <h2 class="section_title">Behind Video</h2>
+                            <button class="more_button">MORE</button>
+                        </div><!-- .title_wrapper -->
 
                     <!-- Content Stack Area -->
                     <div class="stack_container">
@@ -638,6 +659,8 @@
                         </div><!-- .video_item -->
                     </div><!-- .stack_container -->
                 </section><!-- .behind_video -->
+                </div><!-- .behind_video_wrapper -->
+                
                 <section class="chat_event_section">
                     <!-- Background Image (blurred) -->
                     <div class="img_bg">
@@ -1067,6 +1090,10 @@
                 </div><!-- //.footer_inner -->
             </footer><!-- //.footer -->
         </div><!-- //.wrap -->
+        
+    <!-- JavaScript Files -->
+    <script src="/js/common.js"></script>
+    <script src="Work_Ryu/js/work_ryu.js"></script>
 </body>
 
 </html>
