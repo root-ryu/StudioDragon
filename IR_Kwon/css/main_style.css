@@ -1,10 +1,17 @@
-*{
+/* ============================================================
+   Studio Dragon IR - Main Styles
+   ============================================================ */
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* main */
+/* ============================================================
+   Main Layout
+   ============================================================ */
+
 main {
   display: flex;
   flex-direction: column;
@@ -14,107 +21,70 @@ main {
   overflow-x: hidden;
 }
 
-/* 공통 섹션 스타일 */
 main section {
   width: 100%;
-  padding: 100px 200px; /* 상하 100px씩 = 섹션간 200px 간격 */
+  min-height: 100vh;
+  padding: 50px 200px 0px 200px;
   display: flex;
   flex-direction: column;
   gap: 50px;
   align-items: center;
+  margin-bottom: 100px;
 }
 
-/* 첫 번째 섹션은 위쪽 패딩만 0 */
 main section:first-of-type {
-  padding-top: 0;
+  padding-top: 50px;
 }
 
-/* 마지막 섹션은 아래쪽 패딩만 0 */
 main section:last-of-type {
   padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 /* 섹션별 배경색 */
-main section.value_drivers {
-  /* background-color: #F5F5F5; */
-}
-
-main section.execution {
-  background-color: #EEEEEE;
-}
-
-main section.proof {
-  /* background-color: #F5F5F5; */
-  /* margin-top: 150px; execution 섹션과의 간격 확보 */
-}
-
-main section.monetization_bridge {
-  background-color: #EEEEEE;
-}
-
-main section.moat_repeatability {
-  /* background-color: #F5F5F5; */
-}
-
+main section.execution,
+main section.monetization_bridge,
 main section.forward_triggers {
   background-color: #EEEEEE;
 }
 
-main section.risks_mitigation {
-  /* background-color: #F5F5F5; */
-}
-
-main section.cta_buttons {
-  /* background-color: #F5F5F5; */
-  padding: 100px 200px;
-}
-
-/* 공통 title 스타일 */
+/* 공통 Title 스타일 */
 main section .title {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  align-items: flex-start;
-  justify-content: flex-start;
   width: 100%;
   max-width: 1520px;
-  position: relative;
 }
 
 main section .title h2 {
   color: var(--MainColor);
-  text-align: left;
   font: var(--font-1920-headline-56);
   text-transform: uppercase;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   margin: 0;
 }
 
 main section .title .sub {
   color: var(--Bcolor-700);
-  text-align: left;
   font: var(--font-1920_1024-body-L-20);
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   margin: 0;
 }
-/* main */
 
-/* value_drivers */
+/* ============================================================
+   Value Drivers 섹션
+   ============================================================ */
+
+.value_drivers {
+  min-height: 100vh;
+  margin-bottom: 100px;
+}
+
 .value_drivers .container {
   width: 100%;
   max-width: 1520px;
-  height: auto;
-  position: relative;
-  overflow: visible;
   display: grid;
-  grid-template-columns: minmax(400px, 800px) minmax(300px, 1fr); /* 최소/최대 크기 설정 */
-  gap: 114px; /* 1520 - 800 - 606 = 114px */
+  grid-template-columns: minmax(300px, 600px) minmax(300px, 1fr);
+  gap: 350px;
   align-items: start;
 }
 
@@ -122,7 +92,6 @@ main section .title .sub {
   background: var(--WF);
   border-radius: var(--WT-round-1);
   width: 100%;
-  height: auto;
   aspect-ratio: 800/650;
   position: relative;
   overflow: hidden;
@@ -133,8 +102,7 @@ main section .title .sub {
   width: 100%;
   height: 100%;
   position: absolute;
-  left: 0;
-  top: 0;
+  inset: 0;
   object-fit: cover;
 }
 
@@ -142,21 +110,13 @@ main section .title .sub {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  align-items: flex-end;
-  justify-content: flex-start;
   width: 100%;
-  position: relative;
 }
 
 .value_drivers .container .area .item {
   display: flex;
-  flex-direction: row;
   gap: 0;
   align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
   transition: all 0.6s ease;
 }
 
@@ -164,7 +124,6 @@ main section .title .sub {
   gap: 61px;
 }
 
-/* Consolidated card styles */
 .value_drivers .container .area .item .card {
   background: var(--WF);
   border-radius: 12px;
@@ -172,21 +131,14 @@ main section .title .sub {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
   width: 232px;
-  height: auto;
   min-height: 150px;
-  position: relative;
-  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--my-shadow);
   transition: all 0.6s ease;
 }
 
 .value_drivers .container .area .item .card_before {
-  background: var(--WF);
   width: 525px;
-  position: relative;
 }
 
 .value_drivers .container .area .item.active .card_before {
@@ -201,54 +153,42 @@ main section .title .sub {
   width: 232px;
 }
 
+.value_drivers .container .area .item .card_after.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 .value_drivers .container .area .item .card .label {
   color: #64748B;
-  text-align: left;
   font-family: "Assistant", sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.3;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   padding-bottom: 1px;
 }
 
 .value_drivers .container .area .item .card .text {
   color: #0D031C;
-  text-align: left;
   font-family: "Assistant", sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: normal;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   margin: 0;
   padding: 1px 0;
 }
 
 .value_drivers .container .area .item .arrow {
   color: #AA3229;
-  text-align: center;
   font-family: "Assistant", "Noto Sans", sans-serif;
   font-size: 40px;
   font-weight: 700;
   line-height: 1.3;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 20px;
-  flex-shrink: 0;
-  align-self: stretch;
   opacity: 0;
   transform: scale(0);
-  transition: opacity 0.5s ease, transform 0.5s ease;
   visibility: hidden;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .value_drivers .container .area .item .arrow.active {
@@ -257,35 +197,19 @@ main section .title .sub {
   visibility: visible;
 }
 
-.value_drivers .container .area .item .card_after.active {
-  opacity: 1;
-  visibility: visible;
-}
-
 .value_drivers .container .area .description {
-  padding: 0;
   margin-top: 22px;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  position: relative;
 }
 
 .value_drivers .container .area .description p {
   color: #64748B;
-  text-align: left;
   font-family: "Assistant", sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 1.3;
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   margin: 0;
   opacity: 0;
   transform: translateY(20px);
@@ -296,19 +220,16 @@ main section .title .sub {
   opacity: 1;
   transform: translateY(0);
 }
-/* value_drivers */
 
+/* ============================================================
+   Execution 섹션
+   ============================================================ */
 
-/* execution - 전체 스타일 */
-/* ============ execution_section ============ */
 .execution {
-  padding: 100px 200px;
-  position: relative;
-  overflow: visible;
   min-height: 100vh;
+  margin-bottom: 100px;
 }
 
-/* Title (전체 너비, 상단) */
 .execution > .title {
   max-width: 1520px;
   margin: 0 auto;
@@ -332,7 +253,6 @@ main section .title .sub {
   line-height: 1.3;
 }
 
-/* Wrapper (그리드 영역: 텍스트 + 이미지) */
 .execution .wrapper {
   width: 100%;
   max-width: 1520px;
@@ -341,44 +261,30 @@ main section .title .sub {
   flex-direction: row-reverse;
   gap: 80px;
   align-items: flex-start;
-  justify-content: flex-end;
   min-height: 600px;
-  position: relative;
 }
 
-/* Cards Area: Scrollable Cards (Left Side) */
 .execution .cards_area {
   display: flex;
   flex-direction: column;
-  padding: 0;
   padding-left: 20px;
   margin-left: -20px;
   height: 600px;
   order: 2;
-  position: relative;
-  overflow-y: hidden;
-  overflow-x: visible;
+  overflow: hidden;
   max-width: 380px;
   width: 100%;
-  flex-shrink: 0;
-  align-self: flex-start;
 }
 
-/* Cards Wrap: Fixed Height Container with Centered View */
 .execution .cards_wrap {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  height: auto;
-  padding: 0;
-  position: relative;
   will-change: transform;
 }
 
 .execution .card {
   border-radius: 32px;
   padding: 32px 24px;
-  border-left: 0.5px solid transparent;
   height: 180px;
   display: flex;
   flex-direction: column;
@@ -386,7 +292,6 @@ main section .title .sub {
   cursor: pointer;
   transition: all 0.3s ease;
   opacity: 0.6;
-  flex-shrink: 0;
 }
 
 .execution .card:hover {
@@ -411,10 +316,6 @@ main section .title .sub {
   transform: translateX(-4px);
 }
 
-.execution .card.active:focus {
-  outline-color: #1a1a1a;
-}
-
 .execution .card_title {
   color: var(--Bcolor);
   font-family: "Assistant-Bold", sans-serif;
@@ -435,18 +336,15 @@ main section .title .sub {
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Sticky Area: Images (Right Side - Fixed) */
 .execution .sticky_area {
   position: sticky;
   top: 100px;
-  align-self: flex-start;
   order: 1;
   flex: 1;
   height: 600px;
 }
 
 .execution .image_container {
-  position: relative;
   width: 100%;
   height: 100%;
   border-radius: var(--WT-round-1);
@@ -457,8 +355,7 @@ main section .title .sub {
 
 .execution .execution_image {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -471,207 +368,51 @@ main section .title .sub {
   opacity: 1;
   z-index: 1;
 }
-/* execution */
 
-/* proof */
+/* ============================================================
+   Proof 섹션
+   ============================================================ */
+
+.proof {
+  min-height: 100vh;
+  margin-bottom: 100px;
+}
+
 .proof .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
+  gap: 30px;
   align-items: start;
-  justify-content: space-between;
   width: 100%;
-  max-width: 1550px;
-  position: relative;
+  max-width: 100%;
 }
 
 .proof .container .card {
-  background: var(--WF);
+  background: #F5F5F5;
   border-radius: 32px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   overflow: hidden;
-  position: relative;
   box-shadow: 0px 0px 24px 0px rgba(2, 8, 20, 0.04);
-  isolation: isolate;
-  width: 100%;
+  /* perspective: 1000px; */
+  cursor: pointer;
+  height: 305px;
 }
 
-/* 탭 아이콘은 기본적으로 숨김 (데스크탑) */
 .proof .container .card .tap-icon {
   display: none;
 }
 
-/* Card 1, 2, 3, 4, 5 - 자동 높이 (2행 크기로 통일) */
-.proof .container .card_1,
-.proof .container .card_2,
-.proof .container .card_3,
-.proof .container .card_4,
-.proof .container .card_5 {
-  height: auto;
-}
-
-/* Card 6 - 높이 392px */
-.proof .container .card_6 {
-  height: 392px;
-}
-
-.proof .container .card .figure {
-  background: rgba(166, 166, 166, 0.2);
-  border-radius: 32px;
-  width: 100%;
-  aspect-ratio: 500/281;
-  position: relative;
-  overflow: hidden;
-  margin: 0;
-  flex-shrink: 0;
-}
-
-/* Card 1, 2, 3, 4, 5 - 이미지 비율 유지 */
-.proof .container .card_1 .figure,
-.proof .container .card_2 .figure,
-.proof .container .card_3 .figure,
-.proof .container .card_4 .figure,
-.proof .container .card_5 .figure {
-  aspect-ratio: 500/281;
-}
-
-/* Card 6 - 이미지 비율 유지 */
-.proof .container .card_6 .figure {
-  aspect-ratio: 500/281;
-}
-
-.proof .container .card .figure .image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.proof .container .card .content {
-  padding: 20px 30px 20px 30px;
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  justify-content: space-between;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.proof .container .card .content .paragraph {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 1;
-  min-width: 0;
-  padding-bottom: 1.25px;
-  align-items: flex-start;
-}
-
-.proof .container .card .content .stat {
-  color: var(--Bcolor-700);
-  text-align: left;
-  font-family: "Assistant", sans-serif;
-  font-size: 20px;
-  line-height: 1.3;
-  font-weight: 600;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin: 0;
-  white-space: pre-line;
-}
-
-.proof .container .card .content .source {
-  color: var(--Bcolor-700);
-  text-align: left;
-  font: var(--font-1920_1024-body-caption-14);
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin: 0;
-  white-space: normal;
-  word-wrap: break-word;
-  max-width: 100%;
-}
-
-.proof .container .card .content .label {
-  background: rgba(178, 35, 24, 0.1);
-  color: #0D031C;
-  text-align: center;
-  font-family: "Assistant", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.17;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 7px 11px 8px 12px;
-  border-radius: 18px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  height: 30px;
-  min-width: 70px;
-}
-
-/* Card 6 특별 스타일 */
-.proof .container .card_6 {
-  gap: 0.01px;
-  background: var(--WF) !important;
-  cursor: default;
-}
-
-.proof .container .card_6 .content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 20px 30px 20px 30px;
-}
-
-.proof .container .card_6 .content .desc {
-  color: var(--Bcolor-700);
-  text-align: left;
-  font-family: "Assistant", sans-serif;
-  font-size: 20px;
-  line-height: 1.3;
-  font-weight: 400;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin: 0;
-  width: 100%;
-}
-
-/* Proof 섹션 - 플립 카드 스타일 */
-.proof .container .card {
-  perspective: 1000px;
-  cursor: pointer;
-  height: 392px;
-  background: #F5F5F5;
-  border-radius: 32px;
-}
-
 .proof .container .card_inner {
-  position: relative;
   width: 100%;
   height: 100%;
-  text-align: left;
   transition: transform 0.6s;
   transform-style: preserve-3d;
   border-radius: 32px;
 }
 
-.proof .container .card:hover .card_inner {
-  transform: rotateY(180deg);
-}
-
+.proof .container .card:hover .card_inner,
 .proof .container .card.flipped .card_inner {
   transform: rotateY(180deg);
 }
@@ -681,7 +422,6 @@ main section .title .sub {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 32px;
   display: flex;
@@ -691,17 +431,6 @@ main section .title .sub {
 
 .proof .container .card_front {
   background: var(--WF);
-  box-shadow: none;
-}
-
-.proof .container .card_front .figure {
-  height: 281px;
-  flex-shrink: 0;
-}
-
-.proof .container .card_front .content {
-  padding: 20px 30px 20px 30px;
-  flex: 1;
 }
 
 .proof .container .card_back {
@@ -710,7 +439,76 @@ main section .title .sub {
   transform: rotateY(180deg);
   padding: 40px 30px;
   justify-content: center;
-  box-shadow: none;
+}
+
+.proof .container .card .figure {
+  background: rgba(166, 166, 166, 0.2);
+  border-radius: 32px;
+  width: 100%;
+  aspect-ratio: 500/281;
+  overflow: hidden;
+  margin: 0;
+}
+
+.proof .container .card_front .figure {
+  height: 281px;
+}
+
+.proof .container .card .figure .image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.proof .container .card .content {
+  padding: 20px 30px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.proof .container .card_front .content {
+  flex: 1;
+}
+
+.proof .container .card .content .paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.proof .container .card .content .stat {
+  color: var(--Bcolor-700);
+  font-family: "Assistant", sans-serif;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 600;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.proof .container .card .content .source {
+  color: var(--Bcolor-700);
+  font: var(--font-1920_1024-body-caption-14);
+  margin: 0;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.proof .container .card .content .label {
+  background: rgba(178, 35, 24, 0.1);
+  color: #0D031C;
+  font-family: "Assistant", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.17;
+  padding: 7px 11px 8px 12px;
+  border-radius: 18px;
+  white-space: nowrap;
+  height: 30px;
+  min-width: 70px;
 }
 
 .proof .container .card_back .back_content {
@@ -752,8 +550,9 @@ main section .title .sub {
   border-left: 4px solid var(--MainColor);
 }
 
-/* Card 6 - 플립 없음 */
+/* Card 6 특별 스타일 */
 .proof .container .card_6 {
+  background: var(--WF) !important;
   perspective: none;
   cursor: default;
 }
@@ -762,34 +561,38 @@ main section .title .sub {
   transform: none;
 }
 
-/* monetization_bridge */
+.proof .container .card_6 .content {
+  flex-direction: column;
+}
 
-.moat-repeatability {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+.proof .container .card_6 .content .desc {
+  color: var(--Bcolor-700);
+  font-family: "Assistant", sans-serif;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 400;
+  margin: 0;
+  width: 100%;
+}
+
+/* ============================================================
+   Monetization Bridge 섹션
+   ============================================================ */
+
+.monetization_bridge {
+  min-height: 100vh;
+  margin-bottom: 100px;
 }
 
 .monetization_bridge .container {
-  border-radius: 32px;
-  padding: 0;
   display: flex;
-  flex-direction: row;
-  gap: 0;
-  align-items: flex-start;
-  justify-content: space-between;
   width: 100%;
-  max-width: 1520px;
-  height: auto;
-  position: relative;
 }
 
 .monetization_bridge .container .bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   flex: 1;
 }
 
@@ -798,22 +601,17 @@ main section .title .sub {
   flex-direction: column;
   gap: 20px;
   align-items: center;
-  justify-content: flex-start;
   width: 100%;
   height: 100%;
 }
 
 .monetization_bridge .container .bar .percent {
   color: #0D031C;
-  text-align: center;
   font-family: "Assistant", sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 1.3;
   margin: 0;
-  white-space: nowrap;
-  width: 100%;
-  padding: 0;
   order: -2;
 }
 
@@ -824,7 +622,6 @@ main section .title .sub {
   justify-content: flex-end;
   width: 35px;
   height: 293px;
-  position: relative;
   background: rgba(166, 166, 166, 0.2);
   border-radius: 999px;
   overflow: hidden;
@@ -836,10 +633,6 @@ main section .title .sub {
   position: absolute;
   bottom: 0;
   left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
   height: 0%;
   transition: height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -847,46 +640,25 @@ main section .title .sub {
 .monetization_bridge .container .bar .chart .fill {
   background: #AA3229;
   width: 100%;
-  height: 100%;
+  height: inherit;
   border-radius: 999px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .monetization_bridge .container .bar .label {
   color: #0D031C;
-  text-align: center;
   font-family: "Assistant", sans-serif;
   font-size: 26px;
   line-height: 1.3;
   font-weight: 400;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 0;
-  white-space: nowrap;
-  width: 100%;
   order: 1;
 }
 
 .monetization_bridge .note {
-  position: relative;
-  bottom: auto;
-  left: auto;
-  transform: none;
   width: 100%;
   max-width: 1520px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   padding: 30px 0;
   margin: 0 auto;
-  background: transparent;
-  border-radius: 0;
-  border-left: none;
 }
 
 .monetization_bridge .note .text {
@@ -896,30 +668,33 @@ main section .title .sub {
   line-height: 1.4;
   font-weight: 400;
   margin: 0;
-  text-align: left;
 }
-/* monetization_bridge */
 
-/* moat_repeatability */
+/* ============================================================
+   Moat Repeatability 섹션
+   ============================================================ */
+
+.moat_repeatability {
+  min-height: 100vh;
+  margin-bottom: 100px;
+}
+
 .moat_repeatability .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   width: 100%;
   max-width: 1520px;
-  position: relative;
 }
 
 .moat_repeatability .container .card {
   display: flex;
-  flex-direction: row;
   gap: 20px;
   align-items: center;
   padding: 20px 30px;
   background: var(--WF);
   border-radius: 32px;
   box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.04);
-  position: relative;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s ease;
@@ -929,6 +704,7 @@ main section .title .sub {
   opacity: 1;
   transform: translateY(0);
 }
+
 .moat_repeatability .container .card .icon {
   font-size: 56px;
   width: 80px;
@@ -938,7 +714,6 @@ main section .title .sub {
   justify-content: center;
   background: rgba(178, 35, 24, 0.1);
   border-radius: 20px;
-  flex-shrink: 0;
 }
 
 .moat_repeatability .container .card .content {
@@ -966,15 +741,20 @@ main section .title .sub {
   line-height: 1.3;
   font-weight: 400;
   margin: 0;
-  padding-bottom: 1px;
 }
-/* moat_repeatability */
 
-/* forward_triggers */
+/* ============================================================
+   Forward Triggers 섹션
+   ============================================================ */
+
+.forward_triggers {
+  min-height: 100vh;
+  margin-bottom: 100px;
+}
+
 .forward_triggers .container {
   width: 100%;
   max-width: 1520px;
-  position: relative;
   padding-top: 8px;
 }
 
@@ -987,7 +767,6 @@ main section .title .sub {
 .forward_triggers .container .table .header {
   display: flex;
   gap: 90px;
-  align-items: flex-start;
   border-bottom: 1px solid var(--Gcolor-300);
   padding: 10px 0;
 }
@@ -996,29 +775,16 @@ main section .title .sub {
   color: var(--subRed2);
   font: var(--font-1920_1024-body-L-20);
   white-space: nowrap;
-  padding: 0;
 }
 
-.forward_triggers .container .table .header .cell:nth-child(1) {
-  width: 315px;
-}
-
-.forward_triggers .container .table .header .cell:nth-child(2) {
-  width: 71px;
-}
-
-.forward_triggers .container .table .header .cell:nth-child(3) {
-  width: 750px;
-}
-
-.forward_triggers .container .table .header .cell:nth-child(4) {
-  width: 116px;
-}
+.forward_triggers .container .table .header .cell:nth-child(1) { width: 315px; }
+.forward_triggers .container .table .header .cell:nth-child(2) { width: 71px; }
+.forward_triggers .container .table .header .cell:nth-child(3) { width: 750px; }
+.forward_triggers .container .table .header .cell:nth-child(4) { width: 116px; }
 
 .forward_triggers .container .table .body .row {
   display: flex;
   gap: 90px;
-  align-items: flex-start;
   border-bottom: 1px solid var(--Gcolor-300);
   height: 63px;
 }
@@ -1042,7 +808,6 @@ main section .title .sub {
 
 .forward_triggers .container .table .body .row .cell.severity {
   width: 71px;
-  justify-content: flex-start;
   padding: 10px 0 11px 0;
 }
 
@@ -1059,11 +824,9 @@ main section .title .sub {
   white-space: nowrap;
   width: 50px;
   height: 26px;
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
 }
 
 .forward_triggers .container .table .body .row .cell.mitigation {
@@ -1081,8 +844,6 @@ main section .title .sub {
   line-height: 1;
   font-weight: 400;
   white-space: nowrap;
-  align-items: center;
-  justify-content: flex-start;
 }
 
 .forward_triggers .container .table .body .row .cell.status_good {
@@ -1099,9 +860,16 @@ main section .title .sub {
   color: var(--Bcolor-700);
   font-weight: 600;
 }
-/* forward_triggers */
 
-/* risks_mitigation */
+/* ============================================================
+   Risks & Mitigation 섹션
+   ============================================================ */
+
+.risks_mitigation {
+  min-height: 100vh;
+  margin-bottom: 100px;
+}
+
 .risks_mitigation .container {
   display: flex;
   flex-direction: column;
@@ -1117,22 +885,17 @@ main section .title .sub {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  box-shadow: none;
 }
 
 .risks_mitigation .container .card .header {
   display: flex;
-  flex-direction: row;
   gap: 10px;
   align-items: center;
-  justify-content: flex-start;
   width: 100%;
 }
 
 .risks_mitigation .container .card .header .risk_name {
   display: flex;
-  flex-direction: row;
-  gap: 0;
   align-items: center;
   padding: 0.62px 0 1.88px 0;
 }
@@ -1162,24 +925,21 @@ main section .title .sub {
   white-space: nowrap;
 }
 
-.risks_mitigation .container .card .header .level_med {
-  color: var(--Bcolor);
-  border-width: 0.5px;
-  padding: 4px 12px;
-}
-
 .risks_mitigation .container .card .header .level_high {
   color: var(--subRed2);
   border-color: rgba(178, 35, 24, 0.3);
-  border-width: 1px;
   font-weight: 500;
   padding: 4.625px 8.625px;
+}
+
+.risks_mitigation .container .card .header .level_med {
+  color: var(--Bcolor);
+  border-width: 0.5px;
 }
 
 .risks_mitigation .container .card .header .level_low {
   color: var(--Bcolor);
   border-color: rgba(13, 3, 28, 0.2);
-  border-width: 1px;
   padding: 4.625px 8.625px;
 }
 
@@ -1187,7 +947,6 @@ main section .title .sub {
   background: rgba(166, 166, 166, 0.3);
   border-radius: 999px;
   height: 8px;
-  position: relative;
   overflow: hidden;
   width: 100%;
 }
@@ -1197,28 +956,18 @@ main section .title .sub {
   height: 100%;
   position: absolute;
   left: 0.18%;
-  right: 0;
   top: 0.63px;
   bottom: 0.62px;
   border-radius: 999px;
 }
 
-.risks_mitigation .container .card .meter .fill_med {
-  width: 59.82%;
-}
-
-.risks_mitigation .container .card .meter .fill_high {
-  width: 84.68%;
-}
-
-.risks_mitigation .container .card .meter .fill_low {
-  width: 29.89%;
-}
+.risks_mitigation .container .card .meter .fill_high { width: 84.68%; }
+.risks_mitigation .container .card .meter .fill_med { width: 59.82%; }
+.risks_mitigation .container .card .meter .fill_low { width: 29.89%; }
 
 .risks_mitigation .container .card .description {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   width: 100%;
 }
 
@@ -1235,10 +984,14 @@ main section .title .sub {
 .risks_mitigation .container .card .description .text strong {
   font-weight: 700;
 }
-/* risks_mitigation */
 
-/* cta_buttons */
+/* ============================================================
+   CTA Buttons 섹션
+   ============================================================ */
+
 .cta_buttons {
+  min-height: 100vh;
+  margin-bottom: 0;
   flex-direction: row !important;
   justify-content: space-between;
   width: 100%;
@@ -1274,7 +1027,5 @@ main section .title .sub {
   font-weight: 700;
   line-height: 1;
   text-transform: uppercase;
-  text-align: center;
   white-space: nowrap;
 }
-/* cta_buttons */
