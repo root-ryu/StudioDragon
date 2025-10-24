@@ -82,7 +82,14 @@ window.addEventListener('DOMContentLoaded', function () {
           pin: true,
           scrub: 1
         }
-      })
+      }).to(
+        ".main_visual",
+        {
+          opacity: 1,
+          ease: "power1.inOut"
+        },
+        0
+      )
       .to(
         ".zoom_item[data-layer='3']",
         {
@@ -162,5 +169,18 @@ window.addEventListener('DOMContentLoaded', function () {
       delay: 2500,
       disableOnInteraction: false,
     },
+  });
+});
+
+window.addEventListener('scroll', function () {
+  const sections = document.querySelectorAll('.section');
+  const windowHeight = window.innerHeight;
+
+  sections.forEach((section) => {
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop < windowHeight * 0.75) {
+      section.classList.add('visible'); // 75% 위치에 도달하면 visible 클래스 추가
+    }
   });
 });

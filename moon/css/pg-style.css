@@ -1,21 +1,37 @@
 @charset "utf-8";
 
-section,
-section * {
-  box-sizing: border-box;
+.mirror{
+  -webkit-box-reflect: below 0px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.5) 100%);
+  pointer-events: none;
+  user-select: none;
 }
+
+main {
+  position: relative;
+  width: 100%;
+}
+
+.title h2 {
+  color: var(--Wcolor);
+  text-align: center;
+  font: var(--font-1920-headline-56);
+  text-transform: uppercase;
+}
+
 
 /* 히어로 텍스트 */
 .hero {
-  margin-top: 374px;
-  padding: 239px 200px;
+  width: 100%;
+  max-width: 1920px;
+  margin-top: 200px;
+  padding: 239px 0;
+  position: relative;
+  background: linear-gradient(transparent 20%, #fff 40%);
+}
+
+.hero .inner {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
 }
 
 .hero li {
@@ -76,11 +92,10 @@ section * {
 }
 
 .contest-winner .top {
-  padding: 0 200px;
   display: flex;
   justify-content: center;
   gap: 115px;
-  width: 100vw;
+  width: 100%;
   position: relative;
 }
 
@@ -89,7 +104,7 @@ section * {
   height: 228.7px;
   position: absolute;
   top: 0;
-  left: 200px;
+  left: 0px;
   background: url(../../moon/asset/goldcup.png) center/cover;
 }
 
@@ -100,12 +115,7 @@ section * {
   flex-direction: column;
 }
 
-.contest-winner .title h2 {
-  color: var(--Wcolor);
-  text-align: center;
-  font: var(--font-1920-headline-56);
-  text-transform: uppercase;
-}
+
 
 .contest-winner .title p {
   color: var(--Wcolor);
@@ -119,7 +129,6 @@ section * {
 }
 
 .contest-winner .video-content {
-  padding: 0px 200px;
   height: 1080px;
 }
 
@@ -266,32 +275,15 @@ section * {
 /* 진행중인 공모전 */
 .running-contest {
   padding: 100px 80px 140px 80px;
-  display: flex;
-  flex-direction: column;
-  gap: 42px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
 }
 
 .running-contest .title {
-  display: flex;
-  flex-direction: row;
-  gap: 18px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
+  margin-bottom: 42px;
 }
 
-.running-contest h2 {
+.running-contest h2,
+.community h2 {
   color: var(--Bcolor);
-  text-align: left;
-  font: var(--font-1920-headline-56);
-  text-transform: uppercase;
-  position: relative;
 }
 
 .running-contest .con {
@@ -466,15 +458,20 @@ section * {
   width: 100%;
 }
 
-
+/* 갤러리 */
 .creativeGallery {
   background: var(--Bcolor);
   width: 100%;
-  padding: 200px;
+  padding: 200px 0;
   display: flex;
   flex-direction: column;
   gap: 40px;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.creativeGallery .inner {
   position: relative;
   overflow: hidden;
 }
@@ -489,13 +486,7 @@ section * {
 
 .creativeGallery .titlebox .title {}
 
-.creativeGallery .titlebox .title h2 {
-  color: var(--Wcolor);
-  text-align: center;
-  font: var(--font-1920-headline-56);
-  text-transform: uppercase;
-  position: relative;
-}
+.creativeGallery .title h2 {}
 
 .creativeGallery .titlebox .category {
   display: flex;
@@ -521,18 +512,6 @@ section * {
   cursor: pointer;
 }
 
-.creativeGallery .fanarts {
-  width: 100%;
-}
-
-.creativeGallery .fanarts .inner {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 68px;
-  position: relative;
-}
-
 .creativeGallery .con {
   width: 100%;
   display: flex;
@@ -541,46 +520,51 @@ section * {
   position: relative;
 }
 
-.creativeGallery .fanarts h4 {
+.creativeGallery h4 {
   color: var(--Wcolor);
   text-align: left;
   font: 600 30px/100% "Assistant-Regular", sans-serif;
   text-transform: uppercase;
 }
 
-.creativeGallery .fanarts .swiper {
+.creativeGallery .swiper {
   width: 100%;
   overflow: visible;
 }
 
-.creativeGallery .fanarts .swiper ul.swiper-wrapper {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  position: relative;
+/* 팬아트 카테고리 */
+.creativeGallery .fanarts {
+  width: 100%;
+
 }
 
-.creativeGallery .fanarts .swiper ul.swiper-wrapper .swiper-slide {
-  position: relative;
+.creativeGallery .fanarts .wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 68px;
+  /* background: red; */
+  overflow-x: hidden;
+}
+
+
+.creativeGallery .fanarts .swiper ul.swiper-wrapper {
+  /* display: flex;
+  flex-direction: row;
+  gap: 60px; */
+}
+
+.creativeGallery .fanarts .swiper ul.swiper-wrapper li.swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.creativeGallery .fanarts .popular_img_slide ul.swiper-wrapper .swiper-slide-shadow-right {
-    background-image: linear-gradient(to left, #000, #fff0);
-    border-right: 1px solid #000;
-    border-radius: 10px;
-}
-.creativeGallery .fanarts .popular_img_slide ul.swiper-wrapper .swiper-slide-shadow-left {
-  background-image: linear-gradient(to right, #000, #fff0);
-  box-shadow: 0 0 0 1px #000;
-  border-radius: 10px;
-}
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .fan-img-wrap {
+  width: 823px;
   display: flex;
   flex-direction: column;
-  position: relative;
+  /* position: relative; */
 }
 
 .creativeGallery .fanarts .img_popular ul.swiper-wrapper .fan-img {
@@ -588,23 +572,15 @@ section * {
   border-radius: 20px;
   width: 823px;
   height: 523px;
-  overflow: hidden;
   aspect-ratio: 823/523;
-  position: relative;
-  -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(0, 0, 0, 0.4) 100%);
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
   pointer-events: none;
-  user-select: none;
+  user-select: none; */
 }
 
-.creativeGallery .fanarts .swiper ul.swiper-wrapper .fan-img-wrap:hover .info-overlay {
-  opacity: 1;
-}
-
-.creativeGallery .fanarts .swiper ul.swiper-wrapper .fan-img-wrap {
-  position: relative;
-}
-
-.creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay {
+.creativeGallery .fanarts .swiper ul.swiper-wrapper .swiper-slide .info-overlay {
+  border-radius: 20px;
+  overflow: hidden;
   width: 100%;
   height: 100%;
   padding: 27px 34px;
@@ -623,17 +599,21 @@ section * {
       rgba(0, 0, 0, 0.8) 100%);
 }
 
+.creativeGallery .fanarts .swiper ul.swiper-wrapper .swiper-slide:hover .info-overlay {
+  opacity: 1;
+}
+
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .subtitle {
   display: flex;
   flex-direction: column;
-  position: relative;
+  /* position: relative; */
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .subtitle li {
   color: var(--Wcolor);
   text-align: left;
   font: 300 24px/130% "Assistant", sans-serif;
-  position: relative;
+  /* position: relative; */
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .subtitle li b {
@@ -644,11 +624,6 @@ section * {
   display: flex;
   flex-direction: row;
   gap: 12px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
   color: #ffffff;
   text-align: left;
   font-family: "Assistant-SemiBold", sans-serif;
@@ -658,7 +633,15 @@ section * {
 }
 
 
-.creativeGallery .fanarts .img_new ul.swiper-wrapper .fan-img{
+.creativeGallery .fanarts .img_new .swiper ul.swiper-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+
+
+.creativeGallery .fanarts .img_new ul.swiper-wrapper .fan-img {
   background: url(../../moon/asset/fanimg_1_po.png) center/cover;
   border-radius: 20px;
   display: flex;
@@ -667,26 +650,292 @@ section * {
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
-  height: 382.87px;
-  position: relative;
+  width: 602px;
+  height: 382px;
+  /* position: relative; */
   overflow: hidden;
-  aspect-ratio: 602/382.87;
-  -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(0, 0, 0, 0.6) 100%);
+  aspect-ratio: 602/382;
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
   pointer-events: none;
-  user-select: none;
+  user-select: none; */
 }
-.fanarts .img_popular .swiper-pagination{
+
+.fanarts .img_popular .swiper-pagination {
   position: absolute;
   bottom: -40px;
   right: 0;
 }
+
+.fanarts .img_new .swiper-pagination {
+  position: static;
+}
+
+/* 공통 페이지네이션 */
 .swiper-pagination-bullet {
-	background: rgba(245, 245, 245, 0.4);
-	transition: all 0.5s ease 0s;
-	border-radius: 8px;
+  background: rgba(245, 245, 245, 1);
+  transition: all 0.5s ease 0s;
+  border-radius: 8px;
 }
 
 .swiper-pagination-bullet-active {
-	background: var(--subRed1);
-	width: 30px;
+  background: var(--subRed1);
+  width: 30px;
+}
+
+/* 갤러리 비디오 카테고리 */
+.creativeGallery .fanvideos {
+  width: 100%;
+}
+
+.creativeGallery .fanvideos .wrap {
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.creativeGallery .fanvideos ul.swiper-wrapper {
+  /*   display: flex;
+  flex-direction: row; */
+  /* gap: 140px; */
+}
+
+.creativeGallery .fanvideos ul.swiper-wrapper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 376px;
+}
+
+.creativeGallery .fanvideos ul.swiper-wrapper .fan-video-wrap {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.creativeGallery .fanvideos .video_popular ul.swiper-wrapper figure {
+  border-radius: 20px;
+  overflow: hidden;
+  height: 669px;
+  overflow: hidden;
+  aspect-ratio: 376/669;
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  pointer-events: none;
+  user-select: none; */
+}
+
+.creativeGallery .fanvideos .video_new .swiper ul.swiper-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 38px;
+}
+
+.creativeGallery .fanvideos .video_new ul.swiper-wrapper figure {
+  border-radius: 20px;
+  justify-content: flex-start;
+  height: 617px;
+  overflow: hidden;
+  aspect-ratio: 347/617;
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  pointer-events: none;
+  user-select: none; */
+}
+
+.fanvideos .video_popular .swiper-pagination {
+  position: absolute;
+  bottom: -30px;
+  right: 0;
+}
+
+.fanvideos .video_new .swiper-pagination {
+  position: static;
+}
+
+/* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide{
+  width: auto;
+} */
+
+
+/* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide .info-overlay {
+  width: 100%;
+  height: 100%;
+  padding: 27px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0) 17.788460850715637%,
+      rgba(0, 0, 0, 0) 83.8942289352417%,
+      rgba(0, 0, 0, 0.8) 100%);
+  display: none;
+} */
+/* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide:hover .info-overlay {
+  opacity: 1;
+} */
+
+/* 커뮤니티 섹션 */
+.community {
+  width: 100%;
+  padding: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+
+/* 커뮤니티 상단 */
+.community .title {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.community .title .subtit {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.community .title .subtit h4 {
+  color: var(--b, #0d031c);
+  text-align: left;
+  font: var(--font-1920-title-L-40);
+  text-transform: uppercase;
+}
+
+.community .title .subtit .right {
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  align-items: center;
+}
+
+.community .title .subtit .right p {
+  color: #bdbac1;
+  font: var(--font-1920_1024-body-B-20);
+
+}
+
+.community .title .subtit .right p.on {
+  color: #4f485a;
+}
+
+/* 커뮤니티-아티클 */
+.community .inner {
+  background: #ccc;
+  position: relative;
+}
+
+.community .articles {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 37px;
+}
+
+.community .articles .comm_gallery {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.community .articles .comm_gallery .swiper-wrapper {
+  padding-right: 200px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: center;
+}
+
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide {
+  display: flex;
+  position: relative;
+  border-radius: var(--WT-round-1);
+  overflow: hidden;
+  /* 이미지 링크는 추후 복사 */
+  background: url(../../moon/asset/comm-img_1.jpg) center/cover;
+  width: 1137px;
+  height: 716px;
+}
+
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap {}
+
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide .info-overlay {
+  width: 100%;
+  height: 100%;
+  padding: 40px 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0) 17.788460850715637%,
+      rgba(0, 0, 0, 0) 83.8942289352417%,
+      rgba(0, 0, 0, 0.8) 100%);
+  color: var(--Wcolor);
+}
+
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide:hover .info-overlay {
+  opacity: 1;
+}
+
+.community .articles .comm_gallery .info-overlay .num {
+  font: 300 72px/100% "Pretendard", sans-serif;
+  position: relative;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+
+.community .articles .comm_gallery .info-overlay .comm_subtit {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.community .articles .comm_gallery .info-overlay .comm_subtit em {
+  color: #938f98;
+  font: 300 26px/100% "Assistant", sans-serif;
+}
+
+.community .articles .comm_gallery .info-overlay .comm_subtit span {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.community .articles .comm_gallery .info-overlay .comm_subtit span h5 {
+  color: var(--w, #f5f5f5);
+  text-align: left;
+  font: 400 30px/100% "Assistant", sans-serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.community .articles .comm_gallery .info-overlay .comm_subtit span p {
+  color: var(--maincolor-main-1000, #bfa473);
+  text-align: left;
+  font: 300 26px/100% "Assistant", sans-serif;
+}
+
+.creativeGallery .fanvideos .video_popular ul.swiper-wrapper figure,
+.creativeGallery .fanvideos .video_new ul.swiper-wrapper figure {
+  background: url(../../moon/asset/temp_img.webp) center/cover;
+  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  pointer-events: none;
+  user-select: none; */
 }

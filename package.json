@@ -1,0 +1,21 @@
+{
+  "name": "studiodragon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo 'No build step required for static content'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/root-ryu/StudioDragon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/root-ryu/StudioDragon/issues"
+  },
+  "homepage": "https://github.com/root-ryu/StudioDragon#readme"
+}
