@@ -1,3 +1,4 @@
+*{scroll-behavior: auto;}
 body {
   background-color: #0D031C;
   color: var(--color-white);
@@ -171,7 +172,7 @@ main {
   &:nth-child(5) {
     right: 30%;
     top: 11%;
-    width: 7.6vw;
+    width: 50.6vw;
   }
 
   &:nth-child(6) {
@@ -294,6 +295,11 @@ main {
   margin-bottom: 50px; /* 제목과 이미지 사이 여백 */
 }
 
+.move-right {
+  display: inline-block; /* 인라인 텍스트라도 margin 적용 가능하게 */
+  margin-right: 90px; /* 오른쪽으로 옮길 거리 (원하는 만큼 조정 가능) */
+}
+
 section h2 {
   color: var(--maincolor-main-1000, #bfa473);
   text-align: left;
@@ -315,6 +321,7 @@ section h2 {
 
 
 .on-alr {
+    margin-top: 250px; 
     margin-left: 200px;
     font-size: 56px;
 }
@@ -382,6 +389,7 @@ section h2 {
   /* 옵션 텍스트 색 */
   background: rgb(0, 0, 0);
   /* 옵션 배경 */
+ font-size: 23px;
 }
 
 
@@ -612,7 +620,7 @@ ul.poster-list li {
 
 .last-section {
   width: 100%;
-  height: 120vh;
+  height: 80vh;
   /* outo; 150vh 온에어랑 큰포스터 둘의 간격*/
   display: flex;
   flex-direction: column;
@@ -676,7 +684,7 @@ section h2 {
   top: 50%;
   left: 85%;
   margin-top: -77px;
-  margin-left: -54px;
+  margin-left: -100px;
 }
 
 .eye {

@@ -9,7 +9,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #F5F5F5;
   padding-top: 474px;
   width: 100%;
   overflow-x: hidden;
@@ -37,7 +36,7 @@ main section:last-of-type {
 
 /* 섹션별 배경색 */
 main section.value_drivers {
-  background-color: #F5F5F5;
+  /* background-color: #F5F5F5; */
 }
 
 main section.execution {
@@ -45,8 +44,8 @@ main section.execution {
 }
 
 main section.proof {
-  background-color: #F5F5F5;
-  margin-top: 150px; /* execution 섹션과의 간격 확보 */
+  /* background-color: #F5F5F5; */
+  /* margin-top: 150px; execution 섹션과의 간격 확보 */
 }
 
 main section.monetization_bridge {
@@ -54,7 +53,7 @@ main section.monetization_bridge {
 }
 
 main section.moat_repeatability {
-  background-color: #F5F5F5;
+  /* background-color: #F5F5F5; */
 }
 
 main section.forward_triggers {
@@ -62,11 +61,11 @@ main section.forward_triggers {
 }
 
 main section.risks_mitigation {
-  background-color: #F5F5F5;
+  /* background-color: #F5F5F5; */
 }
 
 main section.cta_buttons {
-  background-color: #F5F5F5;
+  /* background-color: #F5F5F5; */
   padding: 100px 200px;
 }
 
@@ -497,6 +496,11 @@ main section .title .sub {
   box-shadow: 0px 0px 24px 0px rgba(2, 8, 20, 0.04);
   isolation: isolate;
   width: 100%;
+}
+
+/* 탭 아이콘은 기본적으로 숨김 (데스크탑) */
+.proof .container .card .tap-icon {
+  display: none;
 }
 
 /* Card 1, 2, 3, 4, 5 - 자동 높이 (2행 크기로 통일) */
