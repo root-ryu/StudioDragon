@@ -15,81 +15,85 @@
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="Work_Ryu/css/work_main.css">
     <link rel="stylesheet" href="Work_Ryu/css/work_media.css">
+    <script src="js/common.js"></script>
     <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-    <script src="/js/common.js"></script>
-    <script src="Work_Ryu/js/work_ryu.js"></script>
 </head>
 
 <body>
     <div class="wrap">
         <div class="wrap">
-            <header class="">
-                <div class="inner">
-                    <h1><a href="#" class="logo"><img src="asset/logo_w.png" alt="StudioDragonLogo"></a></h1>
-                    <nav class="">
-                        <ul class="gnb">
-                            <li class=""><a href="#">ABOUT</a>
-                                <ul class="sub">
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Business Ethics</a></li>
-                                    <li><a href="#">Partnerships</a></li>
-                                    <li><a href="#">History</a></li>
-                                    <li><a href="#">CEO Message</a></li>
-                                    <li><a href="#">Contact & Location</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="/work_lee.html">WORKS</a>
-                                <ul class="sub">
-                                    <li><a href="#">Production List</a></li>
-                                    <li><a href="#">Viewer Participation</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">NEWSROOM</a>
-                                <ul class="sub">
-                                    <li><a href="#">Notice</a></li>
-                                    <li><a href="#">News</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">IR</a>
-                                <ul class="sub">
-                                    <li><a href="#">IR Insights</a></li>
-                                    <li><a href="#">Materials</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">SUSTAINABILITY</a>
-                                <ul class="sub">
-                                    <li><a href="#">Sustainability Story</a></li>
-                                    <li><a href="#">Sustainability Activities</a></li>
-                                    <li><a href="#">Sustainability Report</a></li>
-                                    <li><a href="#">ESG Ratings</a></li>
-                                    <li><a href="#">Sustainability Report</a></li>
-                                </ul>
-                            </li>
-                        </ul><!-- //.gnb -->
-                        <div class="right">
-                            <div class="lang">
-                                <a href="#" class="en">EN</a>
-                                <a href="#" class="kr">KR</a>
-                            </div><!-- //.lang -->
-                            <div class="user">
-                                <a href="#"><img src="asset/user.png" alt="user"></a>
-                            </div><!-- //.user -->
-                            <div class="ham">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                        </div><!-- //.right -->
-                    </nav>
-                </div><!-- //.inner -->
-            </header>
+            <div class="header_bg">
+        </div>
+        <header class="">
+            <div class="inner">
+                <h1><a href="/index.html" class="logo"><img src="back/img/logo_w.png" alt="StudioDragonLogo"></a></h1>
+                <nav class="">
+                    <ul class="gnb">
+                        <li class=""><a href="/intro_kim/intro.html">ABOUT</a>
+                            <ul class="sub">
+                                <li><a href="/intro_kim/intro.html">About Us</a></li>
+                                <li><a href="#">Business Ethics</a></li>
+                                <li><a href="#">Partnerships</a></li>
+                                <li><a href="#">History</a></li>
+                                <li><a href="#">CEO Message</a></li>
+                                <li><a href="#">Contact & Location</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/Listworks_lee.html">WORKS</a>
+                            <ul class="sub">
+                                <li><a href="#">Production List</a></li>
+                                <li><a href="/viewersplayground_moon.html">Viewer Participation</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">NEWSROOM</a>
+                            <ul class="sub">
+                                <li><a href="#">Notice</a></li>
+                                <li><a href="#">News</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/IR.html">IR</a>
+                            <ul class="sub">
+                                <li><a href="#">IR Insights</a></li>
+                                <li><a href="#">Materials</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">SUSTAINABILITY</a>
+                            <ul class="sub">
+                                <li><a href="#">Sustainability Story</a></li>
+                                <li><a href="#">Sustainability Activities</a></li>
+                                <li><a href="#">Sustainability Report</a></li>
+                                <li><a href="#">ESG Ratings</a></li>
+                                <li><a href="#">Sustainability Report</a></li>
+                            </ul>
+                        </li>
+                    </ul><!-- //.gnb -->
+                    <div class="right">
+                        <div class="lang">
+                            <a href="#" class="en active">EN</a>
+                            <a href="#" class="kr ">KR</a>
+                        </div><!-- //.lang -->
+                        <div class="user">
+                            <a href="#"><img src="back/img/user.png" alt="user"></a>
+                        </div><!-- //.user -->
+                    </div><!-- //.right -->
+                </nav>
+            </div><!-- //.inner -->
+        </header>
+
+        <!-- 햄버거 메뉴 독립 배치 -->
+        <div class="ham">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
             <div class="inner">
                 <article class="main_visual">
                     <!-- Background Image with Gradients -->
@@ -448,71 +452,91 @@
                             </div><!-- .episode_card -->
                         </div><!-- .episode_list -->
                     </div><!-- .episode_scroll_container -->
+                    
+                    <!-- 네비게이션 영역: 화살표 + 인디케이터 + 화살표 -->
+                    <div class="episode_navigation">
+                        <button class="nav_arrow prev" id="episodePrev" aria-label="Previous">
+                            <span></span>
+                        </button>
+                        
+                        <div class="swipe_indicator" id="episodeIndicator">
+                            <span class="swipe_dot active"></span>
+                            <span class="swipe_dot"></span>
+                            <span class="swipe_dot"></span>
+                            <span class="swipe_dot"></span>
+                            <span class="swipe_dot"></span>
+                        </div>
+                        
+                        <button class="nav_arrow next" id="episodeNext" aria-label="Next">
+                            <span></span>
+                        </button>
+                    </div>
                 </section><!-- //.episode -->
+                
                 <section class="draggable_section">
                     <!-- Floating Images (16 items) -->
                     <div class="img_item" data-size="large">
-                        <img src="work_ryu/asset/images_img_dummy01.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy01.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="medium">
-                        <img src="work_ryu/asset/images_img_dummy02.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy02.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="small">
-                        <img src="work_ryu/asset/images_img_dummy03.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy03.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="medium">
-                        <img src="work_ryu/asset/images_img_dummy04.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy04.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="large">
-                        <img src="work_ryu/asset/images_img_dummy05.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy05.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="small">
-                        <img src="work_ryu/asset/images_img_dummy06.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy06.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="medium">
-                        <img src="work_ryu/asset/images_img_dummy07.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy07.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="small">
-                        <img src="work_ryu/asset/images_img_dummy08.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy08.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="large">
-                        <img src="work_ryu/asset/images_img_dummy09.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy09.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="medium">
-                        <img src="work_ryu/asset/images_img_dummy10.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy10.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="small">
-                        <img src="work_ryu/asset/images_img_dummy11.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy11.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="large">
-                        <img src="work_ryu/asset/images_img_dummy12.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy12.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="medium">
-                        <img src="work_ryu/asset/images_img_dummy13.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy13.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="small">
-                        <img src="work_ryu/asset/images_img_dummy14.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy14.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="large">
-                        <img src="work_ryu/asset/images_img_dummy15.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy15.png" alt="">
                     </div>
 
                     <div class="img_item" data-size="medium">
-                        <img src="work_ryu/asset/images_img_dummy16.png" alt="">
+                        <img src="Work_Ryu/asset/images_img_dummy16.png" alt="">
                     </div>
                 </section><!-- .draggable_section -->
 
@@ -523,12 +547,15 @@
                         <button class="modal_close">✕</button>
                     </div>
                 </div><!-- .image_modal -->
-                <section class="behind_video">
-                    <!-- Title Area -->
-                    <div class="title_wrapper">
-                        <h2 class="section_title">Behind Video</h2>
-                        <button class="more_button">MORE</button>
-                    </div><!-- .title_wrapper -->
+                
+                <!-- Behind Video Wrapper (sticky 고정 길이 제어) -->
+                <div class="behind_video_wrapper">
+                    <section class="behind_video">
+                        <!-- Title Area -->
+                        <div class="title_wrapper">
+                            <h2 class="section_title">Behind Video</h2>
+                            <button class="more_button">MORE</button>
+                        </div><!-- .title_wrapper -->
 
                     <!-- Content Stack Area -->
                     <div class="stack_container">
@@ -638,6 +665,8 @@
                         </div><!-- .video_item -->
                     </div><!-- .stack_container -->
                 </section><!-- .behind_video -->
+                </div><!-- .behind_video_wrapper -->
+                
                 <section class="chat_event_section">
                     <!-- Background Image (blurred) -->
                     <div class="img_bg">
@@ -1067,6 +1096,10 @@
                 </div><!-- //.footer_inner -->
             </footer><!-- //.footer -->
         </div><!-- //.wrap -->
+        
+    <!-- JavaScript Files -->
+    <script src="/js/common.js"></script>
+    <script src="Work_Ryu/js/work_ryu.js"></script>
 </body>
 
 </html>
