@@ -130,6 +130,32 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesPerView: 2.5,
         spaceBetween: 60,
         centeredSlides: true,
+        autoplay: {
+            delay: 4500, // 4.5초마다 자동 슬라이드 (조금 더 빠르게)
+            disableOnInteraction: false, // 사용자 상호작용 후에도 자동 슬라이드 계속
+        },
+        speed: 1000, // 슬라이드 전환 속도 (1초)
+        effect: 'slide', // 슬라이드 효과
+        // 부드러운 전환을 위한 CSS 이징
+        cssMode: false,
+        // 마우스 호버 시 자동 슬라이드 일시정지
+        on: {
+            init: function() {
+                const swiperContainer = document.querySelector('.on_slide_wrap');
+                if (swiperContainer) {
+                    swiperContainer.addEventListener('mouseenter', () => {
+                        this.autoplay.stop();
+                    });
+                    swiperContainer.addEventListener('mouseleave', () => {
+                        this.autoplay.start();
+                    });
+                }
+            },
+            // 슬라이드 전환 시 부드러운 애니메이션을 위한 이벤트
+            slideChangeTransitionStart: function() {
+                // 전환 시작 시 추가 효과가 필요하면 여기에 추가
+            }
+        }
     });
 
 
@@ -313,16 +339,38 @@ function initGSAPAnimations() {
         opacity: 0
     });
 
+    // 반응형 트리거 설정 함수
+    function getBeyondDramaTriggerSettings() {
+        const screenWidth = window.innerWidth;
+        if (screenWidth <= 1023) {
+            return {
+                topStart: 'top 85%',
+                bottomStart: 'top 85%',
+                duration: 1.2,
+                staggerDelay: 0.1
+            };
+        } else {
+            return {
+                topStart: 'top 80%',
+                bottomStart: 'top 80%',
+                duration: 1.5,
+                staggerDelay: 0.15
+            };
+        }
+    }
+
+    const triggerSettings = getBeyondDramaTriggerSettings();
+
     // 첫 번째 행 애니메이션 (BDconTop) - 아래에서 위로
     gsap.to('.gsap-flip', {
         y: 0,
         opacity: 1,
-        duration: 1.5,
+        duration: triggerSettings.duration,
         ease: "power2.out",
-        stagger: 0.15,
+        stagger: triggerSettings.staggerDelay,
         scrollTrigger: {
             trigger: '.BDconTop',
-            start: 'top 60%',
+            start: triggerSettings.topStart,
             end: 'bottom 20%',
             toggleActions: 'play none none reverse'
         }
@@ -332,13 +380,13 @@ function initGSAPAnimations() {
     gsap.to('.gsap-flip-bottom', {
         y: 0,
         opacity: 1,
-        duration: 1.5,
+        duration: triggerSettings.duration,
         ease: "power2.out",
-        stagger: 0.15,
-        delay: 0.3,
+        stagger: triggerSettings.staggerDelay,
+        delay: 0.2,
         scrollTrigger: {
             trigger: '.BDconBottom',
-            start: 'top 60%',
+            start: triggerSettings.bottomStart,
             end: 'bottom 20%',
             toggleActions: 'play none none reverse'
         }
@@ -408,5 +456,10 @@ function initGSAPAnimations() {
             end: 'bottom 30%',
             toggleActions: 'play none none reverse'
         }
+    });
+
+    // 윈도우 리사이즈 시 ScrollTrigger 새로고침
+    window.addEventListener('resize', () => {
+        ScrollTrigger.refresh();
     });
 }
