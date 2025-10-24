@@ -228,14 +228,40 @@
 
 .history .cont_hori_swipe ul li.y_group{
     width: max-content;
-    margin-right: 90px;
+    margin-right: 50px;
     position: relative;
+}
+
+.history .cont_hori_swipe ul>li.y_group>ul>li {
+    width: 314px;
+}
+
+.history .cont_hori_swipe ul li h5.years {
+    position: absolute;
+    left: 44px;
+    font-size: 40px;
+}
+
+.history .cont_hori_swipe ul li p {
+    font-size: 30px;
+}
+
+
+.history .cont_hori_swipe ul li img {
+    width: 314px;
+    height: 158px;
+}
+
+.history .cont_hori_swipe ul li em {
+    width: 314px;
+    font-size: 14px;
 }
 
 .history>.scroll_bar.swiper-scrollbar {
     width: calc(100vw - (var(--page-pad) * 2));
     margin-bottom: 100px;
 }
+
 
 
 }
@@ -255,6 +281,45 @@
     }
 
     .history { --page-pad: 24px; }
+
+    .history .inner h3.tit {
+        margin-top: 100px;
+    }
+
+    .history .cont_hori_swipe {
+    margin-bottom: 62px;
+}
+
+.history .cont_hori_swipe ul li.y_group{
+    width: max-content;
+    margin-right: 90px;
+    position: relative;
+}
+
+.history .cont_hori_swipe ul>li.y_group>ul>li {
+    width: 314px;
+}
+
+.history .cont_hori_swipe ul li h5.years {
+    position: absolute;
+    left: 44px;
+    font-size: 40px;
+}
+
+.history .cont_hori_swipe ul li p {
+    font-size: 30px;
+}
+
+
+.history .cont_hori_swipe ul li img {
+    width: 314px;
+    height: 158px;
+}
+
+.history .cont_hori_swipe ul li em {
+    width: 314px;
+    font-size: 14px;
+}
 
     .history>.scroll_bar.swiper-scrollbar {
     width: calc(100vw - (var(--page-pad) * 2));

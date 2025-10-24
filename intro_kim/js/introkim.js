@@ -275,11 +275,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function getHistoryOffsets() {
         const w = window.innerWidth;
         if (w <= 440) {
-            return { before: 20, after: 120 };   // 모바일 소형
+            return { before: 28, after: 120 };   // 모바일 소형
         } else if (w <= 1024) {
-            return { before: 80, after: 250 };   // 태블릿
+            return { before: 88, after: 250 };   // 태블릿
         } else {
-            return { before: 200, after: 500 };  // PC 기본
+            return { before: 280, after: 500 };  // PC 기본
         }
     }
     let __historyOffset = getHistoryOffsets();
