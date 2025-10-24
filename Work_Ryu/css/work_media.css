@@ -423,10 +423,20 @@
     }
     
     /* ============ DRAGGABLE SECTION ============ */
+    /* 1024px 이하: ScrollTrigger pin 해제 */
     section.draggable_section {
+        position: static !important;
+        height: auto !important;
         padding: 0 80px;
         margin-top: 180px;
         margin-bottom: 180px;
+    }
+    
+    /* pinSpacer 높이 제거 (콘텐츠는 유지) */
+    .pin-spacer {
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
     
     section.draggable_section h2 {
@@ -527,7 +537,14 @@
     }
     
     /* ============ BEHIND VIDEO SECTION ============ */
+    /* 1024px 이하: sticky 해제 */
+    .behind_video_wrapper {
+        height: auto !important;
+    }
+    
     section.behind_video {
+        position: static !important;
+        height: auto !important;
         padding: 0 80px;
         margin-top: 180px;
         margin-bottom: 180px;
@@ -1146,10 +1163,20 @@
     }
     
     /* ============ DRAGGABLE SECTION ============ */
+    /* 440px 이하: ScrollTrigger pin 해제 */
     section.draggable_section {
+        position: static !important;
+        height: auto !important;
         padding: 0 30px;
         margin-top: 80px;
         margin-bottom: 80px;
+    }
+    
+    /* pinSpacer 높이 제거 (콘텐츠는 유지) */
+    .pin-spacer {
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
     
     section.draggable_section h2 {
@@ -1254,7 +1281,14 @@
     }
     
     /* ============ BEHIND VIDEO SECTION ============ */
+    /* 440px 이하: sticky 해제 */
+    .behind_video_wrapper {
+        height: auto !important;
+    }
+    
     section.behind_video {
+        position: static !important;
+        height: auto !important;
         padding: 0 30px;
         margin-top: 80px;
         margin-bottom: 80px;
