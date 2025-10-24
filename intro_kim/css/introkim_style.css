@@ -222,6 +222,28 @@ h3.tit {
     color: var(--Bcolor-700);
 }
 
+.info-g .icon_info ul li:nth-child(3) .icon_knowhow{
+    background-image: url(../assets/icon_knowhow.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    object-fit: cover;
+    display: flex;
+    width: 100px;
+    height: 120px;
+}
+
+.info-g .icon_info ul li:nth-child(4) .icon-sales{
+    background-image: url(../assets/icon_salesmarket.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    object-fit: cover;
+    display: flex;
+    width: 100px;
+    height: 100px;
+}
+
 /* .txt_info */
 .info-g .txt_info .sub_tit {
     font-size: 40px;
