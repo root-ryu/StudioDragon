@@ -10,17 +10,19 @@
     <title>studiodragon</title>
     <link rel="shortcut icon" href="back/img/favicon.ico" type="image/x-icon">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/main_media.css">
     <link rel="stylesheet" href="back/css/MainBeck_style.css">
     <link rel="stylesheet" href="back/css/MainBack_media.css">
     <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="./js/common.js"></script>
-    <script src="./back/js/MainBack.js"></script>
+    <script src="./back/js/mainyul.js"></script>
 </head>
 
 <body>
@@ -71,7 +73,7 @@
                         </li>
                     </ul><!-- //.gnb -->
                     <div class="right">
-                        <div class="lang">
+                        <div class="lang active">
                             <a href="#" class="en ">EN</a>
                             <a href="#" class="kr ">KR</a>
                         </div><!-- //.lang -->
@@ -168,50 +170,98 @@
                         <button type="button"><span>MORE</span></button>
                     </div><!-- //.top -->
                 </div>
-                <div class="ONcon">
-                    <div class="ONcontents01">
-                        <img src="./back/img/ON_img02.png" alt="My Son Is Dead">
-                        <div class="ONtxtbox">
-                            <h3>My Son Is Dead</h3>
-                            <ul>
-                                <li class="bar"></li>
-                                <li>
-                                    <p>TVING</p>
-                                </li>
-                                <li class="bar"></li>
-                            </ul>
-                            <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
-                                    alt="arrow"></button>
-                        </div><!-- //.on_txtbox -->
-                    </div><!-- //.on_centents01 -->
-                    <div class="ONcontents02 active">
-                        <img src="./back/img/ON_img01.png" alt="Shin's Project">
-                        <div class="ONtxtbox">
-                            <h3>shin's project</h3>
-                            <ul>
-                                <li class="bar"></li>
-                                <li>
-                                    <p>TVING</p>
-                                </li>
-                                <li class="bar"></li>
-                            </ul>
-                            <button type="button">READ MORE <img src="back/img/arrow-up-right.png" alt="arrow"></button>
-                        </div><!-- //.on_txtbox -->
-                    </div>
-                    <div class="ONcontents03">
-                        <img src="./back/img/ON_img03.png" alt="The Killer: A Girl's Revenge">
-                        <div class="ONtxtbox">
-                            <h3>The Killer</h3>
-                            <ul>
-                                <li class="bar"></li>
-                                <li>
-                                    <p>NETFLIX</p>
-                                </li>
-                                <li class="bar"></li>
-                            </ul>
-                            <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
-                                    alt="arrow"></button>
-                        </div><!-- //.on_txtbox -->
+                <div class="on_slide_wrap swiper">
+                    <div class="ONcon swiper-wrapper">
+                        <div class="ONcontents01 swiper-slide">
+                            <img src="./back/img/ON_img02.png" alt="My Son Is Dead">
+                            <div class="ONtxtbox">
+                                <h3>My Son Is Dead</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>TVING</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div><!-- //.on_centents01 -->
+                        <div class="ONcontents02 swiper-slide">
+                            <img src="./back/img/ON_img01.png" alt="Shin's Project">
+                            <div class="ONtxtbox">
+                                <h3>shin's project</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>TVING</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div>
+                        <div class="ONcontents03 swiper-slide">
+                            <img src="./back/img/ON_img03.png" alt="The Killer: A Girl's Revenge">
+                            <div class="ONtxtbox">
+                                <h3>The Killer</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>NETFLIX</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div>
+                        <div class="ONcontents01 swiper-slide">
+                            <img src="./back/img/ON_img02.png" alt="My Son Is Dead">
+                            <div class="ONtxtbox">
+                                <h3>My Son Is Dead</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>TVING</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div><!-- //.on_centents01 -->
+                        <div class="ONcontents02 swiper-slide">
+                            <img src="./back/img/ON_img01.png" alt="Shin's Project">
+                            <div class="ONtxtbox">
+                                <h3>shin's project</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>TVING</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div>
+                        <div class="ONcontents03 swiper-slide">
+                            <img src="./back/img/ON_img03.png" alt="The Killer: A Girl's Revenge">
+                            <div class="ONtxtbox">
+                                <h3>The Killer</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>NETFLIX</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div>
                     </div>
                 </div>
             </section>
