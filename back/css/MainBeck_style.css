@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
-
+* {
+    scroll-behavior: auto;
+}
 
 body {
     background: var(--Bcolor);
@@ -97,35 +99,35 @@ body {
 }
 
 .face1 {
-    transform: rotateY(0deg) translateZ(-764px);
+    transform: rotateY(0deg) translateZ(-964px);
 }
 
 .face2 {
-    transform: rotateY(45deg) translateZ(-764px);
+    transform: rotateY(45deg) translateZ(-964px);
 }
 
 .face3 {
-    transform: rotateY(90deg) translateZ(-764px);
+    transform: rotateY(90deg) translateZ(-964px);
 }
 
 .face4 {
-    transform: rotateY(135deg) translateZ(-764px);
+    transform: rotateY(135deg) translateZ(-964px);
 }
 
 .face5 {
-    transform: rotateY(180deg) translateZ(-764px);
+    transform: rotateY(180deg) translateZ(-964px);
 }
 
 .face6 {
-    transform: rotateY(225deg) translateZ(-764px);
+    transform: rotateY(225deg) translateZ(-964px);
 }
 
 .face7 {
-    transform: rotateY(270deg) translateZ(-764px);
+    transform: rotateY(270deg) translateZ(-964px);
 }
 
 .face8 {
-    transform: rotateY(315deg) translateZ(-764px);
+    transform: rotateY(315deg) translateZ(-964px);
 }
 
 

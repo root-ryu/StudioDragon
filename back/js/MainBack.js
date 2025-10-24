@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+
+
     const header = document.querySelector('header');
     const circle = document.getElementById('circle');
     const faces = document.querySelectorAll('#circle article');
@@ -291,11 +294,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // GSAP 애니메이션 초기화
     initGSAPAnimations();
+
+
 });
 
 // GSAP 애니메이션 함수
 function initGSAPAnimations() {
-    // GSAP ScrollTrigger 등록
     gsap.registerPlugin(ScrollTrigger);
 
     // BeyondDrama 섹션의 아래에서 위로 올라오는 애니메이션
