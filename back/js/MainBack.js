@@ -440,4 +440,121 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 커스텀 커서 초기화
     initCustomCursor();
+
+    // GSAP 애니메이션 초기화
+    initGSAPAnimations();
 });
+
+// GSAP 애니메이션 함수
+function initGSAPAnimations() {
+    // GSAP ScrollTrigger 등록
+    gsap.registerPlugin(ScrollTrigger);
+
+    // BeyondDrama 섹션의 아래에서 위로 올라오는 애니메이션
+    gsap.set('.gsap-flip', {
+        y: 50,
+        opacity: 0
+    });
+
+    gsap.set('.gsap-flip-bottom', {
+        y: 50,
+        opacity: 0
+    });
+
+    // 첫 번째 행 애니메이션 (BDconTop) - 아래에서 위로
+    gsap.to('.gsap-flip', {
+        y: 0,
+        opacity: 1,
+        duration: 1.5,
+        ease: "power2.out",
+        stagger: 0.15,
+        scrollTrigger: {
+            trigger: '.BDconTop',
+            start: 'top 60%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    // 두 번째 행 애니메이션 (BDconBottom) - 아래에서 위로, 약간의 지연
+    gsap.to('.gsap-flip-bottom', {
+        y: 0,
+        opacity: 1,
+        duration: 1.5,
+        ease: "power2.out",
+        stagger: 0.15,
+        delay: 0.3,
+        scrollTrigger: {
+            trigger: '.BDconBottom',
+            start: 'top 60%',
+            end: 'bottom 20%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    // ViewersPlayground 섹션의 fade-up-right/left 애니메이션
+    gsap.set('.VPcon01', {
+        y: 50,
+        x: 30,
+        opacity: 0
+    });
+
+    gsap.set('.VPcon02', {
+        y: 50,
+        x: -30,
+        opacity: 0
+    });
+
+    gsap.set('.VPcon03', {
+        y: 50,
+        x: 30,
+        opacity: 0
+    });
+
+    // VPcon01 애니메이션 (첫 번째)
+    gsap.to('.VPcon01', {
+        y: 0,
+        x: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: '.VPcontents',
+            start: 'top 70%',
+            end: 'bottom 30%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    // VPcon02 애니메이션 (두 번째) - 0.6초 딜레이
+    gsap.to('.VPcon02', {
+        y: 0,
+        x: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power2.out",
+        delay: 0.6,
+        scrollTrigger: {
+            trigger: '.VPcontents',
+            start: 'top 70%',
+            end: 'bottom 30%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    // VPcon03 애니메이션 (세 번째) - 1.2초 딜레이
+    gsap.to('.VPcon03', {
+        y: 0,
+        x: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power2.out",
+        delay: 1.2,
+        scrollTrigger: {
+            trigger: '.VPcontents',
+            start: 'top 70%',
+            end: 'bottom 30%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+}
