@@ -11,24 +11,7 @@ main {
   width: 100%;
 }
 
-/* ASAP 스크롤 애니메이션 기본 설정 */
-[data-asap] {
-  opacity: 0;
-  transition-property: opacity, transform;
-  transition-duration: var(--asap-duration, 600ms);
-  transition-timing-function: var(--asap-easing, ease);
-  transition-delay: var(--asap-delay, 0ms);
-  will-change: opacity, transform;
-}
-
-[data-asap].asap-fade-up {
-  transform: translate3d(0, 40px, 0);
-}
-
-[data-asap].asap-animate {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
+/* GSAP용 기본 상태 (필요 시) -> 빈 규칙 제거로 린트 경고 방지 */
 
 .title h2 {
   color: var(--Wcolor);
@@ -42,14 +25,26 @@ main {
 .hero {
   width: 100%;
   margin-top: 180px;
-  padding: 239px 0;
   background: linear-gradient(transparent 20%, #fff 40%);
+  padding: 239px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
 }
 
 .hero .inner {
   display: flex;
   flex-direction: row;
   position: relative;
+}
+
+.hero .opacity_reveal li { /* 텍스트 리빌 시작 상태 */
+  opacity: 0;
+  transform: translateY(24px);
 }
 
 .hero li {
@@ -62,6 +57,7 @@ main {
   color: transparent;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+  background-clip: text;
   background-image: linear-gradient(#883ffe, #883ffe), linear-gradient(#ffffff, #ffffff);
   background-size: 100% 0%, 100% 100%;
   background-position: 0 100%, 0 0;
@@ -510,6 +506,28 @@ main {
   overflow: hidden;
 }
 
+.creativeGallery .fanarts,
+.creativeGallery .fanvideos {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.creativeGallery .fanarts.active,
+.creativeGallery .fanvideos.active {
+  display: block;
+  opacity: 1;
+}
+
+.creativeGallery .category {
+  display: flex;
+  gap: 12px;
+}
+
+
+
+
+
 .creativeGallery .titlebox {
   display: flex;
   flex-direction: column;
@@ -532,7 +550,7 @@ main {
 }
 
 .creativeGallery .titlebox .category button {
-  background: var(--subBlue2);
+  background: var(--Bcolor);
   border-radius: 63px;
   padding: 10px 20px;
   display: flex;
@@ -544,6 +562,12 @@ main {
   text-transform: uppercase;
   border: 0;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.creativeGallery .titlebox .category button.active {
+  background: var(--subBlue2);
+  color: var(--Wcolor);
 }
 
 .creativeGallery .con {
@@ -572,6 +596,7 @@ main {
 
 }
 
+
 .creativeGallery .fanarts .wrap {
   width: 100%;
   display: flex;
@@ -598,10 +623,10 @@ main {
   width: 823px;
   display: flex;
   flex-direction: column;
-  /* position: relative; */
+  position: relative; /* info-overlay의 absolute 기준점 */
 }
 
-.creativeGallery .fanarts .img_popular ul.swiper-wrapper .fan-img {
+.creativeGallery .fanarts .img_popular ul.swiper-wrapper .fan-img-wrap .fan-img {
   background: url(../../moon/asset/fanimg_1_po.png) center/cover;
   border-radius: 20px;
   width: 823px;
@@ -866,20 +891,20 @@ main {
   text-transform: uppercase;
 }
 
-.community .title .subtit .right {
+.community .title .subtit .com_btn_wrap {
   display: flex;
   flex-direction: row;
   gap: 13px;
   align-items: center;
 }
 
-.community .title .subtit .right p {
+.community .title .subtit .com_btn_wrap .com_toggle_btn {
   color: #bdbac1;
   font: var(--font-1920_1024-body-B-20);
 
 }
 
-.community .title .subtit .right p.on {
+.community .title .subtit .com_btn_wrap .com_toggle_btn.active{
   color: #4f485a;
 }
 
@@ -1030,6 +1055,7 @@ main {
   gap: 18px;
 }
 .community ul.article_list li .num{
+  columns: var(--Bcolor);
   text-align: left;
   font: 700 26px/100% "Assistant", sans-serif;
 }
