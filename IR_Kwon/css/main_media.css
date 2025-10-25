@@ -620,11 +620,11 @@
   
   /* ========== Global Section Styles ========== */
   main {
-    padding-top: 200px;
+    padding-top: 220px; /* 200px → 220px */
   }
 
   main section {
-    padding: 60px 30px; /* 양쪽 여백 30px, 가운데 380px */
+    padding: 70px 30px; /* 60px 30px → 70px 30px */
   }
 
   main section:first-of-type {
@@ -636,22 +636,54 @@
   }
 
   main section .title {
-    gap: 12px;
+    gap: 14px; /* 12px → 14px */
     max-width: 100%;
+    margin-bottom: 8px; /* 여백 추가 */
   }
 
   main section .title h2 {
-    font: var(--font-440-headline-30); /* 30px/130% */
+    font: var(--font-440-headline-30);
+    line-height: 1.35; /* line-height 명시 */
   }
 
   main section .title .sub {
-    font-size: 16px;
-    line-height: 1.3;
+    font-size: 17px; /* 16px → 17px */
+    line-height: 1.4; /* 1.3 → 1.4 */
+  }
+
+  /* ========== Banner ========== */
+  .banner {
+    padding: 0 30px 70px !important; /* 패딩 추가 */
+  }
+
+  .banner .container {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .banner .img_wrap {
+    width: 100%;
+    height: 250px; /* 높이 명시 */
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .banner .img_wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .banner .content {
+    font-size: 32px !important; /* 크기 증가 */
+    line-height: 1.3 !important;
+    padding: 0 10px; /* 좌우 여백 */
   }
 
   /* ========== Value Drivers ========== */
   .value_drivers .container {
-    gap: 40px;
+    gap: 50px;
     max-width: 100%;
   }
 
@@ -669,17 +701,17 @@
   }
 
   .value_drivers .container .area {
-    gap: 24px;
+    gap: 28px;
     width: 100%;
   }
 
   .value_drivers .container .area .item {
     display: flex;
-    flex-direction: row; /* column에서 row로 변경 */
-    align-items: center; /* stretch에서 center로 변경 */
+    flex-direction: row;
+    align-items: center;
     gap: 16px !important;
     width: 100%;
-    height: 90px; /* min-height에서 height로 변경 */
+    height: 110px; /* 90px → 110px 증가 */
   }
 
   .value_drivers .container .area .item.active {
@@ -687,9 +719,9 @@
   }
 
   .value_drivers .container .area .item .card {
-    padding: 16px 20px;
-    height: 100%; /* min-height 제거, height 100% */
-    min-height: 90px; /* 최소 높이 지정 */
+    padding: 18px 22px; /* 16px 20px → 18px 22px */
+    height: 100%;
+    min-height: 110px; /* 90px → 110px */
     border-radius: 8px;
     width: 100%;
     box-sizing: border-box;
@@ -705,25 +737,25 @@
   }
 
   .value_drivers .container .area .item .arrow {
-    transform: rotate(0deg); /* 90deg에서 0deg로 변경 */
+    transform: rotate(0deg);
     align-self: center;
-    font-size: 32px;
+    font-size: 36px; /* 32px → 36px */
     flex-shrink: 0;
   }
 
   .value_drivers .container .area .description {
-    gap: 12px;
-    margin-top: 12px;
+    gap: 14px; /* 12px → 14px */
+    margin-top: 14px;
   }
 
   .value_drivers .container .area .description p {
-    font-size: 14px;
-    line-height: 1.4;
+    font-size: 15px; /* 14px → 15px */
+    line-height: 1.5; /* 1.4 → 1.5 */
   }
 
   /* ========== Execution ========== */
   .execution {
-    padding: 60px 30px !important; /* 양쪽 여백 30px */
+    padding: 60px 30px !important;
     min-height: auto;
   }
 
@@ -734,7 +766,7 @@
   }
 
   .execution > .title h2 {
-    font: var(--font-440-headline-30); /* 30px/130% */
+    font: var(--font-440-headline-30);
   }
 
   .execution > .title .sub {
@@ -746,14 +778,14 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 24px;
+    gap: 30px; /* 24px → 30px */
     min-height: auto;
     max-width: 100%;
   }
 
   .execution .image_container {
-    height: 280px;
-    border-radius: 20px;
+    height: 320px; /* 280px → 320px 증가 */
+    border-radius: 24px; /* 20px → 24px */
     overflow: hidden;
   }
 
@@ -785,14 +817,14 @@
 
   .execution .cards_wrap {
     height: auto;
-    gap: 16px;
+    gap: 18px; /* 16px → 18px */
   }
 
   .execution .card {
-    padding: 18px 16px;
-    border-radius: 18px;
-    height: 100px;
-    min-height: 100px;
+    padding: 20px 18px; /* 18px 16px → 20px 18px */
+    border-radius: 20px; /* 18px → 20px */
+    height: 120px; /* 100px → 120px 증가 */
+    min-height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -827,15 +859,15 @@
   }
 
   .execution .card_title {
-    font: var(--font-440-title-B-20); /* 20px/130% */
-    font-size: 17px; /* 약간 조정 */
+    font: var(--font-440-title-B-20);
+    font-size: 18px; /* 17px → 18px */
     line-height: 1.2;
   }
 
   .execution .card_desc {
-    font: var(--font-440-body-M-12); /* 12px/130% */
-    font-size: 12px; /* 가독성 위해 조정 */
-    line-height: 1.3;
+    font: var(--font-440-body-M-12);
+    font-size: 13px; /* 12px → 13px */
+    line-height: 1.4; /* 1.3 → 1.4 */
   }
 
   /* ========== Proof ========== */
@@ -847,6 +879,40 @@
     grid-template-columns: 1fr;
     gap: 20px;
     max-width: 100%;
+  }
+
+  /* 카드 크기 개선 */
+  .proof .card {
+    width: 100% !important;
+    height: 350px !important; /* 고정 높이 설정 */
+    min-height: 350px;
+    padding: 28px 24px !important;
+    border-radius: 24px !important;
+  }
+
+  .proof .card .content {
+    gap: 16px !important;
+    left: 24px !important;
+    top: 28px !important;
+  }
+
+  .proof .card .content h3 {
+    font-size: 26px !important; /* 30px → 26px */
+    line-height: 1.2 !important;
+  }
+
+  .proof .card .content p {
+    font-size: 22px !important; /* 30px → 22px */
+    line-height: 1.3 !important;
+  }
+
+  .proof .card img {
+    width: 140px !important;
+    height: 140px !important;
+    left: auto !important;
+    right: 20px !important;
+    top: auto !important;
+    bottom: 20px !important;
   }
 
   /* 모바일에서도 호버로 플립되지 않음 - 클릭만 */
@@ -1005,38 +1071,40 @@
 
   /* ========== Moat Repeatability ========== */
   .moat_repeatability .container {
-    gap: 16px;
+    gap: 18px; /* 16px → 18px */
     max-width: 100%;
   }
 
   .moat_repeatability .container .card {
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
-    gap: 16px;
-    border-radius: 20px;
+    padding: 24px 22px; /* 20px → 24px 22px */
+    gap: 18px; /* 16px → 18px */
+    border-radius: 24px; /* 20px → 24px */
+    min-height: 180px; /* 최소 높이 추가 */
   }
 
   .moat_repeatability .container .card .icon {
-    font-size: 36px;
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
+    font-size: 40px; /* 36px → 40px */
+    width: 60px; /* 56px → 60px */
+    height: 60px;
+    border-radius: 16px; /* 14px → 16px */
   }
 
   .moat_repeatability .container .card .content {
-    gap: 4px;
+    gap: 6px; /* 4px → 6px */
   }
 
   .moat_repeatability .container .card .content .card_title {
-    font: var(--font-440-title-B-20); /* 20px/130% */
-    line-height: 1.2;
+    font: var(--font-440-title-B-20);
+    font-size: 20px; /* 명시적으로 설정 */
+    line-height: 1.3; /* 1.2 → 1.3 */
   }
 
   .moat_repeatability .container .card .content .card_desc {
-    font: var(--font-440-body-M-12); /* 12px/130% */
-    font-size: 13px; /* 가독성 위해 조정 */
-    line-height: 1.4;
+    font: var(--font-440-body-M-12);
+    font-size: 14px; /* 13px → 14px */
+    line-height: 1.5; /* 1.4 → 1.5 */
   }
 
   /* ========== Forward Triggers ========== */
@@ -1047,8 +1115,8 @@
   .forward_triggers .container .table .body .row {
     flex-direction: column;
     height: auto;
-    padding: 20px 0;
-    gap: 12px;
+    padding: 24px 0; /* 20px → 24px */
+    gap: 14px; /* 12px → 14px */
     align-items: flex-start;
   }
 
@@ -1058,7 +1126,8 @@
   }
 
   .forward_triggers .container .table .body .row .cell.area {
-    font-size: 24px;
+    font-size: 26px; /* 24px → 26px */
+    line-height: 1.3;
   }
 
   .forward_triggers .container .table .body .row .cell.severity {
@@ -1066,61 +1135,914 @@
   }
 
   .forward_triggers .container .table .body .row .cell.mitigation {
-    font-size: 15px;
+    font-size: 16px; /* 15px → 16px */
+    line-height: 1.5;
     white-space: normal;
   }
 
   .forward_triggers .container .table .body .row .cell.status {
-    font-size: 14px;
+    font-size: 15px; /* 14px → 15px */
+    line-height: 1.4;
   }
 
   /* ========== Risks Mitigation ========== */
   .risks_mitigation .container {
-    gap: 8px;
+    gap: 10px; /* 8px → 10px */
   }
 
   .risks_mitigation .container .card {
-    padding: 16px 20px;
-    gap: 8px;
+    padding: 20px 22px; /* 16px 20px → 20px 22px */
+    gap: 10px; /* 8px → 10px */
+    min-height: 100px; /* 최소 높이 추가 */
   }
 
   .risks_mitigation .container .card .header {
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px; /* 8px → 10px */
   }
 
   .risks_mitigation .container .card .header .risk_name .icon {
-    font-size: 20px;
+    font-size: 22px; /* 20px → 22px */
   }
 
   .risks_mitigation .container .card .header .risk_name .text {
-    font-size: 22px;
+    font-size: 24px; /* 22px → 24px */
+    line-height: 1.3;
   }
 
   .risks_mitigation .container .card .header .level {
-    font-size: 11px;
-    padding: 3px 8px;
+    font-size: 12px; /* 11px → 12px */
+    padding: 4px 10px; /* 3px 8px → 4px 10px */
   }
 
   .risks_mitigation .container .card .description .text {
-    font-size: 14px;
+    font-size: 15px; /* 14px → 15px */
+    line-height: 1.5; /* line-height 추가 */
   }
 
   /* ========== CTA Buttons ========== */
   .cta_buttons {
-    padding: 60px 30px !important; /* 양쪽 여백 30px */
-    gap: 20px;
+    padding: 70px 30px !important; /* 60px → 70px */
+    gap: 24px; /* 20px → 24px */
   }
 
   .cta_buttons .cta_btn {
-    height: 70px;
-    border-radius: 8px;
+    height: 80px; /* 70px → 80px */
+    border-radius: 10px; /* 8px → 10px */
+    padding: 0 30px; /* 좌우 패딩 추가 */
   }
 
   .cta_buttons .cta_btn span {
-    font: var(--font-440-title-B-20); /* 20px/130% */
-    font-size: 22px; /* 약간 조정 */
+    font: var(--font-440-title-B-20);
+    font-size: 24px; /* 22px → 24px */
     line-height: 1;
+    letter-spacing: -0.02em; /* 자간 조정 */
   }
 }
+
+/* ============================================
+   TABLET - 1024px
+   여백: 80px | 컨텐츠: 864px | Spacing: 50px/180px
+   ============================================ */
+@media (max-width: 1024px) {
+  .main {
+    gap: 180px;
+    height: auto;
+  }
+
+  /* ========== Banner ========== */
+  .banner {
+    padding: 0 80px 80px;
+    width: 1024px;
+  }
+
+  .banner .container {
+    width: 864px;
+    height: auto;
+  }
+
+  .banner .img_wrap {
+    width: 864px;
+    top: 120px;
+  }
+
+  .banner .img_wrap img {
+    width: 864px;
+    height: 350px;
+  }
+
+  .banner .content {
+    font-size: 60px;
+  }
+
+  /* ========== Value Drivers ========== */
+  .value_drivers {
+    width: 864px;
+    height: auto;
+  }
+
+  .value_drivers .title h2 {
+    font-size: 40px;
+  }
+
+  .value_drivers .title p {
+    font-size: 20px;
+  }
+
+  .value_drivers .container {
+    height: auto;
+  }
+
+  .value_drivers .img_wrap {
+    width: 450px;
+    height: 400px;
+  }
+
+  .value_drivers .img_wrap img {
+    width: 650px;
+    height: 400px;
+    left: -100px;
+  }
+
+  .value_drivers .content {
+    width: 364px;
+    left: 500px;
+  }
+
+  .value_drivers .before,
+  .value_drivers .after {
+    width: 150px;
+    height: 120px;
+    padding: 15px 20px;
+  }
+
+  .value_drivers .before span,
+  .value_drivers .after span {
+    font-size: 12px;
+  }
+
+  .value_drivers .before p,
+  .value_drivers .after p {
+    font-size: 16px;
+  }
+
+  .value_drivers .arrow {
+    font-size: 30px;
+  }
+
+  .value_drivers .info {
+    left: 500px;
+    right: auto;
+    top: auto;
+    bottom: 0;
+  }
+
+  /* ========== Execution ========== */
+  .execution {
+    width: 864px;
+  }
+
+  .execution .inner {
+    height: auto;
+  }
+
+  .execution .title h2 {
+    font-size: 40px;
+  }
+
+  .execution .title p {
+    font-size: 20px;
+  }
+
+  .execution .container {
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .execution .card {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+  }
+
+  .execution .img_wrap {
+    height: 250px;
+  }
+
+  .execution .img_wrap img {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  .execution .content h3 {
+    font-size: 20px;
+  }
+
+  .execution .content p {
+    font-size: 14px;
+  }
+
+  /* ========== Proof ========== */
+  .proof {
+    width: 864px;
+  }
+
+  .proof .title h2 {
+    font-size: 40px;
+  }
+
+  .proof .title p {
+    font-size: 20px;
+  }
+
+  .proof .container {
+    gap: 30px;
+  }
+
+  .proof .card {
+    width: 270px;
+    height: 270px;
+    padding: 20px 15px;
+  }
+
+  @keyframes slideLeftContinuous {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-270px - 30px));
+    }
+  }
+
+  .proof .card .content {
+    left: 15px;
+    top: 20px;
+  }
+
+  .proof .card .content h3 {
+    font-size: 20px;
+  }
+
+  .proof .card .content p {
+    font-size: 20px;
+  }
+
+  .proof .card img {
+    width: 100px;
+    height: 100px;
+    left: 155px;
+    top: 155px;
+  }
+
+  /* ========== Moat Repeatability ========== */
+  .moat_repeatability {
+    width: 864px;
+  }
+
+  .moat_repeatability .title h2 {
+    font-size: 40px;
+  }
+
+  .moat_repeatability .row {
+    width: 864px;
+    gap: 20px;
+  }
+
+  .moat_repeatability .card {
+    width: 275px;
+    height: 275px;
+    padding: 15px 20px;
+  }
+
+  .moat_repeatability .img_wrap {
+    width: 275px;
+    height: 275px;
+  }
+
+  .moat_repeatability .card .content {
+    left: 30px;
+    bottom: 30px;
+  }
+
+  .moat_repeatability .card.overview .content {
+    left: 15px;
+    top: 100px;
+  }
+
+  .moat_repeatability .card .content h3 {
+    font-size: 20px;
+  }
+
+  .moat_repeatability .card .content p {
+    font-size: 14px;
+  }
+
+  .moat_repeatability .card.overview .content h3 {
+    font-size: 20px;
+  }
+
+  .moat_repeatability .card.overview .content p {
+    font-size: 16px;
+  }
+
+  .moat_repeatability .placeholder {
+    width: 275px;
+    height: 275px;
+  }
+
+  /* ========== Forward Triggers ========== */
+  .forward_triggers {
+    width: 864px;
+  }
+
+  .forward_triggers .title h2 {
+    font-size: 40px;
+  }
+
+  .forward_triggers .title p {
+    font-size: 20px;
+  }
+
+  .forward_triggers .container {
+    gap: 20px;
+  }
+
+  .forward_triggers .item {
+    width: 275px;
+  }
+
+  .forward_triggers .item h3 {
+    font-size: 20px;
+  }
+
+  .forward_triggers .item .desc {
+    font-size: 16px;
+  }
+
+  .forward_triggers .item .img_wrap img {
+    height: 180px;
+  }
+
+  /* ========== Risks Mitigation ========== */
+  .risks_mitigation {
+    width: 864px;
+  }
+
+  .risks_mitigation .title h2 {
+    font-size: 40px;
+  }
+
+  .risks_mitigation .title p {
+    font-size: 20px;
+  }
+
+  .risks_mitigation .container {
+    gap: 15px;
+  }
+
+  .risks_mitigation .risk_item {
+    width: 275px;
+  }
+
+  .risks_mitigation .risk_item .img_wrap {
+    height: 520px;
+  }
+
+  .risks_mitigation .risk_item h3 {
+    font-size: 20px;
+  }
+
+  .risks_mitigation .risk_item .content {
+    padding: 15px 20px;
+    transform: translateY(calc(100% - 60px));
+  }
+
+  .risks_mitigation .risk_item .desc {
+    font-size: 14px;
+  }
+
+  /* ========== CTA ========== */
+  .cta {
+    width: 864px;
+    gap: 20px;
+  }
+
+  .cta .button {
+    font-size: 26px;
+    width: 280px;
+    height: 80px;
+    padding: 15px 25px;
+  }
+}
+/* ========== END 1024px ========== */
+
+/* ============================================
+   MOBILE - 440px
+   여백: 30px | 컨텐츠: 380px | Spacing: 30px/80px
+   ============================================ */
+@media (max-width: 440px) {
+  .main {
+    gap: 80px;
+    height: auto;
+  }
+
+  /* ========== Banner ========== */
+  .banner {
+    padding: 0 30px 60px;
+    width: 440px;
+  }
+
+  .banner .container {
+    width: 380px;
+    height: auto;
+  }
+
+  .banner .img_wrap {
+    width: 380px;
+    top: 80px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .banner .img_wrap img {
+    width: 380px;
+    height: 200px;
+    border-radius: 8px;
+  }
+
+  .banner .content {
+    font-size: 30px;
+  }
+
+  /* ========== Value Drivers ========== */
+  .value_drivers {
+    width: 380px;
+    height: auto;
+  }
+
+  .value_drivers .title h2 {
+    font-size: 30px;
+  }
+
+  .value_drivers .title p {
+    font-size: 18px;
+  }
+
+  .value_drivers .container {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .value_drivers .img_wrap {
+    width: 380px;
+    height: 320px;
+    position: relative;
+    left: 0;
+  }
+
+  .value_drivers .img_wrap img {
+    width: 100%;
+    height: 100%;
+    left: 0;
+  }
+
+  .value_drivers .content {
+    width: 100%;
+    position: relative;
+    left: 0;
+    gap: 20px;
+  }
+
+  .value_drivers .item {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .value_drivers .before,
+  .value_drivers .after {
+    width: 100%;
+    height: 100px;
+    padding: 12px 18px;
+    border-radius: 8px;
+  }
+
+  .value_drivers .before span,
+  .value_drivers .after span {
+    font-size: 10px;
+  }
+
+  .value_drivers .before p,
+  .value_drivers .after p {
+    font-size: 14px;
+  }
+
+  .value_drivers .arrow {
+    font-size: 24px;
+    transform: rotate(90deg);
+  }
+
+  .value_drivers .info {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-top: 20px;
+  }
+
+  .value_drivers .info p {
+    font-size: 14px;
+  }
+
+  /* ========== Execution ========== */
+  .execution {
+    width: 380px;
+  }
+
+  .execution .inner {
+    height: auto;
+  }
+
+  .execution .title h2 {
+    font-size: 30px;
+  }
+
+  .execution .title p {
+    font-size: 18px;
+  }
+
+  .execution .container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .execution .card {
+    width: 100%;
+    height: 280px;
+  }
+
+  .execution .img_wrap {
+    height: 200px;
+    border-radius: 20px;
+  }
+
+  .execution .img_wrap img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .execution .content {
+    padding: 15px 20px;
+  }
+
+  .execution .content h3 {
+    font-size: 18px;
+  }
+
+  .execution .content p {
+    font-size: 12px;
+  }
+
+  /* ========== Proof ========== */
+  .proof {
+    width: 380px;
+  }
+
+  .proof .title h2 {
+    font-size: 30px;
+  }
+
+  .proof .title p {
+    font-size: 18px;
+  }
+
+  .proof .container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 100%;
+  }
+
+  /* 카드 크기 개선 */
+  .proof .card {
+    width: 100% !important;
+    height: 350px !important; /* 고정 높이 설정 */
+    min-height: 350px;
+    padding: 28px 24px !important;
+    border-radius: 24px !important;
+  }
+
+  .proof .card .content {
+    gap: 16px !important;
+    left: 24px !important;
+    top: 28px !important;
+  }
+
+  .proof .card .content h3 {
+    font-size: 26px !important; /* 30px → 26px */
+    line-height: 1.2 !important;
+  }
+
+  .proof .card .content p {
+    font-size: 22px !important; /* 30px → 22px */
+    line-height: 1.3 !important;
+  }
+
+  .proof .card img {
+    width: 140px !important;
+    height: 140px !important;
+    left: auto !important;
+    right: 20px !important;
+    top: auto !important;
+    bottom: 20px !important;
+  }
+
+  /* 모바일에서도 호버로 플립되지 않음 - 클릭만 */
+  .proof .container .card:hover .card_inner {
+    transform: none;
+  }
+  
+  .proof .container .card.flipped .card_inner {
+    transform: rotateY(180deg);
+  }
+
+  /* 클릭 유도 스타일 - 펄스 애니메이션 (모바일, 클릭하지 않은 카드만) */
+  .proof .container .card:not(.card_6):not(.clicked) {
+    position: relative;
+    animation: cardPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes cardPulse {
+    0%, 100% {
+      box-shadow: 0 0 24px rgba(2, 8, 20, 0.04);
+    }
+    50% {
+      box-shadow: 0 0 28px rgba(170, 50, 41, 0.12), 0 4px 16px rgba(170, 50, 41, 0.08);
+    }
+  }
+
+  /* 터치 인디케이터 아이콘 (모바일, 클릭하지 않은 카드만) - 동심원 탭 제스처 ((O)) */
+  .proof .container .card:not(.card_6):not(.clicked)::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2.5px solid var(--WF);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    z-index: 10;
+    opacity: 0.1;
+    animation: tapPulse 1.8s ease-in-out infinite;
+  }
+  
+  /* 내부 원 (모바일) */
+  .proof .container .card:not(.card_6):not(.clicked)::after {
+    content: "";
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid var(--WF);
+    z-index: 10;
+    opacity: 0.3;
+    animation: tapPulse 1.8s ease-in-out infinite 0.2s;
+  }
+
+  /* 중앙 손가락 포인터 아이콘 (Font Awesome, 모바일) */
+  .proof .container .card:not(.card_6):not(.clicked) .tap-icon {
+    display: block;
+    position: absolute;
+    top: 19px;
+    right: 19px;
+    font-size: 12px;
+    color: var(--WF);
+    z-index: 11;
+    opacity: 0.85;
+    animation: iconPulse 2s ease-in-out infinite 0.15s;
+    pointer-events: none;
+  }
+
+  @keyframes iconPulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.75;
+    }
+    50% {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+  }
+
+  @keyframes tapPulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.6;
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.8;
+      box-shadow: 0 0 0 5px rgba(255, 255, 255, 0);
+    }
+  }
+
+  /* 플립된 카드는 인디케이터 숨김 (플립 중에만) */
+  .proof .container .card.flipped::before,
+  .proof .container .card.flipped::after,
+  .proof .container .card.flipped .tap-icon {
+    display: none;
+  }
+
+  /* 클릭된 카드는 아이콘 숨김 */
+  .proof .container .card.clicked .tap-icon {
+    display: none;
+  }
+
+  /* 클릭 피드백 (모바일) */
+  .proof .container .card:not(.card_6):active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
+  }
+
+  /* ========== Monetization Bridge ========== */
+  .monetization_bridge .container {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .monetization_bridge .container .bar {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 60px;
+  }
+
+  .monetization_bridge .container .bar .bar_wrapper {
+    gap: 12px;
+  }
+
+  .monetization_bridge .container .bar .chart_container {
+    height: 180px;
+    width: 24px;
+  }
+
+  .monetization_bridge .container .bar .percent {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .monetization_bridge .container .bar .label {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .monetization_bridge .note {
+    padding: 16px 0;
+    max-width: 100%;
+  }
+
+  .monetization_bridge .note .text {
+    font: var(--font-440-body-caption-10); /* 10px/100% */
+    line-height: 1.4;
+  }
+
+  /* ========== Moat Repeatability ========== */
+  .moat_repeatability .container {
+    gap: 18px; /* 16px → 18px */
+    max-width: 100%;
+  }
+
+  .moat_repeatability .container .card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 22px; /* 20px → 24px 22px */
+    gap: 18px; /* 16px → 18px */
+    border-radius: 24px; /* 20px → 24px */
+    min-height: 180px; /* 최소 높이 추가 */
+  }
+
+  .moat_repeatability .container .card .icon {
+    font-size: 40px; /* 36px → 40px */
+    width: 60px; /* 56px → 60px */
+    height: 60px;
+    border-radius: 16px; /* 14px → 16px */
+  }
+
+  .moat_repeatability .container .card .content {
+    gap: 6px; /* 4px → 6px */
+  }
+
+  .moat_repeatability .container .card .content .card_title {
+    font: var(--font-440-title-B-20);
+    font-size: 20px; /* 명시적으로 설정 */
+    line-height: 1.3; /* 1.2 → 1.3 */
+  }
+
+  .moat_repeatability .container .card .content .card_desc {
+    font: var(--font-440-body-M-12);
+    font-size: 14px; /* 13px → 14px */
+    line-height: 1.5; /* 1.4 → 1.5 */
+  }
+
+  /* ========== Forward Triggers ========== */
+  .forward_triggers .container .table .header {
+    display: none;
+  }
+
+  .forward_triggers .container .table .body .row {
+    flex-direction: column;
+    height: auto;
+    padding: 24px 0; /* 20px → 24px */
+    gap: 14px; /* 12px → 14px */
+    align-items: flex-start;
+  }
+
+  .forward_triggers .container .table .body .row .cell {
+    width: 100% !important;
+    padding: 0;
+  }
+
+  .forward_triggers .container .table .body .row .cell.area {
+    font-size: 26px; /* 24px → 26px */
+    line-height: 1.3;
+  }
+
+  .forward_triggers .container .table .body .row .cell.severity {
+    justify-content: flex-start;
+  }
+
+  .forward_triggers .container .table .body .row .cell.mitigation {
+    font-size: 16px; /* 15px → 16px */
+    line-height: 1.5;
+    white-space: normal;
+  }
+
+  .forward_triggers .container .table .body .row .cell.status {
+    font-size: 15px; /* 14px → 15px */
+    line-height: 1.4;
+  }
+
+  /* ========== Risks Mitigation ========== */
+  .risks_mitigation .container {
+    gap: 10px; /* 8px → 10px */
+  }
+
+  .risks_mitigation .container .card {
+    padding: 20px 22px; /* 16px 20px → 20px 22px */
+    gap: 10px; /* 8px → 10px */
+    min-height: 100px; /* 최소 높이 추가 */
+  }
+
+  .risks_mitigation .container .card .header {
+    flex-wrap: wrap;
+    gap: 10px; /* 8px → 10px */
+  }
+
+  .risks_mitigation .container .card .header .risk_name .icon {
+    font-size: 22px; /* 20px → 22px */
+  }
+
+  .risks_mitigation .container .card .header .risk_name .text {
+    font-size: 24px; /* 22px → 24px */
+    line-height: 1.3;
+  }
+
+  .risks_mitigation .container .card .header .level {
+    font-size: 12px; /* 11px → 12px */
+    padding: 4px 10px; /* 3px 8px → 4px 10px */
+  }
+
+  .risks_mitigation .container .card .description .text {
+    font-size: 15px; /* 14px → 15px */
+    line-height: 1.5; /* line-height 추가 */
+  }
+
+  /* ========== CTA ========== */
+  .cta {
+    width: 380px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .cta .button {
+    font-size: 18px;
+    width: 100%;
+    height: 60px;
+    padding: 12px 20px;
+    border-radius: 8px;
+  }
+}
+/* ========== END 440px ========== */
 
