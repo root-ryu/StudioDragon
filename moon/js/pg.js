@@ -115,6 +115,30 @@ if (countElements.length === 4) {
   /* 날짜 변경이 필요하면 위에 날짜를 변경 */
 }
 
+// 갤러리 토글 버튼
+(function () {
+  const categoryBtns = document.querySelectorAll(".creativeGallery .category button");
+  const fanarts = document.querySelector(".creativeGallery .fanarts");
+  const fanvideos = document.querySelector(".creativeGallery .fanvideos");
+
+  categoryBtns.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      // 모든 버튼 active 제거
+      categoryBtns.forEach(b => b.classList.remove("active"));
+      // 클릭된 버튼에 active 추가
+      btn.classList.add("active");
+
+      // 콘텐츠 전환
+      if (index === 0) {
+        fanarts.classList.add("active");
+        fanvideos.classList.remove("active");
+      } else {
+        fanarts.classList.remove("active");
+        fanvideos.classList.add("active");
+      }
+    });
+  });
+})();
 
 /* 갤러리_popular img 스와이퍼
    사용법(간단):
