@@ -9,23 +9,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>studiodragon</title>
     <link rel="shortcut icon" href="back/img/favicon.ico" type="image/x-icon">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/common_moon.css">
+    <link rel="stylesheet" href="/css/cursor.css">
     <link rel="stylesheet" href="./css/main_media.css">
     <link rel="stylesheet" href="back/css/MainBeck_style.css">
     <link rel="stylesheet" href="back/css/MainBack_media.css">
     <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.35/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="./js/common.js"></script>
-    <script src="./back/js/mainyul.js"></script>
+    <script src="./js/common_moon.js"></script>
+    <script src="./back/js/MainBack.js"></script>
+    <script src="/js/cusor.js"></script>
 </head>
 
 <body>
+    <canvas id="cursorCanvas"></canvas>
     <div class="wrap">
         <div class="header_bg">
         </div>
@@ -73,8 +75,8 @@
                         </li>
                     </ul><!-- //.gnb -->
                     <div class="right">
-                        <div class="lang active">
-                            <a href="#" class="en ">EN</a>
+                        <div class="lang">
+                            <a href="#" class="en active">EN</a>
                             <a href="#" class="kr ">KR</a>
                         </div><!-- //.lang -->
                         <div class="user">
@@ -130,31 +132,27 @@
                         <button type="button"><span>MORE</span></button>
                     </div>
                     <div class="CScontents1">
-                        <img src="./back/img/CS_img.png" alt="Taepung Corporation" data-aos="fade-up"
-                            data-aos-delay="500" data-aos-mirror="true">
+                        <img src="./back/img/CS_img.png" alt="Taepung Corporation" class="gsap-fade-right">
                         <div class="txt">
-                            <h3 data-aos="fade-left" data-aos-delay="1000" data-aos-mirror="true">Typhoon Corporation
-                            </h3>
-                            <p data-aos="fade-left" data-aos-delay="1500" data-aos-mirror="true">TVN & TVING<br>10/11
+                            <h3 class="gsap-fade-left">Typhoon Corporation</h3>
+                            <p class="gsap-fade-left">TVN & TVING<br>10/11
                                 Saturday</p>
                         </div>
                     </div>
                     <div class="CScontents2">
-                        <img src="./back/img/CS_img2.png" alt="Genie, Make a Wish" data-aos="fade-up"
-                            data-aos-delay="500" data-aos-mirror="true">
+                        <img src="./back/img/CS_img2.png" alt="Genie, Make a Wish" class="gsap-fade-right">
                         <div class="txt">
-                            <h3 data-aos="fade-left" data-aos-delay="1000" data-aos-mirror="true">Genie, Make a Wish
+                            <h3 class="gsap-fade-left">Genie, Make a Wish
                             </h3>
-                            <p data-aos="fade-left" data-aos-delay="1500" data-aos-mirror="true">Netflix<br>10/03 Friday
+                            <p class="gsap-fade-left">Netflix<br>10/03 Friday
                             </p>
                         </div>
                     </div>
                     <div class="CScontents3">
-                        <img src="./back/img/CS_img3.png" alt="pro bono" data-aos="fade-up" data-aos-delay="500"
-                            data-aos-mirror="true">
+                        <img src="./back/img/CS_img3.png" alt="pro bono" class="gsap-fade-right">
                         <div class="txt">
-                            <h3 data-aos="fade-left" data-aos-delay="1000" data-aos-mirror="true">pro bono</h3>
-                            <p data-aos="fade-left" data-aos-delay="1500" data-aos-mirror="true">TVING <br> 2025~2026
+                            <h3 class="gsap-fade-left">pro bono</h3>
+                            <p class="gsap-fade-left">TVING <br> 2025~2026
                             </p>
                         </div>
                     </div>
@@ -436,7 +434,7 @@
             </section>
 
 
-            <section class="LatestNews">
+            <section class="LatestNegit statusws">
                 <div class="inner">
                     <div class="top">
                         <h3>latest news</h3>

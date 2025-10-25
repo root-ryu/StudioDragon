@@ -1,147 +1,76 @@
-const ASAP = (() => {
-  const defaults = {
-    once: true, // true -> 최초 1회만 실행. init 옵션이나 data-asap-once로 요소별 조정 가능.
-    offset: 0, // px 단위 전역 오프셋. 양수로 늘리면 화면에 보이기 전에 더 빨리 실행됩니다.
-    anchorPlacement: 'top-bottom', // 트리거 기준 위치 기본값. 필요하면 data-asap-anchor-placement로 변경.
-  };
+// GSAP으로 스크롤 애니메이션 구현 (AOS/ASAP 대체)
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.gsap) {
+    gsap.registerPlugin(ScrollTrigger);
 
-  let items = [];
-  let ticking = false;
+    // 히어로 섹션 스크롤 애니메이션
+    const hero = document.querySelector('.hero');
+    const lines = gsap.utils.toArray('.hero .opacity_reveal li');
+    const imgbox = document.querySelector('.hero .imgbox');
+    
+    // 조정 가능한 값들 (한국어 주석)
+    const HERO_FILL_STAGGER = 0.8; // 그라디언트 채우기 간격 (초)
+    const HERO_SCROLL_DISTANCE = '+=200%'; // 전체 스크롤 진행 거리
 
-  function init(options = {}) {
-    const config = { ...defaults, ...options };
-    const targets = document.querySelectorAll('[data-asap]');
-    if (!targets.length) return;
+    if (hero && lines.length) {
+      // 초기 상태 설정
+      gsap.set(lines, { opacity: 0, y: 24 });
+      if (imgbox) gsap.set(imgbox, { opacity: 0, y: 24 });
 
-    items = Array.from(targets).map(element => prepare(element, config));
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
-  }
-
-  function prepare(element, globalConfig) {
-    const effect = element.dataset.asap || 'fade-up';
-  // data-asap-duration, data-asap-delay 등은 HTML 속성으로 바로 조정할 수 있습니다.
-  const duration = parseInt(element.dataset.asapDuration, 10) || parseInt(globalConfig.duration, 10) || 400;
-    const delay = parseInt(element.dataset.asapDelay, 10) || parseInt(globalConfig.delay, 10) || 0;
-    const easing = element.dataset.asapEasing || globalConfig.easing || 'ease';
-    const once = element.dataset.asapOnce !== undefined ? element.dataset.asapOnce === 'true' : globalConfig.once;
-    const mirror = element.dataset.asapMirror === 'true';
-    const offset = parseInt(element.dataset.asapOffset, 10) || globalConfig.offset || 0;
-    const anchorPlacement = element.dataset.asapAnchorPlacement || globalConfig.anchorPlacement;
-
-    element.style.setProperty('--asap-duration', `${duration}ms`);
-    element.style.setProperty('--asap-delay', `${delay}ms`);
-    element.style.setProperty('--asap-easing', easing);
-  // asap-init 클래스로 초기 상태를 고정하고 asap-animate가 붙으면 전환됩니다.
-    element.classList.add('asap-init', `asap-${effect}`);
-
-    return {
-      element,
-      once,
-      mirror,
-      offset,
-      anchorPlacement,
-      animated: false,
-    };
-  }
-
-  function onScroll() {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(update);
-    }
-  }
-
-  function computeTrigger(anchorPlacement, viewportHeight, offset) {
-    const shift = offset || 0;
-    switch (anchorPlacement) {
-      case 'top-center':
-        return viewportHeight * 0.5 - shift;
-      case 'center-center':
-        return viewportHeight * 0.5 - shift;
-      case 'bottom-bottom':
-        return viewportHeight - shift;
-      case 'top-bottom':
-      default:
-        return viewportHeight - shift;
-    }
-  }
-
-  function update() {
-    ticking = false;
-    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-
-    items.forEach(item => {
-      const { element, once, mirror, offset, anchorPlacement } = item;
-      const rect = element.getBoundingClientRect();
-      const triggerPoint = computeTrigger(anchorPlacement, viewportHeight, offset);
-      const inView = rect.top <= triggerPoint && rect.bottom >= 0;
-
-      if (inView) {
-        if (!item.animated) {
-          item.animated = true;
-          element.classList.add('asap-animate');
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: hero,
+          start: 'top top',
+          end: HERO_SCROLL_DISTANCE,
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1
         }
-      } else if (!once || mirror) {
-        if (item.animated) {
-          item.animated = false;
-          element.classList.remove('asap-animate');
-        }
+      });
+
+      // Phase 1: 텍스트박스와 이미지박스 함께 등장
+      tl.to(lines, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power2.out'
+      }, 0);
+
+      if (imgbox) {
+        tl.to(imgbox, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out'
+        }, 0.3); // imgbox는 살짝 딜레이
       }
+
+      // Phase 2: 텍스트 등장 완료 후, 그라디언트 순차 채우기
+      tl.to(lines, {
+        backgroundSize: '100% 100%, 100% 100%',
+        duration: 1.5,
+        ease: 'none',
+        stagger: HERO_FILL_STAGGER
+      }, '+=0.5'); // Phase 1 완료 후 0.5초 간격으로 시작
+    }
+
+
+    // 공통 페이드업
+    gsap.utils.toArray('.gsap-fade-up').forEach((el) => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 24,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
     });
   }
-
-  return {
-    init,
-    refresh: update,
-  };
-})();
-
-// 전역에서 다시 초기화할 수 있도록 export
-window.ASAP = ASAP;
-
-ASAP.init({
-  once: false, // true면 최초 1회만 실행, 재진입 때도 재생하려면 false로 두세요.
-  offset: 0, // 애니메이션이 조금 더 일찍 시작되길 원하면 양수(px)를 입력하세요.
 });
-
-
-// 히어로 글자 컬러 채우기
-(function () {
-  const heroListItems = document.querySelectorAll('.hero li');
-  if (!heroListItems || heroListItems.length === 0) return;
-
-  const triggerRatio = 0.5; // 화면의 절반에 위치하면
-  let ticking = false;
-
-  function updateColor() {
-    ticking = false;
-    const triggerY = window.innerHeight * triggerRatio;
-
-    heroListItems.forEach(li => {
-      const rect = li.getBoundingClientRect();
-      const isPast = rect.top <= triggerY;
-      if (isPast) {
-        li.classList.add('filled');
-      } else {
-        li.classList.remove('filled');
-      }
-    });
-  }
-
-  function onScroll() {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(updateColor);
-    }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  // run once on load
-  updateColor();
-})();
 
 /* 날짜 카운터 */
 function counter(targetDateString, daysEl, hoursEl, minutesEl, secondsEl) {
