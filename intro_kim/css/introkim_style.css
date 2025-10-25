@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+:root{
+  /* 데스크톱 기본: (vw - 1520)/2, 단 최소 110px 보장 */
+  --page-pad: clamp(110px, calc((100vw - 1520px) / 2), 2000px);
+}
+
 * {
     scroll-behavior: auto;
 }
@@ -19,10 +24,10 @@ section {
     padding: 150px 0;
 }
 
-.inner {
+/* .inner {
     width: 1520px;
     max-width: 100%;
-}
+} */
 
 /* .main_cach */
 
@@ -93,10 +98,9 @@ section {
     width: 100%;
     max-width: 800px;
     color: var(--Wcolor);
-
 }
 
-.main_cach .txt p.head_copy {
+.main_cach .txt p{
     font-size: 70px;
     font-weight: 700;
     line-height: 130%;
@@ -104,6 +108,7 @@ section {
     padding: 0 10px;
     display: inline-block;
 }
+
 
 .main_cach .txt em {
     font-size: 30px;
@@ -370,21 +375,6 @@ h3.tit {
 }
 
 /* .history */
-.history {
-    --sb-x: 24px;
-    /* 좌우 여백 */
-    --sb-h: 6px;
-    /* 트랙 높이 */
-    --sb-radius: 9999px;
-    --sb-track: #ECECEC;
-    /* 트랙(옅은 회색) */
-    --sb-thumb: #A8A8A8;
-    /* 손잡이(짙은 회색) */
-    --sb-thumb-hover: #8F8F8F;
-    /* 1920px에서 inner=1520px → 좌우 200px.
-     하지만 최소 여백을 110px 보장(데스크탑) */
-    --page-pad: clamp(110px, calc((100vw - 1520px) / 2), 2000px);
-}
 
 /* 0) 기준선 y 위치는 컨테이너에서 전역으로 관리 */
 .history .cont_hori_swipe {
@@ -650,7 +640,6 @@ h3.tit {
 }
 
 
-
 /* .v_and_m */
 
 .v_and_m {
@@ -660,7 +649,7 @@ h3.tit {
 .v_and_m .cont {
     display: flex;
     flex-direction: column;
-    flex-direction: 1;
+    flex: 1; /* ← 원래 의도라면 이렇게 */
     align-content: space-between;
     gap: 40px;
 }
@@ -711,7 +700,7 @@ h3.tit {
 
 .v_and_m .cont article::after {
     position: absolute;
-    top: 0x;
+    top: 0px;
     left: 80px;
     width: 140px;
     height: 60px;
@@ -730,8 +719,6 @@ h3.tit {
 .v_and_m .vision::after {
     content: "VISION";
 }
-
-
 
 .v_and_m .mission::after {
     content: "MISSION";
