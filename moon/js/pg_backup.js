@@ -311,19 +311,12 @@ if (commGalleryContainer) {
 // 투표 섹션 카드 플립
 const voteContainer = document.querySelector('.vote-container');
 if (voteContainer) {
+  const voteCards = document.querySelectorAll('.vote-card');
   const voteBtns = document.querySelectorAll('.vote-btn');
-  const voteAgainBtn = document.querySelector('.vote-again-btn');
-  const voteCards = voteContainer.querySelectorAll('.vote-card');
 
-  // 'Vote Now' 버튼 클릭 이벤트
   voteBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.stopPropagation(); // 부모 요소로의 이벤트 전파를 막습니다.
-
-      // 이미 투표했는지 확인
-      if (voteContainer.classList.contains('voted')) {
-        return;
-      }
+      e.stopPropagation(); // 이벤트 버블링 방지
       
       // 모든 카드에 플립 클래스 추가
       voteCards.forEach(card => {
@@ -334,19 +327,6 @@ if (voteContainer) {
       voteContainer.classList.add('voted');
     });
   });
-
-  // 'Vote Again' 버튼 클릭 이벤트
-  if (voteAgainBtn) {
-    voteAgainBtn.addEventListener('click', () => {
-      // 모든 카드에서 플립 클래스 제거
-      voteCards.forEach(card => {
-        card.classList.remove('is-flipped');
-      });
-
-      // 투표 완료 상태 클래스 제거
-      voteContainer.classList.remove('voted');
-    });
-  }
 }
 
 }); // DOMContentLoaded 끝
