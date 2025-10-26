@@ -22,38 +22,154 @@
         width: 100%;
         height: 510px;
         perspective: 1000px;
-        margin-top: 3vw;
+        margin-top: 0;
         overflow: hidden;
     }
 
+
+    .circlebody #circle article.active {
+        z-index: 10;
+        /* 정면 근처 face를 앞으로 */
+    }
+
+    .circlebody>#circle article .poster {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        /* poster에도 pointer 커서 */
+    }
+
+    .circlebody>#circle article .poster>img {
+        box-sizing: border-box;
+        border: 1px solid rgba(255, 255, 255, .5);
+        background: rgba(255, 255, 255, .06);
+        width: 100%;
+        height: 100%;
+        position: relative;
+        opacity: .7;
+        overflow: hidden;
+        transition: .5s;
+        cursor: pointer;
+    }
+
+    .circlebody>#circle article .poster>img:hover {
+        filter: saturate(130%);
+        background: rgba(255, 255, 255, .15);
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    .face1 {
+        transform: rotateY(0deg) translateZ(-900px);
+    }
+
+    .face2 {
+        transform: rotateY(45deg) translateZ(-900px);
+    }
+
+    .face3 {
+        transform: rotateY(90deg) translateZ(-900px);
+    }
+
+    .face4 {
+        transform: rotateY(135deg) translateZ(-900px);
+    }
+
+    .face5 {
+        transform: rotateY(180deg) translateZ(-900px);
+    }
+
+    .face6 {
+        transform: rotateY(225deg) translateZ(-900px);
+    }
+
+    .face7 {
+        transform: rotateY(270deg) translateZ(-900px);
+    }
+
+    .face8 {
+        transform: rotateY(315deg) translateZ(-900px);
+    }
+
+
+
+
+
     /* Coming Soon 섹션 */
     .comingsoon {
+        width: 100%;
+        min-height: 600px;
         padding-top: 10vw;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .comingsoon .CScontents1,
+    .comingsoon .CScontents2,
+    .comingsoon .CScontents3 {
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
     }
 
     .comingsoon .inner .top {
         width: 398px;
+        position: relative;
+        z-index: 10;
     }
 
     .comingsoon .inner .top h2 {
         font-size: 40px;
     }
-
     .comingsoon .inner img {
         width: 725px;
         border-radius: 0 200px 0 0;
+        opacity: 0;
+        transform: translateX(100px);
+        animation: fadeInRight 1s ease-out forwards;
+        animation-delay: 0.2s;
     }
 
     .comingsoon .inner .txt {
+        width: 100%;
         font-size: 30px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out forwards;
+        animation-delay: 0.4s;
     }
 
     .comingsoon .inner h3 {
         bottom: 120px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out forwards;
+        animation-delay: 0.6s;
+        right: 0;
     }
 
     .comingsoon .inner p {
         bottom: 24px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out forwards;
+        animation-delay: 0.8s;
+        right: 0;
+    }
+
+    @keyframes fadeInRight {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
 
@@ -204,6 +320,7 @@
     .BeyondDrama .inner .BDcontents .BDconMiddle {
         position: relative;
         left: 250px;
+
     }
 
     .BeyondDrama .BDconMiddle h3 {
@@ -1016,14 +1133,116 @@
 
 @media screen and (max-width:439px) {
 
+    html,
+    body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    .inner {
+        width: 95%;
+    }
+
+    .circlebody {
+        width: 100%;
+        height: 500px;
+        perspective: 800px;
+        margin-top: 0;
+        overflow: hidden;
+    }
+
+    .circlebody #circle {
+        width: 85vw;
+        height: auto;
+    }
+
+    .circlebody #circle article.active {
+        z-index: 10;
+        /* 정면 근처 face를 앞으로 */
+    }
+
+    .circlebody>#circle article .poster {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        /* poster에도 pointer 커서 */
+    }
+
+    .circlebody>#circle article .poster>img {
+        box-sizing: border-box;
+        border: 1px solid rgba(255, 255, 255, .5);
+        background: rgba(255, 255, 255, .06);
+        width: 100%;
+        height: 100%;
+        position: relative;
+        opacity: .7;
+        overflow: hidden;
+        transition: .5s;
+        cursor: pointer;
+    }
+
+    .circlebody>#circle article .poster>img:hover {
+        filter: saturate(130%);
+        background: rgba(255, 255, 255, .15);
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    .face1 {
+        transform: rotateY(0deg) translateZ(-450px);
+    }
+
+    .face2 {
+        transform: rotateY(45deg) translateZ(-450px);
+    }
+
+    .face3 {
+        transform: rotateY(90deg) translateZ(-450px);
+    }
+
+    .face4 {
+        transform: rotateY(135deg) translateZ(-450px);
+    }
+
+    .face5 {
+        transform: rotateY(180deg) translateZ(-450px);
+    }
+
+    .face6 {
+        transform: rotateY(225deg) translateZ(-450px);
+    }
+
+    .face7 {
+        transform: rotateY(270deg) translateZ(-450px);
+    }
+
+    .face8 {
+        transform: rotateY(315deg) translateZ(-450px);
+    }
+
     /* Coming Soon 섹션 */
+    .comingsoon {
+        min-height: 350px;
+        position: relative;
+    }
+
     .comingsoon .inner {
         width: 90%;
     }
 
+    .comingsoon .CScontents1,
+    .comingsoon .CScontents2,
+    .comingsoon .CScontents3 {
+        position: absolute;
+        width: 100%;
+        left: 0;
+    }
+
     .comingsoon .inner .top {
         width: 226px;
-        padding-bottom: 20px;
+        padding-bottom: 30px;
+        position: relative;
+        z-index: 10;
     }
 
     .comingsoon .inner .top h2 {
@@ -1041,7 +1260,7 @@
     }
 
     .comingsoon .inner img {
-        width: 380px;
+        width: 100%;
         height: 220px;
         border-radius: 0 50px 0 0;
     }
@@ -1052,10 +1271,12 @@
 
     .comingsoon .inner h3 {
         bottom: 40px;
+        right: 20px
     }
 
     .comingsoon .inner p {
         bottom: 24px;
+        right: 20px
     }
 
     /* ON-AIR 섹션 모바일 반응형 - 피그마 디자인 기반 */
@@ -1095,61 +1316,63 @@
         display: none;
     }
 
+    .onair .on_slide_wrap {
+        width: 100%;
+        overflow: hidden;
+    }
+
     .onair .ONcon {
-        flex-direction: column;
-        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
         align-items: center;
-        gap: 24px;
+        gap: 0;
         height: auto;
     }
 
-    /* 모바일에서는 활성 이미지만 표시 */
-    .onair .ONcon>div:not(.active) {
-        display: none;
-    }
-
-    .onair .ONcon>div.active {
+    /* 모바일에서는 슬라이드 방식으로 하나씩 표시 */
+    .onair .ONcon>div {
         width: 100%;
+        flex-shrink: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 24px;
     }
 
-    .onair .ONcon>div.active img {
+    .onair .ONcon>div img {
         width: 380px;
         height: 362px;
-
     }
 
     /* 텍스트 박스 모바일 - 피그마 디자인 기반 */
-    .onair .ONcon>div.active .ONtxtbox {
+    .onair .ONcon>div .ONtxtbox {
         width: 245px;
         height: 52px;
         gap: 0;
     }
 
-    .onair .ONcon>div.active .ONtxtbox h3 {
+    .onair .ONcon>div .ONtxtbox h3 {
         font-size: 20px;
 
     }
 
-    .onair .ONcon>div.active .ONtxtbox ul {
+    .onair .ONcon>div .ONtxtbox ul {
         flex-direction: row;
     }
 
-    .onair .ONcon>div.active .ONtxtbox ul .bar {
+    .onair .ONcon>div .ONtxtbox ul .bar {
         width: 80px;
         height: 1px;
         background: var(--Wcolor);
     }
 
-    .onair .ONcon>div.active .ONtxtbox ul>li>p {
+    .onair .ONcon>div .ONtxtbox ul>li>p {
         font-size: 20px;
     }
 
     /* 버튼 숨김 - 모바일에서는 간소화 */
-    .onair .ONcon>div.active .ONtxtbox button {
+    .onair .ONcon>div .ONtxtbox button {
         display: none;
     }
 
@@ -1167,17 +1390,17 @@
 
     .BeyondDrama {
         width: 100%;
-        height: 1500px;
+        height: 1400px;
+        padding-bottom: 80px;
     }
 
     .BeyondDrama .inner .top {
-        width: 100vW;
-
+        width: 100vw;
+        padding-bottom: 30px;
     }
 
     .BeyondDrama .inner .top h2 {
         font-size: 30px;
-        padding-right: 10px;
     }
 
     .BeyondDrama .inner .top button {
@@ -1193,7 +1416,7 @@
 
     .BeyondDrama .inner .BDcontents {
         width: 380px;
-        height: 1300px;
+        height: 1200px;
         justify-content: space-between;
     }
 
@@ -1212,25 +1435,109 @@
         height: 150px;
     }
 
-    /* .BDconMiddle 반응형 */
+    /* .BDconMiddle 반응형 - 피그마 디자인 기반 */
     .BeyondDrama .inner .BDcontents .BDconMiddle {
         position: relative;
-        width: 380px;
-        height: 150px;
-        left: 200px;
-        justify-content: space-between;
+        width: 334px;
+        height: 217px;
+        left: 50%;
+        top: 480px;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        box-sizing: border-box;
     }
 
-    .BeyondDrama .inner .BDcontents .BDconMiddle .BDsection04,
-    .BeyondDrama .inner .BDcontents .BDconMiddle .BDsection05,
-    .BeyondDrama .inner .BDcontents .BDconMiddle .BDsection06,
-    .BeyondDrama .inner .BDcontents .BDconMiddle .BDsection07 {
+    /* section04 - 첫번째 버튼 (약간 회전, 반투명) */
+    .BeyondDrama .inner .BDcontents .BDconMiddle .BDsection04 {
+        position: absolute;
         width: 260px;
         height: 50px;
+        left: 35px;
+        top: 10px;
+        background: var(--Bcolor);
+        border-radius: 100px;
+        transform: rotate(-5deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    /* section05 - 두번째 버튼 (불투명) */
+    .BeyondDrama .inner .BDcontents .BDconMiddle .BDsection05 {
+        position: absolute;
+        width: 260px;
+        height: 50px;
+        left: 38px;
+        top: 65px;
+        background: var(--Bcolor);
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    /* section06 - 세번째 버튼 (약간 회전, 반투명) */
+    .BeyondDrama .inner .BDcontents .BDconMiddle .BDsection06 {
+        position: absolute;
+        width: 260px;
+        height: 50px;
+        left: 35px;
+        top: 118px;
+        background: var(--Bcolor);
+        border-radius: 100px;
+        transform: rotate(5deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    /* section07 - 네번째 버튼 (가장 넓음, 불투명) */
+    .BeyondDrama .inner .BDcontents .BDconMiddle .BDsection07 {
+        position: absolute;
+        width: 336px;
+        height: 50px;
+        left: -1px;
+        top: 170px;
+        background: #0d031c;
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    /* 호버 시 모든 버튼 정렬 효과 */
+    .BeyondDrama .inner .BDcontents .BDconMiddle:hover .BDsection04,
+    .BeyondDrama .inner .BDcontents .BDconMiddle:hover .BDsection05,
+    .BeyondDrama .inner .BDcontents .BDconMiddle:hover .BDsection06 {
+        transform: rotate(0deg);
+        left: 37px;
+    }
+
+    /* 클릭 시 투명도 효과 */
+    .BeyondDrama .inner .BDcontents .BDconMiddle .BDsection04:active,
+    .BeyondDrama .inner .BDcontents .BDconMiddle .BDsection05:active,
+    .BeyondDrama .inner .BDcontents .BDconMiddle .BDsection06:active,
+    .BeyondDrama .inner .BDcontents .BDconMiddle .BDsection07:active {
+        opacity: 0.6;
     }
 
     .BeyondDrama .inner .BDcontents .BDconMiddle h3 {
         font-size: 20px;
+        font-weight: 600;
+        color: var(--Wcolor);
+        text-align: center;
+        margin: 0;
     }
 
     /* .BDconBottom 반응형 */
@@ -1279,7 +1586,13 @@
 
 
 
+
+
     /* ViewersPlayground 섹션 모바일 반응형 */
+    .ViewersPlayground {
+        padding: 0;
+    }
+
     .ViewersPlayground .inner {
         width: 100%;
         max-width: 440px;
@@ -1454,15 +1767,22 @@
     /* Event 섹션 모바일 반응형 */
     .event {
         padding-top: 80px;
-        padding-bottom: 60px;
+        padding-bottom: 0;
+        height: auto;
     }
 
     .event .inner {
-        width: 100%;
+        width: 95%;
         max-width: 380px;
-        padding: 0 30px;
         box-sizing: border-box;
-        gap: 30px;
+        gap: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .event .inner .top {
+        padding-bottom: 30px;
     }
 
     .event .inner .top h2 {
@@ -1470,26 +1790,35 @@
     }
 
     .event .Econtents {
+        width: 100%;
         height: auto;
+        display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 40px;
-        padding: 20px 0;
+        padding: 0;
+        position: relative;
     }
 
     .event .Econ01,
     .event .Econ02,
     .event .Econ03 {
+        position: relative;
         width: 320px;
         height: 320px;
         opacity: 1;
         animation: none;
+        left: auto;
+        right: auto;
+        top: auto;
+        transform: none;
     }
 
     .event .Econ01:hover,
     .event .Econ02:hover,
     .event .Econ03:hover {
-        width: 340px;
-        height: 340px;
+        width: 300px;
+        height: 300px;
         transform: none;
     }
 
@@ -1527,7 +1856,7 @@
     /* LatestNews 섹션 모바일 반응형 - Figma 디자인 기반 */
     .LatestNews {
         padding-top: 80px;
-        padding-bottom: 60px;
+        padding-bottom: 100px;
     }
 
     .LatestNews .inner {
@@ -1535,7 +1864,7 @@
         max-width: 380px;
         padding: 0 20px;
         box-sizing: border-box;
-        gap: 20px;
+        gap: 0;
     }
 
     .LatestNews .inner .top h3 {
@@ -1546,7 +1875,7 @@
     .LatestNews .inner .LNcontents {
         width: 100%;
         max-width: 376px;
-        height: 30vw;
+        height: 380px;
         padding: 20px;
         border-radius: 0 18px 18px 18px;
         margin: 0 auto;
