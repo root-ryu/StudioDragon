@@ -168,11 +168,5 @@ document.addEventListener('DOMContentLoaded', () => {
     applyNavOffset();
     applyHeaderFixedState();
 
-    /* 푸터 버튼 on */
-    const familySiteBtn = document.querySelector('.family_site_btn');
-    const familySite = document.querySelector('.footer_family_site');
-
-    familySiteBtn.addEventListener('click', () => {
-        familySite.classList.toggle('on');
-    });
+    /* 푸터 버튼 on - common.js에서 처리하므로 제거 */
 })

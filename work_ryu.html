@@ -3,19 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="스튜디오 드래곤 홈페이지 입니다">
-    <meta name="keywords" content="스튜디오드래곤, 드라마, 제작사, 기획사, CJENM, TVN, 넷플릭스">
-    <meta name="author" content="이지조">
+    <meta name="description" content="We Are Studio Dragon">
+    <meta name="keywords" content="Studio Dragon, a premium storyteller group">
+    <meta name="author" content="Team 2eezy">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Studio Dragon">
+    <meta property="og:description" content="Studio Dragon, a premium storyteller group">
+    <meta property="og:image" content="	https://studiodragon.netlify.app/asset/og_img.png">
+    <meta property="og:url" content="https://studiodragon.netlify.app/">
     <title>studiodragon</title>
     <link rel="shortcut icon" href="/back/img/favicon.ico" type="image/x-icon">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"><!-- aos -->
     <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/main_media.css">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="Work_Ryu/css/work_main.css">
+    <link rel="stylesheet" href="/css/main_media.css">
     <link rel="stylesheet" href="Work_Ryu/css/work_media.css">
-    <script src="js/common.js"></script>
     <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script> -->
@@ -28,8 +31,7 @@
 
 <body>
     <div class="wrap">
-        <div class="wrap">
-            <div class="header_bg">
+        <div class="header_bg">
         </div>
         <header class="">
             <div class="inner">
@@ -192,9 +194,9 @@
                                         <p class="series_label">NETFLIX Series</p>
                                         <p class="drama_title">The Glory</p>
                                     </div><!-- .title_text -->
-                                    <div class="bookmark_button">
-                                        <img src="Work_Ryu/asset/icon_bookmark.svg" alt="Bookmark">
-                                    </div><!-- .bookmark_button -->
+                                    <button class="bookmark_button" aria-label="Bookmark">
+                                        <img src="Work_Ryu/asset/icon_bookmark_off.svg" alt="Bookmark" class="bookmark_icon">
+                                    </button><!-- .bookmark_button -->
                                 </div><!-- .drama_title_area -->
 
                                 <!-- Drama Content Box -->
@@ -1091,7 +1093,7 @@
                     <div class="event_section">
                         <div class="event_box">
                             <div class="event_img">
-                                <img src="Work_Ryu/asset/"
+                                <img src="Work_Ryu/asset/img_sdcrew.png"
                                     alt="SD CREW">
                             </div><!-- //.event_img -->
                             <div class="event_content">
@@ -1100,13 +1102,18 @@
                                         <h3 class="event_title">Join the SD CREW</h3>
                                         <p class="event_desc">You can be the crew of Studio Dragon</p>
                                     </div><!-- //.event_txt -->
-                                    <button class="btn_go">go</button>
+                                    <button class="btn_go"><a href="/viewersplayground_moon.html">go</a></button>
                                 </div><!-- //.event_inner -->
                             </div><!-- //.event_content -->
                         </div><!-- //.event_box -->
                     </div><!-- //.event_section -->
                 </section><!-- //.chat_event_section -->
             </div><!-- //.inner -->
+            
+            <!-- Bookmark Notification Popup -->
+            <div class="bookmark_notification">
+                <p class="notification_message"></p>
+            </div><!-- .bookmark_notification -->
             
             <footer class="ver_dark">
                 <div class="footer_inner">
@@ -1168,7 +1175,7 @@
                     </div><!-- //.footer_bottom -->
                 </div><!-- //.footer_inner -->
             </footer><!-- //.footer -->
-        </div><!-- //.wrap -->
+    </div><!-- //.wrap -->
         
     <!-- JavaScript Files -->
     <script src="/js/common.js"></script>

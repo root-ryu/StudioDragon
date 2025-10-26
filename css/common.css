@@ -108,11 +108,12 @@
 
 body {
     font-family: "Assistant", sans-serif;
-    min-height: 5000px;
+    /* min-height: 5000px; */
+    overflow-x: hidden; /* 가로 스크롤만 방지 - sticky는 정상 작동 */
 }
 .wrap{
     width: 100%;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */ /* Sticky 작동을 위해 주석 처리 */
 }
 .inner {
     width: 1520px;
@@ -399,7 +400,7 @@ nav.mobile ~ .ham ul li:nth-child(3) {
     top: 0;
     right: -100%;
     width: 100%;
-    max-width: 440px;
+    max-width: 350px;
     height: 100vh;
     background-color: var(--Bcolor);
     z-index: 1002;
@@ -606,6 +607,7 @@ nav.mobile ~ .ham ul li:nth-child(3) {
 
 main {
     position: relative;
+    /* height: 5000px; */
 }
 
 /* footer */
@@ -691,12 +693,8 @@ footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site
     left: 0;
 }
 
-footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_list li {
-    display: none;
-}
-
-footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_list .family_site_btn_wrap {
-    display: block;
+footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_list li:not(.family_site_btn_wrap) {
+    display: none; /* 기본적으로 링크 숨김 */
 }
 
 footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_btn {
@@ -710,6 +708,8 @@ footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site
     justify-content: space-between;
     padding: 0 31px;
     cursor: pointer;
+    position: relative;
+    z-index: 10; /* ✅ 버튼이 클릭 가능하도록 */
 }
 
 footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_btn:hover {
@@ -739,14 +739,18 @@ footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site
 /* on 클래스 - Figma 디자인 적용 */
 footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site.on .family_site_list {
     padding: 18px 21px;
+    display: flex;
+    flex-direction: column;
 }
 
-footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site.on .family_site_list li {
-    display: block;
+footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site.on .family_site_list li:not(.family_site_btn_wrap) {
+    display: block; /* ✅ !important 제거 */
     padding-bottom: 18px;
+    order: 0;
 }
 
 footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site.on .family_site_list .family_site_btn_wrap {
+    order: 1;
     padding-bottom: 0;
     padding-top: 18px;
     border-top: 1px solid var(--Wcolor);
