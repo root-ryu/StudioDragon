@@ -944,9 +944,9 @@ main {
   border-radius: var(--WT-round-1);
   overflow: hidden;
   /* 이미지 링크는 추후 복사 */
-  background: var(--Wcolor) center/cover no-repeat;
-  width: 1100px;
-  aspect-ratio: 16/9;
+  background: url(../../moon/asset/comm-img_1.jpg) center/cover;
+  width: 1137px;
+  height: 716px;
 }
 
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap {
@@ -1068,7 +1068,7 @@ main {
 .community ul.article_list li .num{
   color: var(--Bcolor);
   text-align: left;
-  font: 700 26px/130% "Assistant", sans-serif;
+  font: 700 26px/100% "Assistant", sans-serif;
 }
 .community ul.article_list li .comm_article_info {
   display: flex;
@@ -1081,7 +1081,7 @@ main {
 .community ul.article_list li .comm_article_info em{
    color: #bdbac1;
   text-align: left;
-  font: 300 26px/130% "Assistant", sans-serif;
+  font: 300 26px/100% "Assistant", sans-serif;
 }
 .community ul.article_list li .comm_article_info span {
   display: flex;
@@ -1092,7 +1092,7 @@ main {
 .community ul.article_list li .comm_article_info span h5 {
   color: var(--Bcolor);
   text-align: left;
-  font: 400 26px/130% "Assistant", sans-serif;
+  font: 400 26px/100% "Assistant", sans-serif;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -1100,62 +1100,54 @@ main {
 .community ul.article_list li .comm_article_info span p {
   color: var(--MainColor);
   text-align: left;
-  font: 300 26px/130% "Assistant", sans-serif;
+  font: 300 26px/100% "Assistant", sans-serif;
 }
 
 /* 투표 섹션 */
 .vote {
-  width: 100%;
-  background-color: var(--Bcolor);
-  padding-block: 200px;
+  padding: 120px 0;
+  background-color: #f8f8f8;
 }
 
 .vote .sect_inner {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 40px;
 }
 
 .vote .title {
   text-align: center;
-  color: var(--Wcolor);
-  /* display: flex;
-  flex-direction: column;
-  gap: 50px; */
 }
-.vote .title h2{
-  margin-bottom: 18px;
-}
-.vote .title h3{
-  font: 400 38px/130% "Assistant", sans-serif;
+
+.vote .title h2 {
+  color: var(--Bcolor);
+  font: var(--font-1920-headline-48);
   margin-bottom: 8px;
 }
-.vote .title p{
-  font: 400 20px/130% "Assistant", sans-serif;
-  margin-bottom: 120px;
-  opacity: .6;
+
+.vote .title p {
+  color: #555;
+  font-size: 20px;
 }
 
 .vote-container {
   display: flex;
-  justify-content: center;
   gap: 30px;
   perspective: 2000px;
-  width: 100%;
 }
 
 .vote-card {
-  width: 380px;
-  height: 520px;
+  width: 400px;
+  height: 550px;
   cursor: pointer;
-  transition: transform 0.4s ease-in-out;
 }
 
 .vote-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.5s;
+  transition: transform 0.8s;
   transform-style: preserve-3d;
 }
 
@@ -1173,29 +1165,13 @@ main {
   border-radius: 16px;
   overflow: hidden;
   background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
 
 .vote-card-back {
   transform: rotateY(180deg);
-}
-
-.vote-card.selected {
-  transform: translateY(-30px);
-}
-
-.vote-card.selected .vote-card-back {
-  box-shadow: 0 0 25px 5px rgba(211, 135, 255, 0.5);
-}
-
-.vote-card-back .inner {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 100%;
-  position: relative;
 }
 
 .vote-card .img-area {
@@ -1254,27 +1230,19 @@ main {
   align-items: center;
   gap: 10px;
 }
-.vote-card progress{
-  width: 100%;
-  height: 10px;
-  background-color: #e0e0e0;
-  /* border-radius: 15px; */
-}
-
-.vote-card .progress-container {
-  width: 100%;
-  height: 10px;
-  background-color: #e0e0e0;
-  border-radius: 15px;
-  overflow: hidden;
-  position: relative;
-}
 
 .vote-card .progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.vote-card .progress {
   height: 100%;
   background-color: var(--subPurple);
-  width: var(--progress-width, 0%); /* CSS 변수 사용 */
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .vote-card .percentage {
@@ -1283,68 +1251,13 @@ main {
   color: var(--subPurple);
 }
 
-.vote-result {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-}
-
-.vote-result .progress {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 220px;
-  height: 10px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: none;
-}
-
-.vote-result .progress::-webkit-progress-bar {
-  background-color: #eee;
-  border-radius: 12px;
-}
-
-.vote-result .progress::-webkit-progress-value {
-  background-color: var(--subRed1);
-  border-radius: 12px;
-  transition: width 0.5s ease-in-out;
-}
-
-.vote-result .progress::-moz-progress-bar {
-  background-color: var(--subRed1);
-  border-radius: 12px;
-  transition: width 0.5s ease-in-out;
-}
-
 .vote-footer-message {
-  /* border-radius: 20px; */
-  margin-top: 20px;
-  width: 80%;
-  /* background: #ffffffa6; */
-  padding-block: 38px;
   text-align: center;
-  color: var(--Wcolor);
-  font: 400 20px/130% "Assistant", sans-serif;
+  color: #777;
   opacity: 0;
   transition: opacity 0.5s 0.5s; /* Flips after animation */
 }
 
 .vote-container.voted + .vote-footer-message {
     opacity: 1;
-}
-
-.vote-again-btn {
-  border-radius: 20px;
-  padding: 8px 22px;
-  margin-top: 18px;
-  background: var(--Wcolor);
-  border: none;
-  color: var(--Bcolor);
-  /* text-decoration: underline; */
-  font-size: 16px;
-  cursor: pointer;
-}
-.vote-again-btn i{
-  margin-left: 8px;
 }
