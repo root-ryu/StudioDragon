@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ON-AIR 섹션 회전 기능
     let onswiper = new Swiper(".on_slide_wrap", {
         loop: true,
-        slidesPerView: 3,
+        slidesPerView: 1,
         spaceBetween: 0,
         centeredSlides: true,
         autoplay: {
@@ -137,10 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
         speed: 1000,
         // 반응형 설정
         breakpoints: {
-            // 440px 이상일 때 살짝 옆 슬라이드 노출
+            // 440px 이상일 때 1개만 노출
             440: {
-                slidesPerView: 1.2,
-                spaceBetween: 20,
+                slidesPerView: 1,
+                spaceBetween: 0,
             },
             // 768px 이상일 때 두 장 노출
             768: {
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 960px 이상(1023px 포함)에서 세 장 노출
             960: {
                 slidesPerView: 3,
-                spaceBetween: 40,
+                spaceBetween: 160,
             },
             // 1280px 이상에서는 여유 있게 배치
             1280: {
