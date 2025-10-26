@@ -98,10 +98,9 @@
     /* Coming Soon 섹션 */
     .comingsoon {
         width: 100%;
-        min-height: 600px;
+        height: 600px;
         padding-top: 10vw;
         position: relative;
-        overflow: hidden;
     }
 
     .comingsoon .CScontents1,
@@ -114,7 +113,7 @@
     }
 
     .comingsoon .inner .top {
-        width: 398px;
+        width: 397px;
         position: relative;
         z-index: 10;
     }
@@ -122,8 +121,10 @@
     .comingsoon .inner .top h2 {
         font-size: 40px;
     }
+
     .comingsoon .inner img {
         width: 725px;
+        height: auto;
         border-radius: 0 200px 0 0;
         opacity: 0;
         transform: translateX(100px);
@@ -213,7 +214,6 @@
 
     /* 텍스트 박스 - 가운데만 표시 */
     .onair .ONcon>div .ONtxtbox {
-        width: 100%;
         max-width: 450px;
         gap: 32px;
     }
@@ -243,6 +243,18 @@
         padding: 23px 68px;
         font-size: 26px;
         gap: 10px;
+    }
+
+    .onair .ONcon>div .ONtxtbox button:hover {
+        border: 1px solid rgba(245, 245, 245, 1);
+        background: rgba(245, 245, 245, 0.03);
+        box-shadow:
+            0 0 8px rgba(245, 245, 245, 0.3),
+            0 0 15px rgba(245, 245, 245, 0.2),
+            inset 0 0 10px rgba(245, 245, 245, 0.1);
+        text-shadow:
+            0 0 5px rgba(245, 245, 245, 0.4);
+        transform: translateY(-2px) scale(1.01);
     }
 
     .onair .ONcon>div .ONtxtbox button img {
@@ -1224,6 +1236,7 @@
     .comingsoon {
         min-height: 350px;
         position: relative;
+        height: 279px;
     }
 
     .comingsoon .inner {
@@ -1235,6 +1248,7 @@
     .comingsoon .CScontents3 {
         position: absolute;
         width: 100%;
+        height: auto;
         left: 0;
     }
 
@@ -1456,7 +1470,7 @@
         width: 260px;
         height: 50px;
         left: 35px;
-        top: 10px;
+        top: 12px;
         background: var(--Bcolor);
         border-radius: 100px;
         transform: rotate(-5deg);
