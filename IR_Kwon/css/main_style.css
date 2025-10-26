@@ -17,38 +17,56 @@
    Banner Section
    ======================================== */
 .banner {
-  padding: 0 200px 100px;
-  width: 1920px;
+  width: 100%;
   position: relative;
+  /* 뷰포트 전체를 사용 */
+  overflow: visible;
 }
 
 .banner .container {
-  width: 1520px;
+  width: 100%;
+  max-width: 1520px;
+  margin: 0 auto;
   height: 630px;
   position: relative;
+  /* Swiper가 밖으로 나가도록 */
+  overflow: visible;
 }
 
-.banner .img_wrap {
-  display: flex;
-  gap: 30px;
-  width: 1520px;
+/* ✅ Swiper 영역 - 뷰포트 전체로 확장 */
+.banner .banner__slider {
+  /* 뷰포트 전체 너비 */
   position: absolute;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 488px;
   top: 142px;
+  overflow: visible;
 }
 
-.banner .img_wrap img {
+/* peek 효과가 잘 보이도록 */
+.banner .banner__slider .swiper-wrapper {
+  align-items: stretch;
+}
+
+.banner .banner__slider .swiper-slide {
   border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,.15);
+  /* 중앙 슬라이드는 1520px, slidesPerView: auto일 때 적용 */
   width: 1520px;
-  height: 488px;
-  object-fit: cover;
   flex-shrink: 0;
 }
 
-.banner .img_wrap img:nth-child(3) {
-  opacity: 0.88;
+.banner .banner__slider .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 488px;
+  object-fit: cover;
 }
 
+/* 텍스트 영역은 컨테이너 기준 */
 .banner .content {
   position: absolute;
   left: 0;
@@ -57,6 +75,7 @@
   font-size: 70px;
   line-height: 130%;
   font-weight: 700;
+  z-index: 10;
 }
 
 .banner .content h1 {
@@ -69,7 +88,66 @@
   color: #bfa473;
   margin: 0;
 }
-/* //.banner */
+
+/* 네비게이션 & 페이지네이션 스타일 */
+.banner .banner-button-prev,
+.banner .banner-button-next { 
+  color: #fff; 
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,.35)); 
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.banner .banner-button-prev:hover,
+.banner .banner-button-next:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.banner .banner-button-prev {
+  left: 200px;
+}
+
+.banner .banner-button-next {
+  right: 200px;
+}
+
+/* 페이지네이션은 컨테이너 기준으로 유지 */
+.banner .banner-pagination {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.banner .swiper-pagination-bullet { 
+  background: #fff; 
+  opacity: 0.4;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.banner .swiper-pagination-bullet-active { 
+  background: #bfa473; 
+  opacity: 1;
+  transform: scale(1.2);
+}
+
 
 /* ========================================
    Value Drivers Section
@@ -124,181 +202,194 @@
 }
 
 .value_drivers .container {
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 651px;
+  width: 100%;
+  max-width: 1520px;
+  height: auto;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  display: grid;
+  grid-template-columns: minmax(400px, 800px) minmax(300px, 1fr);
+  gap: 114px;
+  align-items: start;
 }
 
-.value_drivers .img_wrap {
+.value_drivers .container .figure {
   background: #ffffff;
   border-radius: 32px;
-  width: 800px;
-  height: 650px;
-  position: absolute;
-  left: 0px;
-  top: 0px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 800/650;
+  position: relative;
   overflow: hidden;
+  margin: 0;
 }
 
-.value_drivers .img_wrap img {
-  width: 1160px;
-  height: 650px;
+.value_drivers .container .figure .image {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  left: -180px;
-  top: 0px;
+  left: 0;
+  top: 0;
   object-fit: cover;
-  aspect-ratio: 1160/650;
 }
 
-.value_drivers .content {
+.value_drivers .container .area {
   display: flex;
   flex-direction: column;
   gap: 30px;
   align-items: flex-end;
   justify-content: flex-start;
-  width: 606px;
-  position: absolute;
-  left: 914px;
-  top: 1px;
+  width: 100%;
+  position: relative;
 }
 
-.value_drivers .item {
+.value_drivers .container .area .item {
   display: flex;
   flex-direction: row;
-  gap: 61px;
+  gap: 0;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
   flex-shrink: 0;
   position: relative;
+  transition: all 0.6s ease;
 }
 
-.value_drivers .before {
+.value_drivers .container .area .item.active {
+  gap: 61px;
+}
+
+/* Consolidated card styles */
+.value_drivers .container .area .item .card {
   background: #ffffff;
   border-radius: 12px;
-  padding: 20px 30px 20px 30px;
+  padding: 20px 30px;
   display: flex;
   flex-direction: column;
-  gap: var(--item-spacing-6, 6px);
+  gap: 6px;
   align-items: flex-start;
   justify-content: flex-start;
   flex-shrink: 0;
   width: 232px;
-  height: 150px;
+  height: auto;
+  min-height: 150px;
   position: relative;
   box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.04);
+  transition: all 0.6s ease;
 }
 
-.value_drivers .before span {
+.value_drivers .container .area .item .card_before {
+  background: #ffffff;
+  width: 525px;
+  position: relative;
+}
+
+.value_drivers .container .area .item.active .card_before {
+  width: 232px;
+}
+
+.value_drivers .container .area .item .card_after {
+  background: #f5d6d0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  width: 232px;
+}
+
+.value_drivers .container .area .item .card .label {
   color: #64748b;
   text-align: left;
-  font-family: var(--1920-body-caption-font-family, "Assistant-Regular", sans-serif);
-  font-size: var(--1920-body-caption-font-size, 14px);
-  line-height: var(--1920-body-caption-line-height, 130%);
-  font-weight: var(--1920-body-caption-font-weight, 400);
+  font-family: "Assistant", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 1px;
+}
+
+.value_drivers .container .area .item .card .text {
+  color: #0d031c;
+  text-align: left;
+  font-family: "Assistant", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
   position: relative;
   align-self: stretch;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin: 0;
+  padding: 1px 0;
 }
 
-.value_drivers .before p {
-  color: var(--b, #0d031c);
-  text-align: left;
-  font-family: var(--1920-r-20-font-family, "Assistant-Regular", sans-serif);
-  font-size: var(--1920-r-20-font-size, 20px);
-  font-weight: var(--1920-r-20-font-weight, 400);
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.value_drivers .arrow {
-  color: var(--subr2-main-1000, #aa3229);
-  text-align: left;
-  font-family: var(--1920-b-40-font-family, "Assistant-Bold", sans-serif);
-  font-size: var(--1920-b-40-font-size, 40px);
-  line-height: var(--1920-b-40-line-height, 130%);
-  font-weight: var(--1920-b-40-font-weight, 700);
+.value_drivers .container .area .item .arrow {
+  color: #aa3229;
+  text-align: center;
+  font-family: "Assistant", "Noto Sans", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
   text-transform: uppercase;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.value_drivers .after {
-  background: var(--subr2-200, #f5d6d0);
-  border-radius: 12px;
-  padding: 20px 30px 20px 30px;
-  display: flex;
-  flex-direction: column;
-  gap: var(--item-spacing-6, 6px);
-  align-items: flex-start;
-  justify-content: flex-start;
+  width: 20px;
   flex-shrink: 0;
-  width: 232px;
-  height: 150px;
-  position: relative;
-  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.04);
-}
-
-.value_drivers .after span {
-  color: #64748b;
-  text-align: left;
-  font-family: var(--1920-body-caption-font-family, "Assistant-Regular", sans-serif);
-  font-size: var(--1920-body-caption-font-size, 14px);
-  line-height: var(--1920-body-caption-line-height, 130%);
-  font-weight: var(--1920-body-caption-font-weight, 400);
-  position: relative;
   align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  visibility: hidden;
 }
 
-.value_drivers .after p {
-  color: var(--b, #0d031c);
-  text-align: left;
-  font-family: var(--1920-r-20-font-family, "Assistant-Regular", sans-serif);
-  font-size: var(--1920-r-20-font-size, 20px);
-  font-weight: var(--1920-r-20-font-weight, 400);
-  position: relative;
-  align-self: stretch;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+.value_drivers .container .area .item .arrow.active {
+  opacity: 1;
+  transform: scale(1);
+  visibility: visible;
 }
 
-.value_drivers .info {
+.value_drivers .container .area .item .card_after.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.value_drivers .container .area .description {
+  padding: 0;
+  margin-top: 22px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
   align-items: flex-start;
   justify-content: flex-start;
-  position: absolute;
-  right: 94.39px;
-  left: 918px;
-  top: 532px;
+  align-self: stretch;
+  position: relative;
 }
 
-.value_drivers .info p {
+.value_drivers .container .area .description p {
   color: #64748b;
   text-align: left;
-  font-family: var(--1920-body-l-20-font-family, "Assistant-Regular", sans-serif);
-  font-size: var(--1920-body-l-20-font-size, 20px);
-  line-height: var(--1920-body-l-20-line-height, 130%);
-  font-weight: var(--1920-body-l-20-font-weight, 400);
+  font-family: "Assistant", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
   position: relative;
   align-self: stretch;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.value_drivers .container .area .description p.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 /* //.value_drivers */
 
@@ -476,11 +567,20 @@
    Proof Section
    ======================================== */
 .proof {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  width: 1520px;
+  width: 100%;
   position: relative;
+}
+
+.proof.con {
+  padding: 120px 0;
+  background: #f5f5f5;
+}
+
+.proof .inner {
+  max-width: 1520px;
+  margin: 0 auto;
+  /* padding: 0 200px */
+  margin-bottom: 50px;
 }
 
 .proof .title {
@@ -489,10 +589,8 @@
   gap: 0px;
   align-items: flex-start;
   justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
   height: 99px;
-  position: relative;
+  width: 1520px;
 }
 
 .proof .title h2 {
@@ -504,10 +602,10 @@
   font-weight: var(--1920-56-font-weight, 700);
   text-transform: uppercase;
   position: relative;
-  align-self: stretch;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin: 0;
 }
 
 .proof .title p {
@@ -521,56 +619,41 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin: 0;
 }
 
-.proof .container {
-  display: flex;
-  flex-direction: row;
-  gap: 50px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
+.proof .slide_wrap {
+  height: 500px;
+  overflow: visible;
 }
 
-/* Slide animation - right to left */
-@keyframes slideLeftContinuous {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-500px - 50px));
-  }
+.proof .slide_wrap .swiper-wrapper {
+  transition-timing-function: linear !important;
 }
 
 .proof .card {
   background: rgba(170, 50, 41, 0.1);
   border-radius: 32px;
-  padding: 30px 20px 30px 20px;
-  flex-shrink: 0;
+  padding: 30px 20px;
   width: 500px;
   height: 500px;
   position: relative;
   box-shadow: 0px 0px 24px 0px rgba(2, 8, 20, 0.04);
   overflow: hidden;
-  animation: slideLeftContinuous 15s linear infinite;
   cursor: pointer;
-  transition: background 0.4s ease;
+  transition: background 0.4s ease, transform 0.3s ease;
+  will-change: transform;
 }
 
 .proof .card:hover {
-  animation-play-state: paused;
   background: #aa3229;
+  transform: scale(0.955);
 }
 
 .proof .card .content {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  align-items: flex-start;
-  justify-content: flex-start;
   position: absolute;
   left: 20px;
   top: 30px;
@@ -583,10 +666,6 @@
   font-size: var(--1920-l-30-font-size, 30px);
   line-height: var(--1920-l-30-line-height, 100%);
   font-weight: var(--1920-l-30-font-weight, 700);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   transition: color 0.4s ease;
 }
 
@@ -601,10 +680,6 @@
   font-size: var(--1920-l-30-font-size, 30px);
   line-height: var(--1920-l-30-line-height, 100%);
   font-weight: var(--1920-l-30-font-weight, 300);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   transition: color 0.4s ease;
 }
 
@@ -616,14 +691,49 @@
   width: 180px;
   height: 180px;
   position: absolute;
-  left: 292px;
-  top: 296px;
-  overflow: visible;
+  right: 28px;
+  bottom: 24px;
   transition: filter 0.4s ease;
 }
 
 .proof .card:hover img {
   filter: brightness(0) invert(1);
+  animation: drawSVG 1.5s ease-in-out;
+}
+
+/* SVG 그리기 애니메이션 */
+@keyframes drawSVG {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.proof .card img path,
+.proof .card img circle,
+.proof .card img line,
+.proof .card img polyline,
+.proof .card img polygon {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: none;
+}
+
+.proof .card:hover img path,
+.proof .card:hover img circle,
+.proof .card:hover img line,
+.proof .card:hover img polyline,
+.proof .card:hover img polygon {
+  animation: drawPath 1.5s ease-in-out forwards;
+}
+
+@keyframes drawPath {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 /* //.proof */
 
@@ -698,7 +808,8 @@
 }
 
 .moat_repeatability .card.overview {
-  border-radius: 32px 32px 99px 32px;
+  background: none;
+  box-shadow: none;
 }
 
 .moat_repeatability .card:nth-child(2) {
@@ -785,7 +896,7 @@
   width: 490px;
   height: 490px;
   position: relative;
-  box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.04);
+  /* box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.04); */
   overflow: hidden;
 }
 /* //.moat_repeatability */
@@ -1028,7 +1139,7 @@
 }
 
 .risks_mitigation .risk_item .meter {
-  background: rgba(166, 166, 166, 0.3);
+  background: var(--fff, #ffffff);
   border-radius: 999px;
   height: 8px;
   position: relative;

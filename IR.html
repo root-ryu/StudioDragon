@@ -9,14 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>studiodragon</title>
     <link rel="shortcut icon" href="back/img/favicon.ico" type="image/x-icon">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/common_moon.css">
-    <link rel="stylesheet" href="css/main_media.css">
     <link rel="stylesheet" href="IR_Kwon/css/main_style.css">
     <link rel="stylesheet" href="IR_Kwon/css/main_media.css">
-    <script src="js/common_moon.js"></script>
-    <!-- <script src="IR_Kwon/js/main.js"></script> -->
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- <script src="js/common_moon.js"></script> -->
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <script src="IR_Kwon/js/main.js"></script>
 </head>
 
 <body>
@@ -87,20 +90,32 @@
         </header>
 <div class="main">
   <!-- Banner Section -->
-  <section class="banner">
-    <div class="container">
-      <figure class="img_wrap">
-        <img src="./IR_Kwon/img/banner1.png" alt="Banner Image 1" />
-        <img src="./IR_Kwon/img/banner2.png" alt="Banner Image 2" />
-        <img src="./IR_Kwon/img/banner3.png" alt="Banner Image 3" />
-        <img src="./IR_Kwon/img/banner4.png" alt="Banner Image 4" />
-      </figure><!-- //.img_wrap -->
-      <div class="content">
-        <h1>IR Insights</h1>
-        <p>Studio Dragon</p>
-      </div><!-- //.content -->
-    </div><!-- //.container -->
-  </section><!-- //.banner -->
+<section class="banner">
+  <div class="container">
+    <!-- ✅ Swiper 컨테이너로 교체 -->
+    <div class="swiper banner__slider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="./IR_Kwon/img/banner1.png" alt="Banner Image 1" /></div>
+        <div class="swiper-slide"><img src="./IR_Kwon/img/banner2.png" alt="Banner Image 2" /></div>
+        <div class="swiper-slide"><img src="./IR_Kwon/img/banner3.png" alt="Banner Image 3" /></div>
+        <div class="swiper-slide"><img src="./IR_Kwon/img/banner4.png" alt="Banner Image 4" /></div>
+      </div>
+      
+      <!-- 버튼들을 Swiper 내부로 이동 - 슬라이더 기준 위치 -->
+      <div class="swiper-button-prev banner-button-prev"></div>
+      <div class="swiper-button-next banner-button-next"></div>
+    </div>
+
+    <!-- 페이지네이션은 컨테이너 기준 -->
+    <div class="swiper-pagination banner-pagination"></div>
+
+    <div class="content">
+      <h1>IR Insights</h1>
+      <p>Studio Dragon</p>
+    </div><!-- //.content -->
+  </div><!-- //.container -->
+</section><!-- //.banner -->
+
   <!-- Value Drivers Section -->
   <section class="value_drivers">
     <div class="title">
@@ -108,48 +123,48 @@
       <p>Strategic transitions that strengthen production, marketing and distribution.</p>
     </div><!-- //.title -->
     <div class="container">
-      <figure class="img_wrap">
-        <img src="./IR_Kwon/img/Value Drivers.png" alt="Value Drivers" />
-      </figure><!-- //.img_wrap -->
-      <div class="content">
+      <figure class="figure">
+        <img class="image" src="./IR_Kwon/img/Value Drivers.png" alt="Value Drivers" />
+      </figure><!-- //.figure -->
+      <div class="area">
         <article class="item">
-          <div class="before">
-            <span>Before</span>
-            <p>Saturated weekend slot</p>
-          </div><!-- //.before -->
+          <div class="card card_before">
+            <span class="label">Before</span>
+            <p class="text">Saturated weekend slot</p>
+          </div><!-- //.card_before -->
           <span class="arrow">→</span>
-          <div class="after">
-            <span>After</span>
-            <p>Flexible multi-platform rollout</p>
-          </div><!-- //.after -->
+          <div class="card card_after">
+            <span class="label">After</span>
+            <p class="text">Flexible multi-platform rollout</p>
+          </div><!-- //.card_after -->
         </article><!-- //.item -->
         <article class="item">
-          <div class="before">
-            <span>Before</span>
-            <p>Fragmented marketing</p>
-          </div><!-- //.before -->
+          <div class="card card_before">
+            <span class="label">Before</span>
+            <p class="text">Fragmented marketing</p>
+          </div><!-- //.card_before -->
           <span class="arrow">→</span>
-          <div class="after">
-            <span>After</span>
-            <p>Global simultaneous campaign</p>
-          </div><!-- //.after -->
+          <div class="card card_after">
+            <span class="label">After</span>
+            <p class="text">Global simultaneous campaign</p>
+          </div><!-- //.card_after -->
         </article><!-- //.item -->
         <article class="item">
-          <div class="before">
-            <span>Before</span>
-            <p>Sequential production workflow</p>
-          </div><!-- //.before -->
+          <div class="card card_before">
+            <span class="label">Before</span>
+            <p class="text">Sequential production workflow</p>
+          </div><!-- //.card_before -->
           <span class="arrow">→</span>
-          <div class="after">
-            <span>After</span>
-            <p>Parallel prod–post workflow</p>
-          </div><!-- //.after -->
+          <div class="card card_after">
+            <span class="label">After</span>
+            <p class="text">Parallel prod–post workflow</p>
+          </div><!-- //.card_after -->
         </article><!-- //.item -->
-      </div><!-- //.content -->
-      <div class="info">
-        <p>Multi-platform launch windows reduce slot congestion and improve reach efficiency.</p>
-        <p>Parallelization shortens turnaround and mitigates schedule risk.</p>
-      </div><!-- //.info -->
+        <div class="description">
+          <p>Multi-platform launch windows reduce slot congestion and improve reach efficiency.</p>
+          <p>Parallelization shortens turnaround and mitigates schedule risk.</p>
+        </div><!-- //.description -->
+      </div><!-- //.area -->
     </div><!-- //.container -->
   </section><!-- //.value_drivers -->
   <!-- Execution Section -->
@@ -200,48 +215,52 @@
     </div><!-- //.inner -->
   </section><!-- //.execution -->
   <!-- Proof Section -->
-  <section class="proof">
-    <div class="title">
-      <h2>Proof</h2>
-      <p>Signals that evidence growth and monetization readiness.</p>
-    </div><!-- //.title -->
-    <div class="container">
-      <article class="card">
-        <div class="content">
-          <h3>Ratings</h3>
-          <p>Final 24.9%<br />National household rating (finale)</p>
-        </div><!-- //.content -->
-        <img src="./IR_Kwon/img/proof_rat.svg" alt="Ratings Icon" />
-      </article><!-- //.card -->
-      <article class="card">
-        <img src="./IR_Kwon/img/proof_ott.svg" alt="OTT Icon" />
-        <div class="content">
-          <h3>OTT</h3>
-          <p>Top 10 for 15 weeks<br />Peak #1 (global/top country)</p>
-        </div><!-- //.content -->
-      </article><!-- //.card -->
-      <article class="card">
-        <div class="content">
-          <h3>Overseas</h3>
-          <p>Launched in 45 countries<br />Regional heatmap / localization complete</p>
-        </div><!-- //.content -->
-        <img src="./IR_Kwon/img/proof_over.svg" alt="Overseas Icon" />
-      </article><!-- //.card -->
-      <article class="card">
-        <div class="content">
-          <h3>Media</h3>
-          <p>120 earned mentions<br />+80% search lift vs. prior period</p>
-        </div><!-- //.content -->
-        <img src="./IR_Kwon/img/proof_mid.svg" alt="Media Icon" />
-      </article><!-- //.card -->
-      <article class="card">
-        <div class="content">
-          <h3>Fandom</h3>
-          <p>Higher completion<br />More UGC / sustained engagement</p>
-        </div><!-- //.content -->
-        <img src="./IR_Kwon/img/proof_fan.svg" alt="Fandom Icon" />
-      </article><!-- //.card -->
-    </div><!-- //.container -->
+  <section class="proof con">
+    <div class="inner">
+      <div class="title">
+        <h2>Proof</h2>
+        <p>Signals that evidence growth and monetization readiness.</p>
+      </div><!-- //.title -->
+    </div><!-- //.inner -->
+    <div class="slide_wrap swiper">
+      <div class="swiper-wrapper">
+        <article class="card swiper-slide">
+          <div class="content">
+            <h3>Ratings</h3>
+            <p>Final 24.9%<br />National household rating (finale)</p>
+          </div><!-- //.content -->
+          <img src="./IR_Kwon/img/proof_rat.svg" alt="Ratings Icon" />
+        </article><!-- //.card -->
+        <article class="card swiper-slide">
+          <div class="content">
+            <h3>OTT</h3>
+            <p>Top 10 for 15 weeks<br />Peak #1 (global/top country)</p>
+          </div><!-- //.content -->
+          <img src="./IR_Kwon/img/proof_ott.svg" alt="OTT Icon" />
+        </article><!-- //.card -->
+        <article class="card swiper-slide">
+          <div class="content">
+            <h3>Overseas</h3>
+            <p>Launched in 45 countries<br />Regional heatmap / localization complete</p>
+          </div><!-- //.content -->
+          <img src="./IR_Kwon/img/proof_over.svg" alt="Overseas Icon" />
+        </article><!-- //.card -->
+        <article class="card swiper-slide">
+          <div class="content">
+            <h3>Media</h3>
+            <p>120 earned mentions<br />+80% search lift vs. prior period</p>
+          </div><!-- //.content -->
+          <img src="./IR_Kwon/img/proof_mid.svg" alt="Media Icon" />
+        </article><!-- //.card -->
+        <article class="card swiper-slide">
+          <div class="content">
+            <h3>Fandom</h3>
+            <p>Higher completion<br />More UGC / sustained engagement</p>
+          </div><!-- //.content -->
+          <img src="./IR_Kwon/img/proof_fan.svg" alt="Fandom Icon" />
+        </article><!-- //.card -->
+      </div><!-- //.swiper-wrapper -->
+    </div><!-- //.slide_wrap -->
   </section><!-- //.proof -->
   <!-- Moat Repeatability Section -->
   <section class="moat_repeatability">
