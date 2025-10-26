@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="./moon/css/pg-style.css">
   <link rel="stylesheet" href="./moon/css/media.css">
   <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
   <!-- GSAP (AOS 대체) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -900,9 +901,7 @@
                     <span class="drama-title">The Glory</span>
                     <h3 class="char-name">Park Yeon-jin</h3>
                     <div class="vote-result">
-                      <div class="progress-bar">
-                        <div class="progress" style="width: 45%;"></div>
-                      </div>
+                      <progress class="progress progress01" value="0" min="0" max="100"></progress>
                       <span class="percentage">45%</span>
                     </div>
                   </div>
@@ -932,9 +931,7 @@
                     <span class="drama-title">Queen of Tears</span>
                     <h3 class="char-name">Yoon Eun-seong</h3>
                     <div class="vote-result">
-                      <div class="progress-bar">
-                        <div class="progress" style="width: 35%;"></div>
-                      </div>
+                      <progress class="progress progress02" value="0" min="0" max="100"></progress>
                       <span class="percentage">35%</span>
                     </div>
                   </div>
@@ -964,9 +961,7 @@
                     <span class="drama-title">Bon Appétit, Your Majesty</span>
                     <h3 class="char-name">Jesan Daegun</h3>
                     <div class="vote-result">
-                      <div class="progress-bar">
-                        <div class="progress" style="width: 20%;"></div>
-                      </div>
+                      <progress class="progress progress03" value="0" min="0" max="100"></progress>
                       <span class="percentage">20%</span>
                     </div>
                   </div>
@@ -976,7 +971,7 @@
           </div>
           <div class="vote-footer-message">
             <p>Thank you for voting. Share your thoughts in the comments!</p>
-            <button type="button" class="vote-again-btn">Vote Again</button>
+            <button type="button" class="vote-again-btn">Vote Again<i class="fa-solid fa-arrow-rotate-right"></i></button>
           </div>
         </div>
       </section>
