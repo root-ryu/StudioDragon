@@ -300,37 +300,50 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
     
     // ==================== 전역 변수 선언 (먼저!) ====================
     let draggedItem = null;
-    
-    // ==================== 커스텀 커서 (데스크탑만) ====================
-    const customCursor = document.createElement('div');
-    customCursor.className = 'draggable-cursor';
-    customCursor.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110">
-            <defs>
-                <filter id="drag-shadow">
-                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
-                </filter>
-            </defs>
-            <circle cx="55" cy="55" r="50" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="2" filter="url(#drag-shadow)"/>
-            <g transform="translate(55, 25)"><path d="M 0 0 L -4 6 L 4 6 Z" fill="white" opacity="0.95"/></g>
-            <g transform="translate(55, 85)"><path d="M 0 0 L -4 -6 L 4 -6 Z" fill="white" opacity="0.95"/></g>
-            <g transform="translate(25, 55)"><path d="M 0 0 L 6 -4 L 6 4 Z" fill="white" opacity="0.95"/></g>
-            <g transform="translate(85, 55)"><path d="M 0 0 L -6 -4 L -6 4 Z" fill="white" opacity="0.95"/></g>
-            <text x="55" y="50" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">MOVE</text>
-            <text x="55" y="64" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">CLICK</text>
-        </svg>
-    `;
-    
-    // 데스크탑에서만 커서 추가
-    if (!isMobileDrag()) {
-        document.body.appendChild(customCursor);
-    }
-    
+    let customCursor = null;
     let cursorMouseX = 0, cursorMouseY = 0, cursorFollowX = 0, cursorFollowY = 0;
     let isInsideSection = false;
     
+    // ==================== 커스텀 커서 생성 함수 ====================
+    function createCustomCursor() {
+        if (customCursor) return; // 이미 있으면 생성하지 않음
+        
+        customCursor = document.createElement('div');
+        customCursor.className = 'draggable-cursor';
+        customCursor.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110">
+                <defs>
+                    <filter id="drag-shadow">
+                        <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+                    </filter>
+                </defs>
+                <circle cx="55" cy="55" r="50" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="2" filter="url(#drag-shadow)"/>
+                <g transform="translate(55, 25)"><path d="M 0 0 L -4 6 L 4 6 Z" fill="white" opacity="0.95"/></g>
+                <g transform="translate(55, 85)"><path d="M 0 0 L -4 -6 L 4 -6 Z" fill="white" opacity="0.95"/></g>
+                <g transform="translate(25, 55)"><path d="M 0 0 L 6 -4 L 6 4 Z" fill="white" opacity="0.95"/></g>
+                <g transform="translate(85, 55)"><path d="M 0 0 L -6 -4 L -6 4 Z" fill="white" opacity="0.95"/></g>
+                <text x="55" y="50" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">MOVE</text>
+                <text x="55" y="64" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">CLICK</text>
+            </svg>
+        `;
+        document.body.appendChild(customCursor);
+    }
+    
+    // ==================== 커스텀 커서 제거 함수 ====================
+    function removeCustomCursor() {
+        if (customCursor && customCursor.parentNode) {
+            customCursor.parentNode.removeChild(customCursor);
+            customCursor = null;
+        }
+    }
+    
+    // 초기 화면 크기에 따라 커서 생성
+    if (!isMobileDrag()) {
+        createCustomCursor();
+    }
+    
     function animateCursor() {
-        if (isMobileDrag()) return; // 모바일에서는 커서 애니메이션 중단
+        if (isMobileDrag() || !customCursor) return; // 모바일이거나 커서가 없으면 중단
         
         const easing = draggedItem ? 1 : 0.4;
         
@@ -348,10 +361,12 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
     // 데스크탑 - 커서 이벤트
     if (!isMobileDrag()) {
         draggableSection.addEventListener('mousemove', (e) => {
+            if (isMobileDrag()) return; // 실행 중 체크
+            
             cursorMouseX = e.clientX;
             cursorMouseY = e.clientY;
             
-            if (!isInsideSection) {
+            if (!isInsideSection && customCursor) {
                 isInsideSection = true;
                 customCursor.style.display = 'block';
                 customCursor.style.opacity = '1';
@@ -359,17 +374,23 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
         });
         
         draggableSection.addEventListener('mouseleave', (e) => {
+            if (isMobileDrag()) return; // 실행 중 체크
+            
             isInsideSection = false;
-            customCursor.style.opacity = '0';
-            setTimeout(() => {
-                if (!isInsideSection) {
-                    customCursor.style.display = 'none';
-                }
-            }, 300);
+            if (customCursor) {
+                customCursor.style.opacity = '0';
+                setTimeout(() => {
+                    if (!isInsideSection && customCursor) {
+                        customCursor.style.display = 'none';
+                    }
+                }, 300);
+            }
         });
         
         // 전역 마우스 이동 감지 (실제 콘텐츠 가시성 기반)
         document.addEventListener('mousemove', (e) => {
+            if (isMobileDrag()) return; // 실행 중 체크
+            
             // ===== 근본 해결: Behind Video 가시성 체크 =====
             const behindVideoSection = document.querySelector('.behind_video');
             if (behindVideoSection) {
@@ -378,11 +399,11 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
                 const isBehindVisible = behindRect.top < window.innerHeight * 0.5;
                 
                 if (isBehindVisible) {
-                    if (isInsideSection) {
+                    if (isInsideSection && customCursor) {
                         isInsideSection = false;
                         customCursor.style.opacity = '0';
                         setTimeout(() => {
-                            if (!isInsideSection) {
+                            if (!isInsideSection && customCursor) {
                                 customCursor.style.display = 'none';
                             }
                         }, 300);
@@ -404,18 +425,18 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
                 cursorMouseX = e.clientX;
                 cursorMouseY = e.clientY;
                 
-                if (!isInsideSection) {
+                if (!isInsideSection && customCursor) {
                     isInsideSection = true;
                     customCursor.style.display = 'block';
                     customCursor.style.opacity = '1';
                 }
             } else {
                 // 섹션 밖에 있을 때 커서 숨김
-                if (isInsideSection) {
+                if (isInsideSection && customCursor) {
                     isInsideSection = false;
                     customCursor.style.opacity = '0';
                     setTimeout(() => {
-                        if (!isInsideSection) {
+                        if (!isInsideSection && customCursor) {
                             customCursor.style.display = 'none';
                         }
                     }, 300);
@@ -481,9 +502,15 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
         // DOM 초기 위치 저장 (transform 없는 상태)
         gsap.set(imgElement, { x: 0, y: 0, rotation: 0 });
         
+        // CSS에서 설정된 left, top 값을 직접 가져오기 (섹션 기준 좌표)
+        const computedStyle = window.getComputedStyle(imgElement);
+        const cssLeft = parseFloat(computedStyle.left) || 0;
+        const cssTop = parseFloat(computedStyle.top) || 0;
+        
         const rect = imgElement.getBoundingClientRect();
-        const x = rect.left - sectionRect.left + rect.width / 2;
-        const y = rect.top - sectionRect.top + rect.height / 2;
+        // CSS 좌표 기준으로 중심점 계산
+        const x = cssLeft + rect.width / 2;
+        const y = cssTop + rect.height / 2;
         
         const body = Bodies.rectangle(x, y, rect.width, rect.height, {
             restitution: 0.5,      // 객체 간 반발력 (0.4 → 0.5 증가)
@@ -502,8 +529,8 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
             isDragging: false,
             width: rect.width,
             height: rect.height,
-            initialLeft: rect.left - sectionRect.left,
-            initialTop: rect.top - sectionRect.top
+            initialLeft: cssLeft,
+            initialTop: cssTop
         });
     });
     
@@ -747,6 +774,25 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
             });
         });
     }
+    
+    // ==================== 화면 크기 변경 감지 ====================
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (isMobileDrag()) {
+                // 모바일 모드로 전환: 커스텀 커서 제거
+                removeCustomCursor();
+                isInsideSection = false;
+            } else {
+                // 데스크탑 모드로 전환: 커스텀 커서 생성
+                if (!customCursor) {
+                    createCustomCursor();
+                    animateCursor();
+                }
+            }
+        }, 200); // 200ms 디바운스
+    });
     
     // ==================== 모달 닫기 ====================
     imageModalClose.addEventListener('click', () => {
