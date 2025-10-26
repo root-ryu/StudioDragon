@@ -102,7 +102,7 @@
 
     /* footer_gnb_wrap를 position relative로 설정하여 footer_family_site의 기준점으로 사용 */
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap {
-        position: relative !important;
+        position: relative; /* ✅ !important 제거 */
     }
 
     /* HOME - 왼쪽 */
@@ -129,7 +129,12 @@
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site {
         position: absolute;
         right: 0;
-        bottom: 65px;
+        bottom: 70px;
+    }
+    
+    /* on 상태일 때 링크 보이기 - 1024px */
+    footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site.on .family_site_list li:not(.family_site_btn_wrap) {
+        display: block; /* ✅ !important 제거 */
     }
 
     /* Footer Bottom */
@@ -198,7 +203,7 @@
     footer .footer_top .footer_menu .footer_gnb {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 15px;
         align-items: flex-start;
     }
 
@@ -214,32 +219,35 @@
 
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_gnb_list{
         display: flex;
-        flex-wrap: wrap;
-        gap: 12px 20px;
+        /* flex-wrap: wrap; */
+        flex: 1;
+        gap: 12px;
+        font-size: 12px;
         width: 100%;
     }
 
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_link {
-        font-size: 16px !important;
+        font-size: 14px !important;
     }
 
-    /* Family Site - 부모 기준 위치 조정 */
+    /* Family Site - 위치만 조정 (1920/1024와 동일한 구조) */
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site {
         position: absolute;
         right: 0;
-        top: 198px;
+        bottom: -197px;
         width: 164px;
         height: 50px; 
     }
     
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_list {
         width: 164px;
-        height: 50px;
+        border-radius: 25px;
     }
     
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_btn {
         height: 50px;
         padding: 0 20px;
+        border-radius: 25px;
     }
     
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_btn span {
@@ -251,13 +259,13 @@
         height: 20px;
     }
     
-    /* on 상태일 때 높이 자동 조정 */
-    footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site.on {
-        height: auto;
+    /* on 상태일 때 링크 보이기 - 440px */
+    footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site.on .family_site_list li:not(.family_site_btn_wrap) {
+        display: block;
     }
     
-    footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site.on .family_site_list {
-        height: auto;
+    footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site.on .family_site_list .family_site_link {
+        font-size: 14px;
     }
 
     /* Footer Bottom */
