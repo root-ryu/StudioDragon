@@ -9,10 +9,6 @@
 
     :root   { --page-pad: 80px; }   /* ← 전역에서 고정 */
 
-    header{
-        display: none;
-    }
-
     .inner {
         width: 100%;
         max-width: 100%;
