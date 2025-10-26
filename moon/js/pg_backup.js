@@ -295,10 +295,6 @@ if (commGalleryContainer) {
     centeredSlides: false,
     allowTouchMove: true,
     grabCursor: true,
-    autoplay: {
-      delay: 2500, //2.5초 = 2500
-      disableOnInteraction: false,
-    },
     // 방향키 내비 필요하면 아래 주석 해제 후 HTML에 버튼 추가해서 사용
     // navigation: { nextEl: '.comm-next', prevEl: '.comm-prev' },
     // 반응형: 필요 시 카드 간격만 소폭 조정 예시
@@ -315,26 +311,12 @@ if (commGalleryContainer) {
 // 투표 섹션 카드 플립
 const voteContainer = document.querySelector('.vote-container');
 if (voteContainer) {
+  const voteCards = document.querySelectorAll('.vote-card');
   const voteBtns = document.querySelectorAll('.vote-btn');
-  const voteAgainBtn = document.querySelector('.vote-again-btn');
-  const voteCards = voteContainer.querySelectorAll('.vote-card');
-  let animated = false; // 'animated' 변수를 voteContainer 스코프 안으로 이동
 
-  // 'Vote Now' 버튼 클릭 이벤트
   voteBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.stopPropagation(); // 부모 요소로의 이벤트 전파를 막습니다.
-
-      // 이미 투표했는지 확인
-      if (voteContainer.classList.contains('voted')) {
-        return;
-      }
-
-      // 클릭된 카드에 'selected' 클래스 추가
-      const selectedCard = btn.closest('.vote-card');
-      if (selectedCard) {
-        selectedCard.classList.add('selected');
-      }
+      e.stopPropagation(); // 이벤트 버블링 방지
       
       // 모든 카드에 플립 클래스 추가
       voteCards.forEach(card => {
@@ -343,47 +325,8 @@ if (voteContainer) {
 
       // 투표 완료 상태 클래스 추가
       voteContainer.classList.add('voted');
-
-      // 투표 후 프로그레스 바 애니메이션 실행
-      if (!animated) {
-        animateProgress(".progress01", 45);
-        animateProgress(".progress02", 35);
-        animateProgress(".progress03", 20);
-        animated = true;
-      }
     });
   });
-
-  // 'Vote Again' 버튼 클릭 이벤트
-  if (voteAgainBtn) {
-    voteAgainBtn.addEventListener('click', () => {
-      // 모든 카드에서 플립 및 선택 클래스 제거
-      voteCards.forEach(card => {
-        card.classList.remove('is-flipped');
-        card.classList.remove('selected');
-      });
-
-      // 투표 완료 상태 클래스 제거
-      voteContainer.classList.remove('voted');
-      
-      // 프로그레스 바 초기화
-      $(".progress").val(0);
-      animated = false;
-    });
-  }
-}
-
-// 프로그레스바 애니메이션 함수를 DOMContentLoaded 리스너 내부에 정의
-function animateProgress(selector, targetValue) {
-  // jQuery가 로드되었는지 확인
-  if (window.jQuery) {
-    $({ val: 0 }).animate({ val: targetValue }, {
-      duration: 1000,
-      step: function (now) {
-        $(selector).val(Math.floor(now));
-      }
-    });
-  }
 }
 
 }); // DOMContentLoaded 끝

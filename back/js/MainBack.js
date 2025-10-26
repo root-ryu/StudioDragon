@@ -137,15 +137,29 @@ document.addEventListener('DOMContentLoaded', () => {
         speed: 1000,
         // 반응형 설정
         breakpoints: {
-            // 440px 이상일 때
+            // 440px 이상일 때 1개만 노출
             440: {
                 slidesPerView: 1,
                 spaceBetween: 0,
             },
-            // 1024px 이상일 때
-            1024: {
-                slidesPerView: 2.5,
-                spaceBetween: 60,
+            // 768px 이상일 때 두 장 노출
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 32,
+            },
+            // 960px 이상(1023px 포함)에서 세 장 노출
+            960: {
+                slidesPerView: 3,
+                spaceBetween: 160,
+            },
+            // 1280px 이상에서는 여유 있게 배치
+            1280: {
+                slidesPerView: 3,
+                spaceBetween: 48,
+            },
+            1920: {
+                slidesPerView: 3,
+                spaceBetween: 48,
             }
         }
     });
