@@ -600,6 +600,7 @@ h3.tit {
     margin: 12px var(--page-pad) 0;
     /* 필요하다면 상한선(=inner max)도 함께 쓰고 싶다면 아래 한 줄로 대체 가능
      width: min(1520px, calc(100vw - (var(--page-pad) * 2))); */
+     z-index: 2;
 }
 
 .history>.scroll_bar.swiper-scrollbar .swiper-scrollbar-drag {
