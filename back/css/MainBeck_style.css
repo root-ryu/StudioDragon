@@ -133,10 +133,9 @@ body {
 /* coming soon */
 .comingsoon {
     width: 100%;
-    min-height: 800px;
+    height: 950px;
     padding-top: 200px;
     position: relative;
-    overflow: hidden;
 }
 
 .comingsoon .inner {
@@ -180,10 +179,12 @@ body {
     top: 106px;
     left: 0;
     width: 100%;
+    height: 598px;
     transition: opacity 0.8s ease-in-out;
 }
 
 .comingsoon .inner img {
+    height: 598px;
     border-radius: 0 300px 0 0;
 }
 
@@ -200,16 +201,16 @@ body {
     font-weight: 500;
     padding-bottom: 46px;
     position: absolute;
+    right: 0;
     bottom: 173px;
-    right: 10vw;
 
 }
 
 .comingsoon .inner p {
     font-weight: 200;
     position: absolute;
+    right: 0;
     bottom: 24px;
-    right: 10vw;
 }
 
 .CScontents2,
@@ -370,18 +371,15 @@ body {
 }
 
 .onair .ONcon>div .ONtxtbox button:hover {
-    border: 2px solid rgba(245, 245, 245, 1);
-    background: rgba(245, 245, 245, 0.05);
+    border: 1px solid rgba(245, 245, 245, 1);
+    background: rgba(245, 245, 245, 0.03);
     box-shadow:
-        0 0 15px rgba(245, 245, 245, 0.9),
-        0 0 30px rgba(245, 245, 245, 0.7),
-        0 0 45px rgba(245, 245, 245, 0.5),
-        0 0 60px rgba(245, 245, 245, 0.3),
-        inset 0 0 15px rgba(245, 245, 245, 0.2);
+        0 0 8px rgba(245, 245, 245, 0.3),
+        0 0 15px rgba(245, 245, 245, 0.2),
+        inset 0 0 10px rgba(245, 245, 245, 0.1);
     text-shadow:
-        0 0 10px rgba(245, 245, 245, 0.8),
-        0 0 20px rgba(245, 245, 245, 0.6);
-    transform: translateY(-3px) scale(1.02);
+        0 0 5px rgba(245, 245, 245, 0.4);
+    transform: translateY(-2px) scale(1.01);
 }
 
 .onair .ONcon>div .ONtxtbox button img {
