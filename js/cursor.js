@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener("resize", resize);
     resize();
 
-    // 포인트 배열 및 초기 좌표
+    // 포인트 배열 및 초기 좌표 (용처럼 길게)
     const trail = [];
-    const maxPoints = 60;
-    const life = 1000;
+    const maxPoints = 80; // 더 긴 꼬리
+    const life = 1500; // 더 오래 남아있게
     let mouse = { x: w / 2, y: h / 2 };
     let smooth = { x: w / 2, y: h / 2 };
 
@@ -31,20 +31,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 컬러 팔레트 (RGB 배열)
+    // 옵션 1: 우아한 그라데이션 효과 (골드 → 레드 → 블루)
     const colors = [
-        [255, 99, 132],
-        [255, 159, 64],
-        [255, 205, 86],
-        [75, 192, 192],
-        [54, 162, 235],
-        [153, 102, 255],
-        [255, 0, 102],
-        [0, 255, 128],
-        [0, 204, 255],
-        [255, 51, 153],
-        [153, 255, 102],
-        [255, 255, 153]
+        [191, 164, 115], // #BFA473 골드
+        [199, 144, 102], // 중간색 1 (골드→레드)
+        [207, 124, 89],  // 중간색 2
+        [178, 35, 24],   // #B22318 레드
+        [147, 46, 50],   // 중간색 3 (레드→블루)
+        [116, 57, 76],   // 중간색 4
+        [85, 68, 102],   // 중간색 5
+        [54, 79, 128],   // 중간색 6
+        [26, 38, 173]    // #1A26AD 블루
     ];
+    
+    /* 옵션 2: 강렬한 대비 효과 (3색 반복)
+    const colors = [
+        [191, 164, 115], // #BFA473 골드
+        [178, 35, 24],   // #B22318 레드
+        [26, 38, 173],   // #1A26AD 블루
+        [191, 164, 115], // 골드 반복
+        [178, 35, 24],   // 레드 반복
+        [26, 38, 173],   // 블루 반복
+        [191, 164, 115],
+        [178, 35, 24],
+        [26, 38, 173]
+    ];
+    */
+    
+    /* 옵션 3: 부드러운 혼합 효과 (각 색상에서 파생)
+    const colors = [
+        [191, 164, 115], // #BFA473 골드
+        [200, 154, 110], // 골드 밝게
+        [182, 154, 105], // 골드 어둡게
+        [178, 35, 24],   // #B22318 레드
+        [198, 55, 44],   // 레드 밝게
+        [158, 25, 14],   // 레드 어둡게
+        [26, 38, 173],   // #1A26AD 블루
+        [56, 68, 203],   // 블루 밝게
+        [16, 28, 143]    // 블루 어둡게
+    ];
+    */
 
     // 마우스 이동 추적
     window.addEventListener("mousemove", (e) => {
@@ -53,9 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateTrail() {
-        // 점성 보간 (끈적하게 따라오게)
-        smooth.x += (mouse.x - smooth.x) * 0.25;
-        smooth.y += (mouse.y - smooth.y) * 0.25;
+        // 점성 보간 (용처럼 부드럽게 따라오게)
+        smooth.x += (mouse.x - smooth.x) * 0.15; // 더 부드럽게
+        smooth.y += (mouse.y - smooth.y) * 0.15;
 
         trail.push({ x: smooth.x, y: smooth.y, time: Date.now() });
         while (trail.length > maxPoints) trail.shift();
@@ -96,11 +122,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     const p2 = trail[i + 2];
                     const p3 = trail[i + 3];
 
-                    for (let t = 0; t <= 1; t += 0.03) {
-                        const pos = catmullRom(p0, p1, p2, p3, t, 0.25);
+                    for (let t = 0; t <= 1; t += 0.05) { // 더 촘촘하게
+                        const pos = catmullRom(p0, p1, p2, p3, t, 0.8); // tension 높여서 더 부드럽게
                         const age = now - p1.time;
                         const fade = Math.max(0, 1 - age / life);
-                        const offset = Math.sin((i + t) * 0.5 + ci * 0.4) * 6;
+                        
+                        // 용의 몸처럼 물결치는 효과 (더 부드럽고 우아하게)
+                        const waveSpeed = 0.15; // 느리게
+                        const waveAmplitude = 3; // 작은 진폭
+                        const offset = Math.sin((i + t) * waveSpeed + ci * 0.3) * waveAmplitude;
 
                         const x = pos.x + offset;
                         const y = pos.y + offset;
@@ -112,12 +142,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             ctx.lineTo(x, y);
                         }
 
-                        ctx.lineWidth = 2 + Math.sin(i * 0.4 + ci) * 0.8;
+                        // 용의 몸처럼 머리는 굵고 꼬리는 가늘게
+                        const progress = i / (trail.length - 3);
+                        const baseWidth = 4 - (progress * 3); // 4px에서 1px로
+                        ctx.lineWidth = baseWidth + Math.sin(i * 0.2 + ci) * 0.5;
+                        
                         ctx.lineCap = "round";
                         ctx.lineJoin = "round";
-                        ctx.shadowBlur = 25;
-                        ctx.shadowColor = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},1)`;
-                        ctx.strokeStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${fade})`;
+                        
+                        // 용처럼 빛나는 효과
+                        ctx.shadowBlur = 20 + (1 - progress) * 15; // 머리 쪽이 더 밝게
+                        ctx.shadowColor = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${fade * 0.8})`;
+                        ctx.strokeStyle = `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${fade * 0.9})`;
 
                     }
                 }
