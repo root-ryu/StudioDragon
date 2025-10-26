@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/main_media.css">
   <link rel="stylesheet" href="./moon/css/pg-style.css">
+  <link rel="stylesheet" href="./moon/css/media.css">
   <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
   <!-- GSAP (AOS 대체) -->
@@ -95,26 +96,26 @@
     <main>
       <!-- 히어로 섹션 -->
       <section class="hero text_reveal_section">
-        <div class="inner">
+        <div class="sect_inner">
           <ul class="hero-txtbox opacity_reveal">
-            <li class="hero-txt1">Create,</li>
-            <li class="hero-txt2">Share,</li>
-            <li class="hero-txt3">Vote,</li>
-            <li class="hero-txt4">Play with K-drama</li>
+            <li>Create,</li>
+            <li>Share,</li>
+            <li>Vote,</li>
+            <li>Play with K-drama</li>
           </ul>
-          <div class="imgbox gsap-fade-up">
+          <div class="imgbox repeat_area">
             <div class="smiling-emoji"></div>
           </div>
-        </div><!-- .inner -->
+        </div><!-- .sect_inner -->
       </section><!-- .hero -->
 
 
       <!-- 공모전 수상작 -->
       <section class="contest-winner">
-        <div class="inner">
-          <div class="top">
+        <div class="sect_inner">
+          <div class="top repeat_area">
             <div class="decoImg"></div>
-            <div class="title opacity_reveal">
+            <div class="title">
               <h2>1st Video Contest Winners</h2>
               <p>
                 Fans reimagined the iconic scenes of “The Glory”.
@@ -299,7 +300,7 @@
 
       <!-- 팬갤러리 -->
       <section class="creativeGallery">
-        <div class="inner">
+        <div class="sect_inner">
           <div class="titlebox">
             <div class="title">
               <h2><a href="#creative_gallery">Creative Gallery</a></h2>
@@ -708,12 +709,12 @@
               </div><!-- .con .img_new -->
             </div>
           </div><!-- .fanvideos -->
-        </div><!-- .inner -->
+        </div><!-- .sect_inner -->
       </section>
 
       <!-- 커뮤니티 섹션 -->
       <section class="community">
-        <div class="inner">
+        <div class="sect_inner">
           <div class="title">
             <h2><a href="#community">community</a></h2>
             <div class="subtit">
@@ -727,14 +728,14 @@
           <!-- 아티클 구역 -->
           <div class="articles">
             <!-- 갤러리 구역 -->
-            <div class="swiper comm_gallery">wrap
+            <div class="swiper comm_gallery">
               <ul class="swiper-wrapper">
                 <li class="swiper-slide">
-                  <a href="#" class="comm-img-">
+                  <a href="#" class="comm-img-wrap">
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">1</b>
-                      <div class="comm_subtit">
+                      <div class="comm_article_info">
                         <em>Culture &amp; Locations</em>
                         <span>
                           <h5>I tried making the bibimbap from Bon Appétit, Your Majesty.</h5>
@@ -749,7 +750,7 @@
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">2</b>
-                      <div class="comm_subtit">
+                      <div class="comm_article_info">
                         <em>Episode Discussions</em>
                         <span>
                           <h5>Isn&#039;t this a hidden plot point?</h5>
@@ -764,7 +765,7 @@
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">3</b>
-                      <div class="comm_subtit">
+                      <div class="comm_article_info">
                         <em>Episode Discussions</em>
                         <span>
                           <h5>Bon Appétit, Your Majesty: The Hidden Story in the Final Episode</h5>
@@ -779,7 +780,7 @@
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">4</b>
-                      <div class="comm_subtit">
+                      <div class="comm_article_info">
                         <em>Q&amp;A · Knowledge Share</em>
                         <span>
                           <h5>Are you making Sweet Home Season 4? Please make it, plz.</h5>
@@ -794,7 +795,7 @@
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">5</b>
-                      <div class="comm_subtit">
+                      <div class="comm_article_info">
                         <em>Freetalking</em>
                         <span>
                           <h5>Hey, has everyone seen Genie, Make a Wish?</h5>
@@ -811,7 +812,7 @@
               <li>
                 <a href="#">
                   <b class="num">6</b>
-                  <div class="comm_subtit">
+                  <div class="comm_article_info">
                     <em>Easter Eggs</em>
                     <span>
                       <h5>This feels like foreshadowing. What do you think?</h5>
@@ -823,7 +824,7 @@
               <li>
                 <a href="#">
                   <b class="num">7</b>
-                  <div class="comm_subtit">
+                  <div class="comm_article_info">
                     <em>Deep Dive</em>
                     <span>
                       <h5>Wow, so that&#039;s what it meant? I&#039;m shocked.</h5>
@@ -835,7 +836,7 @@
               <li>
                 <a href="#">
                   <b class="num">8</b>
-                  <div class="comm_subtit">
+                  <div class="comm_article_info">
                     <em>Deep Dive</em>
                     <span>
                       <h5>I&#039;ve been reading up on the history of the Joseon Dynasty, and it&#039;s interesting.
@@ -848,7 +849,7 @@
               <li>
                 <a href="#">
                   <b class="num">9</b>
-                  <div class="comm_subtit">
+                  <div class="comm_article_info">
                     <em>Q&amp;A · Knowledge Share</em>
                     <span>
                       <h5>I&#039;ll share my favorite Korean dramas with you, guys.</h5>
@@ -860,7 +861,7 @@
               <li>
                 <a href="#">
                   <b class="num">10</b>
-                  <div class="comm_subtit">
+                  <div class="comm_article_info">
                     <em>Culture &amp; Locations</em>
                     <span>
                       <h5>I went to Korea and visited the filming locations of the drama.</h5>

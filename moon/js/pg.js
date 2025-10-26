@@ -2,78 +2,60 @@
 document.addEventListener('DOMContentLoaded', () => {
   if (window.gsap) {
     gsap.registerPlugin(ScrollTrigger);
-
-    // 히어로 섹션 스크롤 애니메이션
-    const hero = document.querySelector('.hero');
-    const lines = gsap.utils.toArray('.hero .opacity_reveal li');
-    const imgbox = document.querySelector('.hero .imgbox');
-    
-    // 조정 가능한 값들 (한국어 주석)
-    const HERO_FILL_STAGGER = 0.8; // 그라디언트 채우기 간격 (초)
-    const HERO_SCROLL_DISTANCE = '+=200%'; // 전체 스크롤 진행 거리
-
-    if (hero && lines.length) {
-      // 초기 상태 설정
-      gsap.set(lines, { opacity: 0, y: 24 });
-      if (imgbox) gsap.set(imgbox, { opacity: 0, y: 24 });
-
-      const tl = gsap.timeline({
+    const tl_yoyo = gsap.timeline({
         scrollTrigger: {
-          trigger: hero,
-          start: 'top top',
-          end: HERO_SCROLL_DISTANCE,
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1
-        }
-      });
+            trigger: '.repeat_area',
+            start: 'top 70%',
+            toggleActions: "play none none reverse"
+        },
+        repeat: -1,
+        yoyo: true,
+        // repeatDelay: 0.1,
+        scrub: 2,
+        anticipatePin: 1,
+    });
+    tl_yoyo.to('.smiling-emoji', { y: -80, duration: 2.5, ease: "power2.inOut", })
 
-      // Phase 1: 텍스트박스와 이미지박스 함께 등장
-      tl.to(lines, {
-        opacity: 1,
-        y: 0,
+    // 히어로 섹션 스크롤 애니메이션 (리팩토링)
+    const heroTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.hero', // 히어로 섹션
+        start: 'top top',
+        end: '+=250%', // 스크롤 거리
+        pin: true,
+        scrub: 2,
+        anticipatePin: 1,
+      },
+    });
+
+    heroTimeline
+      // 1. 텍스트 줄(li)들이 아래에서 위로 나타남
+      .from('.hero .opacity_reveal li', {
+        opacity: 0,
+        y: 24,
         duration: 1,
-        ease: 'power2.out'
-      }, 0);
-
-      if (imgbox) {
-        tl.to(imgbox, {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power2.out'
-        }, 0.3); // imgbox는 살짝 딜레이
-      }
-
-      // Phase 2: 텍스트 등장 완료 후, 그라디언트 순차 채우기
-      tl.to(lines, {
+        ease: 'power2.out',
+        stagger: 0.1, // 각 줄이 순차적으로 나타나도록 약간의 간격 추가
+      })
+      // 2. 이미지가 약간의 딜레이 후 나타남
+      .from('.hero .imgbox', {
+        opacity: 0,
+        y: 54,
+        duration: 1,
+        ease: 'power2.out',
+      }, '<6') // 이전 애니메이션 시작 후 0.3초 뒤에 시작
+      // 3. 텍스트에 그라디언트 색상이 채워짐
+      .to('.hero .opacity_reveal li', {
         backgroundSize: '100% 100%, 100% 100%',
         duration: 1.5,
         ease: 'none',
-        stagger: HERO_FILL_STAGGER
-      }, '+=0.5'); // Phase 1 완료 후 0.5초 간격으로 시작
-    }
+        stagger: 0.8, // 0.8초 간격으로 순차 적용
+      }, '+=0.5'); // 앞선 애니메이션 완료 후 0.5초 뒤 시작
 
-
-    // 공통 페이드업
-    gsap.utils.toArray('.gsap-fade-up').forEach((el) => {
-      gsap.from(el, {
-        opacity: 0,
-        y: 24,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-    });
   }
-});
 
-/* 날짜 카운터 */
-function counter(targetDateString, daysEl, hoursEl, minutesEl, secondsEl) {
+  /* 날짜 카운터 */
+  function counter(targetDateString, daysEl, hoursEl, minutesEl, secondsEl) {
   const theDate = new Date(targetDateString);
   const _second = 1000;
   const _minute = _second * 60;
@@ -107,7 +89,7 @@ function counter(targetDateString, daysEl, hoursEl, minutesEl, secondsEl) {
 
   timer = setInterval(count, 1000);
   count(); // Call count immediately to avoid initial delay
-};
+}
 
 const countElements = document.querySelectorAll('.running-contest .counter .countbox span');
 if (countElements.length === 4) {
@@ -116,29 +98,28 @@ if (countElements.length === 4) {
 }
 
 // 갤러리 토글 버튼
-(function () {
-  const categoryBtns = document.querySelectorAll(".creativeGallery .category button");
-  const fanarts = document.querySelector(".creativeGallery .fanarts");
-  const fanvideos = document.querySelector(".creativeGallery .fanvideos");
+const gallery = document.querySelector(".creativeGallery");
+const categoryBtns = gallery.querySelectorAll(".category button");
+const fanarts = gallery.querySelector(".fanarts");
+const fanvideos = gallery.querySelector(".fanvideos");
 
-  categoryBtns.forEach((btn, index) => {
-    btn.addEventListener("click", () => {
-      // 모든 버튼 active 제거
-      categoryBtns.forEach(b => b.classList.remove("active"));
-      // 클릭된 버튼에 active 추가
-      btn.classList.add("active");
+categoryBtns.forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    // 모든 버튼 active 제거
+    categoryBtns.forEach(b => b.classList.remove("active"));
+    // 클릭된 버튼에 active 추가
+    btn.classList.add("active");
 
-      // 콘텐츠 전환
-      if (index === 0) {
-        fanarts.classList.add("active");
-        fanvideos.classList.remove("active");
-      } else {
-        fanarts.classList.remove("active");
-        fanvideos.classList.add("active");
-      }
-    });
+    // 콘텐츠 전환
+    if (index === 0) {
+      fanarts.classList.add("active");
+      fanvideos.classList.remove("active");
+    } else {
+      fanarts.classList.remove("active");
+      fanvideos.classList.add("active");
+    }
   });
-})();
+});
 
 /* 갤러리_popular img 스와이퍼
    사용법(간단):
@@ -146,16 +127,14 @@ if (countElements.length === 4) {
    - 페이지에 여러 스와이퍼가 있을 경우 pagination 엘리먼트 선택자를 슬라이더 내부로 제한하세요.
    - 옵션 수정 시 아래 주석을 참고해 값을 변경하세요.
 */
-(function () {
-  // 슬라이더 컨테이너를 검색합니다. 없으면 종료합니다.
-  const container = document.querySelector('.popular_img_slide');
-  if (!container) return; // 슬라이더가 없으면 초기화 중단
-
+// 슬라이더 컨테이너를 검색합니다. 없으면 종료합니다.
+const popularImgContainer = document.querySelector('.popular_img_slide');
+if (popularImgContainer) {
   // 슬라이더 내부에 있는 pagination 요소만 사용하도록 범위를 좁힙니다.
-  const pagination = container.parentElement.querySelector('.swiper-pagination');
+  const pagination = popularImgContainer.parentElement.querySelector('.swiper-pagination');
 
   // Swiper 인스턴스 생성
-  const popularImgSwiper = new Swiper(container, {
+  const popularImgSwiper = new Swiper(popularImgContainer, {
     // 시각 효과: coverflow (회전, 깊이감을 줌)
     effect: 'coverflow',
     loop: true,           // 무한 루프
@@ -187,18 +166,17 @@ if (countElements.length === 4) {
 
   // 콘솔에 상태 로그 (디버깅용). 배포 시 주석 처리 가능
   console.log('popularImgSwiper 초기화 됨', popularImgSwiper);
-})();
+}
 
 // 갤러리_new img swiper
-(function () {
-  const container = document.querySelector('.new_img_slide');
-  if (!container) return; // 슬라이더가 없으면 초기화 중단
+const newImgContainer = document.querySelector('.new_img_slide');
+if (newImgContainer) {
 
   // 슬라이더 내부에 있는 pagination 요소만 사용하도록 범위를 좁힙니다.
-  const pagination = container.parentElement.querySelector('.swiper-pagination');
+  const pagination = newImgContainer.parentElement.querySelector('.swiper-pagination');
 
   // Swiper 인스턴스 생성
-  const newImgSwiper = new Swiper(container, {
+  const newImgSwiper = new Swiper(newImgContainer, {
     effect: 'slide',
     loop: true,           // 무한 루프
     grabCursor: true,     // 커서가 잡는 모양
@@ -221,19 +199,18 @@ if (countElements.length === 4) {
   });
 
   // 콘솔에 상태 로그 (디버깅용). 배포 시 주석 처리 가능
-  console.log('newImgSwiper 초기화 됨', newImgSwiper);
-})();
+  // console.log('newImgSwiper 초기화 됨', newImgSwiper);
+}
 
 // 갤러리_popular video 스와이퍼
-(function () {
-  const container = document.querySelector('.popular_video_slide');
-  if (!container) return; // 슬라이더가 없으면 초기화 중단
+const popularVideoContainer = document.querySelector('.popular_video_slide');
+if (popularVideoContainer) {
 
   // 슬라이더 내부에 있는 pagination 요소만 사용하도록 범위를 좁힙니다.
-  const pagination = container.parentElement.querySelector('.swiper-pagination');
+  const pagination = popularVideoContainer.parentElement.querySelector('.swiper-pagination');
 
   // Swiper 인스턴스 생성
-  const popularVideoSwiper = new Swiper(container, {
+  const popularVideoSwiper = new Swiper(popularVideoContainer, {
     // 시각 효과: coverflow (회전, 깊이감을 줌)
     effect: 'coverflow',
     loop: true,           // 무한 루프
@@ -263,19 +240,18 @@ if (countElements.length === 4) {
   });
 
   // 콘솔에 상태 로그 (디버깅용). 배포 시 주석 처리 가능
-  console.log('popularVideoSwiper 초기화 됨', popularVideoSwiper);
-})();
+  // console.log('popularVideoSwiper 초기화 됨', popularVideoSwiper);
+}
 
 // 갤러리_new video swiper
-(function () {
-  const container = document.querySelector('.new_video_slide');
-  if (!container) return; // 슬라이더가 없으면 초기화 중단
+const newVideoContainer = document.querySelector('.new_video_slide');
+if (newVideoContainer) {
 
   // 슬라이더 내부에 있는 pagination 요소만 사용하도록 범위를 좁힙니다.
-  const pagination = container.parentElement.querySelector('.swiper-pagination');
+  const pagination = newVideoContainer.parentElement.querySelector('.swiper-pagination');
 
   // Swiper 인스턴스 생성
-  const newVideoSwiper = new Swiper(container, {
+  const newVideoSwiper = new Swiper(newVideoContainer, {
     effect: 'slide',
     loop: true,           // 무한 루프
     grabCursor: true,     // 커서가 잡는 모양
@@ -293,18 +269,17 @@ if (countElements.length === 4) {
       580: { slidesPerView: 2 },
       1200: { slidesPerView: 1.6 },
       1430: { slidesPerView: 2 },
-      1710: { slidesPerView: 3 }
+      1710: { slidesPerView: "auto" }
     }
   });
 
   // 콘솔에 상태 로그 (디버깅용). 배포 시 주석 처리 가능
-  console.log('newVideoSwiper 초기화 됨', newVideoSwiper);
-})();
+  // console.log('newVideoSwiper 초기화 됨', newVideoSwiper);
+}
 
 // 커뮤니티 섹션 갤러리 스와이퍼 (좌측 정렬, 수동 슬라이드, 루프/페이지네이션 없음)
-(function () {
-  const container = document.querySelector('.comm_gallery');
-  if (!container) return;
+const commGalleryContainer = document.querySelector('.comm_gallery');
+if (commGalleryContainer) {
 
   // 한국어 설정 가이드
   // - slidesPerView: 'auto' 로 두면 CSS에서 정의한 슬라이드 너비가 그대로 적용됩니다.
@@ -313,7 +288,7 @@ if (countElements.length === 4) {
   // - loop, pagination, autoplay는 사용하지 않습니다. (요청사항)
   // - 사용자가 드래그하여 좌우로 넘기게 하려면 allowTouchMove: true 유지
 
-  const commGallerySwiper = new Swiper(container, {
+  const commGallerySwiper = new Swiper(commGalleryContainer, {
     slidesPerView: 'auto',
     spaceBetween: 18,
     loop: false,
@@ -330,6 +305,7 @@ if (countElements.length === 4) {
     }
   });
 
-  console.log('commGallerySwiper 초기화 됨', commGallerySwiper);
-})();
+  // console.log('commGallerySwiper 초기화 됨', commGallerySwiper);
+}
 
+}); // DOMContentLoaded 끝

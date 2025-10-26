@@ -1,5 +1,13 @@
 @charset "utf-8";
+:root {
+  --space-w-1920: 200px;
+}
 
+button {
+       background: none;
+      border: none;
+      /* box-shadow: none; */
+    }
 .mirror{
   -webkit-box-reflect: below 0px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.5) 100%);
   pointer-events: none;
@@ -7,8 +15,12 @@
 }
 
 main {
-  position: relative;
+  /* position: relative; */
   width: 100%;
+}
+.sect_inner{
+  width: 100%;
+  padding: 0 var(--space-w-1920);
 }
 
 /* GSAP용 기본 상태 (필요 시) -> 빈 규칙 제거로 린트 경고 방지 */
@@ -26,26 +38,22 @@ main {
   width: 100%;
   margin-top: 180px;
   background: linear-gradient(transparent 20%, #fff 40%);
-  padding: 239px 0;
+  padding-block: 239px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  align-self: stretch;
-  flex-shrink: 0;
   position: relative;
 }
 
-.hero .inner {
+.hero .sect_inner {
+  width: 100%;
   display: flex;
   flex-direction: row;
   position: relative;
 }
 
-.hero .opacity_reveal li { /* 텍스트 리빌 시작 상태 */
-  opacity: 0;
-  transform: translateY(24px);
-}
+
 
 .hero li {
   text-align: left;
@@ -62,17 +70,11 @@ main {
   background-size: 100% 0%, 100% 100%;
   background-position: 0 100%, 0 0;
   background-repeat: no-repeat;
-  transition: background-size 700ms ease;
-  transition-delay: 400ms;
-}
-
-.hero li.filled {
-  background-size: 100% 100%, 100% 100%;
 }
 
 .hero .imgbox {
   position: absolute;
-  right: 0px;
+  right: 200px;
   bottom: 0px;
 }
 
@@ -114,8 +116,9 @@ main {
 /* 공모전 수상자 */
 .contest-winner {
   background: var(--Bcolor);
-  padding: 200px 0;
+  width: 100%;
   overflow: hidden;
+  padding: 200px 0;
 }
 
 .contest-winner .top {
@@ -440,7 +443,6 @@ main {
   position: relative;
 }
 
-.running-contest article ul {}
 
 .running-contest article li {
   color: var(--Bcolor);
@@ -501,7 +503,7 @@ main {
   overflow: hidden;
 }
 
-.creativeGallery .inner {
+.creativeGallery .sect_inner {
   position: relative;
   overflow: hidden;
 }
@@ -623,7 +625,7 @@ main {
   width: 823px;
   display: flex;
   flex-direction: column;
-  position: relative; /* info-overlay의 absolute 기준점 */
+  position: relative;
 }
 
 .creativeGallery .fanarts .img_popular ul.swiper-wrapper .fan-img-wrap .fan-img {
@@ -693,9 +695,10 @@ main {
 
 
 .creativeGallery .fanarts .img_new .swiper ul.swiper-wrapper {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 10px; */
+  /* 스와이퍼 정렬 수정 */
 }
 
 
@@ -786,7 +789,7 @@ main {
 .creativeGallery .fanvideos .video_new .swiper ul.swiper-wrapper {
   display: flex;
   flex-direction: row;
-  gap: 38px;
+  /* gap: 38px; */
 }
 
 .creativeGallery .fanvideos .video_new ul.swiper-wrapper figure {
@@ -859,7 +862,7 @@ main {
   gap: 10px;
   overflow: hidden;
 }
-.community .inner {
+.community .sect_inner {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -869,6 +872,7 @@ main {
 
 /* 커뮤니티 상단 */
 .community .title {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -926,10 +930,10 @@ main {
 
 .community .articles .comm_gallery .swiper-wrapper {
   padding-right: 200px;
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   gap: 18px;
-  align-items: center;
+  align-items: center; */
 }
 
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide {
@@ -1005,24 +1009,24 @@ main {
   transform: rotate(0deg) scale(1, 1);
 }
 
-.community .articles .comm_gallery .info-overlay .comm_subtit {
+.community .articles .comm_gallery .info-overlay .comm_article_info {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.community .articles .comm_gallery .info-overlay .comm_subtit em {
+.community .articles .comm_gallery .info-overlay .comm_article_info em {
   color: #938f98;
   font: 300 26px/100% "Assistant", sans-serif;
 }
 
-.community .articles .comm_gallery .info-overlay .comm_subtit span {
+.community .articles .comm_gallery .info-overlay .comm_article_info span {
   display: flex;
   flex-direction: row;
   gap: 12px;
 }
 
-.community .articles .comm_gallery .info-overlay .comm_subtit span h5 {
+.community .articles .comm_gallery .info-overlay .comm_article_info span h5 {
   color: var(--w, #f5f5f5);
   text-align: left;
   font: 400 30px/100% "Assistant", sans-serif;
@@ -1031,7 +1035,7 @@ main {
   white-space: nowrap;
 }
 
-.community .articles .comm_gallery .info-overlay .comm_subtit span p {
+.community .articles .comm_gallery .info-overlay .comm_article_info span p {
   color: var(--MainColor);
   text-align: left;
   font: 300 26px/100% "Assistant", sans-serif;
@@ -1046,6 +1050,10 @@ main {
 }
 .community ul.article_list li{
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
 }
 
 .community ul.article_list li a{
@@ -1059,24 +1067,26 @@ main {
   text-align: left;
   font: 700 26px/100% "Assistant", sans-serif;
 }
-.community ul.article_list li .comm_subtit {
+.community ul.article_list li .comm_article_info {
   display: flex;
+  width: 100%;
   flex-direction: row;
   gap: 14px;
   align-items: center;
+  justify-content: space-between;
 }
-.community ul.article_list li .comm_subtit em{
+.community ul.article_list li .comm_article_info em{
    color: #bdbac1;
   text-align: left;
   font: 300 26px/100% "Assistant", sans-serif;
 }
-.community ul.article_list li .comm_subtit span {
+.community ul.article_list li .comm_article_info span {
   display: flex;
   flex-direction: row;
   gap: 12px;
   align-items: center;
 }
-.community ul.article_list li .comm_subtit span h5 {
+.community ul.article_list li .comm_article_info span h5 {
   color: var(--Bcolor);
   text-align: left;
   font: 400 26px/100% "Assistant", sans-serif;
@@ -1084,7 +1094,7 @@ main {
   overflow: hidden;
   white-space: nowrap;
 }
-.community ul.article_list li .comm_subtit span p {
+.community ul.article_list li .comm_article_info span p {
   color: var(--MainColor);
   text-align: left;
   font: 300 26px/100% "Assistant", sans-serif;
