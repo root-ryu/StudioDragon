@@ -20,8 +20,9 @@
     }
 
     .main_cach {
-        height: 100vh;
-        padding: 500px 0 250px 0;
+        height: 100%;
+        padding: 340px 0 300px 0;
+        margin-bottom: 140px;
     }
 
     .main_cach .img_roll div {
@@ -32,6 +33,10 @@
     .main_cach .img_roll div img {
         width: 250px;
         height: 250px;
+    }
+
+    .main_cach .txt {
+        top:52%;
     }
 
     .main_cach .txt p.head_copy {
@@ -313,12 +318,12 @@
     :root   { --page-pad: 24px; }
 
 .main_cach {
-padding: 100px 0 150px 0;
+padding: 200px 0 150px 0;
 }
 
     .main_cach .txt {
         padding-inline: var(--page-pad);
-        top: 44%;
+        top: 50%;
     }
 
     .main_cach .txt p span{
