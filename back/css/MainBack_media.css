@@ -103,15 +103,6 @@
         position: relative;
     }
 
-    .comingsoon .CScontents1,
-    .comingsoon .CScontents2,
-    .comingsoon .CScontents3 {
-        position: absolute;
-        top: 90px;
-        left: 0;
-        width: 100%;
-    }
-
     .comingsoon .inner .top {
         width: 397px;
         position: relative;
@@ -120,6 +111,16 @@
 
     .comingsoon .inner .top h2 {
         font-size: 40px;
+        padding-bottom: 0;
+    }
+
+    .comingsoon .CScontents1,
+    .comingsoon .CScontents2,
+    .comingsoon .CScontents3 {
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
     }
 
     .comingsoon .inner img {
@@ -318,6 +319,10 @@
     .BeyondDrama .inner .BDcontents .BDconBottom .BDsection08,
     .BeyondDrama .inner .BDcontents .BDconBottom .BDsection09 {
         height: 320px;
+    }
+    .BeyondDrama .inner .BDcontents .BDconTop .BDsection03 img {
+        object-fit: cover;
+        object-position: 0 10%;
     }
 
     .BeyondDrama .inner .BDcontents .BDconTop .BDsection01_txt h3,
@@ -1243,15 +1248,6 @@
         width: 90%;
     }
 
-    .comingsoon .CScontents1,
-    .comingsoon .CScontents2,
-    .comingsoon .CScontents3 {
-        position: absolute;
-        width: 100%;
-        height: auto;
-        left: 0;
-    }
-
     .comingsoon .inner .top {
         width: 226px;
         padding-bottom: 30px;
@@ -1271,6 +1267,15 @@
 
     .comingsoon .inner .top button span {
         display: none;
+    }
+
+    .comingsoon .CScontents1,
+    .comingsoon .CScontents2,
+    .comingsoon .CScontents3 {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        left: 0;
     }
 
     .comingsoon .inner img {
@@ -1448,6 +1453,14 @@
         width: 380px;
         height: 150px;
     }
+    .BeyondDrama .inner .BDcontents .BDconTop .BDsection02 img {
+        object-fit: cover;
+        object-position: 0 40%;
+    }
+    .BeyondDrama .inner .BDcontents .BDconTop .BDsection03 img {
+        object-fit: cover;
+        object-position: 0 20%;
+    }
 
     /* .BDconMiddle 반응형 - 피그마 디자인 기반 */
     .BeyondDrama .inner .BDcontents .BDconMiddle {
@@ -1586,6 +1599,8 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: 0 20%;
+
     }
 
     .BeyondDrama .inner .BDcontents .BDconBottom .BDsection10 {
