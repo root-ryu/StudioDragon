@@ -2,17 +2,24 @@
 :root {
   --space-w-1920: 200px;
 }
+*::after,*::before {
+  box-sizing: border-box;
+}
 
 button {
-       background: none;
-      border: none;
-      /* box-shadow: none; */
-    }
-.mirror{
+  background: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Standard */
+}
+/* .mirror{
   -webkit-box-reflect: below 0px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.5) 100%);
   pointer-events: none;
   user-select: none;
-}
+} */
 
 main {
   /* position: relative; */
@@ -20,7 +27,7 @@ main {
 }
 .sect_inner{
   width: 100%;
-  padding: 0 var(--space-w-1920);
+  padding-inline: var(--space-w-1920);
 }
 
 /* GSAP용 기본 상태 (필요 시) -> 빈 규칙 제거로 린트 경고 방지 */
@@ -74,8 +81,8 @@ main {
 
 .hero .imgbox {
   position: absolute;
-  right: 200px;
-  bottom: 0px;
+  right: var(--space-w-1920);
+  top: 80px;
 }
 
 .smiling-emoji {
@@ -118,7 +125,7 @@ main {
   background: var(--Bcolor);
   width: 100%;
   overflow: hidden;
-  padding: 200px 0;
+  padding-block: 200px;
 }
 
 .contest-winner .top {
@@ -415,7 +422,7 @@ main {
 .running-contest article {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 32px;
   align-items: center;
   justify-content: flex-start;
   align-self: stretch;
@@ -448,7 +455,7 @@ main {
   color: var(--Bcolor);
   text-align: left;
   font-family: "Assistant", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 130%;
   font-weight: 400;
   position: relative;
@@ -457,12 +464,12 @@ main {
 .running-contest a.btn {
   display: block;
   border-radius: 32px;
-  border: 1px solid var(--Bcolor);
-  background: transparent;
-  padding: 6px 32px;
+  border: 1px solid #0d031cb4;
+  background: #0d031c19;
+  padding: 8px 38px;
   color: var(--Bcolor);
   text-align: center;
-  font: 400 14px/100% "Assistant", sans-serif;
+  font: 400 16px/100% "Assistant", sans-serif;
   text-transform: uppercase;
   transition: all 0.4s ease;
   position: relative;
@@ -476,14 +483,15 @@ main {
   left: 0;
   width: 0;
   height: 100%;
-  background: var(--Bcolor);
+  background: var(--subBlue2);
   z-index: -1;
   transition: 0.5s;
 }
 
 .running-contest a.btn:hover {
-  background-color: var(--Bcolor);
+  background-color: var(--subBlue1);
   color: var(--Wcolor);
+  border-color: var(--subBlue1);
 }
 
 .running-contest a.btn:hover::before {
@@ -494,10 +502,9 @@ main {
 .creativeGallery {
   background: var(--Bcolor);
   width: 100%;
-  padding: 200px 0;
+  padding-block: 200px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
   align-items: center;
   position: relative;
   overflow: hidden;
@@ -536,6 +543,7 @@ main {
   gap: 24px;
   align-items: center;
   position: relative;
+  margin-bottom: 40px;
 }
 
 .creativeGallery .titlebox .title {}
@@ -560,7 +568,7 @@ main {
   justify-content: center;
   position: relative;
   color: var(--Wcolor);
-  font: 400 26px/100% "Assistant-Regular", sans-serif;
+  font: 400 24px/100% "Assistant-Regular", sans-serif;
   text-transform: uppercase;
   border: 0;
   cursor: pointer;
@@ -634,9 +642,9 @@ main {
   width: 823px;
   height: 523px;
   aspect-ratio: 823/523;
-  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  -webkit-box-reflect: below 0px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.5) 100%);
   pointer-events: none;
-  user-select: none; */
+  user-select: none;
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .swiper-slide .info-overlay {
@@ -717,9 +725,9 @@ main {
   /* position: relative; */
   overflow: hidden;
   aspect-ratio: 602/382;
-  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  -webkit-box-reflect: below 0px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.5) 100%);
   pointer-events: none;
-  user-select: none; */
+  user-select: none;
 }
 
 .fanarts .img_popular .swiper-pagination {
@@ -771,7 +779,7 @@ main {
 
 .creativeGallery .fanvideos ul.swiper-wrapper .fan-video-wrap {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   position: relative;
 }
 
@@ -781,16 +789,14 @@ main {
   height: 669px;
   overflow: hidden;
   aspect-ratio: 376/669;
-  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+ -webkit-box-reflect: below 0px linear-gradient(transparent 90%, rgba(13, 3, 28, 0.5) 100%);
   pointer-events: none;
-  user-select: none; */
+  user-select: none;
+}
+.creativeGallery .fanvideos .video_new{
+  margin-bottom: 30px;
 }
 
-.creativeGallery .fanvideos .video_new .swiper ul.swiper-wrapper {
-  display: flex;
-  flex-direction: row;
-  /* gap: 38px; */
-}
 
 .creativeGallery .fanvideos .video_new ul.swiper-wrapper figure {
   border-radius: 20px;
@@ -798,9 +804,9 @@ main {
   height: 617px;
   overflow: hidden;
   aspect-ratio: 347/617;
-  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
+  -webkit-box-reflect: below 0px linear-gradient(transparent 90%, rgba(13, 3, 28, 0.5) 100%);
   pointer-events: none;
-  user-select: none; */
+  user-select: none;
 }
 
 .fanvideos .video_popular .swiper-pagination {
@@ -822,10 +828,6 @@ main {
   pointer-events: none;
   user-select: none; */
 }
-
-/* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide{
-  width: auto;
-} */
 
 
 /* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide .info-overlay {
@@ -856,7 +858,7 @@ main {
 .community {
   width: 100%;
   color: #fff;
-  padding: 200px;
+  padding-block: 200px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -889,7 +891,7 @@ main {
 }
 
 .community .title .subtit h4 {
-  color: var(--b, #0d031c);
+  color: var(--Bcolor);
   text-align: center;
   font: var(--font-1920-title-L-40);
   text-transform: uppercase;
@@ -929,7 +931,7 @@ main {
 }
 
 .community .articles .comm_gallery .swiper-wrapper {
-  padding-right: 200px;
+  padding-right: var(--space-w-1920);
   /* display: flex;
   flex-direction: row;
   gap: 18px;
@@ -1063,7 +1065,7 @@ main {
   gap: 18px;
 }
 .community ul.article_list li .num{
-  columns: var(--Bcolor);
+  color: var(--Bcolor);
   text-align: left;
   font: 700 26px/100% "Assistant", sans-serif;
 }
@@ -1073,7 +1075,7 @@ main {
   flex-direction: row;
   gap: 14px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: left;
 }
 .community ul.article_list li .comm_article_info em{
    color: #bdbac1;
