@@ -154,7 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             // 1280px 이상에서는 여유 있게 배치
             1280: {
-                slidesPerView: 3.2,
+                slidesPerView: 3,
+                spaceBetween: 48,
+            },
+            1920: {
+                slidesPerView: 3,
                 spaceBetween: 48,
             }
         }
