@@ -92,15 +92,17 @@
     }
 
     /* footer_gnb를 flex-wrap으로 변경하여 HOME과 나머지를 줄바꿈 */
-    footer .footer_top .footer_menu {
-    }
     footer .footer_top .footer_menu .footer_gnb {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         gap: 64px;
         align-items: flex-start;
-        /* position: relative !important; */
+    }
+
+    /* footer_gnb_wrap를 position relative로 설정하여 footer_family_site의 기준점으로 사용 */
+    footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap {
+        position: relative !important;
     }
 
     /* HOME - 왼쪽 */
@@ -125,9 +127,9 @@
 
     /* Family Site - 오른쪽 정렬 */
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site {
-        position: relative;
+        position: absolute;
         right: 0;
-        top: -200%;
+        bottom: 65px;
     }
 
     /* Footer Bottom */
@@ -176,49 +178,68 @@
     header nav .right .user {
         display: none;
     }
+
+    /* Footer 440px */
     footer{
         margin: 0;
-        padding: 60px 0;
+        padding: 60px 0 !important;
         overflow: hidden;
     }
+
     footer .footer_inner{
-        padding: 0 30px;
+        padding: 0 30px !important;
     }
-    .footer_menu .footer_gnb .footer_gnb_wrap .footer_gnb_list{
-        display: flex;
-        gap: 0px;
+
+    /* Footer Top */
+    footer .footer_top {
+        margin-bottom: 60px;
     }
-    footer .footer_top .footer_menu .footer_gnb .footer_gnb_link {
-        font-size: 16px;
-    }
-    footer .footer_bottom .footer_brand .footer_logo {
-        width: 174px;
-        height: 65px;
-    }
-    footer .footer_bottom .footer_brand{
-        width: 100%;
+
+    footer .footer_top .footer_menu .footer_gnb {
         display: flex;
         flex-direction: column;
-        align-items: baseline;
-        gap: 19px;
+        gap: 40px;
+        align-items: flex-start;
     }
+
+    /* footer_gnb_wrap를 position relative로 설정 */
+    footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap {
+        position: relative !important;
+        width: 100%;
+    }
+
+    footer .footer_top .footer_menu .footer_gnb .footer_gnb_link.home {
+        font: 300 16px/1 "Assistant", sans-serif;
+    }
+
+    footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_gnb_list{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+        width: 100%;
+    }
+
+    footer .footer_top .footer_menu .footer_gnb .footer_gnb_link {
+        font-size: 16px !important;
+    }
+
+    /* Family Site - 부모 기준 위치 조정 */
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site {
         position: absolute;
         right: 0;
-        top: 750%;
+        top: 198px;
         width: 164px;
-        height: auto;
+        height: 50px;
     }
     
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_list {
         width: 164px;
-        height: auto;
+        height: 50px;
     }
     
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_btn {
         height: 50px;
-        padding: 0 30px;
-        font-size: 14px;
+        padding: 0 20px;
     }
     
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site .family_site_btn span {
@@ -237,5 +258,27 @@
     
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_family_site.on .family_site_list {
         height: auto;
+    }
+
+    /* Footer Bottom */
+    footer .footer_bottom {
+        gap: 30px;
+    }
+
+    footer .footer_bottom .footer_brand {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 19px;
+    }
+
+    footer .footer_bottom .footer_brand .footer_logo {
+        width: 174px;
+        height: 65px;
+    }
+
+    footer .footer_bottom .footer_info .footer_info_text {
+        font: 400 10px/1.3 "Assistant", sans-serif;
     }
 }
