@@ -29,6 +29,10 @@ section {
     max-width: 100%;
 } */
 
+.header_bg{
+    z-index: 8;
+}
+
 /* .main_cach */
 
 .main_cach {
