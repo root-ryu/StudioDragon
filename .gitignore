@@ -3,3 +3,4 @@
 -e ._*
 .Spotlight-V100
 .Trashes
+.DS_Store
