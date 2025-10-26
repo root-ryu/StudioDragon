@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/main_media.css">
   <link rel="stylesheet" href="./moon/css/pg-style.css">
-  <link rel="stylesheet" href="./moon/css/media.css">
   <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
@@ -75,7 +74,7 @@
           </ul><!-- //.gnb -->
           <div class="right">
             <div class="lang">
-              <a href="#" class="en active">EN</a>
+              <a href="#" class="en ">EN</a>
               <a href="#" class="kr ">KR</a>
             </div><!-- //.lang -->
             <div class="user">
@@ -96,9 +95,9 @@
     <!-- 메인 -->
     <main>
       <!-- 히어로 섹션 -->
-      <section class="hero text_reveal_section">
+      <section class="hero">
         <div class="sect_inner">
-          <ul class="hero-txtbox opacity_reveal">
+          <ul class="opacity_reveal">
             <li>Create,</li>
             <li>Share,</li>
             <li>Vote,</li>
@@ -113,8 +112,8 @@
 
       <!-- 공모전 수상작 -->
       <section class="contest-winner">
-        <div class="sect_inner">
-          <div class="top repeat_area">
+        <div class="inner">
+          <div class="top">
             <div class="decoImg"></div>
             <div class="title">
               <h2>1st Video Contest Winners</h2>
@@ -250,10 +249,10 @@
       <section class="running-contest">
         <div class="inner">
           <div class="title">
-            <h2><a href="#running_contest">Running Contest</a></h2>
+            <h2>Running Contest</h2>
           </div>
           <div class="con">
-            <div class="info gsap-fade-up">
+            <div class="info">
               <div class="deadline">
                 <h4>
                   Deadline: 2025-11-10 23:59 UTC
@@ -301,10 +300,10 @@
 
       <!-- 팬갤러리 -->
       <section class="creativeGallery">
-        <div class="sect_inner">
+        <div class="inner">
           <div class="titlebox">
             <div class="title">
-              <h2><a href="#creative_gallery">Creative Gallery</a></h2>
+              <h2>Creative Gallery</h2>
             </div>
             <div class="category">
               <button type="button" class="active">fan arts</button>
@@ -639,6 +638,13 @@
                         </figure>
                       </a>
                     </li>
+                    <li class="swiper-slide slide7">
+                      <a href="#" class="fan-video-wrap">
+                        <figure class="put_in_later mirror">
+                          <!-- <video src="" muted loop></video> -->
+                        </figure>
+                      </a>
+                    </li>
                   </ul><!-- .swiper-wrapper -->
                 </div><!-- .swiper -->
                 <div class="swiper-pagination"></div>
@@ -703,7 +709,7 @@
               </div><!-- .con .img_new -->
             </div>
           </div><!-- .fanvideos -->
-        </div><!-- .sect_inner -->
+        </div><!-- .inner -->
       </section>
 
       <!-- 커뮤니티 섹션 -->
@@ -721,260 +727,302 @@
           </div><!-- title -->
           <!-- 아티클 구역 -->
           <div class="articles">
-            <!-- 갤러리 구역 -->
-            <div class="swiper comm_gallery">
-              <ul class="swiper-wrapper">
-                <li class="swiper-slide">
-                  <a href="#" class="comm-img-wrap">
-                    <div class="comm-img_1"></div>
-                    <div class="info-overlay">
-                      <b class="num">1</b>
-                      <div class="comm_article_info">
-                        <em>Culture &amp; Locations</em>
-                        <span>
-                          <h5>I tried making the bibimbap from Bon Appétit, Your Majesty.</h5>
-                          <p>254</p>
-                        </span>
+            <div class="comm_today">
+              <!-- 갤러리 구역 (Today) -->
+              <div class="swiper comm_gallery">
+                <ul class="swiper-wrapper">
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <div class="comm-img_1"></div>
+                      <div class="info-overlay">
+                        <b class="num">1</b>
+                        <div class="comm_article_info">
+                          <em>Culture &amp; Locations</em>
+                          <span>
+                            <h5>I tried making the bibimbap from Bon Appétit, Your Majesty.</h5>
+                            <p>254</p>
+                          </span>
+                        </div>
                       </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <div class="comm-img_1"></div>
+                      <div class="info-overlay">
+                        <b class="num">2</b>
+                        <div class="comm_article_info">
+                          <em>Episode Discussions</em>
+                          <span>
+                            <h5>Isn&#039;t this a hidden plot point?</h5>
+                            <p>254</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <div class="comm-img_1"></div>
+                      <div class="info-overlay">
+                        <b class="num">3</b>
+                        <div class="comm_article_info">
+                          <em>Episode Discussions</em>
+                          <span>
+                            <h5>Bon Appétit, Your Majesty: The Hidden Story in the Final Episode</h5>
+                            <p>254</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <div class="comm-img_1"></div>
+                      <div class="info-overlay">
+                        <b class="num">4</b>
+                        <div class="comm_article_info">
+                          <em>Q&amp;A · Knowledge Share</em>
+                          <span>
+                            <h5>Are you making Sweet Home Season 4? Please make it, plz.</h5>
+                            <p>254</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <div class="comm-img_1"></div>
+                      <div class="info-overlay">
+                        <b class="num">5</b>
+                        <div class="comm_article_info">
+                          <em>Freetalking</em>
+                          <span>
+                            <h5>Hey, has everyone seen Genie, Make a Wish?</h5>
+                            <p>254</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                </ul><!-- .swiper-wrapper -->
+              </div><!-- .swiper comm_gallery -->
+              <!-- 리스트 구역 (Today) -->
+              <ul class="article_list">
+                <li>
+                  <a href="#">
+                    <b class="num">6</b>
+                    <div class="comm_article_info">
+                      <em>Easter Eggs</em>
+                      <span>
+                        <h5>This feels like foreshadowing. What do you think?</h5>
+                        <p>254</p>
+                      </span>
                     </div>
                   </a>
-                </li><!-- swiper-slide -->
-                <li class="swiper-slide">
-                  <a href="#" class="comm-img-wrap">
-                    <div class="comm-img_1"></div>
-                    <div class="info-overlay">
-                      <b class="num">2</b>
-                      <div class="comm_article_info">
-                        <em>Episode Discussions</em>
-                        <span>
-                          <h5>Isn&#039;t this a hidden plot point?</h5>
-                          <p>254</p>
-                        </span>
-                      </div>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">7</b>
+                    <div class="comm_article_info">
+                      <em>Deep Dive</em>
+                      <span>
+                        <h5>Wow, so that&#039;s what it meant? I&#039;m shocked.</h5>
+                        <p>254</p>
+                      </span>
                     </div>
                   </a>
-                </li><!-- swiper-slide -->
-                <li class="swiper-slide">
-                  <a href="#" class="comm-img-wrap">
-                    <div class="comm-img_1"></div>
-                    <div class="info-overlay">
-                      <b class="num">3</b>
-                      <div class="comm_article_info">
-                        <em>Episode Discussions</em>
-                        <span>
-                          <h5>Bon Appétit, Your Majesty: The Hidden Story in the Final Episode</h5>
-                          <p>254</p>
-                        </span>
-                      </div>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">8</b>
+                    <div class="comm_article_info">
+                      <em>Deep Dive</em>
+                      <span>
+                        <h5>I&#039;ve been reading up on the history of the Joseon Dynasty, and it&#039;s interesting.
+                        </h5>
+                        <p>254</p>
+                      </span>
                     </div>
                   </a>
-                </li><!-- swiper-slide -->
-                <li class="swiper-slide">
-                  <a href="#" class="comm-img-wrap">
-                    <div class="comm-img_1"></div>
-                    <div class="info-overlay">
-                      <b class="num">4</b>
-                      <div class="comm_article_info">
-                        <em>Q&amp;A · Knowledge Share</em>
-                        <span>
-                          <h5>Are you making Sweet Home Season 4? Please make it, plz.</h5>
-                          <p>254</p>
-                        </span>
-                      </div>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">9</b>
+                    <div class="comm_article_info">
+                      <em>Q&amp;A · Knowledge Share</em>
+                      <span>
+                        <h5>I&#039;ll share my favorite Korean dramas with you, guys.</h5>
+                        <p>254</p>
+                      </span>
                     </div>
                   </a>
-                </li><!-- swiper-slide -->
-                <li class="swiper-slide">
-                  <a href="#" class="comm-img-wrap">
-                    <div class="comm-img_1"></div>
-                    <div class="info-overlay">
-                      <b class="num">5</b>
-                      <div class="comm_article_info">
-                        <em>Freetalking</em>
-                        <span>
-                          <h5>Hey, has everyone seen Genie, Make a Wish?</h5>
-                          <p>254</p>
-                        </span>
-                      </div>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">10</b>
+                    <div class="comm_article_info">
+                      <em>Culture &amp; Locations</em>
+                      <span>
+                        <h5>I went to Korea and visited the filming locations of the drama.</h5>
+                        <p>254</p>
+                      </span>
                     </div>
                   </a>
-                </li><!-- swiper-slide -->
-              </ul><!-- .swiper-wrapper -->
-            </div><!-- .swiper comm_gallery -->
-            <!-- 리스트 구역 -->
-            <ul class="article_list">
-              <li>
-                <a href="#">
-                  <b class="num">6</b>
-                  <div class="comm_article_info">
-                    <em>Easter Eggs</em>
-                    <span>
-                      <h5>This feels like foreshadowing. What do you think?</h5>
-                      <p>254</p>
-                    </span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <b class="num">7</b>
-                  <div class="comm_article_info">
-                    <em>Deep Dive</em>
-                    <span>
-                      <h5>Wow, so that&#039;s what it meant? I&#039;m shocked.</h5>
-                      <p>254</p>
-                    </span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <b class="num">8</b>
-                  <div class="comm_article_info">
-                    <em>Deep Dive</em>
-                    <span>
-                      <h5>I&#039;ve been reading up on the history of the Joseon Dynasty, and it&#039;s interesting.
-                      </h5>
-                      <p>254</p>
-                    </span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <b class="num">9</b>
-                  <div class="comm_article_info">
-                    <em>Q&amp;A · Knowledge Share</em>
-                    <span>
-                      <h5>I&#039;ll share my favorite Korean dramas with you, guys.</h5>
-                      <p>254</p>
-                    </span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <b class="num">10</b>
-                  <div class="comm_article_info">
-                    <em>Culture &amp; Locations</em>
-                    <span>
-                      <h5>I went to Korea and visited the filming locations of the drama.</h5>
-                      <p>254</p>
-                    </span>
-                  </div>
-                </a>
-              </li>
-            </ul><!-- article_list -->
-          </div><!-- .articles -->
-        </div><!-- ./inner -->
-      </section><!-- .community -->
+                </li>
+              </ul><!-- article_list -->
+            </div><!-- .comm_today -->
 
-      <!-- 투표 섹션 -->
-      <section class="vote">
-        <div class="sect_inner">
-          <div class="title">
-            <h2>vote</h2>
-            <h3>Who is the most anticipated villain?</h3>
-            <p>Vote for the character you believe will be the most captivatingly evil.</p>
-          </div>
-          <div class="vote-container">
-            <!-- Card 1: The Glory -->
-            <div class="vote-card" id="vote-card-1">
-              <div class="vote-card-inner">
-                <!-- Front of the card -->
-                <div class="vote-card-front">
-                  <div class="img-area">
-                    <img src="./moon/asset/vote_yeonjin.jpg" alt="Park Yeon-jin from The Glory">
-                  </div>
-                  <div class="info-area">
-                    <span class="drama-title">The Glory</span>
-                    <h3 class="char-name">Park Yeon-jin</h3>
-                    <button type="button" class="vote-btn">Vote Now</button>
-                  </div>
-                </div>
-                <!-- Back of the card -->
-                <div class="vote-card-back">
-                  <div class="img-area">
-                    <img src="./moon/asset/vote_yeonjin.jpg" alt="Park Yeon-jin from The Glory">
-                  </div>
-                  <div class="info-area result-area">
-                    <span class="drama-title">The Glory</span>
-                    <h3 class="char-name">Park Yeon-jin</h3>
-                    <div class="vote-result">
-                      <progress class="progress progress01" value="0" min="0" max="100"></progress>
-                      <span class="percentage">45%</span>
+            <div class="comm_weekly" style="display:none;">
+              <!-- 갤러리 구역 (Weekly - 이미지와 텍스트 순서 섞음, num은 유지) -->
+              <div class="swiper comm_gallery">
+                <ul class="swiper-wrapper">
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <div class="comm-img_1"></div>
+                      <div class="info-overlay">
+                        <b class="num">1</b>
+                        <div class="comm_article_info">
+                          <em>Episode Discussions</em>
+                          <span>
+                            <h5>Bon Appétit, Your Majesty: The Hidden Story in the Final Episode</h5>
+                            <p>254</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <div class="comm-img_1"></div>
+                      <div class="info-overlay">
+                        <b class="num">2</b>
+                        <div class="comm_article_info">
+                          <em>Freetalking</em>
+                          <span>
+                            <h5>Hey, has everyone seen Genie, Make a Wish?</h5>
+                            <p>254</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <div class="comm-img_1"></div>
+                      <div class="info-overlay">
+                        <b class="num">3</b>
+                        <div class="comm_article_info">
+                          <em>Culture &amp; Locations</em>
+                          <span>
+                            <h5>I tried making the bibimbap from Bon Appétit, Your Majesty.</h5>
+                            <p>254</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <div class="comm-img_1"></div>
+                      <div class="info-overlay">
+                        <b class="num">4</b>
+                        <div class="comm_article_info">
+                          <em>Episode Discussions</em>
+                          <span>
+                            <h5>Isn&#039;t this a hidden plot point?</h5>
+                            <p>254</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <div class="comm-img_1"></div>
+                      <div class="info-overlay">
+                        <b class="num">5</b>
+                        <div class="comm_article_info">
+                          <em>Q&amp;A · Knowledge Share</em>
+                          <span>
+                            <h5>Are you making Sweet Home Season 4? Please make it, plz.</h5>
+                            <p>254</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                </ul><!-- .swiper-wrapper -->
+              </div><!-- .swiper comm_gallery -->
+              <!-- 리스트 구역 (Weekly - same content as Today) -->
+              <ul class="article_list">
+                <li>
+                  <a href="#">
+                    <b class="num">6</b>
+                    <div class="comm_article_info">
+                      <em>Easter Eggs</em>
+                      <span>
+                        <h5>This feels like foreshadowing. What do you think?</h5>
+                        <p>254</p>
+                      </span>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Card 2: Queen of Tears -->
-            <div class="vote-card" id="vote-card-2">
-              <div class="vote-card-inner">
-                <!-- Front of the card -->
-                <div class="vote-card-front">
-                  <div class="img-area">
-                    <img src="./moon/asset/vote_yooneunseong.jpg" alt="Yoon Eun-seong from Queen of Tears">
-                  </div>
-                  <div class="info-area">
-                    <span class="drama-title">Queen of Tears</span>
-                    <h3 class="char-name">Yoon Eun-seong</h3>
-                    <button type="button" class="vote-btn">Vote Now</button>
-                  </div>
-                </div>
-                <!-- Back of the card -->
-                <div class="vote-card-back">
-                  <div class="img-area">
-                    <img src="./moon/asset/vote_yooneunseong.jpg" alt="Yoon Eun-seong from Queen of Tears">
-                  </div>
-                  <div class="info-area result-area">
-                    <span class="drama-title">Queen of Tears</span>
-                    <h3 class="char-name">Yoon Eun-seong</h3>
-                    <div class="vote-result">
-                      <progress class="progress progress02" value="0" min="0" max="100"></progress>
-                      <span class="percentage">35%</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">7</b>
+                    <div class="comm_article_info">
+                      <em>Deep Dive</em>
+                      <span>
+                        <h5>Wow, so that&#039;s what it meant? I&#039;m shocked.</h5>
+                        <p>254</p>
+                      </span>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Card 3: Bon Appétit, Your Majesty -->
-            <div class="vote-card" id="vote-card-3">
-              <div class="vote-card-inner">
-                <!-- Front of the card -->
-                <div class="vote-card-front">
-                  <div class="img-area">
-                    <img src="./moon/asset/vote_jesan.jpg" alt="Jesan Daegun from Bon Appétit, Your Majesty">
-                  </div>
-                  <div class="info-area">
-                    <span class="drama-title">Bon Appétit, Your Majesty</span>
-                    <h3 class="char-name">Jesan Daegun</h3>
-                    <button type="button" class="vote-btn">Vote Now</button>
-                  </div>
-                </div>
-                <!-- Back of the card -->
-                <div class="vote-card-back">
-                  <div class="img-area">
-                    <img src="./moon/asset/vote_jesan.jpg" alt="Jesan Daegun from Bon Appétit, Your Majesty">
-                  </div>
-                  <div class="info-area result-area">
-                    <span class="drama-title">Bon Appétit, Your Majesty</span>
-                    <h3 class="char-name">Jesan Daegun</h3>
-                    <div class="vote-result">
-                      <progress class="progress progress03" value="0" min="0" max="100"></progress>
-                      <span class="percentage">20%</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">8</b>
+                    <div class="comm_article_info">
+                      <em>Deep Dive</em>
+                      <span>
+                        <h5>I&#039;ve been reading up on the history of the Joseon Dynasty, and it&#039;s interesting.
+                        </h5>
+                        <p>254</p>
+                      </span>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="vote-footer-message">
-            <p>Thank you for voting. Share your thoughts in the comments!</p>
-            <button type="button" class="vote-again-btn">Vote Again<i class="fa-solid fa-arrow-rotate-right"></i></button>
-          </div>
-        </div>
-      </section>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">9</b>
+                    <div class="comm_article_info">
+                      <em>Q&amp;A · Knowledge Share</em>
+                      <span>
+                        <h5>I&#039;ll share my favorite Korean dramas with you, guys.</h5>
+                        <p>254</p>
+                      </span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">10</b>
+                    <div class="comm_article_info">
+                      <em>Culture &amp; Locations</em>
+                      <span>
+                        <h5>I went to Korea and visited the filming locations of the drama.</h5>
+                        <p>254</p>
+                      </span>
+                    </div>
+                  </a>
+                </li>
+              </ul><!-- article_list -->
+            </div><!-- .comm_weekly -->
+          </div><!-- .articles -->
+        </div><!-- ./sect_inner -->
+      </section><!-- .community -->
 
     </main>
 

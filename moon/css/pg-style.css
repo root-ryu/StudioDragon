@@ -2,9 +2,13 @@
 :root {
   --space-w-1920: 200px;
 }
+*{
+  caret-color: transparent;
+}
 *::after,*::before {
   box-sizing: border-box;
 }
+
 
 button {
   background: none;
@@ -20,6 +24,20 @@ button {
   pointer-events: none;
   user-select: none;
 } */
+
+
+.swiper-slide{
+  filter: brightness(30%);
+}
+.swiper-slide-prev, .swiper-slide-next {
+  filter: brightness(60%);
+  transition: filter 0.3s;
+}
+
+.swiper-slide-active {
+  opacity:1;
+  filter: brightness(100%);
+}
 
 main {
   /* position: relative; */
@@ -148,7 +166,6 @@ main {
 
 .contest-winner .title {
   gap: 16px;
-  width: 43.1250vw;
   display: flex;
   flex-direction: column;
 }
@@ -163,19 +180,20 @@ main {
 }
 
 .contest-winner .winner-wrap {
-  padding: 84px 0;
+  /* padding: 50vh 0; */
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .contest-winner .video-content {
-  height: 1080px;
+  height: 100vh;
 }
 
 .contest-winner .video-wrap {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
   width: 100%;
   height: 100%;
   position: relative;
@@ -184,8 +202,7 @@ main {
 
 .contest-winner .video-wrap iframe {
   border-radius: 20px;
-  width: 513px;
-  height: 912px;
+  height: 720px;
   aspect-ratio: 9/16;
 }
 
@@ -194,9 +211,10 @@ main {
   flex-direction: column;
   gap: 43px;
   width: 687px;
-  height: 912px;
+  height: 720px;
   position: relative;
   z-index: 0;
+  /* display: none; */
 }
 
 .contest-winner .award {
@@ -248,32 +266,32 @@ main {
 .contest-winner .goldimg {
   background: url(../../moon/asset/gold.png) center/cover;
   flex-shrink: 0;
-  width: 119.79px;
-  height: 141.05px;
+  width: 120px;
+  height: 141px;
   position: absolute;
   right: 0;
   top: 0;
-  aspect-ratio: 119.79/141.05;
+  aspect-ratio: 120/140;
 }
 
 .contest-winner .silverimg {
   background: url(../../moon/asset/silver.png) center/cover;
-  width: 119.79px;
-  height: 141.05px;
+  width: 120px;
+  height: 141px;
   position: absolute;
   right: 0;
   top: 0;
-  aspect-ratio: 119.79/141.05;
+  aspect-ratio: 120/141;
 }
 
 .contest-winner .popularimg {
   background: url(../../moon/asset/popular.png) center/cover;
-  width: 119.79px;
-  height: 169.79px;
+  width: 120px;
+  height: 170px;
   position: absolute;
   right: 0;
   top: 0;
-  aspect-ratio: 119.79/169.79;
+  aspect-ratio: 120/170;
 }
 
 .contest-winner .video-wrap .circles {
@@ -294,8 +312,8 @@ main {
   width: 725.88px;
   height: 725.88px;
   position: absolute;
-  left: -109.5px;
-  bottom: 51.56px;
+  left: -140px;
+  bottom: -200px;
 }
 
 .contest-winner .video-wrap .circles .blur-2 {
@@ -306,15 +324,15 @@ main {
   width: 893.87px;
   height: 893.87px;
   position: absolute;
-  right: -144.49px;
-  top: 0px;
+  right: -140px;
+  top: -300px;
 }
 
 /* 진행중인 공모전 */
 .running-contest {
   width: 100%;
   color: #fff;
-  padding: 100px 80px 140px 80px;
+  padding: 200px 0px 250px 0px;
 }
 
 .running-contest .title {
@@ -408,7 +426,6 @@ main {
   color: #f3f3f3;
   text-align: center;
   font: 700 72px/100% "Assistant", sans-serif;
-  letter-spacing: -0.01em;
 }
 
 .running-contest .countbox p {
@@ -603,8 +620,9 @@ main {
 /* 팬아트 카테고리 */
 .creativeGallery .fanarts {
   width: 100%;
-
 }
+
+
 
 
 .creativeGallery .fanarts .wrap {
@@ -615,15 +633,20 @@ main {
   /* background: red; */
   overflow-x: hidden;
 }
-
+.creativeGallery .fanarts .img_popular .swiper {
+  /* width: 823px; */
+  margin: 0 auto;
+}
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper {
   /* display: flex;
   flex-direction: row;
   gap: 60px; */
+  width: 100%;
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper li.swiper-slide {
+   width: 823px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -662,10 +685,10 @@ main {
   opacity: 0;
   transition: opacity 0.3s ease;
   background: linear-gradient(180deg,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0) 17.788460850715637%,
-      rgba(0, 0, 0, 0) 83.8942289352417%,
-      rgba(0, 0, 0, 0.8) 100%);
+      rgba(13, 3, 28, 0.8) 0%,
+      rgba(13, 3, 28, 0) 18%,
+      rgba(13, 3, 28, 0) 84%,
+      rgba(13, 3, 28, 0.8) 100%);
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .swiper-slide:hover .info-overlay {
@@ -824,9 +847,6 @@ main {
 .creativeGallery .fanvideos .video_popular ul.swiper-wrapper figure,
 .creativeGallery .fanvideos .video_new ul.swiper-wrapper figure {
   background: url(../../moon/asset/temp_img.webp) center/cover;
-  /* -webkit-box-reflect: below -5px linear-gradient(transparent 85%, rgba(13, 3, 28, 0.4) 100%);
-  pointer-events: none;
-  user-select: none; */
 }
 
 
@@ -915,7 +935,7 @@ main {
 }
 
 /* 커뮤니티-아티클 */
-.community .articles {
+.community .articles > * {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -932,10 +952,7 @@ main {
 
 .community .articles .comm_gallery .swiper-wrapper {
   padding-right: var(--space-w-1920);
-  /* display: flex;
-  flex-direction: row;
-  gap: 18px;
-  align-items: center; */
+  
 }
 
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide {
@@ -945,8 +962,14 @@ main {
   overflow: hidden;
   /* 이미지 링크는 추후 복사 */
   background: var(--Wcolor) center/cover no-repeat;
-  width: 1100px;
+  width: 1137px;
   aspect-ratio: 16/9;
+  filter: brightness(80%);
+  opacity: 0.8;
+}
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide-active{
+  filter: brightness(100%);
+  opacity: 1;
 }
 
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap {
@@ -956,28 +979,38 @@ main {
   position: relative; /* info-overlay 기준 */
 }
 
-/* 커뮤니티 갤러리: 슬라이드별 개별 이미지 지정 (nth-child)
-   - 아래 background-image의 경로만 각 슬라이드에 맞게 바꿔서 사용하세요.
-   - 필요 슬라이드 수가 늘어나면 동일한 패턴으로 nth-child(n)을 추가하면 됩니다. */
-.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(1) {
-  /* 1번 카드 이미지 경로 */
+/* 커뮤니티 갤러리: Today 슬라이드별 개별 이미지 지정 */
+.community .articles .comm_today .comm_gallery .swiper-wrapper .swiper-slide:nth-child(1) {
   background-image: url(../../moon/asset/comm-img_1.jpg);
 }
-.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(2) {
-  /* 2번 카드 이미지 경로 */
+.community .articles .comm_today .comm_gallery .swiper-wrapper .swiper-slide:nth-child(2) {
   background-image: url(../../moon/asset/comm-img_2.jpg);
 }
-.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(3) {
-  /* 3번 카드 이미지 경로 */
+.community .articles .comm_today .comm_gallery .swiper-wrapper .swiper-slide:nth-child(3) {
   background-image: url(../../moon/asset/comm-img_3.jpg);
 }
-.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(4) {
-  /* 4번 카드 이미지 경로 */
+.community .articles .comm_today .comm_gallery .swiper-wrapper .swiper-slide:nth-child(4) {
   background-image: url(../../moon/asset/comm-img_4.jpg);
 }
-.community .articles .comm_gallery .swiper-wrapper .swiper-slide:nth-child(5) {
-  /* 5번 카드 이미지 경로 */
+.community .articles .comm_today .comm_gallery .swiper-wrapper .swiper-slide:nth-child(5) {
   background-image: url(../../moon/asset/comm-img_5.jpg);
+}
+
+/* 커뮤니티 갤러리: Weekly 슬라이드별 개별 이미지 지정 (순서 섞음) */
+.community .articles .comm_weekly .comm_gallery .swiper-wrapper .swiper-slide:nth-child(1) {
+  background-image: url(../../moon/asset/comm-img_3.jpg);
+}
+.community .articles .comm_weekly .comm_gallery .swiper-wrapper .swiper-slide:nth-child(2) {
+  background-image: url(../../moon/asset/comm-img_5.jpg);
+}
+.community .articles .comm_weekly .comm_gallery .swiper-wrapper .swiper-slide:nth-child(3) {
+  background-image: url(../../moon/asset/comm-img_1.jpg);
+}
+.community .articles .comm_weekly .comm_gallery .swiper-wrapper .swiper-slide:nth-child(4) {
+  background-image: url(../../moon/asset/comm-img_2.jpg);
+}
+.community .articles .comm_weekly .comm_gallery .swiper-wrapper .swiper-slide:nth-child(5) {
+  background-image: url(../../moon/asset/comm-img_4.jpg);
 }
 
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide .info-overlay {
@@ -994,8 +1027,8 @@ main {
   transition: opacity 0.3s ease;
   background: linear-gradient(180deg,
       rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0) 17.788460850715637%,
-      rgba(0, 0, 0, 0) 83.8942289352417%,
+      rgba(0, 0, 0, 0) 18%,
+      rgba(0, 0, 0, 0) 84%,
       rgba(0, 0, 0, 0.8) 100%);
   color: var(--Wcolor);
 }
