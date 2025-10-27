@@ -386,7 +386,7 @@
   /* 클릭 시 카드 빨간색 (1024px 이하) */
   .proof .card.clicked {
     background: #aa3229 !important;
-    transform: scale(1) !important;
+    transform: scale(0.97) !important;
   }
 
   .proof .card.clicked .content h3,
@@ -729,10 +729,19 @@
 @media (max-width: 440px) {
   
   /* ========== Global 설정 ========== */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
   .main {
-    gap: 50px; /* 섹션 간 간격 */
-    padding: 0 30px 80px; /* 좌우 30px, 하단 80px */
+    gap: 50px;
+    padding: 0 30px 80px;
     height: auto;
+    width: 100%;
   }
 
   /* 모든 섹션 공통 스타일 */
@@ -762,54 +771,69 @@
 
   /* ========== Banner ========== */
   .banner {
-    padding: 0 0 50px !important;
-    width: 100%;
-  }
-
-  .banner .container {
-    width: 100%;
-    height: auto;
-    min-height: 280px;
+    padding: 0 !important;
+    width: calc(100% + 60px) !important;
+    margin: 0 -30px 50px -30px !important;
     position: relative;
   }
 
+  .banner .container {
+    width: 100% !important;
+    height: 213px;
+    min-height: auto;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+
   .banner .banner__slider {
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    height: 213px;
+    position: relative;
+    left: 0 !important;
+    top: 0;
+    transform: none !important;
   }
 
   .banner .banner__slider .swiper-wrapper {
-    height: auto;
+    height: 213px;
   }
 
   .banner .banner__slider .swiper-slide {
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    height: 213px;
   }
 
   .banner .banner__slider .swiper-slide img {
     display: block;
-    width: 100%;
+    width: 100% !important;
     height: 213px;
-    border-radius: 12px;
+    border-radius: 0 !important;
     object-fit: cover;
   }
 
   .banner .content {
     position: absolute;
-    left: 0;
-    top: 42%;
+    left: 30px;
+    top: -20px;
     transform: translateY(-50%);
-    font-size: 36px;
-    line-height: 1.3;
-    width: 100%;
-    z-index: 10;
+    font: var(--font-440-title-L-30);
+    width: calc(100% - 60px);
+    z-index: 1;
+    pointer-events: none;
   }
 
-  .banner .content h1,
+  .banner .content h1 {
+    font: var(--font-440-headline-30);
+    color: #0d031c;
+    text-transform: uppercase;
+    margin: 0 0 5px 0;
+  }
+
   .banner .content p {
-    font-size: 36px;
-    line-height: 1.3;
+    font: var(--font-440-headline-30);
+    color: #bfa473;
+    margin: 0;
   }
 
   /* 페이지네이션 숨김 */
@@ -821,6 +845,7 @@
   /* ========== Value Drivers ========== */
   .value_drivers {
     width: 100%;
+    max-width: 380px;
     gap: 30px;
   }
 
@@ -841,10 +866,12 @@
   .value_drivers .container {
     gap: 30px;
     width: 100%;
+    max-width: 380px;
   }
 
   .value_drivers .container .figure {
     width: 100%;
+    max-width: 380px;
     height: 420px;
     border-radius: 32px;
     position: relative;
@@ -860,15 +887,15 @@
   }
 
   .value_drivers .container .area {
-    display: none; /* area 전체 숨김 */
+    display: none;
   }
 
   .value_drivers .content {
-    display: none; /* 화살표 카드 숨김 */
+    display: none;
   }
 
   .value_drivers .info {
-    display: none; /* 하단 정보 숨김 */
+    display: none;
   }
 
   /* ========== Execution ========== */
@@ -916,7 +943,7 @@
   .execution .card {
     width: 100%;
     max-width: 182.5px;
-    height: 190px; /* 이미지 150px + 컨텐츠 40px */
+    height: 190px;
     border-radius: 24px;
     padding: 0.625px;
     position: relative;
@@ -965,13 +992,24 @@
 
   /* ========== Proof ========== */
   .proof {
+    width: calc(100% + 60px);
+    gap: 30px;
+    margin: 0 -30px !important;
+    padding: 0 !important;
+  }
+
+  .proof .inner {
     width: 100%;
-    gap: 50px;
     margin: 0 !important;
+    padding: 0 30px !important;
   }
 
   .proof .title {
-    height: 55px;
+    height: auto;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto 30px auto !important;
+    padding: 0 !important;
   }
 
   .proof .title h2 {
@@ -984,27 +1022,28 @@
     line-height: 1.3;
   }
 
-  .proof .container {
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    width: 100%;
-    padding-bottom: 20px;
-    -webkit-overflow-scrolling: touch;
+  .proof .slide_wrap {
+    width: calc(100% + 60px) !important;
+    height: 380px !important;
+    margin: 0 -30px !important;
+    padding: 0 !important;
+  }
+
+  .proof .swiper-wrapper {
+    padding-left: 30px !important;
   }
 
   .proof .card {
     flex-shrink: 0;
-    width: 300px !important;
-    height: 300px !important;
+    width: 380px !important;
+    height: 380px !important;
     border-radius: 32px !important;
     padding: 30px 20px !important;
     position: relative;
     background: rgba(170, 50, 41, 0.1) !important;
     box-shadow: 0px 0px 24px 0px rgba(2, 8, 20, 0.04);
     animation: none !important;
+    margin: 0 !important;
   }
 
   /* 모바일에서는 hover 비활성화 - 클릭만 사용 */
@@ -1048,7 +1087,7 @@
   /* 클릭 시 모든 카드 빨간색 (모바일) */
   .proof .card.clicked {
     background: #aa3229 !important;
-    transform: scale(1) !important;
+    transform: scale(0.97) !important;
   }
 
   .proof .card.clicked .content h3,
@@ -1060,6 +1099,21 @@
     filter: brightness(0) invert(1) !important;
     width: 80px !important;
     height: 80px !important;
+  }
+
+  /* hover 효과 완전 제거 (모바일) */
+  .proof .card:hover {
+    background: rgba(170, 50, 41, 0.1) !important;
+    transform: scale(1) !important;
+  }
+
+  .proof .card:hover .content h3,
+  .proof .card:hover .content p {
+    color: #0d031c !important;
+  }
+
+  .proof .card:hover img {
+    filter: none !important;
   }
 
   /* 애니메이션 제거 */
@@ -1355,10 +1409,13 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%;
+    max-width: 380px;
   }
 
   .risks_mitigation .risk_item {
     width: 100%;
+    max-width: 380px;
     padding: 16px 0;
     border-radius: 32px;
   }
@@ -1433,6 +1490,7 @@
   /* ========== CTA ========== */
   .cta {
     width: 100%;
+    max-width: 380px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -1441,6 +1499,7 @@
 
   .cta .button {
     width: 100%;
+    max-width: 380px;
     height: 60px;
     font-size: 20px;
     line-height: 1;

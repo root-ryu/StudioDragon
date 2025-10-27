@@ -7,9 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   let resizeTimer;
+  let proofHandlersInitialized = false;
+  
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(refreshScrollTrigger, 250);
+    resizeTimer = setTimeout(() => {
+      refreshScrollTrigger();
+      
+      // 화면 크기 변경 시 Proof 카드 클릭 핸들러 재설정
+      const isProofMobile = window.matchMedia('(max-width: 1024px)').matches;
+      if (isProofMobile && !proofHandlersInitialized) {
+        handleProofCardClick();
+        proofHandlersInitialized = true;
+      } else if (!isProofMobile && proofHandlersInitialized) {
+        // 데스크탑으로 전환 시 클릭 핸들러 제거
+        handleProofCardClick(); // 데스크탑 모드로 전환
+        proofHandlersInitialized = false;
+      }
+    }, 250);
   });
 
   window.addEventListener('load', () => {
@@ -257,18 +272,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Proof Click Toggle (Mobile)
-  const isProofMobile = window.matchMedia('(max-width: 1024px)').matches;
-  
-  if (isProofMobile) {
-    const proofSwiper = document.querySelector('.proof .slide_wrap')?.swiper;
+  // Proof Click Toggle (Tablet & Mobile only)
+  const handleProofCardClick = function() {
+    const isProofMobile = window.matchMedia('(max-width: 1024px)').matches;
+    const proofCards = document.querySelectorAll('.proof .card');
     
-    setTimeout(() => {
-      const proofCards = document.querySelectorAll('.proof .card');
+    if (proofCards.length === 0) {
+      console.log('No proof cards found, will retry...');
+      return false;
+    }
+    
+    if (isProofMobile) {
+      const proofSwiper = document.querySelector('.proof .slide_wrap')?.swiper;
       
-      proofCards.forEach(card => {
-        card.addEventListener('click', function(e) {
+      console.log('Proof mobile mode active, cards found:', proofCards.length);
+      
+      proofCards.forEach((card, index) => {
+        card.style.cursor = 'pointer';
+        
+        // 클론된 클릭 이벤트를 위해 새로운 함수 생성
+        const clickHandler = function(e) {
+          e.preventDefault();
           e.stopPropagation();
+          
+          console.log('Card clicked:', index);
+          
           const isCurrentlyClicked = this.classList.contains('clicked');
           
           // 모든 카드의 clicked 클래스 제거
@@ -277,22 +305,66 @@ document.addEventListener('DOMContentLoaded', () => {
           // 클릭한 카드에만 clicked 클래스 추가 (토글)
           if (!isCurrentlyClicked) {
             this.classList.add('clicked');
+            console.log('Card activated');
             // Swiper 자동재생 일시정지
             if (proofSwiper) proofSwiper.autoplay.stop();
           } else {
+            console.log('Card deactivated');
             // 다시 클릭하면 자동재생 재개
             if (proofSwiper) proofSwiper.autoplay.start();
           }
-        });
+        };
+        
+        // 클릭 이벤트 추가
+        card.removeEventListener('click', card._proofClickHandler);
+        card._proofClickHandler = clickHandler;
+        card.addEventListener('click', clickHandler, { passive: false });
       });
       
-      // 외부 클릭시 모든 clicked 해제 및 자동재생 재개
-      document.addEventListener('click', function(e) {
-        if (!e.target.closest('.proof .card')) {
-          document.querySelectorAll('.proof .card').forEach(c => c.classList.remove('clicked'));
-          if (proofSwiper) proofSwiper.autoplay.start();
+      // 외부 클릭시 모든 clicked 해제 및 자동재생 재개 (한 번만 등록)
+      if (!document._proofOutsideClickAttached) {
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.proof .card') && window.matchMedia('(max-width: 1024px)').matches) {
+            document.querySelectorAll('.proof .card').forEach(c => c.classList.remove('clicked'));
+            const swiper = document.querySelector('.proof .slide_wrap')?.swiper;
+            if (swiper) swiper.autoplay.start();
+          }
+        });
+        document._proofOutsideClickAttached = true;
+      }
+      
+      console.log('Click handlers attached successfully');
+      return true;
+    } else {
+      // 데스크탑에서는 모든 클릭 핸들러 제거하고 clicked 클래스도 제거
+      console.log('Desktop mode - removing click handlers');
+      proofCards.forEach((card) => {
+        if (card._proofClickHandler) {
+          card.removeEventListener('click', card._proofClickHandler);
+          card._proofClickHandler = null;
         }
+        card.classList.remove('clicked');
+        card.style.cursor = 'pointer'; // 호버를 위한 커서 유지
       });
-    }, 500);
-  }
+      return true;
+    }
+  };
+  
+  // Swiper 초기화 후 실행 (재시도 로직 포함)
+  let proofRetryCount = 0;
+  const maxProofRetries = 15;
+  
+  const initProofClickHandlers = () => {
+    const success = handleProofCardClick();
+    if (!success && proofRetryCount < maxProofRetries) {
+      proofRetryCount++;
+      console.log('Retrying proof card initialization... attempt', proofRetryCount);
+      setTimeout(initProofClickHandlers, 300);
+    } else if (success) {
+      console.log('Proof card handlers initialized successfully');
+      proofHandlersInitialized = true;
+    }
+  };
+  
+  setTimeout(initProofClickHandlers, 500);
 });

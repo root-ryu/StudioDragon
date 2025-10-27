@@ -50,6 +50,8 @@
     --font-1920-footer-info: 400 20px/100% "Assistant-Regular", sans-serif;
     /* 푸터 회사정보 */
     --font-1920-headline-56: 700 56px/130% "Assistant-Bold", sans-serif;
+    /* 배너 전용 대형 헤드라인 */
+    --font-1920-headline-40: 700 40px/130% "Assistant-Bold", sans-serif;
     /* 주요 섹션 헤드라인 - h2 태그 */
     --font-1920-title-B-40: 700 40px/130% "Assistant-Bold", sans-serif;
     /* 하위 섹션 타이틀 */
