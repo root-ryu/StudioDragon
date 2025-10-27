@@ -345,7 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modifier: 1,
             slideShadows: false,
           },
-          autoplay: { delay: 2500, disableOnInteraction: false },
           pagination: pagination ? { el: pagination, clickable: true } : undefined,
           breakpoints: {
             320: { slidesPerView: 1.5 },
@@ -400,7 +399,6 @@ document.addEventListener('DOMContentLoaded', () => {
           // 링크 클릭 허용 (Swiper의 기본 클릭 방지 해제)
           preventClicks: false,
           preventClicksPropagation: false,
-          autoplay: { delay: 2500, disableOnInteraction: false },
           pagination: pagination ? { el: pagination, clickable: true } : undefined,
           breakpoints: {
             320: { slidesPerView: 1 },
