@@ -1,6 +1,12 @@
 body{
   background: #f5f5f5;
+  overflow-x: hidden;
 }
+
+html {
+  overflow-x: hidden;
+}
+
 .main,
 .main * {
   box-sizing: border-box;
@@ -14,7 +20,7 @@ body{
   justify-content: flex-start;
   height: 7697px;
   position: relative;
-  margin-top: 365px; /* header height (216px) + 86px + 63px gap */
+  margin-top: 365px;
 }
 
 /* ========================================
@@ -32,7 +38,6 @@ body{
 .banner {
   width: 100%;
   position: relative;
-  /* 뷰포트 전체를 사용 */
   overflow: visible;
 }
 
@@ -42,17 +47,16 @@ body{
   margin: 0 auto;
   height: 630px;
   position: relative;
-  /* Swiper가 밖으로 나가도록 */
   overflow: visible;
 }
 
 /* ✅ Swiper 영역 - 뷰포트 전체로 확장 */
 .banner .banner__slider {
-  /* 뷰포트 전체 너비 */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   height: 488px;
   top: 142px;
   overflow: visible;
@@ -83,23 +87,22 @@ body{
 .banner .content {
   position: absolute;
   left: 0;
-  top: 0;
-  font-family: "Pretendard-Bold", sans-serif;
-  font-size: 70px;
-  line-height: 130%;
-  font-weight: 700;
-  z-index: 10;
+  top: 35px;
+  font: var(--font-1920-headline-56);
+  z-index: 1;
 }
 
 .banner .content h1 {
   color: #0d031c;
   text-transform: uppercase;
   margin: 0;
+  font: var(--font-1920-headline-56);
 }
 
 .banner .content p {
   color: #bfa473;
   margin: 0;
+  font: var(--font-1920-headline-56);
 }
 
 /* 네비게이션 & 페이지네이션 스타일 */
@@ -123,11 +126,11 @@ body{
 }
 
 .banner .banner-button-prev {
-  left: 200px;
+  left: 100px;
 }
 
 .banner .banner-button-next {
-  right: 200px;
+  right: 100px;
 }
 
 /* 페이지네이션은 컨테이너 기준으로 유지 */
@@ -189,10 +192,7 @@ body{
 .value_drivers .title h2 {
   color: var(--MainColor);
   text-align: left;
-  font-family: "Assistant-Bold", sans-serif;
-  font-size: 56px;
-  line-height: 130%;
-  font-weight: 700;
+  font: var(--font-1920-headline-56);
   text-transform: uppercase;
   position: relative;
   align-self: stretch;
@@ -204,10 +204,7 @@ body{
 .value_drivers .title p {
   color: #64748b;
   text-align: left;
-  font-family: "Assistant-Regular", sans-serif;
-  font-size: 20px;
-  line-height: 130%;
-  font-weight: 400;
+  font: var(--font-1920_1024-body-L-20);
   position: relative;
   display: flex;
   align-items: center;
@@ -446,10 +443,7 @@ body{
 .execution .title h2 {
   color: var(--MainColor);
   text-align: left;
-  font-family: "Assistant-Bold", sans-serif;
-  font-size: 56px;
-  line-height: 130%;
-  font-weight: 700;
+  font: var(--font-1920-headline-56);
   text-transform: uppercase;
   position: relative;
   align-self: stretch;
@@ -461,10 +455,7 @@ body{
 .execution .title p {
   color: #64748b;
   text-align: left;
-  font-family: "Assistant-Regular", sans-serif;
-  font-size: 20px;
-  line-height: 130%;
-  font-weight: 400;
+  font: var(--font-1920_1024-body-L-20);
   position: relative;
   display: flex;
   align-items: center;
@@ -592,7 +583,6 @@ body{
 .proof .inner {
   max-width: 1520px;
   margin: 0 auto;
-  /* padding: 0 200px */
   margin-bottom: 50px;
 }
 
@@ -609,10 +599,7 @@ body{
 .proof .title h2 {
   color: var(--MainColor);
   text-align: left;
-  font-family: "Assistant-Bold", sans-serif;
-  font-size: 56px;
-  line-height: 130%;
-  font-weight: 700;
+  font: var(--font-1920-headline-56);
   text-transform: uppercase;
   position: relative;
   display: flex;
@@ -624,10 +611,7 @@ body{
 .proof .title p {
   color: var(--Bcolor);
   text-align: left;
-  font-family: "Assistant-Regular", sans-serif;
-  font-size: 20px;
-  line-height: 130%;
-  font-weight: 400;
+  font: var(--font-1920_1024-body-L-20);
   position: relative;
   display: flex;
   align-items: center;
@@ -658,9 +642,30 @@ body{
   will-change: transform;
 }
 
-.proof .card:hover {
-  background: #aa3229;
-  transform: scale(0.955);
+/* 데스크탑(1025px 이상)에서만 호버 효과 */
+@media (min-width: 1025px) {
+  .proof .card:hover {
+    background: #aa3229;
+    transform: scale(0.955);
+  }
+
+  .proof .card:hover .content h3,
+  .proof .card:hover .content p {
+    color: #ffffff;
+  }
+
+  .proof .card:hover img {
+    filter: brightness(0) invert(1);
+    animation: drawSVG 1.5s ease-in-out;
+  }
+
+  .proof .card:hover img path,
+  .proof .card:hover img circle,
+  .proof .card:hover img line,
+  .proof .card:hover img polyline,
+  .proof .card:hover img polygon {
+    animation: drawPath 1.5s ease-in-out forwards;
+  }
 }
 
 .proof .card .content {
@@ -682,10 +687,6 @@ body{
   transition: color 0.4s ease;
 }
 
-.proof .card:hover .content h3 {
-  color: #ffffff;
-}
-
 .proof .card .content p {
   color: var(--Bcolor);
   text-align: left;
@@ -696,10 +697,6 @@ body{
   transition: color 0.4s ease;
 }
 
-.proof .card:hover .content p {
-  color: #ffffff;
-}
-
 .proof .card img {
   width: 180px;
   height: 180px;
@@ -707,11 +704,6 @@ body{
   right: 28px;
   bottom: 24px;
   transition: filter 0.4s ease;
-}
-
-.proof .card:hover img {
-  filter: brightness(0) invert(1);
-  animation: drawSVG 1.5s ease-in-out;
 }
 
 /* SVG 그리기 애니메이션 */
@@ -733,14 +725,6 @@ body{
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: none;
-}
-
-.proof .card:hover img path,
-.proof .card:hover img circle,
-.proof .card:hover img line,
-.proof .card:hover img polyline,
-.proof .card:hover img polygon {
-  animation: drawPath 1.5s ease-in-out forwards;
 }
 
 @keyframes drawPath {
@@ -775,10 +759,7 @@ body{
 .moat_repeatability .title h2 {
   color: var(--MainColor);
   text-align: left;
-  font-family: "Assistant-Bold", sans-serif;
-  font-size: 56px;
-  line-height: 130%;
-  font-weight: 700;
+  font: var(--font-1920-headline-56);
   text-transform: uppercase;
   position: relative;
   display: flex;
@@ -936,19 +917,13 @@ body{
 
 .forward_triggers .title h2 {
   color: #aa3229;
-  font-family: "Assistant-Bold", sans-serif;
-  font-size: 56px;
-  line-height: 130%;
-  font-weight: 700;
+  font: var(--font-1920-headline-56);
   text-transform: uppercase;
 }
 
 .forward_triggers .title p {
   color: #0d031c;
-  font-family: "Assistant-Regular", sans-serif;
-  font-size: 20px;
-  line-height: 130%;
-  font-weight: 400;
+  font: var(--font-1920_1024-body-L-20);
 }
 
 .forward_triggers .container {
@@ -1061,19 +1036,13 @@ body{
 
 .risks_mitigation .title h2 {
   color: #bfa473;
-  font-family: "Assistant-Bold", sans-serif;
-  font-size: 56px;
-  line-height: 130%;
-  font-weight: 700;
+  font: var(--font-1920-headline-56);
   text-transform: uppercase;
 }
 
 .risks_mitigation .title p {
   color: #0d031c;
-  font-family: "Assistant-Regular", sans-serif;
-  font-size: 20px;
-  line-height: 130%;
-  font-weight: 400;
+  font: var(--font-1920_1024-body-L-20);
 }
 
 .risks_mitigation .container {
@@ -1216,10 +1185,7 @@ body{
   padding: 20px 30px;
   color: #f5f5f5;
   text-align: center;
-  font-family: "Assistant-Bold", sans-serif;
-  font-size: 30px;
-  line-height: 100%;
-  font-weight: 700;
+  font: var(--font-1920_1024-button-L);
   text-transform: uppercase;
   text-decoration: none;
   display: flex;
