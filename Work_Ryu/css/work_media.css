@@ -22,7 +22,7 @@
     /* ============ MAIN VISUAL ============ */
     /* 기본 구조 유지 - padding만 조정 */
     article.main_visual {
-        margin-top: 100px;
+        margin-top: 213px;
         height: 550px;
         padding: 0 80px;
     }
@@ -425,11 +425,11 @@
     /* ============ DRAGGABLE SECTION ============ */
     /* 1024px 이하: ScrollTrigger pin 해제 */
     section.draggable_section {
-        position: static !important;
+        position: relative !important;
         height: auto !important;
+        min-height: 600px;
+        max-width: 1140px;
         padding: 0 80px;
-        margin-top: 180px;
-        margin-bottom: 180px;
     }
     
     /* pinSpacer 높이 제거 (콘텐츠는 유지) */
@@ -462,10 +462,10 @@
     
     /* 섹션 크기 축소 - 1024px */
     section.draggable_section {
-        height: 600px !important;
-        max-width: 1140px !important;
-        margin-top: 100px !important;
-        margin-bottom: 100px !important;
+        height: 600px;
+        max-width: 1140px;
+        margin-top: 100px;
+        margin-bottom: 100px;
     }
     
     /* 이미지 위치 간격 축소 - 1024px (75% 비율) */
@@ -543,55 +543,143 @@
     }
     
     section.behind_video {
-        position: static !important;
+        position: relative !important;
+        min-height: 800px !important;
         height: auto !important;
-        padding: 0 80px;
+        padding: 80px;
         margin-top: 180px;
         margin-bottom: 180px;
     }
     
-    section.behind_video h2 {
+    /* 타이틀 래퍼 - 표준 CSS 적용 */
+    section.behind_video .title_wrapper {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+    
+    section.behind_video .title_wrapper .title {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 700;
         font-size: 40px;
-        margin-bottom: 40px;
+        line-height: 1.3;
+        color: var(--Wcolor);
+        text-transform: uppercase;
+        letter-spacing: 0;
+        margin: 0;
+    }
+    
+    section.behind_video .title_wrapper .more_btn {
+        padding: 8px 32px;
+        border: 1px solid var(--Wcolor);
+        border-radius: 32px;
+        background: transparent;
+        color: var(--Wcolor);
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 1;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        letter-spacing: 0;
+    }
+    
+    section.behind_video .title_wrapper .more_btn:hover {
+        background-color: var(--Wcolor);
+        color: var(--Bcolor);
     }
     
     section.behind_video .stack_container {
-        height: 500px;
-    }
-    
-    /* 활성 아이템 - 세로 배치 유지 */
-    section.behind_video .video_item.active {
+        height: auto;
+        display: flex;
         flex-direction: column;
-        height: auto;
-        max-width: 640px;
+        gap: 40px;
+        max-width: 100%;
+        margin: 0 auto;
     }
     
-    section.behind_video .video_item.active .video_thumbnail {
+    /* 모든 아이템 가로 배치 */
+    section.behind_video .video_item {
+        position: static;
+        transform: none;
+        opacity: 1;
+        display: flex;
+        flex-direction: row;
         width: 100%;
-        height: 280px;
+        max-width: 864px;
+        gap: 24px;
+        cursor: default;
+        margin: 0 auto;
     }
     
-    section.behind_video .video_item.active .video_textbox {
-        width: 100%;
-        height: auto;
-        min-height: 160px;
-        padding: 24px;
-    }
-    
-    /* 비활성 아이템 숨김 */
+    section.behind_video .video_item.active,
     section.behind_video .video_item.top,
     section.behind_video .video_item.bottom {
-        display: none;
+        display: flex;
+        position: static;
+        transform: none;
+        opacity: 1;
+        width: 100%;
+        max-width: 864px;
+    }
+    
+    /* 모든 아이템 iframe 표시 */
+    section.behind_video .video_iframe {
+        display: block !important;
+    }
+    
+    section.behind_video .video_poster {
+        display: none !important;
+    }
+    
+    section.behind_video .video_thumbnail {
+        width: 380px;
+        height: 214px;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+    
+    section.behind_video .video_thumbnail iframe,
+    section.behind_video .video_thumbnail img {
+        width: 380px;
+        height: 214px;
+        object-fit: cover;
+    }
+    
+    section.behind_video .video_textbox {
+        flex: 1;
+        max-width: 460px;
+        padding: 32px;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    section.behind_video .video_text {
+        width: 100%;
     }
     
     section.behind_video .video_title {
         font-size: 20px;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+    
+    section.behind_video .video_subtitle {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.3;
     }
     
     section.behind_video .video_description {
-        font-size: 14px;
-        line-height: 1.6;
+        display: none;
+    }
+    
+    section.behind_video .video_pagination {
+        display: none;
     }
     
     /* ============ CHAT EVENT SECTION ============ */
@@ -636,8 +724,19 @@
     
     section.chat_event_section .chat_scroll_area {
         width: calc(100% - 160px);
-        height: 550px;
+        height: 650px;
+        overflow: hidden;
         top: 130px;
+    }
+    
+    /* 채팅 5개부터 숨김 */
+    section.chat_event_section .comment_item:nth-child(n+6) {
+        display: none;
+    }
+    
+    /* MORE 버튼 숨김 */
+    section.chat_event_section .btn_more_comments {
+        display: none;
     }
     
     section.chat_event_section .chat_input_fixed {
@@ -805,7 +904,7 @@
     /* ============ MAIN VISUAL ============ */
     /* 기본 구조 유지 - padding만 조정 */
     article.main_visual {
-        margin-top: 80px;
+        margin-top: 136px;
         height: 450px;
         padding: 0 30px;
     }
@@ -1165,7 +1264,7 @@
     /* ============ DRAGGABLE SECTION ============ */
     /* 440px 이하: ScrollTrigger pin 해제 */
     section.draggable_section {
-        position: static !important;
+        position: relative !important;
         height: auto !important;
         padding: 0 30px;
         margin-top: 80px;
@@ -1280,6 +1379,16 @@
         line-height: 1.5;
     }
     
+    /* ============ DRAGGABLE SECTION 440px ============ */
+    section.draggable_section {
+        position: relative !important;
+        height: 450px !important;
+        min-height: 450px !important;
+        max-width: 100% !important;
+        padding: 0 30px;
+        margin: 80px auto !important;
+    }
+    
     /* ============ BEHIND VIDEO SECTION ============ */
     /* 440px 이하: sticky 해제 */
     .behind_video_wrapper {
@@ -1287,36 +1396,71 @@
     }
     
     section.behind_video {
-        position: static !important;
-        height: auto !important;
-        padding: 0 30px;
-        margin-top: 80px;
-        margin-bottom: 80px;
+        padding: 30px;
     }
     
-    section.behind_video h2 {
-        font-size: 30px;
+    /* 타이틀 래퍼 - 표준 CSS 적용 */
+    section.behind_video .title_wrapper {
+        display: flex;
+        align-items: center;
+        gap: 20px;
         margin-bottom: 30px;
     }
     
-    /* 모바일 - 세로 나열 방식 */
+    section.behind_video .title_wrapper .title {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 1.3;
+        color: var(--Wcolor);
+        text-transform: uppercase;
+        letter-spacing: 0;
+        margin: 0;
+    }
+    
+    section.behind_video .title_wrapper .more_btn {
+        padding: 6px 24px;
+        border: 1px solid var(--Wcolor);
+        border-radius: 32px;
+        background: transparent;
+        color: var(--Wcolor);
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        letter-spacing: 0;
+    }
+    
+    section.behind_video .title_wrapper .more_btn:hover {
+        background-color: var(--Wcolor);
+        color: var(--Bcolor);
+    }
+    
+    /* 모바일 - 가로 배치 */
     section.behind_video .stack_container {
         height: auto;
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 24px;
+        max-width: 100%;
+        margin: 0 auto;
     }
     
-    /* 모든 아이템 표시 - 스택 제거 */
+    /* 모든 아이템 가로 배치 */
     section.behind_video .video_item {
         position: static;
         transform: none;
         opacity: 1;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
-        max-width: 100%;
+        max-width: 380px;
+        gap: 12px;
         cursor: default;
+        margin: 0 auto;
     }
     
     section.behind_video .video_item.active,
@@ -1325,29 +1469,69 @@
         display: flex;
         position: static;
         transform: none;
+        opacity: 1;
+        width: 100%;
+        max-width: 380px;
+    }
+    
+    /* 모든 아이템 iframe 표시 */
+    section.behind_video .video_iframe {
+        display: block !important;
+    }
+    
+    section.behind_video .video_poster {
+        display: none !important;
     }
     
     section.behind_video .video_thumbnail {
-        width: 100%;
-        height: 200px;
+        width: 160px;
+        height: 90px;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+    
+    section.behind_video .video_thumbnail iframe,
+    section.behind_video .video_thumbnail img {
+        width: 160px;
+        height: 90px;
+        object-fit: cover;
     }
     
     section.behind_video .video_textbox {
+        width: 208px;
+        height: 90px;
+        padding: 8px;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-shrink: 0;
+        position: relative;
+    }
+    
+    section.behind_video .video_text {
+        position: static;
         width: 100%;
-        height: auto;
-        min-height: 140px;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.9);
     }
     
     section.behind_video .video_title {
-        font-size: 18px;
-        margin-bottom: 10px;
+        font-size: 14px;
+        margin-bottom: 4px;
+        line-height: 1.3;
+    }
+    
+    section.behind_video .video_subtitle {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.3;
     }
     
     section.behind_video .video_description {
-        font-size: 12px;
-        line-height: 1.6;
+        display: none;
+    }
+    
+    section.behind_video .video_pagination {
+        display: none;
     }
     
     /* ============ CHAT EVENT SECTION ============ */
@@ -1384,18 +1568,6 @@
         font-size: 14px;
     }
     
-    section.chat_event_section .chat_scroll_area {
-        width: calc(100% - 60px);
-        height: 400px;
-        top: 110px;
-    }
-    
-    section.chat_event_section .chat_input_fixed {
-        width: calc(100% - 60px);
-        height: 80px;
-        bottom: 180px;
-    }
-    
     section.chat_event_section .event_box {
         padding: 0 30px;
         top: 80px;
@@ -1416,75 +1588,91 @@
     }
     
     section.chat_event_section .chat_scroll_area {
-        width: calc(100% - 60px);
-        height: 450px;
-        top: 140px;
-        padding: 12px 0;
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        overflow: hidden;
+        padding: 12px 30px;
+        margin-top: 20px;
+    }
+    
+    /* 채팅 5개부터 숨김 - 440px */
+    section.chat_event_section .comment_item:nth-child(n+6) {
+        display: none;
+    }
+    
+    /* MORE 버튼 숨김 - 440px */
+    section.chat_event_section .btn_more_comments {
+        display: none;
     }
     
     section.chat_event_section .comments_list {
-        gap: 16px;
-    }
-    
-    section.chat_event_section .comment_item {
-        gap: 6px;
-    }
-    
-    section.chat_event_section .profile {
-        gap: 6px;
-    }
-    
-    section.chat_event_section .profile_icon {
-        width: 28px;
-        height: 28px;
-    }
-    
-    section.chat_event_section .profile_name {
-        font-size: 16px;
-    }
-    
-    section.chat_event_section .profile_time {
-        font-size: 12px;
-    }
-    
-    section.chat_event_section .name_text {
-        gap: 8px;
-    }
-    
-    section.chat_event_section .chat_text {
-        font-size: 12px;
-        padding: 5px 12px;
-        line-height: 1.6;
-    }
-    
-    section.chat_event_section .txt_box {
-        padding-left: 34px;
-    }
-    
-    section.chat_event_section .comment_actions {
-        padding-left: 46px;
         gap: 12px;
     }
     
-    section.chat_event_section .btn_comment {
-        font-size: 16px;
-    }
-    
-    section.chat_event_section .btn_replies {
-        font-size: 12px;
-    }
-    
-    section.chat_event_section .like_box {
+    section.chat_event_section .comment_item {
         gap: 4px;
     }
     
-    section.chat_event_section .like_box .heart_icon {
+    section.chat_event_section .profile {
+        gap: 4px;
+    }
+    
+    section.chat_event_section .profile_icon {
         width: 24px;
         height: 24px;
     }
     
-    section.chat_event_section .like_box .like_count {
+    section.chat_event_section .profile_name {
+        font-size: 14px;
+    }
+    
+    section.chat_event_section .profile_time {
         font-size: 10px;
+    }
+    
+    section.chat_event_section .name_text {
+        gap: 6px;
+    }
+    
+    section.chat_event_section .chat_text {
+        font-size: 11px;
+        padding: 4px 10px;
+        line-height: 1.4;
+    }
+    
+    section.chat_event_section .txt_box {
+        padding-left: 28px;
+    }
+    
+    section.chat_event_section .comment_actions {
+        padding-left: 38px;
+        gap: 10px;
+    }
+    
+    section.chat_event_section .btn_comment {
+        font-size: 14px;
+    }
+    
+    section.chat_event_section .btn_replies {
+        font-size: 10px;
+    }
+    
+    section.chat_event_section .like_box {
+        gap: 3px;
+    }
+    
+    section.chat_event_section .like_box .heart_icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    section.chat_event_section .like_box .like_count {
+        font-size: 9px;
     }
     
     section.chat_event_section .chat_input_fixed {

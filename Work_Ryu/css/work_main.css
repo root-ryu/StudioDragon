@@ -1030,9 +1030,18 @@ section.behind_video .video_thumbnail iframe {
     border: none;
 }
 
-section.behind_video .video_thumbnail img {
-    width: 100%;
-    height: 100%;
+/* active 상태 - 포스터 이미지 */
+section.behind_video .video_item.active .video_thumbnail img {
+    width: 719px;
+    height: 404px;
+    object-fit: cover;
+}
+
+/* top/bottom 상태 - 포스터 이미지 */
+section.behind_video .video_item.top .video_thumbnail img,
+section.behind_video .video_item.bottom .video_thumbnail img {
+    width: 555px;
+    height: 297px;
     object-fit: cover;
 }
 
