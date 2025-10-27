@@ -1,14 +1,16 @@
 @charset "utf-8";
 
+:root{
+  /* 데스크톱 기본: (vw - 1520)/2, 단 최소 110px 보장 */
+  --page-pad: clamp(110px, calc((100vw - 1520px) / 2), 2000px);
+}
+
 @media screen and (max-width:1024px) {
 
-    header,
-    footer {
-        display: none;
-    }
+    :root   { --page-pad: 80px; }   /* ← 전역에서 고정 */
 
     .inner {
-        width: 90%;
+        width: 100%;
         max-width: 100%;
     }
 
@@ -18,8 +20,9 @@
     }
 
     .main_cach {
-        height: 34vh;
-        padding: 400px 0 250px 0;
+        height: 100%;
+        padding: 340px 0 300px 0;
+        margin-bottom: 140px;
     }
 
     .main_cach .img_roll div {
@@ -32,6 +35,10 @@
         height: 250px;
     }
 
+    .main_cach .txt {
+        top:52%;
+    }
+
     .main_cach .txt p.head_copy {
         font-size: 60px;
     }
@@ -42,14 +49,13 @@
 
     h3.tit {
         font-size: 40px;
-
-        width: 95%;
+        width: 100%;
         margin-bottom: 50px;
     }
 
+
     .info-g .inner {
-        width: 95%;
-        max-width: 100%;
+        padding-inline: var(--page-pad);
     }
 
     .info-g .icon_info {
@@ -61,14 +67,41 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 0;
         width: 100%;
+        height: 100%;
     }
 
     .info-g .icon_info ul li {
         width: 100%;
+        height: 288px;
     }
 
     .info-g .icon_info ul li:nth-child(3) {
         background: var(--MainColor-400);
+    }
+
+    .info-g .icon_info ul li:nth-child(3) .icon_knowhow{
+        background-image: url(../assets/icon_knowhow2.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 80px;
+    }
+
+
+    .info-g .icon_info ul li:nth-child(3) .txt_w p{
+        color: var(--MainColor-1400);
+    }
+
+    .info-g .icon_info ul li:nth-child(4) .txt_b p{
+        color: var(--subRed2-900);
+    }
+
+    .info-g .icon_info ul li:nth-child(4) .icon-sales{
+        background-image: url(../assets/icon_salesmarket2.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 80px;
     }
 
     .info-g .icon_info ul li:nth-child(4) {
@@ -189,19 +222,368 @@
         border-radius: 12px;
     }
 
+
+    .history .inner h3.tit {
+        margin-top: 100px;
+    }
+
+    .history .cont_hori_swipe {
+    margin-bottom: 62px;
+}
+
+.history .cont_hori_swipe ul li.y_group{
+    width: max-content;
+    margin-right: 50px;
+    position: relative;
+}
+
+.history .cont_hori_swipe ul>li.y_group>ul>li {
+    width: 314px;
+}
+
+.history .cont_hori_swipe ul li h5.years {
+    position: absolute;
+    left: 44px;
+    font-size: 40px;
+}
+
+.history .cont_hori_swipe ul li p {
+    font-size: 30px;
+}
+
+
+.history .cont_hori_swipe ul li img {
+    width: 314px;
+    height: 158px;
+}
+
+.history .cont_hori_swipe ul li em {
+    width: 314px;
+    font-size: 14px;
+}
+
+.history>.scroll_bar.swiper-scrollbar {
+    width: calc(100vw - (var(--page-pad) * 2));
+    margin-bottom: 100px;
+}
+
+.v_and_m {
+   padding: 100px 0;
+   height: 100%;
+    padding-inline: var(--page-pad);
+}
+
+.v_and_m .cont article {
+    width: 100%;
+    height: 420px;
+}
+
+.v_and_m .cont article .txt {
+    opacity: 0;
+    transform: translateY(40px);
+    left: 50px;
+    right: 50px;
+    top: 40%;
+}
+
+.v_and_m .cont article::before {
+    background-image: url(../assets/vision_1024.jpg);
+}
+
+.v_and_m .cont article.mission::before {
+    background-image: url(../assets/mission_1024.jpg);
+}
+
+.v_and_m .cont article::after {
+    left: 50px;
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+}
+
+.v_and_m .txt p {
+    font-size: 30px;
+}
+
+.v_and_m .txt em {
+    font-size: 14px;
+}
+
+
+
 }
 
 @media screen and (max-width:440px) {
 
+    :root   { --page-pad: 24px; }
+
+.main_cach {
+padding: 200px 0 150px 0;
+}
+
     .main_cach .txt {
-        max-width: 382px;
+        padding-inline: var(--page-pad);
+        top: 50%;
     }
 
-    .main_cach .txt p.head_copy {
+    .main_cach .txt p span{
         font-size: 50px;
     }
 
+    .main_cach .txt p.first_cach span{
+    margin-top: 10px;
+    }
+
     .main_cach .txt em {
+        font-size: 14px;
+    }
+
+
+    h3.tit {
+        font-size: 30px;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .info-g .inner {
+        padding-inline: var(--page-pad);
+    }
+
+.info-g .icon_info ul{
+    margin: 0;
+}
+
+
+    .info-g .icon_info ul li {
+        width: 100%;
+        height: 190px;
+    }
+
+
+    .info-g .icon_info {
+        margin-bottom: 50px;
+    }
+
+
+    .info-g .icon_info ul li.box_w {
+        border-radius: 80px 0 0 0;
+    }
+
+    .info-g .icon_info ul li.box_b {
+        border-radius: 0 0 0 80px;
+    }
+
+    .info-g .icon_info ul li:first-child img {
+        padding:8px 0;
+    }
+
+    .info-g .icon_info ul li:nth-child(2) img {
+        padding: 10px 0;
+    }
+
+
+    .info-g .icon_info ul li.box_w img {
+        width: 40px;
+    }
+
+       .info-g .icon_info ul li:nth-child(3) .icon_knowhow{
+        width: 50px;
+        height: 60px;
+    }
+
+
+    .info-g .icon_info ul li:nth-child(4) .icon-sales{
+        width: 50px;
+        height: 60px;
+        margin-bottom: 4px;
+    }
+
+    .info-g .icon_info ul li.box_w .txt_w p {
+        font-size: 30px;
+    }
+
+    .info-g .icon_info ul li.box_w .txt_w em {
         font-size: 18px;
     }
+
+    .info-g .icon_info ul li.box_b img {
+        width: 45px;    
+    }
+
+    .info-g .icon_info ul li.box_b .txt_b p {
+        font-size: 30px;
+    }
+
+    .info-g .icon_info ul li.box_b .txt_b em {
+        font-size: 18px;
+    }
+
+.info-g .txt_info{
+    margin-bottom: 0;
+}
+
+    .info-g .txt_info .sub_tit {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+.info-g .txt_info .sub_tit br {
+  display: none;
+}
+
+    .info-g .txt_info .body_text ul {
+        gap: 20px;
+    }
+
+    .info-g .txt_info .body_text ul li {
+        width: 100%;
+        padding-inline: var(--page-pad);
+        font-size: 14px;
+    }
+
+    .ci{
+        padding-bottom: 80px;
+    }
+
+.ci .inner {
+    margin-top: 30px;
+}
+
+.ci .bar {
+    width: 100%;
+    height: 60px;
+    border-radius: 0 0 40px 40px; 
+}
+
+.ci h3.tit {
+    margin-top: 50px;
+}
+
+.ci .cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+     padding-inline: var(--page-pad);
+     
+}
+
+.ci .cont .logo,.ci .cont .symbol {
+    width: 100%;
+    height: 152px;
+    border-radius: 24px;
+    padding-bottom: 12px;
+}
+
+.ci .cont .logo img, .ci .cont .symbol img {
+    width: 164px;
+    margin-bottom: 4px;
+}
+
+.ci .cont .symbol em:last-child {
+    padding-top: 10px;
+}
+
+.ci .cont em {
+    padding-top: 12px;
+}
+
+.ci button {
+    width: 240px;
+    height: 64px;
+    font-size: 14px;
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+.history .inner h3.tit {
+        margin-top: 80px;
+    }
+
+    .history .cont_hori_swipe {
+    margin-bottom: 80px;
+}
+
+.history .cont_hori_swipe ul li.y_group{
+    width: max-content;
+    margin-right: 50px;
+    position: relative;
+}
+
+.history .cont_hori_swipe ul>li.y_group>ul>li {
+    width: 260px;
+}
+
+.history .cont_hori_swipe ul>li.y_group>ul {
+    gap: 50px;
+}
+
+.history .cont_hori_swipe ul li h5.years {
+    position: absolute;
+    left: 24px;
+    font-size: 24px;
+}
+
+.history .cont_hori_swipe ul li p {
+    font-size: 24px;
+}
+
+
+.history .cont_hori_swipe ul li img {
+    width: 260px;
+    height: 132px;
+}
+
+.history .cont_hori_swipe ul li em {
+    width: 260px;
+    font-size: 14px;
+}
+
+    .history>.scroll_bar.swiper-scrollbar {
+    width: calc(100vw - (var(--page-pad) * 2));
+    margin-bottom: 80px;
+}
+
+.v_and_m {
+   padding: 80px 0;
+    padding-inline: var(--page-pad);
+}
+
+.v_and_m .cont article {
+    width: 100%;
+    height: 420px;
+}
+
+.v_and_m .cont article .txt {
+margin: auto 0;
+}
+
+.v_and_m .cont article::before {
+    background-image: url(../assets/vision_440.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.v_and_m .cont article.mission::before {
+    background-image: url(../assets/mission_440.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.v_and_m .cont article::after {
+    left: 37%;
+}
+
+
+.v_and_m .txt p {
+    font-size: 30px;
+    text-align: center;
+}
+
+.v_and_m .txt em {
+    font-size: 14px;
+    text-align: center;
+}
+
 }

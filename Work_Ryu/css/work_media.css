@@ -22,7 +22,7 @@
     /* ============ MAIN VISUAL ============ */
     /* 기본 구조 유지 - padding만 조정 */
     article.main_visual {
-        margin-top: 100px;
+        margin-top: 213px;
         height: 550px;
         padding: 0 80px;
     }
@@ -425,11 +425,11 @@
     /* ============ DRAGGABLE SECTION ============ */
     /* 1024px 이하: ScrollTrigger pin 해제 */
     section.draggable_section {
-        position: static !important;
+        position: relative !important;
         height: auto !important;
+        min-height: 600px;
+        max-width: 1140px;
         padding: 0 80px;
-        margin-top: 180px;
-        margin-bottom: 180px;
     }
     
     /* pinSpacer 높이 제거 (콘텐츠는 유지) */
@@ -462,10 +462,11 @@
     
     /* 섹션 크기 축소 - 1024px */
     section.draggable_section {
-        height: 600px !important;
-        max-width: 1140px !important;
-        margin-top: 100px !important;
-        margin-bottom: 100px !important;
+        height: 600px;
+        max-width: 1140px;
+        margin-top: 100px;
+        margin-bottom: 180px; /* 비하인드 비디오와 충분한 간격 확보 */
+        z-index: 5; /* 비하인드 비디오(z-index: 10) 아래로 */
     }
     
     /* 이미지 위치 간격 축소 - 1024px (75% 비율) */
@@ -543,61 +544,234 @@
     }
     
     section.behind_video {
-        position: static !important;
+        position: relative !important;
+        top: auto !important;
+        min-height: 800px;
         height: auto !important;
         padding: 0 80px;
         margin-top: 180px;
         margin-bottom: 180px;
     }
     
-    section.behind_video h2 {
+    /* 타이틀 래퍼 - 표준 CSS 적용 */
+    section.behind_video .title_wrapper {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+    
+    section.behind_video .title_wrapper .title {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 700;
         font-size: 40px;
-        margin-bottom: 40px;
+        line-height: 1.3;
+        color: var(--Wcolor);
+        text-transform: uppercase;
+        letter-spacing: 0;
+        margin: 0;
+    }
+    
+    section.behind_video .title_wrapper .more_btn {
+        padding: 8px 32px;
+        border: 1px solid var(--Wcolor);
+        border-radius: 32px;
+        background: transparent;
+        color: var(--Wcolor);
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 1;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        letter-spacing: 0;
+    }
+    
+    section.behind_video .title_wrapper .more_btn:hover {
+        background-color: var(--Wcolor);
+        color: var(--Bcolor);
     }
     
     section.behind_video .stack_container {
-        height: 500px;
-    }
-    
-    /* 활성 아이템 - 세로 배치 유지 */
-    section.behind_video .video_item.active {
+        height: auto;
+        display: flex;
         flex-direction: column;
-        height: auto;
-        max-width: 640px;
-    }
-    
-    section.behind_video .video_item.active .video_thumbnail {
+        gap: 24px; /* ✅ 상하 갭 24px */
         width: 100%;
-        height: 280px;
+        max-width: 100%;
+        margin: 0;
     }
     
-    section.behind_video .video_item.active .video_textbox {
+    /* 모든 아이템 가로 배치 - 100% 차지 (1024px) */
+    section.behind_video .video_item {
+        position: static;
+        transform: none;
+        opacity: 1;
+        display: flex;
+        flex-direction: row;
         width: 100%;
-        height: auto;
-        min-height: 160px;
-        padding: 24px;
+        max-width: 100%;
+        gap: 0; /* ✅ 갭 없이 붙임 */
+        cursor: default;
+        margin: 0;
+        overflow: hidden; /* ✅ 넘침 방지 */
     }
     
-    /* 비활성 아이템 숨김 */
+    section.behind_video .video_item.active,
     section.behind_video .video_item.top,
     section.behind_video .video_item.bottom {
-        display: none;
+        display: flex;
+        position: static;
+        transform: none;
+        opacity: 1;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    /* 모든 아이템 텍스트 강제 표시 (1024px) */
+    section.behind_video .video_item .video_text,
+    section.behind_video .video_item.active .video_text,
+    section.behind_video .video_item.top .video_text,
+    section.behind_video .video_item.bottom .video_text {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+    
+    section.behind_video .video_item .video_title,
+    section.behind_video .video_item .video_subtitle,
+    section.behind_video .video_item.active .video_title,
+    section.behind_video .video_item.active .video_subtitle,
+    section.behind_video .video_item.top .video_title,
+    section.behind_video .video_item.top .video_subtitle,
+    section.behind_video .video_item.bottom .video_title,
+    section.behind_video .video_item.bottom .video_subtitle {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* 모든 아이템 iframe 표시 */
+    section.behind_video .video_iframe {
+        display: block !important;
+    }
+    
+    section.behind_video .video_poster {
+        display: none !important;
+    }
+    
+    /* 영상 - 50% 차지, 21:9 비율 (높이 줄임) - 모든 상태 */
+    section.behind_video .video_thumbnail,
+    section.behind_video .video_item.active .video_thumbnail,
+    section.behind_video .video_item.top .video_thumbnail,
+    section.behind_video .video_item.bottom .video_thumbnail {
+        width: 50%;
+        height: auto;
+        aspect-ratio: 21 / 9; /* ✅ 21:9 비율로 높이 줄임 */
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+    
+    section.behind_video .video_thumbnail iframe,
+    section.behind_video .video_thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block; /* ✅ 하단 여백 제거 */
+    }
+    
+    /* 텍스트 박스 - 50% 차지, 영상 높이와 동일 - 모든 상태 */
+    section.behind_video .video_textbox,
+    section.behind_video .video_item.active .video_textbox,
+    section.behind_video .video_item.top .video_textbox,
+    section.behind_video .video_item.bottom .video_textbox {
+        width: 50%;
+        height: auto;
+        aspect-ratio: 21 / 9; /* ✅ 영상과 동일한 비율로 높이 맞춤 */
+        padding: 16px;
+        background: #2B2B2B; /* ✅ 배경색 변경 */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-shrink: 0;
+        box-sizing: border-box; /* ✅ padding 포함 크기 계산 */
+    }
+    
+    /* 2번째 아이템 - 영상/텍스트 위치 반전 */
+    section.behind_video .stack_container .video_item:nth-child(2) {
+        flex-direction: row-reverse;
+    }
+    
+    /* 2번째 아이템 텍스트 우측 정렬 */
+    section.behind_video .stack_container .video_item:nth-child(2) .video_text,
+    section.behind_video .stack_container .video_item:nth-child(2) .video_title,
+    section.behind_video .stack_container .video_item:nth-child(2) .video_subtitle {
+        text-align: right;
+    }
+    
+    section.behind_video .video_text {
+        position: static; /* ✅ absolute 해제 */
+        left: auto;
+        top: auto;
+        width: 100%;
+        max-width: 100%;
+        opacity: 1; /* ✅ 강제로 보이기 */
+        visibility: visible;
+        pointer-events: auto;
+    }
+    
+    section.behind_video .video_title_area {
+        margin-bottom: 16px;
+        opacity: 1;
+        visibility: visible;
     }
     
     section.behind_video .video_title {
         font-size: 20px;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
+        line-height: 1.3;
+        color: #F5F5F5;
+        opacity: 1;
+        visibility: visible;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* ✅ 최대 2줄 표시 */
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        word-break: break-word;
+    }
+    
+    section.behind_video .video_subtitle {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.3;
+        color: #F5F5F5;
+        opacity: 1;
+        visibility: visible;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* ✅ 최대 2줄 표시 */
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        word-break: break-word;
     }
     
     section.behind_video .video_description {
-        font-size: 14px;
-        line-height: 1.6;
+        display: none;
+    }
+    
+    section.behind_video .video_pagination {
+        display: none !important;
     }
     
     /* ============ CHAT EVENT SECTION ============ */
     section.chat_event_section {
         width: 100%;
+        height: auto;
+        min-height: 800px;
         margin: 180px 0 0;
+        padding-bottom: 40px; /* 자연스러운 하단 여백 */
     }
     
     section.chat_event_section .img_bg {
@@ -613,8 +787,15 @@
     }
     
     section.chat_event_section .header_fixed {
+        position: relative !important; /* absolute 덮어쓰기 */
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
         width: 100%;
+        max-width: 100%;
         padding: 40px 80px 30px;
+        background: linear-gradient(to bottom, #0d031c 0%, rgba(13, 3, 28, 0.8) 60%, rgba(13, 3, 28, 0) 100%); /* ✅ 그라데이션 추가 */
+        z-index: 5;
     }
     
     section.chat_event_section .title {
@@ -627,22 +808,97 @@
     }
     
     section.chat_event_section .filter_btn {
-        font-size: 24px;
+        font-size: 28px;
+    }
+    
+    section.chat_event_section .filter_btn.active {
+        font-weight: 700;
+        opacity: 1;
     }
     
     section.chat_event_section .filter_separator {
-        height: 24px;
+        height: 28px;
     }
     
     section.chat_event_section .chat_scroll_area {
+        position: relative !important; /* absolute 덮어쓰기 */
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
         width: calc(100% - 160px);
-        height: 550px;
-        top: 130px;
+        max-width: 100%;
+        height: auto;
+        overflow: hidden;
+        margin: 0 auto;
+        padding-bottom: 0;
+        background: transparent;
+        z-index: auto;
+    }
+    
+    /* 채팅 4개까지만 표시 (5번째부터 숨김) */
+    section.chat_event_section .comment_item:nth-child(n+5) {
+        display: none;
+    }
+    
+    section.chat_event_section .more_comments_wrapper {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+    
+    section.chat_event_section .btn_more_comments {
+        display: block;
+        padding: 12px 60px;
+        border: 2px solid white;
+        border-radius: 30px;
+        background: transparent;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    section.chat_event_section .btn_more_comments:hover {
+        background: white;
+        color: #0d031c;
+    }
+    
+    section.chat_event_section .btn_more_comments:active {
+        background: transparent;
+        color: white;
+        transition: none; /* 즉시 복귀 */
+    }
+    
+    section.chat_event_section .comments_list {
+        padding-bottom: 0;
+        transition: max-height 0.5s ease;
     }
     
     section.chat_event_section .chat_input_fixed {
+        position: relative !important; /* absolute 덮어쓰기 */
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
         width: calc(100% - 160px);
-        bottom: 220px;
+        max-width: 1200px;
+        height: 80px;
+        margin: 24px auto 0;
+        background: rgba(255, 255, 255, 0.8);
+        border: 0.5px solid rgba(13, 3, 28, 0.5);
+        box-sizing: border-box;
+        z-index: 1; /* 기본 레이어 */
+    }
+    
+    section.chat_event_section .input_wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
     }
     
     section.chat_event_section .event_box {
@@ -652,6 +908,10 @@
     section.chat_event_section .profile_icon {
         width: 32px;
         height: 32px;
+    }
+    section.chat_event_section .profile_icon .icon_img{
+        width: 22px;
+        height: 26px;
     }
     
     section.chat_event_section .profile_name {
@@ -695,31 +955,60 @@
     section.chat_event_section .chat_input_fixed {
         width: calc(100% - 160px);
         height: 80px;
-        bottom: 200px;
+        bottom: 216px; /* 이벤트 섹션(200px) + 16px 갭 */
     }
     
     section.chat_event_section .input_text_area {
-        padding: 0 24px;
+        width: 100%;
         margin-top: 16px;
+        padding: 0 24px;
     }
     
     section.chat_event_section .chat_input {
+        width: 100%;
+        height: auto;
+        border: none;
+        background: transparent;
         font-size: 14px;
+        outline: none;
     }
     
     section.chat_event_section .input_controls {
-        padding: 0 24px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-top: auto;
         margin-bottom: 10px;
+        padding: 0 24px;
     }
     
     section.chat_event_section .btn_emoji {
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
+    }
+    
+    section.chat_event_section .btn_emoji img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
     
     section.chat_event_section .btn_send {
-        padding: 8px 24px;
-        font-size: 16px;
+        padding: 8px 28px;
+        border: 1px solid #0d031c;
+        background: #0d031c;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        border-radius: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    section.chat_event_section .btn_send:hover {
+        background: transparent;
+        color: #0d031c;
     }
     
     section.chat_event_section .event_section {
@@ -795,6 +1084,11 @@
     section.chat_event_section .reply_text {
         font-size: 13px;
     }
+    
+    /* ============ EVENT SECTION 1024px ============ */
+    section.chat_event_section .event_section {
+        display: none; /* 이벤트 섹션 숨김 */
+    }
 }
 
 /* ============================================
@@ -805,7 +1099,7 @@
     /* ============ MAIN VISUAL ============ */
     /* 기본 구조 유지 - padding만 조정 */
     article.main_visual {
-        margin-top: 80px;
+        margin-top: 136px;
         height: 450px;
         padding: 0 30px;
     }
@@ -1165,7 +1459,7 @@
     /* ============ DRAGGABLE SECTION ============ */
     /* 440px 이하: ScrollTrigger pin 해제 */
     section.draggable_section {
-        position: static !important;
+        position: relative !important;
         height: auto !important;
         padding: 0 30px;
         margin-top: 80px;
@@ -1280,6 +1574,26 @@
         line-height: 1.5;
     }
     
+    /* ============ BOOKMARK NOTIFICATION 440px ============ */
+    .bookmark_notification {
+        padding: 24px 36px;
+        border-radius: 12px;
+    }
+    
+    .notification_message {
+        font-size: 16px;
+    }
+    
+    /* ============ DRAGGABLE SECTION 440px ============ */
+    section.draggable_section {
+        position: relative !important;
+        height: 450px !important;
+        min-height: 450px !important;
+        max-width: 100% !important;
+        padding: 0 30px;
+        margin: 80px auto !important;
+    }
+    
     /* ============ BEHIND VIDEO SECTION ============ */
     /* 440px 이하: sticky 해제 */
     .behind_video_wrapper {
@@ -1287,36 +1601,79 @@
     }
     
     section.behind_video {
-        position: static !important;
+        position: relative !important;
+        top: auto !important;
+        min-height: auto;
         height: auto !important;
-        padding: 0 30px;
+        padding: 30px;
         margin-top: 80px;
         margin-bottom: 80px;
     }
     
-    section.behind_video h2 {
-        font-size: 30px;
+    /* 타이틀 래퍼 - 표준 CSS 적용 */
+    section.behind_video .title_wrapper {
+        display: flex;
+        align-items: center;
+        gap: 20px;
         margin-bottom: 30px;
     }
     
-    /* 모바일 - 세로 나열 방식 */
+    section.behind_video .title_wrapper .title {
+        font-family: 'Assistant', sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 1.3;
+        color: var(--Wcolor);
+        text-transform: uppercase;
+        letter-spacing: 0;
+        margin: 0;
+    }
+    
+    section.behind_video .title_wrapper .more_btn {
+        padding: 6px 24px;
+        border: 1px solid var(--Wcolor);
+        border-radius: 32px;
+        background: transparent;
+        color: var(--Wcolor);
+        font-family: 'Assistant', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        letter-spacing: 0;
+    }
+    
+    section.behind_video .title_wrapper .more_btn:hover {
+        background-color: var(--Wcolor);
+        color: var(--Bcolor);
+    }
+    
+    /* 모바일 - 가로 배치 */
     section.behind_video .stack_container {
         height: auto;
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 8px; /* ✅ 상하 갭 8px */
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
     }
     
-    /* 모든 아이템 표시 - 스택 제거 */
+    /* 모든 아이템 가로 배치 - 100% 차지 (440px) */
     section.behind_video .video_item {
         position: static;
         transform: none;
         opacity: 1;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         max-width: 100%;
+        gap: 0; /* ✅ 갭 없이 붙임 */
         cursor: default;
+        margin: 0;
+        overflow: hidden; /* ✅ 넘침 방지 */
     }
     
     section.behind_video .video_item.active,
@@ -1325,54 +1682,171 @@
         display: flex;
         position: static;
         transform: none;
+        opacity: 1;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
     }
     
+    /* 모든 아이템 iframe 표시 */
+    section.behind_video .video_iframe {
+        display: block !important;
+    }
+    
+    section.behind_video .video_poster {
+        display: none !important;
+    }
+    
+    /* 영상 - 50% 차지, 16:9 비율 */
     section.behind_video .video_thumbnail {
-        width: 100%;
-        height: 200px;
+        width: 50%;
+        aspect-ratio: 16 / 9; /* ✅ 16:9 비율 자동 유지 */
+        flex-shrink: 0;
+        overflow: hidden;
     }
     
-    section.behind_video .video_textbox {
+    section.behind_video .video_thumbnail iframe,
+    section.behind_video .video_thumbnail img {
         width: 100%;
-        height: auto;
-        min-height: 140px;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.9);
+        height: 100%;
+        object-fit: cover;
+        display: block; /* ✅ 하단 여백 제거 */
+    }
+    
+    /* 텍스트 박스 - 50% 차지, 영상 높이와 동일 */
+    section.behind_video .video_textbox {
+        width: 50%;
+        aspect-ratio: 16 / 9; /* ✅ 영상과 동일한 비율로 높이 맞춤 */
+        padding: 8px;
+        background: #2B2B2B; /* ✅ 배경색 변경 */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-shrink: 0;
+        box-sizing: border-box; /* ✅ padding 포함 크기 계산 */
+    }
+    
+    /* 2번째 아이템 - 영상/텍스트 위치 반전 (440px) */
+    section.behind_video .stack_container .video_item:nth-child(2) {
+        flex-direction: row-reverse;
+    }
+    
+    /* 2번째 아이템 텍스트 우측 정렬 (440px) */
+    section.behind_video .stack_container .video_item:nth-child(2) .video_text,
+    section.behind_video .stack_container .video_item:nth-child(2) .video_title,
+    section.behind_video .stack_container .video_item:nth-child(2) .video_subtitle {
+        text-align: right;
+    }
+    
+    section.behind_video .video_text {
+        position: static;
+        left: auto;
+        top: auto;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden; /* ✅ 텍스트 넘침 방지 */
+    }
+    
+    section.behind_video .video_title_area {
+        margin-bottom: 4px;
+        overflow: hidden;
     }
     
     section.behind_video .video_title {
-        font-size: 18px;
-        margin-bottom: 10px;
+        font-size: 14px;
+        margin-bottom: 4px;
+        line-height: 1.3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-break: break-word; /* ✅ 긴 단어 줄바꿈 */
+    }
+    
+    section.behind_video .video_subtitle {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-break: break-word; /* ✅ 긴 단어 줄바꿈 */
     }
     
     section.behind_video .video_description {
-        font-size: 12px;
-        line-height: 1.6;
+        display: none;
+    }
+    
+    section.behind_video .video_pagination {
+        display: none;
     }
     
     /* ============ CHAT EVENT SECTION ============ */
     section.chat_event_section {
         width: 100%;
         height: auto;
+        min-height: 700px;
         margin: 80px 0 0;
+        padding-bottom: 30px; /* 자연스러운 하단 여백 */
     }
     
     section.chat_event_section .header_fixed {
+        position: relative !important; /* absolute 덮어쓰기 */
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
         width: 100%;
+        max-width: 100%;
         padding: 30px 30px 20px;
+        background: linear-gradient(to bottom, #0d031c 0%, rgba(13, 3, 28, 0.8) 60%, rgba(13, 3, 28, 0) 100%); /* ✅ 그라데이션 추가 */
+        z-index: 5;
     }
     
     section.chat_event_section .header_content {
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
+        gap: 12px;
     }
     
     section.chat_event_section .title_area {
         width: 100%;
-        flex-direction: column;
+        display: flex;
+        flex-direction: column; /* 세로 정렬로 변경 */
         align-items: flex-start;
         gap: 12px;
+    }
+    
+    section.chat_event_section .title {
+        margin: 0;
+    }
+    
+    /* 타이틀 영역: 세로 배치 */
+    section.chat_event_section .title_area {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    /* 더보기 버튼과 필터를 같은 줄에 */
+    section.chat_event_section .header_content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start; /* 상단 정렬로 복귀 */
+    }
+    
+    section.chat_event_section .filter_area {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    section.chat_event_section .filter_btn {
+        line-height: 1.8;
+        padding-top: 0;
+    }
+    
+    section.chat_event_section .filter_separator {
+        line-height: 1.8;
     }
     
     section.chat_event_section .title {
@@ -1384,31 +1858,17 @@
         font-size: 14px;
     }
     
-    section.chat_event_section .chat_scroll_area {
-        width: calc(100% - 60px);
-        height: 400px;
-        top: 110px;
-    }
-    
-    section.chat_event_section .chat_input_fixed {
-        width: calc(100% - 60px);
-        height: 80px;
-        bottom: 180px;
-    }
-    
-    section.chat_event_section .event_box {
-        padding: 0 30px;
-        top: 80px;
-    }
-    
-    section.chat_event_section .filter_area {
-        width: 100%;
-        justify-content: flex-end;
-        gap: 12px;
+    section.chat_event_section .event_section {
+        display: none; /* 이벤트 섹션 숨김 */
     }
     
     section.chat_event_section .filter_btn {
         font-size: 20px;
+    }
+    
+    section.chat_event_section .filter_btn.active {
+        font-weight: 700;
+        opacity: 1;
     }
     
     section.chat_event_section .filter_separator {
@@ -1416,105 +1876,216 @@
     }
     
     section.chat_event_section .chat_scroll_area {
-        width: calc(100% - 60px);
-        height: 450px;
-        top: 140px;
-        padding: 12px 0;
+        position: relative !important; /* absolute 덮어쓰기 */
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        overflow: hidden;
+        margin: 0 auto;
+        padding: 12px 30px 0;
+        background: transparent;
+        z-index: auto;
+    }
+    
+    /* 채팅 4개까지만 표시 (5번째부터 숨김) - 440px */
+    section.chat_event_section .comment_item:nth-child(n+5) {
+        display: none;
+    }
+    
+    section.chat_event_section .more_comments_wrapper {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin-top: 16px;
+        margin-bottom: 0;
+    }
+    
+    section.chat_event_section .btn_more_comments {
+        display: block;
+        padding: 10px 48px;
+        border: 2px solid white;
+        border-radius: 28px;
+        background: transparent;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    section.chat_event_section .btn_more_comments:hover {
+        background: white;
+        color: #0d031c;
+    }
+    
+    section.chat_event_section .btn_more_comments:active {
+        background: transparent;
+        color: white;
+        transition: none; /* 즉시 복귀 */
     }
     
     section.chat_event_section .comments_list {
-        gap: 16px;
+        gap: 12px;
+        padding-bottom: 0;
     }
     
     section.chat_event_section .comment_item {
-        gap: 6px;
-    }
-    
-    section.chat_event_section .profile {
-        gap: 6px;
-    }
-    
-    section.chat_event_section .profile_icon {
-        width: 28px;
-        height: 28px;
-    }
-    
-    section.chat_event_section .profile_name {
-        font-size: 16px;
-    }
-    
-    section.chat_event_section .profile_time {
-        font-size: 12px;
-    }
-    
-    section.chat_event_section .name_text {
-        gap: 8px;
-    }
-    
-    section.chat_event_section .chat_text {
-        font-size: 12px;
-        padding: 5px 12px;
-        line-height: 1.6;
-    }
-    
-    section.chat_event_section .txt_box {
-        padding-left: 34px;
-    }
-    
-    section.chat_event_section .comment_actions {
-        padding-left: 46px;
-        gap: 12px;
-    }
-    
-    section.chat_event_section .btn_comment {
-        font-size: 16px;
-    }
-    
-    section.chat_event_section .btn_replies {
-        font-size: 12px;
-    }
-    
-    section.chat_event_section .like_box {
         gap: 4px;
     }
     
-    section.chat_event_section .like_box .heart_icon {
-        width: 24px;
-        height: 24px;
+    section.chat_event_section .profile {
+        gap: 4px;
     }
     
-    section.chat_event_section .like_box .like_count {
-        font-size: 10px;
+    section.chat_event_section .profile_icon {
+        width: 22px; /* 20px → 22px */
+        height: 22px;
+        flex-shrink: 0; /* 아이콘 크기 고정 */
     }
     
-    section.chat_event_section .chat_input_fixed {
-        width: calc(100% - 60px);
-        height: 70px;
-        bottom: 150px;
+    section.chat_event_section .profile_icon .icon_bg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
     
-    section.chat_event_section .input_text_area {
-        padding: 0 16px;
-        margin-top: 12px;
+    section.chat_event_section .profile_icon .icon_img {
+        width: 16px; /* 영역에 맞게 조정 */
+        height: 22px;
+        object-fit: contain;
     }
     
-    section.chat_event_section .chat_input {
+    section.chat_event_section .profile_name .name {
         font-size: 12px;
     }
     
-    section.chat_event_section .input_controls {
+    section.chat_event_section .profile_name .time {
+        font-size: 9px;
+    }
+    
+    section.chat_event_section .profile_name {
+        gap: 6px;
+    }
+    
+    section.chat_event_section .chat_box {
+        max-width: 90%;
+        padding: 4px 10px 5px 12px;
+    }
+    
+    section.chat_event_section .chat_box p {
+        font-size: 10px;
+        line-height: 1.4;
+    }
+    
+    section.chat_event_section .content_row {
+        padding-left: 24px;
+        gap: 12px;
+    }
+    
+    section.chat_event_section .comment_actions {
+        padding-left: 32px;
+        gap: 10px;
+    }
+    
+    section.chat_event_section .btn_comment {
+        font-size: 12px;
+    }
+    
+    section.chat_event_section .btn_replies {
+        font-size: 9px;
+    }
+    
+    section.chat_event_section .like_box {
+        gap: 2px;
+    }
+    
+    section.chat_event_section .like_box .heart_icon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    section.chat_event_section .like_box .like_count {
+        font-size: 8px;
+    }
+    
+    section.chat_event_section .chat_input_fixed {
+        position: relative !important; /* absolute 덮어쓰기 */
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: calc(100% - 60px);
+        max-width: 100%;
+        height: 70px;
+        margin: 20px auto 0;
+        background: rgba(255, 255, 255, 0.8);
+        border: 0.5px solid rgba(13, 3, 28, 0.5);
+        box-sizing: border-box;
+        z-index: 1; /* 기본 레이어 */
+    }
+    
+    section.chat_event_section .input_wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+    
+    section.chat_event_section .input_text_area {
+        width: 100%;
+        margin-top: 12px;
         padding: 0 16px;
+    }
+    
+    section.chat_event_section .chat_input {
+        width: 100%;
+        height: auto;
+        border: none;
+        background: transparent;
+        font-size: 12px;
+        outline: none;
+    }
+    
+    section.chat_event_section .input_controls {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-top: auto;
         margin-bottom: 8px;
+        padding: 0 16px;
     }
     
     section.chat_event_section .btn_emoji {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
+    }
+    
+    section.chat_event_section .btn_emoji img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
     
     section.chat_event_section .btn_send {
-        padding: 6px 20px;
-        font-size: 14px;
+        padding: 6px 24px;
+        border: 1px solid #0d031c;
+        background: #0d031c;
+        color: white;
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        border-radius: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    section.chat_event_section .btn_send:hover {
+        background: transparent;
+        color: #0d031c;
     }
     
     section.chat_event_section .event_section {

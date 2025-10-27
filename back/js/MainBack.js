@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+
+
     const header = document.querySelector('header');
     const circle = document.getElementById('circle');
     const faces = document.querySelectorAll('#circle article');
@@ -110,12 +113,55 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScrollY = currentScrollY;
     });
 
+    /*     AOS.init({
+            disable: false,
+            startEvent: 'DOMContentLoaded',
+            initClassName: 'aos-init',
+            animatedClassName: 'aos-animate',
+            useClassNames: false,
+            disableMutationObserver: false,
+            debounceDelay: 50,
+            throttleDelay: 99,
+        }); */
+
     // ON-AIR 섹션 회전 기능
     let onswiper = new Swiper(".on_slide_wrap", {
         loop: true,
-        slidesPerView: 2.5,
-        spaceBetween: 60,
+        slidesPerView: 1,
+        spaceBetween: 0,
         centeredSlides: true,
+        autoplay: {
+            delay: 4500,
+            disableOnInteraction: false,
+        },
+        speed: 1000,
+        // 반응형 설정
+        breakpoints: {
+            // 440px 이상일 때 1개만 노출
+            440: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+            },
+            // 768px 이상일 때 두 장 노출
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 32,
+            },
+            // 960px 이상(1023px 포함)에서 세 장 노출
+            960: {
+                slidesPerView: 3,
+                spaceBetween: 160,
+            },
+            // 1280px 이상에서는 여유 있게 배치
+            1280: {
+                slidesPerView: 3,
+                spaceBetween: 48,
+            },
+            1920: {
+                slidesPerView: 3,
+                spaceBetween: 48,
+            }
+        }
     });
 
 
@@ -281,173 +327,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // GSAP 애니메이션 초기화
     initGSAPAnimations();
 
-    // Coming Soon 섹션 자동 교체 기능 초기화
-    initComingSoonSlider();
-
 
 });
-
-// Coming Soon 섹션 자동 교체 함수
-function initComingSoonSlider() {
-    const csContents = document.querySelectorAll('.comingsoon .CScontents1, .comingsoon .CScontents2, .comingsoon .CScontents3');
-    let currentIndex = 0;
-    let csInterval;
-
-    if (csContents.length === 0) return;
-
-    // 초기 설정: 첫 번째만 보이고 나머지는 숨김
-    csContents.forEach((content, index) => {
-        if (index === 0) {
-            content.style.display = 'flex';
-            content.style.opacity = '1';
-        } else {
-            content.style.display = 'none';
-            content.style.opacity = '0';
-        }
-    });
-
-    function showNextContent() {
-        const currentContent = csContents[currentIndex];
-        const nextIndex = (currentIndex + 1) % csContents.length;
-        const nextContent = csContents[nextIndex];
-
-        // 현재 콘텐츠 페이드아웃
-        gsap.to(currentContent, {
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.out",
-            onComplete: () => {
-                currentContent.style.display = 'none';
-                
-                // 다음 콘텐츠 표시 및 애니메이션 리셋
-                nextContent.style.display = 'flex';
-                
-                // 애니메이션 요소들 초기 상태로 설정
-                const img = nextContent.querySelector('.gsap-fade-right');
-                const h3 = nextContent.querySelector('.txt h3');
-                const p = nextContent.querySelector('.txt p');
-                
-                gsap.set([img, h3, p], { opacity: 0 });
-                gsap.set(img, { x: -50 });
-                gsap.set([h3, p], { x: 50 });
-                
-                // 다음 콘텐츠 페이드인 및 순차 애니메이션
-                gsap.to(nextContent, {
-                    opacity: 1,
-                    duration: 0.3,
-                    ease: "power2.out",
-                    onComplete: () => {
-                        // 이미지 애니메이션
-                        gsap.to(img, {
-                            x: 0,
-                            opacity: 1,
-                            duration: 1.2,
-                            ease: "power2.out"
-                        });
-                        
-                        // h3 애니메이션 (0.8초 후)
-                        gsap.to(h3, {
-                            x: 0,
-                            opacity: 1,
-                            duration: 1.2,
-                            ease: "power2.out",
-                            delay: 0.8
-                        });
-                        
-                        // p 애니메이션 (1.6초 후)
-                        gsap.to(p, {
-                            x: 0,
-                            opacity: 1,
-                            duration: 1.2,
-                            ease: "power2.out",
-                            delay: 1.6
-                        });
-                    }
-                });
-            }
-        });
-
-        currentIndex = nextIndex;
-    }
-
-    // 5초마다 자동 교체
-    function startCSSlider() {
-        csInterval = setInterval(showNextContent, 5000);
-    }
-
-    function stopCSSlider() {
-        if (csInterval) {
-            clearInterval(csInterval);
-        }
-    }
-
-    // 마우스 호버 시 슬라이더 일시정지/재개
-    const comingSoonSection = document.querySelector('.comingsoon');
-    if (comingSoonSection) {
-        comingSoonSection.addEventListener('mouseenter', stopCSSlider);
-        comingSoonSection.addEventListener('mouseleave', startCSSlider);
-    }
-
-    // 자동 슬라이더 시작
-    startCSSlider();
-}
 
 // GSAP 애니메이션 함수
 function initGSAPAnimations() {
     gsap.registerPlugin(ScrollTrigger);
-
-    // CScontents 애니메이션 초기 설정 (모든 CScontents에 적용)
-    gsap.set('.CScontents1 .gsap-fade-right, .CScontents2 .gsap-fade-right, .CScontents3 .gsap-fade-right', {
-        x: -50,
-        opacity: 0
-    });
-
-    gsap.set('.CScontents1 .gsap-fade-left, .CScontents2 .gsap-fade-left, .CScontents3 .gsap-fade-left', {
-        x: 50,
-        opacity: 0
-    });
-
-    // CScontents1 초기 애니메이션 (페이지 로드 시에만)
-    gsap.to('.CScontents1 .gsap-fade-right', {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: '.CScontents1',
-            start: 'top 70%',
-            end: 'bottom 30%',
-            toggleActions: 'play none none reverse'
-        }
-    });
-
-    gsap.to('.CScontents1 .txt h3', {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        delay: 0.8,
-        scrollTrigger: {
-            trigger: '.CScontents1',
-            start: 'top 70%',
-            end: 'bottom 30%',
-            toggleActions: 'play none none reverse'
-        }
-    });
-
-    gsap.to('.CScontents1 .txt p', {
-        x: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-        delay: 1.6,
-        scrollTrigger: {
-            trigger: '.CScontents1',
-            start: 'top 70%',
-            end: 'bottom 30%',
-            toggleActions: 'play none none reverse'
-        }
-    });
 
     // BeyondDrama 섹션의 아래에서 위로 올라오는 애니메이션
     gsap.set('.gsap-flip', {
@@ -553,6 +438,129 @@ function initGSAPAnimations() {
             trigger: '.VPcontents',
             start: 'top 70%',
             end: 'bottom 30%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    // ON-AIR 섹션 애니메이션
+    // 제목과 버튼 애니메이션
+    gsap.set('.onair .inner .top', {
+        y: 30,
+        opacity: 0
+    });
+
+    gsap.to('.onair .inner .top', {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: '.onair',
+            start: 'top 70%',
+            end: 'bottom 30%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    // ON-AIR 콘텐츠 슬라이드 애니메이션 (순차적으로)
+    gsap.set('.onair .ONcon > div', {
+        y: 50,
+        opacity: 0
+    });
+
+    gsap.to('.onair .ONcon > div', {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power2.out",
+        stagger: 0.2,
+        scrollTrigger: {
+            trigger: '.onair .ONcon',
+            start: 'top 70%',
+            end: 'bottom 30%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    // Coming Soon 섹션 슬라이드 애니메이션
+    const csSlides = ['.CScontents1', '.CScontents2', '.CScontents3'];
+    let currentCSIndex = 0;
+
+    // 초기 상태 설정
+    csSlides.forEach((slide, index) => {
+        const element = document.querySelector(slide);
+        if (element) {
+            if (index === 0) {
+                element.style.display = 'block';
+                element.style.opacity = '1';
+            } else {
+                element.style.display = 'none';
+                element.style.opacity = '0';
+            }
+        }
+    });
+
+    // 슬라이드 전환 함수
+    function changeCSSlide() {
+        const currentSlide = document.querySelector(csSlides[currentCSIndex]);
+        
+        // 현재 슬라이드 페이드아웃
+        if (currentSlide) {
+            gsap.to(currentSlide, {
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    currentSlide.style.display = 'none';
+                }
+            });
+        }
+
+        // 다음 슬라이드 인덱스
+        currentCSIndex = (currentCSIndex + 1) % csSlides.length;
+        const nextSlide = document.querySelector(csSlides[currentCSIndex]);
+
+        // 다음 슬라이드 페이드인 (y 애니메이션 제거)
+        if (nextSlide) {
+            nextSlide.style.display = 'block';
+            gsap.fromTo(nextSlide, 
+                { opacity: 0 },
+                { 
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power2.out"
+                }
+            );
+        }
+    }
+
+    // 5초마다 슬라이드 전환
+    setInterval(changeCSSlide, 5000);
+
+    // Coming Soon 섹션 GSAP 애니메이션
+    // fade-up 애니메이션
+    gsap.from('.gsap-fade-up', {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: '.gsap-fade-up',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        }
+    });
+
+    // fade-left 애니메이션
+    gsap.from('.gsap-fade-left', {
+        x: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.3,
+        scrollTrigger: {
+            trigger: '.gsap-fade-left',
+            start: 'top 80%',
             toggleActions: 'play none none reverse'
         }
     });
