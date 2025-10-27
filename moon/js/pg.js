@@ -55,67 +55,170 @@ document.addEventListener('DOMContentLoaded', () => {
       .to({}, { duration: 3 });
   }
 
-  // Contest Winner 섹션 스크롤 애니메이션
+  // 공모전 수상자 섹션 스크롤 애니메이션 (반응형)
   if (document.querySelector('.contest-winner')) {
-    // 각 수상자 섹션을 순회하며 애니메이션 설정
-    const winnerSections = document.querySelectorAll('.contest-winner .video-content');
-    winnerSections.forEach((section, index) => {
-      const iframe = section.querySelector('iframe');
-      const awardInfo = section.querySelector('.award-info');
-      const blur1 = section.querySelector('.blur-1');
-      const blur2 = section.querySelector('.blur-2');
-      const videoWrap = section.querySelector('.video-wrap');
+    ScrollTrigger.matchMedia({
+      // 데스크톱 (1440px 이상)
+      "(min-width: 1440px)": function() {
+        const winnerSections = document.querySelectorAll('.contest-winner .video-content');
+        winnerSections.forEach((section, index) => {
+          const iframe = section.querySelector('iframe');
+          const awardInfo = section.querySelector('.award-info');
+          const blur1 = section.querySelector('.blur-1');
+          const blur2 = section.querySelector('.blur-2');
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "center center", // 트리거 상단이 뷰포트 중앙에 올 때 시작
-          // end: "center bottom", // 트리거 중간이 뷰포트 중앙을 지날 때 종료
-          end: "+=2200",
-          pin: true,
-          scrub: true,
-          // scrub: 1.5, // 스크롤에 부드럽게 반응
-          // markers: true, // 디버깅용 마커 (위치 조절 시 유용)
-          anticipatePin: 1
-        }
-      });
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "center center",
+              end: "+=2200", // 데스크톱: 긴 스크롤
+              pin: true,
+              scrub: true,
+              anticipatePin: 1
+            }
+          });
 
-      // 1. 초기 상태 설정: iframe 및 블러 효과 투명하게 (award-info는 CSS에서 display: none 처리)
-      tl.set(awardInfo, { xPercent: 0, autoAlpha: 0 });
-      tl.set(iframe, { scale: 0.2, xPercent: 80, autoAlpha: 0 });
-      tl.set(blur1, { scale: 0.3, x: 300, y: 200, autoAlpha: 0 });
-      tl.set(blur2, { scale: 0.4, x: -250, y: -150, autoAlpha: 0 });
-      // tl.set(videoWrap, { justifyContent: "center" });
-      // 2. iframe과 블러 효과가 작게 나타나며 중앙으로 이동
-      // fromTo를 사용하여 시작과 끝 상태를 명확히 정의
-      tl.to(iframe, {
-        scale: 1,
-        autoAlpha: 1,
-        duration: 5,
-        ease: "power3.inOut"
-      }, 'start')
-        .to([blur1, blur2], {
-          scale: 1,
-          x: 0,
-          y: 0,
-          autoAlpha: 1,
-          duration: 5,
-          ease: "power1.inOut"
-        }, 'start')
-        .to(iframe, {
-          xPercent: -50,
-          duration: 5,
-        }, 'end')
-        .to(awardInfo, {
-          autoAlpha: 1,
-          xPercent: 32,
-          duration: 3,
-          ease: "power1.inOut"
-        }, "+=1") // 이전 애니메이션 종료 후 1초(스크롤 거리 비례)의 지연을 추가합니다.
-        // 읽을 수 있도록 잠시 머무르는(핀 유지) 구간 추가
-        .to({}, { duration: 7 });
+          // 데스크톱 애니메이션: 좌우 이동 있음
+          tl.set(awardInfo, { xPercent: 0, autoAlpha: 0 });
+          tl.set(iframe, { scale: 0.2, xPercent: 80, autoAlpha: 0 });
+          tl.set(blur1, { scale: 0.3, x: 300, y: 200, autoAlpha: 0 });
+          tl.set(blur2, { scale: 0.4, x: -250, y: -150, autoAlpha: 0 });
 
+          tl.to(iframe, {
+            scale: 1,
+            autoAlpha: 1,
+            duration: 5,
+            ease: "power3.inOut"
+          }, 'start')
+            .to([blur1, blur2], {
+              scale: 1,
+              x: 0,
+              y: 0,
+              autoAlpha: 1,
+              duration: 5,
+              ease: "power1.inOut"
+            }, 'start')
+            .to(iframe, {
+              xPercent: -50, // 왼쪽으로 이동
+              duration: 5,
+            }, 'end')
+            .to(awardInfo, {
+              autoAlpha: 1,
+              xPercent: 32, // 오른쪽에 표시
+              duration: 3,
+              ease: "power1.inOut"
+            }, "+=1")
+            .to({}, { duration: 10 });
+        });
+      },
 
+      // 노트북 (1024px ~ 1439px)
+      "(min-width: 1024px) and (max-width: 1439px)": function() {
+        const winnerSections = document.querySelectorAll('.contest-winner .video-content');
+        winnerSections.forEach((section, index) => {
+          const iframe = section.querySelector('iframe');
+          const awardInfo = section.querySelector('.award-info');
+          const blur1 = section.querySelector('.blur-1');
+          const blur2 = section.querySelector('.blur-2');
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "center center",
+              end: "+=1900", // 노트북: 중간 스크롤
+              pin: true,
+              scrub: true,
+              anticipatePin: 1
+            }
+          });
+
+          // 노트북 애니메이션: 좌우 이동 약간 줄임
+          tl.set(awardInfo, { xPercent: 0, autoAlpha: 0 });
+          tl.set(iframe, { scale: 0.2, xPercent: 60, autoAlpha: 0 });
+          tl.set(blur1, { scale: 0.3, x: 250, y: 150, autoAlpha: 0 });
+          tl.set(blur2, { scale: 0.4, x: -200, y: -120, autoAlpha: 0 });
+
+          tl.to(iframe, {
+            scale: 1,
+            autoAlpha: 1,
+            duration: 5,
+            ease: "power3.inOut"
+          }, 'start')
+            .to([blur1, blur2], {
+              scale: 1,
+              x: 0,
+              y: 0,
+              autoAlpha: 1,
+              duration: 5,
+              ease: "power1.inOut"
+            }, 'start')
+            .to(iframe, {
+              xPercent: -10, // 왼쪽으로 약간 이동
+              duration: 5,
+            }, 'end')
+            .to(awardInfo, {
+              autoAlpha: 1,
+              xPercent: 10, // 오른쪽에 표시 (약간 줄임)
+              duration: 3,
+              ease: "power1.inOut"
+            }, "+=1")
+            .to({}, { duration: 8 });
+        });
+      },
+
+      // 태블릿 & 모바일 (1023px 이하)
+      "(max-width: 1023px)": function() {
+        const winnerSections = document.querySelectorAll('.contest-winner .video-content');
+        winnerSections.forEach((section, index) => {
+          const iframe = section.querySelector('iframe');
+          const awardInfo = section.querySelector('.award-info');
+          const blur1 = section.querySelector('.blur-1');
+          const blur2 = section.querySelector('.blur-2');
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "center center",
+              end: "+=1500", // 모바일: 짧은 스크롤
+              pin: true,
+              scrub: true,
+              anticipatePin: 1
+            }
+          });
+
+          // 모바일 애니메이션: 중앙 정렬, 좌우 이동 없음
+          tl.set(awardInfo, { xPercent: 0, autoAlpha: 0 });
+          tl.set(iframe, { scale: 0.2, xPercent: 0, autoAlpha: 0 }); // 중앙에서 시작
+          tl.set(blur1, { scale: 0.3, x: 150, y: 100, autoAlpha: 0 }); // 이동 거리 축소
+          tl.set(blur2, { scale: 0.4, x: -150, y: -100, autoAlpha: 0 });
+
+          tl.to(iframe, {
+            scale: 1,
+            autoAlpha: 1,
+            duration: 5,
+            ease: "power3.inOut"
+          }, 'start')
+            .to([blur1, blur2], {
+              scale: 1,
+              x: 0,
+              y: 0,
+              autoAlpha: 1,
+              duration: 5,
+              ease: "power1.inOut"
+            }, 'start')
+            .to(iframe, {
+              xPercent: 0, // 이동 없음, 중앙 유지
+              duration: 3,
+            }, 'end')
+            .to(awardInfo, {
+              autoAlpha: 1,
+              xPercent: 0, // 중앙에 표시
+              duration: 3,
+              ease: "power1.inOut"
+            }, "+=1")
+            .to({}, { duration: 7 }); // 짧게 머무름
+        });
+      }
     });
   }
 
@@ -570,75 +673,75 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 투표 섹션 카드 플립
-  const voteContainer = document.querySelector('.vote-container');
-  if (voteContainer) {
-    const voteBtns = document.querySelectorAll('.vote-btn');
-    const voteAgainBtn = document.querySelector('.vote-again-btn');
-    const voteCards = voteContainer.querySelectorAll('.vote-card');
-    let animated = false; // 'animated' 변수를 voteContainer 스코프 안으로 이동
+const voteContainer = document.querySelector('.vote-container');
+if (voteContainer) {
+  const voteBtns = document.querySelectorAll('.vote-btn');
+  const voteAgainBtn = document.querySelector('.vote-again-btn');
+  const voteCards = voteContainer.querySelectorAll('.vote-card');
+  let animated = false; // 'animated' 변수를 voteContainer 스코프 안으로 이동
 
-    // 'Vote Now' 버튼 클릭 이벤트
-    voteBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation(); // 부모 요소로의 이벤트 전파를 막습니다.
+  // 'Vote Now' 버튼 클릭 이벤트
+  voteBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // 부모 요소로의 이벤트 전파를 막습니다.
 
-        // 이미 투표했는지 확인
-        if (voteContainer.classList.contains('voted')) {
-          return;
-        }
+      // 이미 투표했는지 확인
+      if (voteContainer.classList.contains('voted')) {
+        return;
+      }
 
-        // 클릭된 카드에 'selected' 클래스 추가
-        const selectedCard = btn.closest('.vote-card');
-        if (selectedCard) {
-          selectedCard.classList.add('selected');
-        }
-
-        // 모든 카드에 플립 클래스 추가
-        voteCards.forEach(card => {
-          card.classList.add('is-flipped');
-        });
-
-        // 투표 완료 상태 클래스 추가
-        voteContainer.classList.add('voted');
-
-        // 투표 후 프로그레스 바 애니메이션 실행
-        if (!animated) {
-          animateProgress(".progress01", 45);
-          animateProgress(".progress02", 35);
-          animateProgress(".progress03", 20);
-          animated = true;
-        }
+      // 클릭된 카드에 'selected' 클래스 추가
+      const selectedCard = btn.closest('.vote-card');
+      if (selectedCard) {
+        selectedCard.classList.add('selected');
+      }
+      
+      // 모든 카드에 플립 클래스 추가
+      voteCards.forEach(card => {
+        card.classList.add('is-flipped');
       });
+
+      // 투표 완료 상태 클래스 추가
+      voteContainer.classList.add('voted');
+
+      // 투표 후 프로그레스 바 애니메이션 실행
+      if (!animated) {
+        animateProgress(".progress01", 45);
+        animateProgress(".progress02", 35);
+        animateProgress(".progress03", 20);
+        animated = true;
+      }
     });
+  });
 
-    // 'Vote Again' 버튼 클릭 이벤트
-    if (voteAgainBtn) {
-      voteAgainBtn.addEventListener('click', () => {
-        // 모든 카드에서 플립 및 선택 클래스 제거
-        voteCards.forEach(card => {
-          card.classList.remove('is-flipped');
-          card.classList.remove('selected');
-        });
-
-        // 투표 완료 상태 클래스 제거
-        voteContainer.classList.remove('voted');
-
-        // 프로그레스 바 초기화
-        $(".progress").val(0);
-        animated = false;
+  // 'Vote Again' 버튼 클릭 이벤트
+  if (voteAgainBtn) {
+    voteAgainBtn.addEventListener('click', () => {
+      // 모든 카드에서 플립 및 선택 클래스 제거
+      voteCards.forEach(card => {
+        card.classList.remove('is-flipped');
+        card.classList.remove('selected');
       });
-    }
-  }
 
-  // 프로그레스바 애니메이션 함수를 DOMContentLoaded 리스너 내부에 정의
-  function animateProgress(selector, targetValue) {
-    // jQuery가 로드되었는지 확인
-    if (window.jQuery) {
-      $({ val: 0 }).animate({ val: targetValue }, {
-        duration: 1000,
-        step: function (now) {
-          $(selector).val(Math.floor(now));
-        }
+      // 투표 완료 상태 클래스 제거
+      voteContainer.classList.remove('voted');
+      
+      // 프로그레스 바 초기화
+      $(".progress").val(0);
+      animated = false;
+    });
+  }
+}
+
+// 프로그레스바 애니메이션 함수를 DOMContentLoaded 리스너 내부에 정의
+function animateProgress(selector, targetValue) {
+  // jQuery가 로드되었는지 확인
+  if (window.jQuery) {
+    $({ val: 0 }).animate({ val: targetValue }, {
+      duration: 1000,
+      step: function (now) {
+        $(selector).val(Math.floor(now));
+      }
       });
     }
   }

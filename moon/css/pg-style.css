@@ -45,7 +45,7 @@ main {
 }
 .sect_inner{
   width: 100%;
-  padding-inline: var(--space-w-1920);
+  padding-inline: 200px;
 }
 
 /* GSAP용 기본 상태 (필요 시) -> 빈 규칙 제거로 린트 경고 방지 */
@@ -61,9 +61,10 @@ main {
 /* 히어로 텍스트 */
 .hero {
   width: 100%;
+  height: 100vh;
   margin-top: 180px;
   background: linear-gradient(transparent 20%, #fff 40%);
-  padding-block: 239px;
+  padding-block: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -76,6 +77,8 @@ main {
   display: flex;
   flex-direction: row;
   position: relative;
+  align-items: center;
+  justify-content: space-between;
 }
 
 
@@ -97,11 +100,7 @@ main {
   background-repeat: no-repeat;
 }
 
-.hero .imgbox {
-  position: absolute;
-  right: var(--space-w-1920);
-  top: 80px;
-}
+
 
 .smiling-emoji {
   background: url("../asset/smiling.png") center/cover;
@@ -155,8 +154,9 @@ main {
 }
 
 .contest-winner .decoImg {
-  width: 201.34px;
-  height: 228.7px;
+  width: 201px;
+  height: 229px;
+  aspect-ratio: 201/229;
   position: absolute;
   top: 0;
   left: 0px;
@@ -175,14 +175,12 @@ main {
 .contest-winner .title p {
   color: var(--Wcolor);
   text-align: center;
-  font: 300 30px/100% "Assistant", sans-serif;
+  font: 300 30px/130% "Assistant", sans-serif;
   text-transform: uppercase;
 }
 
 .contest-winner .winner-wrap {
-  /* padding: 50vh 0; */
-  /* display: flex;
-  flex-direction: column; */
+  width: 100%;
 }
 
 .contest-winner .video-content {
@@ -951,7 +949,7 @@ main {
 }
 
 .community .articles .comm_gallery .swiper-wrapper {
-  padding-right: var(--space-w-1920);
+  padding-right: 200px;
   
 }
 
