@@ -12,7 +12,7 @@
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width:1024px) {
 
     .inner {
         width: 85%;
@@ -1148,7 +1148,7 @@
     }
 }
 
-@media screen and (max-width:439px) {
+@media screen and (max-width:440px) {
 
     html,
     body {
