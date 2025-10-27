@@ -13,7 +13,9 @@
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/main_media.css">
   <link rel="stylesheet" href="./moon/css/pg-style.css">
+  <link rel="stylesheet" href="./moon/css/media.css">
   <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
   <!-- GSAP (AOS 대체) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -95,26 +97,26 @@
     <main>
       <!-- 히어로 섹션 -->
       <section class="hero text_reveal_section">
-        <div class="inner">
+        <div class="sect_inner">
           <ul class="hero-txtbox opacity_reveal">
-            <li class="hero-txt1">Create,</li>
-            <li class="hero-txt2">Share,</li>
-            <li class="hero-txt3">Vote,</li>
-            <li class="hero-txt4">Play with K-drama</li>
+            <li>Create,</li>
+            <li>Share,</li>
+            <li>Vote,</li>
+            <li>Play with K-drama</li>
           </ul>
-          <div class="imgbox gsap-fade-up">
+          <div class="imgbox repeat_area">
             <div class="smiling-emoji"></div>
           </div>
-        </div><!-- .inner -->
+        </div><!-- .sect_inner -->
       </section><!-- .hero -->
 
 
       <!-- 공모전 수상작 -->
       <section class="contest-winner">
-        <div class="inner">
-          <div class="top">
+        <div class="sect_inner">
+          <div class="top repeat_area">
             <div class="decoImg"></div>
-            <div class="title opacity_reveal">
+            <div class="title">
               <h2>1st Video Contest Winners</h2>
               <p>
                 Fans reimagined the iconic scenes of “The Glory”.
@@ -248,7 +250,7 @@
       <section class="running-contest">
         <div class="inner">
           <div class="title">
-            <h2>Running Contest</h2>
+            <h2><a href="#running_contest">Running Contest</a></h2>
           </div>
           <div class="con">
             <div class="info gsap-fade-up">
@@ -299,13 +301,13 @@
 
       <!-- 팬갤러리 -->
       <section class="creativeGallery">
-        <div class="inner">
+        <div class="sect_inner">
           <div class="titlebox">
             <div class="title">
-              <h2>Creative Gallery</h2>
+              <h2><a href="#creative_gallery">Creative Gallery</a></h2>
             </div>
             <div class="category">
-              <button type="button">fan arts</button>
+              <button type="button" class="active">fan arts</button>
               <button type="button">fan videos</button>
             </div>
           </div>
@@ -637,13 +639,6 @@
                         </figure>
                       </a>
                     </li>
-                    <li class="swiper-slide slide7">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
                   </ul><!-- .swiper-wrapper -->
                 </div><!-- .swiper -->
                 <div class="swiper-pagination"></div>
@@ -708,19 +703,19 @@
               </div><!-- .con .img_new -->
             </div>
           </div><!-- .fanvideos -->
-        </div><!-- .inner -->
+        </div><!-- .sect_inner -->
       </section>
 
       <!-- 커뮤니티 섹션 -->
       <section class="community">
-        <div class="inner">
+        <div class="sect_inner">
           <div class="title">
-            <h2>community</h2>
+            <h2><a href="#community">community</a></h2>
             <div class="subtit">
               <h4>popular</h4>
-              <div class="right">
-                <p class="on">today</p>
-                <p class="">weekly</p>
+              <div class="com_btn_wrap">
+                <button type="button" class="com_toggle_btn active">today</button>
+                <button type="button" class="com_toggle_btn">weekly</button>
               </div>
             </div>
           </div><!-- title -->
@@ -734,7 +729,7 @@
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">1</b>
-                      <div class="comm_subtit">
+                      <div class="comm_article_info">
                         <em>Culture &amp; Locations</em>
                         <span>
                           <h5>I tried making the bibimbap from Bon Appétit, Your Majesty.</h5>
@@ -749,7 +744,7 @@
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">2</b>
-                      <div class="comm_subtit">
+                      <div class="comm_article_info">
                         <em>Episode Discussions</em>
                         <span>
                           <h5>Isn&#039;t this a hidden plot point?</h5>
@@ -764,7 +759,7 @@
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">3</b>
-                      <div class="comm_subtit">
+                      <div class="comm_article_info">
                         <em>Episode Discussions</em>
                         <span>
                           <h5>Bon Appétit, Your Majesty: The Hidden Story in the Final Episode</h5>
@@ -779,7 +774,7 @@
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">4</b>
-                      <div class="comm_subtit">
+                      <div class="comm_article_info">
                         <em>Q&amp;A · Knowledge Share</em>
                         <span>
                           <h5>Are you making Sweet Home Season 4? Please make it, plz.</h5>
@@ -794,7 +789,7 @@
                     <div class="comm-img_1"></div>
                     <div class="info-overlay">
                       <b class="num">5</b>
-                      <div class="comm_subtit">
+                      <div class="comm_article_info">
                         <em>Freetalking</em>
                         <span>
                           <h5>Hey, has everyone seen Genie, Make a Wish?</h5>
@@ -811,7 +806,7 @@
               <li>
                 <a href="#">
                   <b class="num">6</b>
-                  <div class="comm_subtit">
+                  <div class="comm_article_info">
                     <em>Easter Eggs</em>
                     <span>
                       <h5>This feels like foreshadowing. What do you think?</h5>
@@ -823,7 +818,7 @@
               <li>
                 <a href="#">
                   <b class="num">7</b>
-                  <div class="comm_subtit">
+                  <div class="comm_article_info">
                     <em>Deep Dive</em>
                     <span>
                       <h5>Wow, so that&#039;s what it meant? I&#039;m shocked.</h5>
@@ -835,7 +830,7 @@
               <li>
                 <a href="#">
                   <b class="num">8</b>
-                  <div class="comm_subtit">
+                  <div class="comm_article_info">
                     <em>Deep Dive</em>
                     <span>
                       <h5>I&#039;ve been reading up on the history of the Joseon Dynasty, and it&#039;s interesting.
@@ -848,7 +843,7 @@
               <li>
                 <a href="#">
                   <b class="num">9</b>
-                  <div class="comm_subtit">
+                  <div class="comm_article_info">
                     <em>Q&amp;A · Knowledge Share</em>
                     <span>
                       <h5>I&#039;ll share my favorite Korean dramas with you, guys.</h5>
@@ -860,7 +855,7 @@
               <li>
                 <a href="#">
                   <b class="num">10</b>
-                  <div class="comm_subtit">
+                  <div class="comm_article_info">
                     <em>Culture &amp; Locations</em>
                     <span>
                       <h5>I went to Korea and visited the filming locations of the drama.</h5>
@@ -873,9 +868,114 @@
           </div><!-- .articles -->
         </div><!-- ./inner -->
       </section><!-- .community -->
-    
+
       <!-- 투표 섹션 -->
-       
+      <section class="vote">
+        <div class="sect_inner">
+          <div class="title">
+            <h2>vote</h2>
+            <h3>Who is the most anticipated villain?</h3>
+            <p>Vote for the character you believe will be the most captivatingly evil.</p>
+          </div>
+          <div class="vote-container">
+            <!-- Card 1: The Glory -->
+            <div class="vote-card" id="vote-card-1">
+              <div class="vote-card-inner">
+                <!-- Front of the card -->
+                <div class="vote-card-front">
+                  <div class="img-area">
+                    <img src="./moon/asset/vote_yeonjin.jpg" alt="Park Yeon-jin from The Glory">
+                  </div>
+                  <div class="info-area">
+                    <span class="drama-title">The Glory</span>
+                    <h3 class="char-name">Park Yeon-jin</h3>
+                    <button type="button" class="vote-btn">Vote Now</button>
+                  </div>
+                </div>
+                <!-- Back of the card -->
+                <div class="vote-card-back">
+                  <div class="img-area">
+                    <img src="./moon/asset/vote_yeonjin.jpg" alt="Park Yeon-jin from The Glory">
+                  </div>
+                  <div class="info-area result-area">
+                    <span class="drama-title">The Glory</span>
+                    <h3 class="char-name">Park Yeon-jin</h3>
+                    <div class="vote-result">
+                      <progress class="progress progress01" value="0" min="0" max="100"></progress>
+                      <span class="percentage">45%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2: Queen of Tears -->
+            <div class="vote-card" id="vote-card-2">
+              <div class="vote-card-inner">
+                <!-- Front of the card -->
+                <div class="vote-card-front">
+                  <div class="img-area">
+                    <img src="./moon/asset/vote_yooneunseong.jpg" alt="Yoon Eun-seong from Queen of Tears">
+                  </div>
+                  <div class="info-area">
+                    <span class="drama-title">Queen of Tears</span>
+                    <h3 class="char-name">Yoon Eun-seong</h3>
+                    <button type="button" class="vote-btn">Vote Now</button>
+                  </div>
+                </div>
+                <!-- Back of the card -->
+                <div class="vote-card-back">
+                  <div class="img-area">
+                    <img src="./moon/asset/vote_yooneunseong.jpg" alt="Yoon Eun-seong from Queen of Tears">
+                  </div>
+                  <div class="info-area result-area">
+                    <span class="drama-title">Queen of Tears</span>
+                    <h3 class="char-name">Yoon Eun-seong</h3>
+                    <div class="vote-result">
+                      <progress class="progress progress02" value="0" min="0" max="100"></progress>
+                      <span class="percentage">35%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Card 3: Bon Appétit, Your Majesty -->
+            <div class="vote-card" id="vote-card-3">
+              <div class="vote-card-inner">
+                <!-- Front of the card -->
+                <div class="vote-card-front">
+                  <div class="img-area">
+                    <img src="./moon/asset/vote_jesan.jpg" alt="Jesan Daegun from Bon Appétit, Your Majesty">
+                  </div>
+                  <div class="info-area">
+                    <span class="drama-title">Bon Appétit, Your Majesty</span>
+                    <h3 class="char-name">Jesan Daegun</h3>
+                    <button type="button" class="vote-btn">Vote Now</button>
+                  </div>
+                </div>
+                <!-- Back of the card -->
+                <div class="vote-card-back">
+                  <div class="img-area">
+                    <img src="./moon/asset/vote_jesan.jpg" alt="Jesan Daegun from Bon Appétit, Your Majesty">
+                  </div>
+                  <div class="info-area result-area">
+                    <span class="drama-title">Bon Appétit, Your Majesty</span>
+                    <h3 class="char-name">Jesan Daegun</h3>
+                    <div class="vote-result">
+                      <progress class="progress progress03" value="0" min="0" max="100"></progress>
+                      <span class="percentage">20%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="vote-footer-message">
+            <p>Thank you for voting. Share your thoughts in the comments!</p>
+            <button type="button" class="vote-again-btn">Vote Again<i class="fa-solid fa-arrow-rotate-right"></i></button>
+          </div>
+        </div>
+      </section>
+
     </main>
 
 

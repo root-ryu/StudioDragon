@@ -3,3 +3,13 @@
 -e ._*
 .Spotlight-V100
 .Trashes
+.DS_Store
+StudioDragon/
+StudioDragon/
+StudioDragon/
+
+# macOS
+.DS_Store
+**/.DS_Store
+.AppleDouble
+.LSOverride
