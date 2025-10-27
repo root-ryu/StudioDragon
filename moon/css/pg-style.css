@@ -387,7 +387,7 @@ main {
   color: #626262;
   text-align: left;
   font-family: "Assistant", sans-serif;
-  font-size: 20px;
+  font-size: 26px;
   line-height: 130%;
   font-weight: 400;
   position: relative;
@@ -412,6 +412,7 @@ main {
 }
 
 .running-contest .countbox span {
+  width: 110px;
   background: #111111;
   border-radius: 8px;
   padding: 4px 13px 14px 13px;
@@ -429,7 +430,7 @@ main {
 .running-contest .countbox p {
   color: var(--Bcolor);
   text-align: center;
-  font: 600 18px/100% "Assistant", sans-serif;
+  font: 600 20px/100% "Assistant", sans-serif;
   margin-top: 4px;
   text-transform: uppercase;
 }
