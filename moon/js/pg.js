@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modifier: 0.7,
             slideShadows: false,
           },
-          autoplay: { delay: 2500, disableOnInteraction: false },
+          autoplay: { delay: 5000, disableOnInteraction: false },
           pagination: pagination ? { el: pagination, clickable: true } : undefined,
           breakpoints: {
             320: { slidesPerView: 1.5 },
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return {
           effect: 'slide',
           loop: true,
-          loopAdditionalSlides: 5,
+          loopAdditionalSlides: 7,
           grabCursor: true,
           centeredSlides: true,
           autoplay: { delay: 2500, disableOnInteraction: false },
@@ -335,6 +335,9 @@ document.addEventListener('DOMContentLoaded', () => {
           grabCursor: true,
           centeredSlides: true,
           initialSlide: 1,
+          // 링크 클릭 허용 (Swiper의 기본 클릭 방지 해제)
+          preventClicks: false,
+          preventClicksPropagation: false,
           coverflowEffect: {
             rotate: 40,
             stretch: 0,
@@ -352,6 +355,38 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           observer: true,
           observeParents: true,
+          on: {
+            slideChange: function () {
+              // 모든 비디오를 일시정지
+              this.slides.forEach(slide => {
+                const video = slide.querySelector('video');
+                if (video && !video.paused) {
+                  video.pause();
+                }
+              });
+            },
+            slideChangeTransitionEnd: function () {
+              // 활성 슬라이드의 비디오만 재생
+              const activeSlide = this.slides[this.activeIndex];
+              const activeVideo = activeSlide.querySelector('video');
+              if (activeVideo) {
+                activeVideo.play().catch(() => {
+                  // 자동 재생이 차단된 경우를 대비
+                });
+              }
+            },
+            init: function () {
+              // 초기 로드 시 활성 슬라이드의 비디오 재생
+              const activeSlide = this.slides[this.activeIndex];
+              const activeVideo = activeSlide.querySelector('video');
+              if (activeVideo) {
+                // 로드 핸들러가 이미 재생을 시도하므로 여기서는 로드될 때까지 기다릴 수 있음
+                activeVideo.addEventListener('canplay', () => {
+                  activeVideo.play().catch(() => {});
+                }, { once: true });
+              }
+            }
+          }
         };
       }
       if (container.classList.contains('new_video_slide')) {
@@ -361,6 +396,10 @@ document.addEventListener('DOMContentLoaded', () => {
           loop: true,
           loopAdditionalSlides: 10,
           grabCursor: true,
+          centeredSlides: true, // 가운데 정렬 추가
+          // 링크 클릭 허용 (Swiper의 기본 클릭 방지 해제)
+          preventClicks: false,
+          preventClicksPropagation: false,
           autoplay: { delay: 2500, disableOnInteraction: false },
           pagination: pagination ? { el: pagination, clickable: true } : undefined,
           breakpoints: {
@@ -372,6 +411,37 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           observer: true,
           observeParents: true,
+          on: {
+            slideChange: function () {
+              // 모든 비디오를 일시정지
+              this.slides.forEach(slide => {
+                const video = slide.querySelector('video');
+                if (video && !video.paused) {
+                  video.pause();
+                }
+              });
+            },
+            slideChangeTransitionEnd: function () {
+              // 활성 슬라이드의 비디오만 재생
+              const activeSlide = this.slides[this.activeIndex];
+              const activeVideo = activeSlide.querySelector('video');
+              if (activeVideo) {
+                activeVideo.play().catch(() => {
+                  // 자동 재생이 차단된 경우를 대비
+                });
+              }
+            },
+            init: function () {
+              // 초기 로드 시 활성 슬라이드의 비디오 재생
+              const activeSlide = this.slides[this.activeIndex];
+              const activeVideo = activeSlide.querySelector('video');
+              if (activeVideo) {
+                activeVideo.addEventListener('canplay', () => {
+                  activeVideo.play().catch(() => {});
+                }, { once: true });
+              }
+            }
+          }
         };
       }
       return null;
@@ -405,6 +475,55 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
+    // 팬비디오 앵커에 비디오 src를 링크로 매핑 (새 탭 열기) + 비디오 기본 속성 보장
+    const setFanVideoLinks = () => {
+      try {
+        // 1) 비디오 기본 속성 추가 (포스터는 강제하지 않음)
+        const videos = gallery.querySelectorAll('.fanvideos video');
+        videos.forEach(v => {
+          if (!v.hasAttribute('muted')) v.setAttribute('muted', '');
+          if (!v.hasAttribute('playsinline')) v.setAttribute('playsinline', '');
+          if (!v.hasAttribute('autoplay')) v.setAttribute('autoplay', '');
+          if (!v.hasAttribute('controls')) v.setAttribute('controls', ''); // 컨트롤러 속성 추가
+          if (!v.getAttribute('preload')) v.setAttribute('preload', 'metadata');
+        });
+
+      } catch (e) { /* no-op */ }
+    };
+
+    // 비디오가 로드되면 배경 placeholder 제거하고 자동 재생 시도
+    const setupFanVideoLoadHandlers = () => {
+      const videos = gallery.querySelectorAll('.fanvideos video');
+      videos.forEach(v => {
+        const fig = v.closest('figure');
+        if (!fig) return;
+
+        const markReady = () => {
+          fig.classList.add('is-ready');
+          // 일부 브라우저에서 자동재생이 지연될 수 있어 재생을 시도
+          try {
+            v.muted = true;
+            v.playsInline = true;
+            const p = v.play();
+            if (p && typeof p.catch === 'function') p.catch(() => {});
+          } catch (_) {}
+        };
+
+        // 이미 로딩된 상태면 즉시 처리
+        if (v.readyState >= 2) {
+          markReady();
+        } else {
+          v.addEventListener('loadeddata', markReady, { once: true });
+          v.addEventListener('canplay', markReady, { once: true });
+        }
+
+        // 에러 발생 시 placeholder 유지
+        v.addEventListener('error', () => {
+          fig.classList.remove('is-ready');
+        }, { once: true });
+      });
+    };
+
     categoryBtns.forEach((btn, index) => {
       btn.addEventListener("click", () => {
         // 모든 버튼 active 제거
@@ -426,10 +545,17 @@ document.addEventListener('DOMContentLoaded', () => {
           // 전환 후 보이는 갤러리 스와이퍼 리프레시
           setTimeout(() => {
             fanvideos.querySelectorAll('.popular_video_slide, .new_video_slide').forEach(initOrRefreshSwiper);
+            // 링크 및 로드 핸들러를 다시 보장
+            setFanVideoLinks();
+            setupFanVideoLoadHandlers();
           }, 0);
         }
       });
     });
+
+    // 초기 로드 시에도 링크 매핑 수행
+    setFanVideoLinks();
+    setupFanVideoLoadHandlers();
   }
 
   /* 갤러리_popular img 스와이퍼
@@ -536,6 +662,9 @@ document.addEventListener('DOMContentLoaded', () => {
       centeredSlides: true, // 가운데 슬라이드 중심
       initialSlide: 1,
       spaceBetween: 140,
+      // 링크 클릭 허용 (Swiper의 기본 클릭 방지 해제)
+      preventClicks: false,
+      preventClicksPropagation: false,
       coverflowEffect: {
         rotate: 40,   // 회전 각도
         stretch: 200,   // 늘림
@@ -578,8 +707,11 @@ document.addEventListener('DOMContentLoaded', () => {
       loopAdditionalSlides: 10,
       grabCursor: true,     // 커서가 잡는 모양
       centeredSlides: true,
+      // 링크 클릭 허용 (Swiper의 기본 클릭 방지 해제)
+      preventClicks: false,
+      preventClicksPropagation: false,
       autoplay: {
-        delay: 2500, //2.5초 = 2500
+        delay: 5000, //5초 = 5000 
         disableOnInteraction: false,
       },
       observer: true,
@@ -673,77 +805,140 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 투표 섹션 카드 플립
-const voteContainer = document.querySelector('.vote-container');
-if (voteContainer) {
-  const voteBtns = document.querySelectorAll('.vote-btn');
-  const voteAgainBtn = document.querySelector('.vote-again-btn');
-  const voteCards = voteContainer.querySelectorAll('.vote-card');
-  let animated = false; // 'animated' 변수를 voteContainer 스코프 안으로 이동
+  const voteContainer = document.querySelector('.vote-container');
+  if (voteContainer) {
+    const voteBtns = document.querySelectorAll('.vote-btn');
+    const voteAgainBtn = document.querySelector('.vote-again-btn');
+    const voteCards = voteContainer.querySelectorAll('.vote-card');
+    let animated = false; // 'animated' 변수를 voteContainer 스코프 안으로 이동
 
-  // 'Vote Now' 버튼 클릭 이벤트
-  voteBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation(); // 부모 요소로의 이벤트 전파를 막습니다.
+    // 'Vote Now' 버튼 클릭 이벤트
+    voteBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation(); // 부모 요소로의 이벤트 전파를 막습니다.
 
-      // 이미 투표했는지 확인
-      if (voteContainer.classList.contains('voted')) {
-        return;
-      }
+        // 이미 투표했는지 확인
+        if (voteContainer.classList.contains('voted')) {
+          return;
+        }
 
-      // 클릭된 카드에 'selected' 클래스 추가
-      const selectedCard = btn.closest('.vote-card');
-      if (selectedCard) {
-        selectedCard.classList.add('selected');
-      }
-      
-      // 모든 카드에 플립 클래스 추가
-      voteCards.forEach(card => {
-        card.classList.add('is-flipped');
+        // 클릭된 카드에 'selected' 클래스 추가
+        const selectedCard = btn.closest('.vote-card');
+        if (selectedCard) {
+          selectedCard.classList.add('selected');
+        }
+
+        // 모든 카드에 플립 클래스 추가
+        voteCards.forEach(card => {
+          card.classList.add('is-flipped');
+        });
+
+        // 투표 완료 상태 클래스 추가
+        voteContainer.classList.add('voted');
+
+        // 투표 후 프로그레스 바 애니메이션 실행
+        if (!animated) {
+          animateProgress(".progress01", 45);
+          animateProgress(".progress02", 35);
+          animateProgress(".progress03", 20);
+          animated = true;
+        }
       });
-
-      // 투표 완료 상태 클래스 추가
-      voteContainer.classList.add('voted');
-
-      // 투표 후 프로그레스 바 애니메이션 실행
-      if (!animated) {
-        animateProgress(".progress01", 45);
-        animateProgress(".progress02", 35);
-        animateProgress(".progress03", 20);
-        animated = true;
-      }
     });
-  });
 
-  // 'Vote Again' 버튼 클릭 이벤트
-  if (voteAgainBtn) {
-    voteAgainBtn.addEventListener('click', () => {
-      // 모든 카드에서 플립 및 선택 클래스 제거
-      voteCards.forEach(card => {
-        card.classList.remove('is-flipped');
-        card.classList.remove('selected');
+    // 'Vote Again' 버튼 클릭 이벤트
+    if (voteAgainBtn) {
+      voteAgainBtn.addEventListener('click', () => {
+        // 모든 카드에서 플립 및 선택 클래스 제거
+        voteCards.forEach(card => {
+          card.classList.remove('is-flipped');
+          card.classList.remove('selected');
+        });
+
+        // 투표 완료 상태 클래스 제거
+        voteContainer.classList.remove('voted');
+
+        // 프로그레스 바 초기화
+        $(".progress").val(0);
+        animated = false;
       });
-
-      // 투표 완료 상태 클래스 제거
-      voteContainer.classList.remove('voted');
-      
-      // 프로그레스 바 초기화
-      $(".progress").val(0);
-      animated = false;
-    });
+    }
   }
-}
 
-// 프로그레스바 애니메이션 함수를 DOMContentLoaded 리스너 내부에 정의
-function animateProgress(selector, targetValue) {
-  // jQuery가 로드되었는지 확인
-  if (window.jQuery) {
-    $({ val: 0 }).animate({ val: targetValue }, {
-      duration: 1000,
-      step: function (now) {
-        $(selector).val(Math.floor(now));
-      }
+  // 프로그레스바 애니메이션 함수를 DOMContentLoaded 리스너 내부에 정의
+  function animateProgress(selector, targetValue) {
+    // jQuery가 로드되었는지 확인
+    if (window.jQuery) {
+      $({ val: 0 }).animate({ val: targetValue }, {
+        duration: 1000,
+        step: function (now) {
+          $(selector).val(Math.floor(now));
+        }
       });
     }
   }
 
 }); // DOMContentLoaded 끝
+
+// 커스텀 커서 및 파티클 효과
+const cursor = document.querySelector(".cursor");
+const particles = [];
+const numParticles = 30;
+
+for (let i = 0; i < numParticles; i++) {
+  const particle = document.createElement("div");
+  particle.className = "particle";
+  document.body.appendChild(particle);
+  particles.push({
+    element: particle,
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    size: Math.random() * 5 + 5,
+    speed: Math.random() * 2 + 1,
+  });
+}
+
+function updateParticles() {
+  particles.forEach((p, index) => {
+    const nextParticle = particles[index + 1] || particles[0];
+    const dx = nextParticle.x - p.x;
+    const dy = nextParticle.y - p.y;
+    const angle = Math.atan2(dy, dx);
+    const distance = Math.min(Math.sqrt(dx * dx + dy * dy), 100);
+
+    p.x += Math.cos(angle) * p.speed;
+    p.y += Math.sin(angle) * p.speed;
+
+    p.element.style.transform = `translate3d(${p.x}px, ${p.y}px, 0) scale(${p.size})`;
+  });
+}
+
+function setupConfettiCursor() {
+  const contestWinnerSection = document.querySelector('.contest-winner');
+  if (!contestWinnerSection) return;
+
+  const hoverElements = contestWinnerSection.querySelectorAll('video');
+  hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+          particles.forEach(p => {
+              gsap.to(p.element, { 
+                  width: gsap.utils.random(10, 20),
+                  height: gsap.utils.random(8, 16)
+              });
+          });
+      });
+      el.addEventListener('mouseleave', () => {
+          particles.forEach(p => {
+              gsap.to(p.element, { 
+                  width: gsap.utils.random(6, 12),
+                  height: gsap.utils.random(4, 8)
+              });
+          });
+      });
+  });
+}
+
+
+function getGalleryOptions() {
+  // ...existing code...
+}
