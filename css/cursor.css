@@ -1,3 +1,7 @@
+.transparent-area {
+  cursor: none; 
+}
+
 canvas {
  position: fixed;
  top: 0;
