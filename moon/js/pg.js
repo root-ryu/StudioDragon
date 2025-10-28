@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "(min-width: 1440px)": function() {
         const winnerSections = document.querySelectorAll('.contest-winner .video-content');
         winnerSections.forEach((section, index) => {
-          const iframe = section.querySelector('iframe');
+          const video = section.querySelector('video');
           const awardInfo = section.querySelector('.award-info');
           const blur1 = section.querySelector('.blur-1');
           const blur2 = section.querySelector('.blur-2');
@@ -80,11 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // 데스크톱 애니메이션: 좌우 이동 있음
           tl.set(awardInfo, { xPercent: 0, autoAlpha: 0 });
-          tl.set(iframe, { scale: 0.2, xPercent: 80, autoAlpha: 0 });
+          tl.set(video, { scale: 0.2, xPercent: 80, autoAlpha: 0 });
           tl.set(blur1, { scale: 0.3, x: 300, y: 200, autoAlpha: 0 });
           tl.set(blur2, { scale: 0.4, x: -250, y: -150, autoAlpha: 0 });
 
-          tl.to(iframe, {
+          tl.to(video, {
             scale: 1,
             autoAlpha: 1,
             duration: 5,
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
               duration: 5,
               ease: "power1.inOut"
             }, 'start')
-            .to(iframe, {
+            .to(video, {
               xPercent: -50, // 왼쪽으로 이동
               duration: 5,
             }, 'end')
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "(min-width: 1024px) and (max-width: 1439px)": function() {
         const winnerSections = document.querySelectorAll('.contest-winner .video-content');
         winnerSections.forEach((section, index) => {
-          const iframe = section.querySelector('iframe');
+          const video = section.querySelector('video');
           const awardInfo = section.querySelector('.award-info');
           const blur1 = section.querySelector('.blur-1');
           const blur2 = section.querySelector('.blur-2');
@@ -134,11 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // 노트북 애니메이션: 좌우 이동 약간 줄임
           tl.set(awardInfo, { xPercent: 0, autoAlpha: 0 });
-          tl.set(iframe, { scale: 0.2, xPercent: 60, autoAlpha: 0 });
+          tl.set(video, { scale: 0.2, xPercent: 60, autoAlpha: 0 });
           tl.set(blur1, { scale: 0.3, x: 250, y: 150, autoAlpha: 0 });
           tl.set(blur2, { scale: 0.4, x: -200, y: -120, autoAlpha: 0 });
 
-          tl.to(iframe, {
+          tl.to(video, {
             scale: 1,
             autoAlpha: 1,
             duration: 5,
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
               duration: 5,
               ease: "power1.inOut"
             }, 'start')
-            .to(iframe, {
+            .to(video, {
               xPercent: -10, // 왼쪽으로 약간 이동
               duration: 5,
             }, 'end')
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "(max-width: 1023px)": function() {
         const winnerSections = document.querySelectorAll('.contest-winner .video-content');
         winnerSections.forEach((section, index) => {
-          const iframe = section.querySelector('iframe');
+          const video = section.querySelector('video');
           const awardInfo = section.querySelector('.award-info');
           const blur1 = section.querySelector('.blur-1');
           const blur2 = section.querySelector('.blur-2');
@@ -188,11 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // 모바일 애니메이션: 중앙 정렬, 좌우 이동 없음
           tl.set(awardInfo, { xPercent: 0, autoAlpha: 0 });
-          tl.set(iframe, { scale: 0.2, xPercent: 0, autoAlpha: 0 }); // 중앙에서 시작
+          tl.set(video, { scale: 0.2, xPercent: 0, autoAlpha: 0 }); // 중앙에서 시작
           tl.set(blur1, { scale: 0.3, x: 150, y: 100, autoAlpha: 0 }); // 이동 거리 축소
           tl.set(blur2, { scale: 0.4, x: -150, y: -100, autoAlpha: 0 });
 
-          tl.to(iframe, {
+          tl.to(video, {
             scale: 1,
             autoAlpha: 1,
             duration: 5,
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
               duration: 5,
               ease: "power1.inOut"
             }, 'start')
-            .to(iframe, {
+            .to(video, {
               xPercent: 0, // 이동 없음, 중앙 유지
               duration: 3,
             }, 'end')
@@ -345,6 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modifier: 1,
             slideShadows: false,
           },
+          autoplay: { delay:5000, disableOnInteraction: false },
           pagination: pagination ? { el: pagination, clickable: true } : undefined,
           breakpoints: {
             320: { slidesPerView: 1.5 },
@@ -399,6 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // 링크 클릭 허용 (Swiper의 기본 클릭 방지 해제)
           preventClicks: false,
           preventClicksPropagation: false,
+          autoplay: { delay: 5000, disableOnInteraction: false },
           pagination: pagination ? { el: pagination, clickable: true } : undefined,
           breakpoints: {
             320: { slidesPerView: 1 },
@@ -601,9 +603,6 @@ document.addEventListener('DOMContentLoaded', () => {
         1400: { slidesPerView: "auto" }
       }
     });
-
-    // 콘솔에 상태 로그 (디버깅용). 배포 시 주석 처리 가능
-    console.log('popularImgSwiper 초기화 됨', popularImgSwiper);
   }
 
   // 갤러리_new img swiper
@@ -877,66 +876,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 }); // DOMContentLoaded 끝
-
-// 커스텀 커서 및 파티클 효과
-const cursor = document.querySelector(".cursor");
-const particles = [];
-const numParticles = 30;
-
-for (let i = 0; i < numParticles; i++) {
-  const particle = document.createElement("div");
-  particle.className = "particle";
-  document.body.appendChild(particle);
-  particles.push({
-    element: particle,
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
-    size: Math.random() * 5 + 5,
-    speed: Math.random() * 2 + 1,
-  });
-}
-
-function updateParticles() {
-  particles.forEach((p, index) => {
-    const nextParticle = particles[index + 1] || particles[0];
-    const dx = nextParticle.x - p.x;
-    const dy = nextParticle.y - p.y;
-    const angle = Math.atan2(dy, dx);
-    const distance = Math.min(Math.sqrt(dx * dx + dy * dy), 100);
-
-    p.x += Math.cos(angle) * p.speed;
-    p.y += Math.sin(angle) * p.speed;
-
-    p.element.style.transform = `translate3d(${p.x}px, ${p.y}px, 0) scale(${p.size})`;
-  });
-}
-
-function setupConfettiCursor() {
-  const contestWinnerSection = document.querySelector('.contest-winner');
-  if (!contestWinnerSection) return;
-
-  const hoverElements = contestWinnerSection.querySelectorAll('video');
-  hoverElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-          particles.forEach(p => {
-              gsap.to(p.element, { 
-                  width: gsap.utils.random(10, 20),
-                  height: gsap.utils.random(8, 16)
-              });
-          });
-      });
-      el.addEventListener('mouseleave', () => {
-          particles.forEach(p => {
-              gsap.to(p.element, { 
-                  width: gsap.utils.random(6, 12),
-                  height: gsap.utils.random(4, 8)
-              });
-          });
-      });
-  });
-}
-
-
-function getGalleryOptions() {
-  // ...existing code...
-}

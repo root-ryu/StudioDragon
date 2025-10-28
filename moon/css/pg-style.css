@@ -198,10 +198,11 @@ main {
   z-index: 0;
 }
 
-.contest-winner .video-wrap iframe {
+.contest-winner .video-wrap video {
   border-radius: 20px;
   height: 720px;
   aspect-ratio: 9/16;
+  object-fit: cover;
 }
 
 .contest-winner .award-info {
@@ -562,9 +563,6 @@ main {
   margin-bottom: 40px;
 }
 
-/* .creativeGallery .titlebox .title {}  removed (empty) */
-/* .creativeGallery .title h2 {} removed (empty) */
-
 .creativeGallery .titlebox .category {
   display: flex;
   flex-direction: row;
@@ -620,9 +618,6 @@ main {
   width: 100%;
 }
 
-
-
-
 .creativeGallery .fanarts .wrap {
   width: 100%;
   display: flex;
@@ -667,6 +662,8 @@ main {
   pointer-events: none;
   user-select: none;
 }
+
+.creativeGallery .fanarts .img_popular ul.swiper-wrapper .fan-img-wrap .fan-img{}
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .swiper-slide .info-overlay {
   border-radius: 20px;
@@ -781,8 +778,6 @@ main {
   overflow: hidden;
 }
 
-/* .creativeGallery .fanvideos .swiper {}  removed (empty rule) */
-
 .creativeGallery .fanvideos ul.swiper-wrapper .swiper-slide {
   display: flex;
   justify-content: center;
@@ -802,7 +797,7 @@ main {
   height: 669px;
   overflow: hidden;
   aspect-ratio: 376/669;
-  background: #000 url('../asset/temp_img.webp') center/cover no-repeat;
+  /* background: #000 url('../asset/temp_img.webp') center/cover no-repeat; */
  -webkit-box-reflect: below 0px linear-gradient(transparent 90%, rgba(13, 3, 28, 0.5) 100%);
   pointer-events: auto;
   user-select: none;
