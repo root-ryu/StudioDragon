@@ -808,7 +808,7 @@ footer .footer_bottom .footer_brand {
 footer .footer_bottom .footer_brand .footer_logo {
     width: 347px;
     height: 127px;
-    background-image: url(/asset/logo_w.png);
+    background-image: url(../asset/logo_w.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -917,7 +917,7 @@ footer.ver_white .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_f
 }
 
 footer.ver_white .footer_bottom .footer_brand .footer_logo {
-    background-image: url(/asset/logo_color.png);
+    background-image: url(../asset/logo_color.png);
 }
 
 footer.ver_white .footer_bottom .footer_brand .footer_sns .sns_link {
