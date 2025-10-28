@@ -90,6 +90,12 @@ body {
     transition: .5s;
     cursor: pointer;
 }
+.circlebody>#circle article.face1{
+    box-shadow: 0 0 20px 10px rgb(255, 255, 255, .3);
+}
+.circlebody>#circle article .poster .br{
+    opacity: 1;
+}
 
 .circlebody>#circle article .poster>img:hover {
     background: rgba(255, 255, 255, .15);
@@ -363,7 +369,7 @@ body {
     font-size: 26px;
     font-weight: 400;
     text-transform: uppercase;
-    cursor: none;
+    /* cursor: none; */
     display: flex;
     align-items: center;
     gap: 10px;
