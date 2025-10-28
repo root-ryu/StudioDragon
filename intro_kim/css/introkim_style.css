@@ -94,7 +94,7 @@ section {
     text-align: center;
     gap: 10px;
     /* 요소 간 간격 */
-    z-index: 4;
+    z-index: 3;
     width: 100%;
     max-width: 800px;
     color: var(--Wcolor);

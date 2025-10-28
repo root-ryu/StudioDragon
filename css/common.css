@@ -50,6 +50,8 @@
     --font-1920-footer-info: 400 20px/100% "Assistant-Regular", sans-serif;
     /* 푸터 회사정보 */
     --font-1920-headline-56: 700 56px/130% "Assistant-Bold", sans-serif;
+    /* 배너 전용 대형 헤드라인 */
+    --font-1920-headline-40: 700 40px/130% "Assistant-Bold", sans-serif;
     /* 주요 섹션 헤드라인 - h2 태그 */
     --font-1920-title-B-40: 700 40px/130% "Assistant-Bold", sans-serif;
     /* 하위 섹션 타이틀 */
@@ -104,7 +106,63 @@
     --font-440-body-caption-10: 400 10px/130% "Assistant-Regular", sans-serif;
     /* 정보 (날짜, 제작진정보 등) */
 }
+.t{
+    position: relative;
+}
+.t::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: red; /* color → background-color */
+    opacity: .7;
+    border-radius: 50%;
+    right: 40px;
+    top: 35px;
+}
 
+.t_ir{
+    position: relative;
+}
+.t_ir::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: red; /* color → background-color */
+    opacity: .7;
+    border-radius: 50%;
+    right: 60px;
+    top: 35px;
+}
+.t_small{
+    position: relative;
+}
+.t_small::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: red; /* color → background-color */
+    opacity: .7;
+    border-radius: 50%;
+    right: -13px;
+    top: 0;
+}
+.t_the{
+    position: relative;
+}
+.t_the::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: red; /* color → background-color */
+    opacity: .7;
+    border-radius: 50%;
+    right: 140px;
+    top: 5px;
+}
 
 body {
     font-family: "Assistant", sans-serif;
@@ -806,7 +864,7 @@ footer .footer_bottom .footer_brand {
 footer .footer_bottom .footer_brand .footer_logo {
     width: 347px;
     height: 127px;
-    background-image: url(/asset/logo_w.png);
+    background-image: url(../asset/logo_w.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -915,7 +973,7 @@ footer.ver_white .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_f
 }
 
 footer.ver_white .footer_bottom .footer_brand .footer_logo {
-    background-image: url(/asset/logo_color.png);
+    background-image: url(../asset/logo_color.png);
 }
 
 footer.ver_white .footer_bottom .footer_brand .footer_sns .sns_link {
