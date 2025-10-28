@@ -187,8 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
           });
 
           // 모바일 애니메이션: 중앙 정렬, 좌우 이동 없음
-          tl.set(awardInfo, { xPercent: 0, autoAlpha: 0 });
-          tl.set(video, { scale: 0.2, xPercent: 0, autoAlpha: 0 }); // 중앙에서 시작
+          tl.set(awardInfo, { xPercent: 0, autoAlpha: 0, x: 0 });
+          tl.set(video, { scale: 0.2, xPercent: 0, autoAlpha: 0, x:0 }); // 중앙에서 시작
           tl.set(blur1, { scale: 0.3, x: 150, y: 100, autoAlpha: 0 }); // 이동 거리 축소
           tl.set(blur2, { scale: 0.4, x: -150, y: -100, autoAlpha: 0 });
 
@@ -209,11 +209,13 @@ document.addEventListener('DOMContentLoaded', () => {
             .to(video, {
               xPercent: 0, // 이동 없음, 중앙 유지
               duration: 3,
+              x: -24,
             }, 'end')
             .to(awardInfo, {
               autoAlpha: 1,
               xPercent: 0, // 중앙에 표시
               duration: 3,
+              x: 24,
               ease: "power1.inOut"
             }, "+=1")
             .to({}, { duration: 7 }); // 짧게 머무름
@@ -356,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
         spaceBetween: 52,
         loop: false,
         autoplay: {
-          delay: 3000, //3초 = 3000
+          delay: 4000, //4초 = 4000
           disableOnInteraction: false,
         },
         centeredSlides: false,

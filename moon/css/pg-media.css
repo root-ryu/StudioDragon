@@ -1,39 +1,67 @@
 @charset "utf-8";
 
-@media (max-width: 1580px) {
+@media  screen and (max-width:1760px) {
   .sect_inner{padding-inline: 100px;}
-  .hero .imgbox {right: 100px;
-  position: absolute;
-  right: 100px;
-  top: 80px;}
-  .contest-winner .decoImg{width: 190px;
-}
+  .hero .imgbox {
+    right: 100px;}
+  .contest-winner .decoImg{width: 190px;}
 }
 @media (max-width: 1450px) {
   .sect_inner{padding-inline: 100px;}
+  .hero li{font-size: 86px;}
   .hero .imgbox {right: 100px;}
   .smiling-emoji{width: 280px;}
-  .contest-winner .decoImg{width: 190px;
-}
+  .title h2{font-size: 42px;}
+  .contest-winner .top {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .contest-winner .decoImg{
+    width: 120px;
+    position: relative;
+  }
 }
 
 
 /* --- 테블릿, 작은 데스크탑 --- */
-@media (max-width: 1024px) {
+@media  screen and (max-width: 1024px) {
   /* 여기에 1024px 이하일 때 적용될 스타일을 작성하세요. */
   .sect_inner{padding-inline: 80px;}
+  h2{font: var(--font-1024-headline-40);}
   .hero li{font-size: 82px;}
-  .hero .imgbox {right: 80px;
-  }
+  .hero .imgbox {right: 80px;}
   .smiling-emoji{width: 158px;}
-  .contest-winner .decoImg{width: 190px;}
+  .contest-winner .top{gap: 24px;}
+  .contest-winner .decoImg{width: 89px;}
+  .contest-winner .title{gap: 12px;}
+  .contest-winner .title p {font-size: 28px;}
+  .contest-winner .video-wrap video{width: 384px;}
+  .contest-winner .award-info{width: 430px; gap: 34px;}
+  .contest-winner .award {font-size: 54px;}
+  .contest-winner ul.subtitle li b{font-size: 24px;}
+  .contest-winner ul.subtitle li p{font-size: 18px;}
+  .contest-winner #goldimg, .contest-winner #silverimg, .contest-winner #popularimg{width: 72px;}
+  .contest-winner .circles .blur-1{width: 430px;}
+  .contest-winner .circles .blur-2{width: 559px;}
+  .running-contest .con{
+  }
 }
 
 
 /* --- 모바일 --- */
-@media (max-width: 440px) {
+@media  screen and (max-width: 440px) {
   /* 여기에 440px 이하일 때 적용될 스타일을 작성하세요. */
   .sect_inner{padding-inline: 30px;}
+  .title h2{font: var(--font-440-headline-30);} 
   .contest-winner .decoImg{width: 190px;}
+  .hero li{font-size: 40px;}
   .hero .imgbox {right: 30px;}
+  .repeat_area{
+    position: absolute;
+    top: 0; right: 0;
+  }
+  .smiling-emoji{width: 76px;
+  position: absolute;
+    top: 0; right: 0;}
 }

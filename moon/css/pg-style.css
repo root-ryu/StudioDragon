@@ -41,8 +41,10 @@ button {
 
 main {
   /* position: relative; */
-  width: 100%;
+  width: 100vw;
+  font-family: "Assistant", sans-serif;
 }
+
 .sect_inner{
   width: 100%;
   padding-inline: 200px;
@@ -50,7 +52,7 @@ main {
 
 /* GSAP용 기본 상태 (필요 시) -> 빈 규칙 제거로 린트 경고 방지 */
 
-.title h2 {
+h2 {
   color: var(--Wcolor);
   text-align: center;
   font: var(--font-1920-headline-56);
@@ -87,7 +89,7 @@ main {
   text-align: left;
   font-family: "Pretendard", sans-serif;
   font-size: 100px;
-  line-height: 110%;
+  line-height: 114%;
   font-weight: 800;
   -webkit-text-stroke: 1px #883ffe;
   color: transparent;
@@ -106,7 +108,8 @@ main {
   background: url("../asset/smiling.png") center/cover;
   width: 280px;
   aspect-ratio: 1;
-  animation: floating-40 forwards infinite 3s;
+  /* animation: floating-40 forwards infinite 3s; */
+  /* js로 대체함 */
 }
 
 @keyframes floating-20 {
@@ -148,21 +151,21 @@ main {
 .contest-winner .top {
   display: flex;
   justify-content: center;
-  gap: 115px;
+  gap: 30px;
   width: 100%;
   position: relative;
 }
 
 .contest-winner .decoImg {
+  background: url(../../moon/asset/goldcup.png) center/cover;
   width: 201px;
-  height: 229px;
   aspect-ratio: 201/229;
   position: absolute;
   top: 0;
   left: 0px;
-  background: url(../../moon/asset/goldcup.png) center/cover;
   animation: floating-20 forwards infinite 5s;
 }
+
 
 .contest-winner .title {
   gap: 16px;
@@ -199,7 +202,7 @@ main {
 }
 
 .contest-winner .video-wrap video {
-  border-radius: 20px;
+  border-radius: 32px;
   height: 720px;
   aspect-ratio: 9/16;
   object-fit: cover;
@@ -242,11 +245,11 @@ main {
   gap: 8px;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 687px;
+  width: 100%;
   position: relative;
 }
 
-.contest-winner ul.subtitle li p {
+.contest-winner ul.subtitle li b {
   color: var(--Wcolor);
   text-align: left;
   font: 300 30px/130% "Assistant", sans-serif;
@@ -254,46 +257,38 @@ main {
   align-self: stretch;
 }
 
-.contest-winner ul.subtitle li em {
+.contest-winner ul.subtitle li p {
   color: #acacac;
   text-align: left;
   font: 300 30px/130% "Assistant", sans-serif;
   position: relative;
   align-self: stretch;
 }
-
-.contest-winner .goldimg {
-  background: url(../../moon/asset/gold.png) center/cover;
-  flex-shrink: 0;
-  width: 120px;
-  height: 141px;
+#goldimg, #silverimg, #popularimg{
   position: absolute;
   right: 0;
   top: 0;
-  aspect-ratio: 120/140;
 }
 
-.contest-winner .silverimg {
-  background: url(../../moon/asset/silver.png) center/cover;
+.contest-winner #goldimg {
+  background: url(../../moon/asset/gold.png) center/cover;
   width: 120px;
-  height: 141px;
-  position: absolute;
-  right: 0;
-  top: 0;
   aspect-ratio: 120/141;
 }
 
-.contest-winner .popularimg {
+.contest-winner #silverimg {
+  background: url(../../moon/asset/silver.png) center/cover;
+  width: 120px;
+  aspect-ratio: 120/141;
+}
+
+.contest-winner #popularimg {
   background: url(../../moon/asset/popular.png) center/cover;
   width: 120px;
-  height: 170px;
-  position: absolute;
-  right: 0;
-  top: 0;
   aspect-ratio: 120/170;
 }
 
-.contest-winner .video-wrap .circles {
+.contest-winner .circles {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -303,25 +298,25 @@ main {
   left: 0;
 }
 
-.contest-winner .video-wrap .circles .blur-1 {
+.contest-winner .circles .blur-1 {
   background: radial-gradient(closest-side,
       rgba(63, 41, 99, 1) 0%,
       rgba(13, 3, 28, 0) 100%);
   border-radius: 50%;
-  width: 725.88px;
-  height: 725.88px;
+  width: 726px;
+  aspect-ratio: 1;
   position: absolute;
   left: -140px;
   bottom: -200px;
 }
 
-.contest-winner .video-wrap .circles .blur-2 {
+.contest-winner .circles .blur-2 {
   background: radial-gradient(closest-side,
       rgba(63, 41, 99, 1) 0%,
       rgba(13, 3, 28, 0) 100%);
   border-radius: 50%;
-  width: 893.87px;
-  height: 893.87px;
+  width: 894px;
+  aspect-ratio: 1;
   position: absolute;
   right: -140px;
   top: -300px;
@@ -346,17 +341,10 @@ main {
 .running-contest .con {
   display: flex;
   flex-direction: column;
-  gap: 0px;
   align-items: center;
   justify-content: center;
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 772px;
   position: relative;
-  overflow: hidden;
-  background: url(../../moon/asset/bg-runningContest.jpg) center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url(../../moon/asset/bg-runningContest.jpg) center/ cover no-repeat;
 }
 
 .running-contest .info {
@@ -715,7 +703,7 @@ main {
   gap: 12px;
   color: #ffffff;
   text-align: left;
-  font-family: "Assistant-SemiBold", sans-serif;
+  font-family: "Assistant", sans-serif;
   font-size: 20px;
   line-height: 100%;
   font-weight: 600;
