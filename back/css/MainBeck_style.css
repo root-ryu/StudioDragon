@@ -90,7 +90,10 @@ body {
     transition: .5s;
     cursor: pointer;
 }
-.circlebody>#circle article img.br{
+.circlebody>#circle article.face1{
+    box-shadow: 0 0 20px 10px rgb(255, 255, 255, .3);
+}
+.circlebody>#circle article .poster .br{
     opacity: 1;
 }
 
