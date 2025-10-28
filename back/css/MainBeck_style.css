@@ -90,6 +90,9 @@ body {
     transition: .5s;
     cursor: pointer;
 }
+.circlebody>#circle article img.br{
+    opacity: 1;
+}
 
 .circlebody>#circle article .poster>img:hover {
     background: rgba(255, 255, 255, .15);

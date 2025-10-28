@@ -106,7 +106,63 @@
     --font-440-body-caption-10: 400 10px/130% "Assistant-Regular", sans-serif;
     /* 정보 (날짜, 제작진정보 등) */
 }
+.t{
+    position: relative;
+}
+.t::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: red; /* color → background-color */
+    opacity: .7;
+    border-radius: 50%;
+    right: 40px;
+    top: 35px;
+}
 
+.t_ir{
+    position: relative;
+}
+.t_ir::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: red; /* color → background-color */
+    opacity: .7;
+    border-radius: 50%;
+    right: 60px;
+    top: 35px;
+}
+.t_small{
+    position: relative;
+}
+.t_small::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: red; /* color → background-color */
+    opacity: .7;
+    border-radius: 50%;
+    right: -13px;
+    top: 0;
+}
+.t_the{
+    position: relative;
+}
+.t_the::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: red; /* color → background-color */
+    opacity: .7;
+    border-radius: 50%;
+    right: 140px;
+    top: 5px;
+}
 
 body {
     font-family: "Assistant", sans-serif;
