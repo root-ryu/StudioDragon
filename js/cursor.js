@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext("2d");
 
     let w, h;
+    let cursorActive = true; // 커서 활성화 상태
+
     function resize() {
         /*    w = canvas.width = window.innerWidth;
            h = canvas.height = window.innerHeight; */
@@ -17,6 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener("resize", resize);
     resize();
+
+    // GigTit 섹션 관찰 (스크롤 시 커서 비활성화)
+    const gigTitSection = document.querySelector('.GigTit');
+    if (gigTitSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // GigTit이 화면에 보이면 커서 비활성화
+                    cursorActive = false;
+                    canvas.style.opacity = '0';
+                    canvas.style.transition = 'opacity 0.5s ease';
+                }
+            });
+        }, {
+            threshold: 0.3 // 30% 보이면 비활성화
+        });
+        observer.observe(gigTitSection);
+    }
 
     // 포인트 배열 및 초기 좌표 (용처럼 길게)
     const trail = [];
@@ -79,6 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateTrail() {
+        // 커서가 비활성화되면 trail 업데이트 중지
+        if (!cursorActive) return;
+        
         // 점성 보간 (용처럼 부드럽게 따라오게)
         smooth.x += (mouse.x - smooth.x) * 0.15; // 더 부드럽게
         smooth.y += (mouse.y - smooth.y) * 0.15;
@@ -105,6 +128,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function draw() {
+        // 커서가 비활성화되면 canvas 지우기만
+        if (!cursorActive) {
+            ctx.clearRect(0, 0, w, h);
+            requestAnimationFrame(draw);
+            return;
+        }
+        
         ctx.clearRect(0, 0, w, h);
         const now = Date.now();
 

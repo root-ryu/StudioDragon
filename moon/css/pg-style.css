@@ -198,10 +198,11 @@ main {
   z-index: 0;
 }
 
-.contest-winner .video-wrap iframe {
+.contest-winner .video-wrap video {
   border-radius: 20px;
   height: 720px;
   aspect-ratio: 9/16;
+  object-fit: cover;
 }
 
 .contest-winner .award-info {
@@ -562,10 +563,6 @@ main {
   margin-bottom: 40px;
 }
 
-.creativeGallery .titlebox .title {}
-
-.creativeGallery .title h2 {}
-
 .creativeGallery .titlebox .category {
   display: flex;
   flex-direction: row;
@@ -621,9 +618,6 @@ main {
   width: 100%;
 }
 
-
-
-
 .creativeGallery .fanarts .wrap {
   width: 100%;
   display: flex;
@@ -668,6 +662,8 @@ main {
   pointer-events: none;
   user-select: none;
 }
+
+.creativeGallery .fanarts .img_popular ul.swiper-wrapper .fan-img-wrap .fan-img{}
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .swiper-slide .info-overlay {
   border-radius: 20px;
@@ -724,12 +720,7 @@ main {
 }
 
 
-.creativeGallery .fanarts .img_new .swiper ul.swiper-wrapper {
-  /* display: flex;
-  flex-direction: row;
-  gap: 10px; */
-  /* 스와이퍼 정렬 수정 */
-}
+/* .creativeGallery .fanarts .img_new .swiper ul.swiper-wrapper { } removed (empty placeholder) */
 
 
 
@@ -784,12 +775,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 100px;
-}
-
-.creativeGallery .fanvideos ul.swiper-wrapper {
-  /*   display: flex;
-  flex-direction: row; */
-  /* gap: 140px; */
+  overflow: hidden;
 }
 
 .creativeGallery .fanvideos ul.swiper-wrapper .swiper-slide {
@@ -811,9 +797,19 @@ main {
   height: 669px;
   overflow: hidden;
   aspect-ratio: 376/669;
+  /* background: #000 url('../asset/temp_img.webp') center/cover no-repeat; */
  -webkit-box-reflect: below 0px linear-gradient(transparent 90%, rgba(13, 3, 28, 0.5) 100%);
-  pointer-events: none;
+  pointer-events: auto;
   user-select: none;
+}
+.creativeGallery .fanvideos .video_popular ul.swiper-wrapper figure video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1; /* 비디오가 배경 위로 오도록 보장 */
+  pointer-events: auto; /* 호버 이벤트를 받을 수 있도록 설정 */
 }
 .creativeGallery .fanvideos .video_new{
   margin-bottom: 30px;
@@ -826,10 +822,36 @@ main {
   height: 617px;
   overflow: hidden;
   aspect-ratio: 347/617;
+  background: #000 url('../asset/temp_img.webp') center/cover no-repeat;
   -webkit-box-reflect: below 0px linear-gradient(transparent 90%, rgba(13, 3, 28, 0.5) 100%);
-  pointer-events: none;
+  pointer-events: auto;
   user-select: none;
 }
+.creativeGallery .fanvideos .video_new ul.swiper-wrapper figure video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1; /* 비디오가 배경 위로 오도록 보장 */
+  pointer-events: auto;
+}
+
+/* 비디오가 준비되면(로드 완료) 배경 placeholder 제거 */
+.creativeGallery .fanvideos figure.is-ready {
+  background: none !important;
+}
+
+/* 비디오 컨트롤러 스타일: 기본 숨김, 활성 슬라이드 호버 시 표시 */
+.creativeGallery .fanvideos video::-webkit-media-controls-panel {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.creativeGallery .fanvideos .swiper-slide-active video:hover::-webkit-media-controls-panel {
+  opacity: 1;
+}
+
 
 .fanvideos .video_popular .swiper-pagination {
   position: absolute;
@@ -843,10 +865,7 @@ main {
 
 /* 비디오 대체 이미지 - 추후 수정 */
 
-.creativeGallery .fanvideos .video_popular ul.swiper-wrapper figure,
-.creativeGallery .fanvideos .video_new ul.swiper-wrapper figure {
-  background: url(../../moon/asset/temp_img.webp) center/cover;
-}
+/* (placeholder removed) */
 
 
 /* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide .info-overlay {

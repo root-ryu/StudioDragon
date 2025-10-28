@@ -2,7 +2,6 @@
 
 @media (max-width: 1580px) {
   .sect_inner{padding-inline: 100px;}
-  .hero li {}
   .hero .imgbox {right: 100px;
   position: absolute;
   right: 100px;
@@ -12,7 +11,6 @@
 }
 @media (max-width: 1450px) {
   .sect_inner{padding-inline: 100px;}
-  .hero li {}
   .hero .imgbox {right: 100px;}
   .smiling-emoji{width: 280px;}
   .contest-winner .decoImg{width: 190px;
@@ -37,6 +35,5 @@
   /* 여기에 440px 이하일 때 적용될 스타일을 작성하세요. */
   .sect_inner{padding-inline: 30px;}
   .contest-winner .decoImg{width: 190px;}
-  .smiling-emoji{}
   .hero .imgbox {right: 30px;}
 }
