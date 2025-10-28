@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
         spaceBetween: 52,
         loop: false,
         autoplay: {
-          delay: 3000, //3초 = 3000
+          delay: 4000, //4초 = 4000
           disableOnInteraction: false,
         },
         centeredSlides: false,
