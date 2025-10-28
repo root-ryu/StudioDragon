@@ -293,7 +293,11 @@ document.addEventListener('DOMContentLoaded', () => {
             modifier: 0.7,
             slideShadows: false,
           },
-          autoplay: { delay: 5000, disableOnInteraction: false },
+          autoplay: { 
+            delay: 3000,
+            disableOnInteraction: false,
+
+          },
           pagination: pagination ? { el: pagination, clickable: true } : undefined,
           breakpoints: {
             320: { slidesPerView: 1.5 },
@@ -313,7 +317,11 @@ document.addEventListener('DOMContentLoaded', () => {
           loopAdditionalSlides: 7,
           grabCursor: true,
           centeredSlides: true,
-          autoplay: { delay: 2500, disableOnInteraction: false },
+          autoplay: { 
+            delay: 3000,
+            disableOnInteraction: false,
+
+          },
           pagination: pagination ? { el: pagination, clickable: true } : undefined,
           breakpoints: {
             320: { slidesPerView: 1 },

@@ -653,7 +653,9 @@ main {
 }
 
 .creativeGallery .fanarts .img_popular ul.swiper-wrapper .fan-img-wrap .fan-img {
-  background: url(../../moon/asset/fanimg_1_po.png) center/cover;
+  /* background: url(../../moon/asset/fanimg_1_po.png) center/cover; */
+  object-fit: cover;
+  background-position: center;
   border-radius: 20px;
   width: 823px;
   height: 523px;
@@ -797,7 +799,6 @@ main {
   height: 669px;
   overflow: hidden;
   aspect-ratio: 376/669;
-  /* background: #000 url('../asset/temp_img.webp') center/cover no-repeat; */
  -webkit-box-reflect: below 0px linear-gradient(transparent 90%, rgba(13, 3, 28, 0.5) 100%);
   pointer-events: auto;
   user-select: none;
@@ -996,7 +997,12 @@ main {
   height: 100%;
   position: relative; /* info-overlay 기준 */
 }
-
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  object-position: center;
+}
 /* 커뮤니티 갤러리: Today 슬라이드별 개별 이미지 지정 */
 .community .articles .comm_today .comm_gallery .swiper-wrapper .swiper-slide:nth-child(1) {
   background-image: url(../../moon/asset/comm-img_1.jpg);
@@ -1014,22 +1020,6 @@ main {
   background-image: url(../../moon/asset/comm-img_5.jpg);
 }
 
-/* 커뮤니티 갤러리: Weekly 슬라이드별 개별 이미지 지정 (순서 섞음) */
-.community .articles .comm_weekly .comm_gallery .swiper-wrapper .swiper-slide:nth-child(1) {
-  background-image: url(../../moon/asset/comm-img_3.jpg);
-}
-.community .articles .comm_weekly .comm_gallery .swiper-wrapper .swiper-slide:nth-child(2) {
-  background-image: url(../../moon/asset/comm-img_5.jpg);
-}
-.community .articles .comm_weekly .comm_gallery .swiper-wrapper .swiper-slide:nth-child(3) {
-  background-image: url(../../moon/asset/comm-img_1.jpg);
-}
-.community .articles .comm_weekly .comm_gallery .swiper-wrapper .swiper-slide:nth-child(4) {
-  background-image: url(../../moon/asset/comm-img_2.jpg);
-}
-.community .articles .comm_weekly .comm_gallery .swiper-wrapper .swiper-slide:nth-child(5) {
-  background-image: url(../../moon/asset/comm-img_4.jpg);
-}
 
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide .info-overlay {
   width: 100%;
