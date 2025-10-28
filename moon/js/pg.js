@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
       grabCursor: true,     // 커서가 잡는 모양
       centeredSlides: true,
       autoplay: {
-        delay: 2500, //2.5초 = 2500
+        delay: 3000, //3초 = 3000
         disableOnInteraction: false,
       },
       observer: true,

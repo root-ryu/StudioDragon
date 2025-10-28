@@ -727,7 +727,9 @@ main {
 
 
 .creativeGallery .fanarts .img_new ul.swiper-wrapper .fan-img {
-  background: url(../../moon/asset/fanimg_1_po.png) center/cover;
+  background-color: #444;
+  object-fit: cover;
+  background-position: center;
   border-radius: 20px;
   display: flex;
   flex-direction: row;
