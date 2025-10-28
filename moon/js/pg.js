@@ -339,7 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return {
           effect: 'coverflow',
           loop: true,
-          loopAdditionalSlides: 10,
           grabCursor: true,
           centeredSlides: true,
           initialSlide: 1,
@@ -353,7 +352,13 @@ document.addEventListener('DOMContentLoaded', () => {
             modifier: 1,
             slideShadows: false,
           },
-          autoplay: { delay:5000, disableOnInteraction: false },
+          autoplay: {
+            delay: 10000,
+            disableOnInteraction: false,
+          },
+          // touchRatio: 1.5, // 기본값 1, 더 크게 하면 민감도 증가
+          // threshold: 10, //기본값 0, 픽셀 단위로 최소 이동 거리
+          // longSwipesRatio: 0.3, //기본값 0.5, 더 작게 하면 짧은 드래그에도 넘어감
           pagination: pagination ? { el: pagination, clickable: true } : undefined,
           breakpoints: {
             320: { slidesPerView: 1.5 },
@@ -364,34 +369,55 @@ document.addEventListener('DOMContentLoaded', () => {
           observer: true,
           observeParents: true,
           on: {
+            reachEnd: function() {
+              this.slideTo(0);
+              if (this.pagination && typeof this.pagination.render === 'function') {
+                this.pagination.render();
+                this.pagination.update();
+              }
+            },
             slideChange: function () {
-              // 모든 비디오를 일시정지
+              // 모든 비디오를 일시정지하고 처음으로 되돌림
               this.slides.forEach(slide => {
                 const video = slide.querySelector('video');
-                if (video && !video.paused) {
+                if (video) {
                   video.pause();
+                  video.currentTime = 0;
+                  video.loop = false; // 비활성 슬라이드는 반복 중지
                 }
               });
+              if (this.pagination && typeof this.pagination.update === 'function') {
+                this.pagination.update();
+              }
             },
             slideChangeTransitionEnd: function () {
-              // 활성 슬라이드의 비디오만 재생
+              // 활성 슬라이드의 비디오만 재생 및 반복
               const activeSlide = this.slides[this.activeIndex];
               const activeVideo = activeSlide.querySelector('video');
               if (activeVideo) {
+                activeVideo.loop = true; // 활성 슬라이드만 반복 설정
                 activeVideo.play().catch(() => {
                   // 자동 재생이 차단된 경우를 대비
                 });
               }
+              // 직접 슬라이드 시에도 pagination을 강제로 update
+              if (this.pagination && typeof this.pagination.render === 'function') {
+                this.pagination.render();
+              }
+              if (this.pagination && typeof this.pagination.update === 'function') {
+                this.pagination.update();
+              }
             },
             init: function () {
-              // 초기 로드 시 활성 슬라이드의 비디오 재생
+              // 초기 로드 시 활성 슬라이드의 비디오 재생 및 반복
               const activeSlide = this.slides[this.activeIndex];
               const activeVideo = activeSlide.querySelector('video');
               if (activeVideo) {
-                // 로드 핸들러가 이미 재생을 시도하므로 여기서는 로드될 때까지 기다릴 수 있음
-                activeVideo.addEventListener('canplay', () => {
-                  activeVideo.play().catch(() => {});
-                }, { once: true });
+                activeVideo.loop = true;
+                activeVideo.play().catch(() => {});
+              }
+              if (this.pagination && typeof this.pagination.update === 'function') {
+                this.pagination.update();
               }
             }
           }
@@ -402,13 +428,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return {
           effect: 'slide',
           loop: true,
-          loopAdditionalSlides: 10,
           grabCursor: true,
           centeredSlides: true, // 가운데 정렬 추가
           // 링크 클릭 허용 (Swiper의 기본 클릭 방지 해제)
           preventClicks: false,
           preventClicksPropagation: false,
-          autoplay: { delay: 5000, disableOnInteraction: false },
+          autoplay: {
+            delay: 10000,
+            disableOnInteraction: false,
+          },
+          // touchRatio: 1.5, // 기본값 1, 더 크게 하면 민감도 증가
+          // threshold: 10, //기본값 0, 픽셀 단위로 최소 이동 거리
+          // longSwipesRatio: 0.3, //기본값 0.5, 더 작게 하면 짧은 드래그에도 넘어감
           pagination: pagination ? { el: pagination, clickable: true } : undefined,
           breakpoints: {
             320: { slidesPerView: 1 },
@@ -420,33 +451,55 @@ document.addEventListener('DOMContentLoaded', () => {
           observer: true,
           observeParents: true,
           on: {
+            reachEnd: function() {
+              this.slideTo(0);
+              if (this.pagination && typeof this.pagination.render === 'function') {
+                this.pagination.render();
+                this.pagination.update();
+              }
+            },
             slideChange: function () {
-              // 모든 비디오를 일시정지
+              // 모든 비디오를 일시정지하고 처음으로 되돌림
               this.slides.forEach(slide => {
                 const video = slide.querySelector('video');
-                if (video && !video.paused) {
+                if (video) {
                   video.pause();
+                  video.currentTime = 0;
+                  video.loop = false; // 비활성 슬라이드는 반복 중지
                 }
               });
+              if (this.pagination && typeof this.pagination.update === 'function') {
+                this.pagination.update();
+              }
             },
             slideChangeTransitionEnd: function () {
-              // 활성 슬라이드의 비디오만 재생
+              // 활성 슬라이드의 비디오만 재생 및 반복
               const activeSlide = this.slides[this.activeIndex];
               const activeVideo = activeSlide.querySelector('video');
               if (activeVideo) {
+                activeVideo.loop = true; // 활성 슬라이드만 반복 설정
                 activeVideo.play().catch(() => {
                   // 자동 재생이 차단된 경우를 대비
                 });
               }
+              // 직접 슬라이드 시에도 pagination을 강제로 update
+              if (this.pagination && typeof this.pagination.render === 'function') {
+                this.pagination.render();
+              }
+              if (this.pagination && typeof this.pagination.update === 'function') {
+                this.pagination.update();
+              }
             },
             init: function () {
-              // 초기 로드 시 활성 슬라이드의 비디오 재생
+              // 초기 로드 시 활성 슬라이드의 비디오 재생 및 반복
               const activeSlide = this.slides[this.activeIndex];
               const activeVideo = activeSlide.querySelector('video');
               if (activeVideo) {
-                activeVideo.addEventListener('canplay', () => {
-                  activeVideo.play().catch(() => {});
-                }, { once: true });
+                activeVideo.loop = true;
+                activeVideo.play().catch(() => {});
+              }
+              if (this.pagination && typeof this.pagination.update === 'function') {
+                this.pagination.update();
               }
             }
           }
@@ -586,7 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loopAdditionalSlides: 5,
       grabCursor: true,     // 커서가 잡는 모양
       centeredSlides: true, // 가운데 슬라이드 중심
-      initialSlide: 2,
+      initialSlide: 1,
       spaceBetween: -300,
       coverflowEffect: {
         rotate: 80,   // 회전 각도
@@ -662,7 +715,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 시각 효과: coverflow (회전, 깊이감을 줌)
       effect: 'coverflow',
       loop: true,           // 무한 루프
-      loopAdditionalSlides: 10,
+      loopAdditionalSlides: 6,
       grabCursor: true,     // 커서가 잡는 모양
       centeredSlides: true, // 가운데 슬라이드 중심
       initialSlide: 1,
@@ -709,7 +762,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newVideoSwiper = new Swiper(newVideoContainer, {
       effect: 'slide',
       loop: true,           // 무한 루프
-      loopAdditionalSlides: 10,
+      loopAdditionalSlides: 6,
       grabCursor: true,     // 커서가 잡는 모양
       centeredSlides: true,
       // 링크 클릭 허용 (Swiper의 기본 클릭 방지 해제)

@@ -864,35 +864,6 @@ main {
   position: static;
 }
 
-/* 비디오 대체 이미지 - 추후 수정 */
-
-/* (placeholder removed) */
-
-
-/* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide .info-overlay {
-  width: 100%;
-  height: 100%;
-  padding: 27px 34px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: absolute;
-  border-radius: 20px;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  background: linear-gradient(180deg,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0) 17.788460850715637%,
-      rgba(0, 0, 0, 0) 83.8942289352417%,
-      rgba(0, 0, 0, 0.8) 100%);
-  display: none;
-} */
-/* .creativeGallery .fanvideos .video_popular ul.swiper-wrapper .swiper-slide:hover .info-overlay {
-  opacity: 1;
-} */
-
 /* 커뮤니티 섹션 */
 .community {
   width: 100%;
@@ -1002,22 +973,6 @@ main {
   aspect-ratio: 16/9;
   object-fit: cover;
   object-position: center;
-}
-/* 커뮤니티 갤러리: Today 슬라이드별 개별 이미지 지정 */
-.community .articles .comm_today .comm_gallery .swiper-wrapper .swiper-slide:nth-child(1) {
-  background-image: url(../../moon/asset/comm-img_1.jpg);
-}
-.community .articles .comm_today .comm_gallery .swiper-wrapper .swiper-slide:nth-child(2) {
-  background-image: url(../../moon/asset/comm-img_2.jpg);
-}
-.community .articles .comm_today .comm_gallery .swiper-wrapper .swiper-slide:nth-child(3) {
-  background-image: url(../../moon/asset/comm-img_3.jpg);
-}
-.community .articles .comm_today .comm_gallery .swiper-wrapper .swiper-slide:nth-child(4) {
-  background-image: url(../../moon/asset/comm-img_4.jpg);
-}
-.community .articles .comm_today .comm_gallery .swiper-wrapper .swiper-slide:nth-child(5) {
-  background-image: url(../../moon/asset/comm-img_5.jpg);
 }
 
 
