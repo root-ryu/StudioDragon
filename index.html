@@ -3,69 +3,83 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="스튜디오 드래곤 홈페이지 입니다">
-    <meta name="keywords" content="스튜디오드래곤, 드라마, 제작사, 기획사, CJENM, TVN, 넷플릭스">
-    <meta name="author" content="100SJ">
+    <meta name="description" content="We Are Studio Dragon">
+    <meta name="keywords" content="Studio Dragon, a premium storyteller group">
+    <meta name="author" content="Team 2eezy">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Studio Dragon">
-    <meta property="og:description" content="페이지 설명">
-    <meta property="og:image" content="이미지 URL">
-    <meta property="og:url" content="페이지 URL">
+    <meta property="og:description" content="Studio Dragon, a premium storyteller group">
+    <meta property="og:image" content="	https://root-ryu.github.io/StudioDragon/asset/og_img.png">
+    <meta property="og:url" content="https://root-ryu.github.io/StudioDragon/">
     <title>studiodragon</title>
     <link rel="shortcut icon" href="back/img/favicon.ico" type="image/x-icon">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/main_media.css">
+    <link rel="stylesheet" href="css/cursor.css">
+    <link rel="stylesheet" href="back/css/MainBeck_style.css">
+    <link rel="stylesheet" href="back/css/MainBack_media.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script> -->
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/common.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="back/js/MainBack.js"></script>
 </head>
 
 <body>
+    <canvas id="cursorCanvas"></canvas>
     <div class="wrap">
+        <!-- 헤더 시작 -->
         <div class="header_bg">
         </div>
         <header class="">
             <div class="inner">
-                <h1><a href="/index.html" class="logo"><img src="back/img/logo_w.png" alt="StudioDragonLogo"></a></h1>
+                <h1><a href="index.html" class="logo"><img src="back/img/logo_w.png" alt="StudioDragonLogo"></a></h1>
                 <nav class="">
                     <ul class="gnb">
-                        <li class=""><a href="/intro_kim/intro.html">ABOUT</a>
+                        <li class=""><a href="intro.html" class="t" >ABOUT</a>
                             <ul class="sub">
-                                <li><a href="/intro_kim/intro.html">About Us</a></li>
-                                <li><a href="#">Business Ethics</a></li>
-                                <li><a href="#">Partnerships</a></li>
-                                <li><a href="#">History</a></li>
-                                <li><a href="#">CEO Message</a></li>
-                                <li><a href="#">Contact & Location</a></li>
+                                <li><a href="intro.html" class="t_small">About Us</a></li>
+                                <li><a href="index.html">Business Ethics</a></li>
+                                <li><a href="index.html">Partnerships</a></li>
+                                <li><a href="index.html">History</a></li>
+                                <li><a href="index.html">CEO Message</a></li>
+                                <li><a href="index.html">Contact & Location</a></li>
                             </ul>
                         </li>
-                        <li><a href="/Listworks_lee.html">WORKS</a>
+                        <li><a href="Listworks_lee.html" class="t">WORKS</a>
                             <ul class="sub">
-                                <li><a href="#">Production List</a></li>
-                                <li><a href="/viewersplayground_moon.html">Viewer Participation</a></li>
+                                <li><a href="Listworks_lee.html" class="t_small">Production List</a></li>
+                                <li><a href="viewersplayground_moon.html" class="t_small">Viewer Participation</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">NEWSROOM</a>
+                        <li><a href="index.html">NEWSROOM</a>
                             <ul class="sub">
-                                <li><a href="#">Notice</a></li>
-                                <li><a href="#">News</a></li>
+                                <li><a href="index.html">Notice</a></li>
+                                <li><a href="index.html">News</a></li>
                             </ul>
                         </li>
-                        <li><a href="/IR.html">IR</a>
-                            <ul class="sub">
-                                <li><a href="#">IR Insights</a></li>
-                                <li><a href="#">Materials</a></li>
+                        <li><a href="IR.html" class="t_ir">IR</a>
+                            <ul class="sub ">
+                                <li><a href="IR.html" class="t_small">IR Insights</a></li>
+                                <li><a href="index.html">Materials</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">SUSTAINABILITY</a>
+                        <li><a href="index.html">SUSTAINABILITY</a>
                             <ul class="sub">
-                                <li><a href="#">Sustainability Story</a></li>
-                                <li><a href="#">Sustainability Activities</a></li>
-                                <li><a href="#">Sustainability Report</a></li>
-                                <li><a href="#">ESG Ratings</a></li>
-                                <li><a href="#">Sustainability Report</a></li>
+                                <li><a href="index.html">Sustainability Story</a></li>
+                                <li><a href="index.html">Sustainability Activities</a></li>
+                                <li><a href="index.html">Sustainability Report</a></li>
+                                <li><a href="index.html">ESG Ratings</a></li>
+                                <li><a href="index.html">Sustainability Report</a></li>
                             </ul>
                         </li>
                     </ul><!-- //.gnb -->
@@ -75,31 +89,494 @@
                             <a href="#" class="kr ">KR</a>
                         </div><!-- //.lang -->
                         <div class="user">
-                            <a href="#"><img src="back/img/user.png" alt="user"></a>
+                            <a href=""><img src="back/img/user.png" alt="user"></a>
                         </div><!-- //.user -->
-                        <div class="ham">
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </div>
+                        <div class="nav_ham">
+                            <img src="asset/nav_ham.svg" alt="">
+                        </div><!-- //.nav_ham -->
                     </div><!-- //.right -->
                 </nav>
             </div><!-- //.inner -->
         </header>
 
+        <!-- 햄버거 메뉴 독립 배치 -->
+        <div class="ham">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <!-- 햄버거 메뉴 네비게이션 -->
+        <nav class="ham_nav">
+            <div class="menu_header">
+                <div class="language_switcher">
+                    <a href="#" class="lang_link active">EN</a>
+                    <a href="#" class="lang_link">KO</a>
+                </div>
+
+                <div class="menu_icons">
+                    <a href="#" class="icon_link">
+                        <img src="back/img/user.png" alt="Profile">
+                    </a>
+                    <button type="button" class="icon_link close_btn">
+                        <img src="./asset/x-circle.svg" alt="">
+                    </button>
+                </div>
+            </div>
+
+            <ul class="main_nav">
+                <li class="nav_item">
+                    <a href="intro.html" class="main_category">ABOUT</a>
+                    <ul class="submenu">
+                        <li><a href="intro.html">About Us</a></li>
+                        <li><a href="index.html">Business Ethics</a></li>
+                        <li><a href="index.html">Partnerships</a></li>
+                        <li><a href="index.html">History</a></li>
+                        <li><a href="index.html">CEO Message</a></li>
+                        <li><a href="index.html">Contact&Location</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav_item">
+                    <a href="Listworks_lee.html" class="main_category">WORKS</a>
+                    <ul class="submenu">
+                        <li><a href="Listworks_lee.html">Production List</a></li>
+                        <li><a href="viewersplayground_moon.html">Viewer Participation</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav_item">
+                    <a href="index.html" class="main_category">NEWSROOM</a>
+                    <ul class="submenu">
+                        <li><a href="index.html">Notice</a></li>
+                        <li><a href="index.html">News</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav_item">
+                    <a href="IR.html" class="main_category">IR</a>
+                    <ul class="submenu">
+                        <li><a href="IR.html">IR Insights</a></li>
+                        <li><a href="index.html">Materials</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav_item">
+                    <a href="index.html" class="main_category">SUSTAINABILITY</a>
+                    <ul class="submenu">
+                        <li><a href="index.html">Sustainability Story</a></li>
+                        <li><a href="index.html">Sustainability Activities</a></li>
+                        <li><a href="index.html">Sustainability Report</a></li>
+                        <li><a href="index.html">ESG Ratings</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav><!-- //.ham_nav -->
+        <!-- 여기까지 헤더 -->
+
+
+        <main>
+            <section class="circlebody">
+                <div id="circle">
+                    <article class="face1">
+                        <a href="work_ryu.html"><div class="poster"><img src="./back/img/img01.webp" alt="The Glory" class="br"></div></a>
+                    </article>
+                    <article class="face2">
+                        <div class="poster"><img src="./back/img/img02.webp" alt="Queen of Tears" class="br"></div>
+                    </article>
+                    <article class="face3">
+                        <div class="poster"><img src="./back/img/img03.webp" alt="Celebrity"></div>
+                    </article>
+                    <article class="face4">
+                        <div class="poster"><img src="./back/img/img04.webp" alt="Sweet Home"></div>
+                    </article>
+                    <article class="face5">
+                        <div class="poster"><img src="./back/img/img05.webp" alt="Guardian"></div>
+                    </article>
+                    <article class="face6">
+                        <div class="poster"><img src="./back/img/img06.webp" alt="Bon Appétit, Your Majesty"></div>
+                    </article>
+                    <article class="face7">
+                        <div class="poster"><img src="./back/img/img07.webp" alt="Genie, Make a Wish"></div>
+                    </article>
+                    <article class="face8">
+                        <div class="poster"><img src="./back/img/img08.webp" alt="Jeongnyeon: The Star Is Born"></div>
+                    </article>
+                </div>
+            </section><!-- //.wrap -->
+
+            <section class="comingsoon">
+                <div class="inner">
+                    <div class="top">
+                        <h2>COMING SOON</h2>
+                        <button type="button"><span>MORE</span></button>
+                    </div>
+                    <div class="CScontents1">
+                        <img src="./back/img/CS_img.png" alt="Taepung Corporation">
+                        <div class="txt">
+                            <h3>Typhoon Corporation</h3>
+                            <p>TVN & TVING<br>10/11
+                                Saturday</p>
+                        </div>
+                    </div>
+                    <div class="CScontents2">
+                        <img src="./back/img/CS_img2.png" alt="Genie, Make a Wish" class="gsap-fade-up">
+                        <div class="txt">
+                            <h3 class="gsap-fade-left">Genie, Make a Wish
+                            </h3>
+                            <p class="gsap-fade-left gsap-delay">Netflix<br>10/03 Friday
+                            </p>
+                        </div>
+                    </div>
+                    <div class="CScontents3">
+                        <img src="./back/img/CS_img3.png" alt="pro bono" class="gsap-fade-up">
+                        <div class="txt">
+                            <h3 class="gsap-fade-left">pro bono</h3>
+                            <p class="gsap-fade-left gsap-delay">TVING <br> 2025~2026
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
 
-        <main></main>
+            <section class="onair">
+                <div class="inner">
+                    <div class="top">
+                        <h2>ON-AIR</h2>
+                        <button type="button"><span>MORE</span></button>
+                    </div><!-- //.top -->
+                </div>
+                <div class="on_slide_wrap swiper">
+                    <div class="ONcon swiper-wrapper">
+                        <div class="ONcontents01 swiper-slide">
+                            <img src="./back/img/ON_img02.png" alt="My Son Is Dead">
+                            <div class="ONtxtbox">
+                                <h3>My Son Is Dead</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>TVING</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div><!-- //.on_centents01 -->
+                        <div class="ONcontents02 swiper-slide">
+                            <img src="./back/img/ON_img01.png" alt="Shin's Project">
+                            <div class="ONtxtbox">
+                                <h3>shin's project</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>TVING</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div>
+                        <div class="ONcontents03 swiper-slide">
+                            <img src="./back/img/ON_img03.png" alt="The Killer: A Girl's Revenge">
+                            <div class="ONtxtbox">
+                                <h3>The Killer</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>NETFLIX</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div>
+                        <div class="ONcontents01 swiper-slide">
+                            <img src="./back/img/ON_img02.png" alt="My Son Is Dead">
+                            <div class="ONtxtbox">
+                                <h3>My Son Is Dead</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>TVING</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div><!-- //.on_centents01 -->
+                        <div class="ONcontents02 swiper-slide">
+                            <img src="./back/img/ON_img01.png" alt="Shin's Project">
+                            <div class="ONtxtbox">
+                                <h3>shin's project</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>TVING</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div>
+                        <div class="ONcontents03 swiper-slide">
+                            <img src="./back/img/ON_img03.png" alt="The Killer: A Girl's Revenge">
+                            <div class="ONtxtbox">
+                                <h3>The Killer</h3>
+                                <ul>
+                                    <li class="bar"></li>
+                                    <li>
+                                        <p>NETFLIX</p>
+                                    </li>
+                                    <li class="bar"></li>
+                                </ul>
+                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></button>
+                            </div><!-- //.on_txtbox -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="GigTit">
+                <div class="BGtit">
+                    <h3>Premium</h3>
+                    <h3>Storyteller</h3>
+                    <h3>Group</h3>
+                    <span>We are a premium storyteller group <br> that fascinates the world with our original
+                        stories.</span>
+                </div>
+            </section>
+
+
+            <section class="BeyondDrama">
+                <div class="inner">
+                    <div class="top">
+                        <h2>BEYOND DRAMA</h2>
+                        <button type="button"><span>MORE</span></button>
+                    </div>
+                    <div class="BDcontents">
+                        <div class="BDconTop">
+                            <div class="BDsection01 gsap-flip">
+                                <img src="./back/img/BD_section01.jpg" alt="bibimbap">
+                                <div class="BDsection01_txt">
+                                    <h3>a dish in a drama</h3>
+                                    <span>a tyrant's chef</span>
+                                </div>
+                            </div>
+                            <div class="BDsection02 gsap-flip">
+                                <img src="./back/img/BD_section02.png" alt="yumi">
+                                <div class="BDsection02_txt">
+                                    <h3>Where is <br>the furniture from?</h3>
+                                    <span>Yumi's Cells</span>
+                                </div>
+                            </div>
+                            <div class="BDsection03 gsap-flip">
+                                <img src="./back/img/BD_section03.png" alt="yumi">
+                                <div class="BDsection03_txt">
+                                    <h3>Dongeun, you have good skin <br>while taking revenge?</h3>
+                                    <span>The Glory</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="BDconMiddle">
+                            <div class="BDsection04">
+                                <h3>Tyrant's Fashion</h3>
+                            </div>
+                            <div class="BDsection05">
+                                <h3>Tyrant's Fashion</h3>
+                            </div>
+                            <div class="BDsection06">
+                                <h3>Cooking in dramas</h3>
+                            </div>
+                            <div class="BDsection07">
+                                <h3>Where is that furniture from?</h3>
+                            </div>
+                        </div>
+                        <div class="BDconBottom">
+                            <div class="BDsection08 gsap-flip-bottom">
+                                <img src="./back/img/BD_section08.jpg" alt="bibimbap">
+                                <div class="BDsection08_txt">
+                                    <h3>a dish in a drama</h3>
+                                    <span>a tyrant's chef</span>
+                                </div>
+                            </div>
+                            <div class="BDsection09 gsap-flip-bottom">
+                                <img src="./back/img/BD_section09.png" alt="yumi">
+                                <div class="BDsection09_txt">
+                                    <h3>Where is <br>the furniture from?</h3>
+                                    <span>Yumi's Cells</span>
+                                </div>
+                            </div>
+                            <div class="BDsection10 gsap-flip-bottom">
+                                <img src="./back/img/BD_section10.png" alt="yumi">
+                                <div class="BDsection10_txt">
+                                    <h3>Dongeun, you have good skin <br>while taking revenge?</h3>
+                                    <span>The Glory</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ViewersPlayground">
+                <div class="inner">
+                    <div class="top">
+                        <h2>VIEWER'S PLAYGROUND</h2>
+                    </div>
+                    <div class="VPcontents">
+                        <div class="VPcon01 gsap-fade-up-right">
+                            <img src="./back/img/VP_img01.png" alt="Scenario Competition">
+                            <div class="VPcon_txt">
+                                <div class="VPcon_tit">
+                                    <h3>Scenario Competition</h3>
+                                    <span>Show me your idea</span>
+                                </div>
+                                <p>Present your new story. <br> It could be the one to be brought to life on screen.</p>
+                            </div>
+                        </div><!-- //.VPcon01 -->
+                        <div class="VPcon02 gsap-fade-up-left">
+                            <img src="./back/img/VP_img02.png" alt="Virtual Casting Vote">
+                            <div class="VPcon_txt">
+                                <div class="VPcon_tit">
+                                    <h3>Virtual Casting Vote</h3>
+                                    <span>Pick your ideal cast</span>
+                                </div>
+                                <p>Pick a virtual casting combination <br>by changing the drama's main character.</p>
+                            </div>
+                        </div><!-- //.VPcon02 -->
+                        <div class="VPcon03 gsap-fade-up-right">
+                            <img src="./back/img/VP_img03.png" alt="Scenario Competition">
+                            <div class="VPcon_txt">
+                                <div class="VPcon_tit">
+                                    <h3>Make New Poster</h3>
+                                    <span>Show off your ideas to the fullest</span>
+                                </div>
+                                <p>Show off your ideas and talents to the fullest, <br> and create a new drama poster.
+                                </p>
+                            </div>
+                        </div><!-- //.VPcon03 -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="event">
+                <div class="inner">
+                    <div class="top">
+                        <h2>EVENT</h2>
+                    </div>
+                    <div class="Econtents">
+                        <div class="Econ01">
+                            <img src="./back/img/E_img01.png" alt="event01">
+                            <h3>group viewing</h3>
+                            <div class="event-info-card">
+                                <div class="card-content">
+                                    <p class="event-date">2025.01.15</p>
+                                    <p class="event-location">Seoul, Gangnam</p>
+                                    <p class="event-desc">Join us for an exclusive group viewing experience</p>
+                                    <button type="button" class="event-btn">Apply Now</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Econ02">
+                            <img src="./back/img/E_img02.png" alt="event01">
+                            <h3>sd crew</h3>
+                            <div class="event-info-card">
+                                <div class="card-content">
+                                    <p class="event-date">Ongoing</p>
+                                    <p class="event-location">Online & Offline</p>
+                                    <p class="event-desc">Become a member of Studio Dragon Crew</p>
+                                    <button type="button" class="event-btn">Join Now</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Econ03">
+                            <img src="./back/img/E_img03.png" alt="event01">
+                            <h3>a preview session</h3>
+                            <div class="event-info-card">
+                                <div class="card-content">
+                                    <p class="event-date">2025.02.01</p>
+                                    <p class="event-location">CGV Yongsan</p>
+                                    <p class="event-desc">Get early access to upcoming drama premieres</p>
+                                    <button type="button" class="event-btn">Register</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="LatestNews">
+                <div class="inner">
+                    <div class="top">
+                        <h3>latest news</h3>
+                    </div>
+                    <div class="LNcontents">
+                        <div class="LNcon01 active">
+                            <div>
+                                <div class="LNcon_subtxt">
+                                    <span>time</span>
+                                    <span>Sep 30, 2025</span>
+                                </div>
+                                <div class="LNcon_tit">
+                                    Breaking Down the Time-Hopping Ending of Bon Appetit, Your Majesty
+                                </div>
+                            </div>
+                            <img src="./back/img/LN_img01.png" alt="news01">
+                        </div>
+                        <div class="LNcon02">
+                            <div>
+                                <div class="LNcon_subtxt">
+                                    <span>thereviewgeek</span>
+                                    <span>Sep 27, 2025</span>
+                                </div>
+                                <div class="LNcon_tit">
+                                    Bon Appétit, Your Majesty – K-drama Episode 11 Recap & Review
+                                </div>
+                            </div>
+                            <img src="./back/img/LN_img02.png" alt="news02">
+                        </div>
+                        <div class="LNcon03">
+                            <div>
+                                <div class="LNcon_subtxt">
+                                    <span>dramabeans</span>
+                                    <span>Sep 29, 2025</span>
+                                </div>
+                                <div class="LNcon_tit">
+                                    Bon Appetit Your Majesty: Episodes 11-12 (Final)
+                                </div>
+                            </div>
+                            <img src="./back/img/LN_img03.png" alt="news03">
+                        </div>
+                        <!-- 네비게이션 인디케이터 -->
+                        <div class="news-indicators">
+                            <div class="news-indicator active" data-index="0"></div>
+                            <div class="news-indicator" data-index="1"></div>
+                            <div class="news-indicator" data-index="2"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 푸터 시작 -->
         <footer class="ver_dark ver_white">
             <div class="footer_inner">
                 <!-- Top Area -->
                 <div class="footer_top">
                     <div class="footer_menu">
                         <div class="footer_gnb">
-                            <a href="/index.html" class="footer_gnb_link home">Home</a>
+                            <a href="index.html" class="footer_gnb_link home">Home</a>
                             <div class="footer_gnb_wrap">
                                 <ul class="footer_gnb_list">
                                     <li><a href="#" class="footer_gnb_link">Hotline</a></li>
@@ -147,13 +624,14 @@
 
                     <div class="footer_info">
                         <p class="footer_info_text">CEO : Jang Kyung-ik</p>
-                        <p class="footer_info_text">Studio Dregon Corporation, 17F1, 75, Maebongsan-ro, Mapo-gu, Seoul,
-                            Republic of Korea | Business registration number : 747-81-00388</p>
+                        <p class="footer_info_text">Studio Dragon Corporation, 17F1, 75, Maebongsan-ro, Mapo-gu Seoul, Republic of Korea | Business registration number : 747-81-00388</p>
                         <p class="footer_info_text">© STUDIO DRAGON.All Rights Reserved.</p>
                     </div><!-- //.footer_info -->
                 </div><!-- //.footer_bottom -->
             </div><!-- //.footer_inner -->
         </footer><!-- //.footer -->
+        <!-- 여기까지 푸터 -->
+
     </div><!-- //.wrap -->
 </body>
 

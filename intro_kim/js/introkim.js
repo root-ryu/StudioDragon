@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let lenis;
     try {
         lenis = new Lenis({
-            duration: 0,
-            ease: "power1.in",
+            duration: 0.8,
+            easing: (t) => t, // 선형 (빠른 반응)
             smooth: true,
             smoothTouch: true,
         });
@@ -261,12 +261,29 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
     const main_cachSwiper = new Swiper(".main_cach .swiper", {
         slidesPerView: "auto",
         spaceBetween: 64,
         loop: true,                   // 무한 반복
         allowTouchMove: false // 마우스 드래그 필요하면 true
     });
+
+    // =========================
+    // ★★★ 여기부터 추가된 부분 ★★★
+    // History Swiper offset 값을 반응형으로 계산
+    function getHistoryOffsets() {
+        const w = window.innerWidth;
+        if (w <= 440) {
+            return { before: 28, after: 120 };   // 모바일 소형
+        } else if (w <= 1024) {
+            return { before: 88, after: 250 };   // 태블릿
+        } else {
+            return { before: 200, after: 500 };  // PC 기본
+        }
+    }
+    let __historyOffset = getHistoryOffsets();
+    // =========================
 
     // History Swiper (구조 유지: 외부 스크롤바 사용)
     const historySwiper = new Swiper(".history .cont_hori_swipe.swiper", {
@@ -281,9 +298,9 @@ document.addEventListener("DOMContentLoaded", () => {
         grabCursor: true,
         resistanceRatio: 0.3,
 
-        // 좌/우 여백
-        slidesOffsetBefore: 110,
-        slidesOffsetAfter: 500,
+        // 좌/우 여백 (반응형 적용)
+        slidesOffsetBefore: __historyOffset.before,
+        slidesOffsetAfter: __historyOffset.after,
 
         // ✅ 외부(섹션 바깥) 스크롤바 정확히 지정
         scrollbar: {
@@ -295,14 +312,71 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
-    // 이미지 로딩 후 레이아웃 재계산(선택)
-    window.addEventListener("load", () => {
-        if (historySwiper && historySwiper.update) {
-            historySwiper.update();
-        }
+    // =========================
+    // ★★★ 추가: 리사이즈 시 offset만 갱신 ★★★
+    window.addEventListener("resize", () => {
+        __historyOffset = getHistoryOffsets();
+        historySwiper.params.slidesOffsetBefore = __historyOffset.before;
+        historySwiper.params.slidesOffsetAfter = __historyOffset.after;
+        historySwiper.update();
     });
+    // =========================
+
 });
 
+// // ===== 반응형 좌우 마진(페이지 패드) 제어: 1024/440에서 80px/24px 보장 =====
+// (function responsivePagePad() {
+//   // 1520px 고정 inner 기준 데스크톱 중앙 정렬값 계산(최소 110px)
+//   function computeDesktopPad(w) {
+//     const pad = (w - 1520) / 2;           // 1920px일 때 200px
+//     return Math.max(110, Math.floor(pad)); // 최소 110px 보장
+//   }
+
+//   function computePagePad(w) {
+//     if (w <= 440)  return 24;   // 모바일 스몰
+//     if (w <= 1024) return 80;   // 태블릿
+//     return computeDesktopPad(w); // 데스크톱
+//   }
+
+//   // 이미 초기화된 History Swiper 인스턴스 참조 헬퍼
+//   const historyEl = document.querySelector(".history .cont_hori_swipe.swiper");
+//   const getHistorySwiper = () =>
+//     (window.historySwiper) || (historyEl && historyEl.swiper) || null;
+
+//   function apply() {
+//     const pad = computePagePad(window.innerWidth);
+
+//     // ★ [POINT] 전역 :root에 --page-pad를 인라인 스타일로 지정 → CSS 전체에 즉시 반영
+//     document.documentElement.style.setProperty("--page-pad", pad + "px");
+
+//     // ★ Swiper 좌/우 오프셋도 동일 값으로 동기화
+//     const sw = getHistorySwiper();
+//     if (sw) {
+//       sw.params.slidesOffsetBefore = pad;
+//       sw.params.slidesOffsetAfter  = pad;
+//       sw.update();
+//     }
+//   }
+
+//   // 최초 적용
+//   if (document.readyState === "loading") {
+//     document.addEventListener("DOMContentLoaded", apply);
+//   } else {
+//     apply();
+//   }
+
+//   // 리사이즈/방향전환 시 성능 친화 갱신
+//   let rafId = null;
+//   function onResize() {
+//     if (rafId) cancelAnimationFrame(rafId);
+//     rafId = requestAnimationFrame(apply);
+//   }
+//   window.addEventListener("resize", onResize);
+//   window.addEventListener("orientationchange", onResize);
+
+//   // 레이아웃/스크립트 초기화 타이밍 이슈 대비
+//   window.addEventListener("load", () => setTimeout(apply, 0));
+// })();
 
 
 // document.addEventListener('DOMContentLoaded', () => {

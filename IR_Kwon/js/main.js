@@ -1,509 +1,370 @@
-// GSAP ScrollTrigger 등록
-if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-  console.log('✅ GSAP ScrollTrigger 등록 완료');
-}
+document.addEventListener('DOMContentLoaded', () => {
+  
+  function refreshScrollTrigger() {
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.refresh();
+    }
+  }
 
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('✅ Main.js loaded');
+  let resizeTimer;
+  let proofHandlersInitialized = false;
   
-  // ============================================================
-  // 공통 유틸리티 함수
-  // ============================================================
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      refreshScrollTrigger();
+      
+      // 화면 크기 변경 시 Proof 카드 클릭 핸들러 재설정
+      const isProofMobile = window.matchMedia('(max-width: 1024px)').matches;
+      if (isProofMobile && !proofHandlersInitialized) {
+        handleProofCardClick();
+        proofHandlersInitialized = true;
+      } else if (!isProofMobile && proofHandlersInitialized) {
+        // 데스크탑으로 전환 시 클릭 핸들러 제거
+        handleProofCardClick(); // 데스크탑 모드로 전환
+        proofHandlersInitialized = false;
+      }
+    }, 250);
+  });
+
+  window.addEventListener('load', () => {
+    setTimeout(refreshScrollTrigger, 100);
+  });
   
-  // 섹션이 뷰포트에 진입했는지 확인
-  function isInViewport(section) {
-    const rect = section.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    return rect.bottom <= windowHeight && rect.bottom > 0;
-  }
-  
-  // 섹션이 뷰포트를 완전히 벗어났는지 확인
-  function isOutOfViewport(section) {
-    const rect = section.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    return rect.bottom < 0 || rect.top > windowHeight;
-  }
-  
-  // ============================================================
-  // Value Drivers 섹션
-  // ============================================================
+  // Banner Swiper
+  const bannerSwiper = new Swiper('.banner__slider', {
+    loop: true,
+    speed: 1000,
+    autoplay: { delay: 5000, disableOnInteraction: false },
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    spaceBetween: 30,
+    pagination: { el: '.banner-pagination', clickable: true, type: 'bullets' },
+    navigation: { nextEl: '.banner-button-next', prevEl: '.banner-button-prev' },
+    loopedSlides: 4,
+    loopAdditionalSlides: 0,
+    watchSlidesProgress: true,
+    slideToClickedSlide: false,
+    initialSlide: 0,
+    centerInsufficientSlides: true,
+  });
+
+  // Proof Swiper
+  const proofSwiper = new Swiper(".proof .slide_wrap", {
+    rewind: true,
+    slidesPerView: 'auto',
+    spaceBetween: 50,
+    speed: 9000,
+    autoplay: { delay: 0, disableOnInteraction: false, pauseOnMouseEnter: false },
+    loopedSlides: 5,
+    loopAdditionalSlides: 3,
+    on: {
+      init: function () { this.wrapperEl.style.transitionTimingFunction = 'linear'; },
+      slideChangeTransitionStart: function () { this.wrapperEl.style.transitionTimingFunction = 'linear'; },
+    },
+  });
+
+  // Value Drivers Animation
   const valueDriversSection = document.querySelector('.value_drivers');
+  const valueItems = document.querySelectorAll('.value_drivers .item');
+  const descriptionParagraphs = document.querySelectorAll('.value_drivers .description p');
   
   if (valueDriversSection) {
-    const items = document.querySelectorAll('.value_drivers .item');
-    const arrows = document.querySelectorAll('.value_drivers .arrow');
-    const afterCards = document.querySelectorAll('.value_drivers .card_after');
-    const description = document.querySelector('.value_drivers .description');
-    const descriptionPs = description ? description.querySelectorAll('p') : [];
-    let isAnimated = false;
+    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+    const animationDelay = isMobile ? 1000 : 0;
     
-    console.log('Value Drivers 요소 확인:', {
-      section: !!valueDriversSection,
-      items: items.length,
-      arrows: arrows.length,
-      afterCards: afterCards.length,
-      descriptionPs: descriptionPs.length
-    });
-
-    function checkScroll() {
-      const sectionBottom = valueDriversSection.getBoundingClientRect().bottom;
-      const windowHeight = window.innerHeight;
-      const scrollY = window.scrollY || window.pageYOffset;
-      
-      // 뷰포트 하단이 섹션 하단에 닿으면 애니메이션 시작
-      if (sectionBottom <= windowHeight && !isAnimated) {
-        isAnimated = true;
-        
-        // item에 active 클래스 추가 (before 카드 축소)
-        items.forEach((item, index) => {
-          setTimeout(() => item.classList.add('active'), index * 400);
-        });
-        
-        // after 카드 opacity 애니메이션
-        afterCards.forEach((card, index) => {
-          setTimeout(() => card.classList.add('active'), index * 400 + 300);
-        });
-        
-        // arrow 표시
-        arrows.forEach((arrow, index) => {
-          setTimeout(() => arrow.classList.add('active'), index * 400 + 1100);
-        });
-        
-        // description 내 p 태그들을 순차적으로 표시
-        if (descriptionPs.length > 0) {
-          const baseDelay = items.length * 400 + 1300;
-          descriptionPs.forEach((p, index) => {
-            setTimeout(() => p.classList.add('active'), baseDelay + (index * 300));
-          });
-        }
-      }
-      
-      // 페이지 최상단에 도달하면 애니메이션 리셋
-      if (scrollY === 0 && isAnimated) {
-        isAnimated = false;
-        items.forEach(item => item.classList.remove('active'));
-        afterCards.forEach(card => card.classList.remove('active'));
-        arrows.forEach(arrow => arrow.classList.remove('active'));
-        descriptionPs.forEach(p => p.classList.remove('active'));
-      }
-    }
-    
-    window.addEventListener('scroll', checkScroll);
-    checkScroll();
-  }
-  
-  // ============================================================
-  // Execution 섹션 - Pin 및 카드 스크롤 애니메이션
-  // ============================================================
-  const executionSection = document.querySelector('.execution');
-  
-  if (executionSection) {
-    // GSAP 체크
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-      console.error('❌ GSAP/ScrollTrigger 로드 실패');
-      return;
-    }
-
-    const cardsWrap = executionSection.querySelector('.cards_wrap');
-    const images = executionSection.querySelectorAll('.execution_image');
-    const cards = executionSection.querySelectorAll('.card');
-    
-    // 필수 요소 체크
-    if (!cardsWrap || !images.length || !cards.length) {
-      console.error('❌ Execution 섹션 필수 요소 누락');
-      return;
-    }
-
-    console.log('✅ Execution 섹션 초기화:', {
-      cards: cards.length,
-      images: images.length
-    });
-
-    // 미디어 쿼리 체크 (1024px 이하에서는 스크롤 애니메이션 비활성화)
-    function isDesktop() {
-      return window.innerWidth > 1024;
-    }
-
-    // 카드 높이 동적으로 계산 (반응형 대응)
-    function getCardHeight() {
-      return cards[0].offsetHeight || 200;
-    }
-
-    // 초기 상수 계산
-    let CARD_HEIGHT = getCardHeight();
-    let CENTER_OFFSET = CARD_HEIGHT;
-    const totalCards = cards.length;
-
-    console.log('✅ 계산된 카드 높이:', CARD_HEIGHT);
-    console.log('✅ 데스크탑 모드:', isDesktop());
-
-    // 이미지 전환 함수
-    function changeImage(index) {
-      images.forEach((img, i) => {
-        img.classList.toggle('active', i === index);
-      });
-    }
-
-    // 카드 활성화 함수
-    function activateCard(index) {
-      cards.forEach((card, i) => {
-        card.classList.toggle('active', i === index);
-      });
-    }
-
-    // 초기 상태
-    changeImage(0);
-    activateCard(0);
-    
-    let scrollTriggerInstance = null;
-
-    // 태블릿/모바일 클릭 이벤트 핸들러
-    function setupClickHandlers() {
-      cards.forEach((card, index) => {
-        // 키보드 접근성을 위한 tabindex 설정
-        if (!isDesktop()) {
-          card.setAttribute('tabindex', '0');
-          card.setAttribute('role', 'button');
-          card.setAttribute('aria-label', `카드 ${index + 1} 선택`);
-        } else {
-          card.removeAttribute('tabindex');
-          card.removeAttribute('role');
-          card.removeAttribute('aria-label');
-        }
-        
-        // 클릭 이벤트
-        card.addEventListener('click', () => {
-          if (!isDesktop()) {
-            // 이미 활성화된 카드는 클릭해도 아무 동작 안함
-            if (card.classList.contains('active')) {
-              console.log(`⚠️ 카드 ${index}는 이미 활성화됨`);
-              return;
-            }
-            console.log(`🖱️ 카드 ${index} 클릭됨 (모바일/태블릿)`);
-            changeImage(index);
-            activateCard(index);
-          }
-        });
-        
-        // 키보드 이벤트 (Enter, Space)
-        card.addEventListener('keydown', (e) => {
-          if (!isDesktop() && (e.key === 'Enter' || e.key === ' ')) {
-            e.preventDefault();
-            if (card.classList.contains('active')) return;
-            console.log(`⌨️ 카드 ${index} 키보드로 선택됨`);
-            changeImage(index);
-            activateCard(index);
-          }
-        });
-      });
-      console.log('✅ 카드 클릭 핸들러 설정 완료 (키보드 접근성 포함)');
-    }
-
-    // ScrollTrigger 생성 함수
-    function createScrollTrigger() {
-      if (!isDesktop()) {
-        console.log('⚠️ 태블릿/모바일 모드 - 스크롤 애니메이션 비활성화');
-        gsap.set(cardsWrap, { clearProps: 'y' }); // y 속성 제거
-        return;
-      }
-
-      gsap.set(cardsWrap, { y: CENTER_OFFSET });
-      
-      scrollTriggerInstance = ScrollTrigger.create({
-        trigger: executionSection,
-        start: "top top",
-        end: `+=${(totalCards - 1) * 1000}`,
-        pin: true,
-        pinSpacing: true,
-        scrub: 1,
-        onUpdate: (self) => {
-          const currentIndex = Math.round(self.progress * (totalCards - 1));
-          const offset = CENTER_OFFSET - (currentIndex * CARD_HEIGHT);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !valueDriversSection.classList.contains('animated')) {
+          valueDriversSection.classList.add('animated');
           
-          gsap.set(cardsWrap, { y: offset });
-          changeImage(currentIndex);
-          activateCard(currentIndex);
+          setTimeout(() => {
+            valueItems.forEach((item, index) => {
+              const arrow = item.querySelector('.arrow');
+              const cardAfter = item.querySelector('.card_after');
+              
+              setTimeout(() => {
+                item.classList.add('active');
+                if (arrow) setTimeout(() => arrow.classList.add('active'), 300);
+                if (cardAfter) setTimeout(() => cardAfter.classList.add('active'), 500);
+              }, index * 400);
+            });
+            
+            setTimeout(() => {
+              descriptionParagraphs.forEach((p, index) => {
+                setTimeout(() => p.classList.add('active'), index * 150);
+              });
+            }, valueItems.length * 400 + 300);
+          }, animationDelay);
         }
       });
-      
-      console.log('✅ ScrollTrigger 생성됨');
-    }
+    }, { root: null, rootMargin: '-100% 0px -100% 0px', threshold: 0 });
 
-    // 초기 실행
-    setupClickHandlers(); // 클릭 핸들러 설정
-    createScrollTrigger();
-
-    // 리사이즈 이벤트 처리 (반응형 대응)
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        CARD_HEIGHT = getCardHeight();
-        CENTER_OFFSET = CARD_HEIGHT;
-        console.log('✅ 리사이즈 후 카드 높이:', CARD_HEIGHT);
-        console.log('✅ 데스크탑 모드:', isDesktop());
-        
-        // 기존 ScrollTrigger 제거
-        if (scrollTriggerInstance) {
-          scrollTriggerInstance.kill();
-          scrollTriggerInstance = null;
-        }
-        
-        // 새로운 ScrollTrigger 생성 (데스크탑인 경우에만)
-        createScrollTrigger();
-        
-        // 카드 접근성 속성 재설정
-        setupClickHandlers();
-      }, 200);
-    });
-
-    console.log('✅ Execution 섹션 초기화 완료');
+    observer.observe(valueDriversSection);
   }
 
-  // ============================================================
-  // 범용 퍼센트 애니메이션 함수
-  // ============================================================
-  function animatePercent(element, targetPercent, duration = 1200) {
-    let startTime = null;
-    
-    function animation(currentTime) {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-      const easeProgress = 1 - Math.pow(1 - progress, 3); // easeOutCubic
-      const currentPercent = Math.round(targetPercent * easeProgress);
-      
-      element.textContent = currentPercent + '%';
-      
-      if (progress < 1) requestAnimationFrame(animation);
-    }
-    
-    requestAnimationFrame(animation);
-  }
+  // Risks & Mitigation Video
+  const riskItems = document.querySelectorAll('.risks_mitigation .risk_item');
+  const isRiskMobile = window.matchMedia('(max-width: 1024px)').matches;
   
-  // ============================================================
-  // Monetization Bridge 섹션
-  // ============================================================
-  setupScrollAnimation(document.querySelector('.monetization_bridge'), {
-    name: 'Monetization Bridge',
-    selector: '.bar',
-    delay: 500,
-    targetPercents: [56, 64, 60, 14, 6],
-    initialDelay: 800,
-    animate: function(bar, index) {
-      const chart = bar.querySelector('.chart');
-      const percentElement = bar.querySelector('.percent');
-      
-      if (!chart || !percentElement) return;
-      
-      chart.style.height = '0%';
-      percentElement.textContent = '0%';
-      
-      const targetPercent = this.targetPercents[index];
-      
-      chart.style.transition = 'height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
-      chart.style.height = targetPercent + '%';
-      animatePercent(percentElement, targetPercent, 1200);
-    },
-    reset: (bar) => {
-      const chart = bar.querySelector('.chart');
-      const percentElement = bar.querySelector('.percent');
-      if (chart && percentElement) {
-        chart.style.transition = 'none';
-        chart.style.height = '0%';
-        percentElement.textContent = '0%';
-      }
+  riskItems.forEach(item => {
+    const video = item.querySelector('video');
+    if (!video) return;
+
+    if (isRiskMobile) {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isCurrentlyActive = item.classList.contains('active');
+        
+        riskItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+            const otherVideo = otherItem.querySelector('video');
+            if (otherVideo) {
+              otherVideo.pause();
+              otherVideo.currentTime = 0;
+            }
+          }
+        });
+        
+        if (isCurrentlyActive) {
+          item.classList.remove('active');
+          video.pause();
+          video.currentTime = 0;
+        } else {
+          item.classList.add('active');
+          video.play().catch(err => console.log('Video play failed:', err));
+        }
+      });
+    } else {
+      item.addEventListener('mouseenter', () => video.play().catch(err => console.log('Video play failed:', err)));
+      item.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
     }
   });
 
-
-  // ============================================================
-  // 섹션별 스크롤 애니메이션 설정
-  // ============================================================
+  // Execution Animation
+  const executionCards = document.querySelectorAll('.execution .card');
+  const executionContainer = document.querySelector('.execution .container');
   
-  // 공통 애니메이션 설정 함수
-  function setupScrollAnimation(section, config) {
-    if (!section) {
-      console.warn(`⚠️ ${config.name} 섹션을 찾을 수 없습니다`);
-      return;
-    }
+  if (executionCards.length > 0 && executionContainer) {
+    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+    const animationDelay = isMobile ? 1 : 0.5;
     
-    const elements = section.querySelectorAll(config.selector);
-    if (!elements.length) {
-      console.warn(`⚠️ ${config.name} 요소를 찾을 수 없습니다`);
-      return;
-    }
-    
-    let isAnimated = false;
-    
-    console.log(`${config.name} 섹션 확인:`, { elements: elements.length });
-    
-    // 초기 스타일 설정
-    if (config.initStyle) {
-      elements.forEach(el => Object.assign(el.style, config.initStyle));
-    }
-    
-    function checkScroll() {
-      if (isInViewport(section) && !isAnimated) {
-        console.log(`🎬 ${config.name} 애니메이션 시작`);
-        isAnimated = true;
-        
-        // 초기 딜레이가 있는 경우
-        const startDelay = config.initialDelay || 0;
-        
-        setTimeout(() => {
-          elements.forEach((el, index) => {
-            setTimeout(() => config.animate.call(config, el, index), index * config.delay);
+    ScrollTrigger.create({
+      trigger: executionContainer,
+      start: 'top 80%',
+      end: 'bottom 20%',
+      once: !isMobile,
+      onEnter: () => {
+        executionCards.forEach((card, index) => {
+          gsap.fromTo(card,
+            { y: 100, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: animationDelay + (index * 0.2) }
+          );
+        });
+      },
+      onLeave: () => {
+        if (isMobile) executionCards.forEach(card => gsap.set(card, { y: 100, opacity: 0 }));
+      },
+      onEnterBack: () => {
+        if (isMobile) {
+          executionCards.forEach((card, index) => {
+            gsap.fromTo(card,
+              { y: 100, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: animationDelay + (index * 0.2) }
+            );
           });
-        }, startDelay);
+        }
       }
+    });
+  }
 
-      if (isOutOfViewport(section) && isAnimated) {
-        console.log(`🔄 ${config.name} 초기화`);
-        isAnimated = false;
-        elements.forEach(el => config.reset(el));
-      }
-    }
+  // Forward Triggers Animation
+  const forwardTriggerImages = document.querySelectorAll('.forward_triggers .item .img_wrap img');
+  const forwardTriggersContainer = document.querySelector('.forward_triggers .container');
+  
+  if (forwardTriggerImages.length > 0 && forwardTriggersContainer) {
+    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+    const animationDelay = isMobile ? 1 : 0.5;
     
-    window.addEventListener('scroll', checkScroll);
-    checkScroll();
-  }
-  
-  // Forward Triggers
-  setupScrollAnimation(document.querySelector('.forward_triggers'), {
-    name: 'Forward Triggers',
-    selector: '.body .row',
-    delay: 150,
-    initStyle: {
-      opacity: '0',
-      transform: 'translateY(30px)',
-      transition: 'opacity 0.6s ease, transform 0.6s ease'
-    },
-    animate: (row) => {
-      row.style.opacity = '1';
-      row.style.transform = 'translateY(0)';
-    },
-    reset: (row) => {
-      row.style.opacity = '0';
-      row.style.transform = 'translateY(30px)';
-    }
-  });
-  
-  // Risks & Mitigation
-  setupScrollAnimation(document.querySelector('.risks_mitigation'), {
-    name: 'Risks & Mitigation',
-    selector: '.card',
-    delay: 200,
-    animate: (card) => {
-      const fill = card.querySelector('.fill');
-      if (!fill) return;
-      
-      const fillWidths = { fill_med: 59.82, fill_high: 84.68, fill_low: 29.89 };
-      let targetWidth = 50;
-      
-      for (const [className, width] of Object.entries(fillWidths)) {
-        if (fill.classList.contains(className)) {
-          targetWidth = width;
-          break;
+    ScrollTrigger.create({
+      trigger: forwardTriggersContainer,
+      start: 'top 75%',
+      end: 'bottom -100%',
+      once: false,
+      onEnter: () => {
+        forwardTriggerImages.forEach((img, index) => {
+          gsap.fromTo(img,
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 1, ease: 'power3.out', delay: animationDelay + (index * 0.2) }
+          );
+        });
+      },
+      onLeave: () => {
+        if (isMobile) forwardTriggerImages.forEach(img => gsap.set(img, { scale: 0, opacity: 0 }));
+      },
+      onEnterBack: () => {
+        if (isMobile) {
+          forwardTriggerImages.forEach((img, index) => {
+            gsap.fromTo(img,
+              { scale: 0, opacity: 0 },
+              { scale: 1, opacity: 1, duration: 1, ease: 'power3.out', delay: animationDelay + (index * 0.2) }
+            );
+          });
         }
       }
-      
-      fill.style.transition = 'width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
-      fill.style.width = targetWidth + '%';
-    },
-    reset: (card) => {
-      const fill = card.querySelector('.fill');
-      if (fill) {
-        fill.style.transition = 'none';
-        fill.style.width = '0%';
-      }
-    }
-  });
+    });
+  }
+
+  // Moat & Repeatability Animation
+  const moatRows = document.querySelectorAll('.moat_repeatability .row');
+  const moatContainer = document.querySelector('.moat_repeatability .container');
   
-  // Moat Repeatability
-  setupScrollAnimation(document.querySelector('.moat_repeatability'), {
-    name: 'Moat Repeatability',
-    selector: '.card',
-    delay: 200,
-    animate: (card) => card.classList.add('fade-in'),
-    reset: (card) => card.classList.remove('fade-in')
-  });
-  
-  // ============================================================
-  // Proof 섹션 - 반응형 카드 플립
-  // ============================================================
-  const proofSection = document.querySelector('.proof');
-  
-  if (proofSection) {
-    const proofCards = proofSection.querySelectorAll('.card:not(.card_6)');
-    let currentFlippedCard = null;
+  if (moatRows.length > 0 && moatContainer) {
+    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+    const animationDelay = isMobile ? 1 : 0.5;
     
-    console.log('Proof 섹션 카드:', proofCards.length);
-    
-    function isTabletOrMobile() {
-      return window.innerWidth <= 1024;
-    }
-    
-    function flipCard(card) {
-      // 다른 카드가 플립되어 있으면 원래대로
-      if (currentFlippedCard && currentFlippedCard !== card) {
-        currentFlippedCard.classList.remove('flipped');
+    ScrollTrigger.create({
+      trigger: moatContainer,
+      start: 'top 75%',
+      end: 'bottom -100%',
+      once: false,
+      onEnter: () => {
+        moatRows.forEach((row, rowIndex) => {
+          const cards = row.querySelectorAll('.card');
+          const isFirstRow = rowIndex === 0;
+          
+          cards.forEach((card, cardIndex) => {
+            gsap.fromTo(card,
+              { x: isFirstRow ? -100 : 100, opacity: 0 },
+              { x: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: animationDelay + ((rowIndex * cards.length + cardIndex) * 0.15) }
+            );
+          });
+        });
+      },
+      onLeave: () => {
+        if (isMobile) {
+          moatRows.forEach((row, rowIndex) => {
+            const cards = row.querySelectorAll('.card');
+            const isFirstRow = rowIndex === 0;
+            cards.forEach(card => gsap.set(card, { x: isFirstRow ? -100 : 100, opacity: 0 }));
+          });
+        }
+      },
+      onEnterBack: () => {
+        if (isMobile) {
+          moatRows.forEach((row, rowIndex) => {
+            const cards = row.querySelectorAll('.card');
+            const isFirstRow = rowIndex === 0;
+            
+            cards.forEach((card, cardIndex) => {
+              gsap.fromTo(card,
+                { x: isFirstRow ? -100 : 100, opacity: 0 },
+                { x: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: animationDelay + ((rowIndex * cards.length + cardIndex) * 0.15) }
+              );
+            });
+          });
+        }
       }
-      
-      // 현재 카드 플립 (토글)
-      card.classList.toggle('flipped');
-      currentFlippedCard = card.classList.contains('flipped') ? card : null;
-      
-      // 한번 클릭한 카드는 'clicked' 클래스 추가 (터치 인디케이터 숨김용)
-      if (!card.classList.contains('clicked')) {
-        card.classList.add('clicked');
-        console.log('✅ 카드 클릭됨 - 터치 인디케이터 제거');
-      }
+    });
+  }
+
+  // Proof Click Toggle (Tablet & Mobile only)
+  const handleProofCardClick = function() {
+    const isProofMobile = window.matchMedia('(max-width: 1024px)').matches;
+    const proofCards = document.querySelectorAll('.proof .card');
+    
+    if (proofCards.length === 0) {
+      console.log('No proof cards found, will retry...');
+      return false;
     }
     
-    function resetAllCards() {
-      proofCards.forEach(card => {
-        card.classList.remove('flipped');
-      });
-      currentFlippedCard = null;
-      // clicked 클래스는 유지 (터치 인디케이터는 계속 숨김)
-    }
-    
-    // 클릭 이벤트 핸들러
-    function handleCardClick(e) {
-      if (isTabletOrMobile()) {
-        e.preventDefault();
-        flipCard(this);
-      }
-    }
-    
-    // 각 카드에 클릭 이벤트 추가
-    proofCards.forEach(card => {
-      card.addEventListener('click', handleCardClick);
+    if (isProofMobile) {
+      const proofSwiper = document.querySelector('.proof .slide_wrap')?.swiper;
       
-      // 키보드 접근성
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', '카드 플립');
+      console.log('Proof mobile mode active, cards found:', proofCards.length);
       
-      card.addEventListener('keydown', function(e) {
-        if (isTabletOrMobile() && (e.key === 'Enter' || e.key === ' ')) {
+      proofCards.forEach((card, index) => {
+        card.style.cursor = 'pointer';
+        
+        // 클론된 클릭 이벤트를 위해 새로운 함수 생성
+        const clickHandler = function(e) {
           e.preventDefault();
-          flipCard(this);
-        }
+          e.stopPropagation();
+          
+          console.log('Card clicked:', index);
+          
+          const isCurrentlyClicked = this.classList.contains('clicked');
+          
+          // 모든 카드의 clicked 클래스 제거
+          document.querySelectorAll('.proof .card').forEach(c => c.classList.remove('clicked'));
+          
+          // 클릭한 카드에만 clicked 클래스 추가 (토글)
+          if (!isCurrentlyClicked) {
+            this.classList.add('clicked');
+            console.log('Card activated');
+            // Swiper 자동재생 일시정지
+            if (proofSwiper) proofSwiper.autoplay.stop();
+          } else {
+            console.log('Card deactivated');
+            // 다시 클릭하면 자동재생 재개
+            if (proofSwiper) proofSwiper.autoplay.start();
+          }
+        };
+        
+        // 클릭 이벤트 추가
+        card.removeEventListener('click', card._proofClickHandler);
+        card._proofClickHandler = clickHandler;
+        card.addEventListener('click', clickHandler, { passive: false });
       });
-    });
-    
-    // 리사이즈 시 플립 상태 리셋 (데스크탑으로 전환 시)
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        if (!isTabletOrMobile()) {
-          resetAllCards();
+      
+      // 외부 클릭시 모든 clicked 해제 및 자동재생 재개 (한 번만 등록)
+      if (!document._proofOutsideClickAttached) {
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.proof .card') && window.matchMedia('(max-width: 1024px)').matches) {
+            document.querySelectorAll('.proof .card').forEach(c => c.classList.remove('clicked'));
+            const swiper = document.querySelector('.proof .slide_wrap')?.swiper;
+            if (swiper) swiper.autoplay.start();
+          }
+        });
+        document._proofOutsideClickAttached = true;
+      }
+      
+      console.log('Click handlers attached successfully');
+      return true;
+    } else {
+      // 데스크탑에서는 모든 클릭 핸들러 제거하고 clicked 클래스도 제거
+      console.log('Desktop mode - removing click handlers');
+      proofCards.forEach((card) => {
+        if (card._proofClickHandler) {
+          card.removeEventListener('click', card._proofClickHandler);
+          card._proofClickHandler = null;
         }
-      }, 250);
-    });
-  }
+        card.classList.remove('clicked');
+        card.style.cursor = 'pointer'; // 호버를 위한 커서 유지
+      });
+      return true;
+    }
+  };
   
+  // Swiper 초기화 후 실행 (재시도 로직 포함)
+  let proofRetryCount = 0;
+  const maxProofRetries = 15;
+  
+  const initProofClickHandlers = () => {
+    const success = handleProofCardClick();
+    if (!success && proofRetryCount < maxProofRetries) {
+      proofRetryCount++;
+      console.log('Retrying proof card initialization... attempt', proofRetryCount);
+      setTimeout(initProofClickHandlers, 300);
+    } else if (success) {
+      console.log('Proof card handlers initialized successfully');
+      proofHandlersInitialized = true;
+    }
+  };
+  
+  setTimeout(initProofClickHandlers, 500);
 });

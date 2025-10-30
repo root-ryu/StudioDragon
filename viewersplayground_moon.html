@@ -3,68 +3,76 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="스튜디오드래곤의 Viewer’s Playground Page입니다. ">
-  <meta name="keywords" content="스튜디오드래곤, 드라마, 제작사, 기획사, CJENM, TVN, 넷플릭스">
-  <meta name="author" content="Luna">
+  <meta name="description" content="We Are Studio Dragon">
+  <meta name="keywords" content="Studio Dragon, a premium storyteller group">
+  <meta name="author" content="Team 2eezy">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Studio Dragon">
+  <meta property="og:description" content="Studio Dragon, a premium storyteller group">
+  <meta property="og:image" content="	https://root-ryu.github.io/StudioDragon/asset/og_img.png">
+  <meta property="og:url" content="https://root-ryu.github.io/StudioDragon/">
   <link rel="shortcut icon" href="back/img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/main_media.css">
   <link rel="stylesheet" href="./moon/css/pg-style.css">
+  <link rel="stylesheet" href="./moon/css/pg-media.css">
   <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="./js/common.js"></script>
-  <script defer src="./moon/js/pg.js"></script>
+  <script src="./moon/js/pg.js"></script>
   <title>Viewer’s Playground Page</title>
 </head>
 
 <body>
   <div class="wrap">
-    <!-- 헤더 -->
+    <!-- 헤더 시작 -->
     <div class="header_bg">
     </div>
     <header class="">
       <div class="inner">
-        <h1><a href="#" class="logo"><img src="back/img/logo_w.png" alt="StudioDragonLogo"></a></h1>
+        <h1><a href="index.html" class="logo"><img src="back/img/logo_w.png" alt="StudioDragonLogo"></a></h1>
         <nav class="">
           <ul class="gnb">
-            <li class=""><a href="#">ABOUT</a>
+            <li class=""><a href="intro.html" class="t">ABOUT</a>
               <ul class="sub">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Business Ethics</a></li>
-                <li><a href="#">Partnerships</a></li>
-                <li><a href="#">History</a></li>
-                <li><a href="#">CEO Message</a></li>
-                <li><a href="#">Contact & Location</a></li>
+                <li><a href="intro.html" class="t_small">About Us</a></li>
+                <li><a href="index.html">Business Ethics</a></li>
+                <li><a href="index.html">Partnerships</a></li>
+                <li><a href="index.html">History</a></li>
+                <li><a href="index.html">CEO Message</a></li>
+                <li><a href="index.html">Contact & Location</a></li>
               </ul>
             </li>
-            <li><a href="#">WORKS</a>
+            <li><a href="Listworks_lee.html" class="t">WORKS</a>
               <ul class="sub">
-                <li><a href="#">Production List</a></li>
-                <li><a href="#">Viewer Participation</a></li>
+                <li><a href="Listworks_lee.html" class="t_small">Production List</a></li>
+                <li><a href="viewersplayground_moon.html" class="t_small">Viewer Participation</a></li>
               </ul>
             </li>
-            <li><a href="#">NEWSROOM</a>
+            <li><a href="index.html">NEWSROOM</a>
               <ul class="sub">
-                <li><a href="#">Notice</a></li>
-                <li><a href="#">News</a></li>
+                <li><a href="index.html">Notice</a></li>
+                <li><a href="index.html">News</a></li>
               </ul>
             </li>
-            <li><a href="#">IR</a>
-              <ul class="sub">
-                <li><a href="#">IR Insights</a></li>
-                <li><a href="#">Materials</a></li>
+            <li><a href="IR.html" class="t_ir">IR</a>
+              <ul class="sub ">
+                <li><a href="IR.html" class="t_small">IR Insights</a></li>
+                <li><a href="index.html">Materials</a></li>
               </ul>
             </li>
-            <li><a href="#">SUSTAINABILITY</a>
+            <li><a href="index.html">SUSTAINABILITY</a>
               <ul class="sub">
-                <li><a href="#">Sustainability Story</a></li>
-                <li><a href="#">Sustainability Activities</a></li>
-                <li><a href="#">Sustainability Report</a></li>
-                <li><a href="#">ESG Ratings</a></li>
-                <li><a href="#">Sustainability Report</a></li>
+                <li><a href="index.html">Sustainability Story</a></li>
+                <li><a href="index.html">Sustainability Activities</a></li>
+                <li><a href="index.html">Sustainability Report</a></li>
+                <li><a href="index.html">ESG Ratings</a></li>
+                <li><a href="index.html">Sustainability Report</a></li>
               </ul>
             </li>
           </ul><!-- //.gnb -->
@@ -74,44 +82,114 @@
               <a href="#" class="kr ">KR</a>
             </div><!-- //.lang -->
             <div class="user">
-              <a href="#"><img src="back/img/user.png" alt="user"></a>
+              <a href=""><img src="back/img/user.png" alt="user"></a>
             </div><!-- //.user -->
-            <div class="ham">
-              <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-            </div>
+            <div class="nav_ham">
+              <img src="asset/nav_ham.svg" alt="">
+            </div><!-- //.nav_ham -->
           </div><!-- //.right -->
         </nav>
       </div><!-- //.inner -->
     </header>
 
+    <!-- 햄버거 메뉴 독립 배치 -->
+    <div class="ham">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <!-- 햄버거 메뉴 네비게이션 -->
+    <nav class="ham_nav">
+      <div class="menu_header">
+        <div class="language_switcher">
+          <a href="#" class="lang_link active">EN</a>
+          <a href="#" class="lang_link">KO</a>
+        </div>
+
+        <div class="menu_icons">
+          <a href="#" class="icon_link">
+            <img src="back/img/user.png" alt="Profile">
+          </a>
+          <button type="button" class="icon_link close_btn">
+            <img src="asset/x-circle.svg" alt="">
+          </button>
+        </div>
+      </div>
+
+      <ul class="main_nav">
+        <li class="nav_item">
+          <a href="intro_kim/intro.html" class="main_category">ABOUT</a>
+          <ul class="submenu">
+            <li><a href="intro.html">About Us</a></li>
+            <li><a href="index.html">Business Ethics</a></li>
+            <li><a href="index.html">Partnerships</a></li>
+            <li><a href="index.html">History</a></li>
+            <li><a href="index.html">CEO Message</a></li>
+            <li><a href="index.html">Contact & Location</a></li>
+          </ul>
+        </li>
+
+        <li class="nav_item">
+          <a href="Listworks_lee.html" class="main_category">WORKS</a>
+          <ul class="submenu">
+            <li><a href="Listworks_lee.html">Production List</a></li>
+            <li><a href="viewersplayground_moon.html">Viewer Participation</a></li>
+          </ul>
+        </li>
+
+        <li class="nav_item">
+          <a href="index.html" class="main_category">NEWSROOM</a>
+          <ul class="submenu">
+            <li><a href="index.html">Notice</a></li>
+            <li><a href="index.html">News</a></li>
+          </ul>
+        </li>
+
+        <li class="nav_item">
+          <a href="IR.html" class="main_category">IR</a>
+          <ul class="submenu">
+            <li><a href="IR.html">IR Insights</a></li>
+            <li><a href="index.html">Materials</a></li>
+          </ul>
+        </li>
+
+        <li class="nav_item">
+          <a href="index.html" class="main_category">SUSTAINABILITY</a>
+          <ul class="submenu">
+            <li><a href="index.html">Sustainability Story</a></li>
+            <li><a href="index.html">Sustainability Activities</a></li>
+            <li><a href="index.html">Sustainability Report</a></li>
+            <li><a href="index.html">ESG Ratings</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav><!-- //.ham_nav -->
+    <!-- 여기까지 헤더 -->
+
     <!-- 메인 -->
     <main>
-      <!-- 히어로 텍스트 -->
-      <section class="hero">
-        <div class="inner">
-          <ul data-asap="fade-up" data-asap-duration="400" data-asap-easing="ease-in-out" data-asap-mirror="true"
-            data-asap-delay="300" data-asap-once="false" data-asap-anchor-placement="top-center">
-            <li class="hero-text1">Create,</li>
-            <li class="hero-text2">Share,</li>
-            <li class="hero-text3">Vote,</li>
-            <li class="hero-text4">Play with K-drama</li>
+      <!-- 히어로 섹션 -->
+      <section class="hero text_reveal_section">
+        <div class="sect_inner">
+          <ul class="hero-txtbox opacity_reveal">
+            <li>Create,</li>
+            <li>Share,</li>
+            <li>Vote,</li>
+            <li>Play with K-drama</li>
           </ul>
-          <div class="imgbox" data-asap="fade-up" data-asap-duration="400" data-asap-delay="600"
-            data-asap-easing="ease-in-out" data-asap-mirror="true" data-asap-once="false"
-            data-asap-anchor-placement="top-center">
+          <div class="imgbox repeat_area">
             <div class="smiling-emoji"></div>
           </div>
-        </div><!-- .inner -->
+        </div><!-- .sect_inner -->
       </section><!-- .hero -->
 
 
       <!-- 공모전 수상작 -->
       <section class="contest-winner">
-        <div class="inner">
+        <div class="sect_inner">
           <div class="top">
             <div class="decoImg"></div>
             <div class="title">
@@ -126,24 +204,20 @@
           <div class="winner-wrap">
             <div class="video-content">
               <div class="video-wrap">
-                <iframe
-                  src="https://www.youtube.com/embed/L9 25sfLdm2Q?autoplay=1&mute=1&loop=1&playlist=L925sfLdm2Q&playsinline=1"
-                  title="Title : The Fire Inside | Nickname : rainyroom | Nickname : bloom" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                </iframe>
+                <video src="./moon/asset/award_1.mp4" autoplay muted loop playsinline controlslist="nodownload"
+                  oncontextmenu="return false;"></video>
                 <div class="award-info">
                   <h3 class="award">Gold Award</h3>
                   <div class="txtbox">
                     <ul class="subtitle">
                       <li>
-                        <p>Title : Typo of Sorry</p>
+                        <b>Title : The Fire Inside</b>
                       </li>
                       <li>
-                        <p>Nickname : rainyroom</p>
+                        <b>Nickname : rainyroom</b>
                       </li>
                       <li>
-                        <em>Acceptance comment:
+                        <p>Acceptance comment:
                           <br />
                           “I wanted to express how a single word, or even a typo, can hold deep
                           emotions—regret, forgiveness, and pain. The drama The Glory inspired
@@ -151,11 +225,11 @@
                           feels surreal, and I’m grateful to everyone who connected with my
                           work. This moment reminds me that even small mistakes can lead to
                           meaningful stories.”
-                        </em>
+                        </p>
                       </li>
                     </ul>
                   </div><!-- .txtbox -->
-                  <div class="goldimg"></div>
+                  <div id="goldimg"></div>
                 </div><!-- .award-info -->
                 <div class="circles">
                   <div class="blur-1"></div>
@@ -165,24 +239,20 @@
             </div><!-- .video-content -->
             <div class="video-content">
               <div class="video-wrap">
-                <iframe
-                  src="https://www.youtube.com/embed/L925sfLdm2Q?autoplay=1&mute=1&loop=1&playlist=L925sfLdm2Q&playsinline=1"
-                  title="Title : The Fire Inside | Nickname : rainyroom | Nickname : bloom" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                </iframe>
+                <video src="./moon/asset/award_2.mp4" autoplay muted loop playsinline controlslist="nodownload"
+                  oncontextmenu="return false;"></video>
                 <div class="award-info">
                   <h3 class="award">Silver Award</h3>
                   <div class="txtbox">
                     <ul class="subtitle">
                       <li>
-                        <p>Title : The Fire Inside</p>
+                        <b>Title : Typo of Sorry</b>
                       </li>
                       <li>
-                        <p>Nickname : bloom</p>
+                        <b>Nickname : bloom</b>
                       </li>
                       <li>
-                        <em>Acceptance comment:
+                        <p>Acceptance comment:
                           <br />
                           “I truly enjoyed watching The Glory, and many of its scenes stayed
                           with me long after. I created this video inspired by the unspoken
@@ -190,11 +260,11 @@
                           honor to receive this award, and I’m thankful for the chance to share
                           my interpretation. This experience motivates me to keep creating
                           stories that connect with others.”
-                        </em>
+                        </p>
                       </li>
                     </ul>
                   </div><!-- .txtbox -->
-                  <div class="silverimg"></div>
+                  <div id="silverimg"></div>
                 </div><!-- .award-info -->
                 <div class="circles">
                   <div class="blur-1"></div>
@@ -204,35 +274,31 @@
             </div><!-- video-content -->
             <div class="video-content">
               <div class="video-wrap">
-                <iframe
-                  src="https://www.youtube.com/embed/L925sfLdm2Q?autoplay=1&mute=1&loop=1&playlist=L925sfLdm2Q&playsinline=1"
-                  title="Title : The Fire Inside | Nickname : rainyroom | Nickname : bloom" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                </iframe>
+                <video src="./moon/asset/award_3.mp4" autoplay muted loop playsinline controlslist="nodownload"
+                  oncontextmenu="return false;"></video>
                 <div class="award-info">
                   <h3 class="award">Popular Choice</h3>
                   <div class="txtbox">
                     <ul class="subtitle">
                       <li>
-                        <p>Title : Read Receipt, Unsent</p>
+                        <b>Title : Read Receipt, Unsent</b>
                       </li>
                       <li>
-                        <p>Nickname : mintlatte</p>
+                        <b>Nickname : mintlatte</b>
                       </li>
                       <li>
-                        <em>Acceptance comment:
+                        <p>Acceptance comment:
                           <br />
                           “My goal was to win the Gold Award, but receiving the Popular Choice
                           still feels deeply rewarding. This project took a lot of effort and
                           late nights, so being recognized by viewers means a lot to me. It’s
                           heartwarming to know that people connected with my work. I’ll remember
                           this encouragement and keep challenging myself to do even better.”
-                        </em>
+                        </p>
                       </li>
                     </ul>
                   </div><!-- .txtbox -->
-                  <div class="popularimg"></div>
+                  <div id="popularimg"></div>
                 </div><!-- .award-info -->
                 <div class="circles">
                   <div class="blur-1"></div>
@@ -241,19 +307,17 @@
               </div><!-- video-wrap -->
             </div><!-- video-content -->
           </div><!-- .wrap -->
-        </div>
+        </div><!-- .sect_inner -->
       </section><!-- .contest-winner -->
 
       <!-- 진행중인 공모전 -->
       <section class="running-contest">
-        <div class="inner">
+        <div class="sect_inner">
           <div class="title">
             <h2>Running Contest</h2>
           </div>
           <div class="con">
-            <div class="info" data-asap="fade-up" data-asap-duration="400"
-              data-asap-easing="cubic-bezier(0.32,-0.01, 0.07, 1.15)" data-asap-mirror="true" data-asap-once="false"
-              data-asap-anchor-placement="top-center">
+            <div class="info">
               <div class="deadline">
                 <h4>
                   Deadline: 2025-11-10 23:59 UTC
@@ -306,119 +370,115 @@
             <div class="title">
               <h2>Creative Gallery</h2>
             </div>
-            <div class="category">
-              <button type="button">fan arts</button>
-              <button type="button">fan videos</button>
-            </div>
           </div>
           <!-- 1. 팬아트 카테고리 -->
-          <div class="fanarts active"><!-- IM뱅크 작업파일 참고하기 -->
+          <div class="fanarts active">
             <div class="wrap inner">
               <div class="con img_popular">
                 <h4>🔥 ‍Popular</h4>
                 <div class="swiper popular_img_slide">
                   <ul class="swiper-wrapper">
-                    <li class="swiper-slide slide1">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_1_po.png" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>1Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>Sweet Home Fan Art</b></li>
+                            <li>Atti</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>5.1k</p>
                           </div>
                         </div>
                       </div>
                     </li>
-                    <li class="swiper-slide slide2">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_2_po.jpg" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>2Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>Bon Appétit, Your Majesty Fan Art</b></li>
+                            <li>CreativeSoul</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>4.8k</p>
                           </div>
                         </div><!-- info-overlay -->
                       </div>
                     </li>
-                    <li class="swiper-slide slide3 selected">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_3_po.png" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>3Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>Crash Landing on You</b></li>
+                            <li>DramaFan</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>4.2k</p>
                           </div>
                         </div><!-- info-overlay -->
                       </div>
                     </li>
-                    <li class="swiper-slide slide4">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_4_po.png" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>4Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>Fan art of a scene from Gyeongseong Creature</b></li>
+                            <li>PixelPen</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>3.4k</p>
                           </div>
                         </div><!-- info-overlay -->
                       </div>
                     </li>
-                    <li class="swiper-slide slide5">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_5_po.png" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>5Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>Hotel Del Luna, IU fan art</b></li>
+                            <li>sunny</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>2.7k</p>
                           </div>
                         </div><!-- info-overlay -->
                       </div>
                     </li>
-                    <li class="swiper-slide slide6">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_6_po.jpg" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>6Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>Song Hye-kyo fan art in Genie, Make a Wish</b></li>
+                            <li>blue_jay</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>2.2k</p>
                           </div>
                         </div><!-- info-overlay -->
                       </div>
                     </li>
-                    <li class="swiper-slide slide7">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_7_po.png" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>7Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>Bon Appédit, Your Majesty. Lee Chaemin fan art</b></li>
+                            <li>K_DramaLover</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>1.2k</p>
                           </div>
                         </div><!-- info-overlay -->
                       </div>
@@ -431,107 +491,108 @@
                 <h4>✨ New</h4>
                 <div class="swiper new_img_slide">
                   <ul class="swiper-wrapper">
-                    <li class="swiper-slide slide1">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_1_new.jpg"
+                          alt="The Glory, Song Hye-kyo fan art">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>1Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>The Glory, Song Hye-kyo fan art</b></li>
+                            <li>lucky_clover</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>204</p>
                           </div>
                         </div><!-- info-overay -->
                       </div>
                     </li>
-                    <li class="swiper-slide slide2">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_2_new.png" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>2Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>I drew Lee Chaemin</b></li>
+                            <li>rainy_day</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>195</p>
                           </div>
                         </div><!-- info-overlay -->
                       </div>
                     </li>
-                    <li class="swiper-slide slide3">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_3_new.jpeg" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>3Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>I made Songgang from Sweet Home in Disney style</b></li>
+                            <li>moondust</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>170</p>
                           </div>
                         </div><!-- info-overlay -->
                       </div>
                     </li>
-                    <li class="swiper-slide slide4">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_4_new.png" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>4Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>I drew Park Seo-jun from Kyungsung Kritzer, what do you think?</b></li>
+                            <li>Sketchy</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>158</p>
                           </div>
                         </div><!-- info-overlay -->
                       </div>
                     </li>
-                    <li class="swiper-slide slide5">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_5_new.png" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>5Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>It's Marry My Husband's Nine-Woo Disney style.</b></li>
+                            <li>cozy_corner</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>140</p>
                           </div>
                         </div><!-- info-overlay -->
                       </div>
                     </li>
-                    <li class="swiper-slide slide6">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_6_new.png" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>6Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>I liked this scene from Twenty Five, Twenty One, so I drew it.</b></li>
+                            <li>crafty_crab</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>110</p>
                           </div>
                         </div><!-- info-overlay -->
                       </div>
                     </li>
-                    <li class="swiper-slide slide7">
+                    <li class="swiper-slide">
                       <div class="fan-img-wrap">
-                        <div class="fan-img mirror"></div>
+                        <img class="fan-img" src="./moon/asset/fanimg_7_new.png" alt="">
                         <div class="info-overlay">
                           <ul class="subtitle">
-                            <li><b>7Sweet Home Fan Art</b></li>
-                            <li>Abbi</li>
+                            <li><b>Suzy was so pretty in this scene that I drew it.</b></li>
+                            <li>Vivi</li>
                           </ul>
                           <div class="like">
                             <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
+                            <p>82</p>
                           </div>
                         </div><!-- info-overlay -->
                       </div>
@@ -542,405 +603,494 @@
               </div><!-- .con .img_new -->
             </div><!-- inner -->
           </div><!-- fanarts -->
-
-          <!-- 2. 비디오 카테고리 -->
-          <div class="fanvideos">
-            <div class="wrap inner">
-              <!-- 비디오 카테고리 > popular구역 -->
-              <div class="con video_popular">
-                <h4>🔥 ‍Popular</h4>
-                <div class="swiper popular_video_slide">
-                  <ul class="swiper-wrapper">
-                    <li class="swiper-slide slide1">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                        <!-- <div class="info-overlay">
-                          <ul class="subtitle">
-                            <li><b>1Sweet Home Fan video</b></li>
-                            <li>Abbi</li>
-                          </ul>
-                          <div class="like">
-                            <img class="heart" src="./moon/asset/heart.svg">
-                            <p>5.6k</p>
-                          </div>
-                        </div> -->
-                        <!-- info-overlay -->
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide2">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide3">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide4">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide5">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide6">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide7">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide7">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide7">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide7">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide7">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide7">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                  </ul><!-- .swiper-wrapper -->
-                </div><!-- .swiper -->
-                <div class="swiper-pagination"></div>
-              </div><!-- .con .video_popular -->
-              <!-- 비디오 카테고리 > New구역 -->
-              <div class="con video_new">
-                <h4>✨ New</h4>
-                <div class="swiper new_video_slide">
-                  <ul class="swiper-wrapper">
-                    <li class="swiper-slide slide1">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide2">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide3">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide4">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide5">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide6">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                    <li class="swiper-slide slide7">
-                      <a href="#" class="fan-video-wrap">
-                        <figure class="put_in_later mirror">
-                          <!-- <video src="" muted loop></video> -->
-                        </figure>
-                      </a>
-                    </li>
-                  </ul><!-- .swiper-wrapper -->
-                </div><!-- .swiper -->
-                <div class="swiper-pagination"></div>
-              </div><!-- .con .img_new -->
-            </div>
-          </div><!-- .fanvideos -->
         </div><!-- .inner -->
       </section>
 
       <!-- 커뮤니티 섹션 -->
       <section class="community">
-        <div class="inner">
+        <div class="sect_inner">
           <div class="title">
-            <h2>community</h2>
+            <h2><a href="#community">community</a></h2>
             <div class="subtit">
               <h4>popular</h4>
-              <div class="right">
-                <p class="on">today</p>
-                <p class="">weekly</p>
+              <div class="com_btn_wrap">
+                <button type="button" class="com_toggle_btn active">today</button>
+                <button type="button" class="com_toggle_btn">weekly</button>
               </div>
             </div>
           </div><!-- title -->
           <!-- 아티클 구역 -->
           <div class="articles">
-            <!-- 갤러리 구역 -->
-            <div class="swiper comm_gallery">
-              <ul class="swiper-wrapper">
-                <li class="swiper-slide">
-                  <a href="#" class="comm-img-wrap">
-                    <div class="comm-img_1"></div>
-                    <div class="info-overlay">
-                      <b class="num">1</b>
-                      <div class="comm_subtit">
-                        <em>Culture &amp; Locations</em>
-                        <span>
-                          <h5>I tried making the bibimbap from Bon Appétit, Your Majesty.</h5>
-                          <p>254</p>
-                        </span>
+            <div class="comm_today">
+              <!-- 갤러리 구역 (Weekly - 이미지와 텍스트 순서 섞음, num은 유지) -->
+              <div class="swiper comm_gallery">
+                <ul class="swiper-wrapper">
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <img src="./moon/asset/comm-t-img_5.jpg" alt="a scene of a drama">
+                      <div class="info-overlay">
+                        <b class="num">1</b>
+                        <div class="comm_article_info">
+                          <em>Episode Discussions</em>
+                          <span>
+                            <h5>My review after watching episode 2 of the drama Typhoon Family.</h5>
+                            <p>65</p>
+                          </span>
+                        </div>
                       </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <img src="./moon/asset/comm-t-img_2.png" alt="Food scenes in dramas">
+                      <div class="info-overlay">
+                        <b class="num">2</b>
+                        <div class="comm_article_info">
+                          <em>Freetalking</em>
+                          <span>
+                            <h5>I got hungry while watching the drama. I want to go to Korea to eat this food.</h5>
+                            <p>124</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <img src="./moon/asset/comm-t-img_3.webp" alt="Suzy's photos in the drama 'Doona!'">
+                      <div class="info-overlay">
+                        <b class="num">3</b>
+                        <div class="comm_article_info">
+                          <em>Culture &amp; Locations</em>
+                          <span>
+                            <h5>Have you seen 'Doona!'? Suzy is so pretty and gorgeous.</h5>
+                            <p>98</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <img src="./moon/asset/comm-t-img_4.png" alt="The appearance of the developed city of Seoul">
+                      <div class="info-overlay">
+                        <b class="num">4</b>
+                        <div class="comm_article_info">
+                          <em>Q&amp;A · Knowledge Share</em>
+                          <span>
+                            <h5>After watching the drama, I learned that Korea experienced the IMF crisis. It's amazing that they overcame it.</h5>
+                            <p>72</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <img src="./moon/asset/comm-t-img_1.jpg" alt="a scene of the drama Bon Appétit, Your Majesty">
+                      <div class="info-overlay">
+                        <b class="num">5</b>
+                        <div class="comm_article_info">
+                          <em>Episode Discussions</em>
+                          <span>
+                            <h5>The CG in this drama is crazy. I watch this drama because it's funny because of scenes like this.</h5>
+                            <p>120</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                </ul><!-- .swiper-wrapper -->
+              </div><!-- .swiper comm_gallery -->
+              <!-- 리스트 구역 -->
+              <ul class="article_list">
+                <li>
+                  <a href="#">
+                    <b class="num">6</b>
+                    <div class="comm_article_info">
+                      <em>Freetalking</em>
+                      <span>
+                        <h5>I started studying Korean. I&#039;ll share some Korean study sites.</h5>
+                        <p>53</p>
+                      </span>
                     </div>
                   </a>
-                </li><!-- swiper-slide -->
-                <li class="swiper-slide">
-                  <a href="#" class="comm-img-wrap">
-                    <div class="comm-img_1"></div>
-                    <div class="info-overlay">
-                      <b class="num">2</b>
-                      <div class="comm_subtit">
-                        <em>Episode Discussions</em>
-                        <span>
-                          <h5>Isn&#039;t this a hidden plot point?</h5>
-                          <p>254</p>
-                        </span>
-                      </div>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">7</b>
+                    <div class="comm_article_info">
+                      <em>Episode Discussions</em>
+                      <span>
+                        <h5>Contains spoilers. Doesn&#039;t it seem like the story will continue like this in episode 2?</h5>
+                        <p>48</p>
+                      </span>
                     </div>
                   </a>
-                </li><!-- swiper-slide -->
-                <li class="swiper-slide">
-                  <a href="#" class="comm-img-wrap">
-                    <div class="comm-img_1"></div>
-                    <div class="info-overlay">
-                      <b class="num">3</b>
-                      <div class="comm_subtit">
-                        <em>Episode Discussions</em>
-                        <span>
-                          <h5>Bon Appétit, Your Majesty: The Hidden Story in the Final Episode</h5>
-                          <p>254</p>
-                        </span>
-                      </div>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">8</b>
+                    <div class="comm_article_info">
+                      <em>Episode Discussions</em>
+                      <span>
+                        <h5>I feel so sorry for the sub-male protagonist.</h5>
+                        <p>39</p>
+                      </span>
                     </div>
                   </a>
-                </li><!-- swiper-slide -->
-                <li class="swiper-slide">
-                  <a href="#" class="comm-img-wrap">
-                    <div class="comm-img_1"></div>
-                    <div class="info-overlay">
-                      <b class="num">4</b>
-                      <div class="comm_subtit">
-                        <em>Q&amp;A · Knowledge Share</em>
-                        <span>
-                          <h5>Are you making Sweet Home Season 4? Please make it, plz.</h5>
-                          <p>254</p>
-                        </span>
-                      </div>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">9</b>
+                    <div class="comm_article_info">
+                      <em>Q&amp;A · Knowledge Share</em>
+                      <span>
+                        <h5>I didn&#039;t know, but this is the expression in Korea.</h5>
+                        <p>27</p>
+                      </span>
                     </div>
                   </a>
-                </li><!-- swiper-slide -->
-                <li class="swiper-slide">
-                  <a href="#" class="comm-img-wrap">
-                    <div class="comm-img_1"></div>
-                    <div class="info-overlay">
-                      <b class="num">5</b>
-                      <div class="comm_subtit">
-                        <em>Freetalking</em>
-                        <span>
-                          <h5>Hey, has everyone seen Genie, Make a Wish?</h5>
-                          <p>254</p>
-                        </span>
-                      </div>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">10</b>
+                    <div class="comm_article_info">
+                      <em>Culture &amp; Locations</em>
+                      <span>
+                        <h5>I went to Korea and visited the filming locations of the drama.</h5>
+                        <p>16</p>
+                      </span>
                     </div>
                   </a>
-                </li><!-- swiper-slide -->
-              </ul><!-- .swiper-wrapper -->
-            </div><!-- .swiper comm_gallery -->
-            <!-- 리스트 구역 -->
-            <ul class="article_list">
-              <li>
-                <a href="#">
-                  <b class="num">6</b>
-                  <div class="comm_subtit">
-                    <em>Easter Eggs</em>
-                    <span>
-                      <h5>This feels like foreshadowing. What do you think?</h5>
-                      <p>254</p>
-                    </span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <b class="num">7</b>
-                  <div class="comm_subtit">
-                    <em>Deep Dive</em>
-                    <span>
-                      <h5>Wow, so that&#039;s what it meant? I&#039;m shocked.</h5>
-                      <p>254</p>
-                    </span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <b class="num">8</b>
-                  <div class="comm_subtit">
-                    <em>Deep Dive</em>
-                    <span>
-                      <h5>I&#039;ve been reading up on the history of the Joseon Dynasty, and it&#039;s interesting.
-                      </h5>
-                      <p>254</p>
-                    </span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <b class="num">9</b>
-                  <div class="comm_subtit">
-                    <em>Q&amp;A · Knowledge Share</em>
-                    <span>
-                      <h5>I&#039;ll share my favorite Korean dramas with you, guys.</h5>
-                      <p>254</p>
-                    </span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <b class="num">10</b>
-                  <div class="comm_subtit">
-                    <em>Culture &amp; Locations</em>
-                    <span>
-                      <h5>I went to Korea and visited the filming locations of the drama.</h5>
-                      <p>254</p>
-                    </span>
-                  </div>
-                </a>
-              </li>
-            </ul><!-- article_list -->
+                </li>
+              </ul><!-- article_list -->
+            </div><!-- .comm_today -->
+
+            <div class="comm_weekly"  style="display:none;">
+              <!-- 갤러리 구역 -->
+              <div class="swiper comm_gallery">
+                <ul class="swiper-wrapper">
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <img src="./moon/asset/comm-w-img_5.jpg" alt="">
+                      <div class="info-overlay">
+                        <b class="num">1</b>
+                        <div class="comm_article_info">
+                          <em>Freetalking</em>
+                          <span>
+                            <h5>Hey, has everyone seen Genie, Make a Wish?</h5>
+                            <p>114</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <img src="./moon/asset/comm-w-img_1.jpg" alt="">
+                      <div class="info-overlay">
+                        <b class="num">2</b>
+                        <div class="comm_article_info">
+                          <em>Culture &amp; Locations</em>
+                          <span>
+                            <h5>I tried making the bibimbap from Bon Appétit, Your Majesty.</h5>
+                            <p>254</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <img src="./moon/asset/comm-w-img_2.jpg" alt="">
+                      <div class="info-overlay">
+                        <b class="num">3</b>
+                        <div class="comm_article_info">
+                          <em>Episode Discussions</em>
+                          <span>
+                            <h5>Isn&#039;t this a hidden plot point?</h5>
+                            <p>210</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <img src="./moon/asset/comm-w-img_3.jpg" alt="">
+                      <div class="info-overlay">
+                        <b class="num">4</b>
+                        <div class="comm_article_info">
+                          <em>Episode Discussions</em>
+                          <span>
+                            <h5>Bon Appétit, Your Majesty: The Hidden Story in the Final Episode</h5>
+                            <p>146</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  <li class="swiper-slide">
+                    <a href="#" class="comm-img-wrap">
+                      <img src="./moon/asset/comm-w-img_4.jpg" alt="">
+                      <div class="info-overlay">
+                        <b class="num">5</b>
+                        <div class="comm_article_info">
+                          <em>Q&amp;A · Knowledge Share</em>
+                          <span>
+                            <h5>Are you making Sweet Home Season 4? Please make it, plz.</h5>
+                            <p>125</p>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li><!-- swiper-slide -->
+                  
+                </ul><!-- .swiper-wrapper -->
+              </div><!-- .swiper comm_gallery -->
+              <!-- 리스트 구역  -->
+              <ul class="article_list">
+                <li>
+                  <a href="#">
+                    <b class="num">6</b>
+                    <div class="comm_article_info">
+                      <em>Easter Eggs</em>
+                      <span>
+                        <h5>This feels like foreshadowing. What do you think?</h5>
+                        <p>97</p>
+                      </span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">7</b>
+                    <div class="comm_article_info">
+                      <em>Deep Dive</em>
+                      <span>
+                        <h5>Wow, so that&#039;s what it meant? I&#039;m shocked.</h5>
+                        <p>89</p>
+                      </span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">8</b>
+                    <div class="comm_article_info">
+                      <em>Deep Dive</em>
+                      <span>
+                        <h5>I&#039;ve been reading up on the history of the Joseon Dynasty, and it&#039;s interesting.
+                        </h5>
+                        <p>71</p>
+                      </span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">9</b>
+                    <div class="comm_article_info">
+                      <em>Q&amp;A · Knowledge Share</em>
+                      <span>
+                        <h5>I&#039;ll share my favorite Korean dramas with you, guys.</h5>
+                        <p>65</p>
+                      </span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <b class="num">10</b>
+                    <div class="comm_article_info">
+                      <em>Culture &amp; Locations</em>
+                      <span>
+                        <h5>I went to Korea and visited the filming locations of the drama.</h5>
+                        <p>52</p>
+                      </span>
+                    </div>
+                  </a>
+                </li>
+              </ul><!-- article_list -->
+            </div><!-- .comm_weekly -->
           </div><!-- .articles -->
-        </div><!-- ./inner -->
+        </div><!-- ./sect_inner -->
       </section><!-- .community -->
 
+      <!-- 투표 섹션 -->
+      <section class="vote">
+        <div class="sect_inner">
+          <div class="title">
+            <h2>vote</h2>
+            <h3>Who is the most anticipated villain?</h3>
+            <p>Vote for the character you believe will be the most captivatingly evil.</p>
+          </div>
+          <div class="vote-container">
+            <!-- Card 1: The Glory -->
+            <div class="vote-card" id="vote-card-1">
+              <div class="vote-card-inner">
+                <!-- Front of the card -->
+                <div class="vote-card-front">
+                  <div class="img-area">
+                    <img src="moon/asset/vote_yeonjin.jpg" alt="Park Yeon-jin from The Glory">
+                  </div>
+                  <div class="info-area">
+                    <span class="drama-title">The Glory</span>
+                    <h3 class="char-name">Park Yeon-jin</h3>
+                    <button type="button" class="vote-btn">Vote Now</button>
+                  </div>
+                </div>
+                <!-- Back of the card -->
+                <div class="vote-card-back">
+                  <div class="img-area">
+                    <img src="moon/asset/vote_yeonjin.jpg" alt="Park Yeon-jin from The Glory">
+                  </div>
+                  <div class="info-area result-area">
+                    <span class="drama-title">The Glory</span>
+                    <h3 class="char-name">Park Yeon-jin</h3>
+                    <div class="vote-result">
+                      <progress class="progress progress01" value="0" min="0" max="100"></progress>
+                      <span class="percentage">45%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2: Queen of Tears -->
+            <div class="vote-card" id="vote-card-2">
+              <div class="vote-card-inner">
+                <!-- Front of the card -->
+                <div class="vote-card-front">
+                  <div class="img-area">
+                    <img src="moon/asset/vote_yooneunseong.jpg" alt="Yoon Eun-seong from Queen of Tears">
+                  </div>
+                  <div class="info-area">
+                    <span class="drama-title">Queen of Tears</span>
+                    <h3 class="char-name">Yoon Eun-seong</h3>
+                    <button type="button" class="vote-btn">Vote Now</button>
+                  </div>
+                </div>
+                <!-- Back of the card -->
+                <div class="vote-card-back">
+                  <div class="img-area">
+                    <img src="moon/asset/vote_yooneunseong.jpg" alt="Yoon Eun-seong from Queen of Tears">
+                  </div>
+                  <div class="info-area result-area">
+                    <span class="drama-title">Queen of Tears</span>
+                    <h3 class="char-name">Yoon Eun-seong</h3>
+                    <div class="vote-result">
+                      <progress class="progress progress02" value="0" min="0" max="100"></progress>
+                      <span class="percentage">35%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Card 3: Bon Appétit, Your Majesty -->
+            <div class="vote-card" id="vote-card-3">
+              <div class="vote-card-inner">
+                <!-- Front of the card -->
+                <div class="vote-card-front">
+                  <div class="img-area">
+                    <img src="moon/asset/vote_jesan.jpg" alt="Jesan Daegun from Bon Appétit, Your Majesty">
+                  </div>
+                  <div class="info-area">
+                    <span class="drama-title">Bon Appétit, Your Majesty</span>
+                    <h3 class="char-name">Jesan Daegun</h3>
+                    <button type="button" class="vote-btn">Vote Now</button>
+                  </div>
+                </div>
+                <!-- Back of the card -->
+                <div class="vote-card-back">
+                  <div class="img-area">
+                    <img src="moon/asset/vote_jesan.jpg" alt="Jesan Daegun from Bon Appétit, Your Majesty">
+                  </div>
+                  <div class="info-area result-area">
+                    <span class="drama-title">Bon Appétit, Your Majesty</span>
+                    <h3 class="char-name">Jesan Daegun</h3>
+                    <div class="vote-result">
+                      <progress class="progress progress03" value="0" min="0" max="100"></progress>
+                      <span class="percentage">20%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="vote-footer-message">
+            <p>Thank you for voting. Share your thoughts in the comments!</p>
+            <button type="button" class="vote-again-btn">Vote Again<i
+                class="fa-solid fa-arrow-rotate-right"></i></button>
+          </div>
+        </div>
+      </section><!--  -->
     </main>
 
 
-    <!-- 푸터 -->
-    <footer class="ver_white">
-      <div class="footer_inner">
-        <!-- Top Area -->
-        <div class="footer_top">
-          <div class="footer_menu">
-            <div class="footer_gnb">
-              <a href="#" class="footer_gnb_link home">Home</a>
-              <div class="footer_gnb_wrap">
-                <ul class="footer_gnb_list">
-                  <li><a href="#" class="footer_gnb_link">Hotline</a></li>
-                  <li><a href="#" class="footer_gnb_link">Recruitment</a></li>
-                  <li><a href="#" class="footer_gnb_link">Contact Us</a></li>
-                  <li><a href="#" class="footer_gnb_link">Sitemap</a></li>
-                </ul><!-- //.footer_gnb_list -->
+    <!-- 푸터 시작 -->
+        <footer class="ver_dark ver_white">
+            <div class="footer_inner">
+                <!-- Top Area -->
+                <div class="footer_top">
+                    <div class="footer_menu">
+                        <div class="footer_gnb">
+                            <a href="index.html" class="footer_gnb_link home">Home</a>
+                            <div class="footer_gnb_wrap">
+                                <ul class="footer_gnb_list">
+                                    <li><a href="#" class="footer_gnb_link">Hotline</a></li>
+                                    <li><a href="#" class="footer_gnb_link">Recruitment</a></li>
+                                    <li><a href="#" class="footer_gnb_link">Contact Us</a></li>
+                                    <li><a href="#" class="footer_gnb_link">Sitemap</a></li>
+                                </ul><!-- //.footer_gnb_list -->
 
-                <div class="footer_family_site">
-                  <ul class="family_site_list">
-                    <li><a href="#" class="family_site_link">CJ ENM</a></li>
-                    <li><a href="#" class="family_site_link">CJ GROUP</a></li>
-                    <li class="family_site_btn_wrap">
-                      <button type="button" class="family_site_btn">
-                        <span>Family Site</span>
-                        <img src="asset/up.svg" alt="arrow" class="family_site_arrow">
-                      </button>
-                    </li>
-                  </ul><!-- //.family_site_list -->
-                </div><!-- //.footer_family_site -->
-              </div><!-- //.footer_gnb_wrap -->
-            </div><!-- //.footer_gnb -->
-          </div><!-- //.footer_menu -->
-        </div><!-- //.footer_top -->
+                                <div class="footer_family_site">
+                                    <ul class="family_site_list">
+                                        <li><a href="#" class="family_site_link">CJ ENM</a></li>
+                                        <li><a href="#" class="family_site_link">CJ GROUP</a></li>
+                                        <li class="family_site_btn_wrap">
+                                            <button type="button" class="family_site_btn">
+                                                <span>Family Site</span>
+                                                <img src="asset/up.svg" alt="arrow" class="family_site_arrow">
+                                            </button>
+                                        </li>
+                                    </ul><!-- //.family_site_list -->
+                                </div><!-- //.footer_family_site -->
+                            </div><!-- //.footer_gnb_wrap -->
+                        </div><!-- //.footer_gnb -->
+                    </div><!-- //.footer_menu -->
+                </div><!-- //.footer_top -->
 
-        <!-- Bottom Area -->
-        <div class="footer_bottom">
-          <div class="footer_brand">
-            <div class="footer_logo">
+                <!-- Bottom Area -->
+                <div class="footer_bottom">
+                    <div class="footer_brand">
+                        <div class="footer_logo">
 
-            </div><!-- //.footer_logo -->
+                        </div><!-- //.footer_logo -->
 
-            <div class="footer_sns">
-              <a href="#" class="sns_link" aria-label="Facebook">
-                <img src="asset/facebook.svg" alt="Facebook">
-              </a>
-              <a href="#" class="sns_link" aria-label="YouTube">
-                <img src="asset/youtube.svg" alt="YouTube">
-              </a>
-              <a href="#" class="sns_link" aria-label="Instagram">
-                <img src="asset/Instagram.svg" alt="Instagram">
-              </a>
-            </div><!-- //.footer_sns -->
-          </div><!-- //.footer_brand -->
+                        <div class="footer_sns">
+                            <a href="#" class="sns_link" aria-label="Facebook">
+                                <img src="asset/facebook.svg" alt="Facebook">
+                            </a>
+                            <a href="#" class="sns_link" aria-label="YouTube">
+                                <img src="asset/youtube.svg" alt="YouTube">
+                            </a>
+                            <a href="#" class="sns_link" aria-label="Instagram">
+                                <img src="asset/Instagram.svg" alt="Instagram">
+                            </a>
+                        </div><!-- //.footer_sns -->
+                    </div><!-- //.footer_brand -->
 
-          <div class="footer_info">
-            <p class="footer_info_text">CEO : Jang Kyung-ik</p>
-            <p class="footer_info_text">Studio Dregon Corporation, 17F1, 75, Maebongsan-ro, Mapo-gu, Seoul,
-              Republic of Korea | Business registration number : 747-81-00388</p>
-            <p class="footer_info_text">© STUDIO DRAGON.All Rights Reserved.</p>
-          </div><!-- //.footer_info -->
-        </div><!-- //.footer_bottom -->
-      </div><!-- //.footer_inner -->
-    </footer><!-- //.footer -->
+                    <div class="footer_info">
+                        <p class="footer_info_text">CEO : Jang Kyung-ik</p>
+                        <p class="footer_info_text">Studio Dragon Corporation, 17F1, 75, Maebongsan-ro, Mapo-gu Seoul, Republic of Korea | Business registration number : 747-81-00388</p>
+                        <p class="footer_info_text">© STUDIO DRAGON.All Rights Reserved.</p>
+                    </div><!-- //.footer_info -->
+                </div><!-- //.footer_bottom -->
+            </div><!-- //.footer_inner -->
+        </footer><!-- //.footer -->
+        <!-- 여기까지 푸터 -->
   </div>
 </body>
 

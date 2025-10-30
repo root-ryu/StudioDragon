@@ -1,3 +1,45 @@
+/* ============================================
+   BOOKMARK FUNCTIONALITY
+   ============================================ */
+(function() {
+    const bookmarkButton = document.querySelector('.bookmark_button');
+    const bookmarkIcon = document.querySelector('.bookmark_icon');
+    const notification = document.querySelector('.bookmark_notification');
+    const notificationMessage = document.querySelector('.notification_message');
+    
+    if (!bookmarkButton || !bookmarkIcon || !notification) return;
+    
+    let isBookmarked = false;
+    let notificationTimeout = null;
+    
+    // 북마크 버튼 클릭 이벤트
+    bookmarkButton.addEventListener('click', function() {
+        isBookmarked = !isBookmarked;
+        
+        // 아이콘 전환
+        if (isBookmarked) {
+            bookmarkIcon.src = 'Work_Ryu/asset/icon_bookmark.svg';
+            notificationMessage.textContent = 'Drama Saved';
+        } else {
+            bookmarkIcon.src = 'Work_Ryu/asset/icon_bookmark_off.svg';
+            notificationMessage.textContent = 'Removed from Saved List';
+        }
+        
+        // 팝업 표시
+        notification.classList.add('show');
+        
+        // 기존 타이머 제거
+        if (notificationTimeout) {
+            clearTimeout(notificationTimeout);
+        }
+        
+        // 2초 후 팝업 숨김
+        notificationTimeout = setTimeout(() => {
+            notification.classList.remove('show');
+        }, 2000);
+    });
+})();
+
 /* episode */
 // Episode 섹션 드래그 스크롤 및 반응형 네비게이션
 window.addEventListener('DOMContentLoaded', function() {
@@ -45,36 +87,74 @@ window.addEventListener('DOMContentLoaded', function() {
         slider.classList.remove('grabbing');
     });
 
+    // 드래그 관성을 위한 변수
+    let lastX = 0;
+    let velocity = 0;
+    let animationId = null;
+
     slider.addEventListener('mousemove', function(e) {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX;
-        const walk = (x - startX) * 2; // 부드러운 드래그
+        const walk = (x - startX) * 1.5; // 속도 조정
         slider.scrollLeft = scrollLeft - walk;
+        
+        // 속도 계산 (관성 효과용)
+        velocity = x - lastX;
+        lastX = x;
     });
 
-    // 휠 이벤트로 좌우 스크롤
+    // 마우스 업 시 관성 효과
+    slider.addEventListener('mouseup', function() {
+        isDown = false;
+        slider.classList.remove('grabbing');
+        
+        // 관성 스크롤 적용
+        if (Math.abs(velocity) > 2) {
+            applyInertia();
+        }
+    });
+
+    // 관성 스크롤 함수
+    function applyInertia() {
+        if (animationId) cancelAnimationFrame(animationId);
+        
+        function animate() {
+            velocity *= 0.95; // 감속
+            slider.scrollLeft -= velocity * 1.5;
+            
+            if (Math.abs(velocity) > 0.5) {
+                animationId = requestAnimationFrame(animate);
+            }
+        }
+        animate();
+    }
+
+    // 휠 이벤트로 좌우 스크롤 (1920px만, 양쪽 끝에서는 페이지 스크롤로 전환)
     slider.addEventListener('wheel', function(e) {
+        // 1024px 이하에서는 휠 스크롤 비활성화
+        if (isMobile()) {
+            return;
+        }
+        
         const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
         const isAtEnd = slider.scrollLeft >= maxScrollLeft - 1;
         const isAtStart = slider.scrollLeft <= 1;
         
-        // 끝에 도달했고 오른쪽으로 스크롤하려는 경우
-        if (isAtEnd && e.deltaY > 0) {
-            return; // 페이지 스크롤로 넘어감
-        }
-        
-        // 시작점이고 왼쪽으로 스크롤하려는 경우
+        // 시작점에서 위로 스크롤 시 → 페이지 위로 이동
         if (isAtStart && e.deltaY < 0) {
-            return; // 페이지 스크롤로 넘어감
+            return; // 페이지 스크롤 허용
         }
         
-        // 횡스크롤 가능할 때만 preventDefault
-        e.preventDefault();
+        // 끝점에서 아래로 스크롤 시 → 페이지 아래로 이동
+        if (isAtEnd && e.deltaY > 0) {
+            return; // 페이지 스크롤 허용
+        }
         
-        // 부드러운 횡스크롤
-        slider.scrollLeft += e.deltaY;
-    });
+        // 중간 구간에서는 가로 스크롤 작동
+        e.preventDefault();
+        slider.scrollLeft += e.deltaY * 2.5;
+    }, { passive: false });
     
     // ===== 반응형 네비게이션 =====
     const indicator = document.getElementById('episodeIndicator');
@@ -83,27 +163,80 @@ window.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.getElementById('episodeNext');
     
     // 화살표 클릭 - 카드 여러 개 이동
-    if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', function() {
+    if (prevBtn && nextBtn && slider) {
+        let isAnimating = false;
+        
+        prevBtn.addEventListener('click', function(e) {
+            if (isAnimating) return;
+            
+            e.preventDefault();
+            e.stopPropagation();
+            
             const currentWidth = window.innerWidth;
-            const cardWidth = currentWidth >= 1024 ? 266 : 152;
-            const gap = currentWidth >= 1024 ? 28 : 12;
-            const cardsToMove = currentWidth >= 1024 ? 2 : 1;
+            const cardWidth = currentWidth > 1024 ? 312 : (currentWidth > 440 ? 266 : 152);
+            const gap = currentWidth > 1024 ? 50 : (currentWidth > 440 ? 28 : 12);
+            const cardsToMove = currentWidth > 440 ? 2 : 1; // 1024px와 440px 모두 2개씩
             const scrollAmount = (cardWidth + gap) * cardsToMove;
             
-            console.log('Prev 클릭 - 화면너비:', currentWidth, '카드수:', cardsToMove, '스크롤양:', scrollAmount);
-            slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            // 부드러운 스크롤
+            isAnimating = true;
+            const startScroll = slider.scrollLeft;
+            const targetScrollPos = Math.max(0, startScroll - scrollAmount);
+            const duration = 500;
+            const startTime = performance.now();
+            
+            function animatePrev(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                
+                slider.scrollLeft = startScroll + (targetScrollPos - startScroll) * easeProgress;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animatePrev);
+                } else {
+                    isAnimating = false;
+                }
+            }
+            
+            requestAnimationFrame(animatePrev);
         });
         
-        nextBtn.addEventListener('click', function() {
+        nextBtn.addEventListener('click', function(e) {
+            if (isAnimating) return;
+            
+            e.preventDefault();
+            e.stopPropagation();
+            
             const currentWidth = window.innerWidth;
-            const cardWidth = currentWidth >= 1024 ? 266 : 152;
-            const gap = currentWidth >= 1024 ? 28 : 12;
-            const cardsToMove = currentWidth >= 1024 ? 2 : 1;
+            const cardWidth = currentWidth > 1024 ? 312 : (currentWidth > 440 ? 266 : 152);
+            const gap = currentWidth > 1024 ? 50 : (currentWidth > 440 ? 28 : 12);
+            const cardsToMove = currentWidth > 440 ? 2 : 1; // 1024px와 440px 모두 2개씩
             const scrollAmount = (cardWidth + gap) * cardsToMove;
             
-            console.log('Next 클릭 - 화면너비:', currentWidth, '카드수:', cardsToMove, '스크롤양:', scrollAmount);
-            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            // 부드러운 스크롤
+            isAnimating = true;
+            const startScroll = slider.scrollLeft;
+            const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+            const targetScrollPos = Math.min(maxScrollLeft, startScroll + scrollAmount);
+            const duration = 500;
+            const startTime = performance.now();
+            
+            function animateNext(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                
+                slider.scrollLeft = startScroll + (targetScrollPos - startScroll) * easeProgress;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animateNext);
+                } else {
+                    isAnimating = false;
+                }
+            }
+            
+            requestAnimationFrame(animateNext);
         });
         
         // 화살표 활성화/비활성화
@@ -170,7 +303,7 @@ window.addEventListener('DOMContentLoaded', function() {
     const wrapper = document.querySelector('.behind_video_wrapper');
     const videoItems = document.querySelectorAll('.video_item');
     
-    if (!section || videoItems.length === 0) return;
+    if (!section || videoItems.length === 0 || !wrapper) return;
     
     let currentIndex = 0;
     
@@ -221,16 +354,22 @@ window.addEventListener('DOMContentLoaded', function() {
     function handleScroll() {
         if (!ticking) {
             window.requestAnimationFrame(() => {
-                const rect = wrapper.getBoundingClientRect();
+                const wrapperRect = wrapper.getBoundingClientRect();
+                const sectionRect = section.getBoundingClientRect();
                 
-                // wrapper가 화면에 있고, 섹션이 sticky 상태일 때
-                if (rect.top <= 0 && rect.bottom > window.innerHeight) {
-                    // wrapper 내부에서 스크롤 진행도 계산
-                    const scrolledInWrapper = Math.abs(rect.top);
-                    const totalScrollableHeight = rect.height - window.innerHeight;
-                    const progress = scrolledInWrapper / totalScrollableHeight;
+                // wrapper 스크롤 시작: wrapper.top이 0 이하
+                // wrapper 스크롤 종료: wrapper.bottom이 viewport 높이 이하
+                const isInScrollZone = wrapperRect.top <= 0 && wrapperRect.bottom >= window.innerHeight;
+                
+                if (isInScrollZone) {
+                    // wrapper 내에서 스크롤된 거리
+                    const scrolledDistance = -wrapperRect.top;
+                    // wrapper의 전체 스크롤 가능 거리 (wrapper 높이 - viewport 높이)
+                    const maxScrollDistance = wrapperRect.height - window.innerHeight;
+                    // 진행도 (0 ~ 1)
+                    const progress = Math.max(0, Math.min(1, scrolledDistance / maxScrollDistance));
                     
-                    // 3단계 구분
+                    // 3개 아이템 기준: 0~0.33 = 0번, 0.33~0.66 = 1번, 0.66~1 = 2번
                     let targetIndex;
                     if (progress < 0.33) {
                         targetIndex = 0;
@@ -300,37 +439,50 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
     
     // ==================== 전역 변수 선언 (먼저!) ====================
     let draggedItem = null;
-    
-    // ==================== 커스텀 커서 (데스크탑만) ====================
-    const customCursor = document.createElement('div');
-    customCursor.className = 'draggable-cursor';
-    customCursor.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110">
-            <defs>
-                <filter id="drag-shadow">
-                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
-                </filter>
-            </defs>
-            <circle cx="55" cy="55" r="50" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="2" filter="url(#drag-shadow)"/>
-            <g transform="translate(55, 25)"><path d="M 0 0 L -4 6 L 4 6 Z" fill="white" opacity="0.95"/></g>
-            <g transform="translate(55, 85)"><path d="M 0 0 L -4 -6 L 4 -6 Z" fill="white" opacity="0.95"/></g>
-            <g transform="translate(25, 55)"><path d="M 0 0 L 6 -4 L 6 4 Z" fill="white" opacity="0.95"/></g>
-            <g transform="translate(85, 55)"><path d="M 0 0 L -6 -4 L -6 4 Z" fill="white" opacity="0.95"/></g>
-            <text x="55" y="50" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">MOVE</text>
-            <text x="55" y="64" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">CLICK</text>
-        </svg>
-    `;
-    
-    // 데스크탑에서만 커서 추가
-    if (!isMobileDrag()) {
-        document.body.appendChild(customCursor);
-    }
-    
+    let customCursor = null;
     let cursorMouseX = 0, cursorMouseY = 0, cursorFollowX = 0, cursorFollowY = 0;
     let isInsideSection = false;
     
+    // ==================== 커스텀 커서 생성 함수 ====================
+    function createCustomCursor() {
+        if (customCursor) return; // 이미 있으면 생성하지 않음
+        
+        customCursor = document.createElement('div');
+        customCursor.className = 'draggable-cursor';
+        customCursor.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 110 110">
+                <defs>
+                    <filter id="drag-shadow">
+                        <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+                    </filter>
+                </defs>
+                <circle cx="55" cy="55" r="50" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="2" filter="url(#drag-shadow)"/>
+                <g transform="translate(55, 25)"><path d="M 0 0 L -4 6 L 4 6 Z" fill="white" opacity="0.95"/></g>
+                <g transform="translate(55, 85)"><path d="M 0 0 L -4 -6 L 4 -6 Z" fill="white" opacity="0.95"/></g>
+                <g transform="translate(25, 55)"><path d="M 0 0 L 6 -4 L 6 4 Z" fill="white" opacity="0.95"/></g>
+                <g transform="translate(85, 55)"><path d="M 0 0 L -6 -4 L -6 4 Z" fill="white" opacity="0.95"/></g>
+                <text x="55" y="50" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">MOVE</text>
+                <text x="55" y="64" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">CLICK</text>
+            </svg>
+        `;
+        document.body.appendChild(customCursor);
+    }
+    
+    // ==================== 커스텀 커서 제거 함수 ====================
+    function removeCustomCursor() {
+        if (customCursor && customCursor.parentNode) {
+            customCursor.parentNode.removeChild(customCursor);
+            customCursor = null;
+        }
+    }
+    
+    // 초기 화면 크기에 따라 커서 생성
+    if (!isMobileDrag()) {
+        createCustomCursor();
+    }
+    
     function animateCursor() {
-        if (isMobileDrag()) return; // 모바일에서는 커서 애니메이션 중단
+        if (isMobileDrag() || !customCursor) return; // 모바일이거나 커서가 없으면 중단
         
         const easing = draggedItem ? 1 : 0.4;
         
@@ -348,10 +500,12 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
     // 데스크탑 - 커서 이벤트
     if (!isMobileDrag()) {
         draggableSection.addEventListener('mousemove', (e) => {
+            if (isMobileDrag()) return; // 실행 중 체크
+            
             cursorMouseX = e.clientX;
             cursorMouseY = e.clientY;
             
-            if (!isInsideSection) {
+            if (!isInsideSection && customCursor) {
                 isInsideSection = true;
                 customCursor.style.display = 'block';
                 customCursor.style.opacity = '1';
@@ -359,17 +513,23 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
         });
         
         draggableSection.addEventListener('mouseleave', (e) => {
+            if (isMobileDrag()) return; // 실행 중 체크
+            
             isInsideSection = false;
-            customCursor.style.opacity = '0';
-            setTimeout(() => {
-                if (!isInsideSection) {
-                    customCursor.style.display = 'none';
-                }
-            }, 300);
+            if (customCursor) {
+                customCursor.style.opacity = '0';
+                setTimeout(() => {
+                    if (!isInsideSection && customCursor) {
+                        customCursor.style.display = 'none';
+                    }
+                }, 300);
+            }
         });
         
         // 전역 마우스 이동 감지 (실제 콘텐츠 가시성 기반)
         document.addEventListener('mousemove', (e) => {
+            if (isMobileDrag()) return; // 실행 중 체크
+            
             // ===== 근본 해결: Behind Video 가시성 체크 =====
             const behindVideoSection = document.querySelector('.behind_video');
             if (behindVideoSection) {
@@ -378,11 +538,11 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
                 const isBehindVisible = behindRect.top < window.innerHeight * 0.5;
                 
                 if (isBehindVisible) {
-                    if (isInsideSection) {
+                    if (isInsideSection && customCursor) {
                         isInsideSection = false;
                         customCursor.style.opacity = '0';
                         setTimeout(() => {
-                            if (!isInsideSection) {
+                            if (!isInsideSection && customCursor) {
                                 customCursor.style.display = 'none';
                             }
                         }, 300);
@@ -404,18 +564,18 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
                 cursorMouseX = e.clientX;
                 cursorMouseY = e.clientY;
                 
-                if (!isInsideSection) {
+                if (!isInsideSection && customCursor) {
                     isInsideSection = true;
                     customCursor.style.display = 'block';
                     customCursor.style.opacity = '1';
                 }
             } else {
                 // 섹션 밖에 있을 때 커서 숨김
-                if (isInsideSection) {
+                if (isInsideSection && customCursor) {
                     isInsideSection = false;
                     customCursor.style.opacity = '0';
                     setTimeout(() => {
-                        if (!isInsideSection) {
+                        if (!isInsideSection && customCursor) {
                             customCursor.style.display = 'none';
                         }
                     }, 300);
@@ -481,9 +641,15 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
         // DOM 초기 위치 저장 (transform 없는 상태)
         gsap.set(imgElement, { x: 0, y: 0, rotation: 0 });
         
+        // CSS에서 설정된 left, top 값을 직접 가져오기 (섹션 기준 좌표)
+        const computedStyle = window.getComputedStyle(imgElement);
+        const cssLeft = parseFloat(computedStyle.left) || 0;
+        const cssTop = parseFloat(computedStyle.top) || 0;
+        
         const rect = imgElement.getBoundingClientRect();
-        const x = rect.left - sectionRect.left + rect.width / 2;
-        const y = rect.top - sectionRect.top + rect.height / 2;
+        // CSS 좌표 기준으로 중심점 계산
+        const x = cssLeft + rect.width / 2;
+        const y = cssTop + rect.height / 2;
         
         const body = Bodies.rectangle(x, y, rect.width, rect.height, {
             restitution: 0.5,      // 객체 간 반발력 (0.4 → 0.5 증가)
@@ -502,8 +668,8 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
             isDragging: false,
             width: rect.width,
             height: rect.height,
-            initialLeft: rect.left - sectionRect.left,
-            initialTop: rect.top - sectionRect.top
+            initialLeft: cssLeft,
+            initialTop: cssTop
         });
     });
     
@@ -748,6 +914,25 @@ if (draggableSection && draggableImages.length > 0 && typeof Matter !== 'undefin
         });
     }
     
+    // ==================== 화면 크기 변경 감지 ====================
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (isMobileDrag()) {
+                // 모바일 모드로 전환: 커스텀 커서 제거
+                removeCustomCursor();
+                isInsideSection = false;
+            } else {
+                // 데스크탑 모드로 전환: 커스텀 커서 생성
+                if (!customCursor) {
+                    createCustomCursor();
+                    animateCursor();
+                }
+            }
+        }, 200); // 200ms 디바운스
+    });
+    
     // ==================== 모달 닫기 ====================
     imageModalClose.addEventListener('click', () => {
         imageModal.classList.remove('active');
@@ -904,80 +1089,126 @@ const elements = {
     filterButtons: document.querySelectorAll('.filter_btn')
 };
 
-// ============ CUSTOM CURSOR ============
-
-const customCursor = document.createElement('div');
-customCursor.className = 'custom-cursor';
-customCursor.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
-        <defs>
-            <filter id="shadow">
-                <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
-            </filter>
-        </defs>
-        <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="2" filter="url(#shadow)"/>
-        <g transform="translate(50, 20)">
-            <path d="M 0 0 L -5 8 L 5 8 Z" fill="white" opacity="0.95"/>
-            <path d="M 0 0 L -5 8 L 5 8 Z" fill="none" stroke="white" stroke-width="0.5"/>
-        </g>
-        <text x="50" y="56" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">SCROLL</text>
-        <g transform="translate(50, 80)">
-            <path d="M 0 0 L -5 -8 L 5 -8 Z" fill="white" opacity="0.95"/>
-            <path d="M 0 0 L -5 -8 L 5 -8 Z" fill="none" stroke="white" stroke-width="0.5"/>
-        </g>
-    </svg>
-`;
-document.body.appendChild(customCursor);
-
-function animateCursor() {
-    const ease = 0.15;
-    state.cursor.followX += (state.cursor.x - state.cursor.followX) * ease;
-    state.cursor.followY += (state.cursor.y - state.cursor.followY) * ease;
-    customCursor.style.left = `${state.cursor.followX}px`;
-    customCursor.style.top = `${state.cursor.followY}px`;
-    requestAnimationFrame(animateCursor);
+// ============ 반응형 체크 ============
+function isMobileChat() {
+    return window.innerWidth <= 1024;
 }
-animateCursor();
 
-elements.chatScrollArea.addEventListener('mouseenter', () => {
-    customCursor.style.display = 'block';
-    setTimeout(() => customCursor.style.opacity = '1', 10);
-});
+// ============ CUSTOM CURSOR (1920px 전용) ============
+let customCursor = null;
 
-elements.chatScrollArea.addEventListener('mouseleave', () => {
-    customCursor.style.opacity = '0';
-    setTimeout(() => customCursor.style.display = 'none', 300);
-});
-
-elements.chatScrollArea.addEventListener('mousemove', (e) => {
-    state.cursor.x = e.clientX;
-    state.cursor.y = e.clientY;
-});
-
-// ============ DRAG SCROLL ============
-
-elements.chatScrollArea.addEventListener('mousedown', (e) => {
-    if (e.target.closest('.chat_box') || e.target.closest('.profile_icon') || 
-        e.target.closest('.name') || e.target.closest('.heart_icon') || 
-        e.target.closest('.btn_comment') || e.target.closest('.btn_replies') ||
-        e.target.closest('.reply_input') || e.target.closest('.btn_reply_send')) {
-        return;
+function initCustomCursor() {
+    if (isMobileChat() || customCursor) return;
+    
+    customCursor = document.createElement('div');
+    customCursor.className = 'custom-cursor';
+    customCursor.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+            <defs>
+                <filter id="shadow">
+                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+                </filter>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="2" filter="url(#shadow)"/>
+            <g transform="translate(50, 20)">
+                <path d="M 0 0 L -5 8 L 5 8 Z" fill="white" opacity="0.95"/>
+                <path d="M 0 0 L -5 8 L 5 8 Z" fill="none" stroke="white" stroke-width="0.5"/>
+            </g>
+            <text x="50" y="56" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="bold" letter-spacing="1">SCROLL</text>
+            <g transform="translate(50, 80)">
+                <path d="M 0 0 L -5 -8 L 5 -8 Z" fill="white" opacity="0.95"/>
+                <path d="M 0 0 L -5 -8 L 5 -8 Z" fill="none" stroke="white" stroke-width="0.5"/>
+            </g>
+        </svg>
+    `;
+    document.body.appendChild(customCursor);
+    
+    function animateCursor() {
+        if (!customCursor) return;
+        const ease = 0.15;
+        state.cursor.followX += (state.cursor.x - state.cursor.followX) * ease;
+        state.cursor.followY += (state.cursor.y - state.cursor.followY) * ease;
+        customCursor.style.left = `${state.cursor.followX}px`;
+        customCursor.style.top = `${state.cursor.followY}px`;
+        requestAnimationFrame(animateCursor);
     }
-    state.scroll.isScrolling = true;
-    state.scroll.startY = e.pageY - elements.chatScrollArea.offsetTop;
-    state.scroll.scrollTop = elements.chatScrollArea.scrollTop;
-});
+    animateCursor();
+    
+    elements.chatScrollArea.addEventListener('mouseenter', () => {
+        if (!customCursor) return;
+        customCursor.style.display = 'block';
+        setTimeout(() => {
+            if (customCursor) customCursor.style.opacity = '1';
+        }, 10);
+    });
+    
+    elements.chatScrollArea.addEventListener('mouseleave', () => {
+        if (!customCursor) return;
+        customCursor.style.opacity = '0';
+        setTimeout(() => {
+            if (customCursor) customCursor.style.display = 'none';
+        }, 300);
+    });
+    
+    elements.chatScrollArea.addEventListener('mousemove', (e) => {
+        state.cursor.x = e.clientX;
+        state.cursor.y = e.clientY;
+    });
+}
 
-document.addEventListener('mousemove', (e) => {
-    if (!state.scroll.isScrolling) return;
-    e.preventDefault();
-    const y = e.pageY - elements.chatScrollArea.offsetTop;
-    const walk = (y - state.scroll.startY) * 2;
-    elements.chatScrollArea.scrollTop = state.scroll.scrollTop - walk;
-});
+// ============ DRAG SCROLL (1920px 전용) ============
+function initDragScroll() {
+    if (isMobileChat()) return;
+    
+    elements.chatScrollArea.addEventListener('mousedown', (e) => {
+        // 클릭 가능한 요소들은 제외
+        if (e.target.closest('.chat_box') || e.target.closest('.profile_icon') || 
+            e.target.closest('.name') || e.target.closest('.heart_icon') || 
+            e.target.closest('.btn_comment') || e.target.closest('.btn_replies') ||
+            e.target.closest('.reply_input') || e.target.closest('.btn_reply_send') ||
+            e.target.closest('.like_box') || e.target.closest('.comment_actions')) {
+            console.log('[DRAG] Skipping drag for interactive element');
+            return;
+        }
+        console.log('[DRAG] Starting drag scroll');
+        state.scroll.isScrolling = true;
+        state.scroll.startY = e.pageY - elements.chatScrollArea.offsetTop;
+        state.scroll.scrollTop = elements.chatScrollArea.scrollTop;
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+        if (!state.scroll.isScrolling) return;
+        e.preventDefault();
+        const y = e.pageY - elements.chatScrollArea.offsetTop;
+        const walk = (y - state.scroll.startY) * 2;
+        elements.chatScrollArea.scrollTop = state.scroll.scrollTop - walk;
+    });
+    
+    document.addEventListener('mouseup', () => {
+        console.log('[DRAG] Mouse up (document)');
+        state.scroll.isScrolling = false;
+    });
+    
+    elements.chatScrollArea.addEventListener('mouseleave', () => {
+        console.log('[DRAG] Mouse leave');
+        state.scroll.isScrolling = false;
+    });
+    
+    // 클릭 이벤트가 제대로 작동하도록 보장
+    console.log('[DRAG INIT] Drag scroll initialized for 1920px');
+}
 
-document.addEventListener('mouseup', () => state.scroll.isScrolling = false);
-document.addEventListener('mouseleave', () => state.scroll.isScrolling = false);
+// 1920px 전용 기능 초기화
+console.log('[INIT] Is mobile chat?', isMobileChat());
+console.log('[INIT] Window width:', window.innerWidth);
+
+if (!isMobileChat()) {
+    console.log('[INIT] Initializing 1920px features...');
+    initCustomCursor();
+    initDragScroll();
+} else {
+    console.log('[INIT] Skipping 1920px features (mobile mode)');
+}
 
 // ============ FILTER BUTTONS ============
 
@@ -1120,19 +1351,32 @@ function generateComments(count, maxReplies = 20, useRecentTime = false) {
 function handleHeartClick(e) {
     if (!e.target.classList.contains('heart_icon')) return;
     
+    console.log('[HEART] Clicked!', e.target);
     const heart = e.target;
     const likeBox = heart.closest('.like_box') || heart.closest('.reply_like_box');
+    if (!likeBox) {
+        console.log('[HEART] No like box found');
+        return;
+    }
+    
     const likeCountSpan = likeBox.querySelector('.like_count');
+    if (!likeCountSpan) {
+        console.log('[HEART] No like count span found');
+        return;
+    }
+    
     let currentCount = parseInt(likeCountSpan.textContent.replace(/,/g, ''));
     
     const isActive = heart.classList.toggle('active');
     heart.src = ASSETS.heart[isActive ? 'active' : 'inactive'];
     likeCountSpan.textContent = (currentCount + (isActive ? 1 : -1)).toLocaleString();
+    console.log('[HEART] Toggled to:', isActive, 'Count:', likeCountSpan.textContent);
 }
 
 // ============ EVENT LISTENERS ATTACHMENT ============
 
 function attachCommentListeners(commentElement) {
+    console.log('[LISTENER] Attaching to:', commentElement);
     commentElement.addEventListener('click', handleHeartClick);
     commentElement.addEventListener('click', handleReplyClick);
     
@@ -1146,7 +1390,6 @@ function attachCommentListeners(commentElement) {
                 e.preventDefault();
                 const repliesContainer = commentElement.querySelector('.replies_container');
                 const btn = commentElement.querySelector('.btn_replies');
-                console.log('Enter key reply:', replyInput.value.trim());
                 addUserReply(repliesContainer, replyInput.value.trim(), btn);
                 replyInput.value = '';
             }
@@ -1159,7 +1402,6 @@ function attachCommentListeners(commentElement) {
             if (replyInput.value.trim()) {
                 const repliesContainer = commentElement.querySelector('.replies_container');
                 const btn = commentElement.querySelector('.btn_replies');
-                console.log('Button click reply:', replyInput.value.trim());
                 addUserReply(repliesContainer, replyInput.value.trim(), btn);
                 replyInput.value = '';
             }
@@ -1344,20 +1586,14 @@ function createReplyElement(text, timestamp, isUserReply = false) {
 }
 
 function addUserReply(repliesContainer, replyText, btn) {
-    if (!repliesContainer) {
-        console.error('repliesContainer not found');
-        return;
-    }
+    if (!repliesContainer) return;
     
     initializeUser();
     const timestamp = Date.now();
-    const newReply = createReplyElement(replyText, timestamp, true); // 사용자 답글임을 표시
+    const newReply = createReplyElement(replyText, timestamp, true);
     const replyInputWrapper = repliesContainer.querySelector('.reply_input_wrapper');
     
-    if (!replyInputWrapper) {
-        console.error('replyInputWrapper not found');
-        return;
-    }
+    if (!replyInputWrapper) return;
     
     repliesContainer.insertBefore(newReply, replyInputWrapper);
     repliesContainer.classList.add('show');
@@ -1387,37 +1623,52 @@ function addUserReply(repliesContainer, replyText, btn) {
     if (commentBtn) {
         commentBtn.classList.add('hidden');
     }
-    
-    console.log('Reply added successfully');
 }
 
-// ============ MORE COMMENTS FUNCTIONALITY ============
+// ============ MORE COMMENTS FUNCTIONALITY (1920px 전용) ============
 
 elements.moreButton.addEventListener('click', function() {
+    if (isMobileChat()) return; // 미디어쿼리에서는 실행 안함
+    
+    console.log('[MORE] Button clicked in 1920px');
+    
     const remainingSlots = CONFIG.maxComments - state.totalLoadedComments;
+    console.log('[MORE] Remaining slots:', remainingSlots);
+    
     if (remainingSlots <= 0) {
         elements.moreButton.style.display = 'none';
         return;
     }
     
-    const commentsToLoad = Math.min(CONFIG.commentsPerLoad, remainingSlots);
+    // 1920px에서는 10개씩 로딩
+    const commentsToLoad = Math.min(10, remainingSlots);
+    console.log('[MORE] Loading', commentsToLoad, 'comments');
     
-    // MORE 버튼은 답글 최대 20개
+    // 현재 스크롤 위치 저장
+    const currentScrollTop = elements.chatScrollArea.scrollTop;
+    
+    // 답글 최대 20개
     generateComments(commentsToLoad, 20);
     
     state.totalLoadedComments += commentsToLoad;
+    console.log('[MORE] Total loaded:', state.totalLoadedComments, '/', CONFIG.maxComments);
+    
+    // 스크롤 위치 복원 (그대로 유지)
+    elements.chatScrollArea.scrollTop = currentScrollTop;
     
     if (state.totalLoadedComments >= CONFIG.maxComments) {
         elements.moreButton.style.display = 'none';
+        console.log('[MORE] Max comments reached, hiding button');
     }
 });
 
 // ============ INITIALIZE ============
 
-console.log('Initializing comments...');
-
 // 기존 HTML 댓글에 이벤트 리스너 추가 및 답글 생성
-document.querySelectorAll('.comment_item').forEach((comment, index) => {
+const allComments = elements.commentsList.querySelectorAll('.comment_item');
+console.log(`[INIT] Found ${allComments.length} initial comments`);
+
+allComments.forEach((comment) => {
     attachCommentListeners(comment);
     
     // 답글 버튼이 있는 경우 답글 자동 생성
@@ -1432,14 +1683,9 @@ document.querySelectorAll('.comment_item').forEach((comment, index) => {
             const replyCount = parseInt(replyCountText[0]);
             const replyInputWrapper = repliesContainer.querySelector('.reply_input_wrapper');
             
-            if (!replyInputWrapper) {
-                console.error(`Reply input wrapper not found for comment ${index + 1}`);
-                return;
-            }
+            if (!replyInputWrapper) return;
             
             const commentTimestamp = parseInt(comment.getAttribute('data-timestamp')) || Date.now() - random.number(1, 86400) * 1000;
-            
-            console.log(`Loading ${replyCount} replies for comment ${index + 1}`);
             
             // 실제 답글 요소들 생성
             const replyElements = [];
@@ -1460,12 +1706,8 @@ document.querySelectorAll('.comment_item').forEach((comment, index) => {
             if (commentBtn) {
                 commentBtn.classList.add('hidden');
             }
-            
-            console.log(`Loaded ${replyCount} replies for comment ${index + 1}`);
         }
     }
 });
-
-console.log('Comments initialized');
 
 }); // END: COMMUNITY CHAT EVENT SECTION DOMContentLoaded
