@@ -249,7 +249,7 @@ header nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 70px;
-    backdrop-filter: blur(15px);
+    /* backdrop-filter: blur(15px); */
     /* padding-left: 70px; */
 }
 
@@ -294,7 +294,7 @@ header nav ul.gnb>li:hover>a {
 
 header nav ul.gnb>li>ul.sub {
     font-size: 20px;
-    backdrop-filter: blur(15px);
+    /* backdrop-filter: blur(15px); */
     padding: 40px 30px;
     position: absolute;
     left: 50%;
@@ -354,6 +354,7 @@ header nav .right {
     /* padding-right: 70px; */
     gap: 20px;
     overflow: hidden;
+    background: none;
 }
 
 header nav .right .lang {
