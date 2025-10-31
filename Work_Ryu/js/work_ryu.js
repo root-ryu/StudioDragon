@@ -1635,6 +1635,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
         const timeDiff = getTimeDifference(timestamp);
+        const replyLikes = isUserReply ? 0 : random.number(0, 200);  // 랜덤 답글: 0~200, 사용자 답글: 0
 
         const replyDiv = document.createElement('div');
         replyDiv.className = 'reply_item';
@@ -1659,7 +1660,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 <img class="heart_icon" src="${ASSETS.heart.inactive}" 
                      data-active-src="${ASSETS.heart.active}" 
                      data-inactive-src="${ASSETS.heart.inactive}" alt="">
-                <span class="like_count">0</span>
+                <span class="like_count">${replyLikes}</span>
             </div>
         </div>
     `;

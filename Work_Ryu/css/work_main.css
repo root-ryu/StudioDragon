@@ -1916,7 +1916,9 @@ section.chat_event_section .like_box .like_count {
     line-height: 1;
     margin-top: 2px;
 }
-
+section.chat_event_section .comments_list .reply_content_row .like_count{
+    font-size: 10px;
+}
 /* ============ COMMENT ACTIONS ============ */
 section.chat_event_section .comment_actions {
     display: flex;
