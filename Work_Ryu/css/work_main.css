@@ -1133,7 +1133,7 @@ section.behind_video .video_thumbnail iframe {
         width: 100%;
         max-width: 801px;
         height: 404px;
-        background: #2B2B2B;
+        background: #0D031C;
         position: relative;
         flex-shrink: 0;
     }
@@ -1822,6 +1822,7 @@ section.chat_event_section .btn_more_comments:active {
         border: 0.5px solid rgba(13, 3, 28, 0.5);
         z-index: 10;
         box-sizing: border-box;
+        border-radius: 20px;
     }
 
     section.chat_event_section .input_wrapper {
@@ -1831,6 +1832,7 @@ section.chat_event_section .btn_more_comments:active {
         display: flex;
         flex-direction: column;
         padding: 0;
+        border-radius: 20px;
     }
 
     section.chat_event_section .input_text_area {
@@ -1887,6 +1889,7 @@ section.chat_event_section .btn_more_comments:active {
     section.chat_event_section .btn_send {
         padding: 10px 32px;
         border: 1px solid #0d031c;
+        border-radius: 20px;
         background: #0d031c;
         font-size: 18px;
         font-weight: 400;
