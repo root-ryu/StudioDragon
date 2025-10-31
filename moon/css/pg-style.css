@@ -761,7 +761,7 @@ h2 {
 .community .title .subtit .com_btn_wrap {
   display: flex;
   flex-direction: row;
-  gap: 13px;
+  gap: 2px;
   align-items: center;
 }
 
