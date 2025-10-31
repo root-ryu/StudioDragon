@@ -967,8 +967,7 @@ window.addEventListener('DOMContentLoaded', function () {
             './Work_Ryu/asset/icon_bg_yellow.svg'
         ],
         character: [
-            './Work_Ryu/asset/icon_Yongsik.png',
-            './Work_Ryu/asset/icon_Yongsoon.png'
+            './Work_Ryu/asset/icon_Yongsik.png', './Work_Ryu/asset/icon_Yongsoon.png'
         ]
     };
 
@@ -1542,17 +1541,19 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     function createReplyElement(text, timestamp, isUserReply = false) {
-        let name, bgColor;
+        let name, bgColor, character;
 
         if (isUserReply) {
             // 사용자 답글인 경우
             name = state.currentUser.username;
             bgColor = state.currentUser.bgColor;
+            character = state.currentUser.character;
         } else {
             // 랜덤 답글인 경우
             const isMale = random.boolean();
             name = random.item(isMale ? DATA.maleNames : DATA.femaleNames);
             bgColor = random.item(ASSETS.profileBg);
+            chaRandom = random.item(ASSETS.character);
         }
 
         const timeDiff = getTimeDifference(timestamp);
@@ -1566,7 +1567,7 @@ window.addEventListener('DOMContentLoaded', function () {
             <div class="reply_profile">
                 <div class="profile_icon">
                     <img class="icon_bg" src="${bgColor}" alt="">
-                    <img class="icon_img" src="${ASSETS.character}" alt="">
+                    <img class="icon_img" src="${chaRandom}" alt="">
                 </div>
                 <div class="profile_name">
                     <span class="name">${name}</span>
