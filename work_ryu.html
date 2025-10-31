@@ -247,69 +247,442 @@
                         <img src="Work_Ryu/asset/arrow-img-80.svg" alt="" class="arrow arrow-8">
 
                         <!-- Characters -->
-                        <a href="#" class="human human_yeo">
+                        <a href="#" class="human human_yeo" data-card="good_guys_joo">
                             <div class="human_img">
                                 <img src="Work_Ryu/asset/character_joo.png" alt="Yeo Jung">
                             </div>
                             <p class="human_name name_yeo">YEO JUNG</p>
                         </a>
 
-                        <a href="#" class="human human_dong">
+                        <a href="#" class="human human_dong" data-card="cha_moon">
                             <div class="human_img">
                                 <img src="Work_Ryu/asset/character_mon.png" alt="Dong Eun">
                             </div>
                             <p class="human_name name_dong">DONG EUN</p>
                         </a>
 
-                        <a href="#" class="human human_hyeon">
+                        <a href="#" class="human human_hyeon" data-card="good_guys_kang">
                             <div class="human_img">
                                 <img src="Work_Ryu/asset/character_kang.png" alt="Hyeon Nam">
                             </div>
                             <p class="human_name name_hyeon">HYEON NAM</p>
                         </a>
 
-                        <a href="#" class="human human_do">
+                        <a href="#" class="human human_do" data-card="good_guys_ha">
                             <div class="human_img">
                                 <img src="Work_Ryu/asset/character_ha.png" alt="Do Yeong">
                             </div>
                             <p class="human_name name_do">DO YEONG</p>
                         </a>
 
-                        <a href="#" class="human human_yeon">
+                        <a href="#" class="human human_yeon" data-card="bad_guys_park">
                             <div class="human_img">
                                 <img src="Work_Ryu/asset/character_park.png" alt="Yeon Jin">
                             </div>
                             <p class="human_name name_yeon">YEON JIN</p>
                         </a>
 
-                        <a href="#" class="human human_jae">
+                        <a href="#" class="human human_jae" data-card="bad_guys_jeon">
                             <div class="human_img">
                                 <img src="Work_Ryu/asset/character_jeon.png" alt="Jae Joon">
                             </div>
                             <p class="human_name name_jae">JAE JOON</p>
                         </a>
 
-                        <a href="#" class="human human_hye">
+                        <a href="#" class="human human_hye" data-card="bad_guys_choi">
                             <div class="human_img">
                                 <img src="Work_Ryu/asset/character_choi.png" alt="Hye Jeong">
                             </div>
                             <p class="human_name name_hye">HYE JEONG</p>
                         </a>
 
-                        <a href="#" class="human human_myeong">
+                        <a href="#" class="human human_myeong" data-card="bad_guys_son">
                             <div class="human_img">
                                 <img src="Work_Ryu/asset/character_son.png" alt="Myeong Oh">
                             </div>
                             <p class="human_name name_myeong">MYEONG OH</p>
                         </a>
 
-                        <a href="#" class="human human_sa">
+                        <a href="#" class="human human_sa" data-card="bad_guys_lee">
                             <div class="human_img">
                                 <img src="Work_Ryu/asset/character_lee.png" alt="Sa Ra">
                             </div>
                             <p class="human_name name_sa">SA RA</p>
                         </a>
                     </div><!-- //.contents -->
+                    <div class="card_overlay"></div>
+                    <div class="cards_container">
+
+                        <!-- ========== Moon Dong-eun 카드 ========== -->
+                        <div class="protagonist_moon cha_moon" id="protagonistMoon">
+                            <!-- 좌측 초상화 이미지 -->
+                            <div class="portrait_frame">
+                                <img src="./Work_Ryu/asset/character_mon_406px.png"
+                                    alt="Moon Dong-eun Portrait">
+                            </div><!-- /.portrait_frame -->
+                
+                            <!-- 우측 컨텐츠 카드 -->
+                            <div class="content_card">
+                                <!-- 배경 레이어들 -->
+                                <div class="card_bg_layers">
+                                    <div class="gradient_layer"></div>
+                                    <div class="pattern_layer">
+                                        <img src="./Work_Ryu/asset/character_bg_moon.png" alt="">
+                                    </div><!-- /.pattern_layer -->
+                                    <div class="overlay_layer"></div>
+                                </div><!-- /.card_bg_layers -->
+                
+                                <!-- 컨텐츠 -->
+                                <div class="card_content">
+                                    <div class="text_wrapper">
+                                        <div class="title_section">
+                                            <h1>Moon Dong-eun</h1>
+                                        </div><!-- /.title_section -->
+                
+                                        <div class="description">
+                                            <p>She dreamed of becoming an architect, but after suffering brutal school violence due to
+                                                poverty in high school, she dropped out and devoted herself to becoming a teacher.<br>
+                                                This caused her to lose her smile, her soul shattered into dust, and she only listened
+                                                to the weather channel.<br>
+                                                Due to the deep trauma of her past, she lived in despair, unable to see even an inch
+                                                ahead.<br>
+                                                Fueled by anger and hatred, she endures the stark, bleak nights, dedicating her life to
+                                                plotting revenge against both the perpetrators and the bystanders.</p>
+                                        </div><!-- /.description -->
+                                    </div><!-- /.text_wrapper -->
+                                </div><!-- /.card_content -->
+                
+                                <!-- X 닫기 버튼 -->
+                                <button class="close_btn" id="closeBtn" aria-label="닫기">
+                                    <img src="./Work_Ryu/asset/x.svg" alt="Close">
+                                </button>
+                            </div><!-- /.content_card -->
+                        </div><!-- /#protagonistMoon -->
+                
+                        <!-- ========== Joo Yeo-jeong 카드 ========== -->
+                        <div class="protagonist_moon good_guys good_guys_joo" id="protagonistJoo">
+                            <!-- 좌측 초상화 이미지 -->
+                            <div class="portrait_frame">
+                                <img src="./Work_Ryu/asset/character_joo_406px.png"
+                                    alt="Joo Yeo-jeong Portrait">
+                            </div><!-- /.portrait_frame -->
+                
+                            <!-- 우측 컨텐츠 카드 -->
+                            <div class="content_card">
+                                <!-- 배경 레이어들 -->
+                                <div class="card_bg_layers">
+                                    <div class="gradient_layer"></div>
+                                    <div class="pattern_layer">
+                                        <img src="./Work_Ryu/asset/character_bg_good.png" alt="">
+                                    </div><!-- /.pattern_layer -->
+                                    <div class="overlay_layer"></div>
+                                </div><!-- /.card_bg_layers -->
+                
+                                <!-- 컨텐츠 -->
+                                <div class="card_content">
+                                    <div class="text_wrapper">
+                                        <div class="title_section">
+                                            <h1>Joo Yeo-jeong</h1>
+                                        </div><!-- /.title_section -->
+                
+                                        <div class="description">
+                                            <p>A plastic surgeon with a secret story. He's a greenhouse flower, a cheerful, sometimes
+                                                bubbly man. He decides to become a "sword-dancing rascal" to Moon Dong-eun, not a
+                                                prince.</p>
+                                        </div><!-- /.description -->
+                                    </div><!-- /.text_wrapper -->
+                                </div><!-- /.card_content -->
+                
+                                <!-- X 닫기 버튼 -->
+                                <button class="close_btn" id="closeBtnJoo" aria-label="닫기">
+                                    <img src="./Work_Ryu/asset/x.svg" alt="Close">
+                                </button>
+                            </div><!-- /.content_card -->
+                        </div><!-- /#protagonistJoo -->
+                        <div class="protagonist_moon good_guys good_guys_kang" id="protagonistJoo">
+                            <!-- 좌측 초상화 이미지 -->
+                            <div class="portrait_frame">
+                                <img src="./Work_Ryu/asset/character_kang_406px.png"
+                                    alt="Kang Hyeon-nam Portrait">
+                            </div><!-- /.portrait_frame -->
+                
+                            <!-- 우측 컨텐츠 카드 -->
+                            <div class="content_card">
+                                <!-- 배경 레이어들 -->
+                                <div class="card_bg_layers">
+                                    <div class="gradient_layer"></div>
+                                    <div class="pattern_layer">
+                                        <img src="./Work_Ryu/asset/character_bg_good.png" alt="">
+                                    </div><!-- /.pattern_layer -->
+                                    <div class="overlay_layer"></div>
+                                </div><!-- /.card_bg_layers -->
+                
+                                <!-- 컨텐츠 -->
+                                <div class="card_content">
+                                    <div class="text_wrapper">
+                                        <div class="title_section">
+                                            <h1>Kang Hyeon-nam</h1>
+                                        </div><!-- /.title_section -->
+                
+                                        <div class="description">
+                                            <p>Another victim of violence. Forced to end the relentless domestic violence to protect her
+                                                child, she proposes a conspiracy to Moon Dong-eun.</p>
+                                        </div><!-- /.description -->
+                                    </div><!-- /.text_wrapper -->
+                                </div><!-- /.card_content -->
+                
+                                <!-- X 닫기 버튼 -->
+                                <button class="close_btn" id="closeBtnJoo" aria-label="닫기">
+                                    <img src="./Work_Ryu/asset/x.svg" alt="Close">
+                                </button>
+                            </div><!-- /.content_card -->
+                        </div><!-- /#protagonistJoo -->
+                        <div class="protagonist_moon good_guys good_guys_ha" id="protagonistHa">
+                            <!-- 좌측 초상화 이미지 -->
+                            <div class="portrait_frame">
+                                <img src="./Work_Ryu/asset/character_ha_406px.png"
+                                    alt="Ha Do-yeong Portrait">
+                            </div><!-- /.portrait_frame -->
+                
+                            <!-- 우측 컨텐츠 카드 -->
+                            <div class="content_card">
+                                <!-- 배경 레이어들 -->
+                                <div class="card_bg_layers">
+                                    <div class="gradient_layer"></div>
+                                    <div class="pattern_layer">
+                                        <img src="./Work_Ryu/asset/character_bg_good.png" alt="">
+                                    </div><!-- /.pattern_layer -->
+                                    <div class="overlay_layer"></div>
+                                </div><!-- /.card_bg_layers -->
+                
+                                <!-- 컨텐츠 -->
+                                <div class="card_content">
+                                    <div class="text_wrapper">
+                                        <div class="title_section">
+                                            <h1>Ha Do-yeong</h1>
+                                        </div><!-- /.title_section -->
+                
+                                        <div class="description">
+                                            <p>Park Yeon-jin's husband and CEO of Jaepyeong Construction. He falls into Moon Dong-eun's
+                                                long-planned trap and faces Pandora's box, a threat to their family's happiness.</p>
+                                        </div><!-- /.description -->
+                                    </div><!-- /.text_wrapper -->
+                                </div><!-- /.card_content -->
+                
+                                <!-- X 닫기 버튼 -->
+                                <button class="close_btn" id="closeBtnJoo" aria-label="닫기">
+                                    <img src="./Work_Ryu/asset/x.svg" alt="Close">
+                                </button>
+                            </div><!-- /.content_card -->
+                        </div><!-- /#protagonistJoo -->
+                
+                        <!-- ========== Park Yeon-jin 카드 ========== -->
+                        <div class="protagonist_moon bad_guys bad_guys_park" id="protagonistPark">
+                            <!-- 좌측 초상화 이미지 -->
+                            <div class="portrait_frame">
+                                <img src="./Work_Ryu/asset/character_park_406px.png"
+                                    alt="Park Yeon-jin Portrait">
+                            </div><!-- /.portrait_frame -->
+                
+                            <!-- 우측 컨텐츠 카드 -->
+                            <div class="content_card">
+                                <!-- 배경 레이어들 -->
+                                <div class="card_bg_layers">
+                                    <div class="gradient_layer"></div>
+                                    <div class="pattern_layer">
+                                        <img src="./Work_Ryu/asset/character_bg_bad.png" alt="">
+                                    </div><!-- /.pattern_layer -->
+                                    <div class="overlay_layer"></div>
+                                </div><!-- /.card_bg_layers -->
+                
+                                <!-- 컨텐츠 -->
+                                <div class="card_content">
+                                    <div class="text_wrapper">
+                                        <div class="title_section">
+                                            <h1>Park Yeon-jin</h1>
+                                        </div><!-- /.title_section -->
+                
+                                        <div class="description">
+                                            <p>She dreamed of becoming an architect, but after suffering brutal school violence due to
+                                                poverty in high school, she dropped out and devoted herself to becoming a teacher.<br>
+                                                This caused her to lose her smile, her soul shattered into dust, and she only listened
+                                                to the weather channel.<br>
+                                                Due to the deep trauma of her past, she lived in despair, unable to see even an inch
+                                                ahead.<br>
+                                                Fueled by anger and hatred, she endures the stark, bleak nights, dedicating her life to
+                                                plotting revenge against both the perpetrators and the bystanders.</p>
+                                        </div><!-- /.description -->
+                                    </div><!-- /.text_wrapper -->
+                                </div><!-- /.card_content -->
+                
+                                <!-- X 닫기 버튼 -->
+                                <button class="close_btn" id="closeBtnPark" aria-label="닫기">
+                                    <img src="./Work_Ryu/asset/x.svg" alt="Close">
+                                </button>
+                            </div><!-- /.content_card -->
+                        </div><!-- /#protagonistPark -->
+                
+                        <div class="protagonist_moon bad_guys bad_guys_jeon" id="protagonistPark">
+                            <!-- 좌측 초상화 이미지 -->
+                            <div class="portrait_frame">
+                                <img src="./Work_Ryu/asset/character_jeon_406px.png"
+                                    alt="Jeon Jae-joon Portrait">
+                            </div><!-- /.portrait_frame -->
+                
+                            <!-- 우측 컨텐츠 카드 -->
+                            <div class="content_card">
+                                <!-- 배경 레이어들 -->
+                                <div class="card_bg_layers">
+                                    <div class="gradient_layer"></div>
+                                    <div class="pattern_layer">
+                                        <img src="./Work_Ryu/asset/character_bg_bad.png" alt="">
+                                    </div><!-- /.pattern_layer -->
+                                    <div class="overlay_layer"></div>
+                                </div><!-- /.card_bg_layers -->
+                
+                                <!-- 컨텐츠 -->
+                                <div class="card_content">
+                                    <div class="text_wrapper">
+                                        <div class="title_section">
+                                            <h1>Jeon Jae-joon</h1>
+                                        </div><!-- /.title_section -->
+                
+                                        <div class="description">
+                                            <p>Jae-jun, who stands out wherever he goes and lives every moment he's noticed, is another
+                                                of the perpetrators who gave Dong-eun hell, and he ends up falling into Dong-eun's trap.
+                                            </p>
+                                        </div><!-- /.description -->
+                                    </div><!-- /.text_wrapper -->
+                                </div><!-- /.card_content -->
+                
+                                <!-- X 닫기 버튼 -->
+                                <button class="close_btn" id="closeBtnPark" aria-label="닫기">
+                                    <img src="./Work_Ryu/asset/x.svg" alt="Close">
+                                </button>
+                            </div><!-- /.content_card -->
+                        </div><!-- /#protagonistPark -->
+                
+                        <div class="protagonist_moon bad_guys bad_guys_lee" id="protagonistPark">
+                            <!-- 좌측 초상화 이미지 -->
+                            <div class="portrait_frame">
+                                <img src="./Work_Ryu/asset/character_lee_406px.png"
+                                    alt="Lee Sa-ra Portrait">
+                            </div><!-- /.portrait_frame -->
+                
+                            <!-- 우측 컨텐츠 카드 -->
+                            <div class="content_card">
+                                <!-- 배경 레이어들 -->
+                                <div class="card_bg_layers">
+                                    <div class="gradient_layer"></div>
+                                    <div class="pattern_layer">
+                                        <img src="./Work_Ryu/asset/character_bg_bad.png" alt="">
+                                    </div><!-- /.pattern_layer -->
+                                    <div class="overlay_layer"></div>
+                                </div><!-- /.card_bg_layers -->
+                
+                                <!-- 컨텐츠 -->
+                                <div class="card_content">
+                                    <div class="text_wrapper">
+                                        <div class="title_section">
+                                            <h1>Lee Sa-ra</h1>
+                                        </div><!-- /.title_section -->
+                
+                                        <div class="description">
+                                            <p>Sa-ra, one of the perpetrators who, along with Yeonjin, gave Dong-eun hell, is the one
+                                                who brought her to hell. For Sara, who had lived guiltlessly, believing in God,
+                                                Dong-eun's life-long quest for revenge turns her life upside down.</p>
+                                        </div><!-- /.description -->
+                                    </div><!-- /.text_wrapper -->
+                                </div><!-- /.card_content -->
+                
+                                <!-- X 닫기 버튼 -->
+                                <button class="close_btn" id="closeBtnPark" aria-label="닫기">
+                                    <img src="./Work_Ryu/asset/x.svg" alt="Close">
+                                </button>
+                            </div><!-- /.content_card -->
+                        </div><!-- /#protagonistPark -->
+                
+                        <div class="protagonist_moon bad_guys bad_guys_choi" id="protagonistPark">
+                            <!-- 좌측 초상화 이미지 -->
+                            <div class="portrait_frame">
+                                <img src="./Work_Ryu/asset/character_choi_406px.png"
+                                    alt="Choi Hye-jeong Portrait">
+                            </div><!-- /.portrait_frame -->
+                
+                            <!-- 우측 컨텐츠 카드 -->
+                            <div class="content_card">
+                                <!-- 배경 레이어들 -->
+                                <div class="card_bg_layers">
+                                    <div class="gradient_layer"></div>
+                                    <div class="pattern_layer">
+                                        <img src="./Work_Ryu/asset/character_bg_bad.png" alt="">
+                                    </div><!-- /.pattern_layer -->
+                                    <div class="overlay_layer"></div>
+                                </div><!-- /.card_bg_layers -->
+                
+                                <!-- 컨텐츠 -->
+                                <div class="card_content">
+                                    <div class="text_wrapper">
+                                        <div class="title_section">
+                                            <h1>Choi Hye-jeong</h1>
+                                        </div><!-- /.title_section -->
+                
+                                        <div class="description">
+                                            <p>Hye-jeong, one of the perpetrators who, along with Yeon-jin, brought hell to Dong-eun,
+                                                struggles to survive within the hierarchy that exists even among perpetrators, but is
+                                                drawn into destruction by Dong-eun's footsteps.</p>
+                                        </div><!-- /.description -->
+                                    </div><!-- /.text_wrapper -->
+                                </div><!-- /.card_content -->
+                
+                                <!-- X 닫기 버튼 -->
+                                <button class="close_btn" id="closeBtnPark" aria-label="닫기">
+                                    <img src="./Work_Ryu/asset/x.svg" alt="Close">
+                                </button>
+                            </div><!-- /.content_card -->
+                        </div><!-- /#protagonistPark -->
+                
+                        <div class="protagonist_moon bad_guys bad_guys_son" id="protagonistPark">
+                            <!-- 좌측 초상화 이미지 -->
+                            <div class="portrait_frame">
+                                <img src="./Work_Ryu/asset/character_son_406px.png"
+                                    alt="Son Myeong-oh Portrait">
+                            </div><!-- /.portrait_frame -->
+                
+                            <!-- 우측 컨텐츠 카드 -->
+                            <div class="content_card">
+                                <!-- 배경 레이어들 -->
+                                <div class="card_bg_layers">
+                                    <div class="gradient_layer"></div>
+                                    <div class="pattern_layer">
+                                        <img src="./Work_Ryu/asset/character_bg_bad.png" alt="">
+                                    </div><!-- /.pattern_layer -->
+                                    <div class="overlay_layer"></div>
+                                </div><!-- /.card_bg_layers -->
+                
+                                <!-- 컨텐츠 -->
+                                <div class="card_content">
+                                    <div class="text_wrapper">
+                                        <div class="title_section">
+                                            <h1>Son Myeong-oh</h1>
+                                        </div><!-- /.title_section -->
+                
+                                        <div class="description">
+                                            <p>Myeong-oh, one of the perpetrators who, along with Yeon-jin, gave Dong-eun hell. He works
+                                                with Jae-jun, but the invisible hierarchy between Jae-jun and Myeong-oh since childhood
+                                                reveals his mean and cowardly true face to Myeong-oh.</p>
+                                        </div><!-- /.description -->
+                                    </div><!-- /.text_wrapper -->
+                                </div><!-- /.card_content -->
+                
+                                <!-- X 닫기 버튼 -->
+                                <button class="close_btn" id="closeBtnPark" aria-label="닫기">
+                                    <img src="./Work_Ryu/asset/x.svg" alt="Close">
+                                </button>
+                            </div><!-- /.content_card -->
+                        </div><!-- /#protagonistPark -->
+                
+                    </div><!-- /.cards_container -->
                 </section><!-- //.character -->
                 <section class="episode">
                     <!-- 타이틀 영역 -->

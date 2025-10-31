@@ -25,7 +25,8 @@ ul {
 
 .wrap {
     width: 100%;
-    /* overflow: hidden; */ /* sticky 작동을 위해 주석 처리 */
+    /* overflow: hidden; */
+    /* sticky 작동을 위해 주석 처리 */
 }
 
 button {
@@ -260,6 +261,7 @@ article.main_visual {
 .text_box_right .credit_names .credit_name_multi p {
     margin: 0;
 }
+
 /* article.main_visual */
 
 /* character */
@@ -379,12 +381,14 @@ section.character .contents .human:focus {
 }
 
 section.character .contents .human .human_img {
-    width: 160px;  /* 100% → 고정 크기로 변경 */
+    width: 160px;
+    /* 100% → 고정 크기로 변경 */
     height: 219px;
     aspect-ratio: 160/219;
     position: relative;
     overflow: hidden;
-    flex-shrink: 0;  /* 축소 방지 */
+    flex-shrink: 0;
+    /* 축소 방지 */
     /* border-radius: 8px; */
 }
 
@@ -397,7 +401,8 @@ section.character .contents .human .human_img img {
 }
 
 section.character .contents .human .human_name {
-    font-size: 30px;  /* 고정 크기 사용, 미디어쿼리에서 조정 */
+    font-size: 30px;
+    /* 고정 크기 사용, 미디어쿼리에서 조정 */
     text-align: center;
     text-transform: uppercase;
     line-height: 1;
@@ -495,6 +500,275 @@ section.character .contents .human .human_name.name_sa {
     font-family: 'Viner Hand ITC', cursive;
     color: #ffd8f9;
 }
+
+.protagonist_moon {
+    font-family: 'Assistant', sans-serif;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 911px;
+    height: 557px;
+    display: flex;
+    align-items: flex-start;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: none;
+    z-index: 9999;
+    opacity: 0;
+}
+
+.protagonist_moon.is_active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.protagonist_moon.is_closing {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+/* 좌측 초상화 프레임 */
+.protagonist_moon .portrait_frame {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 408px;
+    height: 100%;
+    max-height: 557px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.protagonist_moon .portrait_frame img {
+    position: absolute;
+    /* left: -21.46%;
+    top: -27.08%; */
+    /* width: 142.93%;
+    height: 156.25%; */
+    width: 100%;
+    /* height: 100%; */
+    max-width: 406px;
+    object-fit: cover;
+    z-index: 2;
+}
+
+/* 우측 컨텐츠 카드 */
+.protagonist_moon .content_card {
+    position: absolute;
+    left: calc(50% + 140.5px);
+    top: 3px;
+    transform: translateX(-50%);
+    width: 630px;
+    height: 551px;
+    padding: 60px 14px 57px 150px;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+/* 배경 레이어들 */
+.protagonist_moon .card_bg_layers {
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+    pointer-events: none;
+}
+
+.protagonist_moon .gradient_layer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(29, 11, 56, 0.9) 0%, rgba(86, 86, 86, 0.9) 100%);
+    border-radius: 30px;
+}
+
+.protagonist_moon .pattern_layer {
+    position: absolute;
+    inset: 0;
+    opacity: 0.3;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.protagonist_moon .pattern_layer img {
+    position: absolute;
+    left: 0;
+    top: -10.54%;
+    width: 100%;
+    height: 151.39%;
+    object-fit: cover;
+}
+
+.protagonist_moon .overlay_layer {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+}
+
+/* 컨텐츠 영역 */
+.protagonist_moon .card_content {
+    position: relative;
+    width: 100%;
+    height: 422px;
+    /* padding: 0 14px 0 150px; */
+    z-index: 1;
+}
+
+.protagonist_moon .text_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* 타이틀 */
+.protagonist_moon .title_section {
+    display: flex;
+    align-items: center;
+}
+
+.protagonist_moon .title_section h1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s ease;
+}
+
+.protagonist_moon .title_section:hover h1 {
+    opacity: 0.85;
+}
+
+/* 설명 */
+.protagonist_moon .description {
+    color: #FFF;
+    /* font-family: Assistant; */
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* 30px */
+}
+
+.protagonist_moon .description p {
+    margin-bottom: 0;
+}
+
+.protagonist_moon .description p:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+/* X 닫기 버튼 */
+.protagonist_moon .close_btn {
+    position: absolute;
+    left: 576px;
+    top: 24px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.protagonist_moon .close_btn:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.protagonist_moon .close_btn:active {
+    transform: scale(0.95);
+}
+
+.protagonist_moon .close_btn img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ============================================
+   카드 배경 오버레이
+   ============================================ */
+.card_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 9998;
+    /* 카드(9999)보다 1 낮게 */
+    pointer-events: none;
+    /* 투명할 때 클릭 방지 */
+}
+
+.card_overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    /* 활성화되면 클릭 가능 */
+}
+
+/* ============================================
+   cha_moon - Moon Dong-eun 개별 스타일
+   ============================================ *
+/* ============================================
+   good_guys 공통 스타일 (좌측 이미지 + 카드 레이아웃)
+   ============================================ */
+/* .good_guys {
+    width: 911px;
+    height: 556px;
+} */
+
+/* ============================================
+   bad_guys 공통 스타일 (좌측 이미지 + 카드 레이아웃)
+   ============================================ */
+/* .bad_guys {
+    width: 911px;
+    height: 556px;
+} */
+
+/* good_guys_joo - Joo Yeo-jeong 개별 스타일 */
+.good_guys_joo .portrait_frame img {
+    /* left: -21.62%;
+    top: -27.16%;
+    width: 143%;
+    height: 156.66%; */
+}
+
+.good_guys .pattern_layer img {
+    /* 기본 center cover 사용 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* bad_guys_park - Park Yeon-jin 개별 스타일 */
+.bad_guys .portrait_frame img {
+    /* left: -21.67%;
+    top: -27.16%;
+    width: 143.1%;
+    height: 156.67%; */
+}
+
+.bad_guys .pattern_layer img {
+    left: -10.5%;
+    top: -26.92%;
+    width: 118.85%;
+    height: 130.48%;
+}
+
 /* section.character */
 
 /* episode */
@@ -552,8 +826,10 @@ section .title_wrapper .more_btn:hover {
     background-color: var(--Wcolor);
     color: var(--Bcolor);
 }
+
 section .episode_scroll_container {
-    position: relative; /* 화살표 absolute 기준점 */
+    position: relative;
+    /* 화살표 absolute 기준점 */
     overflow-x: auto;
     overflow-y: hidden;
     cursor: grab;
@@ -563,7 +839,8 @@ section .episode_scroll_container {
     /* Firefox */
     -ms-overflow-style: none;
     /* IE and Edge */
-    scroll-behavior: auto; /* smooth 제거 - 부드러운 스크롤 */
+    scroll-behavior: auto;
+    /* smooth 제거 - 부드러운 스크롤 */
 }
 
 section .episode_scroll_container::-webkit-scrollbar {
@@ -601,7 +878,8 @@ section .episode_scroll_container .episode_list .episode_card:hover {
 
 section .episode_scroll_container .episode_list .episode_card .episode_image {
     width: 100%;
-    height: 261px; /* 비율 유지: 312 / 320 * 267 */
+    height: 261px;
+    /* 비율 유지: 312 / 320 * 267 */
     overflow: hidden;
     border-radius: 0;
     position: relative;
@@ -614,7 +892,7 @@ section .episode_scroll_container .episode_list .episode_card .episode_image::af
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.3) 100%);
+    background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.3) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -665,6 +943,7 @@ section .episode_scroll_container .episode_list .episode_card .episode_info .epi
     margin: 0;
     letter-spacing: 0;
 }
+
 /* section.episode */
 
 /* Draggable Section */
@@ -675,11 +954,10 @@ section.draggable_section {
     height: 100vh;
     margin: 200px auto;
     overflow: hidden;
-    background: 
-        radial-gradient(ellipse at 50% 50%, 
-            rgba(136,63,254,0.3) 0%, 
-            transparent 70%
-        ),
+    background:
+        radial-gradient(ellipse at 50% 50%,
+            rgba(136, 63, 254, 0.3) 0%,
+            transparent 70%),
         #0D031C;
     box-sizing: border-box;
 }
@@ -699,24 +977,85 @@ section.draggable_section .img_item:active {
 }
 
 /* 각 이미지별 고정 초기 위치 */
-section.draggable_section .img_item:nth-child(1) { left: 50px; top: 80px; }
-section.draggable_section .img_item:nth-child(2) { left: 320px; top: 30px; }
-section.draggable_section .img_item:nth-child(3) { left: 580px; top: 120px; }
-section.draggable_section .img_item:nth-child(4) { left: 850px; top: 60px; }
-section.draggable_section .img_item:nth-child(5) { left: 1100px; top: 150px; }
-section.draggable_section .img_item:nth-child(6) { left: 1320px; top: 40px; }
+section.draggable_section .img_item:nth-child(1) {
+    left: 50px;
+    top: 80px;
+}
 
-section.draggable_section .img_item:nth-child(7) { left: 120px; top: 280px; }
-section.draggable_section .img_item:nth-child(8) { left: 400px; top: 350px; }
-section.draggable_section .img_item:nth-child(9) { left: 680px; top: 300px; }
-section.draggable_section .img_item:nth-child(10) { left: 950px; top: 380px; }
-section.draggable_section .img_item:nth-child(11) { left: 1200px; top: 320px; }
-section.draggable_section .img_item:nth-child(12) { left: 1350px; top: 420px; }
+section.draggable_section .img_item:nth-child(2) {
+    left: 320px;
+    top: 30px;
+}
 
-section.draggable_section .img_item:nth-child(13) { left: 80px; top: 550px; }
-section.draggable_section .img_item:nth-child(14) { left: 350px; top: 600px; }
-section.draggable_section .img_item:nth-child(15) { left: 620px; top: 520px; }
-section.draggable_section .img_item:nth-child(16) { left: 900px; top: 580px; }
+section.draggable_section .img_item:nth-child(3) {
+    left: 580px;
+    top: 120px;
+}
+
+section.draggable_section .img_item:nth-child(4) {
+    left: 850px;
+    top: 60px;
+}
+
+section.draggable_section .img_item:nth-child(5) {
+    left: 1100px;
+    top: 150px;
+}
+
+section.draggable_section .img_item:nth-child(6) {
+    left: 1320px;
+    top: 40px;
+}
+
+section.draggable_section .img_item:nth-child(7) {
+    left: 120px;
+    top: 280px;
+}
+
+section.draggable_section .img_item:nth-child(8) {
+    left: 400px;
+    top: 350px;
+}
+
+section.draggable_section .img_item:nth-child(9) {
+    left: 680px;
+    top: 300px;
+}
+
+section.draggable_section .img_item:nth-child(10) {
+    left: 950px;
+    top: 380px;
+}
+
+section.draggable_section .img_item:nth-child(11) {
+    left: 1200px;
+    top: 320px;
+}
+
+section.draggable_section .img_item:nth-child(12) {
+    left: 1350px;
+    top: 420px;
+}
+
+section.draggable_section .img_item:nth-child(13) {
+    left: 80px;
+    top: 550px;
+}
+
+section.draggable_section .img_item:nth-child(14) {
+    left: 350px;
+    top: 600px;
+}
+
+section.draggable_section .img_item:nth-child(15) {
+    left: 620px;
+    top: 520px;
+}
+
+section.draggable_section .img_item:nth-child(16) {
+    left: 900px;
+    top: 580px;
+}
 
 section.draggable_section .img_item::after {
     content: '';
@@ -768,6 +1107,7 @@ section.draggable_section .img_item[data-size="small"] {
     width: 150px;
     height: 100px;
 }
+
 /* section.draggable_section */
 
 /* ============ DRAGGABLE SECTION CUSTOM CURSOR ============ */
@@ -792,6 +1132,7 @@ section.draggable_section .img_item {
 section.draggable_section .img_item:active {
     cursor: none;
 }
+
 /* ============================================ */
 
 /* ============ BOOKMARK BUTTON ============ */
@@ -889,6 +1230,7 @@ section.chat_event_section textarea {
 .modal_close {
     cursor: pointer !important;
 }
+
 /* ========================================================== */
 
 /* Modal */
@@ -906,7 +1248,7 @@ section.chat_event_section textarea {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
 }
 
@@ -959,12 +1301,14 @@ section.chat_event_section textarea {
     transform: rotate(90deg) scale(1.1);
     color: #ffffff;
 }
+
 /* .image_modal */
 
 /* behind */
 /* Wrapper for sticky control */
 .behind_video_wrapper {
-    height: 400vh; /* 스크롤 4배 길이 = Behind Video가 오래 고정됨 */
+    height: 400vh;
+    /* 스크롤 4배 길이 = Behind Video가 오래 고정됨 */
 }
 
 /* Section */
@@ -1042,6 +1386,7 @@ section.behind_video .video_item {
 
 /* 1920px 전용 스타일 - 스택 애니메이션 */
 @media (min-width: 1025px) {
+
     /* 활성화 상태 - 중앙 1520px */
     section.behind_video .video_item.active {
         width: 100%;
@@ -1093,6 +1438,7 @@ section.behind_video .video_thumbnail iframe {
 }
 
 @media (min-width: 1025px) {
+
     /* active 상태 - 포스터 이미지 */
     section.behind_video .video_item.active .video_thumbnail img {
         width: 719px;
@@ -1226,6 +1572,7 @@ section.behind_video .page_total {
 }
 
 @media (min-width: 1025px) {
+
     /* 비활성화 상태에서는 텍스트 숨김 */
     section.behind_video .video_item.top .video_text,
     section.behind_video .video_item.bottom .video_text,
@@ -1235,6 +1582,7 @@ section.behind_video .page_total {
         pointer-events: none;
     }
 }
+
 /* section.behind_video */
 /* ============ CUSTOM CURSOR ============ */
 .custom-cursor {
@@ -1262,8 +1610,8 @@ section.behind_video .page_total {
 
 section.chat_event_section {
     position: relative;
-    width: 1920px;
-    max-width: 100%;
+    max-width: 1920px;
+    width: 100%;
     height: 1122px;
     margin: 200px auto 0;
     background: rgba(0, 0, 0, 0.2);
@@ -1355,7 +1703,8 @@ section.chat_event_section .btn_more:hover {
 section.chat_event_section .btn_more:active {
     background: transparent;
     color: white;
-    transition: none; /* 즉시 복귀 */
+    transition: none;
+    /* 즉시 복귀 */
 }
 
 /* ============ FILTER AREA ============ */
@@ -1389,7 +1738,8 @@ section.chat_event_section .filter_btn:hover {
 
 section.chat_event_section .filter_btn:not(.active):active {
     opacity: 0.8;
-    transition: none; /* 즉시 복귀 */
+    transition: none;
+    /* 즉시 복귀 */
 }
 
 section.chat_event_section .filter_separator {
@@ -1407,12 +1757,13 @@ section.chat_event_section .chat_scroll_area {
     transform: translateX(-50%);
     width: 100%;
     max-width: 1520px;
+    padding: 16px 0;
     height: 618px;
     overflow-y: auto;
     overflow-x: hidden;
     background: linear-gradient(to bottom, rgba(13, 3, 28, 0) 0%, rgba(60, 14, 130, 0) 96.51%);
     z-index: 5;
-    padding: 16px 0;
+    /* padding: 16px 0; */
     box-sizing: border-box;
     cursor: none;
 }
@@ -1481,7 +1832,8 @@ section.chat_event_section .profile_icon .icon_img {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 28px;
-    height: 40px; /* 44px → 40px: 컨테이너 크기에 맞춤 */
+    height: 40px;
+    /* 44px → 40px: 컨테이너 크기에 맞춤 */
     object-fit: cover;
 }
 
@@ -1563,7 +1915,9 @@ section.chat_event_section .like_box .like_count {
     color: white;
     line-height: 1;
     margin-top: 2px;
-}/* ============ COMMENT ACTIONS ============ */
+}
+
+/* ============ COMMENT ACTIONS ============ */
 section.chat_event_section .comment_actions {
     display: flex;
     align-items: center;
@@ -1908,7 +2262,8 @@ section.chat_event_section .btn_more_comments:active {
     section.chat_event_section .btn_send:active {
         background: #0d031c;
         color: white;
-        transition: none; /* 즉시 복귀 */
+        transition: none;
+        /* 즉시 복귀 */
     }
 }
 
