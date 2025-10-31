@@ -1,8 +1,11 @@
-*{scroll-behavior: auto;}
+* {
+  scroll-behavior: auto;
+}
+
 body {
   background-color: #0D031C;
   color: var(--color-white);
-  font-family: "Roboto", sans-serif;
+  font-family: 'Assistant', sans-serif;
   font-optical-sizing: auto;
 }
 
@@ -34,7 +37,7 @@ body {
 body {
   background-color: var(--color-black);
   color: var(--color-white);
-  font-family: "Roboto", sans-serif;
+  font-family: 'Assistant', sans-serif;
   font-optical-sizing: auto;
 }
 
@@ -292,17 +295,19 @@ main {
   font-size: 24px;
   text-align: center;
   color: #ffffff;
-  margin-bottom: 50px; /* 제목과 이미지 사이 여백 */
+  margin-bottom: 50px;
+  /* 제목과 이미지 사이 여백 */
 }
 
 .move-right {
-  display: inline-block; /* 인라인 텍스트라도 margin 적용 가능하게 */
-  margin-right: 90px; /* 오른쪽으로 옮길 거리 (원하는 만큼 조정 가능) */
+  display: inline-block;
+  /* 인라인 텍스트라도 margin 적용 가능하게 */
+  margin-right: 90px;
+  /* 오른쪽으로 옮길 거리 (원하는 만큼 조정 가능) */
 }
 
 section h2 {
-  color: var(--maincolor-main-1000, #bfa473);
-  text-align: left;
+  /*   text-align: left; */
   font-family: var(--1920-56-font-family, "Assistant-Bold", sans-serif);
   font-size: var(--1920-56-font-size, 56px);
   line-height: var(--1920-56-line-height, 130%);
@@ -313,17 +318,22 @@ section h2 {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 0;
+  color: #ffffff;
+  font-size: 56px;
+  /*   margin: 0;
   margin-top: 200px;
   margin-bottom: 40px;
-  margin-left: 190px;
+  margin-left: 190px; */
 }
 
 
+
 .on-alr {
-    margin-top: 250px; 
-    margin-left: 200px;
-    font-size: 56px;
+
+  /*   margin-top: 120px; */
+  /*     margin-bottom: px;  */
+  /*   margin-left: 200px; */
+
 }
 
 
@@ -334,11 +344,12 @@ section h2 {
   /* 버튼 간 간격 */
   margin-left: 200px;
   margin-bottom: 40px;
+  margin-top: 10px;
 }
 
 .button-group button {
-  padding: 8px 30px;
-  font-size: 24px;
+  padding: 13px 30px;
+  font-size: 18px;
   color: #fff;
   border-radius: 25px;
   cursor: pointer;
@@ -348,9 +359,17 @@ section h2 {
 }
 
 .button-group button:hover {
-  transform: translateY(-4px);
-  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5), -6px -6px 12px rgba(255, 255, 255, 0.15);
-  background: linear-gradient(145deg, #c5a87f76, #a8855588);
+  border: 1px solid rgba(245, 245, 245, 1);
+  background: rgba(245, 245, 245, 0.03);
+  box-shadow:
+    0 0 8px rgba(245, 245, 245, 0.3),
+    0 0 15px rgba(245, 245, 245, 0.2),
+    inset 0 0 10px rgba(245, 245, 245, 0.1);
+  text-shadow:
+    0 0 5px rgba(245, 245, 245, 0.4);
+  transform: translateY(-2px) scale(1.01);
+  /*  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5), -6px -6px 12px rgba(255, 255, 255, 0.15); */
+  /*   background: linear-gradient(145deg, #c5a87f76, #a8855588); */
 }
 
 
@@ -361,9 +380,9 @@ section h2 {
   /* 오른쪽 끝 배치 */
   margin-right: 200px;
   /* 오른쪽 끝에서 안쪽간격 */
-  padding: 12px 30px;
+  padding: 7px 30px;
   /* 위아래 8px, 좌우 40px */
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
   /* 폰트굵기 */
   color: #ffffff;
@@ -378,25 +397,39 @@ section h2 {
   /* 배경 투명 */
   appearance: none;
   /* 브라우저 기본 화살표 제거 */
+  position: relative;
 }
 
-.Filter::after {
+/* .Filter::after {
+  position: absolute;
   right: 50px;
-}
+  top: 0;
+  content: 'aaaaaaa';
+  color: #fff;
+  z-index: 10;
+} */
 
 .Filter option {
-  color: #ffffff;
+  box-sizing: border-box;
+  color: #fff;
   /* 옵션 텍스트 색 */
   background: rgb(0, 0, 0);
   /* 옵션 배경 */
- font-size: 23px;
+  font-size: 18px;
+  text-align: left;
 }
 
 
 .Filter:hover {
-  transform: translateY(-4px);
-  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5), -6px -6px 12px rgba(255, 255, 255, 0.15);
-  background: linear-gradient(145deg, #c5a87f76, #a8855588);
+  border: 1px solid rgba(245, 245, 245, 1);
+  background: rgba(245, 245, 245, 0.03);
+  box-shadow:
+    0 0 8px rgba(245, 245, 245, 0.3),
+    0 0 15px rgba(245, 245, 245, 0.2),
+    inset 0 0 10px rgba(245, 245, 245, 0.1);
+  text-shadow:
+    0 0 5px rgba(245, 245, 245, 0.4);
+  transform: translateY(-2px) scale(1.01);
 }
 
 
@@ -410,7 +443,6 @@ ul.poster-list {
   /* 양쪽 200px 여백 */
   /* 한 줄로 유지 */
 }
-
 
 
 ul.poster-list li {
@@ -427,6 +459,10 @@ ul.poster-list li {
   /* 위쪽 간격 */
   /*   text-align: center; */
   line-height: 1.5;
+}
+
+ul.poster-list li:hover .poster-title {
+  color: #fff;
 }
 
 .poster-list img {
@@ -449,8 +485,64 @@ ul.poster-list li {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
   /* 그림자 추가 */
   border-radius: 8px;
+  filter: brightness(120%);
   /* 약간 둥글게 */
 }
+
+
+ul.poster-list2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 50px;
+  /* 5개 박스 사이 자동 간격 */
+  margin: 0 200px;
+  margin-top: 80px;
+
+  /* 양쪽 200px 여백 */
+  /* 한 줄로 유지 */
+}
+
+
+ul.poster-list2 li {
+  width: 268px;
+  margin-bottom: 50px;
+}
+
+.poster-title {
+  display: block;
+  color: #948484;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 20px;
+  /* 위쪽 간격 */
+  /*   text-align: center; */
+  line-height: 1.5;
+}
+
+.poster-list2 img {
+  width: 268px;
+  height: 390px;
+  border-radius: 5px;
+  filter: brightness(0.9);
+  /* 이미지어둡게 조절 */
+  cursor: pointer;
+}
+
+
+.poster-list2 li img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.poster-list2 li:hover img {
+  transform: scale(1.05);
+  /* 5% 확대 */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  /* 그림자 추가 */
+  border-radius: 8px;
+  /* 약간 둥글게 */
+}
+
 
 /* Pagination + Search Container */
 
@@ -503,10 +595,11 @@ ul.poster-list li {
 
 .search-box button {
   padding: 12px 18px;
-  background-color: #6c63ff;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 30px;
+  border: 1px solid var(--Wcolor);
   font-weight: 500;
   font-size: 18px;
   cursor: pointer;
@@ -515,7 +608,7 @@ ul.poster-list li {
 }
 
 .search-box button:hover {
-  background-color: #5a54e7;
+  background: rgba(245, 245, 245, 0.5);
 }
 
 
@@ -573,15 +666,18 @@ ul.poster-list li {
   list-style-type: none;
   display: inline-block;
 }
-.container .pagination li a {
+
+.container .pagination li {
   position: relative;
   padding: 14px 23px;
   text-decoration: none;
   color: #fff;
   font-weight: 500;
+  cursor: pointer;
 }
-.container .pagination li a:hover,
-.container .pagination li.active a {
+
+.container .pagination li:hover,
+.container .pagination li.active {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
 }
@@ -601,7 +697,8 @@ ul.poster-list li {
 }
 
 .page-numbers .page.next {
-  border-radius: 20px; /* 예: pill 모양으로 */
+  border-radius: 20px;
+  /* 예: pill 모양으로 */
   padding: 10px 20px;
   background-color: #f5f5f5;
   border: 1px solid #bbb;
@@ -619,14 +716,58 @@ ul.poster-list li {
 
 
 .last-section {
+  background-color: #fff;
   width: 100%;
-  height: 80vh;
+  /* height: 120vh; */
+  padding-top: 20vh;
+  /* 위쪽 여백 추가 */
+  padding-bottom: 30vh;
+  /* 아래쪽 여백 추가 */
   /* outo; 150vh 온에어랑 큰포스터 둘의 간격*/
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-bottom: 60px;
+  /* justify-content: center; */
+  align-items: center;
+  /* 수평 가운데 정렬 */
+  margin-top: 80px;
+  margin-bottom: 50px;
   /* on-air와의 간격 */
+}
+
+.last-section .h2All {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  /* 기존 200px → 50px으로 줄임 */
+  margin-bottom: 50px;
+  /* background: #ccc; */
+}
+
+.last-section .h2All h2 {
+  color: #000;
+}
+
+
+
+.more-btn {
+  font-size: 18px;
+  text-transform: uppercase;
+  display: flex;
+  padding: 7px 32px 9px 34px;
+  justify-content: center;
+  align-items: center;
+  color: var(--Bcolor);
+  background: var(--Wcolor);
+  border: 1px solid var(--Bcolor);
+  border-radius: 32px;
+  /*   margin-right: 290px;
+  position: relative; */
+  /*   top: -100px; */
+}
+
+.more-btn:hover {
+  border-color: var(--color-purple);
+  /* hover 시 테두리 색상 변화 */
 }
 
 .last-section img {
@@ -638,23 +779,24 @@ ul.poster-list li {
   /* 최대 높이 제한 */
 }
 
-
-section h2 {
-  font-size: 56px;
-  margin-top: 150px; /* 기존 200px → 50px으로 줄임 */
-  margin-bottom: 50px; /* 섹션 내 제목과 콘텐츠 간격 */
+.signature-text {
+  font-size: 24px;
+  color: #fff;
+  /* 텍스트 색상 */
+  margin-right: 10px;
+  /* 텍스트와 버튼 사이에 간격을 둡니다 */
 }
 
 
 
 .last-section span {
-  color: #FFF;
+  color: #000000;
   font-size: 24px;
   font-weight: 500;
   line-height: normal;
   display: block;
   text-align: center;
-  margin-top: 35px;
+  margin-top: 65px;
 }
 
 
@@ -853,20 +995,23 @@ section h2 {
 
 
 .star-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* pointer-events: none; */ /* Allows clicks to pass through */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* pointer-events: none; */
+  /* Allows clicks to pass through */
 }
 
 .star {
-    position: absolute;
-    width: 10px; /* Adjust size */
-    height: 10px; /* Adjust size */
-    background-color: yellow;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    opacity: 0.8;
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  position: absolute;
+  width: 10px;
+  /* Adjust size */
+  height: 10px;
+  /* Adjust size */
+  background-color: yellow;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  opacity: 0.8;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }

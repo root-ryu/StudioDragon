@@ -121,57 +121,32 @@
         top: 90px;
         left: 0;
         width: 100%;
+        height: 450px;
+        overflow: hidden;
     }
 
     .comingsoon .inner img {
         width: 725px;
-        height: auto;
+        height: 450px;
         border-radius: 0 200px 0 0;
-        opacity: 0;
-        transform: translateX(100px);
-        animation: fadeInRight 1s ease-out forwards;
-        animation-delay: 0.2s;
+        object-fit: cover;
     }
 
     .comingsoon .inner .txt {
         width: 100%;
         font-size: 30px;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeInUp 1s ease-out forwards;
-        animation-delay: 0.4s;
     }
 
     .comingsoon .inner h3 {
-        bottom: 120px;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeInUp 1s ease-out forwards;
-        animation-delay: 0.6s;
+        position: absolute;
+        bottom: 100px;
         right: 0;
     }
 
     .comingsoon .inner p {
+        position: absolute;
         bottom: 24px;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeInUp 1s ease-out forwards;
-        animation-delay: 0.8s;
         right: 0;
-    }
-
-    @keyframes fadeInRight {
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes fadeInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
     }
 
 
@@ -320,6 +295,7 @@
     .BeyondDrama .inner .BDcontents .BDconBottom .BDsection09 {
         height: 320px;
     }
+
     .BeyondDrama .inner .BDcontents .BDconTop .BDsection03 img {
         object-fit: cover;
         object-position: 0 10%;
@@ -1259,13 +1235,15 @@
         font-size: 30px;
     }
 
-    .comingsoon .inner .top button {
-        background: url(../img/arrow-up-right.png) center/cover;
+    .comingsoon .inner .top a.more-btn {
         width: 26px;
         height: 26px;
+        padding: 0;
+        background: url(../img/arrow-up-right.png) no-repeat center/cover;
+        background-size: 16px 16px;
     }
 
-    .comingsoon .inner .top button span {
+    .comingsoon .inner .top a.more-btn span {
         display: none;
     }
 
@@ -1276,6 +1254,7 @@
         width: 100%;
         height: auto;
         left: 0;
+        overflow: hidden;
     }
 
     .comingsoon .inner img {
@@ -1290,12 +1269,12 @@
 
     .comingsoon .inner h3 {
         bottom: 40px;
-        right: 20px
+        right: 20px;
     }
 
     .comingsoon .inner p {
         bottom: 24px;
-        right: 20px
+        right: 20px;
     }
 
     /* ON-AIR 섹션 모바일 반응형 - 피그마 디자인 기반 */
@@ -1324,14 +1303,15 @@
         font-size: 30px;
     }
 
-    .onair .inner .top button {
-        background: url(../img/arrow-up-right.png) center/cover;
+    .onair .inner .top a.more-btn {
         width: 26px;
         height: 26px;
-        cursor: pointer;
+        padding: 0;
+        background: url(../img/arrow-up-right.png) no-repeat center/cover;
+        background-size: 16px 16px;
     }
 
-    .onair .inner .top button span {
+    .onair .inner .top a.more-btn span {
         display: none;
     }
 
@@ -1420,16 +1400,18 @@
 
     .BeyondDrama .inner .top h2 {
         font-size: 30px;
+        padding-right: 10px;
     }
 
-    .BeyondDrama .inner .top button {
-        background: url(../img/arrow-up-right_B.png) center/cover;
+    .BeyondDrama .inner .top a.more-btn {
         width: 26px;
         height: 26px;
-        cursor: pointer;
+        padding: 0;
+        background: url(../img/arrow-up-right_B.png) no-repeat center/cover;
+        background-size: 16px 16px;
     }
 
-    .BeyondDrama .inner .top button span {
+    .BeyondDrama .inner .top a.more-btn span {
         display: none;
     }
 
@@ -1453,10 +1435,12 @@
         width: 380px;
         height: 150px;
     }
+
     .BeyondDrama .inner .BDcontents .BDconTop .BDsection02 img {
         object-fit: cover;
         object-position: 0 40%;
     }
+
     .BeyondDrama .inner .BDcontents .BDconTop .BDsection03 img {
         object-fit: cover;
         object-position: 0 20%;

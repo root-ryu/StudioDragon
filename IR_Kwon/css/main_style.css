@@ -847,7 +847,7 @@ html {
 }
 
 .moat_repeatability .card .content h3 {
-  color: var(--subRed2);
+  color: #F5F5F5;
   text-align: left;
   font-family: "Assistant-Bold", sans-serif;
   font-size: 30px;
@@ -861,7 +861,7 @@ html {
 }
 
 .moat_repeatability .card .content p {
-  color: var(--Bcolor);
+  color: #F5F5F5;
   text-align: left;
   font-family: "Assistant-Regular", sans-serif;
   font-size: 16px;
@@ -871,6 +871,15 @@ html {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+/* Overview 카드만 기존 색상 유지 */
+.moat_repeatability .card.overview .content h3 {
+  color: var(--subRed2);
+}
+
+.moat_repeatability .card.overview .content p {
+  color: var(--Bcolor);
 }
 
 .moat_repeatability .card.overview .content h3 {
@@ -893,6 +902,89 @@ html {
   /* box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.04); */
   overflow: hidden;
 }
+
+/* Creator Pool - 이미지 위치 조정 */
+.moat_repeatability .card.creator-pool .img_wrap {
+  top: -158px;
+  height: 735px;
+}
+
+/* Genre Portfolio - 배경 그라데이션 + 이미지 위치 */
+.moat_repeatability .card.genre-portfolio {
+  background: radial-gradient(
+      closest-side,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    ),
+    linear-gradient(to left, #b1b1b1, #b1b1b1);
+}
+
+.moat_repeatability .card.genre-portfolio .img_wrap {
+  width: 281px;
+  height: 421px;
+  left: 96px;
+  top: -21px;
+}
+
+.moat_repeatability .card.genre-portfolio .img_wrap img {
+  transition: transform 0.4s ease;
+}
+
+.moat_repeatability .card.genre-portfolio:hover .img_wrap img {
+  transform: translateY(-10px);
+}
+
+/* Format & Spin-offs - 배경 그라데이션 */
+.moat_repeatability .card.format-spinoffs {
+  background: radial-gradient(
+      closest-side,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    ),
+    linear-gradient(to left, #e37e7e, #e37e7e);
+}
+
+/* Data-Driven - 배경 그라데이션 + 두 개 이미지 */
+.moat_repeatability .card.data-driven {
+  background: radial-gradient(
+      closest-side,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    ),
+    linear-gradient(to left, #b1b1b1, #b1b1b1);
+}
+
+.moat_repeatability .card.data-driven .img_wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.moat_repeatability .card.data-driven .img_wrap .img-left {
+  position: absolute;
+  width: 266px;
+  height: 399px;
+  left: -40px;
+  top: 29px;
+  transition: transform 0.4s ease;
+}
+
+.moat_repeatability .card.data-driven .img_wrap .img-right {
+  position: absolute;
+  width: 273px;
+  height: 410px;
+  left: 255px;
+  top: -31px;
+  transition: transform 0.4s ease;
+}
+
+.moat_repeatability .card.data-driven:hover .img_wrap .img-left {
+  transform: translateY(-10px);
+}
+
+.moat_repeatability .card.data-driven:hover .img_wrap .img-right {
+  transform: translateY(-10px);
+}
+
 /* //.moat_repeatability */
 
 /* ========================================

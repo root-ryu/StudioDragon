@@ -3,106 +3,188 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="스튜디오 드래곤 홈페이지 입니다">
-    <meta name="keywords" content="스튜디오드래곤, 드라마, 제작사, 기획사, CJENM, TVN, 넷플릭스">
-    <meta name="author" content="100SJ">
+    <meta name="description" content="We Are Studio Dragon">
+    <meta name="keywords" content="Studio Dragon, a premium storyteller group">
+    <meta name="author" content="Team 2eezy">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Studio Dragon">
+    <meta property="og:description" content="Studio Dragon, a premium storyteller group">
+    <meta property="og:image" content="	https://root-ryu.github.io/StudioDragon/asset/og_img.png">
+    <meta property="og:url" content="https://root-ryu.github.io/StudioDragon/">
     <title>studiodragon</title>
     <link rel="shortcut icon" href="back/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/cursor.css">
-    <link rel="stylesheet" href="./css/main_media.css">
-    <link rel="stylesheet" href="./back/css/MainBeck_style.css">
-    <link rel="stylesheet" href="./back/css/MainBack_media.css">
-    <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/main_media.css">
+    <link rel="stylesheet" href="css/cursor.css">
+    <link rel="stylesheet" href="back/css/MainBeck_style.css">
+    <link rel="stylesheet" href="back/css/MainBack_media.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script> -->
+    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.35/dist/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="./js/common.js"></script>
-    <script src="./js/cursor.js"></script>
-    <script src="./back/js/MainBack.js"></script>
+    <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="back/js/MainBack.js"></script>
 </head>
 
 <body>
     <canvas id="cursorCanvas"></canvas>
     <div class="wrap">
+        <!-- 헤더 시작 -->
         <div class="header_bg">
         </div>
         <header class="">
             <div class="inner">
-                <h1><a href="#" class="logo"><img src="back/img/logo_w.png" alt="StudioDragonLogo"></a></h1>
+                <h1><a href="index.html" class="logo"><img src="back/img/logo_w.png" alt="StudioDragonLogo"></a></h1>
                 <nav class="">
                     <ul class="gnb">
-                        <li class=""><a href="#">ABOUT</a>
+                        <li class=""><a href="intro.html" class="t" >ABOUT</a>
                             <ul class="sub">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Business Ethics</a></li>
-                                <li><a href="#">Partnerships</a></li>
-                                <li><a href="#">History</a></li>
-                                <li><a href="#">CEO Message</a></li>
-                                <li><a href="#">Contact & Location</a></li>
+                                <li><a href="intro.html" class="t_small">About Us</a></li>
+                                <li><a href="index.html">Business Ethics</a></li>
+                                <li><a href="index.html">Partnerships</a></li>
+                                <li><a href="index.html">History</a></li>
+                                <li><a href="index.html">CEO Message</a></li>
+                                <li><a href="index.html">Contact & Location</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">WORKS</a>
+                        <li><a href="Listworks_lee.html" class="t">WORKS</a>
                             <ul class="sub">
-                                <li><a href="#">Production List</a></li>
-                                <li><a href="#">Viewer Participation</a></li>
+                                <li><a href="Listworks_lee.html" class="t_small">Production List</a></li>
+                                <li><a href="viewersplayground_moon.html" class="t_small">Viewer Participation</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">NEWSROOM</a>
+                        <li><a href="index.html">NEWSROOM</a>
                             <ul class="sub">
-                                <li><a href="#">Notice</a></li>
-                                <li><a href="#">News</a></li>
+                                <li><a href="index.html">Notice</a></li>
+                                <li><a href="index.html">News</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">IR</a>
-                            <ul class="sub">
-                                <li><a href="#">IR Insights</a></li>
-                                <li><a href="#">Materials</a></li>
+                        <li><a href="IR.html" class="t_ir">IR</a>
+                            <ul class="sub ">
+                                <li><a href="IR.html" class="t_small">IR Insights</a></li>
+                                <li><a href="index.html">Materials</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">SUSTAINABILITY</a>
+                        <li><a href="index.html">SUSTAINABILITY</a>
                             <ul class="sub">
-                                <li><a href="#">Sustainability Story</a></li>
-                                <li><a href="#">Sustainability Activities</a></li>
-                                <li><a href="#">Sustainability Report</a></li>
-                                <li><a href="#">ESG Ratings</a></li>
-                                <li><a href="#">Sustainability Report</a></li>
+                                <li><a href="index.html">Sustainability Story</a></li>
+                                <li><a href="index.html">Sustainability Activities</a></li>
+                                <li><a href="index.html">Sustainability Report</a></li>
+                                <li><a href="index.html">ESG Ratings</a></li>
+                                <li><a href="index.html">Sustainability Report</a></li>
                             </ul>
                         </li>
                     </ul><!-- //.gnb -->
                     <div class="right">
-                        <div class="lang active">
+                        <div class="lang">
                             <a href="#" class="en active">EN</a>
                             <a href="#" class="kr ">KR</a>
                         </div><!-- //.lang -->
                         <div class="user">
-                            <a href="#"><img src="back/img/user.png" alt="user"></a>
+                            <a href=""><img src="back/img/user.png" alt="user"></a>
                         </div><!-- //.user -->
-                        <div class="ham">
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </div>
+                        <div class="nav_ham">
+                            <img src="asset/nav_ham.svg" alt="">
+                        </div><!-- //.nav_ham -->
                     </div><!-- //.right -->
                 </nav>
             </div><!-- //.inner -->
         </header>
+
+        <!-- 햄버거 메뉴 독립 배치 -->
+        <div class="ham">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <!-- 햄버거 메뉴 네비게이션 -->
+        <nav class="ham_nav">
+            <div class="menu_header">
+                <div class="language_switcher">
+                    <a href="#" class="lang_link active">EN</a>
+                    <a href="#" class="lang_link">KO</a>
+                </div>
+
+                <div class="menu_icons">
+                    <a href="#" class="icon_link">
+                        <img src="back/img/user.png" alt="Profile">
+                    </a>
+                    <button type="button" class="icon_link close_btn">
+                        <img src="./asset/x-circle.svg" alt="">
+                    </button>
+                </div>
+            </div>
+
+            <ul class="main_nav">
+                <li class="nav_item">
+                    <a href="intro.html" class="main_category">ABOUT</a>
+                    <ul class="submenu">
+                        <li><a href="intro.html">About Us</a></li>
+                        <li><a href="index.html">Business Ethics</a></li>
+                        <li><a href="index.html">Partnerships</a></li>
+                        <li><a href="index.html">History</a></li>
+                        <li><a href="index.html">CEO Message</a></li>
+                        <li><a href="index.html">Contact&Location</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav_item">
+                    <a href="Listworks_lee.html" class="main_category">WORKS</a>
+                    <ul class="submenu">
+                        <li><a href="Listworks_lee.html">Production List</a></li>
+                        <li><a href="viewersplayground_moon.html">Viewer Participation</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav_item">
+                    <a href="index.html" class="main_category">NEWSROOM</a>
+                    <ul class="submenu">
+                        <li><a href="index.html">Notice</a></li>
+                        <li><a href="index.html">News</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav_item">
+                    <a href="IR.html" class="main_category">IR</a>
+                    <ul class="submenu">
+                        <li><a href="IR.html">IR Insights</a></li>
+                        <li><a href="index.html">Materials</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav_item">
+                    <a href="index.html" class="main_category">SUSTAINABILITY</a>
+                    <ul class="submenu">
+                        <li><a href="index.html">Sustainability Story</a></li>
+                        <li><a href="index.html">Sustainability Activities</a></li>
+                        <li><a href="index.html">Sustainability Report</a></li>
+                        <li><a href="index.html">ESG Ratings</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav><!-- //.ham_nav -->
+        <!-- 여기까지 헤더 -->
 
 
         <main>
             <section class="circlebody">
                 <div id="circle">
                     <article class="face1">
-                        <div class="poster"><img src="./back/img/img01.webp" alt="The Glory"></div>
+                        <a href="work_ryu.html"><div class="poster"><img src="./back/img/img01.webp" alt="The Glory" class="br"></div></a>
                     </article>
                     <article class="face2">
-                        <div class="poster"><img src="./back/img/img02.webp" alt="Queen of Tears"></div>
+                        <div class="poster"><img src="./back/img/img02.webp" alt="Queen of Tears" class="br"></div>
                     </article>
                     <article class="face3">
                         <div class="poster"><img src="./back/img/img03.webp" alt="Celebrity"></div>
@@ -129,7 +211,7 @@
                 <div class="inner">
                     <div class="top">
                         <h2>COMING SOON</h2>
-                        <button type="button"><span>MORE</span></button>
+                        <a class="more-btn" href=""><span>MORE</span></a>
                     </div>
                     <div class="CScontents1">
                         <img src="./back/img/CS_img.png" alt="Taepung Corporation">
@@ -165,7 +247,7 @@
                 <div class="inner">
                     <div class="top">
                         <h2>ON-AIR</h2>
-                        <button type="button"><span>MORE</span></button>
+                        <a class="more-btn" href=""><span>MORE</span></a>
                     </div><!-- //.top -->
                 </div>
                 <div class="on_slide_wrap swiper">
@@ -181,8 +263,8 @@
                                     </li>
                                     <li class="bar"></li>
                                 </ul>
-                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
-                                        alt="arrow"></button>
+                                <a class="read-btn" href="">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></a>
                             </div><!-- //.on_txtbox -->
                         </div><!-- //.on_centents01 -->
                         <div class="ONcontents02 swiper-slide">
@@ -196,8 +278,8 @@
                                     </li>
                                     <li class="bar"></li>
                                 </ul>
-                                <button type="button">READ MORE <img src="back/img/arrow-up-right.png"
-                                        alt="arrow"></button>
+                                <a class="read-btn" href="">READ MORE <img src="back/img/arrow-up-right.png"
+                                        alt="arrow"></a>
                             </div><!-- //.on_txtbox -->
                         </div>
                         <div class="ONcontents03 swiper-slide">
@@ -211,8 +293,8 @@
                                     </li>
                                     <li class="bar"></li>
                                 </ul>
-                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
-                                        alt="arrow"></button>
+                                <a class="read-btn" href="">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></a>
                             </div><!-- //.on_txtbox -->
                         </div>
                         <div class="ONcontents01 swiper-slide">
@@ -226,8 +308,8 @@
                                     </li>
                                     <li class="bar"></li>
                                 </ul>
-                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
-                                        alt="arrow"></button>
+                                <a class="read-btn" href="">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></a>
                             </div><!-- //.on_txtbox -->
                         </div><!-- //.on_centents01 -->
                         <div class="ONcontents02 swiper-slide">
@@ -241,8 +323,8 @@
                                     </li>
                                     <li class="bar"></li>
                                 </ul>
-                                <button type="button">READ MORE <img src="back/img/arrow-up-right.png"
-                                        alt="arrow"></button>
+                                <a class="read-btn" href="">READ MORE <img src="back/img/arrow-up-right.png"
+                                        alt="arrow"></a>
                             </div><!-- //.on_txtbox -->
                         </div>
                         <div class="ONcontents03 swiper-slide">
@@ -256,8 +338,8 @@
                                     </li>
                                     <li class="bar"></li>
                                 </ul>
-                                <button type="button">READ MORE <img src="./back/img/arrow-up-right.png"
-                                        alt="arrow"></button>
+                                <a class="read-btn" href="">READ MORE <img src="./back/img/arrow-up-right.png"
+                                        alt="arrow"></a>
                             </div><!-- //.on_txtbox -->
                         </div>
                     </div>
@@ -279,7 +361,7 @@
                 <div class="inner">
                     <div class="top">
                         <h2>BEYOND DRAMA</h2>
-                        <button type="button"><span>MORE</span></button>
+                        <a class="more-btn" href=""><span>MORE</span></a>
                     </div>
                     <div class="BDcontents">
                         <div class="BDconTop">
@@ -401,7 +483,7 @@
                                     <p class="event-date">2025.01.15</p>
                                     <p class="event-location">Seoul, Gangnam</p>
                                     <p class="event-desc">Join us for an exclusive group viewing experience</p>
-                                    <button type="button" class="event-btn">Apply Now</button>
+                                    <a href="#" class="event-btn">Apply Now</a>
                                 </div>
                             </div>
                         </div>
@@ -413,7 +495,7 @@
                                     <p class="event-date">Ongoing</p>
                                     <p class="event-location">Online & Offline</p>
                                     <p class="event-desc">Become a member of Studio Dragon Crew</p>
-                                    <button type="button" class="event-btn">Join Now</button>
+                                    <a href="#" class="event-btn">Join Now</a>
                                 </div>
                             </div>
                         </div>
@@ -425,7 +507,7 @@
                                     <p class="event-date">2025.02.01</p>
                                     <p class="event-location">CGV Yongsan</p>
                                     <p class="event-desc">Get early access to upcoming drama premieres</p>
-                                    <button type="button" class="event-btn">Register</button>
+                                    <a href="#" class="event-btn">Register</a>
                                 </div>
                             </div>
                         </div>
@@ -485,21 +567,16 @@
                     </div>
                 </div>
             </section>
-
-
-
-
-
-
         </main>
 
-        <footer class="ver_white">
+        <!-- 푸터 시작 -->
+        <footer class="ver_dark ver_white">
             <div class="footer_inner">
                 <!-- Top Area -->
                 <div class="footer_top">
                     <div class="footer_menu">
                         <div class="footer_gnb">
-                            <a href="#" class="footer_gnb_link home">Home</a>
+                            <a href="index.html" class="footer_gnb_link home">Home</a>
                             <div class="footer_gnb_wrap">
                                 <ul class="footer_gnb_list">
                                     <li><a href="#" class="footer_gnb_link">Hotline</a></li>
@@ -547,13 +624,14 @@
 
                     <div class="footer_info">
                         <p class="footer_info_text">CEO : Jang Kyung-ik</p>
-                        <p class="footer_info_text">Studio Dregon Corporation, 17F1, 75, Maebongsan-ro, Mapo-gu, Seoul,
-                            Republic of Korea | Business registration number : 747-81-00388</p>
+                        <p class="footer_info_text">Studio Dragon Corporation, 17F1, 75, Maebongsan-ro, Mapo-gu Seoul, Republic of Korea | Business registration number : 747-81-00388</p>
                         <p class="footer_info_text">© STUDIO DRAGON.All Rights Reserved.</p>
                     </div><!-- //.footer_info -->
                 </div><!-- //.footer_bottom -->
             </div><!-- //.footer_inner -->
         </footer><!-- //.footer -->
+        <!-- 여기까지 푸터 -->
+
     </div><!-- //.wrap -->
 </body>
 
