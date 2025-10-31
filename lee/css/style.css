@@ -2,7 +2,7 @@
 body {
   background-color: #0D031C;
   color: var(--color-white);
-  font-family: "Roboto", sans-serif;
+  font-family: 'Assistant', sans-serif;
   font-optical-sizing: auto;
 }
 
@@ -34,7 +34,7 @@ body {
 body {
   background-color: var(--color-black);
   color: var(--color-white);
-  font-family: "Roboto", sans-serif;
+  font-family: 'Assistant', sans-serif;
   font-optical-sizing: auto;
 }
 

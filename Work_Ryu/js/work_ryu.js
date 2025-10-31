@@ -968,6 +968,7 @@ window.addEventListener('DOMContentLoaded', function () {
         ],
         character: [
             './Work_Ryu/asset/icon_Yongsik.png',
+            './Work_Ryu/asset/icon_Yongsoon.png'
         ]
     };
 
@@ -1075,7 +1076,7 @@ window.addEventListener('DOMContentLoaded', function () {
             username: random.item(isMale ? DATA.maleNames : DATA.femaleNames),
             isMale,
             bgColor: random.item(ASSETS.profileBg),
-            character: ASSETS.character
+            character: random.item(ASSETS.character)
         };
     }
 
