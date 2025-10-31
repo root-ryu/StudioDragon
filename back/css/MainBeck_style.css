@@ -90,10 +90,12 @@ body {
     transition: .5s;
     cursor: pointer;
 }
-.circlebody>#circle article.face1{
+
+.circlebody>#circle article.face1 {
     box-shadow: 0 0 20px 10px rgb(255, 255, 255, .3);
 }
-.circlebody>#circle article .poster .br{
+
+.circlebody>#circle article .poster .br {
     opacity: 1;
 }
 
@@ -164,16 +166,23 @@ body {
     color: var(--Wcolor);
 }
 
-.comingsoon .inner .top button {
-    width: 111px;
-    height: 34px;
+.comingsoon .inner .top a.more-btn {
+    font-size: 18px;
+    text-transform: uppercase;
+    display: flex;
+    padding: 7px 32px 7px 34px;
+    justify-content: center;
+    align-items: center;
+    color: var(--Wcolor);
     background: var(--Bcolor);
     border: 1px solid var(--Wcolor);
     border-radius: 32px;
-    cursor: pointer;
+      /* margin-right: 290px;
+  position: relative;
+      top: -100px; */
 }
 
-.comingsoon .inner .top button span {
+.comingsoon .inner .top a.more-btn span {
     color: var(--Wcolor);
     font-size: 18px;
 }
@@ -245,16 +254,20 @@ body {
     color: var(--Wcolor);
 }
 
-.onair .inner .top button {
-    width: 111px;
-    height: 34px;
+.onair .inner .top a.more-btn {
+    font-size: 18px;
+    text-transform: uppercase;
+    display: flex;
+    padding: 7px 32px 7px 34px;
+    justify-content: center;
+    align-items: center;
+    color: var(--Wcolor);
     background: var(--Bcolor);
     border: 1px solid var(--Wcolor);
     border-radius: 32px;
-    cursor: pointer;
 }
 
-.onair .inner .top button span {
+.onair .inner .top a.more-btn span {
     color: var(--Wcolor);
     font-size: 18px;
 }
@@ -360,7 +373,7 @@ body {
 }
 
 /* READ MORE 버튼 */
-.onair .ONcon>div .ONtxtbox button {
+.onair .ONcon>div .ONtxtbox a.read-btn {
     padding: 23px 68px;
     background: transparent;
     border: 1px solid var(--Wcolor);
@@ -377,7 +390,7 @@ body {
     position: relative;
 }
 
-.onair .ONcon>div .ONtxtbox button:hover {
+.onair .ONcon>div .ONtxtbox a.read-btn:hover {
     border: 1px solid rgba(245, 245, 245, 1);
     background: rgba(245, 245, 245, 0.03);
     box-shadow:
@@ -389,7 +402,7 @@ body {
     transform: translateY(-2px) scale(1.01);
 }
 
-.onair .ONcon>div .ONtxtbox button img {
+.onair .ONcon>div .ONtxtbox a.read-btn img {
     width: 24px;
     height: 24px;
     background: none;
@@ -481,20 +494,18 @@ body {
     padding-right: 30px;
 }
 
-.BeyondDrama .inner .top button {
-    width: 111px;
-    height: 34px;
-    background: transparent;
+.BeyondDrama .inner .top a.more-btn {
+    display: flex;
+    padding: 7px 32px 7px 34px;
+    justify-content: center;
+    align-items: center;
+    color: var(--Bcolor);
+    background: var(--Wcolor);
     border: 1px solid var(--Bcolor);
     border-radius: 32px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.BeyondDrama .inner .top button span {
-    color: var(--Bcolor);
+.BeyondDrama .inner .top a.more-btn span {
     font-size: 18px;
     font-weight: 400;
     text-transform: uppercase;
@@ -815,7 +826,7 @@ body {
     text-align: left;
 }
 
-.ViewersPlayground .inner .top button {
+.ViewersPlayground .inner .top a.more-btn {
     display: none;
 }
 
@@ -1274,6 +1285,7 @@ body {
 
 /* 버튼 */
 .event .event-btn {
+    display: inline-block;
     margin-top: 10px;
     padding: 12px 30px;
     background: #FFFFFF;
@@ -1283,6 +1295,7 @@ body {
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
+    text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
 }

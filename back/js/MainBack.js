@@ -493,6 +493,64 @@ function initGSAPAnimations() {
             if (index === 0) {
                 element.style.display = 'block';
                 element.style.opacity = '1';
+                
+                // 첫 번째 슬라이드 초기 애니메이션
+                const img = element.querySelector('img');
+                const h3 = element.querySelector('.txt h3');
+                const p = element.querySelector('.txt p');
+
+                if (img) {
+                    gsap.fromTo(img,
+                        { y: 100, opacity: 0 },
+                        { 
+                            y: 0,
+                            opacity: 1,
+                            duration: 1.2,
+                            ease: "power2.out",
+                            scrollTrigger: {
+                                trigger: element,
+                                start: 'top 80%',
+                                toggleActions: 'play none none none'
+                            }
+                        }
+                    );
+                }
+
+                if (h3) {
+                    gsap.fromTo(h3,
+                        { x: 100, opacity: 0 },
+                        { 
+                            x: 0,
+                            opacity: 1,
+                            duration: 1,
+                            delay: 0.3,
+                            ease: "power2.out",
+                            scrollTrigger: {
+                                trigger: element,
+                                start: 'top 80%',
+                                toggleActions: 'play none none none'
+                            }
+                        }
+                    );
+                }
+
+                if (p) {
+                    gsap.fromTo(p,
+                        { x: 100, opacity: 0 },
+                        { 
+                            x: 0,
+                            opacity: 1,
+                            duration: 1,
+                            delay: 0.6,
+                            ease: "power2.out",
+                            scrollTrigger: {
+                                trigger: element,
+                                start: 'top 80%',
+                                toggleActions: 'play none none none'
+                            }
+                        }
+                    );
+                }
             } else {
                 element.style.display = 'none';
                 element.style.opacity = '0';
@@ -520,48 +578,111 @@ function initGSAPAnimations() {
         currentCSIndex = (currentCSIndex + 1) % csSlides.length;
         const nextSlide = document.querySelector(csSlides[currentCSIndex]);
 
-        // 다음 슬라이드 페이드인 (y 애니메이션 제거)
+        // 다음 슬라이드 애니메이션
         if (nextSlide) {
             nextSlide.style.display = 'block';
-            gsap.fromTo(nextSlide, 
-                { opacity: 0 },
-                { 
-                    opacity: 1,
-                    duration: 0.8,
-                    ease: "power2.out"
-                }
-            );
+            const img = nextSlide.querySelector('img');
+            const h3 = nextSlide.querySelector('.txt h3');
+            const p = nextSlide.querySelector('.txt p');
+
+            // img: 아래에서 위로
+            if (img) {
+                gsap.fromTo(img,
+                    { y: 100, opacity: 0 },
+                    { 
+                        y: 0,
+                        opacity: 1,
+                        duration: 1.2,
+                        ease: "power2.out"
+                    }
+                );
+            }
+
+            // h3: 오른쪽에서 왼쪽으로
+            if (h3) {
+                gsap.fromTo(h3,
+                    { x: 100, opacity: 0 },
+                    { 
+                        x: 0,
+                        opacity: 1,
+                        duration: 1,
+                        delay: 0.3,
+                        ease: "power2.out"
+                    }
+                );
+            }
+
+            // p: 오른쪽에서 왼쪽으로 (h3 이후)
+            if (p) {
+                gsap.fromTo(p,
+                    { x: 100, opacity: 0 },
+                    { 
+                        x: 0,
+                        opacity: 1,
+                        duration: 1,
+                        delay: 0.6,
+                        ease: "power2.out"
+                    }
+                );
+            }
+
+            // 전체 슬라이드 opacity
+            gsap.to(nextSlide, {
+                opacity: 1,
+                duration: 0.3
+            });
         }
     }
 
     // 5초마다 슬라이드 전환
     setInterval(changeCSSlide, 5000);
 
-    // Coming Soon 섹션 GSAP 애니메이션
-    // fade-up 애니메이션
-    gsap.from('.gsap-fade-up', {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: '.gsap-fade-up',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        }
+    // COMING SOON 섹션 링크 클릭 이벤트
+    // .comingsoon .top의 a.more-btn 클릭 시 경고창
+    const comingsoonMoreBtn = document.querySelector('.comingsoon .inner .top a.more-btn');
+    if (comingsoonMoreBtn) {
+        comingsoonMoreBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('구현 중에 있습니다. 양해 부탁드립니다. 감사합니다.');
+        });
+    }
+
+    // ON-AIR 섹션 링크 클릭 이벤트
+    // .onair .top의 a.more-btn 클릭 시 경고창
+    const onairMoreBtn = document.querySelector('.onair .inner .top a.more-btn');
+    if (onairMoreBtn) {
+        onairMoreBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('구현 중에 있습니다. 양해 부탁드립니다. 감사합니다.');
+        });
+    }
+
+    // .onair의 모든 a.read-btn 클릭 시 경고창
+    const readBtns = document.querySelectorAll('.onair a.read-btn');
+    readBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('구현 중에 있습니다. 양해 부탁드립니다. 감사합니다.');
+        });
     });
 
-    // fade-left 애니메이션
-    gsap.from('.gsap-fade-left', {
-        x: 50,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-        stagger: 0.3,
-        scrollTrigger: {
-            trigger: '.gsap-fade-left',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        }
+    // BeyondDrama 섹션 링크 클릭 이벤트
+    // .BeyondDrama .top의 a.more-btn 클릭 시 경고창
+    const beyondDramaMoreBtn = document.querySelector('.BeyondDrama .inner .top a.more-btn');
+    if (beyondDramaMoreBtn) {
+        beyondDramaMoreBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('구현 중에 있습니다. 양해 부탁드립니다. 감사합니다.');
+        });
+    }
+
+    // EVENT 섹션 링크 클릭 이벤트
+    // .event의 모든 a.event-btn 클릭 시 경고창
+    const eventBtns = document.querySelectorAll('.event a.event-btn');
+    eventBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('구현 중에 있습니다. 양해 부탁드립니다. 감사합니다.');
+        });
     });
 }
