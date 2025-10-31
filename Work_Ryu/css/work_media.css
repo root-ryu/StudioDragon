@@ -277,7 +277,58 @@
         left: 89%;
         top: 65.8%;
     }
-    
+    .protagonist_moon,
+    .good_guys,
+    .bad_guys {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        padding: 0 80px;
+    }
+
+    /* 좌측 인물 이미지 숨김 */
+    .protagonist_moon .portrait_frame {
+        display: none;
+    }
+
+    /* 텍스트 박스만 표시 - 가로 넓게 */
+    .protagonist_moon .content_card {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        width: 100%;
+        max-width: 630px;
+        height: auto;
+        padding: 50px 40px;
+    }
+
+    .protagonist_moon .card_content {
+        height: auto;
+        padding: 0;
+    }
+
+    .protagonist_moon .text_wrapper {
+        gap: 30px;
+        width: 100%;
+    }
+
+    .protagonist_moon .title_section h1 {
+        font-size: 32px;
+    }
+
+    .protagonist_moon .description {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .protagonist_moon .close_btn {
+        left: auto;
+        right: 24px;
+        top: 24px;
+    }
+
+
     /* ============ EPISODE SECTION ============ */
     section.episode {
         padding: 0 80px;

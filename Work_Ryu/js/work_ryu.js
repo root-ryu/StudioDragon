@@ -39,6 +39,84 @@
         }, 2000);
     });
 })();
+document.addEventListener('DOMContentLoaded', function () {
+    // 요소 선택
+    const closeButtons = document.querySelectorAll('.close_btn');
+    const cardOverlay = document.querySelector('.card_overlay');
+
+    // 카드 닫기 함수
+    function closeCard(card) {
+        if (card) {
+            card.classList.add('is_closing');
+            card.classList.remove('is_active');
+            
+            // 오버레이 제거
+            if (cardOverlay) {
+                cardOverlay.classList.remove('active');
+            }
+            
+            setTimeout(function () {
+                card.style.display = 'none';
+                card.classList.remove('is_closing');
+            }, 300);
+        }
+    }
+
+    // X 닫기 버튼 클릭
+    closeButtons.forEach(function (btn) {
+        btn.onclick = function () {
+            const card = btn.closest('.protagonist_moon');
+            closeCard(card);
+        };
+    });
+
+    // ESC 키로 모든 카드 닫기
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            const activeCards = document.querySelectorAll('.protagonist_moon.is_active');
+            activeCards.forEach(function(card) {
+                closeCard(card);
+            });
+        }
+    });
+
+    // 모든 캐릭터에 카드 열기 기능 추가 (효율적인 방법)
+    const allCharacters = document.querySelectorAll('.human[data-card]');
+    
+    if (allCharacters.length > 0 && cardOverlay) {
+        allCharacters.forEach(function(character) {
+            character.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // data-card 속성에서 카드 클래스명 가져오기
+                const cardClassName = character.getAttribute('data-card');
+                const targetCard = document.querySelector('.' + cardClassName);
+                
+                if (targetCard) {
+                    // 오버레이 활성화
+                    cardOverlay.classList.add('active');
+                    
+                    // 카드 표시
+                    targetCard.style.display = 'flex';
+                    
+                    // 애니메이션을 위한 딜레이
+                    setTimeout(function() {
+                        targetCard.classList.remove('is_closing');
+                        targetCard.classList.add('is_active');
+                    }, 10);
+                }
+            });
+        });
+        
+        // 오버레이 클릭 시 모든 활성 카드 닫기
+        cardOverlay.addEventListener('click', function() {
+            const activeCards = document.querySelectorAll('.protagonist_moon.is_active');
+            activeCards.forEach(function(card) {
+                closeCard(card);
+            });
+        });
+    }
+});
 
 /* episode */
 // Episode 섹션 드래그 스크롤 및 반응형 네비게이션
