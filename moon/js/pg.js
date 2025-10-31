@@ -17,17 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
     tl_yoyo.to('.smiling-emoji', { y: -80, duration: 2.5, ease: "power2.inOut", })
 
 
-    
+
     // 히어로 섹션 스크롤 애니메이션 (리팩토링)
     const heroTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: '.hero', // 히어로 섹션
-        start: 'center center',
-        end: 'bottom 80%', // 스크롤 거리
+        start: 'top top',
+        end: '+=250%',
+        //end: 'bottom 80%', // 스크롤 거리
         toggleActions: "play none resume reverse",
-        // pin: true,
-        // scrub: true,
-        // anticipatePin: 1,
+        pin: true,
+        scrub: true,
+        anticipatePin: 1,
       },
     });
 
@@ -190,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // 모바일 애니메이션: 중앙 정렬, 좌우 이동 없음
           tl.set(awardInfo, { xPercent: 0, autoAlpha: 0, x: 0 });
-          tl.set(video, { scale: 0.2, xPercent: 0, autoAlpha: 0, x:0 }); // 중앙에서 시작
+          tl.set(video, { scale: 0.2, xPercent: 0, autoAlpha: 0, x: 0 }); // 중앙에서 시작
           tl.set(blur1, { scale: 0.3, x: 150, y: 100, autoAlpha: 0 }); // 이동 거리 축소
           tl.set(blur2, { scale: 0.4, x: -150, y: -100, autoAlpha: 0 });
 
@@ -492,15 +493,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
-  
+
   const voteAgainBtn = document.querySelector('.vote-again-btn');
-      const voteIcon = voteAgainBtn ? voteAgainBtn.querySelector('i') : null;
-      if (voteAgainBtn && voteIcon) {
-        voteAgainBtn.addEventListener('click', function() {
-          voteIcon.classList.add('rotate-anim');
-          setTimeout(function() {
-            voteIcon.classList.remove('rotate-anim');
-          }, 700);
-        });
-      }
+  const voteIcon = voteAgainBtn ? voteAgainBtn.querySelector('i') : null;
+  if (voteAgainBtn && voteIcon) {
+    voteAgainBtn.addEventListener('click', function () {
+      voteIcon.classList.add('rotate-anim');
+      setTimeout(function () {
+        voteIcon.classList.remove('rotate-anim');
+      }, 700);
+    });
+  }
 }); // DOMContentLoaded 끝
