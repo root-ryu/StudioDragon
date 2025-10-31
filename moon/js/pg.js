@@ -17,15 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
     tl_yoyo.to('.smiling-emoji', { y: -80, duration: 2.5, ease: "power2.inOut", })
 
 
+    
     // 히어로 섹션 스크롤 애니메이션 (리팩토링)
     const heroTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: '.hero', // 히어로 섹션
-        start: 'top top',
-        end: '+=250%', // 스크롤 거리
-        pin: true,
-        scrub: 2,
-        anticipatePin: 1,
+        start: 'center center',
+        end: 'bottom 80%', // 스크롤 거리
+        toggleActions: "play none resume reverse",
+        // pin: true,
+        // scrub: true,
+        // anticipatePin: 1,
       },
     });
 
@@ -36,22 +38,22 @@ document.addEventListener('DOMContentLoaded', () => {
         y: 24,
         duration: 1,
         ease: 'power2.out',
-        stagger: 0.1, // 각 줄이 순차적으로 나타나도록 약간의 간격 추가
+        stagger: 0.4, // 각 줄이 순차적으로 나타나도록 약간의 간격 추가
       })
       // 2. 이미지가 약간의 딜레이 후 나타남
       .from('.hero .imgbox', {
         opacity: 0,
         y: 54,
-        duration: 1,
+        duration: 4,
         ease: 'power2.out',
-      }, '<6') // 이전 애니메이션 시작 후 0.3초 뒤에 시작
+      }, '<0.2') // 이전 애니메이션 시작 후 0.3초 뒤에 시작
       // 3. 텍스트에 그라디언트 색상이 채워짐
       .to('.hero .opacity_reveal li', {
         backgroundSize: '100% 100%, 100% 100%',
-        duration: 1.5,
+        duration: 0.6,
         ease: 'none',
-        stagger: 0.8, // 0.8초 간격으로 순차 적용
-      }, '+=0.5') // 앞선 애니메이션 완료 후 0.5초 뒤 시작
+        stagger: 0.3, // 0.8초 간격으로 순차 적용
+      }, '+=0.2') // 앞선 애니메이션 완료 후 0.5초 뒤 시작
       .to({}, { duration: 3 });
   }
 
@@ -80,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // 데스크톱 애니메이션: 좌우 이동 있음
           tl.set(awardInfo, { xPercent: 0, autoAlpha: 0 });
-          tl.set(video, { scale: 0.2, xPercent: 80, autoAlpha: 0 });
+          tl.set(video, { scale: 0.2, xPercent: 50, autoAlpha: 0 });
           tl.set(blur1, { scale: 0.3, x: 300, y: 200, autoAlpha: 0 });
           tl.set(blur2, { scale: 0.4, x: -250, y: -150, autoAlpha: 0 });
 
@@ -99,12 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
               ease: "power1.inOut"
             }, 'start')
             .to(video, {
-              xPercent: -50, // 왼쪽으로 이동
+              xPercent: -20, // 왼쪽으로 이동
               duration: 5,
             }, 'end')
             .to(awardInfo, {
               autoAlpha: 1,
-              xPercent: 32, // 오른쪽에 표시
+              xPercent: 20, // 오른쪽에 표시
               duration: 3,
               ease: "power1.inOut"
             }, "+=1")
@@ -297,10 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modifier: 1.2,  // 효과 강도
         slideShadows: false,
       },
-      autoplay: {
-        delay: 2500, //2.5초 = 2500
-        disableOnInteraction: false,
-      },
       observer: true,
       observeParents: true,
       // pagination을 명확히 지정 (없으면 생략)
@@ -356,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
       new Swiper(container, {
         slidesPerView: 'auto',
         spaceBetween: 52,
-        loop: false,
+        loop: true,
         autoplay: {
           delay: 4000, //4초 = 4000
           disableOnInteraction: false,
@@ -494,5 +492,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
-
+  
+  const voteAgainBtn = document.querySelector('.vote-again-btn');
+      const voteIcon = voteAgainBtn ? voteAgainBtn.querySelector('i') : null;
+      if (voteAgainBtn && voteIcon) {
+        voteAgainBtn.addEventListener('click', function() {
+          voteIcon.classList.add('rotate-anim');
+          setTimeout(function() {
+            voteIcon.classList.remove('rotate-anim');
+          }, 700);
+        });
+      }
 }); // DOMContentLoaded 끝

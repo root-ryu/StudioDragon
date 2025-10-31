@@ -2,12 +2,13 @@
 :root {
   --space-w-1920: 200px;
 }
-*{
+*, *::after,*::before {
   caret-color: transparent;
-}
-*::after,*::before {
   box-sizing: border-box;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
 }
+
 
 
 button {
@@ -64,8 +65,7 @@ h2 {
 .hero {
   width: 100%;
   height: 100vh;
-  margin-top: 180px;
-  background: linear-gradient(transparent 20%, #fff 40%);
+  /* background: linear-gradient(transparent 20%, #fff 40%); */
   padding-block: 300px;
   display: flex;
   flex-direction: row;
@@ -81,16 +81,20 @@ h2 {
   position: relative;
   align-items: center;
   justify-content: space-between;
+  
 }
 
 
 
+.hero .hero-txtbox {
+  color: #fff;
+  color: transparent;
+  font: 800 68px/130% "Pretendard", sans-serif;
+  text-align: left;
+}
+
 .hero li {
   text-align: left;
-  font-family: "Pretendard", sans-serif;
-  font-size: 100px;
-  line-height: 114%;
-  font-weight: 800;
   -webkit-text-stroke: 1px #883ffe;
   color: transparent;
   -webkit-text-fill-color: transparent;
@@ -108,8 +112,6 @@ h2 {
   background: url("../asset/smiling.png") center/cover;
   width: 280px;
   aspect-ratio: 1;
-  /* animation: floating-40 forwards infinite 3s; */
-  /* js로 대체함 */
 }
 
 @keyframes floating-20 {
@@ -151,12 +153,12 @@ h2 {
 .contest-winner .top {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 32px;
   width: 100%;
   position: relative;
 }
 
-.contest-winner .decoImg {
+.contest-winner .top .decoImg {
   background: url(../../moon/asset/goldcup.png) center/cover;
   width: 201px;
   aspect-ratio: 201/229;
@@ -167,18 +169,17 @@ h2 {
 }
 
 
-.contest-winner .title {
+.contest-winner .top .title {
   gap: 16px;
   display: flex;
   flex-direction: column;
 }
 
 
-
 .contest-winner .title p {
   color: var(--Wcolor);
   text-align: center;
-  font: 300 30px/130% "Assistant", sans-serif;
+  font: 300 26px/130% "Assistant", sans-serif;
   text-transform: uppercase;
 }
 
@@ -198,12 +199,11 @@ h2 {
   width: 100%;
   height: 100%;
   position: relative;
-  z-index: 0;
 }
 
 .contest-winner .video-wrap video {
   border-radius: 32px;
-  height: 720px;
+  height: 37vw;
   aspect-ratio: 9/16;
   object-fit: cover;
 }
@@ -211,20 +211,17 @@ h2 {
 .contest-winner .award-info {
   display: flex;
   flex-direction: column;
-  gap: 43px;
-  width: 687px;
-  height: 720px;
+  gap: 32px;
+  width: auto;
+  /* height: 720px; */
   position: relative;
-  z-index: 0;
-  /* display: none; */
 }
 
 .contest-winner .award {
   color: var(--Wcolor);
   text-align: left;
-  font: 300 82px/130% "Assistant", sans-serif;
+  font: 500 56px/130% "Assistant", sans-serif;
   position: relative;
-  align-self: stretch;
   transform-origin: 0 0;
   transform: rotate(0deg) scale(1, 1);
 }
@@ -235,32 +232,30 @@ h2 {
   gap: 13px;
   align-items: flex-start;
   justify-content: flex-start;
-  align-self: stretch;
   position: relative;
 }
 
 .contest-winner ul.subtitle {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   align-items: flex-start;
   justify-content: flex-start;
-  width: 100%;
+  width: 580px;
   position: relative;
 }
 
 .contest-winner ul.subtitle li b {
   color: var(--Wcolor);
   text-align: left;
-  font: 300 30px/130% "Assistant", sans-serif;
+  font: 300 20px/100% "Assistant", sans-serif;
   position: relative;
-  align-self: stretch;
 }
 
 .contest-winner ul.subtitle li p {
-  color: #acacac;
+  color: #b8b8b8;
   text-align: left;
-  font: 300 30px/130% "Assistant", sans-serif;
+  font: 300 20px/130% "Assistant", sans-serif;
   position: relative;
   align-self: stretch;
 }
@@ -292,7 +287,7 @@ h2 {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -10;
   pointer-events: none;
   top: 0;
   left: 0;
@@ -325,12 +320,16 @@ h2 {
 /* 진행중인 공모전 */
 .running-contest {
   width: 100%;
+  /* margin-top: 264px; */
   color: #fff;
-  padding: 200px 0px 250px 0px;
+  padding: 464px 200px 250px 200px;
+}
+.running-contest .sect_inner{
 }
 
 .running-contest .title {
   margin-bottom: 42px;
+  width: 100%;
 }
 
 .running-contest h2,
@@ -343,7 +342,8 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
+  /* width: 1520px; */
+  padding-block: 186px;
   background: url(../../moon/asset/bg-runningContest.jpg) center/ cover no-repeat;
 }
 
@@ -469,12 +469,12 @@ h2 {
 .running-contest a.btn {
   display: block;
   border-radius: 32px;
-  border: 1px solid #0d031cb4;
-  background: #0d031c19;
-  padding: 8px 38px;
-  color: var(--Bcolor);
+  border: 1px solid var(--subBlue2);
+  /* background: #0d031c19; */
+  padding: 10px 38px;
+  color: var(--subBlue2);
   text-align: center;
-  font: 400 16px/100% "Assistant", sans-serif;
+  font: 500 16px/100% "Assistant", sans-serif;
   text-transform: uppercase;
   transition: all 0.4s ease;
   position: relative;
@@ -520,27 +520,6 @@ h2 {
   overflow: hidden;
 }
 
-.creativeGallery .fanarts,
-.creativeGallery .fanvideos {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.creativeGallery .fanarts.active,
-.creativeGallery .fanvideos.active {
-  display: block;
-  opacity: 1;
-}
-
-.creativeGallery .category {
-  display: flex;
-  gap: 12px;
-}
-
-
-
-
 
 .creativeGallery .titlebox {
   display: flex;
@@ -550,50 +529,20 @@ h2 {
   position: relative;
   margin-bottom: 40px;
 }
-
-.creativeGallery .titlebox .category {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-}
-
-.creativeGallery .titlebox .category button {
-  background: var(--Bcolor);
-  border-radius: 63px;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  color: var(--Wcolor);
-  font: 400 24px/100% "Assistant-Regular", sans-serif;
-  text-transform: uppercase;
-  border: 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.creativeGallery .titlebox .category button.active {
-  background: var(--subBlue2);
-  color: var(--Wcolor);
-}
-
+ㄴ
 .creativeGallery .con {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 26px;
   position: relative;
 }
 
 .creativeGallery h4 {
   color: var(--Wcolor);
   text-align: left;
-  font: 600 30px/100% "Assistant-Regular", sans-serif;
+  font: var(--font-1920-title-B-26);
   text-transform: uppercase;
+  margin-bottom: 26px;
 }
 
 .creativeGallery .swiper {
@@ -608,11 +557,13 @@ h2 {
 
 .creativeGallery .fanarts .wrap {
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
-  gap: 68px;
+  gap: 180px;
   /* background: red; */
-  overflow-x: hidden;
+  overflow: hidden;
+  padding-bottom: 40px;
 }
 .creativeGallery .fanarts .img_popular .swiper {
   /* width: 823px; */
@@ -671,8 +622,8 @@ h2 {
   transition: opacity 0.3s ease;
   background: linear-gradient(180deg,
       rgba(13, 3, 28, 0.8) 0%,
-      rgba(13, 3, 28, 0) 18%,
-      rgba(13, 3, 28, 0) 84%,
+      rgba(13, 3, 28, 0) 24%,
+      rgba(13, 3, 28, 0) 80%,
       rgba(13, 3, 28, 0.8) 100%);
 }
 
@@ -683,18 +634,24 @@ h2 {
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .subtitle {
   display: flex;
   flex-direction: column;
+  gap: 4px;
   /* position: relative; */
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .subtitle li {
   color: var(--Wcolor);
+  width: auto;
   text-align: left;
-  font: 300 24px/130% "Assistant", sans-serif;
+  font: var(--font-1920_1024-body-L-20);
+  padding-right: 34px;
   /* position: relative; */
+  overflow: hidden;           /* 넘치는 내용을 숨깁니다. */
+  text-overflow: ellipsis;    /* 숨겨진 텍스트에 말줄임표(...)를 표시합니다. */
+  white-space: nowrap;
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .subtitle li b {
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .creativeGallery .fanarts .swiper ul.swiper-wrapper .info-overlay .like {
@@ -736,13 +693,14 @@ h2 {
 }
 
 .fanarts .img_popular .swiper-pagination {
-  position: absolute;
-  bottom: -40px;
+  position: relative;
+  top: 16px;
   right: 0;
 }
 
 .fanarts .img_new .swiper-pagination {
-  position: static;
+  position: relative;
+  top: 16px;
 }
 
 /* 페이지네이션 */
@@ -796,7 +754,7 @@ h2 {
 .community .title .subtit h4 {
   color: var(--Bcolor);
   text-align: center;
-  font: var(--font-1920-title-L-40);
+  font: var(--font-1920-title-B-26);
   text-transform: uppercase;
 }
 
@@ -809,7 +767,7 @@ h2 {
 
 .community .title .subtit .com_btn_wrap .com_toggle_btn {
   color: #bdbac1;
-  font: var(--font-1920_1024-body-B-20);
+  font: 700 20px/100% "Assistant", sans-serif;
 
 }
 
@@ -845,15 +803,11 @@ h2 {
   overflow: hidden;
   /* 이미지 링크는 추후 복사 */
   background: var(--Wcolor) center/cover no-repeat;
-  width: 1137px;
+  width: 50vw;
   aspect-ratio: 16/9;
-  filter: brightness(80%);
-  opacity: 0.8;
-}
-.community .articles .comm_gallery .swiper-wrapper .swiper-slide-active{
   filter: brightness(100%);
-  opacity: 1;
 }
+
 
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap {
   display: block;
@@ -867,7 +821,14 @@ h2 {
   object-fit: cover;
   object-position: center;
 }
-
+.community .articles .comm_gallery .swiper-wrapper .swiper-slide .comm-img-wrap .num {
+  font: 300 72px/100% "Pretendard", sans-serif;
+  position: absolute;
+  top: 26px;
+  left: 32px;
+  z-index: 10;
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.4);
+}
 
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide .info-overlay {
   width: 100%;
@@ -875,7 +836,7 @@ h2 {
   padding: 40px 38px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: end;
   position: absolute;
   top: 0;
   left: 0;
@@ -893,12 +854,7 @@ h2 {
   opacity: 1;
 }
 
-.community .articles .comm_gallery .info-overlay .num {
-  font: 300 72px/100% "Pretendard", sans-serif;
-  position: relative;
-  transform-origin: 0 0;
-  transform: rotate(0deg) scale(1, 1);
-}
+
 
 .community .articles .comm_gallery .info-overlay .comm_article_info {
   display: flex;
@@ -1016,19 +972,20 @@ h2 {
   margin-bottom: 18px;
 }
 .vote .title h3{
-  font: 400 38px/130% "Assistant", sans-serif;
-  margin-bottom: 8px;
+  font: 600 26px/130% "Assistant", sans-serifs;
+  margin-bottom: 4px;
 }
 .vote .title p{
+  color: #b8b8b8;
   font: 400 20px/130% "Assistant", sans-serif;
-  margin-bottom: 120px;
+  margin-bottom: 42px;
   opacity: .6;
 }
 
 .vote-container {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 42px;
   perspective: 2000px;
   width: 100%;
 }
@@ -1236,4 +1193,14 @@ h2 {
 }
 .vote-again-btn i{
   margin-left: 8px;
+}
+/* vote-again-btn 아이콘 회전 애니메이션 */
+.vote-again-btn i.rotate-anim {
+  display: inline-block;
+  animation: rotateOne 0.7s linear;
+}
+
+@keyframes rotateOne {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
