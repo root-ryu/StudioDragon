@@ -118,7 +118,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        /* gap: 34px!important; */
     }
 
     footer .footer_top .footer_menu .footer_gnb .footer_gnb_link {
