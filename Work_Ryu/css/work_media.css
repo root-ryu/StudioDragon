@@ -690,7 +690,7 @@
         height: auto;
         aspect-ratio: 21 / 9; /* ✅ 영상과 동일한 비율로 높이 맞춤 */
         padding: 16px;
-        background: #2B2B2B; /* ✅ 배경색 변경 */
+        background: rgb(24, 4, 51); /* ✅ 배경색 변경 */
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -956,6 +956,7 @@
         width: calc(100% - 160px);
         height: 80px;
         bottom: 216px; /* 이벤트 섹션(200px) + 16px 갭 */
+        border-radius: 20px;
     }
     
     section.chat_event_section .input_text_area {
@@ -1001,7 +1002,7 @@
         font-size: 14px;
         font-weight: 500;
         text-transform: uppercase;
-        border-radius: 0;
+        border-radius: 20px;
         cursor: pointer;
         transition: all 0.3s ease;
     }
@@ -1718,7 +1719,7 @@
         width: 50%;
         aspect-ratio: 16 / 9; /* ✅ 영상과 동일한 비율로 높이 맞춤 */
         padding: 8px;
-        background: #2B2B2B; /* ✅ 배경색 변경 */
+        background: rgb(24, 4, 51); /* ✅ 배경색 변경 */
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -2022,6 +2023,7 @@
         margin: 20px auto 0;
         background: rgba(255, 255, 255, 0.8);
         border: 0.5px solid rgba(13, 3, 28, 0.5);
+        border-radius: 20px;
         box-sizing: border-box;
         z-index: 1; /* 기본 레이어 */
     }
@@ -2078,7 +2080,7 @@
         font-size: 12px;
         font-weight: 500;
         text-transform: uppercase;
-        border-radius: 0;
+        border-radius: 20px;
         cursor: pointer;
         transition: all 0.3s ease;
     }
