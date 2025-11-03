@@ -987,7 +987,7 @@ section.draggable_section .img_item:active {
 /* 각 이미지별 고정 초기 위치 */
 section.draggable_section .img_item:nth-child(1) {
     left: 50px;
-    top: 80px;
+    top: 200px;
 }
 
 section.draggable_section .img_item:nth-child(2) {
@@ -1016,13 +1016,13 @@ section.draggable_section .img_item:nth-child(6) {
 }
 
 section.draggable_section .img_item:nth-child(7) {
-    left: 120px;
+    left: 400px;
     top: 280px;
 }
 
 section.draggable_section .img_item:nth-child(8) {
-    left: 400px;
-    top: 350px;
+    left: 350px;
+    top: 490px;
 }
 
 section.draggable_section .img_item:nth-child(9) {
@@ -1032,17 +1032,17 @@ section.draggable_section .img_item:nth-child(9) {
 
 section.draggable_section .img_item:nth-child(10) {
     left: 950px;
-    top: 380px;
+    top: 500px;
 }
 
 section.draggable_section .img_item:nth-child(11) {
-    left: 1200px;
-    top: 320px;
+    left: 1060px;
+    top: 360px;
 }
 
 section.draggable_section .img_item:nth-child(12) {
     left: 1350px;
-    top: 420px;
+    top: 530px;
 }
 
 section.draggable_section .img_item:nth-child(13) {
@@ -1052,17 +1052,17 @@ section.draggable_section .img_item:nth-child(13) {
 
 section.draggable_section .img_item:nth-child(14) {
     left: 350px;
-    top: 600px;
+    top: 750px;
 }
 
 section.draggable_section .img_item:nth-child(15) {
-    left: 620px;
-    top: 520px;
+    left: 560px;
+    top: 560px;
 }
 
 section.draggable_section .img_item:nth-child(16) {
     left: 900px;
-    top: 580px;
+    top: 730px;
 }
 
 section.draggable_section .img_item::after {
