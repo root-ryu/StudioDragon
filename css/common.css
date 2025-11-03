@@ -348,7 +348,7 @@ header nav ul.gnb>li>ul.sub li.on {
 
 header nav .right {
     width: 200px;
-    height: 36px;
+    height: 37px;
     display: flex;
     align-items: center;
     /* padding-right: 70px; */
@@ -359,13 +359,16 @@ header nav .right {
 
 header nav .right .lang {
     width: 144px;
-    height: 100%;
+    height: 36px;
     border: 1.5px solid var(--Wcolor);
     border-radius: 17px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    
+    /* z-index: 11; */
+    /* margin: 2px 0; */
 }
 
 header nav .right .lang a {
@@ -373,7 +376,7 @@ header nav .right .lang a {
     justify-content: center;
     align-items: center;
     width: 50%;
-    height: 100%;
+    height: 36px;
     font-size: 18px;
     font-weight: 700;
     border-radius: 17px;
@@ -580,9 +583,9 @@ nav.mobile ~ .ham ul li:nth-child(3) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
-    padding-bottom: 30px;
-    border-bottom: 0.5px solid var(--Wcolor);
+    gap: 10px;
+    padding-bottom: 40px;
+    /* border-bottom: 0.5px solid var(--Wcolor); */
     width: 100%;
     max-width: 300px;
     margin: 0 auto;
@@ -598,8 +601,8 @@ nav.mobile ~ .ham ul li:nth-child(3) {
     transition: color 0.3s ease;
 }
 
-.ham_nav .main_nav .nav_item:first-child .main_category {
-    color: var(--MainColor);
+.ham_nav .main_nav .nav_item .main_category {
+    color: var(--Wcolor);
 }
 
 .ham_nav .main_nav .nav_item .main_category:hover {
@@ -622,8 +625,8 @@ nav.mobile ~ .ham ul li:nth-child(3) {
 }
 
 .ham_nav .main_nav .nav_item .submenu li a {
-    font: 400 20px/1.3 "Assistant", sans-serif;
-    color: var(--Wcolor);
+    font: 300 20px/1.3 "Assistant", sans-serif;
+    color: #f5f5f5c5;
     text-decoration: none;
     display: block;
     transition: color 0.3s ease, font-weight 0.3s ease;
@@ -631,7 +634,7 @@ nav.mobile ~ .ham ul li:nth-child(3) {
 
 .ham_nav .main_nav .nav_item .submenu li a:hover {
     color: var(--MainColor);
-    font-weight: 500;
+    font-weight: 300;
 }
 
 /* NEWSROOM 특별 레이아웃 */
