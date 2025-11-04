@@ -1041,7 +1041,7 @@ section.draggable_section .img_item:nth-child(11) {
 }
 
 section.draggable_section .img_item:nth-child(12) {
-    left: 1350px;
+    left: 1300px;
     top: 530px;
 }
 
@@ -1052,7 +1052,7 @@ section.draggable_section .img_item:nth-child(13) {
 
 section.draggable_section .img_item:nth-child(14) {
     left: 350px;
-    top: 750px;
+    top: 710px;
 }
 
 section.draggable_section .img_item:nth-child(15) {
@@ -1062,7 +1062,7 @@ section.draggable_section .img_item:nth-child(15) {
 
 section.draggable_section .img_item:nth-child(16) {
     left: 900px;
-    top: 730px;
+    top: 700px;
 }
 
 section.draggable_section .img_item::after {
