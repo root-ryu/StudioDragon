@@ -584,8 +584,8 @@ nav.mobile ~ .ham ul li:nth-child(3) {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    padding-bottom: 50px;
-    margin-bottom: 30px;
+    padding-bottom: 40px;
+    /* margin-bottom: 30px; */
     width: 100%;
     max-width: 300px;
     margin: 0 auto 30px;
@@ -598,9 +598,9 @@ nav.mobile ~ .ham ul li:nth-child(3) {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
+    width: 80%;
     height: 0.5px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .ham_nav .main_nav .nav_item:last-child {
@@ -659,10 +659,10 @@ nav.mobile ~ .ham ul li:nth-child(3) {
 
 /* NEWSROOM 특별 레이아웃 */
 .ham_nav .main_nav .nav_item:nth-child(3) .submenu {
-    flex-direction: row;
+    /* flex-direction: row;
     justify-content: space-between;
     width: 136px;
-    margin: 0 auto;
+    margin: 0 auto; */
 }
 
 .ham_nav .main_nav .nav_item:nth-child(3) .submenu li {
@@ -671,10 +671,10 @@ nav.mobile ~ .ham ul li:nth-child(3) {
 
 /* IR 특별 레이아웃 */
 .ham_nav .main_nav .nav_item:nth-child(4) .submenu {
-    flex-direction: row;
+    /* flex-direction: row;
     gap: 30px;
     justify-content: center;
-}
+} */
 
 .ham_nav .main_nav .nav_item:nth-child(4) .submenu li {
     width: auto;
@@ -1014,4 +1014,5 @@ footer.ver_white .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_f
 
 footer.ver_white .footer_bottom .footer_info .footer_info_text {
     color: #0D031C;
+}
 }
