@@ -643,7 +643,7 @@ function initGSAPAnimations() {
     if (comingsoonMoreBtn) {
         comingsoonMoreBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            alert('구현 중에 있습니다. 양해 부탁드립니다. 감사합니다.');
+            alert('구현 중에 있습니다. 감사합니다.');
         });
     }
 
@@ -653,7 +653,7 @@ function initGSAPAnimations() {
     if (onairMoreBtn) {
         onairMoreBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            alert('구현 중에 있습니다. 양해 부탁드립니다. 감사합니다.');
+            alert('구현 중에 있습니다. 감사합니다.');
         });
     }
 
@@ -662,7 +662,7 @@ function initGSAPAnimations() {
     readBtns.forEach(function(btn) {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
-            alert('구현 중에 있습니다. 양해 부탁드립니다. 감사합니다.');
+            alert('구현 중에 있습니다. 감사합니다.');
         });
     });
 
@@ -672,7 +672,7 @@ function initGSAPAnimations() {
     if (beyondDramaMoreBtn) {
         beyondDramaMoreBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            alert('구현 중에 있습니다. 양해 부탁드립니다. 감사합니다.');
+            alert('구현 중에 있습니다. 감사합니다.');
         });
     }
 
@@ -685,4 +685,46 @@ function initGSAPAnimations() {
             alert('구현 중에 있습니다. 양해 부탁드립니다. 감사합니다.');
         });
     });
+
+    // HEADER 링크 클릭 이벤트
+    // header .lang .kr 클릭 시 경고창
+    const langKr = document.querySelector('header .right .lang a.kr');
+    if (langKr) {
+        langKr.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('구현 중에 있습니다. 감사합니다.');
+        });
+    }
+
+    // header .user a 클릭 시 경고창
+    const userLink = document.querySelector('header .right .user a');
+    if (userLink) {
+        userLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('구현 중에 있습니다. 감사합니다.');
+        });
+    }
+
+    // HAM_NAV 링크 클릭 이벤트
+    // ham_nav .language_switcher .en-link (KO) 클릭 시 경고창
+    const hamLangKo = document.querySelector('.ham_nav .language_switcher a.en_link');
+    console.log('hamLangKo 요소:', hamLangKo);
+    if (hamLangKo) {
+        hamLangKo.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('햄버거 메뉴 KO 클릭됨');
+            alert('구현 중에 있습니다. 감사합니다.');
+        });
+    }
+
+    // ham_nav .menu_icons .icon_link (user 아이콘) 클릭 시 경고창
+    const hamUserLink = document.querySelector('.ham_nav .menu_icons a.icon_link');
+    console.log('hamUserLink 요소:', hamUserLink);
+    if (hamUserLink) {
+        hamUserLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('햄버거 메뉴 User 클릭됨');
+            alert('구현 중에 있습니다. 감사합니다.');
+        });
+    }
 }
