@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="We Are Studio Dragon">
     <meta name="keywords" content="Studio Dragon, a premium storyteller group">
-    <meta name="author" content="Team 2eezy">
+    <meta name="author" content="Studio Dragon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Studio Dragon">
     <meta property="og:description" content="Studio Dragon, a premium storyteller group">
@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="css/main_media.css">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -29,6 +31,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ko.js"></script>
+    <!-- TradingView Widget -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
     <!-- <script src="js/common_moon.js"></script> -->
     <script src="js/common.js"></script>
     <script src="IR_Kwon/js/main.js"></script>
@@ -36,7 +43,7 @@
 
 <body>
     <div class="wrap">
-       <!-- 헤더 시작 -->
+      <!-- 헤더 시작 -->
         <div class="header_bg">
         </div>
         <header class="">
@@ -120,7 +127,7 @@
                         <img src="back/img/user.png" alt="Profile">
                     </a>
                     <button type="button" class="icon_link close_btn">
-                        <img src="asset/x-circle.svg" alt="">
+                        <img src="./asset/x-circle.svg" alt="">
                     </button>
                 </div>
             </div>
@@ -129,7 +136,7 @@
                 <li class="nav_item">
                     <a href="intro.html" class="main_category">ABOUT</a>
                     <ul class="submenu">
-                        <li><a href="/intro_kim/intro.html">About Us</a></li>
+                        <li><a href="intro.html">About Us</a></li>
                         <li><a href="index.html">Business Ethics</a></li>
                         <li><a href="index.html">Partnerships</a></li>
                         <li><a href="index.html">History</a></li>
@@ -174,357 +181,230 @@
             </ul>
         </nav><!-- //.ham_nav -->
         <!-- 여기까지 헤더 -->
-<div class="main">
-  <!-- Banner Section -->
-<section class="banner">
-  <div class="container">
-    <!-- ✅ Swiper 컨테이너로 교체 -->
-    <div class="swiper banner__slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="./IR_Kwon/img/banner1.png" alt="Banner Image 1" /></div>
-        <div class="swiper-slide"><img src="./IR_Kwon/img/banner2.png" alt="Banner Image 2" /></div>
-        <div class="swiper-slide"><img src="./IR_Kwon/img/banner3.png" alt="Banner Image 3" /></div>
-        <div class="swiper-slide"><img src="./IR_Kwon/img/banner4.png" alt="Banner Image 4" /></div>
-      </div>
-      
-      <!-- 버튼들을 Swiper 내부로 이동 - 슬라이더 기준 위치 -->
-      <div class="swiper-button-prev banner-button-prev"></div>
-      <div class="swiper-button-next banner-button-next"></div>
+<main>
+    <!-- Banner Section -->
+  <section class="banner">
+    <div class="bg_img">
+      <img src="IR_Kwon/img/banner_bg.png" alt="Banner Background" />
     </div>
+    
+    <div class="banner_img">
+      <div class="banner_01">
+        <img src="IR_Kwon/img/banner-010.png" alt="Banner Image 1" />
+      </div>
+    </div>
+    
+    <div class="banner_txt">
+      <div class="ir_insights">IR Insights</div>
+      <div class="premium_storyteller">Premium Storyteller Group</div>
+    </div>
+  </section>
 
-    <!-- 페이지네이션은 컨테이너 기준 -->
-    <div class="swiper-pagination banner-pagination"></div>
+  <!-- IR Cards Section -->
+  <section class="ir_cards">
+    <div class="slider_wrapper">
+      <div class="cards_slider">
+        <div class="ir_card">
+          <div class="card_content">
+            <h3>Studio Dragon<br>Financial Results</h3>
+            <div class="card_buttons">
+              <a href="IR_Kwon/asset/[스튜디오드래곤]_2025년_2분기_경영_실적_vF.pdf" download class="btn_white">View PDF →</a>
+              <a href="IR_Kwon/asset/스튜디오드래곤_IR_Pack_2Q25_vF.xlsx" download class="btn_white">View XLS →</a>
+            </div>
+          </div>
+        </div>
+        <div class="ir_card">
+          <div class="card_content">
+            <h3>Studio Dragon<br>Disclosure</h3>
+            <div class="card_buttons">
+              <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20251103900249" target="_blank" onclick="window.open(this.href, 'DARTWindow', 'width=1200,height=800,scrollbars=yes,resizable=yes'); return false;" class="btn_white">View More →</a>
+            </div>
+          </div>
+        </div>
+        <div class="ir_card">
+          <div class="card_content">
+            <h3>Studio Dragon<br>Business Report</h3>
+            <div class="card_buttons">
+              <a href="IR_Kwon/asset/[스튜디오드래곤]반기보고서(2025.08.14).pdf" download class="btn_white">View PDF →</a>
+            </div>
+          </div>
+        </div>
+        <div class="ir_card">
+          <div class="card_content">
+            <h3>Studio Dragon<br>incorporation</h3>
+            <div class="card_buttons">
+              <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20250319000636&dcmNo=10428455" target="_blank" onclick="window.open(this.href, 'DARTWindow', 'width=1200,height=800,scrollbars=yes,resizable=yes'); return false;" class="btn_white">View More →</a>
+            </div>
+          </div>
+        </div>
+        <div class="ir_card">
+          <div class="card_content">
+            <h3>Studio Dragon<br>directorate</h3>
+            <div class="card_buttons">
+              <a href="IR_Kwon/asset/sdfull.pdf" download class="btn_white">View PDF →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <div class="content">
-      <h1>IR Insights</h1>
-      <p>Studio Dragon</p>
-    </div><!-- //.content -->
-  </div><!-- //.container -->
-</section><!-- //.banner -->
+  <!-- Chart and Stats Section -->
+  <section class="chart_stats">
+    <div class="container">
+      <div class="chart_area">
+        <div id="tradingview_widget"></div>
+      </div>
+      <div class="stats_grid">
+        <div class="stat_card stock_price">
+          <div class="stat_content">
+            <div class="stat_label">Current Stock Price</div>
+            <div class="stat_value">42,600KRW</div>
+            <div class="stat_change positive">▲ 150 (+0.35%)</div>
+            <div class="stat_details">52-week high: 57,000 KRW<br>52-week low: 33,800 KRW</div>
+          </div>
+        </div>
+        <div class="stat_card dividend">
+          <div class="stat_content">
+            <div class="stat_label">Shareholder Return Policy</div>
+            <div class="stat_value">20%</div>
+            <div class="stat_change">Starting in 2026</div>
+            <div class="stat_details">Current: 0% (No dividend)<br>Target: 20% dividend payout ratio</div>
+          </div>
+        </div>
+        <div class="stat_card expansion">
+          <div class="stat_content">
+            <div class="stat_label">Global Expansion</div>
+            <div class="stat_value">3COUNTRIES</div>
+            <div class="stat_change">USA | Japan | Korea</div>
+            <div class="stat_details">20 local productions in the U.S.<br>230 billion KRW stake in Paramount</div>
+          </div>
+        </div>
+        <div class="stat_card production">
+          <div class="stat_content">
+            <div class="stat_label">Content Productions</div>
+            <div class="stat_value">22TITLES</div>
+            <div class="stat_change">2025 Forecast</div>
+            <div class="stat_details">2024: 19 titles → 2025: 22 titles<br>2026: 25+ titles projected</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Value Drivers Section -->
-  <section class="value_drivers">
-    <div class="title">
-      <h2>Value Drivers</h2>
-      <p>Strategic transitions that strengthen production, marketing and distribution.</p>
-    </div><!-- //.title -->
+  <!-- Analysis Section -->
+  <section class="analysis_section">
     <div class="container">
-      <figure class="figure">
-        <img class="image" src="./IR_Kwon/img/Value Drivers.png" alt="Value Drivers" />
-      </figure><!-- //.figure -->
-      <div class="area">
-        <article class="item">
-          <div class="card card_before">
-            <span class="label">Before</span>
-            <p class="text">Saturated weekend slot</p>
-          </div><!-- //.card_before -->
-          <span class="arrow">→</span>
-          <div class="card card_after">
-            <span class="label">After</span>
-            <p class="text">Flexible multi-platform rollout</p>
-          </div><!-- //.card_after -->
-        </article><!-- //.item -->
-        <article class="item">
-          <div class="card card_before">
-            <span class="label">Before</span>
-            <p class="text">Fragmented marketing</p>
-          </div><!-- //.card_before -->
-          <span class="arrow">→</span>
-          <div class="card card_after">
-            <span class="label">After</span>
-            <p class="text">Global simultaneous campaign</p>
-          </div><!-- //.card_after -->
-        </article><!-- //.item -->
-        <article class="item">
-          <div class="card card_before">
-            <span class="label">Before</span>
-            <p class="text">Sequential production workflow</p>
-          </div><!-- //.card_before -->
-          <span class="arrow">→</span>
-          <div class="card card_after">
-            <span class="label">After</span>
-            <p class="text">Parallel prod–post workflow</p>
-          </div><!-- //.card_after -->
-        </article><!-- //.item -->
-        <div class="description">
-          <p>Multi-platform launch windows reduce slot congestion and improve reach efficiency.</p>
-          <p>Parallelization shortens turnaround and mitigates schedule risk.</p>
-        </div><!-- //.description -->
-      </div><!-- //.area -->
-    </div><!-- //.container -->
-  </section><!-- //.value_drivers -->
-  <!-- Execution Section -->
-  <section class="execution">
-    <div class="inner">
-      <div class="title">
-        <h2>Execution</h2>
-        <p>Operational playbooks aligned to global releases.</p>
-      </div><!-- //.title -->
-      <div class="container">
-        <article class="card">
-          <figure class="img_wrap">
-            <img src="IR_Kwon/img/Execution_Pro.png" alt="Production" />
-          </figure><!-- //.img_wrap -->
-          <div class="content">
-            <h3>Production</h3>
-            <p>High-quality sets, locations, OST → higher completion rate</p>
-          </div><!-- //.content -->
-        </article><!-- //.card -->
-        <article class="card">
-          <figure class="img_wrap">
-            <img src="IR_Kwon/img/Execution_Dis.png" alt="Distribution" />
-          </figure><!-- //.img_wrap -->
-          <div class="content">
-            <h3>Distribution</h3>
-            <p>Regional pacing + highlight drops → more Top-10 weeks</p>
-          </div><!-- //.content -->
-        </article><!-- //.card -->
-        <article class="card">
-          <figure class="img_wrap">
-            <img src="IR_Kwon/img/Execution_Par.png" alt="Partners" />
-          </figure><!-- //.img_wrap -->
-          <div class="content">
-            <h3>Partners</h3>
-            <p>OTT main features &amp; brand tie-ups</p>
-          </div><!-- //.content -->
-        </article><!-- //.card -->
-        <article class="card">
-          <figure class="img_wrap">
-            <img src="IR_Kwon/img/Execution_Mar.png" alt="Marketing" />
-          </figure><!-- //.img_wrap -->
-          <div class="content">
-            <h3>Marketing</h3>
-            <p>Key visual A/B + fan AMA → play-through lift</p>
-          </div><!-- //.content -->
-        </article><!-- //.card -->
-      </div><!-- //.container -->
-    </div><!-- //.inner -->
-  </section><!-- //.execution -->
-  <!-- Proof Section -->
-  <section class="proof con">
-    <div class="inner">
-      <div class="title">
-        <h2>Proof</h2>
-        <p>Signals that evidence growth and monetization readiness.</p>
-      </div><!-- //.title -->
-    </div><!-- //.inner -->
-    <div class="slide_wrap swiper">
-      <div class="swiper-wrapper">
-        <article class="card swiper-slide">
-          <div class="content">
-            <h3>Ratings</h3>
-            <p>Final 24.9%<br />National household rating (finale)</p>
-          </div><!-- //.content -->
-          <img src="./IR_Kwon/img/proof_rat.svg" alt="Ratings Icon" />
-        </article><!-- //.card -->
-        <article class="card swiper-slide">
-          <div class="content">
-            <h3>OTT</h3>
-            <p>Top 10 for 15 weeks<br />Peak #1 (global/top country)</p>
-          </div><!-- //.content -->
-          <img src="./IR_Kwon/img/proof_ott.svg" alt="OTT Icon" />
-        </article><!-- //.card -->
-        <article class="card swiper-slide">
-          <div class="content">
-            <h3>Overseas</h3>
-            <p>Launched in 45 countries<br />Regional heatmap / localization complete</p>
-          </div><!-- //.content -->
-          <img src="./IR_Kwon/img/proof_over.svg" alt="Overseas Icon" />
-        </article><!-- //.card -->
-        <article class="card swiper-slide">
-          <div class="content">
-            <h3>Media</h3>
-            <p>120 earned mentions<br />+80% search lift vs. prior period</p>
-          </div><!-- //.content -->
-          <img src="./IR_Kwon/img/proof_mid.svg" alt="Media Icon" />
-        </article><!-- //.card -->
-        <article class="card swiper-slide">
-          <div class="content">
-            <h3>Fandom</h3>
-            <p>Higher completion<br />More UGC / sustained engagement</p>
-          </div><!-- //.content -->
-          <img src="./IR_Kwon/img/proof_fan.svg" alt="Fandom Icon" />
-        </article><!-- //.card -->
-      </div><!-- //.swiper-wrapper -->
-    </div><!-- //.slide_wrap -->
-  </section><!-- //.proof -->
-  <!-- Moat Repeatability Section -->
-  <section class="moat_repeatability">
-    <div class="title">
-      <h2>Moat &amp;<br />Repeatability</h2>
-    </div><!-- //.title -->
+      <div class="analysis_cards">
+        <div class="analysis_card">
+          <img src="IR_Kwon/img/data_img1.png" alt="Background" class="analysis_bg_img">
+          <div class="analysis_overlay"></div>
+          <div class="analysis_content">
+            <h3>ANALYST CONSENSUS</h3>
+            <div class="analysis_table">
+              <div class="table_row">
+                <span class="table_label">Target Price</span>
+                <span class="table_value">55,857KRW</span>
+              </div>
+              <div class="table_row">
+                <span class="table_label">Upside Potential</span>
+                <span class="table_value">+31.3%</span>
+              </div>
+              <div class="table_row">
+                <span class="table_label">Buy</span>
+                <span class="table_value">11 firms</span>
+              </div>
+              <div class="table_row">
+                <span class="table_label">Sell</span>
+                <span class="table_value">1 firm</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="analysis_card">
+          <img src="IR_Kwon/img/data_img2.png" alt="Background" class="analysis_bg_img">
+          <div class="analysis_overlay"></div>
+          <div class="analysis_content">
+            <h3>INVESTMENT METRICS</h3>
+            <div class="analysis_table">
+              <div class="table_row">
+                <span class="table_label">Market Cap</span>
+                <span class="table_value">9.7B USD</span>
+              </div>
+              <div class="table_row">
+                <span class="table_label">Foreign Ownership</span>
+                <span class="table_value">+31.3%</span>
+              </div>
+              <div class="table_row">
+                <span class="table_label">PER</span>
+                <span class="table_value">11 firms</span>
+              </div>
+              <div class="table_row">
+                <span class="table_label">PBR</span>
+                <span class="table_value">1 firm</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="analysis_card">
+          <img src="IR_Kwon/img/data_img3.png" alt="Background" class="analysis_bg_img">
+          <div class="analysis_overlay"></div>
+          <div class="analysis_content">
+            <h3>KEY WORKS Global</h3>
+            <div class="analysis_table">
+              <div class="table_row">
+                <span class="table_label">Queen of Tears</span>
+                <span class="table_value">Hit show</span>
+              </div>
+              <div class="table_row">
+                <span class="table_label">Jung Nyeon</span>
+                <span class="table_value">Rating: 12.7</span>
+              </div>
+              <div class="table_row">
+                <span class="table_label">The Glory</span>
+                <span class="table_value">Netflix #3</span>
+              </div>
+              <div class="table_row">
+                <span class="table_label">Crash Landing on You</span>
+                <span class="table_value">Global success</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meeting Booking Section -->
+  <section class="meeting_booking">
     <div class="container">
-      <div class="row">
-        <article class="card overview">
-          <div class="content">
-            <h3>Overview</h3>
-            <p>Studio Dragon's value lies<br />in a sustainable hit-making system.</p>
-          </div><!-- //.content -->
-        </article><!-- //.card -->
-        <article class="card creator-pool">
-          <figure class="img_wrap">
-            <img src="./IR_Kwon/img/moat_repeatability_card.png" alt="Creator Pool" />
-          </figure><!-- //.img_wrap -->
-          <div class="content">
-            <h3>Creator Pool</h3>
-            <p>Top writers / PD / DP / VFX network.</p>
-          </div><!-- //.content -->
-        </article><!-- //.card -->
-        <article class="card genre-portfolio">
-          <figure class="img_wrap">
-            <img src="./IR_Kwon/img/moat_repeatability_card2.png" alt="Genre Portfolio" />
-          </figure><!-- //.img_wrap -->
-          <div class="content">
-            <h3>Genre Portfolio</h3>
-            <p>Romance / thriller / period mix stabilizes quarterly volatility.</p>
-          </div><!-- //.content -->
-        </article><!-- //.card -->
-      </div><!-- //.row -->
-      <div class="row">
-        <article class="card format-spinoffs">
-          <figure class="img_wrap">
-            <img src="./IR_Kwon/img/moat_repeatability_card3.png" alt="Format & Spin-offs" />
-          </figure><!-- //.img_wrap -->
-          <div class="content">
-            <h3>Format &amp; Spin-offs</h3>
-            <p>Season, spin-off, remake expansions maximize IP LTV.</p>
-          </div><!-- //.content -->
-        </article><!-- //.card -->
-        <article class="card data-driven">
-          <figure class="img_wrap">
-            <img src="./IR_Kwon/img/moat_repeatability_card4.png" alt="Data-Driven Left" class="img-left" />
-            <img src="./IR_Kwon/img/moat_repeatability_card41.png" alt="Data-Driven Right" class="img-right" />
-          </figure><!-- //.img_wrap -->
-          <div class="content">
-            <h3>Data-Driven Development</h3>
-            <p>Trailer/pilot A/B and regional retention feed the dev loop.</p>
-          </div><!-- //.content -->
-        </article><!-- //.card -->
-        <div class="placeholder"></div><!-- //.placeholder -->
-      </div><!-- //.row -->
-    </div><!-- //.container -->
-  </section><!-- //.moat_repeatability -->
-  <!-- Forward Triggers Section -->
-  <section class="forward_triggers">
-    <div class="title">
-      <h2>Forward Triggers</h2>
-      <p>Milestones that could unlock additional value.</p>
-    </div><!-- //.title -->
-    <div class="container">
-      <article class="item">
-        <div class="info">
-          <div class="header">
-            <h3>Slot Confirmation</h3>
-            <span class="badge">Q1'26</span>
-          </div><!-- //.header -->
-          <p class="desc">Domestic scheduling &amp; quality check completed;<br />overseas delivery coordination in progress.</p>
-          <span class="status on_track">On track</span>
-        </div><!-- //.info -->
-        <figure class="img_wrap">
-          <img src="./IR_Kwon/img/forward_card1.png" alt="Slot Confirmation" />
-        </figure><!-- //.img_wrap -->
-      </article><!-- //.item -->
-      <article class="item">
-        <div class="info">
-          <div class="header">
-            <h3>Additional Overseas</h3>
-            <span class="badge">Q3'25</span>
-          </div><!-- //.header -->
-          <p class="desc">Partner shortlist confirmed; MG and revenue-share<br />negotiation underway; local compliance review.</p>
-          <span class="status monitoring">Monitoring</span>
-        </div><!-- //.info -->
-        <figure class="img_wrap">
-          <img src="./IR_Kwon/img/forward_card2.png" alt="Additional Overseas" />
-        </figure><!-- //.img_wrap -->
-      </article><!-- //.item -->
-      <article class="item">
-        <div class="info">
-          <div class="header">
-            <h3>Season 2 Greenlight</h3>
-            <span class="badge">TBD</span>
-          </div><!-- //.header -->
-          <p class="desc">Script finalized; casting availability secured; platform alignment and budget package preparation.</p>
-          <span class="status pending">Pending</span>
-        </div><!-- //.info -->
-        <figure class="img_wrap">
-          <img src="./IR_Kwon/img/forward_card3.png" alt="Season 2 Greenlight" />
-        </figure><!-- //.img_wrap -->
-      </article><!-- //.item -->
-    </div><!-- //.container -->
-  </section><!-- //.forward_triggers -->
-  <!-- Risks Mitigation Section -->
-  <section class="risks_mitigation">
-    <div class="title">
-      <h2>Risks &amp; Mitigation</h2>
-      <p>Top-3 risks with mitigations. A mini impact meter justifies the level.</p>
-    </div><!-- //.title -->
-    <div class="container">
-      <article class="risk_item">
-        <figure class="img_wrap">
-          <video loop muted playsinline>
-            <source src="./IR_Kwon/img/risk_production.mp4" type="video/mp4">
-            <source src="./IR_Kwon/img/risk_production.webm" type="video/webm">
-            Your browser does not support the video tag.
-          </video>
-        </figure><!-- //.img_wrap -->
-        <div class="content">
-          <div class="info">
-            <h3>Production</h3>
-            <span class="badge medium">MED</span>
-          </div><!-- //.info -->
-          <div class="meter">
-            <div class="bar" style="width: 59.78%"></div>
-          </div><!-- //.meter -->
-          <p class="desc"><strong>Mitigation:</strong> Add schedule buffer, parallelize post, pre-approve alt sets/locations</p>
-        </div><!-- //.content -->
-      </article><!-- //.risk_item -->
-      <article class="risk_item">
-        <figure class="img_wrap">
-          <video loop muted playsinline>
-            <source src="./IR_Kwon/img/risk_fx.mp4" type="video/mp4">
-            <source src="./IR_Kwon/img/risk_fx.webm" type="video/webm">
-            Your browser does not support the video tag.
-          </video>
-        </figure><!-- //.img_wrap -->
-        <div class="content">
-          <div class="info">
-            <h3>FX</h3>
-            <span class="badge high">HIGH</span>
-          </div><!-- //.info -->
-          <div class="meter">
-            <div class="bar" style="width: 84.68%"></div>
-          </div><!-- //.meter -->
-          <p class="desc"><strong>Mitigation:</strong> Hedge major currencies, diversify contract currency, shorten settlement cycle</p>
-        </div><!-- //.content -->
-      </article><!-- //.risk_item -->
-      <article class="risk_item">
-        <figure class="img_wrap">
-          <video loop muted playsinline>
-            <source src="./IR_Kwon/img/risk_policy.mp4" type="video/mp4">
-            <source src="./IR_Kwon/img/risk_policy.webm" type="video/webm">
-            Your browser does not support the video tag.
-          </video>
-        </figure><!-- //.img_wrap -->
-        <div class="content">
-          <div class="info">
-            <h3>Policy/Compliance</h3>
-            <span class="badge low">LOW</span>
-          </div><!-- //.info -->
-          <div class="meter">
-            <div class="bar" style="width: 29.89%"></div>
-          </div><!-- //.meter -->
-          <p class="desc"><strong>Mitigation:</strong> Pre-review checklist, sensitive-content guardrails, alternate cut plan</p>
-        </div><!-- //.content -->
-      </article><!-- //.risk_item -->
-    </div><!-- //.container -->
-  </section><!-- //.risks_mitigation -->
-  <!-- CTA Section -->
-  <section class="cta">
-    <button type="button" class="button">Investor Deck</button>
-    <button type="button" class="button">Data CSV</button>
-    <button type="button" class="button primary">Request a Meeting</button>
-  </section><!-- //.cta -->
-</div>
+      <div class="booking_header">
+        <h2>Select The Date And Time For Your IR Meeting.</h2>
+      </div>
+      <div class="booking_content">
+        <div class="calendar_area">
+          <input type="text" id="meeting_calendar">
+        </div>
+        <div class="booking_form">
+          <div class="date_selection">
+            <div class="selected_date">
+              <span class="date_label">Selected date</span>
+              <span class="date_value" id="selected_date_display">2025.11.12 (wed)</span>
+            </div>
+            <div class="time_slots">
+              <button class="time_slot" data-time="10:00">10:00</button>
+              <button class="time_slot" data-time="11:00">11:00</button>
+              <button class="time_slot" data-time="14:00">14:00</button>
+              <button class="time_slot" data-time="15:00">15:00</button>
+
+            </div>
+            <button class="book_meeting_btn" id="book_btn">Book IR Meeting</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
         <footer class="ver_dark ver_white">
             <div class="footer_inner">
                 <!-- Top Area -->
