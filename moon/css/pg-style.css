@@ -383,24 +383,20 @@ h2 {
   position: absolute;
   right: 0;
   top: 0;
+  width: 110px;
+  aspect-ratio: 120/141;
 }
 
 .contest-winner #goldimg {
   background: url(../../moon/asset/gold.png) center/cover;
-  width: 120px;
-  aspect-ratio: 120/141;
 }
 
 .contest-winner #silverimg {
   background: url(../../moon/asset/silver.png) center/cover;
-  width: 120px;
-  aspect-ratio: 120/141;
 }
 
 .contest-winner #popularimg {
   background: url(../../moon/asset/popular.png) center/cover;
-  width: 120px;
-  aspect-ratio: 120/170;
 }
 
 .contest-winner .circles {
@@ -483,7 +479,7 @@ h2 {
 
 .smiling-emoji {
   background: url("../asset/smiling.png") center/cover;
-  width: 280px;
+  width: 260px;
   aspect-ratio: 1;
 }
 
@@ -574,10 +570,10 @@ h2 {
   position: relative;
 }
 
-.creativeGallery h4 {
+.creativeGallery h3 {
   color: var(--Wcolor);
   text-align: left;
-  font: 600 26px/130% "Assistant", sans-serif;
+  font: 600 28px/130% "Assistant", sans-serif;
   text-transform: uppercase;
   margin-bottom: 24px;
 }
@@ -781,7 +777,7 @@ h2 {
   position: relative;
   z-index: 10;
   width: 100%;
-  padding-bottom: 32px;
+  padding-bottom: 30px;
 }
 
 .community .top h2 {
@@ -826,10 +822,10 @@ h2 {
   width: 100%;
 }
 
-.community .title .subtit h4 {
+.community .title .subtit h3 {
   color: var(--Bcolor);
   text-align: center;
-  font: 600 26px/130% "Assistant", sans-serif;
+  font: 600 28px/130% "Assistant", sans-serif;
   text-transform: uppercase;
 }
 
@@ -1058,13 +1054,17 @@ h2 {
 }
 
 .vote .title h3 {
+  font: 300 34px/130% "Assistant", sans-serifs;
+  margin-bottom: 8px;
+}
+.vote .title h4 {
   font: 600 26px/130% "Assistant", sans-serifs;
   margin-bottom: 4px;
 }
 
 .vote .title p {
   color: #b8b8b8;
-  font: 400 20px/130% "Assistant", sans-serif;
+  font: 400 18px/130% "Assistant", sans-serif;
   opacity: .6;
 }
 
