@@ -71,81 +71,189 @@ h2 {
 
 
 /* 히어로 텍스트 */
-.hero {
+/* 진행중인 공모전 */
+.running-contest {
   width: 100%;
-  height: 100vh;
-  background: var(--Wㅉcolor);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.hero .sect_inner {
-  width: 100%;
-  padding-inline: 200px;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  align-items: center;
-  justify-content: space-between;
-}
-
-
-
-.hero .hero-txtbox {
+  /* margin-top: 264px; */
   color: #fff;
-  font: 800 86px/130% "Pretendard", sans-serif;
+  padding: 464px 200px 250px 200px;
+}
+
+.running-contest .title {
+  margin-bottom: 42px;
+  width: 100%;
+  text-align: center;
+}
+
+.running-contest h2,
+.community h2 {
+  color: var(--Bcolor);
+}
+
+.running-contest .con {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* width: 1520px; */
+  padding-block: 186px;
+  background: url(../../moon/asset/bg-runningContest.jpg) center/ cover no-repeat;
+}
+
+.running-contest .info {
+  background: rgba(245, 245, 245, 0.6);
+  border-radius: 32px;
+  padding: 48px 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 65px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  backdrop-filter: blur(2.5px);
+}
+
+.running-contest .deadline {
+  padding: 4px 0px 4px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.running-contest h4 {
+  color: #626262;
   text-align: left;
+  font-family: "Assistant", sans-serif;
+  font-size: 26px;
+  line-height: 130%;
+  font-weight: 400;
+  position: relative;
 }
 
-.hero li {
+.running-contest .counter {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.running-contest .countbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.running-contest .countbox span {
+  width: 110px;
+  background: #111111;
+  border-radius: 8px;
+  padding: 4px 13px 14px 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  color: #f3f3f3;
+  text-align: center;
+  font: 700 72px/100% "Assistant", sans-serif;
+}
+
+.running-contest .countbox p {
+  color: var(--Bcolor);
+  text-align: center;
+  font: 600 20px/100% "Assistant", sans-serif;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.running-contest article {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.running-contest .textbox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.running-contest article .subtitle {
+  color: var(--Bcolor);
   text-align: left;
-  -webkit-text-stroke: 1px #883ffe;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-image: linear-gradient(#883ffe, #883ffe), linear-gradient(#ffffff, #ffffff);
-  background-size: 100% 0%, 100% 100%;
-  background-position: 0 100%, 0 0;
-  background-repeat: no-repeat;
+  font-family: "Assistant", sans-serif;
+  font-size: 26px;
+  line-height: 130%;
+  font-weight: 700;
+  position: relative;
 }
 
 
-
-.smiling-emoji {
-  background: url("../asset/smiling.png") center/cover;
-  width: 280px;
-  aspect-ratio: 1;
+.running-contest article li {
+  color: var(--Bcolor);
+  text-align: left;
+  font-family: "Assistant", sans-serif;
+  font-size: 18px;
+  line-height: 130%;
+  font-weight: 400;
+  position: relative;
 }
 
-@keyframes floating-20 {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-20px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
+.running-contest a.btn {
+  display: block;
+  border-radius: 32px;
+  border: 1px solid var(--subBlue2);
+  /* background: #0d031c19; */
+  padding: 10px 38px;
+  color: var(--subBlue2);
+  text-align: center;
+  font: 500 16px/100% "Assistant", sans-serif;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes floating-40 {
-  0% {
-    transform: translateY(0px);
-  }
+.running-contest a.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--subBlue2);
+  z-index: -1;
+  transition: 0.5s;
+}
 
-  50% {
-    transform: translateY(-40px);
-  }
+.running-contest a.btn:hover {
+  background-color: var(--subBlue1);
+  color: var(--Wcolor);
+  border-color: var(--subBlue1);
+}
 
-  100% {
-    transform: translateY(0px);
-  }
+.running-contest a.btn:hover::before {
+  width: 100%;
 }
 
 
@@ -329,197 +437,92 @@ h2 {
   top: -300px;
 }
 
-/* 진행중인 공모전 */
-.running-contest {
+/* 히어로 텍스트 */
+.hero {
   width: 100%;
-  /* margin-top: 264px; */
-  color: #fff;
-  padding: 464px 200px 250px 200px;
-}
-
-.running-contest .sect_inner {}
-
-.running-contest .title {
-  margin-bottom: 42px;
-  width: 100%;
-}
-
-.running-contest h2,
-.community h2 {
-  color: var(--Bcolor);
-}
-
-.running-contest .con {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* width: 1520px; */
-  padding-block: 186px;
-  background: url(../../moon/asset/bg-runningContest.jpg) center/ cover no-repeat;
-}
-
-.running-contest .info {
-  background: rgba(245, 245, 245, 0.6);
-  border-radius: 32px;
-  padding: 48px 52px;
-  display: flex;
-  flex-direction: column;
-  gap: 65px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-  backdrop-filter: blur(2.5px);
-}
-
-.running-contest .deadline {
-  padding: 4px 0px 4px 0px;
-  display: flex;
-  flex-direction: column;
-  gap: 23px;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.running-contest h4 {
-  color: #626262;
-  text-align: left;
-  font-family: "Assistant", sans-serif;
-  font-size: 26px;
-  line-height: 130%;
-  font-weight: 400;
-  position: relative;
-}
-
-.running-contest .counter {
+  height: 100vh;
+  background: var(--Wcolor);
   display: flex;
   flex-direction: row;
-  gap: 18px;
   align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
+  justify-content: space-between;
 }
 
-.running-contest .countbox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-}
-
-.running-contest .countbox span {
-  width: 110px;
-  background: #111111;
-  border-radius: 8px;
-  padding: 4px 13px 14px 13px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  color: #f3f3f3;
-  text-align: center;
-  font: 700 72px/100% "Assistant", sans-serif;
-}
-
-.running-contest .countbox p {
-  color: var(--Bcolor);
-  text-align: center;
-  font: 600 20px/100% "Assistant", sans-serif;
-  margin-top: 4px;
-  text-transform: uppercase;
-}
-
-.running-contest article {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.running-contest .textbox {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.running-contest article .subtitle {
-  color: var(--Bcolor);
-  text-align: left;
-  font-family: "Assistant", sans-serif;
-  font-size: 26px;
-  line-height: 130%;
-  font-weight: 700;
-  position: relative;
-}
-
-
-.running-contest article li {
-  color: var(--Bcolor);
-  text-align: left;
-  font-family: "Assistant", sans-serif;
-  font-size: 18px;
-  line-height: 130%;
-  font-weight: 400;
-  position: relative;
-}
-
-.running-contest a.btn {
-  display: block;
-  border-radius: 32px;
-  border: 1px solid var(--subBlue2);
-  /* background: #0d031c19; */
-  padding: 10px 38px;
-  color: var(--subBlue2);
-  text-align: center;
-  font: 500 16px/100% "Assistant", sans-serif;
-  text-transform: uppercase;
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.running-contest a.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: var(--subBlue2);
-  z-index: -1;
-  transition: 0.5s;
-}
-
-.running-contest a.btn:hover {
-  background-color: var(--subBlue1);
-  color: var(--Wcolor);
-  border-color: var(--subBlue1);
-}
-
-.running-contest a.btn:hover::before {
+.hero .sect_inner {
   width: 100%;
+  padding-inline: 200px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
 }
+
+
+
+.hero .hero-txtbox {
+  color: #fff;
+  font: 800 86px/130% "Pretendard", sans-serif;
+  text-align: left;
+}
+
+.hero li {
+  text-align: left;
+  -webkit-text-stroke: 1px #883ffe;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(#883ffe, #883ffe), linear-gradient(#ffffff, #ffffff);
+  background-size: 100% 0%, 100% 100%;
+  background-position: 0 100%, 0 0;
+  background-repeat: no-repeat;
+}
+
+
+
+.smiling-emoji {
+  background: url("../asset/smiling.png") center/cover;
+  width: 280px;
+  aspect-ratio: 1;
+}
+
+@keyframes floating-20 {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes floating-40 {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-40px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* 진행중인 공모전 */
+
 
 /* 갤러리 */
 .creativeGallery {
   background: var(--Bcolor);
   width: 100%;
-  padding-block: 200px;
+  padding-block: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -532,17 +535,39 @@ h2 {
   overflow: hidden;
 }
 
-
-.creativeGallery .titlebox {
+.creativeGallery .top {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
   align-items: center;
   position: relative;
-  margin-bottom: 40px;
+  width: 100%;
+  padding-bottom: 32px;
+  z-index: 10;
 }
 
-ㄴ .creativeGallery .con {
+.creativeGallery .top h2 {
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--Wcolor);
+}
+
+.creativeGallery .top a.more-btn {
+  font-size: 18px;
+  text-transform: uppercase;
+  display: flex;
+  padding: 7px 32px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--Wcolor);
+  border-radius: 32px;
+  margin-left: 30px;
+}
+
+.creativeGallery .top a.more-btn span {
+  color: var(--Wcolor);
+  font-size: 18px;
+}
+
+.creativeGallery .con {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -552,9 +577,9 @@ h2 {
 .creativeGallery h4 {
   color: var(--Wcolor);
   text-align: left;
-  font: var(--font-1920-title-B-26);
+  font: 600 26px/130% "Assistant", sans-serif;
   text-transform: uppercase;
-  margin-bottom: 26px;
+  margin-bottom: 24px;
 }
 
 .creativeGallery .swiper {
@@ -734,7 +759,7 @@ h2 {
 .community {
   width: 100%;
   color: #fff;
-  padding-block: 200px;
+  padding-block: 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -746,7 +771,40 @@ h2 {
   display: flex;
   flex-direction: column;
   position: relative;
-  gap: 48px;
+  /* gap: 48px; */
+}
+
+/* 커뮤니티 상단 - .top 구조 추가 */
+.community .top {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding-bottom: 32px;
+}
+
+.community .top h2 {
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--Bcolor);
+}
+
+.community .top a.more-btn {
+  font-size: 18px;
+  text-transform: uppercase;
+  display: flex;
+  padding: 7px 32px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--Bcolor);
+  border-radius: 32px;
+  margin-left: 30px;
+}
+
+.community .top a.more-btn span {
+  color: var(--Bcolor);
+  font-size: 18px;
 }
 
 /* 커뮤니티 상단 */
@@ -757,6 +815,7 @@ h2 {
   gap: 10px;
   align-items: center;
   justify-content: center;
+  margin-bottom: 24px;
 }
 
 .community .title .subtit {
@@ -770,7 +829,7 @@ h2 {
 .community .title .subtit h4 {
   color: var(--Bcolor);
   text-align: center;
-  font: var(--font-1920-title-B-26);
+  font: 600 26px/130% "Assistant", sans-serif;
   text-transform: uppercase;
 }
 
@@ -783,7 +842,7 @@ h2 {
 
 .community .title .subtit .com_btn_wrap .com_toggle_btn {
   color: #bdbac1;
-  font: 700 20px/100% "Assistant", sans-serif;
+  font: 500 20px/100% "Assistant", sans-serif;
 
 }
 
@@ -852,7 +911,7 @@ h2 {
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide .info-overlay {
   width: 100%;
   height: 100%;
-  padding: 40px 38px;
+  padding: 32px 38px;
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -864,9 +923,10 @@ h2 {
   background: linear-gradient(180deg,
       rgba(0, 0, 0, 0.8) 0%,
       rgba(0, 0, 0, 0) 18%,
-      rgba(0, 0, 0, 0) 84%,
+      rgba(0, 0, 0, 0) 70%,
       rgba(0, 0, 0, 0.8) 100%);
   color: var(--Wcolor);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .community .articles .comm_gallery .swiper-wrapper .swiper-slide:hover .info-overlay {
@@ -878,11 +938,11 @@ h2 {
 .community .articles .comm_gallery .info-overlay .comm_article_info {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .community .articles .comm_gallery .info-overlay .comm_article_info em {
-  color: #ffffffb8;
+  color: #D5D5D5;
   font: 300 26px/100% "Assistant", sans-serif;
 }
 
@@ -893,7 +953,7 @@ h2 {
 }
 
 .community .articles .comm_gallery .info-overlay .comm_article_info span h5 {
-  color: var(--w, #f5f5f5);
+  color: var(--Wcolor);
   height: 40px;
   text-align: left;
   font: 400 30px/100% "Assistant", sans-serif;
@@ -990,9 +1050,7 @@ h2 {
 .vote .title {
   text-align: center;
   color: var(--Wcolor);
-  /* display: flex;
-  flex-direction: column;
-  gap: 50px; */
+  margin-bottom: 56px;
 }
 
 .vote .title h2 {
@@ -1007,14 +1065,13 @@ h2 {
 .vote .title p {
   color: #b8b8b8;
   font: 400 20px/130% "Assistant", sans-serif;
-  margin-bottom: 42px;
   opacity: .6;
 }
 
 .vote-container {
   display: flex;
   justify-content: center;
-  gap: 42px;
+  gap: 68px;
   perspective: 2000px;
   width: 100%;
 }

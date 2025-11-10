@@ -397,12 +397,17 @@ document.addEventListener('DOMContentLoaded', () => {
       otherWrap.style.display = 'none';
       targetWrap.style.display = '';
 
-      // 보이게 된 영역의 스와이퍼를 초기화(필요 시)하고 0번 슬라이드로 리셋 후 업데이트
+      // 보이게 된 영역의 스와이퍼를 초기화(필요 시)하고 1번(인덱스 0) 슬라이드로 리셋 후 업데이트
       targetWrap.querySelectorAll('.comm_gallery').forEach(container => {
         initCommunitySwiper(container);
         if (container.swiper) {
           container.swiper.update();
-          container.swiper.slideTo(0, 0, false);
+          // loop 모드에서도 진짜 첫 슬라이드로 이동시키려면 slideToLoop 사용
+          if (typeof container.swiper.slideToLoop === 'function') {
+            container.swiper.slideToLoop(0, 0, false);
+          } else {
+            container.swiper.slideTo(0, 0, false);
+          }
         }
       });
     };
