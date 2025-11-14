@@ -671,10 +671,11 @@ nav.mobile ~ .ham ul li:nth-child(3) {
 
 /* IR 특별 레이아웃 */
 .ham_nav .main_nav .nav_item:nth-child(4) .submenu {
-    /* flex-direction: row;
+    /* /* flex-direction: row;
     gap: 30px;
-    justify-content: center;
-} */
+    justify-content: center; */
+}
+
 
 .ham_nav .main_nav .nav_item:nth-child(4) .submenu li {
     width: auto;
@@ -1014,5 +1015,4 @@ footer.ver_white .footer_top .footer_menu .footer_gnb .footer_gnb_wrap .footer_f
 
 footer.ver_white .footer_bottom .footer_info .footer_info_text {
     color: #0D031C;
-}
 }
